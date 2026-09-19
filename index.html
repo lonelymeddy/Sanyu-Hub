@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="SanyuHub — Movies, Series and Live TV.">
+<title>SanyuHub — Movies & Live TV</title>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar" id="navbar">
+
+<div class="nav-inner">
+
+<a href="/" class="logo">
+Sanyu<span>Hub</span>
+</a>
+
+<nav class="desktop-nav">
+
+<a href="/">Home</a>
+<a href="/movies">Movies</a>
+<a href="/series">Series</a>
+<a href="/live-tv">Live TV</a>
+
+</nav>
+
+<div class="nav-controls">
+
+<button class="search-button" id="topSearch" aria-label="Search">
+<span class="search-icon"></span>
+</button>
+
+<button
+class="menu-button"
+id="menuButton"
+aria-label="Open navigation"
+aria-expanded="false">
+
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+<div class="sidebar-content">
+
+<div class="sidebar-section">
+
+<div class="sidebar-section-title">
+Explore
+</div>
+
+<a href="/" class="sidebar-link active">
+
+<span class="sidebar-link-left">
+
+<span class="sidebar-dot"></span>
+
+Home
+
+</span>
+
+</a>
+
+<a href="/movies" class="sidebar-link has-submenu">
+
+<span class="sidebar-link-left">
+
+<span class="sidebar-dot"></span>
+
+Movies
+
+</span>
+
+<span class="chevron"></span>
+
+</a>
+
+<div class="sidebar-submenu">
+
+<a href="/trending">
+Trending Now
+</a>
+
+<a href="/popular">
+Popular Movies
+</a>
+
+<a href="/featured">
+Featured
+</a>
+
+<a href="/recently-added">
+Recently Added
+</a>
+
+</div>
+
+<a href="/series" class="sidebar-link has-submenu">
+
+<span class="sidebar-link-left">
+
+<span class="sidebar-dot"></span>
+
+Series
+
+</span>
+
+<span class="chevron"></span>
+
+</a>
+
+<div class="sidebar-submenu">
+
+<a href="/series">
+Popular Series
+</a>
+
+<a href="/continue-watching">
+Continue Watching
+</a>
+
+</div>
+
+<a href="/live-tv" class="sidebar-link">
+
+<span class="sidebar-link-left">
+
+<span class="sidebar-dot"></span>
+
+Live TV
+
+</span>
+
+</a>
+
+</div>
+
+</div>
+
+</aside>
+
+<section class="hero" id="home">
+
+<div class="hero-background"></div>
+
+<div class="hero-content">
+
+<div class="hero-badge">
+
+<span class="ugandan-text">
+UGANDAN
+</span>
+
+&nbsp; MOVIES
+
+</div>
+
+<h1>
+Stories that<br>
+bring us together.
+</h1>
+
+<p class="hero-description">
+Discover translated movies, series and live television in one simple place. Find something to watch and enjoy stories from around the world.
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="btn btn-primary"
+id="exploreButton">
+
+Explore Movies
+
+</button>
+
+<button
+class="btn btn-secondary"
+id="categoriesButton">
+
+Browse Categories
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<main>
+
+<section class="section" id="categories">
+
+<div class="section-heading">
+
+<h2 class="section-title">
+Browse Categories
+</h2>
+
+</div>
+
+<div class="categories">
+
+<button class="category active">
+All
+</button>
+
+<button class="category">
+Action
+</button>
+
+<button class="category">
+Drama
+</button>
+
+<button class="category">
+Comedy
+</button>
+
+<button class="category">
+Thriller
+</button>
+
+<button class="category">
+Romance
+</button>
+
+<button class="category">
+Adventure
+</button>
+
+<button class="category">
+Family
+</button>
+
+</div>
+
+</section>
+
+<section class="section" id="trending">
+
+<div class="section-heading">
+
+<h2 class="section-title">
+Trending Now
+</h2>
+
+<a href="/trending" class="view-more">
+View More
+</a>
+
+</div>
+
+<div class="trending-grid">
+
+<article class="trending-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=700&q=80"
+alt="Trending movie">
+
+<span class="trending-number">
+1
+</span>
+
+</div>
+
+</article>
+
+<article class="trending-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=80"
+alt="Trending movie">
+
+<span class="trending-number">
+2
+</span>
+
+</div>
+
+</article>
+
+<article class="trending-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=80"
+alt="Trending movie">
+
+<span class="trending-number">
+3
+</span>
+
+</div>
+
+</article>
+
+<article class="trending-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&w=700&q=80"
+alt="Trending movie">
+
+<span class="trending-number">
+4
+</span>
+
+</div>
+
+</article>
+
+<article class="trending-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=700&q=80"
+alt="Trending movie">
+
+<span class="trending-number">
+5
+</span>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+<section class="section" id="popular-movies">
+
+<div class="section-heading">
+
+<h2 class="section-title">
+Popular Movies
+</h2>
+
+<a href="/popular" class="view-more">
+View More
+</a>
+
+</div>
+
+<div class="card-grid" id="movies">
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80"
+alt="The Journey">
+
+<span class="badge">
+HD
+</span>
+
+</div>
+
+<div class="card-title">
+The Journey
+</div>
+
+<div class="card-meta">
+Luganda • 2026
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?auto=format&fit=crop&w=700&q=80"
+alt="Hidden Truth">
+
+<span class="badge">
+NEW
+</span>
+
+</div>
+
+<div class="card-title">
+Hidden Truth
+</div>
+
+<div class="card-meta">
+Luganda • 2026
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?auto=format&fit=crop&w=700&q=80"
+alt="The Last Night">
+
+<span class="badge">
+HD
+</span>
+
+</div>
+
+<div class="card-title">
+The Last Night
+</div>
+
+<div class="card-meta">
+Luganda • 2026
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=700&q=80"
+alt="The Promise">
+
+<span class="badge">
+NEW
+</span>
+
+</div>
+
+<div class="card-title">
+The Promise
+</div>
+
+<div class="card-meta">
+Luganda • 2026
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=80"
+alt="Beyond Tomorrow">
+
+<span class="badge">
+HD
+</span>
+
+</div>
+
+<div class="card-title">
+Beyond Tomorrow
+</div>
+
+<div class="card-meta">
+Luganda • 2026
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=80"
+alt="New Beginnings">
+
+<span class="badge">
+HD
+</span>
+
+</div>
+
+<div class="card-title">
+New Beginnings
+</div>
+
+<div class="card-meta">
+Luganda • 2026
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+<section class="section" id="featured">
+
+<div class="section-heading">
+
+<h2 class="section-title">
+Featured
+</h2>
+
+</div>
+
+<div class="featured-card">
+
+<div class="featured-content">
+
+<span>
+FEATURED MOVIE
+</span>
+
+<h3>
+A story worth watching.
+</h3>
+
+<p>
+Discover something new from the latest collection of movies available on SanyuHub.
+</p>
+
+<button
+class="btn btn-primary"
+style="margin-top:22px;">
+
+Watch Now
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+<section class="section" id="series">
+
+<div class="section-heading">
+
+<h2 class="section-title">
+Popular Series
+</h2>
+
+<a href="/popular-series" class="view-more">
+View More
+</a>
+
+</div>
+
+<div class="card-grid">
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=700&q=80"
+alt="The Family">
+
+<span class="badge">
+NEW
+</span>
+
+</div>
+
+<div class="card-title">
+The Family
+</div>
+
+<div class="card-meta">
+Series • Luganda • S1
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1485095329183-d0797cdc5676?auto=format&fit=crop&w=700&q=80"
+alt="Broken Promises">
+
+<span class="badge">
+HD
+</span>
+
+</div>
+
+<div class="card-title">
+Broken Promises
+</div>
+
+<div class="card-meta">
+Series • Luganda • S2
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1574267432644-f610f7c5f9ad?auto=format&fit=crop&w=700&q=80"
+alt="City Lights">
+
+<span class="badge">
+HD
+</span>
+
+</div>
+
+<div class="card-title">
+City Lights
+</div>
+
+<div class="card-meta">
+Series • Luganda • S1
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=700&q=80"
+alt="The Secret">
+
+<span class="badge">
+NEW
+</span>
+
+</div>
+
+<div class="card-title">
+The Secret
+</div>
+
+<div class="card-meta">
+Series • Luganda • S1
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=700&q=80"
+alt="Crossroads">
+
+<span class="badge">
+HD
+</span>
+
+</div>
+
+<div class="card-title">
+Crossroads
+</div>
+
+<div class="card-meta">
+Series • Luganda • S3
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1518930259200-3b7b2a0b5aef?auto=format&fit=crop&w=700&q=80"
+alt="The Circle">
+
+<span class="badge">
+HD
+</span>
+
+</div>
+
+<div class="card-title">
+The Circle
+</div>
+
+<div class="card-meta">
+Series • Luganda • S1
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+<section class="section" id="continue">
+
+<div class="section-heading">
+
+<h2 class="section-title">
+Continue Watching
+</h2>
+
+</div>
+
+<div class="continue-grid">
+
+<article class="continue-card">
+
+<div class="continue-image">
+
+<img
+src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"
+alt="Continue watching">
+
+</div>
+
+<div class="continue-info">
+
+<div class="card-title">
+The Journey
+</div>
+
+<div class="card-meta">
+32 min remaining
+</div>
+
+<div class="progress">
+<span style="width:72%"></span>
+</div>
+
+</div>
+
+</article>
+
+<article class="continue-card">
+
+<div class="continue-image">
+
+<img
+src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=80"
+alt="Continue watching">
+
+</div>
+
+<div class="continue-info">
+
+<div class="card-title">
+Hidden Truth
+</div>
+
+<div class="card-meta">
+18 min remaining
+</div>
+
+<div class="progress">
+<span style="width:48%"></span>
+</div>
+
+</div>
+
+</article>
+
+<article class="continue-card">
+
+<div class="continue-image">
+
+<img
+src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=900&q=80"
+alt="Continue watching">
+
+</div>
+
+<div class="continue-info">
+
+<div class="card-title">
+The Promise
+</div>
+
+<div class="card-meta">
+46 min remaining
+</div>
+
+<div class="progress">
+<span style="width:31%"></span>
+</div>
+
+</div>
+
+</article>
+
+<article class="continue-card">
+
+<div class="continue-image">
+
+<img
+src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=900&q=80"
+alt="Continue watching">
+
+</div>
+
+<div class="continue-info">
+
+<div class="card-title">
+New Beginnings
+</div>
+
+<div class="card-meta">
+12 min remaining
+</div>
+
+<div class="progress">
+<span style="width:82%"></span>
+</div>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+<section class="section" id="live-tv">
+
+<div class="section-heading">
+
+<h2 class="section-title">
+Live TV
+</h2>
+
+<a href="/live-tv" class="view-more">
+View More
+</a>
+
+</div>
+
+<div class="live-grid">
+
+<article class="live-card">
+
+<img
+src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1000&q=80"
+alt="Live television">
+
+<div class="live-overlay">
+
+<span class="live-badge">
+LIVE
+</span>
+
+<div class="live-title">
+Live Channel
+</div>
+
+</div>
+
+</article>
+
+<article class="live-card">
+
+<img
+src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=1000&q=80"
+alt="Live television">
+
+<div class="live-overlay">
+
+<span class="live-badge">
+LIVE
+</span>
+
+<div class="live-title">
+Entertainment
+</div>
+
+</div>
+
+</article>
+
+<article class="live-card">
+
+<img
+src="https://images.unsplash.com/photo-1586899028174-e7098604235b?auto=format&fit=crop&w=1000&q=80"
+alt="Live television">
+
+<div class="live-overlay">
+
+<span class="live-badge">
+LIVE
+</span>
+
+<div class="live-title">
+Music Channel
+</div>
+
+</div>
+
+</article>
+
+<article class="live-card">
+
+<img
+src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1000&q=80"
+alt="Live television">
+
+<div class="live-overlay">
+
+<span class="live-badge">
+LIVE
+</span>
+
+<div class="live-title">
+News Channel
+</div>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+<section class="section" id="recent">
+
+<div class="section-heading">
+
+<h2 class="section-title">
+Recently Added
+</h2>
+
+<a href="/recently-added" class="view-more">
+View More
+</a>
+
+</div>
+
+<div class="card-grid">
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=700&q=80"
+alt="Recently added movie">
+
+<span class="badge">
+NEW
+</span>
+
+</div>
+
+<div class="card-title">
+Latest Arrival
+</div>
+
+<div class="card-meta">
+Luganda • 2026
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=80"
+alt="Recently added movie">
+
+<span class="badge">
+NEW
+</span>
+
+</div>
+
+<div class="card-title">
+New Story
+</div>
+
+<div class="card-meta">
+Luganda • 2026
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=700&q=80"
+alt="Recently added movie">
+
+<span class="badge">
+NEW
+</span>
+
+</div>
+
+<div class="card-title">
+Fresh Release
+</div>
+
+<div class="card-meta">
+Luganda • 2026
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1484820540004-14229fe36ca4?auto=format&fit=crop&w=700&q=80"
+alt="Recently added movie">
+
+<span class="badge">
+NEW
+</span>
+
+</div>
+
+<div class="card-title">
+New Collection
+</div>
+
+<div class="card-meta">
+Luganda • 2026
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=700&q=80"
+alt="Recently added series">
+
+<span class="badge">
+NEW
+</span>
+
+</div>
+
+<div class="card-title">
+New Series
+</div>
+
+<div class="card-meta">
+Series • 2026
+</div>
+
+</article>
+
+<article class="movie-card">
+
+<div class="poster">
+
+<img
+src="https://images.unsplash.com/photo-1485095329183-d0797cdc5676?auto=format&fit=crop&w=700&q=80"
+alt="Recently added series">
+
+<span class="badge">
+NEW
+</span>
+
+</div>
+
+<div class="card-title">
+Latest Episode
+</div>
+
+<div class="card-meta">
+Series • 2026
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+</main>
+
+<footer id="contact">
+
+<div class="footer-logo">
+Sanyu<span>Hub</span>
+</div>
+
+<div class="footer-tagline">
+Hub For Ugandan Happiness
+</div>
+
+<div class="footer-links">
+
+<span>Movies</span>
+<span>•</span>
+<span>Series</span>
+<span>•</span>
+<span>Live TV</span>
+
+</div>
+
+<div class="contact-line">
+Contact Us
+</div>
+
+<div class="copyright">
+© 2026 SanyuHub. All rights reserved.
+</div>
+
+</footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
