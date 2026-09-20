@@ -15,7 +15,7 @@ function showNavigation(){
      * Keep the sidebar visible if it was already open.
      */
 
-    if(sidebar.classList.contains("active")){
+    if(sidebar && sidebar.classList.contains("active")){
 
         sidebar.classList.add("active");
 
@@ -30,11 +30,11 @@ function hideNavigation(){
      * and sidebar visible so they remain usable.
      */
 
-    if(!sidebar.classList.contains("active")){
+    if(sidebar && !sidebar.classList.contains("active")){
 
         navbar.classList.add("nav-hidden");
 
-    }else{
+    }else if (navbar) {
 
         navbar.classList.remove("nav-hidden");
 
@@ -172,27 +172,29 @@ const sidebarOverlay = document.getElementById("sidebarOverlay");
 
 function openSidebar(){
 
-    sidebar.classList.add("active");
+    if (sidebar) sidebar.classList.add("active");
 
-    sidebarOverlay.classList.add("active");
+    if (sidebarOverlay) sidebarOverlay.classList.add("active");
 
-    menuButton.classList.add("active");
+    if (menuButton) {
+        menuButton.classList.add("active");
+        menuButton.setAttribute("aria-expanded","true");
+    }
 
-    menuButton.setAttribute("aria-expanded","true");
-
-    navbar.classList.remove("nav-hidden");
+    if (navbar) navbar.classList.remove("nav-hidden");
 
 }
 
 function closeSidebar(){
 
-    sidebar.classList.remove("active");
+    if (sidebar) sidebar.classList.remove("active");
 
-    sidebarOverlay.classList.remove("active");
+    if (sidebarOverlay) sidebarOverlay.classList.remove("active");
 
-    menuButton.classList.remove("active");
-
-    menuButton.setAttribute("aria-expanded","false");
+    if (menuButton) {
+        menuButton.classList.remove("active");
+        menuButton.setAttribute("aria-expanded","false");
+    }
 
     document.querySelectorAll(".sidebar-submenu").forEach(function(menu){
 
@@ -211,28 +213,32 @@ function closeSidebar(){
 
 /* HAMBURGER */
 
-menuButton.addEventListener("click",function(){
+if (menuButton) {
+    menuButton.addEventListener("click",function(){
 
-    if(sidebar.classList.contains("active")){
+        if(sidebar && sidebar.classList.contains("active")){
 
-        closeSidebar();
+            closeSidebar();
 
-    }else{
+        }else{
 
-        openSidebar();
+            openSidebar();
 
-    }
+        }
 
-});
+    });
+}
 
 
 /* CLICK OUTSIDE */
 
-sidebarOverlay.addEventListener("click",function(){
+if (sidebarOverlay) {
+    sidebarOverlay.addEventListener("click",function(){
 
-    closeSidebar();
+        closeSidebar();
 
-});
+    });
+}
 
 
 /* ESCAPE */
@@ -339,9 +345,9 @@ document.querySelectorAll(".sidebar-submenu a").forEach(function(link){
 });
 
 
-/* CATEGORY BUTTONS */
+/* CATEGORY BUTTONS (Static elements) */
 
-document.querySelectorAll(".category").forEach(function(category){
+document.querySelectorAll(".category:not([data-vj])").forEach(function(category){
 
     category.addEventListener("click",function(){
 
@@ -409,12 +415,180 @@ document.querySelectorAll(".search-button").forEach(function(button){
 
     button.addEventListener("click",function(){
 
-        /*
-         * Connect this to the SanyuHub
-         * movie search system when the
-         * backend/search API is ready.
-         */
+        const movieSearchInput = document.getElementById("movieSearchInput");
+        if (movieSearchInput) {
+            movieSearchInput.focus();
+            movieSearchInput.scrollIntoView({ behavior: "smooth" });
+        } else {
+            window.location.href = "/movies";
+        }
 
     });
 
 });
+
+/* DYNAMIC MOVIE CATALOGUE INTEGRATION */
+const movieCardGrid = document.getElementById("movieCardGrid");
+const vjCategoriesContainer = document.getElementById("vjCategories");
+const paginationControls = document.getElementById("paginationControls");
+const prevPageBtn = document.getElementById("prevPageBtn");
+const nextPageBtn = document.getElementById("nextPageBtn");
+const pageInfoSpan = document.getElementById("pageInfoSpan");
+const movieSearchInput = document.getElementById("movieSearchInput");
+
+if (movieCardGrid) {
+  let currentPage = 1;
+  let currentLimit = 24;
+  let currentVj = "all";
+  let currentSearch = "";
+  let searchDebounceTimer = null;
+
+  async function fetchAndRenderMovies() {
+    movieCardGrid.innerHTML = '<div class="loading-state">Loading SanyuHub movie catalogue...</div>';
+
+    try {
+      const queryParams = new URLSearchParams({
+        page: currentPage,
+        limit: currentLimit
+      });
+      if (currentVj && currentVj !== "all") {
+        queryParams.append("vj", currentVj);
+      }
+      if (currentSearch) {
+        queryParams.append("search", currentSearch);
+      }
+
+      const res = await fetch(`/api/movies?${queryParams.toString()}`);
+      if (!res.ok) {
+        throw new Error(`Server returned HTTP ${res.status}`);
+      }
+
+      const data = await res.json();
+      const movies = data.movies || [];
+
+      // Render VJ categories once if available
+      if (data.vjs && data.vjs.length > 0 && vjCategoriesContainer && vjCategoriesContainer.children.length <= 1) {
+        renderVjCategoryButtons(data.vjs);
+      }
+
+      if (movies.length === 0) {
+        movieCardGrid.innerHTML = '<div class="loading-state">No movies found matching your request.</div>';
+        if (paginationControls) paginationControls.style.display = "none";
+        return;
+      }
+
+      movieCardGrid.innerHTML = "";
+      movies.forEach(movie => {
+        const card = document.createElement("article");
+        card.className = "movie-card";
+        card.setAttribute("data-id", movie.id);
+
+        const posterDiv = document.createElement("div");
+        posterDiv.className = "poster";
+
+        const img = document.createElement("img");
+        img.src = movie.posterUrl || "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80";
+        img.alt = movie.title || "Movie Poster";
+        img.loading = "lazy";
+        img.onerror = function() {
+          this.onerror = null;
+          this.src = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80";
+        };
+
+        const badge = document.createElement("span");
+        badge.className = "badge";
+        badge.textContent = movie.quality || "HD";
+
+        posterDiv.appendChild(img);
+        posterDiv.appendChild(badge);
+
+        const titleDiv = document.createElement("div");
+        titleDiv.className = "card-title";
+        titleDiv.title = movie.title;
+        titleDiv.textContent = movie.title;
+
+        const metaDiv = document.createElement("div");
+        metaDiv.className = "card-meta";
+        const metaText = `${movie.vj || 'Luganda'}${movie.year ? ' • ' + movie.year : ''}`;
+        metaDiv.textContent = metaText;
+
+        card.appendChild(posterDiv);
+        card.appendChild(titleDiv);
+        card.appendChild(metaDiv);
+
+        movieCardGrid.appendChild(card);
+      });
+
+      // Update Pagination
+      if (paginationControls) {
+        if (data.totalPages > 1) {
+          paginationControls.style.display = "flex";
+          if (pageInfoSpan) pageInfoSpan.textContent = `Page ${data.page} of ${data.totalPages} (${data.total} movies)`;
+          if (prevPageBtn) prevPageBtn.disabled = (data.page <= 1);
+          if (nextPageBtn) nextPageBtn.disabled = (data.page >= data.totalPages);
+        } else {
+          paginationControls.style.display = "none";
+        }
+      }
+
+    } catch (err) {
+      console.error("Failed to load movies:", err);
+      movieCardGrid.innerHTML = '<div class="error-state">Unable to load movie catalogue. Please try again later.</div>';
+      if (paginationControls) paginationControls.style.display = "none";
+    }
+  }
+
+  function renderVjCategoryButtons(vjs) {
+    if (!vjCategoriesContainer) return;
+    vjCategoriesContainer.innerHTML = '<button class="category active" data-vj="all">All</button>';
+    vjs.forEach(vjName => {
+      const btn = document.createElement("button");
+      btn.className = "category";
+      btn.setAttribute("data-vj", vjName);
+      btn.textContent = vjName;
+      vjCategoriesContainer.appendChild(btn);
+    });
+
+    vjCategoriesContainer.querySelectorAll(".category").forEach(btn => {
+      btn.addEventListener("click", function() {
+        vjCategoriesContainer.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentVj = btn.getAttribute("data-vj") || "all";
+        currentPage = 1;
+        fetchAndRenderMovies();
+      });
+    });
+  }
+
+  if (prevPageBtn) {
+    prevPageBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        fetchAndRenderMovies();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  }
+
+  if (nextPageBtn) {
+    nextPageBtn.addEventListener("click", () => {
+      currentPage++;
+      fetchAndRenderMovies();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  if (movieSearchInput) {
+    movieSearchInput.addEventListener("input", (e) => {
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(() => {
+        currentSearch = e.target.value.trim();
+        currentPage = 1;
+        fetchAndRenderMovies();
+      }, 300);
+    });
+  }
+
+  // Initial load
+  fetchAndRenderMovies();
+}

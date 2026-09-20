@@ -99,73 +99,22 @@ Live TV
 </header>
 
 <section class="section">
-<div class="categories" style="margin-bottom: 24px;">
-<button class="category active">All</button>
-<button class="category">Action</button>
-<button class="category">Drama</button>
-<button class="category">Comedy</button>
-<button class="category">Thriller</button>
-<button class="category">Romance</button>
-<button class="category">Adventure</button>
-<button class="category">Family</button>
+<div class="movie-search-bar">
+  <input type="search" id="movieSearchInput" class="movie-search-input" placeholder="Search Luganda movies by title, VJ..." aria-label="Search movies">
 </div>
 
-<div class="card-grid">
-
-<article class="movie-card">
-<div class="poster">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="The Journey">
-<span class="badge">HD</span>
+<div class="categories" id="vjCategories" style="margin-bottom: 24px;">
+  <button class="category active" data-vj="all">All</button>
 </div>
-<div class="card-title">The Journey</div>
-<div class="card-meta">Luganda • 2026</div>
-</article>
 
-<article class="movie-card">
-<div class="poster">
-<img src="https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?auto=format&fit=crop&w=700&q=80" alt="Hidden Truth">
-<span class="badge">NEW</span>
+<div class="card-grid" id="movieCardGrid">
+  <div class="loading-state">Loading SanyuHub movie catalogue...</div>
 </div>
-<div class="card-title">Hidden Truth</div>
-<div class="card-meta">Luganda • 2026</div>
-</article>
 
-<article class="movie-card">
-<div class="poster">
-<img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?auto=format&fit=crop&w=700&q=80" alt="The Last Night">
-<span class="badge">HD</span>
-</div>
-<div class="card-title">The Last Night</div>
-<div class="card-meta">Luganda • 2026</div>
-</article>
-
-<article class="movie-card">
-<div class="poster">
-<img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=700&q=80" alt="The Promise">
-<span class="badge">NEW</span>
-</div>
-<div class="card-title">The Promise</div>
-<div class="card-meta">Luganda • 2026</div>
-</article>
-
-<article class="movie-card">
-<div class="poster">
-<img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=80" alt="Beyond Tomorrow">
-<span class="badge">HD</span>
-</div>
-<div class="card-title">Beyond Tomorrow</div>
-<div class="card-meta">Luganda • 2026</div>
-</article>
-
-<article class="movie-card">
-<div class="poster">
-<img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=80" alt="New Beginnings">
-<span class="badge">HD</span>
-</div>
-<div class="card-title">New Beginnings</div>
-<div class="card-meta">Luganda • 2026</div>
-</article>
-
+<div class="pagination" id="paginationControls" style="display: none;">
+  <button class="page-btn" id="prevPageBtn" disabled>&laquo; Previous</button>
+  <span class="page-info" id="pageInfoSpan">Page 1 of 1</span>
+  <button class="page-btn" id="nextPageBtn">Next &raquo;</button>
 </div>
 </section>
 
