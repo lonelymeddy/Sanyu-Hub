@@ -360,25 +360,47 @@ document.querySelectorAll(".category").forEach(function(category){
 
 /* HERO BUTTONS */
 
-document.getElementById("exploreButton").addEventListener("click",function(){
+const exploreBtn = document.getElementById("exploreButton");
+if (exploreBtn) {
 
-    document.getElementById("popular-movies").scrollIntoView({
+    exploreBtn.addEventListener("click",function(){
 
-        behavior:"smooth"
+        const target = document.getElementById("popular-movies");
+
+        if (target) {
+
+            target.scrollIntoView({
+
+                behavior:"smooth"
+
+            });
+
+        }
 
     });
 
-});
+}
 
-document.getElementById("categoriesButton").addEventListener("click",function(){
+const categoriesBtn = document.getElementById("categoriesButton");
+if (categoriesBtn) {
 
-    document.getElementById("categories").scrollIntoView({
+    categoriesBtn.addEventListener("click",function(){
 
-        behavior:"smooth"
+        const target = document.getElementById("categories");
+
+        if (target) {
+
+            target.scrollIntoView({
+
+                behavior:"smooth"
+
+            });
+
+        }
 
     });
 
-});
+}
 
 
 /* SEARCH BUTTON */
