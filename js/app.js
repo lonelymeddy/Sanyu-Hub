@@ -206,7 +206,44 @@ document.querySelectorAll(".search-button").forEach(function(button){
 });
 
 /* CARD RENDER HELPERS */
-const DEFAULT_POSTER = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80";
+function renderPosterContent(posterDiv, movie) {
+    if (movie.posterUrl) {
+        const img = document.createElement("img");
+        img.src = movie.posterUrl;
+        img.alt = movie.title || "Movie Poster";
+        img.loading = "lazy";
+        img.onerror = function() {
+            posterDiv.innerHTML = "";
+            renderPosterUnavailableFallback(posterDiv, movie);
+        };
+        posterDiv.appendChild(img);
+    } else {
+        renderPosterUnavailableFallback(posterDiv, movie);
+    }
+}
+
+function renderPosterUnavailableFallback(posterDiv, movie) {
+    const fallback = document.createElement("div");
+    fallback.className = "poster-unavailable-fallback";
+
+    const icon = document.createElement("div");
+    icon.className = "poster-unavailable-icon";
+    icon.innerHTML = "&#127916;"; // Movie slate icon
+
+    const text = document.createElement("div");
+    text.className = "poster-unavailable-text";
+    text.textContent = movie.title || "Untitled";
+
+    const sub = document.createElement("div");
+    sub.className = "poster-unavailable-sub";
+    sub.textContent = "Poster Unavailable";
+
+    fallback.appendChild(icon);
+    fallback.appendChild(text);
+    fallback.appendChild(sub);
+
+    posterDiv.appendChild(fallback);
+}
 
 function createMovieCard(movie) {
     const card = document.createElement("article");
@@ -217,20 +254,11 @@ function createMovieCard(movie) {
     const posterDiv = document.createElement("div");
     posterDiv.className = "poster";
 
-    const img = document.createElement("img");
-    img.src = movie.posterUrl || DEFAULT_POSTER;
-    img.alt = movie.title || "Movie Poster";
-    img.loading = "lazy";
-    img.onerror = function() {
-        this.onerror = null;
-        this.src = DEFAULT_POSTER;
-    };
+    renderPosterContent(posterDiv, movie);
 
     const badge = document.createElement("span");
     badge.className = "badge";
     badge.textContent = movie.quality || "HD";
-
-    posterDiv.appendChild(img);
     posterDiv.appendChild(badge);
 
     const titleDiv = document.createElement("div");
@@ -263,20 +291,11 @@ function createTrendingCard(movie, rank) {
     const posterDiv = document.createElement("div");
     posterDiv.className = "poster";
 
-    const img = document.createElement("img");
-    img.src = movie.posterUrl || DEFAULT_POSTER;
-    img.alt = movie.title || "Trending Movie";
-    img.loading = "lazy";
-    img.onerror = function() {
-        this.onerror = null;
-        this.src = DEFAULT_POSTER;
-    };
+    renderPosterContent(posterDiv, movie);
 
     const rankSpan = document.createElement("span");
     rankSpan.className = "trending-number";
     rankSpan.textContent = rank;
-
-    posterDiv.appendChild(img);
     posterDiv.appendChild(rankSpan);
 
     const titleDiv = document.createElement("div");
@@ -605,13 +624,18 @@ async function initMovieDetailsPage() {
 
         document.title = `${movie.title} — SanyuHub`;
 
-        const backdropStyle = movie.posterUrl ? `style="background-image: url('${movie.posterUrl}');"` : '';
+        const backdropUrl = movie.backdropUrl || movie.posterUrl;
+        const backdropStyle = backdropUrl ? `style="background-image: url('${backdropUrl}');"` : '';
+
+        const posterImageHtml = movie.posterUrl
+            ? `<img src="${movie.posterUrl}" alt="${movie.title}" onerror="this.parentElement.innerHTML='<div class=\\'poster-unavailable-fallback\\'><div class=\\'poster-unavailable-icon\\'>&#127916;</div><div class=\\'poster-unavailable-text\\'>${movie.title.replace(/'/g, "&apos;")}</div><div class=\\'poster-unavailable-sub\\'>Poster Unavailable</div></div>'">`
+            : `<div class="poster-unavailable-fallback"><div class="poster-unavailable-icon">&#127916;</div><div class="poster-unavailable-text">${movie.title}</div><div class="poster-unavailable-sub">Poster Unavailable</div></div>`;
 
         detailMain.innerHTML = `
             <div class="movie-detail-hero" ${backdropStyle}>
                 <div class="movie-detail-layout">
                     <div class="movie-detail-poster">
-                        <img src="${movie.posterUrl || DEFAULT_POSTER}" alt="${movie.title}" onerror="this.src='${DEFAULT_POSTER}'">
+                        ${posterImageHtml}
                     </div>
                     <div class="movie-detail-info">
                         <h1 class="movie-detail-title">${movie.title}</h1>
