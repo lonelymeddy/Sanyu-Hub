@@ -442,7 +442,10 @@ aspect-ratio:2/3;
 overflow:hidden;
 border-radius:7px;
 background:#151515;
-margin-bottom:9px
+margin-bottom:9px;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .poster img{
@@ -451,6 +454,47 @@ height:100%;
 display:block;
 object-fit:cover;
 transition:transform .35s ease
+}
+
+.poster-unavailable-fallback {
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+color:#94a3b8;
+text-align:center;
+padding:10px;
+box-sizing:border-box;
+user-select:none;
+}
+
+.poster-unavailable-icon {
+font-size:1.8rem;
+margin-bottom:6px;
+opacity:0.75;
+}
+
+.poster-unavailable-text {
+font-size:0.75rem;
+font-weight:600;
+line-height:1.2;
+color:#cbd5e1;
+overflow:hidden;
+text-overflow:ellipsis;
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+}
+
+.poster-unavailable-sub {
+font-size:0.65rem;
+color:#64748b;
+margin-top:4px;
+text-transform:uppercase;
+letter-spacing:0.5px;
 }
 
 .movie-card:hover .poster img{
@@ -519,7 +563,7 @@ align-items:center;
 padding:50px;
 background:
 linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.55),rgba(0,0,0,.1)),
-url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85");
+linear-gradient(135deg, #1f2937 0%, #111827 100%);
 background-size:cover;
 background-position:center
 }
