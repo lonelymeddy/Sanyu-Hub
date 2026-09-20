@@ -57,7 +57,7 @@ const VJ_NAMES_LIST = [
   "emmy", "uncle t", "uncle-t", "jingo", "ice p", "ice-p", "junior", "mark", "arafa", "bonny",
   "freddy", "hak", "ham", "ivo", "jona", "jr", "kali", "mosco", "mukiibi",
   "neil", "nelly", "pius", "sahin", "shan", "sheild", "shield", "soul",
-  "tonny", "ulio", "bmc", "sammy", "derek", "barbie"
+  "tonny", "ulio", "bmc", "sammy", "derek"
 ];
 
 /**
@@ -141,7 +141,8 @@ function normalizeTitleAndMetadata(filename) {
     cleaned = cleaned.replace(new RegExp('\\b' + year + '\\b', 'g'), '');
   }
 
-  // Remove VJ prefixes/suffixes and names
+  // Remove VJ prefixes and VJ name tokens (e.g. VJ EMMY, VJ ICE P, VJ BARBIE)
+  cleaned = cleaned.replace(/\bVJ\s+[A-Za-z0-9_-]+(?:\s+[A-Za-z0-9_-]+)?\b/gi, '');
   cleaned = cleaned.replace(/\bVJ\b/gi, '');
   VJ_NAMES_LIST.forEach(vjName => {
     cleaned = cleaned.replace(new RegExp('\\b' + vjName + '\\b', 'gi'), '');
