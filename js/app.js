@@ -8,140 +8,60 @@ let scrollTimer = null;
 let scrollTicking = false;
 
 function showNavigation(){
-
-    navbar.classList.remove("nav-hidden");
-
-    /*
-     * Keep the sidebar visible if it was already open.
-     */
-
+    if (navbar) navbar.classList.remove("nav-hidden");
     if(sidebar && sidebar.classList.contains("active")){
-
         sidebar.classList.add("active");
-
     }
-
 }
 
 function hideNavigation(){
-
-    /*
-     * If the sidebar is open, keep the navbar
-     * and sidebar visible so they remain usable.
-     */
-
     if(sidebar && !sidebar.classList.contains("active")){
-
-        navbar.classList.add("nav-hidden");
-
-    }else if (navbar) {
-
+        if (navbar) navbar.classList.add("nav-hidden");
+    } else if (navbar) {
         navbar.classList.remove("nav-hidden");
-
     }
-
 }
 
 function handleNavigationScroll(){
-
     const currentScrollY = window.scrollY;
-
-    /*
-     * Always show at the very top.
-     */
-
     if(currentScrollY <= 5){
-
         showNavigation();
-
-    }
-
-    /*
-     * Scrolling downward.
-     */
-
-    else if(currentScrollY > lastScrollY){
-
+    } else if(currentScrollY > lastScrollY){
         hideNavigation();
-
-    }
-
-    /*
-     * Scrolling upward.
-     */
-
-    else if(currentScrollY < lastScrollY){
-
+    } else if(currentScrollY < lastScrollY){
         showNavigation();
-
     }
-
     lastScrollY = currentScrollY;
 
-    /*
-     * When scrolling stops, always bring
-     * the navigation back.
-     */
-
     clearTimeout(scrollTimer);
-
     scrollTimer = setTimeout(function(){
-
         showNavigation();
-
     },180);
-
     scrollTicking = false;
-
 }
 
 window.addEventListener("scroll",function(){
-
     if(!scrollTicking){
-
         window.requestAnimationFrame(handleNavigationScroll);
-
         scrollTicking = true;
-
     }
-
 },{passive:true});
-
-
-/* RETURN NAVIGATION WHEN TOUCH SCROLL ENDS */
 
 window.addEventListener("touchend",function(){
-
     clearTimeout(scrollTimer);
-
     scrollTimer = setTimeout(function(){
-
         showNavigation();
-
     },180);
-
 },{passive:true});
-
-
-/* RETURN NAVIGATION AFTER WHEEL INPUT STOPS */
 
 window.addEventListener("wheel",function(){
-
     clearTimeout(scrollTimer);
-
     scrollTimer = setTimeout(function(){
-
         showNavigation();
-
     },180);
-
 },{passive:true});
 
-
-/* RETURN NAVIGATION AFTER KEYBOARD SCROLLING */
-
 window.addEventListener("keydown",function(event){
-
     if(
         event.key === "ArrowDown" ||
         event.key === "ArrowUp" ||
@@ -151,270 +71,130 @@ window.addEventListener("keydown",function(event){
         event.key === "End" ||
         event.key === " "
     ){
-
         clearTimeout(scrollTimer);
-
         scrollTimer = setTimeout(function(){
-
             showNavigation();
-
         },180);
-
     }
-
 },{passive:true});
 
-
-/* SIDEBAR */
-
+/* SIDEBAR & MENU CONTROLS */
 const menuButton = document.getElementById("menuButton");
 const sidebarOverlay = document.getElementById("sidebarOverlay");
 
 function openSidebar(){
-
     if (sidebar) sidebar.classList.add("active");
-
     if (sidebarOverlay) sidebarOverlay.classList.add("active");
-
     if (menuButton) {
         menuButton.classList.add("active");
         menuButton.setAttribute("aria-expanded","true");
     }
-
     if (navbar) navbar.classList.remove("nav-hidden");
-
 }
 
 function closeSidebar(){
-
     if (sidebar) sidebar.classList.remove("active");
-
     if (sidebarOverlay) sidebarOverlay.classList.remove("active");
-
     if (menuButton) {
         menuButton.classList.remove("active");
         menuButton.setAttribute("aria-expanded","false");
     }
-
     document.querySelectorAll(".sidebar-submenu").forEach(function(menu){
-
         menu.classList.remove("open");
-
     });
-
     document.querySelectorAll(".has-submenu").forEach(function(item){
-
         item.classList.remove("expanded");
-
     });
-
 }
-
-
-/* HAMBURGER */
 
 if (menuButton) {
     menuButton.addEventListener("click",function(){
-
         if(sidebar && sidebar.classList.contains("active")){
-
             closeSidebar();
-
         }else{
-
             openSidebar();
-
         }
-
     });
 }
-
-
-/* CLICK OUTSIDE */
 
 if (sidebarOverlay) {
     sidebarOverlay.addEventListener("click",function(){
-
         closeSidebar();
-
     });
 }
 
-
-/* ESCAPE */
-
 document.addEventListener("keydown",function(event){
-
     if(event.key === "Escape"){
-
         closeSidebar();
-
     }
-
 });
 
-
-/* MAIN FEATURES + SMALLER FEATURES */
-
 document.querySelectorAll(".has-submenu").forEach(function(link){
-
     link.addEventListener("click",function(event){
-
         event.preventDefault();
-
         const submenu = link.nextElementSibling;
-
-        if(!submenu){
-
-            return;
-
-        }
-
+        if(!submenu) return;
         const isOpen = submenu.classList.contains("open");
 
         document.querySelectorAll(".sidebar-submenu").forEach(function(menu){
-
-            if(menu !== submenu){
-
-                menu.classList.remove("open");
-
-            }
-
+            if(menu !== submenu) menu.classList.remove("open");
         });
-
         document.querySelectorAll(".has-submenu").forEach(function(item){
-
-            if(item !== link){
-
-                item.classList.remove("expanded");
-
-            }
-
+            if(item !== link) item.classList.remove("expanded");
         });
 
         if(isOpen){
-
             submenu.classList.remove("open");
-
             link.classList.remove("expanded");
-
         }else{
-
             submenu.classList.add("open");
-
             link.classList.add("expanded");
-
         }
-
     });
-
 });
-
-
-/* NORMAL SIDEBAR LINKS */
 
 document.querySelectorAll(".sidebar-link:not(.has-submenu)").forEach(function(link){
-
     link.addEventListener("click",function(){
-
         document.querySelectorAll(".sidebar-link").forEach(function(item){
-
             item.classList.remove("active");
-
         });
-
         link.classList.add("active");
-
         closeSidebar();
-
     });
-
 });
-
-
-/* SMALLER FEATURES */
 
 document.querySelectorAll(".sidebar-submenu a").forEach(function(link){
-
     link.addEventListener("click",function(){
-
         closeSidebar();
-
     });
-
 });
-
-
-/* CATEGORY BUTTONS (Static elements) */
-
-document.querySelectorAll(".category:not([data-vj])").forEach(function(category){
-
-    category.addEventListener("click",function(){
-
-        document.querySelectorAll(".category").forEach(function(item){
-
-            item.classList.remove("active");
-
-        });
-
-        category.classList.add("active");
-
-    });
-
-});
-
 
 /* HERO BUTTONS */
-
 const exploreBtn = document.getElementById("exploreButton");
 if (exploreBtn) {
-
     exploreBtn.addEventListener("click",function(){
-
-        const target = document.getElementById("popular-movies");
-
+        const target = document.getElementById("movies") || document.getElementById("popular-movies");
         if (target) {
-
-            target.scrollIntoView({
-
-                behavior:"smooth"
-
-            });
-
+            target.scrollIntoView({ behavior:"smooth" });
+        } else {
+            window.location.href = "/movies";
         }
-
     });
-
 }
 
 const categoriesBtn = document.getElementById("categoriesButton");
 if (categoriesBtn) {
-
     categoriesBtn.addEventListener("click",function(){
-
         const target = document.getElementById("categories");
-
         if (target) {
-
-            target.scrollIntoView({
-
-                behavior:"smooth"
-
-            });
-
+            target.scrollIntoView({ behavior:"smooth" });
         }
-
     });
-
 }
 
-
-/* SEARCH BUTTON */
-
+/* SEARCH BUTTON NAVIGATION */
 document.querySelectorAll(".search-button").forEach(function(button){
-
     button.addEventListener("click",function(){
-
         const movieSearchInput = document.getElementById("movieSearchInput");
         if (movieSearchInput) {
             movieSearchInput.focus();
@@ -422,12 +202,257 @@ document.querySelectorAll(".search-button").forEach(function(button){
         } else {
             window.location.href = "/movies";
         }
-
     });
-
 });
 
-/* DYNAMIC MOVIE CATALOGUE INTEGRATION */
+/* CARD RENDER HELPERS */
+const DEFAULT_POSTER = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80";
+
+function createMovieCard(movie) {
+    const card = document.createElement("article");
+    card.className = "movie-card";
+    card.setAttribute("data-id", movie.id);
+    card.style.cursor = "pointer";
+
+    const posterDiv = document.createElement("div");
+    posterDiv.className = "poster";
+
+    const img = document.createElement("img");
+    img.src = movie.posterUrl || DEFAULT_POSTER;
+    img.alt = movie.title || "Movie Poster";
+    img.loading = "lazy";
+    img.onerror = function() {
+        this.onerror = null;
+        this.src = DEFAULT_POSTER;
+    };
+
+    const badge = document.createElement("span");
+    badge.className = "badge";
+    badge.textContent = movie.quality || "HD";
+
+    posterDiv.appendChild(img);
+    posterDiv.appendChild(badge);
+
+    const titleDiv = document.createElement("div");
+    titleDiv.className = "card-title";
+    titleDiv.title = movie.title || "Untitled";
+    titleDiv.textContent = movie.title || "Untitled";
+
+    const metaDiv = document.createElement("div");
+    metaDiv.className = "card-meta";
+    const metaText = `${movie.vj || 'Luganda'}${movie.year ? ' • ' + movie.year : ''}`;
+    metaDiv.textContent = metaText;
+
+    card.appendChild(posterDiv);
+    card.appendChild(titleDiv);
+    card.appendChild(metaDiv);
+
+    card.addEventListener("click", () => {
+        window.location.href = `/movie/${movie.id}`;
+    });
+
+    return card;
+}
+
+function createTrendingCard(movie, rank) {
+    const card = document.createElement("article");
+    card.className = "trending-card";
+    card.setAttribute("data-id", movie.id);
+    card.style.cursor = "pointer";
+
+    const posterDiv = document.createElement("div");
+    posterDiv.className = "poster";
+
+    const img = document.createElement("img");
+    img.src = movie.posterUrl || DEFAULT_POSTER;
+    img.alt = movie.title || "Trending Movie";
+    img.loading = "lazy";
+    img.onerror = function() {
+        this.onerror = null;
+        this.src = DEFAULT_POSTER;
+    };
+
+    const rankSpan = document.createElement("span");
+    rankSpan.className = "trending-number";
+    rankSpan.textContent = rank;
+
+    posterDiv.appendChild(img);
+    posterDiv.appendChild(rankSpan);
+
+    const titleDiv = document.createElement("div");
+    titleDiv.className = "card-title";
+    titleDiv.title = movie.title || "Untitled";
+    titleDiv.textContent = movie.title || "Untitled";
+
+    const metaDiv = document.createElement("div");
+    metaDiv.className = "card-meta";
+    metaDiv.textContent = `${movie.vj || 'Luganda'}${movie.year ? ' • ' + movie.year : ''}`;
+
+    card.appendChild(posterDiv);
+    card.appendChild(titleDiv);
+    card.appendChild(metaDiv);
+
+    card.addEventListener("click", () => {
+        window.location.href = `/movie/${movie.id}`;
+    });
+
+    return card;
+}
+
+/* HOMEPAGE DYNAMIC INTEGRATION */
+async function initHomePage() {
+    const trendingGrid = document.getElementById("trendingGrid");
+    const popularMoviesGrid = document.getElementById("popularMoviesGrid");
+    const popularSeriesGrid = document.getElementById("popularSeriesGrid");
+    const recentlyAddedGrid = document.getElementById("recentlyAddedGrid");
+    const homeCategories = document.getElementById("homeCategories");
+
+    if (!trendingGrid && !popularMoviesGrid && !recentlyAddedGrid) return;
+
+    try {
+        const res = await fetch("/api/movies?limit=30");
+        if (!res.ok) throw new Error("Failed to fetch homepage movies");
+        const data = await res.json();
+        const movies = data.movies || [];
+
+        if (movies.length === 0) return;
+
+        // Featured Hero Section Update
+        const homeFeaturedCard = document.getElementById("homeFeaturedCard");
+        const featuredTitle = document.getElementById("featuredTitle");
+        const featuredDesc = document.getElementById("featuredDesc");
+        const featuredWatchBtn = document.getElementById("featuredWatchBtn");
+        if (homeFeaturedCard && movies.length > 0) {
+            const feat = movies[0];
+            if (featuredTitle) featuredTitle.textContent = feat.title;
+            if (featuredDesc) featuredDesc.textContent = `Watch ${feat.title} translated in Luganda by ${feat.vj}. High quality ${feat.quality} stream available now.`;
+            if (featuredWatchBtn) {
+                featuredWatchBtn.addEventListener("click", () => {
+                    window.location.href = `/movie/${feat.id}`;
+                });
+            }
+        }
+
+        // VJ Categories Bar
+        if (homeCategories && data.vjs && data.vjs.length > 0) {
+            homeCategories.innerHTML = '<button class="category active" data-vj="all">All</button>';
+            data.vjs.forEach(vjName => {
+                const btn = document.createElement("button");
+                btn.className = "category";
+                btn.setAttribute("data-vj", vjName);
+                btn.textContent = vjName;
+                homeCategories.appendChild(btn);
+            });
+            homeCategories.querySelectorAll(".category").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const vj = btn.getAttribute("data-vj");
+                    window.location.href = `/movies${vj && vj !== 'all' ? '?vj=' + encodeURIComponent(vj) : ''}`;
+                });
+            });
+        }
+
+        // Trending Grid
+        if (trendingGrid) {
+            trendingGrid.innerHTML = "";
+            const trendingList = movies.slice(0, 10);
+            trendingList.forEach((movie, idx) => {
+                trendingGrid.appendChild(createTrendingCard(movie, idx + 1));
+            });
+        }
+
+        // Popular Movies Grid
+        if (popularMoviesGrid) {
+            popularMoviesGrid.innerHTML = "";
+            const popList = movies.slice(0, 6);
+            popList.forEach(movie => {
+                popularMoviesGrid.appendChild(createMovieCard(movie));
+            });
+        }
+
+        // Popular Series Grid
+        if (popularSeriesGrid) {
+            popularSeriesGrid.innerHTML = "";
+            const seriesList = movies.slice(6, 12);
+            seriesList.forEach(movie => {
+                popularSeriesGrid.appendChild(createMovieCard(movie));
+            });
+        }
+
+        // Recently Added Grid
+        if (recentlyAddedGrid) {
+            recentlyAddedGrid.innerHTML = "";
+            const recentList = movies.slice(0, 6);
+            recentList.forEach(movie => {
+                recentlyAddedGrid.appendChild(createMovieCard(movie));
+            });
+        }
+
+    } catch (err) {
+        console.error("Homepage load error:", err);
+    }
+}
+
+/* CATEGORY / SUBPAGE DYNAMIC INTEGRATION */
+async function initSubpage(containerId, isTrending = false, limit = 24) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    // Skip if on homepage where it is handled by initHomePage
+    const isHomepage = document.getElementById("home") !== null;
+    if (isHomepage) return;
+
+    container.innerHTML = `<div class="loading-state">Loading SanyuHub movies...</div>`;
+
+    try {
+        const res = await fetch(`/api/movies?limit=${limit}`);
+        if (!res.ok) throw new Error("HTTP error " + res.status);
+        const data = await res.json();
+        const movies = data.movies || [];
+
+        if (movies.length === 0) {
+            container.innerHTML = `<div class="loading-state">No movies found.</div>`;
+            return;
+        }
+
+        container.innerHTML = "";
+        movies.forEach((movie, idx) => {
+            if (isTrending) {
+                container.appendChild(createTrendingCard(movie, idx + 1));
+            } else {
+                container.appendChild(createMovieCard(movie));
+            }
+        });
+
+    } catch (err) {
+        console.error(`Failed loading ${containerId}:`, err);
+        container.innerHTML = `<div class="error-state">Unable to load movies. Please check connection.</div>`;
+    }
+}
+
+/* CONTINUE WATCHING DYNAMIC INTEGRATION */
+function initContinueWatching() {
+    const grid = document.getElementById("continueWatchingGrid");
+    if (!grid) return;
+
+    try {
+        const saved = localStorage.getItem("sanyuhub_continue_watching");
+        const list = saved ? JSON.parse(saved) : [];
+
+        if (!list || list.length === 0) {
+            grid.innerHTML = `<div class="loading-state">No recent watch history found. Start watching a movie to track your progress!</div>`;
+            return;
+        }
+
+        grid.innerHTML = "";
+        list.forEach(movie => {
+            grid.appendChild(createMovieCard(movie));
+        });
+    } catch (e) {
+        grid.innerHTML = `<div class="loading-state">No recent watch history found.</div>`;
+    }
+}
+
+/* CATALOGUE PAGE (/movies) INTEGRATION */
 const movieCardGrid = document.getElementById("movieCardGrid");
 const vjCategoriesContainer = document.getElementById("vjCategories");
 const paginationControls = document.getElementById("paginationControls");
@@ -437,158 +462,342 @@ const pageInfoSpan = document.getElementById("pageInfoSpan");
 const movieSearchInput = document.getElementById("movieSearchInput");
 
 if (movieCardGrid) {
-  let currentPage = 1;
-  let currentLimit = 24;
-  let currentVj = "all";
-  let currentSearch = "";
-  let searchDebounceTimer = null;
+    const urlParams = new URLSearchParams(window.location.search);
+    let currentPage = parseInt(urlParams.get("page"), 10) || 1;
+    let currentLimit = 24;
+    let currentVj = urlParams.get("vj") || "all";
+    let currentSearch = urlParams.get("search") || "";
+    let searchDebounceTimer = null;
 
-  async function fetchAndRenderMovies() {
-    movieCardGrid.innerHTML = '<div class="loading-state">Loading SanyuHub movie catalogue...</div>';
+    if (movieSearchInput && currentSearch) {
+        movieSearchInput.value = currentSearch;
+    }
+
+    async function fetchAndRenderCatalogue() {
+        movieCardGrid.innerHTML = '<div class="loading-state">Loading SanyuHub movie catalogue...</div>';
+
+        try {
+            const queryParams = new URLSearchParams({
+                page: currentPage,
+                limit: currentLimit
+            });
+            if (currentVj && currentVj !== "all") queryParams.append("vj", currentVj);
+            if (currentSearch) queryParams.append("search", currentSearch);
+
+            const res = await fetch(`/api/movies?${queryParams.toString()}`);
+            if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
+
+            const data = await res.json();
+            const movies = data.movies || [];
+
+            if (data.vjs && data.vjs.length > 0 && vjCategoriesContainer && vjCategoriesContainer.children.length <= 1) {
+                renderVjCategoryButtons(data.vjs);
+            }
+
+            if (movies.length === 0) {
+                movieCardGrid.innerHTML = '<div class="loading-state">No movies found matching your request.</div>';
+                if (paginationControls) paginationControls.style.display = "none";
+                return;
+            }
+
+            movieCardGrid.innerHTML = "";
+            movies.forEach(movie => {
+                movieCardGrid.appendChild(createMovieCard(movie));
+            });
+
+            if (paginationControls) {
+                if (data.totalPages > 1) {
+                    paginationControls.style.display = "flex";
+                    if (pageInfoSpan) pageInfoSpan.textContent = `Page ${data.page} of ${data.totalPages} (${data.total} movies)`;
+                    if (prevPageBtn) prevPageBtn.disabled = (data.page <= 1);
+                    if (nextPageBtn) nextPageBtn.disabled = (data.page >= data.totalPages);
+                } else {
+                    paginationControls.style.display = "none";
+                }
+            }
+
+        } catch (err) {
+            console.error("Failed to load movie catalogue:", err);
+            movieCardGrid.innerHTML = '<div class="error-state">Unable to load movie catalogue. Please try again later.</div>';
+            if (paginationControls) paginationControls.style.display = "none";
+        }
+    }
+
+    function renderVjCategoryButtons(vjs) {
+        if (!vjCategoriesContainer) return;
+        vjCategoriesContainer.innerHTML = '<button class="category active" data-vj="all">All</button>';
+        vjs.forEach(vjName => {
+            const btn = document.createElement("button");
+            btn.className = "category";
+            if (vjName.toLowerCase() === currentVj.toLowerCase()) {
+                vjCategoriesContainer.querySelector(".category")?.classList.remove("active");
+                btn.className = "category active";
+            }
+            btn.setAttribute("data-vj", vjName);
+            btn.textContent = vjName;
+            vjCategoriesContainer.appendChild(btn);
+        });
+
+        vjCategoriesContainer.querySelectorAll(".category").forEach(btn => {
+            btn.addEventListener("click", function() {
+                vjCategoriesContainer.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentVj = btn.getAttribute("data-vj") || "all";
+                currentPage = 1;
+                fetchAndRenderCatalogue();
+            });
+        });
+    }
+
+    if (prevPageBtn) {
+        prevPageBtn.addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage--;
+                fetchAndRenderCatalogue();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        });
+    }
+
+    if (nextPageBtn) {
+        nextPageBtn.addEventListener("click", () => {
+            currentPage++;
+            fetchAndRenderCatalogue();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    if (movieSearchInput) {
+        movieSearchInput.addEventListener("input", (e) => {
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(() => {
+                currentSearch = e.target.value.trim();
+                currentPage = 1;
+                fetchAndRenderCatalogue();
+            }, 300);
+        });
+    }
+
+    fetchAndRenderCatalogue();
+}
+
+/* MOVIE DETAILS PAGE INTEGRATION */
+async function initMovieDetailsPage() {
+    const detailMain = document.getElementById("movieDetailPage");
+    if (!detailMain) return;
+
+    // Extract ID from path e.g. /movie/0a1b2c3d
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const movieId = pathParts[pathParts.length - 1];
+
+    if (!movieId || movieId === "movie") {
+        detailMain.innerHTML = `<div class="error-state" style="padding: 120px 20px;">
+            <h2>Movie Not Specified</h2>
+            <p style="margin-top: 10px;"><a href="/movies" class="btn-back-secondary">Return to Catalogue</a></p>
+        </div>`;
+        return;
+    }
 
     try {
-      const queryParams = new URLSearchParams({
-        page: currentPage,
-        limit: currentLimit
-      });
-      if (currentVj && currentVj !== "all") {
-        queryParams.append("vj", currentVj);
-      }
-      if (currentSearch) {
-        queryParams.append("search", currentSearch);
-      }
+        const res = await fetch(`/api/movies/${movieId}`);
+        if (!res.ok) throw new Error("Movie not found");
+        const movie = await res.json();
 
-      const res = await fetch(`/api/movies?${queryParams.toString()}`);
-      if (!res.ok) {
-        throw new Error(`Server returned HTTP ${res.status}`);
-      }
+        document.title = `${movie.title} — SanyuHub`;
 
-      const data = await res.json();
-      const movies = data.movies || [];
+        const backdropStyle = movie.posterUrl ? `style="background-image: url('${movie.posterUrl}');"` : '';
 
-      // Render VJ categories once if available
-      if (data.vjs && data.vjs.length > 0 && vjCategoriesContainer && vjCategoriesContainer.children.length <= 1) {
-        renderVjCategoryButtons(data.vjs);
-      }
+        detailMain.innerHTML = `
+            <div class="movie-detail-hero" ${backdropStyle}>
+                <div class="movie-detail-layout">
+                    <div class="movie-detail-poster">
+                        <img src="${movie.posterUrl || DEFAULT_POSTER}" alt="${movie.title}" onerror="this.src='${DEFAULT_POSTER}'">
+                    </div>
+                    <div class="movie-detail-info">
+                        <h1 class="movie-detail-title">${movie.title}</h1>
+                        <div class="movie-detail-meta">
+                            <span class="movie-meta-badge">${movie.quality || 'HD'}</span>
+                            <span>${movie.vj || 'Luganda'}</span>
+                            ${movie.year ? `<span>• ${movie.year}</span>` : ''}
+                            <span>• ${movie.category || 'Luganda Movie'}</span>
+                            <span>• ${movie.format ? movie.format.toUpperCase() : 'MP4'}</span>
+                        </div>
+                        <p class="movie-detail-overview">
+                            Watch <strong>${movie.title}</strong> translated in Luganda by <strong>${movie.vj}</strong>.
+                            High definition ${movie.quality} stream delivered straight to your device on SanyuHub.
+                        </p>
+                        <div class="movie-detail-actions">
+                            <a href="/watch/${movie.id}" class="btn-watch-primary">&#9654; Watch Movie</a>
+                            <a href="/movies" class="btn-back-secondary">&laquo; Back to Catalogue</a>
+                        </div>
+                        <div class="movie-metadata-grid">
+                            <div class="metadata-item">
+                                <label>Title</label>
+                                <span>${movie.title}</span>
+                            </div>
+                            <div class="metadata-item">
+                                <label>Translator / VJ</label>
+                                <span>${movie.vj}</span>
+                            </div>
+                            <div class="metadata-item">
+                                <label>Release Year</label>
+                                <span>${movie.year || 'N/A'}</span>
+                            </div>
+                            <div class="metadata-item">
+                                <label>Stream Quality</label>
+                                <span>${movie.quality}</span>
+                            </div>
+                            <div class="metadata-item">
+                                <label>Category</label>
+                                <span>${movie.category}</span>
+                            </div>
+                            <div class="metadata-item">
+                                <label>Format</label>
+                                <span>${movie.format ? movie.format.toUpperCase() : 'MP4'}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
 
-      if (movies.length === 0) {
-        movieCardGrid.innerHTML = '<div class="loading-state">No movies found matching your request.</div>';
-        if (paginationControls) paginationControls.style.display = "none";
-        return;
-      }
-
-      movieCardGrid.innerHTML = "";
-      movies.forEach(movie => {
-        const card = document.createElement("article");
-        card.className = "movie-card";
-        card.setAttribute("data-id", movie.id);
-
-        const posterDiv = document.createElement("div");
-        posterDiv.className = "poster";
-
-        const img = document.createElement("img");
-        img.src = movie.posterUrl || "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80";
-        img.alt = movie.title || "Movie Poster";
-        img.loading = "lazy";
-        img.onerror = function() {
-          this.onerror = null;
-          this.src = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80";
-        };
-
-        const badge = document.createElement("span");
-        badge.className = "badge";
-        badge.textContent = movie.quality || "HD";
-
-        posterDiv.appendChild(img);
-        posterDiv.appendChild(badge);
-
-        const titleDiv = document.createElement("div");
-        titleDiv.className = "card-title";
-        titleDiv.title = movie.title;
-        titleDiv.textContent = movie.title;
-
-        const metaDiv = document.createElement("div");
-        metaDiv.className = "card-meta";
-        const metaText = `${movie.vj || 'Luganda'}${movie.year ? ' • ' + movie.year : ''}`;
-        metaDiv.textContent = metaText;
-
-        card.appendChild(posterDiv);
-        card.appendChild(titleDiv);
-        card.appendChild(metaDiv);
-
-        movieCardGrid.appendChild(card);
-      });
-
-      // Update Pagination
-      if (paginationControls) {
-        if (data.totalPages > 1) {
-          paginationControls.style.display = "flex";
-          if (pageInfoSpan) pageInfoSpan.textContent = `Page ${data.page} of ${data.totalPages} (${data.total} movies)`;
-          if (prevPageBtn) prevPageBtn.disabled = (data.page <= 1);
-          if (nextPageBtn) nextPageBtn.disabled = (data.page >= data.totalPages);
-        } else {
-          paginationControls.style.display = "none";
-        }
-      }
+        // Render recommendations
+        initRelatedMovies("relatedMoviesGrid", movie.id);
 
     } catch (err) {
-      console.error("Failed to load movies:", err);
-      movieCardGrid.innerHTML = '<div class="error-state">Unable to load movie catalogue. Please try again later.</div>';
-      if (paginationControls) paginationControls.style.display = "none";
+        console.error("Failed to load movie details:", err);
+        detailMain.innerHTML = `
+            <div class="error-state" style="padding: 120px 20px;">
+                <h2>Movie Not Found</h2>
+                <p style="margin-top: 10px; color: #888;">The movie you requested could not be found or is unavailable.</p>
+                <p style="margin-top: 20px;"><a href="/movies" class="btn-back-secondary">Return to Movies Catalogue</a></p>
+            </div>
+        `;
     }
-  }
-
-  function renderVjCategoryButtons(vjs) {
-    if (!vjCategoriesContainer) return;
-    vjCategoriesContainer.innerHTML = '<button class="category active" data-vj="all">All</button>';
-    vjs.forEach(vjName => {
-      const btn = document.createElement("button");
-      btn.className = "category";
-      btn.setAttribute("data-vj", vjName);
-      btn.textContent = vjName;
-      vjCategoriesContainer.appendChild(btn);
-    });
-
-    vjCategoriesContainer.querySelectorAll(".category").forEach(btn => {
-      btn.addEventListener("click", function() {
-        vjCategoriesContainer.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        currentVj = btn.getAttribute("data-vj") || "all";
-        currentPage = 1;
-        fetchAndRenderMovies();
-      });
-    });
-  }
-
-  if (prevPageBtn) {
-    prevPageBtn.addEventListener("click", () => {
-      if (currentPage > 1) {
-        currentPage--;
-        fetchAndRenderMovies();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    });
-  }
-
-  if (nextPageBtn) {
-    nextPageBtn.addEventListener("click", () => {
-      currentPage++;
-      fetchAndRenderMovies();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
-
-  if (movieSearchInput) {
-    movieSearchInput.addEventListener("input", (e) => {
-      clearTimeout(searchDebounceTimer);
-      searchDebounceTimer = setTimeout(() => {
-        currentSearch = e.target.value.trim();
-        currentPage = 1;
-        fetchAndRenderMovies();
-      }, 300);
-    });
-  }
-
-  // Initial load
-  fetchAndRenderMovies();
 }
+
+/* WATCH PAGE INTEGRATION */
+async function initWatchPage() {
+    const watchMain = document.getElementById("movieWatchPage");
+    if (!watchMain) return;
+
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const movieId = pathParts[pathParts.length - 1];
+
+    const watchTitle = document.getElementById("watchTitle");
+    const watchMetaText = document.getElementById("watchMetaText");
+    const backToDetailBtn = document.getElementById("backToDetailBtn");
+    const moviePlayer = document.getElementById("moviePlayer");
+    const playerStatusText = document.getElementById("playerStatusText");
+
+    if (!movieId || movieId === "watch") {
+        if (watchTitle) watchTitle.textContent = "Movie Stream Not Found";
+        if (playerStatusText) playerStatusText.textContent = "No valid movie ID provided.";
+        return;
+    }
+
+    try {
+        const res = await fetch(`/api/movies/${movieId}`);
+        if (!res.ok) throw new Error("Movie not found");
+        const movie = await res.json();
+
+        document.title = `Watching ${movie.title} — SanyuHub`;
+
+        if (watchTitle) watchTitle.textContent = movie.title;
+        if (watchMetaText) watchMetaText.textContent = `${movie.vj || 'Luganda'} • ${movie.year || ''} • ${movie.quality} • ${movie.category || 'Movie'}`;
+        if (backToDetailBtn) backToDetailBtn.href = `/movie/${movie.id}`;
+
+        // Update Metadata Grid
+        const watchVjVal = document.getElementById("watchVjVal");
+        const watchQualityVal = document.getElementById("watchQualityVal");
+        const watchFormatVal = document.getElementById("watchFormatVal");
+        const watchCategoryVal = document.getElementById("watchCategoryVal");
+        if (watchVjVal) watchVjVal.textContent = movie.vj || "Luganda VJ";
+        if (watchQualityVal) watchQualityVal.textContent = movie.quality || "HD";
+        if (watchFormatVal) watchFormatVal.textContent = (movie.format || "mp4").toUpperCase();
+        if (watchCategoryVal) watchCategoryVal.textContent = movie.category || "Luganda";
+
+        // Set up Video Player
+        if (moviePlayer && movie.mediaUrl) {
+            moviePlayer.src = movie.mediaUrl;
+            moviePlayer.style.display = "block";
+            if (playerStatusText) playerStatusText.style.display = "none";
+
+            moviePlayer.onerror = function() {
+                if (playerStatusText) {
+                    playerStatusText.style.display = "block";
+                    playerStatusText.innerHTML = '<span style="color:#e57373;">Media stream unavailable or failed to load.</span>';
+                }
+            };
+        } else if (playerStatusText) {
+            playerStatusText.innerHTML = '<span style="color:#e57373;">No media stream URL available for this record.</span>';
+        }
+
+        // Save to Continue Watching LocalStorage
+        saveToContinueWatching(movie);
+
+        // Render Recommendations
+        initRelatedMovies("watchRelatedGrid", movie.id);
+
+    } catch (err) {
+        console.error("Failed to load watch page:", err);
+        if (watchTitle) watchTitle.textContent = "Stream Unavailable";
+        if (playerStatusText) {
+            playerStatusText.style.display = "block";
+            playerStatusText.innerHTML = '<span style="color:#e57373;">Unable to load movie stream. Movie record not found.</span>';
+        }
+    }
+}
+
+/* RECOMMENDATIONS HELPER */
+async function initRelatedMovies(targetGridId, currentMovieId) {
+    const targetGrid = document.getElementById(targetGridId);
+    if (!targetGrid) return;
+
+    try {
+        const res = await fetch("/api/movies?limit=12");
+        if (!res.ok) return;
+        const data = await res.json();
+        const movies = (data.movies || []).filter(m => m.id !== currentMovieId).slice(0, 6);
+
+        if (movies.length === 0) {
+            targetGrid.innerHTML = `<div class="loading-state">No related movies available.</div>`;
+            return;
+        }
+
+        targetGrid.innerHTML = "";
+        movies.forEach(movie => {
+            targetGrid.appendChild(createMovieCard(movie));
+        });
+    } catch (err) {
+        targetGrid.innerHTML = "";
+    }
+}
+
+/* SAVE WATCH HISTORY TO LOCAL STORAGE */
+function saveToContinueWatching(movie) {
+    try {
+        const saved = localStorage.getItem("sanyuhub_continue_watching");
+        let list = saved ? JSON.parse(saved) : [];
+        list = list.filter(m => m.id !== movie.id);
+        list.unshift(movie);
+        list = list.slice(0, 10); // Keep last 10
+        localStorage.setItem("sanyuhub_continue_watching", JSON.stringify(list));
+    } catch (e) {
+        console.error("LocalStorage save error:", e);
+    }
+}
+
+/* DOM INITIALIZATION */
+document.addEventListener("DOMContentLoaded", () => {
+    initHomePage();
+    initSubpage("trendingGrid", true, 20);
+    initSubpage("popularGrid", false, 24);
+    initSubpage("featuredGrid", false, 24);
+    initSubpage("recentlyAddedGrid", false, 24);
+    initSubpage("seriesGrid", false, 24);
+    initSubpage("popularSeriesGrid", false, 24);
+    initContinueWatching();
+    initMovieDetailsPage();
+    initWatchPage();
+});
