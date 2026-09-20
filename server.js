@@ -104,6 +104,23 @@ app.get('/api/movies/:id', async (req, res) => {
   }
 });
 
+// Dynamic Page Routes
+app.get('/movie/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, 'movie.html'));
+});
+
+app.get('/movie', (req, res) => {
+  res.sendFile(path.join(__dirname, 'movies.html'));
+});
+
+app.get('/watch/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, 'watch.html'));
+});
+
+app.get('/watch', (req, res) => {
+  res.redirect('/movies');
+});
+
 // Serve all static assets and pages
 app.use(express.static(__dirname, {
   extensions: ['html'],
