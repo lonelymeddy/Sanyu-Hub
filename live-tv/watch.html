@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="SanyuHub — Watch Live TV Broadcast">
+<title>Watch Live TV — SanyuHub</title>
+<link rel="stylesheet" href="/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+
+<header class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="/" class="logo">
+Sanyu<span>Hub</span>
+</a>
+<nav class="desktop-nav">
+<a href="/" class="">Home</a>
+<a href="/movies" class="">Movies</a>
+<a href="/series" class="">Series</a>
+<a href="/live-tv" class="active">Live TV</a>
+</nav>
+<div class="nav-controls">
+<button class="search-button" id="topSearch" aria-label="Search">
+<span class="search-icon"></span>
+</button>
+<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+</button>
+</div>
+</div>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-content">
+<div class="sidebar-section">
+<div class="sidebar-section-title">Explore</div>
+
+<a href="/" class="sidebar-link ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Home
+</span>
+</a>
+
+<a href="/movies" class="sidebar-link has-submenu  ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Movies
+</span>
+<span class="chevron"></span>
+</a>
+
+<div class="sidebar-submenu ">
+<a href="/trending" class="">Trending Now</a>
+<a href="/popular" class="">Popular Movies</a>
+<a href="/featured" class="">Featured</a>
+<a href="/recently-added" class="">Recently Added</a>
+</div>
+
+<a href="/series" class="sidebar-link has-submenu  ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Series
+</span>
+<span class="chevron"></span>
+</a>
+
+<div class="sidebar-submenu ">
+<a href="/popular-series" class="">Popular Series</a>
+<a href="/continue-watching" class="">Continue Watching</a>
+</div>
+
+<a href="/live-tv" class="sidebar-link active">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Live TV
+</span>
+</a>
+
+</div>
+</div>
+</aside>
+
+<main>
+
+<div class="watch-page-header" style="padding: 100px 5% 0; max-width: 1200px; margin: 0 auto;">
+  <a href="/live-tv/" class="btn-back-secondary" id="backToCatalogueBtn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; text-decoration: none; color: #fff; background: rgba(255, 255, 255, 0.08); border-radius: 8px; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.12); transition: background 0.2s ease;">
+    &laquo; Back to Channels
+  </a>
+</div>
+
+<section class="live-player-section" id="liveTvPlayerSection" style="margin-top: 10px;">
+<div class="live-player-container">
+  <!-- Active Channel Header -->
+  <div class="active-channel-header" id="activeChannelHeader">
+    <div class="active-channel-info">
+      <img id="activeChannelLogo" src="/images/ntv-logo.jpg" alt="Active Channel Logo" class="active-channel-logo">
+      <div>
+        <div class="active-channel-title-row">
+          <h2 id="activeChannelName" class="active-channel-name">Loading Channel...</h2>
+          <span class="live-status-pill" id="liveStatusPill"><span class="live-dot"></span> LIVE</span>
+        </div>
+        <div class="active-channel-meta" id="activeChannelMeta">Official Live Stream</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Player Box -->
+  <div class="live-video-wrapper" id="liveVideoWrapper">
+    <video id="liveVideoPlayer" class="live-video-player" playsinline preload="auto"></video>
+    <iframe id="liveIframePlayer" class="live-iframe-player" style="display:none;" allow="autoplay; fullscreen" frameborder="0"></iframe>
+
+    <!-- Loading Indicator Overlay -->
+    <div class="live-loading-overlay" id="liveLoadingOverlay">
+      <div class="spinner"></div>
+      <div class="loading-text" id="liveLoadingText">Connecting to live broadcast...</div>
+    </div>
+
+    <!-- Error State Overlay -->
+    <div class="live-error-overlay" id="liveErrorOverlay" style="display:none;">
+      <div class="error-icon">&#9888;</div>
+      <div class="error-title" id="liveErrorTitle">Stream Unavailable</div>
+      <div class="error-msg" id="liveErrorMsg">The live broadcast is temporarily unreachable.</div>
+      <button class="btn-retry" id="liveRetryBtn">&#8635; Retry Connection</button>
+    </div>
+
+    <!-- Video Custom Controls Bar -->
+    <div class="live-controls-bar" id="liveControlsBar">
+      <div class="controls-left">
+        <button class="ctrl-btn" id="ctrlPlayPauseBtn" aria-label="Play/Pause">&#9654;</button>
+        <div class="volume-container">
+          <button class="ctrl-btn" id="ctrlMuteBtn" aria-label="Mute/Unmute">&#128067;</button>
+          <input type="range" id="ctrlVolumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="1">
+        </div>
+        <span class="live-indicator-tag"><span class="live-dot"></span> LIVE</span>
+      </div>
+
+      <div class="controls-right">
+        <select id="ctrlQualitySelect" class="quality-select" aria-label="Stream Quality" style="display:none;">
+          <option value="auto">Auto Quality</option>
+        </select>
+        <button class="ctrl-btn" id="ctrlFullscreenBtn" aria-label="Fullscreen">&#9974;</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Channel Not Found Fallback -->
+<section class="section" id="channelNotFoundSection" style="display: none; text-align: center; padding: 120px 20px 80px;">
+  <div class="error-icon" style="font-size: 48px; margin-bottom: 16px;">&#9888;</div>
+  <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 12px; color: #fff;">Channel Not Found</h2>
+  <p style="color: #a0a0a0; max-width: 500px; margin: 0 auto 24px; line-height: 1.6;">
+    The requested Live TV channel does not exist or has been moved.
+  </p>
+  <a href="/live-tv/" class="btn-watch-primary" style="display: inline-block; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+    Return to Channel Catalogue
+  </a>
+</section>
+
+<!-- Other Channels Grid Section -->
+<section class="section" id="otherChannelsSection">
+<div class="section-heading">
+  <h2 class="section-title">Other Live TV Channels</h2>
+</div>
+
+<div class="channel-card-grid" id="otherChannelsGrid">
+  <!-- Channel cards will be rendered dynamically -->
+</div>
+</section>
+
+</main>
+
+<footer id="contact">
+<div class="footer-logo">
+Sanyu<span>Hub</span>
+</div>
+<div class="footer-tagline">
+Hub For Ugandan Happiness
+</div>
+<div class="footer-links">
+<a href="/movies">Movies</a>
+<span>•</span>
+<a href="/series">Series</a>
+<span>•</span>
+<a href="/live-tv">Live TV</a>
+</div>
+<div class="contact-line">
+Contact Us
+</div>
+<div class="copyright">
+© 2026 SanyuHub. All rights reserved.
+</div>
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

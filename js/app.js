@@ -382,7 +382,8 @@ const LIVE_TV_CHANNELS = [
         description: "TV West is the leading television station for Western Uganda, broadcasting local news, culture, and entertainment in Runyankole."
     },
     {
-        id: "wan-luo",
+        id: "wan-luo-tv",
+        aliases: ["wan-luo"],
         name: "Wan Luo TV",
         category: "entertainment",
         categoryLabel: "Luo Culture & Shows",
@@ -392,15 +393,100 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://www.bukedde.co.ug/tv",
         meta: "Official Live Broadcast • HD • Luo Language & Shows",
         description: "Wan Luo TV is the premier Luo-language television channel broadcasting cultural programming, music, and news for Northern Uganda."
+    },
+    {
+        id: "bbs-terefayina",
+        name: "BBS Terefayina",
+        category: "news",
+        categoryLabel: "Buganda & Cultural News",
+        logo: "/images/bbs-logo.jpg",
+        streamType: "hls",
+        streamUrl: "https://bbstv.ug/hls/ch01/index.m3u8",
+        embedUrl: "https://bbstv.ug/live/",
+        meta: "Official Live Broadcast • HD • Buganda & News",
+        description: "BBS Terefayina brings you live news, culture, entertainment, and current affairs from Buganda Kingdom and across Uganda."
     }
 ];
 
 let currentHlsInstance = null;
 let currentActiveChannel = null;
 
-function initLiveTvPage() {
+function findChannelById(id) {
+    if (!id) return null;
+    const cleanId = id.trim().toLowerCase();
+    return LIVE_TV_CHANNELS.find(ch =>
+        ch.id.toLowerCase() === cleanId ||
+        (ch.aliases && ch.aliases.some(a => a.toLowerCase() === cleanId))
+    );
+}
+
+function createChannelCard(ch, isCurrent = false) {
+    const card = document.createElement("article");
+    card.className = "channel-card" + (isCurrent ? " active" : "");
+    card.setAttribute("data-channel-id", ch.id);
+    card.style.cursor = "pointer";
+
+    card.innerHTML = `
+        <div class="channel-thumb">
+            <img src="${ch.logo}" alt="${ch.name}">
+            <span class="live-badge" style="position: absolute; top: 10px; left: 10px;">LIVE</span>
+        </div>
+        <div class="channel-info">
+            <div class="channel-header-row">
+                <div class="channel-name">${ch.name}</div>
+                <div class="channel-category">${ch.categoryLabel}</div>
+            </div>
+            <div class="card-meta">${ch.meta}</div>
+            <div class="channel-action">
+                <button class="btn-watch">${isCurrent ? 'Now Playing' : 'Watch Live'}</button>
+            </div>
+        </div>
+    `;
+
+    card.addEventListener("click", () => {
+        window.location.href = `/live-tv/watch/${ch.id}/`;
+    });
+
+    return card;
+}
+
+/* LIVE TV CATALOGUE PAGE */
+function initLiveTvCatalogue() {
     const cardGrid = document.getElementById("channelCardGrid");
     const videoPlayer = document.getElementById("liveVideoPlayer");
+
+    // Only run on catalogue page where cardGrid exists and no video player is present
+    if (!cardGrid || videoPlayer) return;
+
+    function renderCards(filter = "all") {
+        cardGrid.innerHTML = "";
+        const filtered = LIVE_TV_CHANNELS.filter(ch => filter === "all" || ch.category === filter);
+
+        filtered.forEach(ch => {
+            cardGrid.appendChild(createChannelCard(ch, false));
+        });
+    }
+
+    const categoryFiltersContainer = document.getElementById("channelCategoryFilters");
+    if (categoryFiltersContainer) {
+        categoryFiltersContainer.querySelectorAll(".category").forEach(btn => {
+            btn.addEventListener("click", () => {
+                categoryFiltersContainer.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                const filter = btn.getAttribute("data-filter") || "all";
+                renderCards(filter);
+            });
+        });
+    }
+
+    renderCards("all");
+}
+
+/* LIVE TV WATCH PAGE */
+function initLiveTvWatchPage() {
+    const videoPlayer = document.getElementById("liveVideoPlayer");
+    if (!videoPlayer) return; // Only run on watch page
+
     const iframePlayer = document.getElementById("liveIframePlayer");
     const loadingOverlay = document.getElementById("liveLoadingOverlay");
     const errorOverlay = document.getElementById("liveErrorOverlay");
@@ -418,57 +504,55 @@ function initLiveTvPage() {
     const ctrlQuality = document.getElementById("ctrlQualitySelect");
     const videoWrapper = document.getElementById("liveVideoWrapper");
 
-    if (!cardGrid || !videoPlayer) return;
+    const playerSection = document.getElementById("liveTvPlayerSection");
+    const notFoundSection = document.getElementById("channelNotFoundSection");
+    const otherChannelsGrid = document.getElementById("otherChannelsGrid");
 
-    // Render channel cards
-    function renderChannelCards(filter = "all") {
-        cardGrid.innerHTML = "";
-        const filtered = LIVE_TV_CHANNELS.filter(ch => filter === "all" || ch.category === filter);
+    // Extract channel ID from route path (e.g. /live-tv/watch/ntv-uganda/ -> ntv-uganda)
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    let channelId = null;
 
-        filtered.forEach(ch => {
-            const card = document.createElement("article");
-            card.className = "channel-card" + (currentActiveChannel && currentActiveChannel.id === ch.id ? " active" : "");
-            card.setAttribute("data-channel-id", ch.id);
+    if (pathParts.length >= 3 && pathParts[0] === "live-tv" && pathParts[1] === "watch") {
+        channelId = pathParts[2];
+    } else {
+        const urlParams = new URLSearchParams(window.location.search);
+        channelId = urlParams.get("channel");
+    }
 
-            card.innerHTML = `
-                <div class="channel-thumb">
-                    <img src="${ch.logo}" alt="${ch.name}">
-                    <span class="live-badge" style="position: absolute; top: 10px; left: 10px;">LIVE</span>
-                </div>
-                <div class="channel-info">
-                    <div class="channel-header-row">
-                        <div class="channel-name">${ch.name}</div>
-                        <div class="channel-category">${ch.categoryLabel}</div>
-                    </div>
-                    <div class="card-meta">${ch.meta}</div>
-                    <div class="channel-action">
-                        <button class="btn-watch">${currentActiveChannel && currentActiveChannel.id === ch.id ? 'Now Playing' : 'Watch Live'}</button>
-                    </div>
-                </div>
-            `;
+    const channel = findChannelById(channelId);
 
-            card.addEventListener("click", () => {
-                selectChannel(ch);
+    // Handle invalid channel route
+    if (!channel) {
+        if (playerSection) playerSection.style.display = "none";
+        if (notFoundSection) notFoundSection.style.display = "block";
+        document.title = "Channel Not Found — Live TV — SanyuHub";
+
+        if (otherChannelsGrid) {
+            otherChannelsGrid.innerHTML = "";
+            LIVE_TV_CHANNELS.forEach(ch => {
+                otherChannelsGrid.appendChild(createChannelCard(ch, false));
             });
+        }
+        return;
+    }
 
-            cardGrid.appendChild(card);
+    // Set page title & active channel header
+    document.title = `${channel.name} — Live TV — SanyuHub`;
+    currentActiveChannel = channel;
+
+    if (activeLogo) activeLogo.src = channel.logo;
+    if (activeName) activeName.textContent = channel.name;
+    if (activeMeta) activeMeta.textContent = channel.meta;
+
+    // Render other channels grid
+    if (otherChannelsGrid) {
+        otherChannelsGrid.innerHTML = "";
+        LIVE_TV_CHANNELS.forEach(ch => {
+            const isCurrent = (ch.id === channel.id);
+            otherChannelsGrid.appendChild(createChannelCard(ch, isCurrent));
         });
     }
 
-    // Channel category filters
-    const categoryFiltersContainer = document.getElementById("channelCategoryFilters");
-    if (categoryFiltersContainer) {
-        categoryFiltersContainer.querySelectorAll(".category").forEach(btn => {
-            btn.addEventListener("click", () => {
-                categoryFiltersContainer.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
-                btn.classList.add("active");
-                const filter = btn.getAttribute("data-filter") || "all";
-                renderChannelCards(filter);
-            });
-        });
-    }
-
-    // Clean up current stream instance
     function stopCurrentPlayback() {
         if (currentHlsInstance) {
             currentHlsInstance.destroy();
@@ -492,44 +576,15 @@ function initLiveTvPage() {
         }
     }
 
-    // Select and load a channel
-    function selectChannel(channel) {
-        if (!channel) return;
-
+    function loadChannelStream(targetChannel) {
         stopCurrentPlayback();
-        currentActiveChannel = channel;
 
-        // Update active header UI
-        if (activeLogo) activeLogo.src = channel.logo;
-        if (activeName) activeName.textContent = channel.name;
-        if (activeMeta) activeMeta.textContent = channel.meta;
-
-        // Hide overlays
         if (errorOverlay) errorOverlay.style.display = "none";
         if (loadingOverlay) loadingOverlay.style.display = "flex";
 
-        // Update channel cards active state
-        document.querySelectorAll(".channel-card").forEach(c => {
-            const cid = c.getAttribute("data-channel-id");
-            if (cid === channel.id) {
-                c.classList.add("active");
-                const btn = c.querySelector(".btn-watch");
-                if (btn) btn.textContent = "Now Playing";
-            } else {
-                c.classList.remove("active");
-                const btn = c.querySelector(".btn-watch");
-                if (btn) btn.textContent = "Watch Live";
-            }
-        });
+        const streamUrl = targetChannel.streamUrl;
 
-        // Initialize playback
-        loadChannelStream(channel);
-    }
-
-    function loadChannelStream(channel) {
-        const streamUrl = channel.streamUrl;
-
-        // Check Native HLS support first (e.g. Safari / iOS)
+        // Native HLS support (Safari / iOS)
         if (videoPlayer.canPlayType("application/vnd.apple.mpegurl")) {
             videoPlayer.style.display = "block";
             if (iframePlayer) iframePlayer.style.display = "none";
@@ -541,17 +596,17 @@ function initLiveTvPage() {
             }).catch(err => {
                 console.warn("Autoplay muted fallback:", err);
                 videoPlayer.muted = true;
-                if (ctrlMute) ctrlMute.innerHTML = "&#128069;"; // Muted icon
+                if (ctrlMute) ctrlMute.innerHTML = "&#128069;";
                 videoPlayer.play().then(() => {
                     if (loadingOverlay) loadingOverlay.style.display = "none";
                     updatePlayPauseBtnUI(true);
                 }).catch(e => {
                     if (loadingOverlay) loadingOverlay.style.display = "none";
-                    showPlaybackError("Click Play to start watching " + channel.name);
+                    showPlaybackError("Click Play to start watching " + targetChannel.name);
                 });
             });
 
-        // Use HLS.js if available
+        // HLS.js support
         } else if (window.Hls && Hls.isSupported()) {
             videoPlayer.style.display = "block";
             if (iframePlayer) iframePlayer.style.display = "none";
@@ -569,7 +624,6 @@ function initLiveTvPage() {
             hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
                 if (loadingOverlay) loadingOverlay.style.display = "none";
 
-                // Setup quality levels
                 if (ctrlQuality && data.levels && data.levels.length > 1) {
                     ctrlQuality.style.display = "inline-block";
                     ctrlQuality.innerHTML = '<option value="-1">Auto Quality</option>';
@@ -605,29 +659,29 @@ function initLiveTvPage() {
                             hls.recoverMediaError();
                             break;
                         default:
-                            fallbackToIframeEmbed(channel);
+                            fallbackToIframeEmbed(targetChannel);
                             break;
                     }
                 }
             });
 
-        } else if (channel.embedUrl) {
-            fallbackToIframeEmbed(channel);
+        } else if (targetChannel.embedUrl) {
+            fallbackToIframeEmbed(targetChannel);
         } else {
             showPlaybackError("HLS live streaming is not supported on this browser.");
         }
     }
 
-    function fallbackToIframeEmbed(channel) {
-        if (!iframePlayer || !channel.embedUrl) {
-            showPlaybackError("Live stream unavailable for " + channel.name);
+    function fallbackToIframeEmbed(targetChannel) {
+        if (!iframePlayer || !targetChannel.embedUrl) {
+            showPlaybackError("Live stream unavailable for " + targetChannel.name);
             return;
         }
 
         stopCurrentPlayback();
         videoPlayer.style.display = "none";
         iframePlayer.style.display = "block";
-        iframePlayer.src = channel.embedUrl;
+        iframePlayer.src = targetChannel.embedUrl;
 
         if (loadingOverlay) loadingOverlay.style.display = "none";
         if (errorOverlay) errorOverlay.style.display = "none";
@@ -647,7 +701,7 @@ function initLiveTvPage() {
         }
     }
 
-    // Video Event Listeners
+    // Video Player Events
     videoPlayer.addEventListener("playing", () => {
         if (loadingOverlay) loadingOverlay.style.display = "none";
         if (errorOverlay) errorOverlay.style.display = "none";
@@ -687,10 +741,10 @@ function initLiveTvPage() {
         ctrlMute.addEventListener("click", () => {
             videoPlayer.muted = !videoPlayer.muted;
             if (videoPlayer.muted) {
-                ctrlMute.innerHTML = "&#128069;"; // Muted
+                ctrlMute.innerHTML = "&#128069;";
                 if (ctrlVolume) ctrlVolume.value = 0;
             } else {
-                ctrlMute.innerHTML = "&#128067;"; // Sound
+                ctrlMute.innerHTML = "&#128067;";
                 if (ctrlVolume) ctrlVolume.value = videoPlayer.volume || 1;
             }
         });
@@ -714,7 +768,7 @@ function initLiveTvPage() {
             } else if (videoWrapper.requestFullscreen) {
                 videoWrapper.requestFullscreen();
             } else if (videoPlayer.webkitEnterFullscreen) {
-                videoPlayer.webkitEnterFullscreen(); // Safari iOS
+                videoPlayer.webkitEnterFullscreen();
             }
         });
     }
@@ -730,7 +784,7 @@ function initLiveTvPage() {
     if (retryBtn) {
         retryBtn.addEventListener("click", () => {
             if (currentActiveChannel) {
-                selectChannel(currentActiveChannel);
+                loadChannelStream(currentActiveChannel);
             }
         });
     }
@@ -740,14 +794,8 @@ function initLiveTvPage() {
         stopCurrentPlayback();
     });
 
-    // Initial render & select requested or default channel
-    renderChannelCards("all");
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const requestedChannelId = urlParams.get("channel");
-    const initialChannel = LIVE_TV_CHANNELS.find(ch => ch.id === requestedChannelId) || LIVE_TV_CHANNELS[0];
-
-    selectChannel(initialChannel);
+    // Start playback for selected channel
+    loadChannelStream(channel);
 }
 
 /* HOMEPAGE DYNAMIC INTEGRATION */
@@ -1256,5 +1304,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initContinueWatching();
     initMovieDetailsPage();
     initWatchPage();
-    initLiveTvPage();
+    initLiveTvCatalogue();
+    initLiveTvWatchPage();
 });

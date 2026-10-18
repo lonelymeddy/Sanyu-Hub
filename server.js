@@ -121,6 +121,15 @@ app.get('/watch', (req, res) => {
   res.redirect('/movies');
 });
 
+// Live TV Watch Routes
+app.get(['/live-tv/watch/:id', '/live-tv/watch/:id/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'live-tv', 'watch.html'));
+});
+
+app.get(['/live-tv/watch', '/live-tv/watch/'], (req, res) => {
+  res.redirect('/live-tv/');
+});
+
 // Serve all static assets and pages
 app.use(express.static(__dirname, {
   extensions: ['html'],
