@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#222222">
+<meta name="description" content="SanyuHub — Series Details">
+<title>Series Details — SanyuHub</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.series-hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 5% 40px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.series-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(18,18,18,0.85) 0%, rgba(18,18,18,0.98) 100%);
+  z-index: 1;
+}
+.series-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.series-poster-box {
+  width: 240px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  background: #111;
+  aspect-ratio: 2/3;
+}
+.series-poster-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.series-info-box {
+  flex: 1;
+  min-width: 280px;
+}
+.series-title-text {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.series-badge-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+.series-badge {
+  background: #e50914;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.series-overview-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ddd;
+  margin-bottom: 24px;
+}
+.season-tabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #333;
+}
+.season-tab {
+  background: #222;
+  color: #ccc;
+  border: 1px solid #444;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+.season-tab.active {
+  background: #e50914;
+  color: #fff;
+  border-color: #e50914;
+}
+.episodes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.episode-card {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+.episode-card:hover {
+  transform: translateY(-3px);
+  border-color: #e50914;
+}
+.episode-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.episode-meta {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+.btn-play-episode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #e50914;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+}
+</style>
+</head>
+<body>
+
+<div class="background"></div>
+
+<header class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="/" class="logo">
+Sanyu<span>Hub</span>
+</a>
+<nav class="desktop-nav">
+<a href="/" class="">Home</a>
+<a href="/movies" class="">Movies</a>
+<a href="/series" class="active">Series</a>
+<a href="/live-tv" class="">Live TV</a>
+</nav>
+<div class="nav-controls">
+<button class="search-button" id="topSearch" aria-label="Search">
+<span class="search-icon"></span>
+</button>
+<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+</button>
+</div>
+</div>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-content">
+<div class="sidebar-section">
+<div class="sidebar-section-title">Explore</div>
+
+<a href="/" class="sidebar-link ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Home
+</span>
+</a>
+
+<a href="/movies" class="sidebar-link has-submenu ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Movies
+</span>
+<span class="chevron"></span>
+</a>
+
+<div class="sidebar-submenu ">
+<a href="/trending" class="">Trending Now</a>
+<a href="/popular" class="">Popular Movies</a>
+<a href="/featured" class="">Featured</a>
+<a href="/recently-added" class="">Recently Added</a>
+</div>
+
+<a href="/series" class="sidebar-link has-submenu expanded active">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Series
+</span>
+<span class="chevron"></span>
+</a>
+
+<div class="sidebar-submenu open">
+<a href="/popular-series" class="">Popular Series</a>
+<a href="/continue-watching" class="">Continue Watching</a>
+</div>
+
+<a href="/live-tv" class="sidebar-link ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Live TV
+</span>
+</a>
+
+</div>
+</div>
+</aside>
+
+<main id="seriesDetailPage" style="max-width: 1200px; margin: 0 auto; padding: 20px 5% 40px;">
+  <div class="loading-state" style="padding: 120px 20px; text-align: center;">Loading series details...</div>
+</main>
+
+<footer id="contact">
+<div class="footer-logo">
+Sanyu<span>Hub</span>
+</div>
+<div class="footer-tagline">
+Hub For Ugandan Happiness
+</div>
+<div class="footer-links">
+<a href="/movies">Movies</a>
+<span>•</span>
+<a href="/series">Series</a>
+<span>•</span>
+<a href="/live-tv">Live TV</a>
+<span>•</span>
+<a href="/more">More</a>
+</div>
+<div class="contact-line">
+Contact Us
+</div>
+<div class="copyright">
+© 2026 SanyuHub. All rights reserved.
+</div>
+</footer>
+
+<script src="/js/app.js"></script>
+
+<!-- PERSISTENT APP-STYLE BOTTOM NAVIGATION BAR -->
+<nav class="bottom-nav" id="bottomNav">
+  <a href="/" class="bottom-nav-item" id="navHome">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    </div>
+    <span>Home</span>
+  </a>
+  <a href="/live-tv" class="bottom-nav-item" id="navChannels">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+    </div>
+    <span>Channels</span>
+  </a>
+  <a href="/movies" class="bottom-nav-item" id="navMovies">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+    </div>
+    <span>Movies</span>
+  </a>
+  <a href="/more" class="bottom-nav-item" id="navMore">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+    </div>
+    <span>More</span>
+  </a>
+</nav>
+
+</body>
+</html>

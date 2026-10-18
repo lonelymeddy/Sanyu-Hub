@@ -101,16 +101,30 @@ Live TV
 </header>
 
 <section class="section">
-<div class="categories" style="margin-bottom: 24px;">
-<button class="category active">All Series</button>
-<button class="category">Drama</button>
-<button class="category">Action</button>
-<button class="category">Romance</button>
-<button class="category">Thriller</button>
+<div class="movie-search-bar" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+  <input type="search" id="seriesSearchInput" class="movie-search-input" style="flex: 1; min-width: 240px;" placeholder="Search series by title, VJ, synopsis..." aria-label="Search series">
+
+  <select id="seriesGenreSelect" class="movie-search-input" style="width: auto; cursor: pointer;">
+    <option value="all">All Genres</option>
+  </select>
+
+  <select id="seriesSortSelect" class="movie-search-input" style="width: auto; cursor: pointer;">
+    <option value="popular">Popularity</option>
+    <option value="episodes">Most Episodes</option>
+    <option value="rating">Top Rated</option>
+    <option value="title">Title (A-Z)</option>
+    <option value="year">Release Year</option>
+  </select>
 </div>
 
-<div class="card-grid" id="seriesGrid">
-<div class="loading-state">Loading series...</div>
+<div class="card-grid" id="seriesCardGrid">
+<div class="loading-state">Loading SanyuHub series catalogue...</div>
+</div>
+
+<div class="pagination" id="seriesPaginationControls" style="display: none; margin-top: 30px;">
+  <button class="page-btn" id="seriesPrevBtn" disabled>&laquo; Previous</button>
+  <span class="page-info" id="seriesPageInfo">Page 1 of 1</span>
+  <button class="page-btn" id="seriesNextBtn">Next &raquo;</button>
 </div>
 </section>
 

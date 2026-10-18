@@ -101,8 +101,20 @@ Live TV
 </header>
 
 <section class="section">
-<div class="movie-search-bar">
-  <input type="search" id="movieSearchInput" class="movie-search-input" placeholder="Search Luganda movies by title, VJ..." aria-label="Search movies">
+<div class="movie-search-bar" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+  <input type="search" id="movieSearchInput" class="movie-search-input" style="flex: 1; min-width: 240px;" placeholder="Search Luganda movies by title, VJ, synopsis..." aria-label="Search movies">
+
+  <select id="genreFilterSelect" class="movie-search-input" style="width: auto; cursor: pointer;">
+    <option value="all">All Genres</option>
+  </select>
+
+  <select id="sortFilterSelect" class="movie-search-input" style="width: auto; cursor: pointer;">
+    <option value="recently-added">Recently Added</option>
+    <option value="popularity">Popularity</option>
+    <option value="rating">Top Rated</option>
+    <option value="title">Title (A-Z)</option>
+    <option value="year">Release Year</option>
+  </select>
 </div>
 
 <div class="categories" id="vjCategories" style="margin-bottom: 24px;">

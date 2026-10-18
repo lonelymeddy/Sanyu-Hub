@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#222222">
+<meta name="description" content="SanyuHub — Stream Series Episode">
+<title>Watch Episode — SanyuHub</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+.series-watch-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 5% 40px;
+}
+.watch-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.ep-nav-list {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 0;
+  margin-top: 20px;
+  border-top: 1px solid #333;
+}
+.ep-nav-btn {
+  background: #222;
+  color: #ccc;
+  border: 1px solid #444;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.ep-nav-btn.active {
+  background: #e50914;
+  color: #fff;
+  border-color: #e50914;
+}
+.ep-nav-btn:hover:not(.active) {
+  border-color: #888;
+  color: #fff;
+}
+</style>
+</head>
+<body>
+
+<div class="background"></div>
+
+<header class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="/" class="logo">
+Sanyu<span>Hub</span>
+</a>
+<nav class="desktop-nav">
+<a href="/" class="">Home</a>
+<a href="/movies" class="">Movies</a>
+<a href="/series" class="active">Series</a>
+<a href="/live-tv" class="">Live TV</a>
+</nav>
+<div class="nav-controls">
+<button class="search-button" id="topSearch" aria-label="Search">
+<span class="search-icon"></span>
+</button>
+<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+</button>
+</div>
+</div>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-content">
+<div class="sidebar-section">
+<div class="sidebar-section-title">Explore</div>
+
+<a href="/" class="sidebar-link ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Home
+</span>
+</a>
+
+<a href="/movies" class="sidebar-link has-submenu ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Movies
+</span>
+<span class="chevron"></span>
+</a>
+
+<div class="sidebar-submenu ">
+<a href="/trending" class="">Trending Now</a>
+<a href="/popular" class="">Popular Movies</a>
+<a href="/featured" class="">Featured</a>
+<a href="/recently-added" class="">Recently Added</a>
+</div>
+
+<a href="/series" class="sidebar-link has-submenu expanded active">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Series
+</span>
+<span class="chevron"></span>
+</a>
+
+<div class="sidebar-submenu open">
+<a href="/popular-series" class="">Popular Series</a>
+<a href="/continue-watching" class="">Continue Watching</a>
+</div>
+
+<a href="/live-tv" class="sidebar-link ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Live TV
+</span>
+</a>
+
+</div>
+</div>
+</aside>
+
+<main id="seriesWatchPage" class="series-watch-wrapper">
+  <div class="watch-header-flex">
+    <div>
+      <h1 class="watch-title" id="seriesEpWatchTitle">Loading episode stream...</h1>
+      <div class="watch-meta-text" id="seriesEpWatchMeta">Connecting to SanyuHub stream server...</div>
+    </div>
+    <div>
+      <a id="backToSeriesDetailBtn" href="/series" class="btn-back-secondary">&laquo; Series Overview</a>
+    </div>
+  </div>
+
+  <div class="player-wrapper" id="seriesPlayerWrapper">
+    <div class="loading-state" id="seriesPlayerStatusText" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5;">
+      Preparing episode player...
+    </div>
+    <video id="seriesEpisodePlayer" controls playsinline style="width: 100%; height: 100%; display: none;">
+      Your browser does not support HTML5 video streaming.
+    </video>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">Select Episode</h3>
+    <div class="ep-nav-list" id="episodeSelectorBar">
+      <div class="loading-state">Loading episode list...</div>
+    </div>
+  </div>
+
+  <div id="seriesWatchMetadataGrid" class="movie-metadata-grid" style="margin-top: 30px;">
+    <div class="metadata-item">
+      <label>Translator / VJ</label>
+      <span id="seriesWatchVjVal">-</span>
+    </div>
+    <div class="metadata-item">
+      <label>Quality</label>
+      <span id="seriesWatchQualityVal">-</span>
+    </div>
+    <div class="metadata-item">
+      <label>Format</label>
+      <span id="seriesWatchFormatVal">-</span>
+    </div>
+    <div class="metadata-item">
+      <label>Category</label>
+      <span id="seriesWatchCategoryVal">-</span>
+    </div>
+  </div>
+</main>
+
+<footer id="contact">
+<div class="footer-logo">
+Sanyu<span>Hub</span>
+</div>
+<div class="footer-tagline">
+Hub For Ugandan Happiness
+</div>
+<div class="footer-links">
+<a href="/movies">Movies</a>
+<span>•</span>
+<a href="/series">Series</a>
+<span>•</span>
+<a href="/live-tv">Live TV</a>
+<span>•</span>
+<a href="/more">More</a>
+</div>
+<div class="contact-line">
+Contact Us
+</div>
+<div class="copyright">
+© 2026 SanyuHub. All rights reserved.
+</div>
+</footer>
+
+<script src="/js/app.js"></script>
+
+<!-- PERSISTENT APP-STYLE BOTTOM NAVIGATION BAR -->
+<nav class="bottom-nav" id="bottomNav">
+  <a href="/" class="bottom-nav-item" id="navHome">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    </div>
+    <span>Home</span>
+  </a>
+  <a href="/live-tv" class="bottom-nav-item" id="navChannels">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+    </div>
+    <span>Channels</span>
+  </a>
+  <a href="/movies" class="bottom-nav-item" id="navMovies">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+    </div>
+    <span>Movies</span>
+  </a>
+  <a href="/more" class="bottom-nav-item" id="navMore">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+    </div>
+    <span>More</span>
+  </a>
+</nav>
+
+</body>
+</html>
