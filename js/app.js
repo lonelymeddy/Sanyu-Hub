@@ -1671,16 +1671,44 @@ async function initWatchPage() {
 
         // Set up Video Player
         if (moviePlayer && movie.mediaUrl) {
-            moviePlayer.src = movie.mediaUrl;
-            moviePlayer.style.display = "block";
-            if (playerStatusText) playerStatusText.style.display = "none";
+            const mediaUrl = movie.mediaUrl;
+            const isHls = mediaUrl.includes('.m3u8') || (movie.format && movie.format.toUpperCase() === 'HLS');
 
-            moviePlayer.onerror = function() {
-                if (playerStatusText) {
-                    playerStatusText.style.display = "block";
-                    playerStatusText.innerHTML = '<span style="color:#e57373;">Media stream unavailable or failed to load.</span>';
-                }
-            };
+            if (isHls && window.Hls && Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(mediaUrl);
+                hls.attachMedia(moviePlayer);
+                hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                    moviePlayer.style.display = "block";
+                    if (playerStatusText) playerStatusText.style.display = "none";
+                    moviePlayer.play().catch(e => console.log("Autoplay prevented"));
+                });
+                hls.on(Hls.Events.ERROR, function(event, data) {
+                    if (data.fatal) {
+                        if (playerStatusText) {
+                            playerStatusText.style.display = "block";
+                            playerStatusText.innerHTML = '<span style="color:#e57373;">HLS stream connection failed.</span>';
+                        }
+                    }
+                });
+            } else {
+                moviePlayer.src = mediaUrl;
+                moviePlayer.style.display = "block";
+                if (playerStatusText) playerStatusText.style.display = "none";
+
+                moviePlayer.onerror = function() {
+                    if (playerStatusText) {
+                        playerStatusText.style.display = "block";
+                        playerStatusText.innerHTML = '<span style="color:#e57373;">Media stream unavailable or failed to load.</span>';
+                    }
+                };
+            }
+        } else if (movie.externalUrl) {
+            moviePlayer.style.display = "none";
+            if (playerStatusText) {
+                playerStatusText.style.display = "block";
+                playerStatusText.innerHTML = `<div style="padding: 20px;"><p style="color:#ffcc00; margin-bottom: 15px;">This movie is hosted externally on ${movie.source || 'provider'}.</p><a href="${movie.externalUrl}" target="_blank" rel="noopener noreferrer" class="btn-watch-primary" style="display: inline-block;">Open External Viewing Page</a></div>`;
+            }
         } else if (playerStatusText) {
             playerStatusText.innerHTML = '<span style="color:#e57373;">No media stream URL available for this record.</span>';
         }

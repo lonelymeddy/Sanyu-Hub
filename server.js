@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { getCatalogue, getSeriesCatalogue } = require('./moviemax');
+const { getUgandanMovieCatalogue } = require('./ugandan-movies');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,17 +8,16 @@ const PORT = process.env.PORT || 3000;
 // API Route for Movies Catalogue
 app.get('/api/movies', async (req, res) => {
   try {
-    const catalogue = await getCatalogue();
+    const catalogue = await getUgandanMovieCatalogue();
 
-    // Extract query params
+    // Extract query parameters
     const search = (req.query.search || '').trim().toLowerCase();
     const vjFilter = (req.query.vj || req.query.category || '').trim().toLowerCase();
     const genreFilter = (req.query.genre || '').trim().toLowerCase();
     const yearFilter = req.query.year ? parseInt(req.query.year, 10) : null;
-    const qualityFilter = (req.query.quality || '').trim().toLowerCase();
     const sort = (req.query.sort || 'recently-added').trim().toLowerCase();
 
-    // Extract unique VJs and Genres available across full catalogue
+    // Extract unique VJs and Genres
     const vjSet = new Set();
     const genreSet = new Set();
     catalogue.forEach(m => {
@@ -34,30 +33,23 @@ app.get('/api/movies', async (req, res) => {
     let filtered = catalogue.filter(movie => {
       if (search) {
         const matchTitle = movie.title && movie.title.toLowerCase().includes(search);
-        const matchFile = movie.filename && movie.filename.toLowerCase().includes(search);
         const matchVj = movie.vj && movie.vj.toLowerCase().includes(search);
         const matchOverview = movie.overview && movie.overview.toLowerCase().includes(search);
-        if (!matchTitle && !matchFile && !matchVj && !matchOverview) return false;
+        if (!matchTitle && !matchVj && !matchOverview) return false;
       }
 
       if (vjFilter && vjFilter !== 'all') {
         const vjLower = (movie.vj || '').toLowerCase();
-        const catLower = (movie.category || '').toLowerCase();
-        if (!vjLower.includes(vjFilter) && !catLower.includes(vjFilter)) return false;
+        if (!vjLower.includes(vjFilter)) return false;
       }
 
       if (genreFilter && genreFilter !== 'all') {
         const hasGenre = movie.genres && movie.genres.some(g => g.toLowerCase() === genreFilter);
-        const catMatch = (movie.category || '').toLowerCase().includes(genreFilter);
-        if (!hasGenre && !catMatch) return false;
+        if (!hasGenre) return false;
       }
 
       if (yearFilter && movie.year !== yearFilter) {
         return false;
-      }
-
-      if (qualityFilter && qualityFilter !== 'all') {
-        if ((movie.quality || '').toLowerCase() !== qualityFilter) return false;
       }
 
       return true;
@@ -68,13 +60,11 @@ app.get('/api/movies', async (req, res) => {
       filtered.sort((a, b) => a.title.localeCompare(b.title));
     } else if (sort === 'year') {
       filtered.sort((a, b) => (b.year || 0) - (a.year || 0));
-    } else if (sort === 'popularity') {
-      filtered.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
     } else if (sort === 'rating') {
-      filtered.sort((a, b) => (b.voteAverage || 0) - (a.voteAverage || 0));
+      filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
     } else {
       // Default: recently-added
-      filtered.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+      filtered.reverse();
     }
 
     // Pagination
@@ -102,127 +92,39 @@ app.get('/api/movies', async (req, res) => {
     });
 
   } catch (err) {
-    res.status(500).json({
-      error: 'Failed to retrieve movie catalogue.'
-    });
-  }
-});
-
-// API Route for Series Catalogue
-app.get('/api/series', async (req, res) => {
-  try {
-    const seriesList = await getSeriesCatalogue();
-
-    const search = (req.query.search || '').trim().toLowerCase();
-    const vjFilter = (req.query.vj || req.query.category || '').trim().toLowerCase();
-    const genreFilter = (req.query.genre || '').trim().toLowerCase();
-    const yearFilter = req.query.year ? parseInt(req.query.year, 10) : null;
-    const sort = (req.query.sort || 'popular').trim().toLowerCase();
-
-    // Extract unique genres across series
-    const genreSet = new Set();
-    seriesList.forEach(s => {
-      if (s.genres && Array.isArray(s.genres)) {
-        s.genres.forEach(g => genreSet.add(g));
-      }
-    });
-    const genres = Array.from(genreSet).sort();
-
-    let filtered = seriesList.filter(series => {
-      if (search) {
-        const matchTitle = series.title && series.title.toLowerCase().includes(search);
-        const matchVj = series.vj && series.vj.toLowerCase().includes(search);
-        const matchOverview = series.overview && series.overview.toLowerCase().includes(search);
-        if (!matchTitle && !matchVj && !matchOverview) return false;
-      }
-
-      if (vjFilter && vjFilter !== 'all') {
-        const vjLower = (series.vj || '').toLowerCase();
-        const catLower = (series.category || '').toLowerCase();
-        if (!vjLower.includes(vjFilter) && !catLower.includes(vjFilter)) return false;
-      }
-
-      if (genreFilter && genreFilter !== 'all') {
-        const hasGenre = series.genres && series.genres.some(g => g.toLowerCase() === genreFilter);
-        const catMatch = (series.category || '').toLowerCase().includes(genreFilter);
-        if (!hasGenre && !catMatch) return false;
-      }
-
-      if (yearFilter && series.year !== yearFilter) {
-        return false;
-      }
-
-      return true;
-    });
-
-    // Sorting
-    if (sort === 'title') {
-      filtered.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sort === 'year') {
-      filtered.sort((a, b) => (b.year || 0) - (a.year || 0));
-    } else if (sort === 'episodes') {
-      filtered.sort((a, b) => b.totalEpisodes - a.totalEpisodes);
-    } else if (sort === 'rating') {
-      filtered.sort((a, b) => (b.voteAverage || 0) - (a.voteAverage || 0));
-    } else {
-      // Default: popular
-      filtered.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
-    }
-
-    // Pagination
-    let page = parseInt(req.query.page, 10) || 1;
-    let limit = parseInt(req.query.limit, 10) || 24;
-    if (page < 1) page = 1;
-    if (limit < 1) limit = 24;
-    if (limit > 100) limit = 100;
-
-    const total = filtered.length;
-    const totalPages = Math.ceil(total / limit) || 1;
-    if (page > totalPages && totalPages > 0) page = totalPages;
-
-    const startIndex = (page - 1) * limit;
-    const paginatedSeries = filtered.slice(startIndex, startIndex + limit);
-
-    res.json({
-      series: paginatedSeries,
-      page: page,
-      limit: limit,
-      total: total,
-      totalPages: totalPages,
-      genres: genres
-    });
-
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to retrieve series catalogue.' });
-  }
-});
-
-// Single Series Detail API
-app.get('/api/series/:id', async (req, res) => {
-  try {
-    const seriesList = await getSeriesCatalogue();
-    const series = seriesList.find(s => s.id === req.params.id);
-    if (!series) {
-      return res.status(404).json({ error: 'Series not found' });
-    }
-    res.json(series);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to retrieve series detail' });
+    res.status(500).json({ error: 'Failed to retrieve Ugandan movie catalogue.' });
   }
 });
 
 // Single movie detail API
 app.get('/api/movies/:id', async (req, res) => {
   try {
-    const catalogue = await getCatalogue();
+    const catalogue = await getUgandanMovieCatalogue();
     const movie = catalogue.find(m => m.id === req.params.id);
     if (!movie) {
       return res.status(404).json({ error: 'Movie not found' });
     }
     res.json(movie);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to retrieve movie detail' });
+    res.status(500).json({ error: 'Failed to retrieve movie details.' });
   }
+});
+
+// API Route for Series Catalogue
+app.get('/api/series', async (req, res) => {
+  res.json({
+    series: [],
+    page: 1,
+    limit: 24,
+    total: 0,
+    totalPages: 1,
+    genres: []
+  });
+});
+
+// Single Series Detail API
+app.get('/api/series/:id', async (req, res) => {
+  res.status(404).json({ error: 'Series not found' });
 });
 
 // Dynamic Page Routes
