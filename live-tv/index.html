@@ -95,66 +95,9 @@ Live TV
 <header class="page-header">
 <div class="page-title-group">
 <h1 class="page-title">Live TV Channels</h1>
-<p class="page-subtitle">Stream live television broadcasts directly on SanyuHub.</p>
+<p class="page-subtitle">Select a television channel below to watch its live broadcast on SanyuHub.</p>
 </div>
 </header>
-
-<section class="live-player-section" id="liveTvPlayerSection">
-<div class="live-player-container">
-  <!-- Active Channel Header -->
-  <div class="active-channel-header" id="activeChannelHeader">
-    <div class="active-channel-info">
-      <img id="activeChannelLogo" src="/images/ntv-logo.jpg" alt="Active Channel Logo" class="active-channel-logo">
-      <div>
-        <div class="active-channel-title-row">
-          <h2 id="activeChannelName" class="active-channel-name">NTV Uganda</h2>
-          <span class="live-status-pill" id="liveStatusPill"><span class="live-dot"></span> LIVE</span>
-        </div>
-        <div class="active-channel-meta" id="activeChannelMeta">Official Live Stream • HD • News & Entertainment</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Player Box -->
-  <div class="live-video-wrapper" id="liveVideoWrapper">
-    <video id="liveVideoPlayer" class="live-video-player" playsinline preload="auto"></video>
-    <iframe id="liveIframePlayer" class="live-iframe-player" style="display:none;" allow="autoplay; fullscreen" frameborder="0"></iframe>
-
-    <!-- Loading Indicator Overlay -->
-    <div class="live-loading-overlay" id="liveLoadingOverlay">
-      <div class="spinner"></div>
-      <div class="loading-text" id="liveLoadingText">Connecting to live broadcast...</div>
-    </div>
-
-    <!-- Error State Overlay -->
-    <div class="live-error-overlay" id="liveErrorOverlay" style="display:none;">
-      <div class="error-icon">&#9888;</div>
-      <div class="error-title">Stream Unavailable</div>
-      <div class="error-msg" id="liveErrorMsg">The live broadcast is temporarily unreachable.</div>
-      <button class="btn-retry" id="liveRetryBtn">&#8635; Retry Connection</button>
-    </div>
-
-    <!-- Video Custom Controls Bar -->
-    <div class="live-controls-bar" id="liveControlsBar">
-      <div class="controls-left">
-        <button class="ctrl-btn" id="ctrlPlayPauseBtn" aria-label="Play/Pause">&#9654;</button>
-        <div class="volume-container">
-          <button class="ctrl-btn" id="ctrlMuteBtn" aria-label="Mute/Unmute">&#128067;</button>
-          <input type="range" id="ctrlVolumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="1">
-        </div>
-        <span class="live-indicator-tag"><span class="live-dot"></span> LIVE</span>
-      </div>
-
-      <div class="controls-right">
-        <select id="ctrlQualitySelect" class="quality-select" aria-label="Stream Quality" style="display:none;">
-          <option value="auto">Auto Quality</option>
-        </select>
-        <button class="ctrl-btn" id="ctrlFullscreenBtn" aria-label="Fullscreen">&#9974;</button>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
 
 <section class="section">
 <div class="section-heading">
