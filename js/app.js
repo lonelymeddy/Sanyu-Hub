@@ -282,6 +282,43 @@ function createMovieCard(movie) {
     return card;
 }
 
+function createSeriesCard(series) {
+    const card = document.createElement("article");
+    card.className = "movie-card";
+    card.setAttribute("data-id", series.id);
+    card.style.cursor = "pointer";
+
+    const posterDiv = document.createElement("div");
+    posterDiv.className = "poster";
+
+    renderPosterContent(posterDiv, series);
+
+    const badge = document.createElement("span");
+    badge.className = "badge";
+    badge.textContent = `${series.totalEpisodes || 1} EP`;
+    posterDiv.appendChild(badge);
+
+    const titleDiv = document.createElement("div");
+    titleDiv.className = "card-title";
+    titleDiv.title = series.title || "Untitled Series";
+    titleDiv.textContent = series.title || "Untitled Series";
+
+    const metaDiv = document.createElement("div");
+    metaDiv.className = "card-meta";
+    const metaText = `${series.vj || 'Luganda'} • ${series.totalSeasons || 1} Season${(series.totalSeasons || 1) > 1 ? 's' : ''}`;
+    metaDiv.textContent = metaText;
+
+    card.appendChild(posterDiv);
+    card.appendChild(titleDiv);
+    card.appendChild(metaDiv);
+
+    card.addEventListener("click", () => {
+        window.location.href = `/series/${series.id}`;
+    });
+
+    return card;
+}
+
 function createTrendingCard(movie, rank) {
     const card = document.createElement("article");
     card.className = "trending-card";
@@ -954,6 +991,8 @@ function initContinueWatching() {
 /* CATALOGUE PAGE (/movies) INTEGRATION */
 const movieCardGrid = document.getElementById("movieCardGrid");
 const vjCategoriesContainer = document.getElementById("vjCategories");
+const genreFilterSelect = document.getElementById("genreFilterSelect");
+const sortFilterSelect = document.getElementById("sortFilterSelect");
 const paginationControls = document.getElementById("paginationControls");
 const prevPageBtn = document.getElementById("prevPageBtn");
 const nextPageBtn = document.getElementById("nextPageBtn");
@@ -965,6 +1004,8 @@ if (movieCardGrid) {
     let currentPage = parseInt(urlParams.get("page"), 10) || 1;
     let currentLimit = 24;
     let currentVj = urlParams.get("vj") || "all";
+    let currentGenre = urlParams.get("genre") || "all";
+    let currentSort = urlParams.get("sort") || "recently-added";
     let currentSearch = urlParams.get("search") || "";
     let searchDebounceTimer = null;
 
@@ -981,6 +1022,8 @@ if (movieCardGrid) {
                 limit: currentLimit
             });
             if (currentVj && currentVj !== "all") queryParams.append("vj", currentVj);
+            if (currentGenre && currentGenre !== "all") queryParams.append("genre", currentGenre);
+            if (currentSort) queryParams.append("sort", currentSort);
             if (currentSearch) queryParams.append("search", currentSearch);
 
             const res = await fetch(`/api/movies?${queryParams.toString()}`);
@@ -991,6 +1034,15 @@ if (movieCardGrid) {
 
             if (data.vjs && data.vjs.length > 0 && vjCategoriesContainer && vjCategoriesContainer.children.length <= 1) {
                 renderVjCategoryButtons(data.vjs);
+            }
+
+            if (data.genres && data.genres.length > 0 && genreFilterSelect && genreFilterSelect.children.length <= 1) {
+                data.genres.forEach(g => {
+                    const opt = document.createElement("option");
+                    opt.value = g;
+                    opt.textContent = g;
+                    genreFilterSelect.appendChild(opt);
+                });
             }
 
             if (movies.length === 0) {
@@ -1048,6 +1100,22 @@ if (movieCardGrid) {
         });
     }
 
+    if (genreFilterSelect) {
+        genreFilterSelect.addEventListener("change", (e) => {
+            currentGenre = e.target.value;
+            currentPage = 1;
+            fetchAndRenderCatalogue();
+        });
+    }
+
+    if (sortFilterSelect) {
+        sortFilterSelect.addEventListener("change", (e) => {
+            currentSort = e.target.value;
+            currentPage = 1;
+            fetchAndRenderCatalogue();
+        });
+    }
+
     if (prevPageBtn) {
         prevPageBtn.addEventListener("click", () => {
             if (currentPage > 1) {
@@ -1078,6 +1146,374 @@ if (movieCardGrid) {
     }
 
     fetchAndRenderCatalogue();
+}
+
+/* SERIES CATALOGUE PAGE (/series) INTEGRATION */
+const seriesCardGrid = document.getElementById("seriesCardGrid");
+const seriesSearchInput = document.getElementById("seriesSearchInput");
+const seriesGenreSelect = document.getElementById("seriesGenreSelect");
+const seriesSortSelect = document.getElementById("seriesSortSelect");
+const seriesPaginationControls = document.getElementById("seriesPaginationControls");
+const seriesPrevBtn = document.getElementById("seriesPrevBtn");
+const seriesNextBtn = document.getElementById("seriesNextBtn");
+const seriesPageInfo = document.getElementById("seriesPageInfo");
+
+if (seriesCardGrid) {
+    let sPage = 1;
+    let sLimit = 24;
+    let sGenre = "all";
+    let sSort = "popular";
+    let sSearch = "";
+    let sDebounce = null;
+
+    async function fetchAndRenderSeries() {
+        seriesCardGrid.innerHTML = '<div class="loading-state">Loading SanyuHub series catalogue...</div>';
+
+        try {
+            const queryParams = new URLSearchParams({
+                page: sPage,
+                limit: sLimit,
+                sort: sSort
+            });
+            if (sGenre && sGenre !== "all") queryParams.append("genre", sGenre);
+            if (sSearch) queryParams.append("search", sSearch);
+
+            const res = await fetch(`/api/series?${queryParams.toString()}`);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+            const data = await res.json();
+            const seriesList = data.series || [];
+
+            if (data.genres && data.genres.length > 0 && seriesGenreSelect && seriesGenreSelect.children.length <= 1) {
+                data.genres.forEach(g => {
+                    const opt = document.createElement("option");
+                    opt.value = g;
+                    opt.textContent = g;
+                    seriesGenreSelect.appendChild(opt);
+                });
+            }
+
+            if (seriesList.length === 0) {
+                seriesCardGrid.innerHTML = '<div class="loading-state">No series found matching your request.</div>';
+                if (seriesPaginationControls) seriesPaginationControls.style.display = "none";
+                return;
+            }
+
+            seriesCardGrid.innerHTML = "";
+            seriesList.forEach(series => {
+                seriesCardGrid.appendChild(createSeriesCard(series));
+            });
+
+            if (seriesPaginationControls) {
+                if (data.totalPages > 1) {
+                    seriesPaginationControls.style.display = "flex";
+                    if (seriesPageInfo) seriesPageInfo.textContent = `Page ${data.page} of ${data.totalPages} (${data.total} series)`;
+                    if (seriesPrevBtn) seriesPrevBtn.disabled = (data.page <= 1);
+                    if (seriesNextBtn) seriesNextBtn.disabled = (data.page >= data.totalPages);
+                } else {
+                    seriesPaginationControls.style.display = "none";
+                }
+            }
+
+        } catch (err) {
+            console.error("Failed to load series catalogue:", err);
+            seriesCardGrid.innerHTML = '<div class="error-state">Unable to load series catalogue. Please try again later.</div>';
+            if (seriesPaginationControls) seriesPaginationControls.style.display = "none";
+        }
+    }
+
+    if (seriesSearchInput) {
+        seriesSearchInput.addEventListener("input", (e) => {
+            clearTimeout(sDebounce);
+            sDebounce = setTimeout(() => {
+                sSearch = e.target.value.trim();
+                sPage = 1;
+                fetchAndRenderSeries();
+            }, 300);
+        });
+    }
+
+    if (seriesGenreSelect) {
+        seriesGenreSelect.addEventListener("change", (e) => {
+            sGenre = e.target.value;
+            sPage = 1;
+            fetchAndRenderSeries();
+        });
+    }
+
+    if (seriesSortSelect) {
+        seriesSortSelect.addEventListener("change", (e) => {
+            sSort = e.target.value;
+            sPage = 1;
+            fetchAndRenderSeries();
+        });
+    }
+
+    if (seriesPrevBtn) {
+        seriesPrevBtn.addEventListener("click", () => {
+            if (sPage > 1) {
+                sPage--;
+                fetchAndRenderSeries();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        });
+    }
+
+    if (seriesNextBtn) {
+        seriesNextBtn.addEventListener("click", () => {
+            sPage++;
+            fetchAndRenderSeries();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    fetchAndRenderSeries();
+}
+
+/* SERIES DETAILS PAGE INTEGRATION */
+async function initSeriesDetailPage() {
+    const mainContainer = document.getElementById("seriesDetailPage");
+    if (!mainContainer) return;
+
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const seriesId = pathParts[pathParts.length - 1];
+
+    if (!seriesId || seriesId === "series") {
+        mainContainer.innerHTML = `<div class="error-state" style="padding: 120px 20px;">
+            <h2>Series Not Specified</h2>
+            <p style="margin-top: 10px;"><a href="/series" class="btn-back-secondary">Return to Series Catalogue</a></p>
+        </div>`;
+        return;
+    }
+
+    try {
+        const res = await fetch(`/api/series/${seriesId}`);
+        if (!res.ok) throw new Error("Series not found");
+        const series = await res.json();
+
+        document.title = `${series.title} — SanyuHub Series`;
+
+        const backdropUrl = series.backdropUrl || series.posterUrl;
+        const backdropStyle = backdropUrl ? `style="background-image: url('${backdropUrl}');"` : '';
+
+        const posterImageHtml = series.posterUrl
+            ? `<img src="${series.posterUrl}" alt="${series.title}" onerror="this.parentElement.innerHTML='<div class=\\'poster-unavailable-fallback\\'><div class=\\'poster-unavailable-icon\\'>&#127916;</div><div class=\\'poster-unavailable-text\\'>${series.title.replace(/'/g, "&apos;")}</div><div class=\\'poster-unavailable-sub\\'>Poster Unavailable</div></div>'">`
+            : `<div class="poster-unavailable-fallback"><div class="poster-unavailable-icon">&#127916;</div><div class="poster-unavailable-text">${series.title}</div><div class="poster-unavailable-sub">Poster Unavailable</div></div>`;
+
+        const genreBadges = (series.genres && series.genres.length > 0)
+            ? series.genres.map(g => `<span class="series-badge" style="background:#333;">${g}</span>`).join(" ")
+            : `<span class="series-badge" style="background:#333;">Drama</span>`;
+
+        let seasonsTabsHtml = "";
+        if (series.seasons && series.seasons.length > 0) {
+            seasonsTabsHtml = series.seasons.map((sec, idx) => `
+                <button class="season-tab ${idx === 0 ? 'active' : ''}" data-season="${sec.seasonNumber}">
+                    ${sec.name} (${sec.episodeCount} EP)
+                </button>
+            `).join("");
+        }
+
+        mainContainer.innerHTML = `
+            <div class="series-hero" ${backdropStyle}>
+                <div class="series-hero-content">
+                    <div class="series-poster-box">
+                        ${posterImageHtml}
+                    </div>
+                    <div class="series-info-box">
+                        <h1 class="series-title-text">${series.title}</h1>
+                        <div class="series-badge-row">
+                            <span class="series-badge">${series.quality || 'HD'}</span>
+                            <span>${series.vj || 'Luganda'}</span>
+                            ${series.year ? `<span>• ${series.year}</span>` : ''}
+                            <span>• ${series.totalSeasons || 1} Season${(series.totalSeasons || 1) > 1 ? 's' : ''}</span>
+                            <span>• ${series.totalEpisodes || 1} Episodes</span>
+                        </div>
+                        <div class="series-badge-row">
+                            ${genreBadges}
+                        </div>
+                        <p class="series-overview-text">
+                            ${series.overview || `Watch full seasons of <strong>${series.title}</strong> translated in Luganda by <strong>${series.vj}</strong> on SanyuHub.`}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h2 style="font-size: 1.4rem; color: #fff; margin-bottom: 16px;">Seasons & Episodes</h2>
+                <div class="season-tabs" id="seasonTabsContainer">
+                    ${seasonsTabsHtml}
+                </div>
+                <div class="episodes-grid" id="episodesGridContainer">
+                    <!-- Episodes rendered via JS -->
+                </div>
+            </div>
+        `;
+
+        function renderEpisodesForSeason(seasonNum) {
+            const grid = document.getElementById("episodesGridContainer");
+            if (!grid) return;
+
+            const seasonData = series.seasons.find(s => s.seasonNumber === seasonNum) || series.seasons[0];
+            const eps = seasonData ? seasonData.episodes : (series.episodes || []);
+
+            if (eps.length === 0) {
+                grid.innerHTML = `<div class="loading-state">No episodes found for Season ${seasonNum}.</div>`;
+                return;
+            }
+
+            grid.innerHTML = "";
+            eps.forEach(ep => {
+                const card = document.createElement("div");
+                card.className = "episode-card";
+                card.innerHTML = `
+                    <div>
+                        <div class="episode-title">Episode ${ep.episode}: ${ep.title}</div>
+                        <div class="episode-meta">${ep.vj || 'Luganda'} • ${ep.quality || 'HD'} • ${(ep.format || 'mp4').toUpperCase()}</div>
+                    </div>
+                    <a href="/series/watch/${ep.id}" class="btn-play-episode">&#9654; Watch Episode</a>
+                `;
+                card.addEventListener("click", (e) => {
+                    if (!e.target.classList.contains("btn-play-episode")) {
+                        window.location.href = `/series/watch/${ep.id}`;
+                    }
+                });
+                grid.appendChild(card);
+            });
+        }
+
+        const tabsContainer = document.getElementById("seasonTabsContainer");
+        if (tabsContainer) {
+            tabsContainer.querySelectorAll(".season-tab").forEach(tab => {
+                tab.addEventListener("click", () => {
+                    tabsContainer.querySelectorAll(".season-tab").forEach(t => t.classList.remove("active"));
+                    tab.classList.add("active");
+                    const sNum = parseInt(tab.getAttribute("data-season"), 10);
+                    renderEpisodesForSeason(sNum);
+                });
+            });
+        }
+
+        // Default render first season
+        const initialSeason = (series.seasons && series.seasons.length > 0) ? series.seasons[0].seasonNumber : 1;
+        renderEpisodesForSeason(initialSeason);
+
+    } catch (err) {
+        console.error("Failed to load series details:", err);
+        mainContainer.innerHTML = `
+            <div class="error-state" style="padding: 120px 20px;">
+                <h2>Series Not Found</h2>
+                <p style="margin-top: 10px; color: #888;">The series record you requested could not be found.</p>
+                <p style="margin-top: 20px;"><a href="/series" class="btn-back-secondary">Return to Series Catalogue</a></p>
+            </div>
+        `;
+    }
+}
+
+/* SERIES WATCH PAGE INTEGRATION */
+async function initSeriesWatchPage() {
+    const watchPage = document.getElementById("seriesWatchPage");
+    if (!watchPage) return;
+
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const episodeId = pathParts[pathParts.length - 1];
+
+    const titleEl = document.getElementById("seriesEpWatchTitle");
+    const metaEl = document.getElementById("seriesEpWatchMeta");
+    const backBtn = document.getElementById("backToSeriesDetailBtn");
+    const player = document.getElementById("seriesEpisodePlayer");
+    const statusText = document.getElementById("seriesPlayerStatusText");
+    const selectorBar = document.getElementById("episodeSelectorBar");
+
+    if (!episodeId || episodeId === "watch") {
+        if (titleEl) titleEl.textContent = "Episode Stream Not Found";
+        if (statusText) statusText.textContent = "No valid episode ID provided.";
+        return;
+    }
+
+    try {
+        // Fetch series catalogue to locate current episode and parent series details
+        const seriesListRes = await fetch("/api/series?limit=100");
+        if (!seriesListRes.ok) throw new Error("Failed to fetch series list");
+        const seriesData = await seriesListRes.json();
+        const allSeries = seriesData.series || [];
+
+        let parentSeries = null;
+        let currentEpisode = null;
+
+        for (const s of allSeries) {
+            const epMatch = s.episodes.find(e => e.id === episodeId);
+            if (epMatch) {
+                parentSeries = s;
+                currentEpisode = epMatch;
+                break;
+            }
+        }
+
+        if (!currentEpisode) {
+            throw new Error("Episode record not found in series catalogue");
+        }
+
+        document.title = `Watching ${parentSeries.title} S${currentEpisode.season}E${currentEpisode.episode} — SanyuHub`;
+
+        if (titleEl) titleEl.textContent = `${parentSeries.title} — Season ${currentEpisode.season} Episode ${currentEpisode.episode}`;
+        if (metaEl) metaEl.textContent = `${currentEpisode.vj || 'Luganda'} • ${currentEpisode.quality || 'HD'} • ${(currentEpisode.format || 'mp4').toUpperCase()}`;
+        if (backBtn) backBtn.href = `/series/${parentSeries.id}`;
+
+        // Update Metadata Grid
+        const vjVal = document.getElementById("seriesWatchVjVal");
+        const qualVal = document.getElementById("seriesWatchQualityVal");
+        const fmtVal = document.getElementById("seriesWatchFormatVal");
+        const catVal = document.getElementById("seriesWatchCategoryVal");
+        if (vjVal) vjVal.textContent = currentEpisode.vj || "Luganda VJ";
+        if (qualVal) qualVal.textContent = currentEpisode.quality || "HD";
+        if (fmtVal) fmtVal.textContent = (currentEpisode.format || "mp4").toUpperCase();
+        if (catVal) catVal.textContent = parentSeries.category || "Luganda Series";
+
+        // Episode selector bar
+        if (selectorBar && parentSeries.episodes) {
+            selectorBar.innerHTML = "";
+            parentSeries.episodes.forEach(ep => {
+                const btn = document.createElement("a");
+                btn.className = "ep-nav-btn" + (ep.id === currentEpisode.id ? " active" : "");
+                btn.href = `/series/watch/${ep.id}`;
+                btn.textContent = `S${ep.season} E${ep.episode}`;
+                selectorBar.appendChild(btn);
+            });
+        }
+
+        // Video Player setup
+        if (player && currentEpisode.mediaUrl) {
+            player.src = currentEpisode.mediaUrl;
+            player.style.display = "block";
+            if (statusText) statusText.style.display = "none";
+
+            player.onerror = function() {
+                if (statusText) {
+                    statusText.style.display = "block";
+                    statusText.innerHTML = '<span style="color:#e57373;">Episode media stream is currently unavailable or offline.</span>';
+                }
+            };
+        } else if (statusText) {
+            statusText.innerHTML = '<span style="color:#e57373;">No playback stream URL configured for this episode.</span>';
+        }
+
+        // Save to Continue Watching LocalStorage
+        saveToContinueWatching({
+            id: currentEpisode.id,
+            title: `${parentSeries.title} S${currentEpisode.season}E${currentEpisode.episode}`,
+            posterUrl: currentEpisode.posterUrl || parentSeries.posterUrl,
+            vj: currentEpisode.vj || parentSeries.vj,
+            quality: currentEpisode.quality || 'HD'
+        });
+
+    } catch (err) {
+        console.error("Failed to load series watch page:", err);
+        if (titleEl) titleEl.textContent = "Stream Unavailable";
+        if (statusText) {
+            statusText.style.display = "block";
+            statusText.innerHTML = '<span style="color:#e57373;">Unable to load episode stream. Record not found.</span>';
+        }
+    }
 }
 
 /* MOVIE DETAILS PAGE INTEGRATION */
@@ -1337,6 +1773,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initContinueWatching();
     initMovieDetailsPage();
     initWatchPage();
+    initSeriesDetailPage();
+    initSeriesWatchPage();
     initLiveTvCatalogue();
     initLiveTvWatchPage();
 });

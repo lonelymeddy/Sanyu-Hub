@@ -345,6 +345,20 @@ async function resolveTmdbArtwork(parsedMeta) {
   let backdropPath = bestMatch.backdrop_path;
   let status = (mediaType === 'tv' && contentType === 'episode') ? 'episode_parent_matched' : 'matched';
 
+  // Fetch full details from TMDB (overview, genres, cast, runtime, etc.)
+  const detailedInfo = await tmdbFetch(`${mediaType}/${bestMatch.id}`, { append_to_response: 'credits' });
+
+  let overview = bestMatch.overview || (detailedInfo ? detailedInfo.overview : null);
+  let voteAverage = bestMatch.vote_average || (detailedInfo ? detailedInfo.vote_average : null);
+  let popularity = bestMatch.popularity || (detailedInfo ? detailedInfo.popularity : null);
+  let genres = detailedInfo && detailedInfo.genres ? detailedInfo.genres.map(g => g.name) : [];
+  let cast = detailedInfo && detailedInfo.credits && detailedInfo.credits.cast ? detailedInfo.credits.cast.slice(0, 5).map(c => c.name) : [];
+  let runtime = detailedInfo ? (detailedInfo.runtime || (detailedInfo.episode_run_time ? detailedInfo.episode_run_time[0] : null)) : null;
+  let originalLanguage = bestMatch.original_language || (detailedInfo ? detailedInfo.original_language : null);
+  let releaseDate = bestMatch.release_date || bestMatch.first_air_date || (detailedInfo ? (detailedInfo.release_date || detailedInfo.first_air_date) : null);
+  let numberOfSeasons = detailedInfo ? detailedInfo.number_of_seasons : null;
+  let numberOfEpisodes = detailedInfo ? detailedInfo.number_of_episodes : null;
+
   // Check if episode specific still image is available
   if (mediaType === 'tv' && epInfo && epInfo.episode) {
     const seasonNum = epInfo.season || 1;
@@ -365,7 +379,17 @@ async function resolveTmdbArtwork(parsedMeta) {
     posterPath: posterPath,
     backdropPath: backdropPath,
     posterUrl: posterUrl,
-    backdropUrl: backdropUrl
+    backdropUrl: backdropUrl,
+    overview: overview,
+    voteAverage: voteAverage ? parseFloat(voteAverage.toFixed(1)) : null,
+    popularity: popularity ? parseFloat(popularity.toFixed(1)) : null,
+    genres: genres,
+    cast: cast,
+    runtime: runtime,
+    originalLanguage: originalLanguage,
+    releaseDate: releaseDate,
+    numberOfSeasons: numberOfSeasons,
+    numberOfEpisodes: numberOfEpisodes
   };
 }
 
@@ -385,10 +409,25 @@ function normalizeMovie(m) {
   let posterUrl = null;
   let backdropUrl = null;
   let tmdbMeta = null;
+  let overview = null;
+  let genres = [];
+  let cast = [];
+  let voteAverage = null;
+  let popularity = null;
+  let runtime = null;
+  let originalLanguage = null;
 
   if (cachedArtwork) {
     posterUrl = cachedArtwork.posterUrl;
     backdropUrl = cachedArtwork.backdropUrl;
+    overview = cachedArtwork.overview || null;
+    genres = cachedArtwork.genres || [];
+    cast = cachedArtwork.cast || [];
+    voteAverage = cachedArtwork.voteAverage || null;
+    popularity = cachedArtwork.popularity || null;
+    runtime = cachedArtwork.runtime || null;
+    originalLanguage = cachedArtwork.originalLanguage || null;
+
     tmdbMeta = {
       mediaType: cachedArtwork.mediaType,
       id: cachedArtwork.tmdbId,
@@ -405,11 +444,19 @@ function normalizeMovie(m) {
     id: stableId,
     title: parsedMeta.title,
     contentType: parsedMeta.contentType,
+    episodeInfo: parsedMeta.episodeInfo,
     year: parsedMeta.year,
     filename: m.name || '',
     mediaUrl: m.url || '',
     posterUrl: posterUrl,
     backdropUrl: backdropUrl,
+    overview: overview,
+    genres: genres,
+    cast: cast,
+    voteAverage: voteAverage,
+    popularity: popularity,
+    runtime: runtime,
+    originalLanguage: originalLanguage,
     tmdb: tmdbMeta,
     tmdbId: tmdbMeta ? tmdbMeta.id : null,
     quality: quality,
@@ -544,8 +591,126 @@ async function getCatalogue(forceRefresh = false) {
   }
 }
 
+/**
+ * Group catalogue episode items into structured Series objects with seasons and episode lists.
+ */
+async function getSeriesCatalogue(forceRefresh = false) {
+  const catalogue = await getCatalogue(forceRefresh);
+
+  // Filter episode and series items
+  const seriesItems = catalogue.filter(item => item.contentType === 'episode' || item.contentType === 'tv');
+
+  const seriesMap = new Map();
+
+  seriesItems.forEach(item => {
+    // Generate normalized series key based on title
+    const seriesTitle = item.title;
+    const seriesKey = seriesTitle.toLowerCase().trim();
+
+    if (!seriesMap.has(seriesKey)) {
+      seriesMap.set(seriesKey, {
+        id: crypto.createHash('sha256').update(seriesKey).digest('hex').slice(0, 16),
+        title: seriesTitle,
+        year: item.year,
+        vj: item.vj,
+        posterUrl: item.posterUrl,
+        backdropUrl: item.backdropUrl,
+        overview: item.overview,
+        genres: item.genres || [],
+        cast: item.cast || [],
+        voteAverage: item.voteAverage,
+        popularity: item.popularity,
+        tmdbId: item.tmdbId,
+        quality: item.quality,
+        category: item.category,
+        episodes: [],
+        seasonsMap: new Map()
+      });
+    }
+
+    const series = seriesMap.get(seriesKey);
+
+    // Keep best artwork / overview if missing initially
+    if (!series.posterUrl && item.posterUrl) series.posterUrl = item.posterUrl;
+    if (!series.backdropUrl && item.backdropUrl) series.backdropUrl = item.backdropUrl;
+    if (!series.overview && item.overview) series.overview = item.overview;
+    if ((!series.genres || series.genres.length === 0) && item.genres) series.genres = item.genres;
+    if ((!series.cast || series.cast.length === 0) && item.cast) series.cast = item.cast;
+    if (!series.voteAverage && item.voteAverage) series.voteAverage = item.voteAverage;
+
+    const epSeason = (item.episodeInfo && item.episodeInfo.season) ? item.episodeInfo.season : 1;
+    const epNumber = (item.episodeInfo && item.episodeInfo.episode) ? item.episodeInfo.episode : (series.episodes.length + 1);
+
+    const episodeObj = {
+      id: item.id,
+      title: item.title,
+      filename: item.filename,
+      season: epSeason,
+      episode: epNumber,
+      mediaUrl: item.mediaUrl,
+      quality: item.quality,
+      format: item.format,
+      vj: item.vj,
+      dateAdded: item.dateAdded,
+      posterUrl: item.posterUrl || series.posterUrl,
+      backdropUrl: item.backdropUrl || series.backdropUrl
+    };
+
+    series.episodes.push(episodeObj);
+
+    if (!series.seasonsMap.has(epSeason)) {
+      series.seasonsMap.set(epSeason, []);
+    }
+    series.seasonsMap.get(epSeason).push(episodeObj);
+  });
+
+  // Convert seriesMap to array and format seasons
+  const seriesList = Array.from(seriesMap.values()).map(s => {
+    const seasons = Array.from(s.seasonsMap.entries()).map(([seasonNum, eps]) => {
+      // Sort episodes by episode number
+      eps.sort((a, b) => a.episode - b.episode);
+      return {
+        seasonNumber: seasonNum,
+        name: `Season ${seasonNum}`,
+        episodeCount: eps.length,
+        episodes: eps
+      };
+    });
+
+    seasons.sort((a, b) => a.seasonNumber - b.seasonNumber);
+    s.episodes.sort((a, b) => {
+      if (a.season !== b.season) return a.season - b.season;
+      return a.episode - b.episode;
+    });
+
+    return {
+      id: s.id,
+      title: s.title,
+      year: s.year,
+      vj: s.vj,
+      posterUrl: s.posterUrl,
+      backdropUrl: s.backdropUrl,
+      overview: s.overview,
+      genres: s.genres,
+      cast: s.cast,
+      voteAverage: s.voteAverage,
+      popularity: s.popularity,
+      tmdbId: s.tmdbId,
+      quality: s.quality,
+      category: s.category,
+      totalSeasons: seasons.length,
+      totalEpisodes: s.episodes.length,
+      seasons: seasons,
+      episodes: s.episodes
+    };
+  });
+
+  return seriesList;
+}
+
 module.exports = {
   getCatalogue,
+  getSeriesCatalogue,
   normalizeMovie,
   resolveTmdbArtwork,
   normalizeTitleAndMetadata,
