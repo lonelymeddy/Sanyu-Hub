@@ -318,6 +318,385 @@ function createTrendingCard(movie, rank) {
     return card;
 }
 
+/* LIVE TV INTEGRATION */
+
+const LIVE_TV_CHANNELS = [
+    {
+        id: "ntv-uganda",
+        name: "NTV Uganda",
+        category: "news",
+        categoryLabel: "News & General",
+        logo: "/images/ntv-logo.jpg",
+        streamType: "hls",
+        streamUrl: "https://ams-2629.antmedia.cloud/LiveApp/streams/abul2026.m3u8",
+        embedUrl: "https://ams-2629.antmedia.cloud/LiveApp/play.html?id=abul2026",
+        meta: "Official Live Broadcast • HD • News & Shows",
+        description: "NTV Uganda brings you live breaking news, current affairs, talk shows, and top Ugandan entertainment."
+    },
+    {
+        id: "spark-tv",
+        name: "Spark TV",
+        category: "entertainment",
+        categoryLabel: "Entertainment & Lifestyle",
+        logo: "/images/spark-logo.png",
+        streamType: "hls",
+        streamUrl: "https://ams-2629.antmedia.cloud/LiveApp/streams/spark2026.m3u8",
+        embedUrl: "https://ams-2629.antmedia.cloud/LiveApp/play.html?id=spark2026",
+        meta: "Official Live Broadcast • HD • Movies & Lifestyle",
+        description: "Spark TV Uganda is your home for celebrity gossip, music, local drama series, and women lifestyle programming."
+    }
+];
+
+let currentHlsInstance = null;
+let currentActiveChannel = null;
+
+function initLiveTvPage() {
+    const cardGrid = document.getElementById("channelCardGrid");
+    const videoPlayer = document.getElementById("liveVideoPlayer");
+    const iframePlayer = document.getElementById("liveIframePlayer");
+    const loadingOverlay = document.getElementById("liveLoadingOverlay");
+    const errorOverlay = document.getElementById("liveErrorOverlay");
+    const errorMsg = document.getElementById("liveErrorMsg");
+    const retryBtn = document.getElementById("liveRetryBtn");
+
+    const activeLogo = document.getElementById("activeChannelLogo");
+    const activeName = document.getElementById("activeChannelName");
+    const activeMeta = document.getElementById("activeChannelMeta");
+
+    const ctrlPlayPause = document.getElementById("ctrlPlayPauseBtn");
+    const ctrlMute = document.getElementById("ctrlMuteBtn");
+    const ctrlVolume = document.getElementById("ctrlVolumeSlider");
+    const ctrlFullscreen = document.getElementById("ctrlFullscreenBtn");
+    const ctrlQuality = document.getElementById("ctrlQualitySelect");
+    const videoWrapper = document.getElementById("liveVideoWrapper");
+
+    if (!cardGrid || !videoPlayer) return;
+
+    // Render channel cards
+    function renderChannelCards(filter = "all") {
+        cardGrid.innerHTML = "";
+        const filtered = LIVE_TV_CHANNELS.filter(ch => filter === "all" || ch.category === filter);
+
+        filtered.forEach(ch => {
+            const card = document.createElement("article");
+            card.className = "channel-card" + (currentActiveChannel && currentActiveChannel.id === ch.id ? " active" : "");
+            card.setAttribute("data-channel-id", ch.id);
+
+            card.innerHTML = `
+                <div class="channel-thumb">
+                    <img src="${ch.logo}" alt="${ch.name}">
+                    <span class="live-badge" style="position: absolute; top: 10px; left: 10px;">LIVE</span>
+                </div>
+                <div class="channel-info">
+                    <div class="channel-header-row">
+                        <div class="channel-name">${ch.name}</div>
+                        <div class="channel-category">${ch.categoryLabel}</div>
+                    </div>
+                    <div class="card-meta">${ch.meta}</div>
+                    <div class="channel-action">
+                        <button class="btn-watch">${currentActiveChannel && currentActiveChannel.id === ch.id ? 'Now Playing' : 'Watch Live'}</button>
+                    </div>
+                </div>
+            `;
+
+            card.addEventListener("click", () => {
+                selectChannel(ch);
+            });
+
+            cardGrid.appendChild(card);
+        });
+    }
+
+    // Channel category filters
+    const categoryFiltersContainer = document.getElementById("channelCategoryFilters");
+    if (categoryFiltersContainer) {
+        categoryFiltersContainer.querySelectorAll(".category").forEach(btn => {
+            btn.addEventListener("click", () => {
+                categoryFiltersContainer.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                const filter = btn.getAttribute("data-filter") || "all";
+                renderChannelCards(filter);
+            });
+        });
+    }
+
+    // Clean up current stream instance
+    function stopCurrentPlayback() {
+        if (currentHlsInstance) {
+            currentHlsInstance.destroy();
+            currentHlsInstance = null;
+        }
+
+        if (videoPlayer) {
+            videoPlayer.pause();
+            videoPlayer.removeAttribute("src");
+            videoPlayer.load();
+        }
+
+        if (iframePlayer) {
+            iframePlayer.style.display = "none";
+            iframePlayer.removeAttribute("src");
+        }
+
+        if (ctrlQuality) {
+            ctrlQuality.style.display = "none";
+            ctrlQuality.innerHTML = '<option value="auto">Auto Quality</option>';
+        }
+    }
+
+    // Select and load a channel
+    function selectChannel(channel) {
+        if (!channel) return;
+
+        stopCurrentPlayback();
+        currentActiveChannel = channel;
+
+        // Update active header UI
+        if (activeLogo) activeLogo.src = channel.logo;
+        if (activeName) activeName.textContent = channel.name;
+        if (activeMeta) activeMeta.textContent = channel.meta;
+
+        // Hide overlays
+        if (errorOverlay) errorOverlay.style.display = "none";
+        if (loadingOverlay) loadingOverlay.style.display = "flex";
+
+        // Update channel cards active state
+        document.querySelectorAll(".channel-card").forEach(c => {
+            const cid = c.getAttribute("data-channel-id");
+            if (cid === channel.id) {
+                c.classList.add("active");
+                const btn = c.querySelector(".btn-watch");
+                if (btn) btn.textContent = "Now Playing";
+            } else {
+                c.classList.remove("active");
+                const btn = c.querySelector(".btn-watch");
+                if (btn) btn.textContent = "Watch Live";
+            }
+        });
+
+        // Initialize playback
+        loadChannelStream(channel);
+    }
+
+    function loadChannelStream(channel) {
+        const streamUrl = channel.streamUrl;
+
+        // Check Native HLS support first (e.g. Safari / iOS)
+        if (videoPlayer.canPlayType("application/vnd.apple.mpegurl")) {
+            videoPlayer.style.display = "block";
+            if (iframePlayer) iframePlayer.style.display = "none";
+
+            videoPlayer.src = streamUrl;
+            videoPlayer.play().then(() => {
+                if (loadingOverlay) loadingOverlay.style.display = "none";
+                updatePlayPauseBtnUI(true);
+            }).catch(err => {
+                console.warn("Autoplay muted fallback:", err);
+                videoPlayer.muted = true;
+                if (ctrlMute) ctrlMute.innerHTML = "&#128069;"; // Muted icon
+                videoPlayer.play().then(() => {
+                    if (loadingOverlay) loadingOverlay.style.display = "none";
+                    updatePlayPauseBtnUI(true);
+                }).catch(e => {
+                    if (loadingOverlay) loadingOverlay.style.display = "none";
+                    showPlaybackError("Click Play to start watching " + channel.name);
+                });
+            });
+
+        // Use HLS.js if available
+        } else if (window.Hls && Hls.isSupported()) {
+            videoPlayer.style.display = "block";
+            if (iframePlayer) iframePlayer.style.display = "none";
+
+            const hls = new Hls({
+                enableWorker: true,
+                lowLatencyMode: true,
+                backBufferLength: 90
+            });
+
+            currentHlsInstance = hls;
+            hls.loadSource(streamUrl);
+            hls.attachMedia(videoPlayer);
+
+            hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+                if (loadingOverlay) loadingOverlay.style.display = "none";
+
+                // Setup quality levels
+                if (ctrlQuality && data.levels && data.levels.length > 1) {
+                    ctrlQuality.style.display = "inline-block";
+                    ctrlQuality.innerHTML = '<option value="-1">Auto Quality</option>';
+                    data.levels.forEach((level, index) => {
+                        const opt = document.createElement("option");
+                        opt.value = index;
+                        opt.textContent = `${level.height}p (${Math.round(level.bitrate / 1000)} kbps)`;
+                        ctrlQuality.appendChild(opt);
+                    });
+                }
+
+                videoPlayer.play().then(() => {
+                    updatePlayPauseBtnUI(true);
+                }).catch(err => {
+                    videoPlayer.muted = true;
+                    if (ctrlMute) ctrlMute.innerHTML = "&#128069;";
+                    videoPlayer.play().then(() => {
+                        updatePlayPauseBtnUI(true);
+                    }).catch(e => {
+                        showPlaybackError("Press Play to begin broadcast.");
+                    });
+                });
+            });
+
+            hls.on(Hls.Events.ERROR, (event, data) => {
+                if (data.fatal) {
+                    console.error("Fatal HLS error encountered:", data.type);
+                    switch (data.type) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            hls.startLoad();
+                            break;
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            hls.recoverMediaError();
+                            break;
+                        default:
+                            fallbackToIframeEmbed(channel);
+                            break;
+                    }
+                }
+            });
+
+        } else if (channel.embedUrl) {
+            fallbackToIframeEmbed(channel);
+        } else {
+            showPlaybackError("HLS live streaming is not supported on this browser.");
+        }
+    }
+
+    function fallbackToIframeEmbed(channel) {
+        if (!iframePlayer || !channel.embedUrl) {
+            showPlaybackError("Live stream unavailable for " + channel.name);
+            return;
+        }
+
+        stopCurrentPlayback();
+        videoPlayer.style.display = "none";
+        iframePlayer.style.display = "block";
+        iframePlayer.src = channel.embedUrl;
+
+        if (loadingOverlay) loadingOverlay.style.display = "none";
+        if (errorOverlay) errorOverlay.style.display = "none";
+    }
+
+    function showPlaybackError(message) {
+        if (loadingOverlay) loadingOverlay.style.display = "none";
+        if (errorOverlay) {
+            errorOverlay.style.display = "flex";
+            if (errorMsg) errorMsg.textContent = message || "Stream connection failed.";
+        }
+    }
+
+    function updatePlayPauseBtnUI(isPlaying) {
+        if (ctrlPlayPause) {
+            ctrlPlayPause.innerHTML = isPlaying ? "&#10074;&#10074;" : "&#9654;";
+        }
+    }
+
+    // Video Event Listeners
+    videoPlayer.addEventListener("playing", () => {
+        if (loadingOverlay) loadingOverlay.style.display = "none";
+        if (errorOverlay) errorOverlay.style.display = "none";
+        updatePlayPauseBtnUI(true);
+    });
+
+    videoPlayer.addEventListener("pause", () => {
+        updatePlayPauseBtnUI(false);
+    });
+
+    videoPlayer.addEventListener("waiting", () => {
+        if (loadingOverlay) loadingOverlay.style.display = "flex";
+    });
+
+    videoPlayer.addEventListener("error", () => {
+        if (currentActiveChannel) {
+            fallbackToIframeEmbed(currentActiveChannel);
+        } else {
+            showPlaybackError("An error occurred while loading the video stream.");
+        }
+    });
+
+    // Custom Controls Event Handlers
+    if (ctrlPlayPause) {
+        ctrlPlayPause.addEventListener("click", () => {
+            if (videoPlayer.paused) {
+                videoPlayer.play().catch(e => {
+                    console.error("Play error:", e);
+                });
+            } else {
+                videoPlayer.pause();
+            }
+        });
+    }
+
+    if (ctrlMute) {
+        ctrlMute.addEventListener("click", () => {
+            videoPlayer.muted = !videoPlayer.muted;
+            if (videoPlayer.muted) {
+                ctrlMute.innerHTML = "&#128069;"; // Muted
+                if (ctrlVolume) ctrlVolume.value = 0;
+            } else {
+                ctrlMute.innerHTML = "&#128067;"; // Sound
+                if (ctrlVolume) ctrlVolume.value = videoPlayer.volume || 1;
+            }
+        });
+    }
+
+    if (ctrlVolume) {
+        ctrlVolume.addEventListener("input", (e) => {
+            const val = parseFloat(e.target.value);
+            videoPlayer.volume = val;
+            videoPlayer.muted = (val === 0);
+            if (ctrlMute) {
+                ctrlMute.innerHTML = (val === 0) ? "&#128069;" : "&#128067;";
+            }
+        });
+    }
+
+    if (ctrlFullscreen) {
+        ctrlFullscreen.addEventListener("click", () => {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else if (videoWrapper.requestFullscreen) {
+                videoWrapper.requestFullscreen();
+            } else if (videoPlayer.webkitEnterFullscreen) {
+                videoPlayer.webkitEnterFullscreen(); // Safari iOS
+            }
+        });
+    }
+
+    if (ctrlQuality) {
+        ctrlQuality.addEventListener("change", (e) => {
+            if (currentHlsInstance) {
+                currentHlsInstance.currentLevel = parseInt(e.target.value, 10);
+            }
+        });
+    }
+
+    if (retryBtn) {
+        retryBtn.addEventListener("click", () => {
+            if (currentActiveChannel) {
+                selectChannel(currentActiveChannel);
+            }
+        });
+    }
+
+    // Clean up on page unload
+    window.addEventListener("beforeunload", () => {
+        stopCurrentPlayback();
+    });
+
+    // Initial render & select first channel (NTV Uganda)
+    renderChannelCards("all");
+    selectChannel(LIVE_TV_CHANNELS[0]);
+}
+
 /* HOMEPAGE DYNAMIC INTEGRATION */
 async function initHomePage() {
     const trendingGrid = document.getElementById("trendingGrid");
@@ -824,4 +1203,5 @@ document.addEventListener("DOMContentLoaded", () => {
     initContinueWatching();
     initMovieDetailsPage();
     initWatchPage();
+    initLiveTvPage();
 });
