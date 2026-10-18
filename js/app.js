@@ -344,6 +344,54 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://ams-2629.antmedia.cloud/LiveApp/play.html?id=spark2026",
         meta: "Official Live Broadcast • HD • Movies & Lifestyle",
         description: "Spark TV Uganda is your home for celebrity gossip, music, local drama series, and women lifestyle programming."
+    },
+    {
+        id: "bukedde-1",
+        name: "Bukedde 1",
+        category: "news",
+        categoryLabel: "Luganda & News",
+        logo: "/images/bukedde1-logo.png",
+        streamType: "hls",
+        streamUrl: "https://stream.hydeinnovations.com:443/bukedde1flussonic/index.m3u8",
+        embedUrl: "https://www.bukedde.co.ug/tv/4",
+        meta: "Official Live Broadcast • HD • Luganda News & Shows",
+        description: "Bukedde 1 TV delivers top Luganda news, live events, traditional culture, and family entertainment across Uganda."
+    },
+    {
+        id: "bukedde-2",
+        name: "Bukedde 2",
+        category: "entertainment",
+        categoryLabel: "Music & Sports",
+        logo: "/images/bukedde2-logo.jpg",
+        streamType: "hls",
+        streamUrl: "https://stream.hydeinnovations.com:443/bukedde2flussonic/index.m3u8",
+        embedUrl: "https://www.bukedde.co.ug/tv/5",
+        meta: "Official Live Broadcast • HD • Music & Sports",
+        description: "Bukedde 2 offers vibrant Luganda music programming, sports coverage, and youth entertainment."
+    },
+    {
+        id: "tv-west",
+        name: "TV West",
+        category: "news",
+        categoryLabel: "Western Region & News",
+        logo: "/images/tvwest-logo.jpg",
+        streamType: "hls",
+        streamUrl: "https://stream.hydeinnovations.com:443/tvwest-flussonic/index.m3u8",
+        embedUrl: "https://www.bukedde.co.ug/tv/6",
+        meta: "Official Live Broadcast • HD • Runyankole & News",
+        description: "TV West is the leading television station for Western Uganda, broadcasting local news, culture, and entertainment in Runyankole."
+    },
+    {
+        id: "wan-luo",
+        name: "Wan Luo TV",
+        category: "entertainment",
+        categoryLabel: "Luo Culture & Shows",
+        logo: "/images/wanluo-logo.jpg",
+        streamType: "hls",
+        streamUrl: "https://stream.hydeinnovations.com:443/luotv-flussonic/index.m3u8",
+        embedUrl: "https://www.bukedde.co.ug/tv",
+        meta: "Official Live Broadcast • HD • Luo Language & Shows",
+        description: "Wan Luo TV is the premier Luo-language television channel broadcasting cultural programming, music, and news for Northern Uganda."
     }
 ];
 
