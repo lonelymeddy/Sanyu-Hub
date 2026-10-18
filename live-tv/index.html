@@ -7,6 +7,7 @@
 <meta name="description" content="SanyuHub — Live TV Channels">
 <title>Live TV Channels — SanyuHub</title>
 <link rel="stylesheet" href="/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
 
@@ -98,119 +99,77 @@ Live TV
 </div>
 </header>
 
+<section class="live-player-section" id="liveTvPlayerSection">
+<div class="live-player-container">
+  <!-- Active Channel Header -->
+  <div class="active-channel-header" id="activeChannelHeader">
+    <div class="active-channel-info">
+      <img id="activeChannelLogo" src="/images/ntv-logo.jpg" alt="Active Channel Logo" class="active-channel-logo">
+      <div>
+        <div class="active-channel-title-row">
+          <h2 id="activeChannelName" class="active-channel-name">NTV Uganda</h2>
+          <span class="live-status-pill" id="liveStatusPill"><span class="live-dot"></span> LIVE</span>
+        </div>
+        <div class="active-channel-meta" id="activeChannelMeta">Official Live Stream • HD • News & Entertainment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Player Box -->
+  <div class="live-video-wrapper" id="liveVideoWrapper">
+    <video id="liveVideoPlayer" class="live-video-player" playsinline preload="auto"></video>
+    <iframe id="liveIframePlayer" class="live-iframe-player" style="display:none;" allow="autoplay; fullscreen" frameborder="0"></iframe>
+
+    <!-- Loading Indicator Overlay -->
+    <div class="live-loading-overlay" id="liveLoadingOverlay">
+      <div class="spinner"></div>
+      <div class="loading-text" id="liveLoadingText">Connecting to live broadcast...</div>
+    </div>
+
+    <!-- Error State Overlay -->
+    <div class="live-error-overlay" id="liveErrorOverlay" style="display:none;">
+      <div class="error-icon">&#9888;</div>
+      <div class="error-title">Stream Unavailable</div>
+      <div class="error-msg" id="liveErrorMsg">The live broadcast is temporarily unreachable.</div>
+      <button class="btn-retry" id="liveRetryBtn">&#8635; Retry Connection</button>
+    </div>
+
+    <!-- Video Custom Controls Bar -->
+    <div class="live-controls-bar" id="liveControlsBar">
+      <div class="controls-left">
+        <button class="ctrl-btn" id="ctrlPlayPauseBtn" aria-label="Play/Pause">&#9654;</button>
+        <div class="volume-container">
+          <button class="ctrl-btn" id="ctrlMuteBtn" aria-label="Mute/Unmute">&#128067;</button>
+          <input type="range" id="ctrlVolumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="1">
+        </div>
+        <span class="live-indicator-tag"><span class="live-dot"></span> LIVE</span>
+      </div>
+
+      <div class="controls-right">
+        <select id="ctrlQualitySelect" class="quality-select" aria-label="Stream Quality" style="display:none;">
+          <option value="auto">Auto Quality</option>
+        </select>
+        <button class="ctrl-btn" id="ctrlFullscreenBtn" aria-label="Fullscreen">&#9974;</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
 <section class="section">
-<div class="categories" style="margin-bottom: 24px;">
-<button class="category active">All Channels</button>
-<button class="category">Entertainment</button>
-<button class="category">News</button>
-<button class="category">Music</button>
-<button class="category">Sports</button>
+<div class="section-heading">
+  <h2 class="section-title">Select Channel</h2>
+</div>
+<div class="categories" id="channelCategoryFilters" style="margin-bottom: 24px;">
+<button class="category active" data-filter="all">All Channels</button>
+<button class="category" data-filter="news">News</button>
+<button class="category" data-filter="entertainment">Entertainment</button>
+<button class="category" data-filter="music">Music</button>
+<button class="category" data-filter="sports">Sports</button>
 </div>
 
-<div class="channel-card-grid">
-
-<article class="channel-card">
-<div class="channel-thumb">
-<img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1000&q=80" alt="Live Channel 1">
-<span class="live-badge" style="position: absolute; top: 10px; left: 10px;">LIVE</span>
-</div>
-<div class="channel-info">
-<div class="channel-header-row">
-<div class="channel-name">Sanyu Main TV</div>
-<div class="channel-category">General</div>
-</div>
-<div class="card-meta">Live Broadcast • HD</div>
-<div class="channel-action">
-<button class="btn-watch">Watch Live</button>
-</div>
-</div>
-</article>
-
-<article class="channel-card">
-<div class="channel-thumb">
-<img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=1000&q=80" alt="Live Channel 2">
-<span class="live-badge" style="position: absolute; top: 10px; left: 10px;">LIVE</span>
-</div>
-<div class="channel-info">
-<div class="channel-header-row">
-<div class="channel-name">Entertainment One</div>
-<div class="channel-category">Entertainment</div>
-</div>
-<div class="card-meta">Live Shows • HD</div>
-<div class="channel-action">
-<button class="btn-watch">Watch Live</button>
-</div>
-</div>
-</article>
-
-<article class="channel-card">
-<div class="channel-thumb">
-<img src="https://images.unsplash.com/photo-1586899028174-e7098604235b?auto=format&fit=crop&w=1000&q=80" alt="Live Channel 3">
-<span class="live-badge" style="position: absolute; top: 10px; left: 10px;">LIVE</span>
-</div>
-<div class="channel-info">
-<div class="channel-header-row">
-<div class="channel-name">Urban Beats TV</div>
-<div class="channel-category">Music</div>
-</div>
-<div class="card-meta">Music & Culture • HD</div>
-<div class="channel-action">
-<button class="btn-watch">Watch Live</button>
-</div>
-</div>
-</article>
-
-<article class="channel-card">
-<div class="channel-thumb">
-<img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1000&q=80" alt="Live Channel 4">
-<span class="live-badge" style="position: absolute; top: 10px; left: 10px;">LIVE</span>
-</div>
-<div class="channel-info">
-<div class="channel-header-row">
-<div class="channel-name">Sanyu News 24</div>
-<div class="channel-category">News</div>
-</div>
-<div class="card-meta">Breaking News • Live</div>
-<div class="channel-action">
-<button class="btn-watch">Watch Live</button>
-</div>
-</div>
-</article>
-
-<article class="channel-card">
-<div class="channel-thumb">
-<img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1000&q=80" alt="Live Channel 5">
-<span class="live-badge" style="position: absolute; top: 10px; left: 10px;">LIVE</span>
-</div>
-<div class="channel-info">
-<div class="channel-header-row">
-<div class="channel-name">Sports Arena</div>
-<div class="channel-category">Sports</div>
-</div>
-<div class="card-meta">Live Matches • HD</div>
-<div class="channel-action">
-<button class="btn-watch">Watch Live</button>
-</div>
-</div>
-</article>
-
-<article class="channel-card">
-<div class="channel-thumb">
-<img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&q=80" alt="Live Channel 6">
-<span class="live-badge" style="position: absolute; top: 10px; left: 10px;">LIVE</span>
-</div>
-<div class="channel-info">
-<div class="channel-header-row">
-<div class="channel-name">Pearl Cinema Live</div>
-<div class="channel-category">Movies</div>
-</div>
-<div class="card-meta">24/7 Ugandan Movies</div>
-<div class="channel-action">
-<button class="btn-watch">Watch Live</button>
-</div>
-</div>
-</article>
-
+<div class="channel-card-grid" id="channelCardGrid">
+  <!-- Dynamic channel cards will be loaded here -->
 </div>
 </section>
 

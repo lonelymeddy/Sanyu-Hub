@@ -692,9 +692,14 @@ function initLiveTvPage() {
         stopCurrentPlayback();
     });
 
-    // Initial render & select first channel (NTV Uganda)
+    // Initial render & select requested or default channel
     renderChannelCards("all");
-    selectChannel(LIVE_TV_CHANNELS[0]);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestedChannelId = urlParams.get("channel");
+    const initialChannel = LIVE_TV_CHANNELS.find(ch => ch.id === requestedChannelId) || LIVE_TV_CHANNELS[0];
+
+    selectChannel(initialChannel);
 }
 
 /* HOMEPAGE DYNAMIC INTEGRATION */
