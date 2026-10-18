@@ -442,6 +442,18 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://bbstv.ug/live/",
         meta: "Official Live Broadcast • HD • Buganda & News",
         description: "BBS Terefayina brings you live news, culture, entertainment, and current affairs from Buganda Kingdom and across Uganda."
+    },
+    {
+        id: "galaxy-tv",
+        name: "Galaxy TV",
+        category: "entertainment",
+        categoryLabel: "Music, Movies & Gossip",
+        logo: "/images/galaxytv-logo.png",
+        streamType: "hls",
+        streamUrl: "https://livestream.galaxytv.ug/jikonkone/playlist.m3u8",
+        embedUrl: "https://galaxytv.ug/home",
+        meta: "Official Live Broadcast • HD • Jikonkone",
+        description: "Galaxy TV is Uganda's funkiest television station featuring the best music, movies, celebrity news, and entertainment."
     }
 ];
 
