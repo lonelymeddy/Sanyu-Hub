@@ -113,6 +113,10 @@ app.get('/movie', (req, res) => {
   res.sendFile(path.join(__dirname, 'movies.html'));
 });
 
+app.get(['/more', '/more/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'more.html'));
+});
+
 app.get('/watch/:id', (req, res) => {
   res.sendFile(path.join(__dirname, 'watch.html'));
 });

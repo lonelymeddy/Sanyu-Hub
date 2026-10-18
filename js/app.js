@@ -1292,8 +1292,41 @@ function saveToContinueWatching(movie) {
     }
 }
 
+/* BOTTOM NAVIGATION ACTIVE TAB HIGHLIGHTING */
+function updateBottomNavActiveState() {
+    const path = window.location.pathname.toLowerCase();
+    const navItems = document.querySelectorAll(".bottom-nav-item");
+    if (!navItems || navItems.length === 0) return;
+
+    navItems.forEach(item => item.classList.remove("active"));
+
+    if (path.startsWith("/live-tv")) {
+        const channelsTab = document.getElementById("navChannels");
+        if (channelsTab) channelsTab.classList.add("active");
+    } else if (path.startsWith("/movies") || path.startsWith("/movie") || path.startsWith("/watch")) {
+        const moviesTab = document.getElementById("navMovies");
+        if (moviesTab) moviesTab.classList.add("active");
+    } else if (
+        path.startsWith("/more") ||
+        path.startsWith("/series") ||
+        path.startsWith("/popular-series") ||
+        path.startsWith("/trending") ||
+        path.startsWith("/popular") ||
+        path.startsWith("/recently-added") ||
+        path.startsWith("/featured") ||
+        path.startsWith("/continue-watching")
+    ) {
+        const moreTab = document.getElementById("navMore");
+        if (moreTab) moreTab.classList.add("active");
+    } else {
+        const homeTab = document.getElementById("navHome");
+        if (homeTab) homeTab.classList.add("active");
+    }
+}
+
 /* DOM INITIALIZATION */
 document.addEventListener("DOMContentLoaded", () => {
+    updateBottomNavActiveState();
     initHomePage();
     initSubpage("trendingGrid", true, 20);
     initSubpage("popularGrid", false, 24);
