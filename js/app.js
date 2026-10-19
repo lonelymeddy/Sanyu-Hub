@@ -591,7 +591,6 @@ function initLiveTvWatchPage() {
     const activeCategory = document.getElementById("activeChannelCategory");
 
     // Controls & Overlay Elements
-    const playerLiveBadge = document.getElementById("playerLiveBadge");
     const ctrlRewindBtn = document.getElementById("ctrlRewindBtn");
     const ctrlPlayPauseBtn = document.getElementById("ctrlPlayPauseBtn");
     const ctrlForwardBtn = document.getElementById("ctrlForwardBtn");
@@ -633,6 +632,7 @@ function initLiveTvWatchPage() {
     let controlsTimeout = null;
     let isSeekingScrubbing = false;
     let isSeekableStream = false;
+    let hasPlaybackStarted = false;
 
     // Helper: format seconds to M:SS or H:MM:SS
     function formatTime(seconds) {
@@ -831,6 +831,7 @@ function initLiveTvWatchPage() {
     setupTabs();
 
     function stopCurrentPlayback() {
+        hasPlaybackStarted = false;
         if (currentHlsInstance) {
             currentHlsInstance.destroy();
             currentHlsInstance = null;
@@ -843,7 +844,6 @@ function initLiveTvWatchPage() {
         }
 
         if (unmuteBanner) unmuteBanner.style.display = "none";
-        if (playerLiveBadge) playerLiveBadge.style.display = "none";
 
         if (ctrlQualitySelect) ctrlQualitySelect.innerHTML = '<option value="-1">Auto Quality</option>';
         if (ctrlAudioSelect) ctrlAudioSelect.innerHTML = '<option value="-1">Default Audio</option>';
@@ -857,11 +857,28 @@ function initLiveTvWatchPage() {
         if (ctrlSettingsMenu) ctrlSettingsMenu.style.display = "none";
     }
 
-    function showPlaybackError(message) {
+    function showLoadingSpinner(isInitial = false) {
+        if (errorOverlay) errorOverlay.style.display = "none";
+        if (loadingOverlay) {
+            loadingOverlay.style.display = "flex";
+            const loadingText = document.getElementById("liveLoadingText");
+            if (loadingText) {
+                loadingText.style.display = (isInitial || !hasPlaybackStarted) ? "block" : "none";
+            }
+        }
+    }
+
+    function hideLoadingSpinner() {
         if (loadingOverlay) loadingOverlay.style.display = "none";
+    }
+
+    function showPlaybackError(logDetails) {
+        if (logDetails) {
+            console.error("Playback error details:", logDetails);
+        }
+        hideLoadingSpinner();
         if (errorOverlay) {
             errorOverlay.style.display = "flex";
-            if (errorMsg) errorMsg.textContent = message || "Live broadcast is temporarily unreachable.";
         }
     }
 
@@ -883,9 +900,6 @@ function initLiveTvWatchPage() {
                 playIcon.style.display = isPlaying ? "none" : "block";
                 pauseIcon.style.display = isPlaying ? "block" : "none";
             }
-        }
-        if (playerLiveBadge) {
-            playerLiveBadge.style.display = isPlaying ? "inline-flex" : "none";
         }
     }
 
@@ -1029,8 +1043,7 @@ function initLiveTvWatchPage() {
     function loadChannelStream(targetChannel) {
         stopCurrentPlayback();
 
-        if (errorOverlay) errorOverlay.style.display = "none";
-        if (loadingOverlay) loadingOverlay.style.display = "flex";
+        showLoadingSpinner(true);
 
         const streamUrl = targetChannel.streamUrl;
         videoPlayer.style.display = "block";
@@ -1040,20 +1053,23 @@ function initLiveTvWatchPage() {
             videoPlayer.src = streamUrl;
 
             videoPlayer.play().then(() => {
-                if (loadingOverlay) loadingOverlay.style.display = "none";
+                hasPlaybackStarted = true;
+                hideLoadingSpinner();
                 updatePlayPauseBtnUI(true);
             }).catch(err => {
-                // Autoplay policy fallback: try muted playback
+                console.warn("Autoplay rejected, attempting muted play...", err);
                 videoPlayer.muted = true;
                 updateMuteBtnUI(true, 0);
                 if (unmuteBanner) unmuteBanner.style.display = "inline-flex";
 
                 videoPlayer.play().then(() => {
-                    if (loadingOverlay) loadingOverlay.style.display = "none";
+                    hasPlaybackStarted = true;
+                    hideLoadingSpinner();
                     updatePlayPauseBtnUI(true);
                 }).catch(e => {
-                    if (loadingOverlay) loadingOverlay.style.display = "none";
-                    showPlaybackError(`Unable to play live stream for ${targetChannel.name}. Please click Retry.`);
+                    console.warn("Muted autoplay rejected, waiting for user gesture.", e);
+                    hideLoadingSpinner();
+                    updatePlayPauseBtnUI(false);
                 });
             });
 
@@ -1070,8 +1086,6 @@ function initLiveTvWatchPage() {
             hls.attachMedia(videoPlayer);
 
             hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
-                if (loadingOverlay) loadingOverlay.style.display = "none";
-
                 // Quality options
                 if (ctrlQualitySelect && data.levels && data.levels.length > 1) {
                     ctrlQualitySelect.innerHTML = '<option value="-1">Auto Quality</option>';
@@ -1116,16 +1130,23 @@ function initLiveTvWatchPage() {
 
                 // Autoplay attempt
                 videoPlayer.play().then(() => {
+                    hasPlaybackStarted = true;
+                    hideLoadingSpinner();
                     updatePlayPauseBtnUI(true);
                 }).catch(err => {
+                    console.warn("Autoplay rejected, attempting muted play...", err);
                     videoPlayer.muted = true;
                     updateMuteBtnUI(true, 0);
                     if (unmuteBanner) unmuteBanner.style.display = "inline-flex";
 
                     videoPlayer.play().then(() => {
+                        hasPlaybackStarted = true;
+                        hideLoadingSpinner();
                         updatePlayPauseBtnUI(true);
                     }).catch(e => {
-                        showPlaybackError(`Autoplay prevented. Click Retry or central play button.`);
+                        console.warn("Muted autoplay rejected, waiting for user gesture.", e);
+                        hideLoadingSpinner();
+                        updatePlayPauseBtnUI(false);
                     });
                 });
             });
@@ -1143,14 +1164,14 @@ function initLiveTvWatchPage() {
                             hls.recoverMediaError();
                             break;
                         default:
-                            showPlaybackError(`Stream connection failed for ${targetChannel.name}.`);
+                            showPlaybackError(data.type + " - " + data.details);
                             break;
                     }
                 }
             });
 
         } else {
-            showPlaybackError("HLS live streaming is not supported on this browser.");
+            showPlaybackError("HLS not supported on browser");
         }
     }
 
@@ -1176,7 +1197,8 @@ function initLiveTvWatchPage() {
 
     // Video Player Event Listeners
     videoPlayer.addEventListener("playing", () => {
-        if (loadingOverlay) loadingOverlay.style.display = "none";
+        hasPlaybackStarted = true;
+        hideLoadingSpinner();
         if (errorOverlay) errorOverlay.style.display = "none";
         updatePlayPauseBtnUI(true);
         updateSeekCapabilities();
@@ -1187,10 +1209,19 @@ function initLiveTvWatchPage() {
     });
 
     videoPlayer.addEventListener("waiting", () => {
-        if (loadingOverlay) loadingOverlay.style.display = "flex";
+        showLoadingSpinner(false);
+    });
+
+    videoPlayer.addEventListener("stalled", () => {
+        if (!videoPlayer.paused) {
+            showLoadingSpinner(false);
+        }
     });
 
     videoPlayer.addEventListener("timeupdate", () => {
+        if (hasPlaybackStarted && !videoPlayer.paused && loadingOverlay && loadingOverlay.style.display !== "none") {
+            hideLoadingSpinner();
+        }
         updateTimeProgressUI();
     });
 
@@ -1202,9 +1233,8 @@ function initLiveTvWatchPage() {
         updateSeekCapabilities();
     });
 
-    videoPlayer.addEventListener("error", () => {
-        const channelName = currentActiveChannel ? currentActiveChannel.name : 'this channel';
-        showPlaybackError(`Unable to play live video stream for ${channelName}.`);
+    videoPlayer.addEventListener("error", (e) => {
+        showPlaybackError(videoPlayer.error || e);
     });
 
     // Control A: Rewind (-10s)

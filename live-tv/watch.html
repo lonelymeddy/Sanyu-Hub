@@ -108,13 +108,6 @@ Live TV
   <div class="live-video-wrapper" id="liveVideoWrapper">
     <video id="liveVideoPlayer" class="live-video-player" playsinline preload="auto"></video>
 
-    <!-- Top Overlays: Live status badge -->
-    <div class="player-overlay-top">
-      <div class="player-live-badge" id="playerLiveBadge" style="display: none;">
-        <span class="badge-dot"></span> LIVE
-      </div>
-    </div>
-
     <!-- Central Play/Pause Overlay Button (Shown on pause or before playback) -->
     <button class="live-central-play-btn" id="liveCentralPlayBtn" aria-label="Play or Pause Stream">
       <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -137,8 +130,8 @@ Live TV
     <div class="live-error-overlay" id="liveErrorOverlay" style="display:none;">
       <div class="error-icon">&#9888;</div>
       <div class="error-title" id="liveErrorTitle">Stream Unavailable</div>
-      <div class="error-msg" id="liveErrorMsg">The live broadcast is temporarily unreachable.</div>
-      <button class="btn-retry" id="liveRetryBtn">&#8635; Retry Connection</button>
+      <div class="error-msg" id="liveErrorMsg">The live broadcast is currently unreachable.</div>
+      <button class="btn-retry" id="liveRetryBtn">&#8635; Retry</button>
     </div>
 
     <!-- Video Custom Controls Bar -->
