@@ -590,7 +590,8 @@ function initLiveTvWatchPage() {
     const activeName = document.getElementById("activeChannelName");
     const activeCategory = document.getElementById("activeChannelCategory");
 
-    // Controls Elements
+    // Controls & Overlay Elements
+    const playerLiveBadge = document.getElementById("playerLiveBadge");
     const ctrlRewindBtn = document.getElementById("ctrlRewindBtn");
     const ctrlPlayPauseBtn = document.getElementById("ctrlPlayPauseBtn");
     const ctrlForwardBtn = document.getElementById("ctrlForwardBtn");
@@ -600,11 +601,21 @@ function initLiveTvWatchPage() {
     const ctrlProgressContainer = document.getElementById("ctrlProgressContainer");
     const ctrlProgressFill = document.getElementById("ctrlProgressFill");
     const ctrlProgressThumb = document.getElementById("ctrlProgressThumb");
+    const liveStreamStatus = document.getElementById("liveStreamStatus");
+    const liveEdgeBtn = document.getElementById("liveEdgeBtn");
+
     const ctrlSettingsBtn = document.getElementById("ctrlSettingsBtn");
     const ctrlSettingsMenu = document.getElementById("ctrlSettingsMenu");
     const settingsCloseBtn = document.getElementById("settingsCloseBtn");
     const ctrlFullscreenBtn = document.getElementById("ctrlFullscreenBtn");
+
+    const speedSettingsGroup = document.getElementById("speedSettingsGroup");
+    const qualitySettingsGroup = document.getElementById("qualitySettingsGroup");
+    const audioSettingsGroup = document.getElementById("audioSettingsGroup");
+    const subtitleSettingsGroup = document.getElementById("subtitleSettingsGroup");
     const ctrlQualitySelect = document.getElementById("ctrlQualitySelect");
+    const ctrlAudioSelect = document.getElementById("ctrlAudioSelect");
+    const ctrlSubtitleSelect = document.getElementById("ctrlSubtitleSelect");
     const ctrlPipBtn = document.getElementById("ctrlPipBtn");
 
     const videoWrapper = document.getElementById("liveVideoWrapper");
@@ -832,10 +843,16 @@ function initLiveTvWatchPage() {
         }
 
         if (unmuteBanner) unmuteBanner.style.display = "none";
+        if (playerLiveBadge) playerLiveBadge.style.display = "none";
 
-        if (ctrlQualitySelect) {
-            ctrlQualitySelect.innerHTML = '<option value="-1">Auto Quality</option>';
-        }
+        if (ctrlQualitySelect) ctrlQualitySelect.innerHTML = '<option value="-1">Auto Quality</option>';
+        if (ctrlAudioSelect) ctrlAudioSelect.innerHTML = '<option value="-1">Default Audio</option>';
+        if (ctrlSubtitleSelect) ctrlSubtitleSelect.innerHTML = '<option value="-1">Off</option>';
+
+        if (speedSettingsGroup) speedSettingsGroup.style.display = "none";
+        if (qualitySettingsGroup) qualitySettingsGroup.style.display = "none";
+        if (audioSettingsGroup) audioSettingsGroup.style.display = "none";
+        if (subtitleSettingsGroup) subtitleSettingsGroup.style.display = "none";
 
         if (ctrlSettingsMenu) ctrlSettingsMenu.style.display = "none";
     }
@@ -858,12 +875,17 @@ function initLiveTvWatchPage() {
             }
         }
         if (centralPlayBtn) {
+            // Show central play button ONLY when paused or not playing
+            centralPlayBtn.style.display = isPlaying ? "none" : "flex";
             const playIcon = centralPlayBtn.querySelector(".play-icon");
             const pauseIcon = centralPlayBtn.querySelector(".pause-icon");
             if (playIcon && pauseIcon) {
                 playIcon.style.display = isPlaying ? "none" : "block";
                 pauseIcon.style.display = isPlaying ? "block" : "none";
             }
+        }
+        if (playerLiveBadge) {
+            playerLiveBadge.style.display = isPlaying ? "inline-flex" : "none";
         }
     }
 
@@ -882,7 +904,6 @@ function initLiveTvWatchPage() {
     }
 
     function updateSeekCapabilities() {
-        // Check if stream supports seeking (finite duration > 0 or valid seekable range)
         let seekableStart = 0;
         let seekableEnd = 0;
         let duration = videoPlayer.duration;
@@ -893,21 +914,33 @@ function initLiveTvWatchPage() {
         }
 
         const seekRange = seekableEnd - seekableStart;
-        // Live stream with DVR window > 15s or finite media duration > 0 is seekable
         const hasFiniteDuration = isFinite(duration) && duration > 0;
         const hasDvrWindow = seekRange > 15 && !hasFiniteDuration;
 
         isSeekableStream = hasFiniteDuration || hasDvrWindow;
 
-        if (ctrlRewindBtn) ctrlRewindBtn.disabled = !isSeekableStream;
-        if (ctrlForwardBtn) ctrlForwardBtn.disabled = !isSeekableStream;
+        // Show / Hide Rewind & Forward buttons based on stream capability
+        if (ctrlRewindBtn) ctrlRewindBtn.style.display = isSeekableStream ? "flex" : "none";
+        if (ctrlForwardBtn) ctrlForwardBtn.style.display = isSeekableStream ? "flex" : "none";
 
-        if (ctrlProgressContainer) {
-            if (isSeekableStream) {
-                ctrlProgressContainer.classList.remove("disabled");
-            } else {
-                ctrlProgressContainer.classList.add("disabled");
-            }
+        // Show / Hide Playback Speed option based on seekability
+        if (speedSettingsGroup) speedSettingsGroup.style.display = isSeekableStream ? "flex" : "none";
+
+        if (hasFiniteDuration) {
+            // VOD Content
+            if (ctrlProgressContainer) ctrlProgressContainer.style.display = "flex";
+            if (ctrlTimeDisplay) ctrlTimeDisplay.style.display = "inline";
+            if (liveStreamStatus) liveStreamStatus.style.display = "none";
+        } else if (hasDvrWindow) {
+            // Live Stream with DVR Window
+            if (ctrlProgressContainer) ctrlProgressContainer.style.display = "flex";
+            if (ctrlTimeDisplay) ctrlTimeDisplay.style.display = "inline";
+            if (liveStreamStatus) liveStreamStatus.style.display = "none";
+        } else {
+            // Standard Live Stream without DVR
+            if (ctrlProgressContainer) ctrlProgressContainer.style.display = "none";
+            if (ctrlTimeDisplay) ctrlTimeDisplay.style.display = "none";
+            if (liveStreamStatus) liveStreamStatus.style.display = "flex";
         }
 
         updateTimeProgressUI();
@@ -930,36 +963,28 @@ function initLiveTvWatchPage() {
         const hasFiniteDuration = isFinite(duration) && duration > 0;
 
         if (hasFiniteDuration) {
-            // Standard seekable VOD or recorded stream
             const percent = Math.min(100, Math.max(0, (currentTime / duration) * 100));
             if (ctrlProgressFill) ctrlProgressFill.style.width = `${percent}%`;
             if (ctrlProgressThumb) ctrlProgressThumb.style.left = `${percent}%`;
             if (ctrlTimeDisplay) {
-                ctrlTimeDisplay.classList.remove("is-live");
                 ctrlTimeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
             }
         } else if (seekRange > 15) {
-            // Live stream with DVR window
             const currentPosition = currentTime - seekableStart;
             const percent = Math.min(100, Math.max(0, (currentPosition / seekRange) * 100));
             if (ctrlProgressFill) ctrlProgressFill.style.width = `${percent}%`;
             if (ctrlProgressThumb) ctrlProgressThumb.style.left = `${percent}%`;
             if (ctrlTimeDisplay) {
-                ctrlTimeDisplay.classList.add("is-live");
                 const lagFromLive = Math.round(seekableEnd - currentTime);
                 if (lagFromLive <= 5) {
                     ctrlTimeDisplay.textContent = "LIVE";
                 } else {
-                    ctrlTimeDisplay.textContent = `-${formatTime(lagFromLive)} LIVE`;
+                    ctrlTimeDisplay.textContent = `-${formatTime(lagFromLive)}`;
                 }
             }
         } else {
-            // Pure live stream (non-seekable)
-            if (ctrlProgressFill) ctrlProgressFill.style.width = "100%";
-            if (ctrlProgressThumb) ctrlProgressThumb.style.left = "100%";
-            if (ctrlTimeDisplay) {
-                ctrlTimeDisplay.classList.add("is-live");
-                ctrlTimeDisplay.textContent = "LIVE";
+            if (liveEdgeBtn) {
+                liveEdgeBtn.classList.add("on-live-edge");
             }
         }
     }
@@ -1047,17 +1072,46 @@ function initLiveTvWatchPage() {
             hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
                 if (loadingOverlay) loadingOverlay.style.display = "none";
 
-                // Populate Quality Levels if multi-bitrate available
+                // Quality options
                 if (ctrlQualitySelect && data.levels && data.levels.length > 1) {
                     ctrlQualitySelect.innerHTML = '<option value="-1">Auto Quality</option>';
                     data.levels.forEach((level, index) => {
                         const opt = document.createElement("option");
                         opt.value = index;
-                        opt.textContent = level.height ? `${level.height}p (${Math.round(level.bitrate / 1000)} kbps)` : `Level ${index + 1}`;
+                        opt.textContent = level.height ? `${level.height}p` : `Level ${index + 1}`;
                         ctrlQualitySelect.appendChild(opt);
                     });
-                } else if (ctrlQualitySelect) {
-                    ctrlQualitySelect.innerHTML = '<option value="-1">Auto (HD Broadcast)</option>';
+                    if (qualitySettingsGroup) qualitySettingsGroup.style.display = "flex";
+                } else if (qualitySettingsGroup) {
+                    qualitySettingsGroup.style.display = "none";
+                }
+
+                // Audio track options
+                if (ctrlAudioSelect && hls.audioTracks && hls.audioTracks.length > 1) {
+                    ctrlAudioSelect.innerHTML = '';
+                    hls.audioTracks.forEach((track, idx) => {
+                        const opt = document.createElement("option");
+                        opt.value = idx;
+                        opt.textContent = track.name || `Audio Track ${idx + 1}`;
+                        ctrlAudioSelect.appendChild(opt);
+                    });
+                    if (audioSettingsGroup) audioSettingsGroup.style.display = "flex";
+                } else if (audioSettingsGroup) {
+                    audioSettingsGroup.style.display = "none";
+                }
+
+                // Subtitle track options
+                if (ctrlSubtitleSelect && hls.subtitleTracks && hls.subtitleTracks.length > 0) {
+                    ctrlSubtitleSelect.innerHTML = '<option value="-1">Off</option>';
+                    hls.subtitleTracks.forEach((track, idx) => {
+                        const opt = document.createElement("option");
+                        opt.value = idx;
+                        opt.textContent = track.name || `Subtitles ${idx + 1}`;
+                        ctrlSubtitleSelect.appendChild(opt);
+                    });
+                    if (subtitleSettingsGroup) subtitleSettingsGroup.style.display = "flex";
+                } else if (subtitleSettingsGroup) {
+                    subtitleSettingsGroup.style.display = "none";
                 }
 
                 // Autoplay attempt
@@ -1254,6 +1308,15 @@ function initLiveTvWatchPage() {
         });
     }
 
+    // Live Edge Button Click
+    if (liveEdgeBtn) {
+        liveEdgeBtn.addEventListener("click", () => {
+            if (videoPlayer.seekable && videoPlayer.seekable.length > 0) {
+                videoPlayer.currentTime = videoPlayer.seekable.end(videoPlayer.seekable.length - 1) - 0.5;
+            }
+        });
+    }
+
     // Control F: Settings Menu
     if (ctrlSettingsBtn && ctrlSettingsMenu) {
         ctrlSettingsBtn.addEventListener("click", (e) => {
@@ -1261,7 +1324,6 @@ function initLiveTvWatchPage() {
             const isVisible = ctrlSettingsMenu.style.display !== "none";
             ctrlSettingsMenu.style.display = isVisible ? "none" : "block";
             ctrlSettingsBtn.setAttribute("aria-expanded", !isVisible ? "true" : "false");
-            updateSettingsInfo();
         });
 
         if (settingsCloseBtn) {
@@ -1282,7 +1344,6 @@ function initLiveTvWatchPage() {
 
     // Settings Option: Playback Speed
     const speedOptionsContainer = document.getElementById("speedOptions");
-    const speedStatusText = document.getElementById("speedStatusText");
     if (speedOptionsContainer) {
         speedOptionsContainer.querySelectorAll(".speed-btn").forEach(btn => {
             btn.addEventListener("click", () => {
@@ -1291,7 +1352,6 @@ function initLiveTvWatchPage() {
                     videoPlayer.playbackRate = speed;
                     speedOptionsContainer.querySelectorAll(".speed-btn").forEach(b => b.classList.remove("active"));
                     btn.classList.add("active");
-                    if (speedStatusText) speedStatusText.textContent = `Applied ${speed}x playback speed.`;
                 }
             });
         });
@@ -1303,6 +1363,26 @@ function initLiveTvWatchPage() {
             const levelIndex = parseInt(e.target.value, 10);
             if (currentHlsInstance) {
                 currentHlsInstance.currentLevel = levelIndex;
+            }
+        });
+    }
+
+    // Settings Option: Audio Select
+    if (ctrlAudioSelect) {
+        ctrlAudioSelect.addEventListener("change", (e) => {
+            const trackIndex = parseInt(e.target.value, 10);
+            if (currentHlsInstance) {
+                currentHlsInstance.audioTrack = trackIndex;
+            }
+        });
+    }
+
+    // Settings Option: Subtitle Select
+    if (ctrlSubtitleSelect) {
+        ctrlSubtitleSelect.addEventListener("change", (e) => {
+            const trackIndex = parseInt(e.target.value, 10);
+            if (currentHlsInstance) {
+                currentHlsInstance.subtitleTrack = trackIndex;
             }
         });
     }
@@ -1324,37 +1404,6 @@ function initLiveTvWatchPage() {
                     console.error("Picture-in-Picture error:", err);
                 }
             });
-        }
-    }
-
-    // Helper: Update Settings Popover Info State
-    function updateSettingsInfo() {
-        const audioStatus = document.getElementById("audioTrackStatus");
-        const subtitleStatus = document.getElementById("subtitleStatus");
-        const castStatus = document.getElementById("castStatus");
-
-        if (audioStatus) {
-            if (currentHlsInstance && currentHlsInstance.audioTracks && currentHlsInstance.audioTracks.length > 1) {
-                audioStatus.textContent = `${currentHlsInstance.audioTracks.length} Audio Tracks Available`;
-            } else {
-                audioStatus.textContent = "Default (Broadcast Stereo)";
-            }
-        }
-
-        if (subtitleStatus) {
-            if (videoPlayer.textTracks && videoPlayer.textTracks.length > 0) {
-                subtitleStatus.textContent = `${videoPlayer.textTracks.length} Caption Tracks`;
-            } else {
-                subtitleStatus.textContent = "None Available";
-            }
-        }
-
-        if (castStatus) {
-            if (window.chrome && window.chrome.cast && window.cast && window.cast.framework) {
-                castStatus.textContent = "Available (Ready)";
-            } else {
-                castStatus.textContent = "Unavailable (Cast SDK / API not loaded)";
-            }
         }
     }
 
@@ -1389,16 +1438,14 @@ function initLiveTvWatchPage() {
 
     // Auto-hide controls bar on inactivity
     function resetControlsTimer() {
-        if (controlsBar) controlsBar.style.opacity = "1";
-        if (centralPlayBtn) centralPlayBtn.style.opacity = "1";
+        if (controlsBar) controlsBar.classList.remove("controls-hidden");
 
         clearTimeout(controlsTimeout);
         controlsTimeout = setTimeout(() => {
             if (videoPlayer && !videoPlayer.paused && ctrlSettingsMenu && ctrlSettingsMenu.style.display === "none") {
-                if (controlsBar) controlsBar.style.opacity = "0";
-                if (centralPlayBtn) centralPlayBtn.style.opacity = "0";
+                if (controlsBar) controlsBar.classList.add("controls-hidden");
             }
-        }, 3500);
+        }, 3000);
     }
 
     if (videoWrapper) {
