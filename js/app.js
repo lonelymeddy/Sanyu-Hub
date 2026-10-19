@@ -478,17 +478,17 @@ function createChannelCard(ch, isCurrent = false) {
     card.innerHTML = `
         <div class="channel-thumb">
             <img src="${ch.logo}" alt="${ch.name}">
-            <span class="live-badge" style="position: absolute; top: 10px; left: 10px;">LIVE</span>
         </div>
         <div class="channel-info">
             <div class="channel-header-row">
-                <div class="channel-name">${ch.name}</div>
-                <div class="channel-category">${ch.categoryLabel}</div>
+                <span class="channel-name">${ch.name}</span>
+                <span class="live-badge"><span class="live-dot"></span> LIVE</span>
             </div>
+            <div class="channel-category">${ch.categoryLabel}</div>
             <div class="card-meta">${ch.meta}</div>
-            <div class="channel-action">
-                <button class="btn-watch">${isCurrent ? 'Now Playing' : 'Watch Live'}</button>
-            </div>
+        </div>
+        <div class="channel-action">
+            <button class="btn-watch">${isCurrent ? 'Now Playing' : 'Watch Live'}</button>
         </div>
     `;
 
