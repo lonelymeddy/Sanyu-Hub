@@ -620,7 +620,7 @@ function initLiveTvWatchPage() {
 
     const activeLogo = document.getElementById("activeChannelLogo");
     const activeName = document.getElementById("activeChannelName");
-    const activeCategory = document.getElementById("activeChannelCategory");
+    const viewerCount = document.getElementById("viewerCount");
 
     // Controls & Overlay Elements
     const ctrlRewindBtn = document.getElementById("ctrlRewindBtn");
@@ -712,16 +712,32 @@ function initLiveTvWatchPage() {
 
     if (activeLogo) activeLogo.src = channel.logo;
     if (activeName) activeName.textContent = channel.name;
-    if (activeCategory) activeCategory.textContent = channel.categoryLabel || "General Broadcast";
 
-    // Render Other Channels
-    if (otherChannelsGrid) {
-        otherChannelsGrid.innerHTML = "";
-        LIVE_TV_CHANNELS.forEach(ch => {
-            const isCurrent = (ch.id === channel.id);
-            otherChannelsGrid.appendChild(createChannelCard(ch, isCurrent));
-        });
+    // Fetch Viewer Count dynamically from API
+    async function fetchViewerCount() {
+        if (!viewerCount) return;
+        try {
+            const res = await fetch(`/api/live-tv/viewers/${channel.id}`);
+            if (res.ok) {
+                const data = await res.json();
+                if (data && typeof data.viewers === "number" && !isNaN(data.viewers)) {
+                    if (data.viewers >= 1000) {
+                        viewerCount.textContent = `${(data.viewers / 1000).toFixed(1)}K viewers`;
+                    } else {
+                        viewerCount.textContent = `${data.viewers} viewers`;
+                    }
+                } else {
+                    viewerCount.textContent = "Viewers unavailable";
+                }
+            } else {
+                viewerCount.textContent = "Viewers unavailable";
+            }
+        } catch (e) {
+            viewerCount.textContent = "Viewers unavailable";
+        }
     }
+    fetchViewerCount();
+    const viewerInterval = setInterval(fetchViewerCount, 30000);
 
     // Tab Switching Handlers (EPG & Info)
     function setupTabs() {
@@ -972,22 +988,10 @@ function initLiveTvWatchPage() {
         // Show / Hide Playback Speed option based on seekability
         if (speedSettingsGroup) speedSettingsGroup.style.display = isSeekableStream ? "flex" : "none";
 
-        if (hasFiniteDuration) {
-            // VOD Content
-            if (ctrlProgressContainer) ctrlProgressContainer.style.display = "flex";
-            if (ctrlTimeDisplay) ctrlTimeDisplay.style.display = "inline";
-            if (liveStreamStatus) liveStreamStatus.style.display = "none";
-        } else if (hasDvrWindow) {
-            // Live Stream with DVR Window
-            if (ctrlProgressContainer) ctrlProgressContainer.style.display = "flex";
-            if (ctrlTimeDisplay) ctrlTimeDisplay.style.display = "inline";
-            if (liveStreamStatus) liveStreamStatus.style.display = "none";
-        } else {
-            // Standard Live Stream without DVR
-            if (ctrlProgressContainer) ctrlProgressContainer.style.display = "none";
-            if (ctrlTimeDisplay) ctrlTimeDisplay.style.display = "none";
-            if (liveStreamStatus) liveStreamStatus.style.display = "flex";
-        }
+        // Slim progress bar inside video player is always visible
+        if (ctrlProgressContainer) ctrlProgressContainer.style.display = "flex";
+        if (ctrlTimeDisplay) ctrlTimeDisplay.style.display = isSeekableStream ? "inline" : "none";
+        if (liveStreamStatus) liveStreamStatus.style.display = "none";
 
         updateTimeProgressUI();
     }
@@ -1029,9 +1033,9 @@ function initLiveTvWatchPage() {
                 }
             }
         } else {
-            if (liveEdgeBtn) {
-                liveEdgeBtn.classList.add("on-live-edge");
-            }
+            // Live stream without seekable range: show full active progress fill at live edge
+            if (ctrlProgressFill) ctrlProgressFill.style.width = "100%";
+            if (ctrlProgressThumb) ctrlProgressThumb.style.left = "100%";
         }
     }
 
@@ -1469,26 +1473,145 @@ function initLiveTvWatchPage() {
         }
     }
 
-    // Control G: Fullscreen
+    // Settings Option: Cast / Chromecast
+    const ctrlCastBtn = document.getElementById("ctrlCastBtn");
+    const castBtnText = document.getElementById("castBtnText");
+
+    function setupCastIntegration() {
+        if (!ctrlCastBtn) return;
+
+        window.__onGCastApiAvailable = function(isAvailable) {
+            if (isAvailable && window.cast && window.cast.framework) {
+                try {
+                    const context = cast.framework.CastContext.getInstance();
+                    context.setOptions({
+                        receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+                        autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+                    });
+
+                    context.addEventListener(cast.framework.CastContextEventType.SESSION_STATE_CHANGED, (event) => {
+                        switch (event.sessionState) {
+                            case cast.framework.SessionState.SESSION_STARTED:
+                            case cast.framework.SessionState.SESSION_RESUMED:
+                                if (castBtnText) castBtnText.textContent = "Connected to Cast Device";
+                                castCurrentStream(context.getCurrentSession());
+                                break;
+                            case cast.framework.SessionState.SESSION_ENDING:
+                            case cast.framework.SessionState.SESSION_ENDED:
+                                if (castBtnText) castBtnText.textContent = "Cast to Device";
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                } catch (e) {
+                    console.warn("Google Cast initialization error:", e);
+                }
+            }
+        };
+
+        ctrlCastBtn.addEventListener("click", async () => {
+            if (window.cast && window.cast.framework) {
+                try {
+                    const context = cast.framework.CastContext.getInstance();
+                    const state = context.getCastState();
+                    if (state === cast.framework.CastState.NO_DEVICES_AVAILABLE) {
+                        alert("No compatible Cast devices found on your network.");
+                        return;
+                    }
+                    await context.requestSession();
+                } catch (err) {
+                    console.warn("Cast session request cancelled or failed:", err);
+                }
+            } else if (navigator.remotePlayback && videoPlayer.remote) {
+                // Fallback to Remote Playback API if available
+                try {
+                    await videoPlayer.remote.prompt();
+                } catch (err) {
+                    console.warn("Remote playback prompt error:", err);
+                }
+            } else {
+                alert("Casting is not supported in this browser environment.");
+            }
+        });
+    }
+
+    function castCurrentStream(session) {
+        if (!session || !currentActiveChannel) return;
+        try {
+            const mediaInfo = new chrome.cast.media.MediaInfo(currentActiveChannel.streamUrl, 'application/x-mpegurl');
+            mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata();
+            mediaInfo.metadata.title = currentActiveChannel.name;
+            mediaInfo.metadata.subtitle = "SanyuHub Live TV";
+            if (currentActiveChannel.logo) {
+                mediaInfo.metadata.images = [{ url: window.location.origin + currentActiveChannel.logo }];
+            }
+            mediaInfo.streamType = chrome.cast.media.StreamType.LIVE;
+
+            const request = new chrome.cast.media.LoadRequest(mediaInfo);
+            session.loadMedia(request).then(
+                () => console.log("Casting live stream successfully"),
+                (err) => console.warn("Cast loadMedia error:", err)
+            );
+        } catch (e) {
+            console.error("Failed to load stream on cast session:", e);
+        }
+    }
+
+    setupCastIntegration();
+
+    // Control G: Fullscreen & Landscape Orientation Lock
+    async function lockLandscapeOrientation() {
+        if (screen.orientation && typeof screen.orientation.lock === "function") {
+            try {
+                await screen.orientation.lock("landscape");
+            } catch (err) {
+                console.warn("Screen orientation lock rejected or unsupported:", err);
+            }
+        }
+    }
+
+    function unlockScreenOrientation() {
+        if (screen.orientation && typeof screen.orientation.unlock === "function") {
+            try {
+                screen.orientation.unlock();
+            } catch (err) {
+                console.warn("Screen orientation unlock error:", err);
+            }
+        }
+    }
+
     if (ctrlFullscreenBtn) {
-        ctrlFullscreenBtn.addEventListener("click", () => {
+        ctrlFullscreenBtn.addEventListener("click", async () => {
             if (document.fullscreenElement || document.webkitFullscreenElement) {
                 if (document.exitFullscreen) {
-                    document.exitFullscreen();
+                    await document.exitFullscreen();
                 } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
+                    await document.webkitExitFullscreen();
                 }
             } else {
                 if (videoWrapper.requestFullscreen) {
-                    videoWrapper.requestFullscreen();
+                    await videoWrapper.requestFullscreen();
                 } else if (videoWrapper.webkitRequestFullscreen) {
-                    videoWrapper.webkitRequestFullscreen();
+                    await videoWrapper.webkitRequestFullscreen();
                 } else if (videoPlayer.webkitEnterFullscreen) {
                     videoPlayer.webkitEnterFullscreen();
                 }
             }
         });
     }
+
+    const onFullscreenChange = () => {
+        const isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
+        if (isFullscreen) {
+            lockLandscapeOrientation();
+        } else {
+            unlockScreenOrientation();
+        }
+    };
+
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", onFullscreenChange);
 
     if (retryBtn) {
         retryBtn.addEventListener("click", () => {
@@ -1518,6 +1641,7 @@ function initLiveTvWatchPage() {
 
     // Clean up on page unload
     window.addEventListener("beforeunload", () => {
+        clearInterval(viewerInterval);
         stopCurrentPlayback();
     });
 

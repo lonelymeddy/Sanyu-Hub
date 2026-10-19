@@ -292,6 +292,17 @@ app.get('/api/live-tv/epg/:id', async (req, res) => {
   });
 });
 
+// Live TV Concurrent Viewer Count Endpoint
+app.get('/api/live-tv/viewers/:id', async (req, res) => {
+  const channelId = req.params.id;
+  // Broadcaster HLS streams do not expose genuine concurrent viewer metrics
+  res.json({
+    channelId: channelId,
+    viewers: null,
+    message: 'Viewers unavailable'
+  });
+});
+
 // Live TV Watch Routes
 app.get(['/live-tv/watch/:id', '/live-tv/watch/:id/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'live-tv', 'watch.html'));
