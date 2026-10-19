@@ -478,14 +478,10 @@ function createChannelCard(ch, isCurrent = false) {
     card.innerHTML = `
         <div class="channel-thumb">
             <img src="${ch.logo}" alt="${ch.name}">
+            <span class="logo-live-badge"><span class="live-dot"></span> LIVE</span>
         </div>
         <div class="channel-info">
-            <div class="channel-header-row">
-                <span class="channel-name">${ch.name}</span>
-                <span class="live-badge"><span class="live-dot"></span> LIVE</span>
-            </div>
-            <div class="channel-category">${ch.categoryLabel}</div>
-            <div class="card-meta">${ch.meta}</div>
+            <span class="channel-name">${ch.name}</span>
         </div>
         <div class="channel-action">
             <button class="btn-watch">${isCurrent ? 'Now Playing' : 'Watch Live'}</button>
@@ -531,6 +527,92 @@ function initLiveTvCatalogue() {
     renderCards("all");
 }
 
+/* LIVE TV EPG & INFO DATA */
+const CHANNEL_EPG_SCHEDULES = {
+    "ntv-uganda": [
+        { start: "06:00", end: "09:00", title: "NTV Morning Express", desc: "Live morning breaking news, traffic updates, business insights and weather in Uganda." },
+        { start: "09:00", end: "11:00", title: "Living Life & Wellness", desc: "Lifestyle talk show discussing health, family, and home living." },
+        { start: "11:00", end: "13:00", title: "NTV Movie Hour", desc: "Top feature film broadcast in high definition." },
+        { start: "13:00", end: "14:00", title: "NTV Midday Brief", desc: "Comprehensive news bulletin covering current national and international affairs." },
+        { start: "14:00", end: "16:00", title: "Ugandan Music & Arts", desc: "Non-stop hit videos, artist interviews, and creative showcases." },
+        { start: "16:00", end: "18:00", title: "NTV Panorama", desc: "Investigative journalism and deep dives into societal issues." },
+        { start: "18:00", end: "19:00", title: "The Point Analysis", desc: "Political debate and commentary with key national policymakers." },
+        { start: "19:00", end: "20:00", title: "NTV Akawungeezi (Luganda News)", desc: "Uganda's leading Luganda news edition with live field reports." },
+        { start: "20:00", end: "21:00", title: "NTV Drama Series", desc: "Popular local television drama series." },
+        { start: "21:00", end: "22:00", title: "NTV Tonight (English News)", desc: "Prime time English news coverage from Uganda and around the world." },
+        { start: "22:00", end: "23:59", title: "Late Night Debate & Special", desc: "Late night current affairs and feature documentary." }
+    ],
+    "spark-tv": [
+        { start: "06:00", end: "09:00", title: "Spark Sunrise & Fitness", desc: "Morning fitness routine, celebrity updates, and healthy recipes." },
+        { start: "09:00", end: "12:00", title: "Cheza Luganda Drama", desc: "Popular local Ug-drama series and soap operas." },
+        { start: "12:00", end: "14:00", title: "Spark Celebrity Gossip Special", desc: "Inside Uganda's entertainment industry, music news, and fashion." },
+        { start: "14:00", end: "17:00", title: "Luganda Translated Blockbuster", desc: "Action & drama movie translated in Luganda." },
+        { start: "17:00", end: "19:00", title: "Spark Music Countdown", desc: "Top 10 Ugandan music video countdown of the week." },
+        { start: "19:00", end: "21:00", title: "Spark Prime Evening Series", desc: "Hit drama series full episodes." },
+        { start: "21:00", end: "23:59", title: "Night Vibe & Celebrity Lounge", desc: "Late night music lounge and interviews with East African stars." }
+    ],
+    "bukedde-1": [
+        { start: "06:00", end: "09:00", title: "Bukedde Kumakya", desc: "Luganda morning show, local news, and community stories." },
+        { start: "09:00", end: "12:00", title: "Emikolo n'Ebirowoozo", desc: "Cultural affairs, traditional marriage ceremonies, and heritage." },
+        { start: "12:00", end: "13:00", title: "Bukedde Eby'obufuzi", desc: "Community leadership and local council affairs." },
+        { start: "13:00", end: "14:00", title: "Agataliiko Nfuufu", desc: "Uganda's famous live Luganda breaking news bulletin." },
+        { start: "14:00", end: "17:00", title: "Luganda Movie Matinee", desc: "Luganda translated action and comedy movie hour." },
+        { start: "17:00", end: "19:00", title: "Bukedde Ekyaffaayo", desc: "Historical documentations and Buganda traditional heritage." },
+        { start: "19:00", end: "20:00", title: "Agataliiko Nfuufu Ekya Galikwoledde", desc: "Main evening Luganda bulletin." },
+        { start: "20:00", end: "23:59", title: "Bukedde Night Special", desc: "Late night Luganda music, comedy, and cultural dance." }
+    ],
+    "bukedde-2": [
+        { start: "06:00", end: "10:00", title: "Youth Vibe Morning", desc: "High-energy Ugandan urban music videos and youth culture." },
+        { start: "10:00", end: "14:00", title: "Afrobeat & Kadongo Kamu Special", desc: "Classic and contemporary Ugandan music marathon." },
+        { start: "14:00", end: "18:00", title: "Bukedde Sports Zone", desc: "Ugandan Premier League, local sports highlights, and analysis." },
+        { start: "18:00", end: "21:00", title: "Bukedde Live Concerts", desc: "Replays of major Ugandan music concerts and festivals." },
+        { start: "21:00", end: "23:59", title: "Club Bukedde Night Mix", desc: "DJ live video mix featuring East African hit tunes." }
+    ],
+    "tv-west": [
+        { start: "06:00", end: "09:00", title: "TV West Shaaku Kumakya", desc: "Western Uganda morning news and agricultural updates in Runyankole." },
+        { start: "09:00", end: "13:00", title: "Eby'obulimi n'Eby'obulunzi", desc: "Farming, cattle keeping, and rural development in Ankole and Kigezi." },
+        { start: "13:00", end: "14:00", title: "TV West Amagoba Brief", desc: "Runyankole/Rukiga news bulletin." },
+        { start: "14:00", end: "18:00", title: "Western Music & Cultural Heritage", desc: "Runyankole traditional music videos and cultural dance." },
+        { start: "18:00", end: "20:00", title: "TV West Amagoba Main News", desc: "Main evening news broadcast for Western Region." },
+        { start: "20:00", end: "23:59", title: "TV West Drama & Evening Special", desc: "Western Uganda drama series and community talk shows." }
+    ],
+    "wan-luo-tv": [
+        { start: "06:00", end: "09:00", title: "Wan Luo Okyen", desc: "Luo language morning news and community broadcast." },
+        { start: "09:00", end: "13:00", title: "Luo Cultural Heritage & Music", desc: "Traditional Luo music, Lakalaka dance, and history." },
+        { start: "13:00", end: "14:00", title: "Wan Luo Midday Brief", desc: "Northern Uganda news bulletin." },
+        { start: "14:00", end: "18:00", title: "Luo Movie & Drama Hour", desc: "Luo translated feature film and local drama." },
+        { start: "18:00", end: "20:00", title: "Wan Luo Main Evening News", desc: "Comprehensive Luo news edition." },
+        { start: "20:00", end: "23:59", title: "Wan Luo Night Cultural Special", desc: "Cultural storytelling and Northern Uganda music mix." }
+    ],
+    "bbs-terefayina": [
+        { start: "06:00", end: "09:00", title: "BBS Kumakya", desc: "Morning Luganda bulletin, Buganda news, and spiritual reflection." },
+        { start: "09:00", end: "13:00", title: "Eby'obuwangwa n'Ennono", desc: "Buganda Kingdom affairs, royal ceremonies, and cultural teachings." },
+        { start: "13:00", end: "14:00", title: "BBS Amawulire ag'omuntowomuntu", desc: "Midday Luganda news bulletin." },
+        { start: "14:00", end: "18:00", title: "BBS Luganda Theatre & Drama", desc: "Buganda dramatic plays and comedy shows." },
+        { start: "18:00", end: "20:00", title: "Amawulire Ageesigika (Main News)", desc: "Buganda Kingdom & National prime news edition." },
+        { start: "20:00", end: "23:59", title: "BBS Evening Talk & Culture", desc: "Mmeeme ya Buganda talk show and late night music." }
+    ],
+    "galaxy-tv": [
+        { start: "06:00", end: "10:00", title: "Galaxy Morning Jam", desc: "Uganda's funkiest morning show with urban music and showbiz gossip." },
+        { start: "10:00", end: "14:00", title: "Jikonkone Video Marathon", desc: "Non-stop trending East African and global music video hits." },
+        { start: "14:00", end: "17:00", title: "Galaxy Luganda Blockbuster", desc: "Action movie broadcast with top VJ audio translation." },
+        { start: "17:00", end: "20:00", title: "Zzina Top 20 Countdown", desc: "Uganda's official weekly top 20 music countdown." },
+        { start: "20:00", end: "23:59", title: "Galaxy Night Vibe & Party Mix", desc: "Live DJ video mix and celebrity interviews." }
+    ]
+};
+
+/* Helper: Calculate current East Africa Time (EAT = UTC+3) */
+function getEATTime() {
+    const d = new Date();
+    const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    return new Date(utc + (3600000 * 3));
+}
+
+function parseTimeToMinutes(timeStr) {
+    const parts = timeStr.split(":");
+    return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+}
+
 /* LIVE TV WATCH PAGE */
 function initLiveTvWatchPage() {
     const videoPlayer = document.getElementById("liveVideoPlayer");
@@ -542,9 +624,12 @@ function initLiveTvWatchPage() {
     const errorMsg = document.getElementById("liveErrorMsg");
     const retryBtn = document.getElementById("liveRetryBtn");
 
+    const centralPlayBtn = document.getElementById("liveCentralPlayBtn");
+    const unmuteBanner = document.getElementById("liveUnmuteBanner");
+
     const activeLogo = document.getElementById("activeChannelLogo");
     const activeName = document.getElementById("activeChannelName");
-    const activeMeta = document.getElementById("activeChannelMeta");
+    const activeCategory = document.getElementById("activeChannelCategory");
 
     const ctrlPlayPause = document.getElementById("ctrlPlayPauseBtn");
     const ctrlMute = document.getElementById("ctrlMuteBtn");
@@ -552,12 +637,20 @@ function initLiveTvWatchPage() {
     const ctrlFullscreen = document.getElementById("ctrlFullscreenBtn");
     const ctrlQuality = document.getElementById("ctrlQualitySelect");
     const videoWrapper = document.getElementById("liveVideoWrapper");
+    const controlsBar = document.getElementById("liveControlsBar");
 
     const playerSection = document.getElementById("liveTvPlayerSection");
     const notFoundSection = document.getElementById("channelNotFoundSection");
     const otherChannelsGrid = document.getElementById("otherChannelsGrid");
 
-    // Extract channel ID from route path (e.g. /live-tv/watch/ntv-uganda/ -> ntv-uganda)
+    const tabBtnEPG = document.getElementById("tabBtnEPG");
+    const tabBtnInfo = document.getElementById("tabBtnInfo");
+    const tabContentEPG = document.getElementById("tabContentEPG");
+    const tabContentInfo = document.getElementById("tabContentInfo");
+
+    let controlsTimeout = null;
+
+    // Route Parsing
     const pathParts = window.location.pathname.split("/").filter(Boolean);
     let channelId = null;
 
@@ -570,7 +663,7 @@ function initLiveTvWatchPage() {
 
     const channel = findChannelById(channelId);
 
-    // Handle invalid channel route
+    // Invalid Channel Handler
     if (!channel) {
         if (playerSection) playerSection.style.display = "none";
         if (notFoundSection) notFoundSection.style.display = "block";
@@ -585,15 +678,15 @@ function initLiveTvWatchPage() {
         return;
     }
 
-    // Set page title & active channel header
+    // Set Channel Page Metadata & Header Info
     document.title = `${channel.name} — Live TV — SanyuHub`;
     currentActiveChannel = channel;
 
     if (activeLogo) activeLogo.src = channel.logo;
     if (activeName) activeName.textContent = channel.name;
-    if (activeMeta) activeMeta.textContent = channel.meta;
+    if (activeCategory) activeCategory.textContent = channel.categoryLabel || "General Broadcast";
 
-    // Render other channels grid
+    // Render Other Channels
     if (otherChannelsGrid) {
         otherChannelsGrid.innerHTML = "";
         LIVE_TV_CHANNELS.forEach(ch => {
@@ -601,6 +694,117 @@ function initLiveTvWatchPage() {
             otherChannelsGrid.appendChild(createChannelCard(ch, isCurrent));
         });
     }
+
+    // Tab Switching Handlers (EPG & Info)
+    function setupTabs() {
+        if (!tabBtnEPG || !tabBtnInfo) return;
+
+        tabBtnEPG.addEventListener("click", () => {
+            tabBtnEPG.classList.add("active");
+            tabBtnEPG.setAttribute("aria-selected", "true");
+            tabBtnInfo.classList.remove("active");
+            tabBtnInfo.setAttribute("aria-selected", "false");
+
+            if (tabContentEPG) tabContentEPG.style.display = "block";
+            if (tabContentInfo) tabContentInfo.style.display = "none";
+        });
+
+        tabBtnInfo.addEventListener("click", () => {
+            tabBtnInfo.classList.add("active");
+            tabBtnInfo.setAttribute("aria-selected", "true");
+            tabBtnEPG.classList.remove("active");
+            tabBtnEPG.setAttribute("aria-selected", "false");
+
+            if (tabContentInfo) tabContentInfo.style.display = "block";
+            if (tabContentEPG) tabContentEPG.style.display = "none";
+        });
+
+        renderEPGContent(channel);
+        renderInfoContent(channel);
+    }
+
+    function renderEPGContent(targetChannel) {
+        const container = document.getElementById("epgContainer");
+        if (!container) return;
+
+        const schedule = CHANNEL_EPG_SCHEDULES[targetChannel.id] || [];
+
+        if (schedule.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <p>No Electronic Programme Guide (EPG) schedule currently available for ${targetChannel.name}.</p>
+                </div>
+            `;
+            return;
+        }
+
+        const nowEAT = getEATTime();
+        const currentMins = nowEAT.getHours() * 60 + nowEAT.getMinutes();
+
+        let html = `<div class="epg-schedule-header">
+            <h3><span class="live-dot"></span> Today's Broadcast Schedule (East Africa Time)</h3>
+        </div><div class="epg-list">`;
+
+        schedule.forEach(item => {
+            const startMins = parseTimeToMinutes(item.start);
+            const endMins = parseTimeToMinutes(item.end);
+            const isNowAiring = (currentMins >= startMins && currentMins < endMins);
+
+            html += `
+                <div class="epg-item ${isNowAiring ? 'now-airing' : ''}">
+                    <div class="epg-time-box">
+                        <span class="epg-time">${item.start} - ${item.end}</span>
+                        ${isNowAiring ? '<span class="now-badge"><span class="live-dot"></span> NOW AIRING</span>' : ''}
+                    </div>
+                    <div class="epg-info-box">
+                        <div class="epg-title">${item.title}</div>
+                        <div class="epg-desc">${item.desc}</div>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+        container.innerHTML = html;
+    }
+
+    function renderInfoContent(targetChannel) {
+        const container = document.getElementById("infoCardContainer");
+        if (!container) return;
+
+        container.innerHTML = `
+            <div class="info-grid">
+                <div class="info-main">
+                    <h2>About ${targetChannel.name}</h2>
+                    <p class="info-desc">${targetChannel.description || 'Live television broadcast station.'}</p>
+                </div>
+                <div class="info-meta-table">
+                    <div class="info-meta-row">
+                        <span class="info-meta-label">Channel Name:</span>
+                        <span class="info-meta-val">${targetChannel.name}</span>
+                    </div>
+                    <div class="info-meta-row">
+                        <span class="info-meta-label">Category:</span>
+                        <span class="info-meta-val">${targetChannel.categoryLabel || 'General Broadcast'}</span>
+                    </div>
+                    <div class="info-meta-row">
+                        <span class="info-meta-label">Stream Type:</span>
+                        <span class="info-meta-val">HLS Live Stream (HD 1080p)</span>
+                    </div>
+                    <div class="info-meta-row">
+                        <span class="info-meta-label">Language:</span>
+                        <span class="info-meta-val">${targetChannel.category === 'news' ? 'English & Luganda' : 'Luganda & Regional'}</span>
+                    </div>
+                    <div class="info-meta-row">
+                        <span class="info-meta-label">Broadcast Region:</span>
+                        <span class="info-meta-val">Uganda & Global Online</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    setupTabs();
 
     function stopCurrentPlayback() {
         if (currentHlsInstance) {
@@ -619,9 +823,11 @@ function initLiveTvWatchPage() {
             iframePlayer.removeAttribute("src");
         }
 
+        if (unmuteBanner) unmuteBanner.style.display = "none";
+
         if (ctrlQuality) {
             ctrlQuality.style.display = "none";
-            ctrlQuality.innerHTML = '<option value="auto">Auto Quality</option>';
+            ctrlQuality.innerHTML = '<option value="-1">Auto Quality</option>';
         }
     }
 
@@ -639,19 +845,23 @@ function initLiveTvWatchPage() {
             if (iframePlayer) iframePlayer.style.display = "none";
 
             videoPlayer.src = streamUrl;
+
+            // Immediate Playback Attempt
             videoPlayer.play().then(() => {
                 if (loadingOverlay) loadingOverlay.style.display = "none";
                 updatePlayPauseBtnUI(true);
             }).catch(err => {
-                console.warn("Autoplay muted fallback:", err);
+                // Autoplay muted fallback
                 videoPlayer.muted = true;
                 if (ctrlMute) ctrlMute.innerHTML = "&#128069;";
+                if (unmuteBanner) unmuteBanner.style.display = "inline-flex";
+
                 videoPlayer.play().then(() => {
                     if (loadingOverlay) loadingOverlay.style.display = "none";
                     updatePlayPauseBtnUI(true);
                 }).catch(e => {
                     if (loadingOverlay) loadingOverlay.style.display = "none";
-                    showPlaybackError("Click Play to start watching " + targetChannel.name);
+                    fallbackToIframeEmbed(targetChannel);
                 });
             });
 
@@ -689,10 +899,12 @@ function initLiveTvWatchPage() {
                 }).catch(err => {
                     videoPlayer.muted = true;
                     if (ctrlMute) ctrlMute.innerHTML = "&#128069;";
+                    if (unmuteBanner) unmuteBanner.style.display = "inline-flex";
+
                     videoPlayer.play().then(() => {
                         updatePlayPauseBtnUI(true);
                     }).catch(e => {
-                        showPlaybackError("Press Play to begin broadcast.");
+                        fallbackToIframeEmbed(targetChannel);
                     });
                 });
             });
@@ -748,6 +960,35 @@ function initLiveTvWatchPage() {
         if (ctrlPlayPause) {
             ctrlPlayPause.innerHTML = isPlaying ? "&#10074;&#10074;" : "&#9654;";
         }
+        if (centralPlayBtn) {
+            const playIcon = centralPlayBtn.querySelector(".play-icon");
+            const pauseIcon = centralPlayBtn.querySelector(".pause-icon");
+            if (playIcon && pauseIcon) {
+                playIcon.style.display = isPlaying ? "none" : "block";
+                pauseIcon.style.display = isPlaying ? "block" : "none";
+            }
+        }
+    }
+
+    // Unmute Banner Click
+    if (unmuteBanner) {
+        unmuteBanner.addEventListener("click", () => {
+            videoPlayer.muted = false;
+            unmuteBanner.style.display = "none";
+            if (ctrlMute) ctrlMute.innerHTML = "&#128067;";
+            if (ctrlVolume) ctrlVolume.value = videoPlayer.volume || 1;
+        });
+    }
+
+    // Central Play Button Click
+    if (centralPlayBtn) {
+        centralPlayBtn.addEventListener("click", () => {
+            if (videoPlayer.paused) {
+                videoPlayer.play().catch(e => console.error("Play error:", e));
+            } else {
+                videoPlayer.pause();
+            }
+        });
     }
 
     // Video Player Events
@@ -777,9 +1018,7 @@ function initLiveTvWatchPage() {
     if (ctrlPlayPause) {
         ctrlPlayPause.addEventListener("click", () => {
             if (videoPlayer.paused) {
-                videoPlayer.play().catch(e => {
-                    console.error("Play error:", e);
-                });
+                videoPlayer.play().catch(e => console.error("Play error:", e));
             } else {
                 videoPlayer.pause();
             }
@@ -795,6 +1034,7 @@ function initLiveTvWatchPage() {
             } else {
                 ctrlMute.innerHTML = "&#128067;";
                 if (ctrlVolume) ctrlVolume.value = videoPlayer.volume || 1;
+                if (unmuteBanner) unmuteBanner.style.display = "none";
             }
         });
     }
@@ -806,6 +1046,9 @@ function initLiveTvWatchPage() {
             videoPlayer.muted = (val === 0);
             if (ctrlMute) {
                 ctrlMute.innerHTML = (val === 0) ? "&#128069;" : "&#128067;";
+            }
+            if (val > 0 && unmuteBanner) {
+                unmuteBanner.style.display = "none";
             }
         });
     }
@@ -836,6 +1079,26 @@ function initLiveTvWatchPage() {
                 loadChannelStream(currentActiveChannel);
             }
         });
+    }
+
+    // Auto-hide controls bar on inactivity
+    function resetControlsTimer() {
+        if (controlsBar) controlsBar.style.opacity = "1";
+        if (centralPlayBtn) centralPlayBtn.style.opacity = "1";
+
+        clearTimeout(controlsTimeout);
+        controlsTimeout = setTimeout(() => {
+            if (videoPlayer && !videoPlayer.paused) {
+                if (controlsBar) controlsBar.style.opacity = "0";
+                if (centralPlayBtn) centralPlayBtn.style.opacity = "0";
+            }
+        }, 3000);
+    }
+
+    if (videoWrapper) {
+        videoWrapper.addEventListener("mousemove", resetControlsTimer);
+        videoWrapper.addEventListener("touchstart", resetControlsTimer, { passive: true });
+        videoWrapper.addEventListener("pointermove", resetControlsTimer);
     }
 
     // Clean up on page unload
