@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { getUgandanMovieCatalogue } = require('./ugandan-movies');
+const { getUgandanMovieCatalogue, getUgandanSeriesCatalogue } = require('./ugandan-movies');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -112,19 +112,88 @@ app.get('/api/movies/:id', async (req, res) => {
 
 // API Route for Series Catalogue
 app.get('/api/series', async (req, res) => {
-  res.json({
-    series: [],
-    page: 1,
-    limit: 24,
-    total: 0,
-    totalPages: 1,
-    genres: []
-  });
+  try {
+    const seriesCatalogue = await getUgandanSeriesCatalogue();
+
+    const search = (req.query.search || '').trim().toLowerCase();
+    const vjFilter = (req.query.vj || '').trim().toLowerCase();
+    const genreFilter = (req.query.genre || '').trim().toLowerCase();
+    const sort = (req.query.sort || 'popular').trim().toLowerCase();
+
+    const genreSet = new Set();
+    seriesCatalogue.forEach(s => {
+      if (s.genres && Array.isArray(s.genres)) {
+        s.genres.forEach(g => genreSet.add(g));
+      }
+    });
+    const genres = Array.from(genreSet).sort();
+
+    let filtered = seriesCatalogue.filter(s => {
+      if (search) {
+        const matchTitle = s.title && s.title.toLowerCase().includes(search);
+        const matchVj = s.vj && s.vj.toLowerCase().includes(search);
+        const matchOverview = s.overview && s.overview.toLowerCase().includes(search);
+        if (!matchTitle && !matchVj && !matchOverview) return false;
+      }
+
+      if (vjFilter && vjFilter !== 'all') {
+        const vjLower = (s.vj || '').toLowerCase();
+        if (!vjLower.includes(vjFilter)) return false;
+      }
+
+      if (genreFilter && genreFilter !== 'all') {
+        const hasGenre = s.genres && s.genres.some(g => g.toLowerCase() === genreFilter);
+        if (!hasGenre) return false;
+      }
+
+      return true;
+    });
+
+    if (sort === 'title') {
+      filtered.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sort === 'rating') {
+      filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+    }
+
+    let page = parseInt(req.query.page, 10) || 1;
+    let limit = parseInt(req.query.limit, 10) || 24;
+    if (page < 1) page = 1;
+    if (limit < 1) limit = 24;
+    if (limit > 100) limit = 100;
+
+    const total = filtered.length;
+    const totalPages = Math.ceil(total / limit) || 1;
+    if (page > totalPages && totalPages > 0) page = totalPages;
+
+    const startIndex = (page - 1) * limit;
+    const paginatedSeries = filtered.slice(startIndex, startIndex + limit);
+
+    res.json({
+      series: paginatedSeries,
+      page: page,
+      limit: limit,
+      total: total,
+      totalPages: totalPages,
+      genres: genres
+    });
+
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve Ugandan series catalogue.' });
+  }
 });
 
 // Single Series Detail API
 app.get('/api/series/:id', async (req, res) => {
-  res.status(404).json({ error: 'Series not found' });
+  try {
+    const seriesCatalogue = await getUgandanSeriesCatalogue();
+    const series = seriesCatalogue.find(s => s.id === req.params.id);
+    if (!series) {
+      return res.status(404).json({ error: 'Series not found' });
+    }
+    res.json(series);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve series details.' });
+  }
 });
 
 // Dynamic Page Routes
