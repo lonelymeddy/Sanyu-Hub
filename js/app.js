@@ -454,6 +454,45 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://galaxytv.ug/home",
         meta: "Official Live Broadcast • HD • Jikonkone",
         description: "Galaxy TV is Uganda's funkiest television station featuring the best music, movies, celebrity news, and entertainment."
+    },
+    {
+        id: "kbs-tv",
+        aliases: ["kbs-tv-uganda", "kbs"],
+        name: "KBS TV Uganda",
+        category: "news",
+        categoryLabel: "News, Shows & Family",
+        logo: "/images/kbstv-logo.png",
+        streamType: "hls",
+        streamUrl: "https://www.kbstv.co.ug/live/abr/master.m3u8",
+        embedUrl: "https://www.kbstv.co.ug/",
+        meta: "Official Live Broadcast • HD • Maaso ku Lutimbe",
+        description: "KBS TV Uganda (Maaso ku Lutimbe) brings you live news, top entertainment, local talk shows, movies, and family programming."
+    },
+    {
+        id: "base2-tv",
+        aliases: ["base2"],
+        name: "Base2 TV",
+        category: "entertainment",
+        categoryLabel: "Luganda Entertainment & Movies",
+        logo: "/images/base2tv-logo.png",
+        streamType: "hls",
+        streamUrl: "https://base2tv.ug/live/stream.m3u8",
+        embedUrl: "https://base2tv.ug/",
+        meta: "Official Live Broadcast • HD • Telefwunkeni",
+        description: "Base2 TV (Telefwunkeni) delivers vibrant Luganda entertainment, translated blockbuster movies, youth shows, and local music."
+    },
+    {
+        id: "trace-mziki",
+        aliases: ["tracemziki"],
+        name: "Trace Mziki",
+        category: "entertainment",
+        categoryLabel: "East African Music & Culture",
+        logo: "/images/tracemziki-logo.png",
+        streamType: "hls",
+        streamUrl: "https://channels.trace.plus/Traceprod/MZIKI_hd/index.m3u8",
+        embedUrl: "https://bx-tv.com/watch/trace-mziki-893902",
+        meta: "Official Live Broadcast • HD • We Love East African Music",
+        description: "Trace Mziki is the ultimate music channel dedicated to East African music, featuring hit video countdowns, artist showcases, and urban culture."
     }
 ];
 
@@ -598,6 +637,31 @@ const CHANNEL_EPG_SCHEDULES = {
         { start: "14:00", end: "17:00", title: "Galaxy Luganda Blockbuster", desc: "Action movie broadcast with top VJ audio translation." },
         { start: "17:00", end: "20:00", title: "Zzina Top 20 Countdown", desc: "Uganda's official weekly top 20 music countdown." },
         { start: "20:00", end: "23:59", title: "Galaxy Night Vibe & Party Mix", desc: "Live DJ video mix and celebrity interviews." }
+    ],
+    "kbs-tv": [
+        { start: "06:00", end: "09:00", title: "KBS Morning Express", desc: "Live morning breaking news, traffic updates, and family insights." },
+        { start: "09:00", end: "12:00", title: "Maaso ku Lutimbe Special", desc: "Interactive community affairs, health, and social discussions." },
+        { start: "12:00", end: "14:00", title: "KBS Midday Bulletin", desc: "Comprehensive afternoon news coverage and business updates." },
+        { start: "14:00", end: "17:00", title: "Kitimba Sports & Youth Vibe", desc: "Sports news, local highlights, and youth entertainment." },
+        { start: "17:00", end: "19:00", title: "Luganda Drama & Movie Hour", desc: "Popular translated feature film and drama series." },
+        { start: "19:00", end: "20:00", title: "KBS Prime News Bulletin", desc: "Main evening Luganda news broadcast." },
+        { start: "20:00", end: "23:59", title: "Late Night Lounge & Replays", desc: "Current affairs analysis, documentary replays, and late night music." }
+    ],
+    "base2-tv": [
+        { start: "06:00", end: "10:00", title: "Telefwunkeni Morning Vibe", desc: "Fresh urban music video mix and morning chatter." },
+        { start: "10:00", end: "13:00", title: "Base2 VJ Movie Matinee", desc: "Top action and comedy movie translated in Luganda." },
+        { start: "13:00", end: "16:00", title: "Ugandan Hits Marathon", desc: "Non-stop East African video countdown and artist interviews." },
+        { start: "16:00", end: "19:00", title: "Telefwunkeni Luganda Drama", desc: "Hit local Luganda drama series and soap operas." },
+        { start: "19:00", end: "22:00", title: "Base2 Prime Time Movie", desc: "Blockbuster translated action movie premiere." },
+        { start: "22:00", end: "23:59", title: "Late Night Club Mix", desc: "Non-stop DJ video mix and youth party vibes." }
+    ],
+    "trace-mziki": [
+        { start: "06:00", end: "09:00", title: "Mziki Morning Bangers", desc: "Top East African Afrobeat and Bongo Flava video hits to kick off the day." },
+        { start: "09:00", end: "12:00", title: "Trace Top 10 East Africa", desc: "The official weekly chart countdown of the biggest tunes in Kenya, Uganda, and Tanzania." },
+        { start: "12:00", end: "15:00", title: "Gengetone & Ugandan Vibe", desc: "High-energy urban hits from Kampala and Nairobi." },
+        { start: "15:00", end: "18:00", title: "Trace Hits & Artist Focus", desc: "Exclusive artist interviews, behind-the-scenes music video shoots, and fresh releases." },
+        { start: "18:00", end: "21:00", title: "Bongo Flava & Gospel Selection", desc: "The finest Tanzanian melodies and inspiring regional music videos." },
+        { start: "21:00", end: "23:59", title: "Trace Night Mix & DJ Sessions", desc: "Non-stop party video mix featuring East Africa's elite DJs." }
     ]
 };
 
