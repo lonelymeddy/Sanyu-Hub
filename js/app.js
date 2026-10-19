@@ -578,7 +578,6 @@ function initLiveTvWatchPage() {
     const videoPlayer = document.getElementById("liveVideoPlayer");
     if (!videoPlayer) return; // Only run on watch page
 
-    const iframePlayer = document.getElementById("liveIframePlayer");
     const loadingOverlay = document.getElementById("liveLoadingOverlay");
     const errorOverlay = document.getElementById("liveErrorOverlay");
     const errorMsg = document.getElementById("liveErrorMsg");
@@ -591,11 +590,23 @@ function initLiveTvWatchPage() {
     const activeName = document.getElementById("activeChannelName");
     const activeCategory = document.getElementById("activeChannelCategory");
 
-    const ctrlPlayPause = document.getElementById("ctrlPlayPauseBtn");
-    const ctrlMute = document.getElementById("ctrlMuteBtn");
-    const ctrlVolume = document.getElementById("ctrlVolumeSlider");
-    const ctrlFullscreen = document.getElementById("ctrlFullscreenBtn");
-    const ctrlQuality = document.getElementById("ctrlQualitySelect");
+    // Controls Elements
+    const ctrlRewindBtn = document.getElementById("ctrlRewindBtn");
+    const ctrlPlayPauseBtn = document.getElementById("ctrlPlayPauseBtn");
+    const ctrlForwardBtn = document.getElementById("ctrlForwardBtn");
+    const ctrlMuteBtn = document.getElementById("ctrlMuteBtn");
+    const ctrlVolumeSlider = document.getElementById("ctrlVolumeSlider");
+    const ctrlTimeDisplay = document.getElementById("ctrlTimeDisplay");
+    const ctrlProgressContainer = document.getElementById("ctrlProgressContainer");
+    const ctrlProgressFill = document.getElementById("ctrlProgressFill");
+    const ctrlProgressThumb = document.getElementById("ctrlProgressThumb");
+    const ctrlSettingsBtn = document.getElementById("ctrlSettingsBtn");
+    const ctrlSettingsMenu = document.getElementById("ctrlSettingsMenu");
+    const settingsCloseBtn = document.getElementById("settingsCloseBtn");
+    const ctrlFullscreenBtn = document.getElementById("ctrlFullscreenBtn");
+    const ctrlQualitySelect = document.getElementById("ctrlQualitySelect");
+    const ctrlPipBtn = document.getElementById("ctrlPipBtn");
+
     const videoWrapper = document.getElementById("liveVideoWrapper");
     const controlsBar = document.getElementById("liveControlsBar");
 
@@ -609,6 +620,20 @@ function initLiveTvWatchPage() {
     const tabContentInfo = document.getElementById("tabContentInfo");
 
     let controlsTimeout = null;
+    let isSeekingScrubbing = false;
+    let isSeekableStream = false;
+
+    // Helper: format seconds to M:SS or H:MM:SS
+    function formatTime(seconds) {
+        if (!isFinite(seconds) || isNaN(seconds) || seconds < 0) return "0:00";
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        const s = Math.floor(seconds % 60);
+        if (h > 0) {
+            return `${h}:${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+        return `${m}:${s < 10 ? '0' : ''}${s}`;
+    }
 
     // Route Parsing
     const pathParts = window.location.pathname.split("/").filter(Boolean);
@@ -806,148 +831,27 @@ function initLiveTvWatchPage() {
             videoPlayer.load();
         }
 
-        if (iframePlayer) {
-            iframePlayer.style.display = "none";
-            iframePlayer.removeAttribute("src");
-        }
-
         if (unmuteBanner) unmuteBanner.style.display = "none";
 
-        if (ctrlQuality) {
-            ctrlQuality.style.display = "none";
-            ctrlQuality.innerHTML = '<option value="-1">Auto Quality</option>';
-        }
-    }
-
-    function loadChannelStream(targetChannel) {
-        stopCurrentPlayback();
-
-        if (errorOverlay) errorOverlay.style.display = "none";
-        if (loadingOverlay) loadingOverlay.style.display = "flex";
-
-        const streamUrl = targetChannel.streamUrl;
-
-        // Native HLS support (Safari / iOS)
-        if (videoPlayer.canPlayType("application/vnd.apple.mpegurl")) {
-            videoPlayer.style.display = "block";
-            if (iframePlayer) iframePlayer.style.display = "none";
-
-            videoPlayer.src = streamUrl;
-
-            // Immediate Playback Attempt
-            videoPlayer.play().then(() => {
-                if (loadingOverlay) loadingOverlay.style.display = "none";
-                updatePlayPauseBtnUI(true);
-            }).catch(err => {
-                // Autoplay muted fallback
-                videoPlayer.muted = true;
-                if (ctrlMute) ctrlMute.innerHTML = "&#128069;";
-                if (unmuteBanner) unmuteBanner.style.display = "inline-flex";
-
-                videoPlayer.play().then(() => {
-                    if (loadingOverlay) loadingOverlay.style.display = "none";
-                    updatePlayPauseBtnUI(true);
-                }).catch(e => {
-                    if (loadingOverlay) loadingOverlay.style.display = "none";
-                    fallbackToIframeEmbed(targetChannel);
-                });
-            });
-
-        // HLS.js support
-        } else if (window.Hls && Hls.isSupported()) {
-            videoPlayer.style.display = "block";
-            if (iframePlayer) iframePlayer.style.display = "none";
-
-            const hls = new Hls({
-                enableWorker: true,
-                lowLatencyMode: true,
-                backBufferLength: 90
-            });
-
-            currentHlsInstance = hls;
-            hls.loadSource(streamUrl);
-            hls.attachMedia(videoPlayer);
-
-            hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
-                if (loadingOverlay) loadingOverlay.style.display = "none";
-
-                if (ctrlQuality && data.levels && data.levels.length > 1) {
-                    ctrlQuality.style.display = "inline-block";
-                    ctrlQuality.innerHTML = '<option value="-1">Auto Quality</option>';
-                    data.levels.forEach((level, index) => {
-                        const opt = document.createElement("option");
-                        opt.value = index;
-                        opt.textContent = `${level.height}p (${Math.round(level.bitrate / 1000)} kbps)`;
-                        ctrlQuality.appendChild(opt);
-                    });
-                }
-
-                videoPlayer.play().then(() => {
-                    updatePlayPauseBtnUI(true);
-                }).catch(err => {
-                    videoPlayer.muted = true;
-                    if (ctrlMute) ctrlMute.innerHTML = "&#128069;";
-                    if (unmuteBanner) unmuteBanner.style.display = "inline-flex";
-
-                    videoPlayer.play().then(() => {
-                        updatePlayPauseBtnUI(true);
-                    }).catch(e => {
-                        fallbackToIframeEmbed(targetChannel);
-                    });
-                });
-            });
-
-            hls.on(Hls.Events.ERROR, (event, data) => {
-                if (data.fatal) {
-                    console.error("Fatal HLS error encountered:", data.type);
-                    switch (data.type) {
-                        case Hls.ErrorTypes.NETWORK_ERROR:
-                            hls.startLoad();
-                            break;
-                        case Hls.ErrorTypes.MEDIA_ERROR:
-                            hls.recoverMediaError();
-                            break;
-                        default:
-                            fallbackToIframeEmbed(targetChannel);
-                            break;
-                    }
-                }
-            });
-
-        } else if (targetChannel.embedUrl) {
-            fallbackToIframeEmbed(targetChannel);
-        } else {
-            showPlaybackError("HLS live streaming is not supported on this browser.");
-        }
-    }
-
-    function fallbackToIframeEmbed(targetChannel) {
-        if (!iframePlayer || !targetChannel.embedUrl) {
-            showPlaybackError("Live stream unavailable for " + targetChannel.name);
-            return;
+        if (ctrlQualitySelect) {
+            ctrlQualitySelect.innerHTML = '<option value="-1">Auto Quality</option>';
         }
 
-        stopCurrentPlayback();
-        videoPlayer.style.display = "none";
-        iframePlayer.style.display = "block";
-        iframePlayer.src = targetChannel.embedUrl;
-
-        if (loadingOverlay) loadingOverlay.style.display = "none";
-        if (errorOverlay) errorOverlay.style.display = "none";
+        if (ctrlSettingsMenu) ctrlSettingsMenu.style.display = "none";
     }
 
     function showPlaybackError(message) {
         if (loadingOverlay) loadingOverlay.style.display = "none";
         if (errorOverlay) {
             errorOverlay.style.display = "flex";
-            if (errorMsg) errorMsg.textContent = message || "Stream connection failed.";
+            if (errorMsg) errorMsg.textContent = message || "Live broadcast is temporarily unreachable.";
         }
     }
 
     function updatePlayPauseBtnUI(isPlaying) {
-        if (ctrlPlayPause) {
-            const iconPlay = ctrlPlayPause.querySelector(".icon-play");
-            const iconPause = ctrlPlayPause.querySelector(".icon-pause");
+        if (ctrlPlayPauseBtn) {
+            const iconPlay = ctrlPlayPauseBtn.querySelector(".icon-play");
+            const iconPause = ctrlPlayPauseBtn.querySelector(".icon-pause");
             if (iconPlay && iconPause) {
                 iconPlay.style.display = isPlaying ? "none" : "block";
                 iconPause.style.display = isPlaying ? "block" : "none";
@@ -963,14 +867,236 @@ function initLiveTvWatchPage() {
         }
     }
 
-    function updateMuteBtnUI(isMuted) {
-        if (ctrlMute) {
-            const iconHigh = ctrlMute.querySelector(".icon-vol-high");
-            const iconMute = ctrlMute.querySelector(".icon-vol-mute");
+    function updateMuteBtnUI(isMuted, volume) {
+        if (ctrlMuteBtn) {
+            const iconHigh = ctrlMuteBtn.querySelector(".icon-vol-high");
+            const iconMute = ctrlMuteBtn.querySelector(".icon-vol-mute");
             if (iconHigh && iconMute) {
-                iconHigh.style.display = isMuted ? "none" : "block";
-                iconMute.style.display = isMuted ? "block" : "none";
+                iconHigh.style.display = (isMuted || volume === 0) ? "none" : "block";
+                iconMute.style.display = (isMuted || volume === 0) ? "block" : "none";
             }
+        }
+        if (ctrlVolumeSlider && typeof volume === "number") {
+            ctrlVolumeSlider.value = isMuted ? 0 : volume;
+        }
+    }
+
+    function updateSeekCapabilities() {
+        // Check if stream supports seeking (finite duration > 0 or valid seekable range)
+        let seekableStart = 0;
+        let seekableEnd = 0;
+        let duration = videoPlayer.duration;
+
+        if (videoPlayer.seekable && videoPlayer.seekable.length > 0) {
+            seekableStart = videoPlayer.seekable.start(0);
+            seekableEnd = videoPlayer.seekable.end(videoPlayer.seekable.length - 1);
+        }
+
+        const seekRange = seekableEnd - seekableStart;
+        // Live stream with DVR window > 15s or finite media duration > 0 is seekable
+        const hasFiniteDuration = isFinite(duration) && duration > 0;
+        const hasDvrWindow = seekRange > 15 && !hasFiniteDuration;
+
+        isSeekableStream = hasFiniteDuration || hasDvrWindow;
+
+        if (ctrlRewindBtn) ctrlRewindBtn.disabled = !isSeekableStream;
+        if (ctrlForwardBtn) ctrlForwardBtn.disabled = !isSeekableStream;
+
+        if (ctrlProgressContainer) {
+            if (isSeekableStream) {
+                ctrlProgressContainer.classList.remove("disabled");
+            } else {
+                ctrlProgressContainer.classList.add("disabled");
+            }
+        }
+
+        updateTimeProgressUI();
+    }
+
+    function updateTimeProgressUI() {
+        if (isSeekingScrubbing) return;
+
+        let currentTime = videoPlayer.currentTime;
+        let duration = videoPlayer.duration;
+
+        let seekableStart = 0;
+        let seekableEnd = 0;
+        if (videoPlayer.seekable && videoPlayer.seekable.length > 0) {
+            seekableStart = videoPlayer.seekable.start(0);
+            seekableEnd = videoPlayer.seekable.end(videoPlayer.seekable.length - 1);
+        }
+
+        const seekRange = seekableEnd - seekableStart;
+        const hasFiniteDuration = isFinite(duration) && duration > 0;
+
+        if (hasFiniteDuration) {
+            // Standard seekable VOD or recorded stream
+            const percent = Math.min(100, Math.max(0, (currentTime / duration) * 100));
+            if (ctrlProgressFill) ctrlProgressFill.style.width = `${percent}%`;
+            if (ctrlProgressThumb) ctrlProgressThumb.style.left = `${percent}%`;
+            if (ctrlTimeDisplay) {
+                ctrlTimeDisplay.classList.remove("is-live");
+                ctrlTimeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+            }
+        } else if (seekRange > 15) {
+            // Live stream with DVR window
+            const currentPosition = currentTime - seekableStart;
+            const percent = Math.min(100, Math.max(0, (currentPosition / seekRange) * 100));
+            if (ctrlProgressFill) ctrlProgressFill.style.width = `${percent}%`;
+            if (ctrlProgressThumb) ctrlProgressThumb.style.left = `${percent}%`;
+            if (ctrlTimeDisplay) {
+                ctrlTimeDisplay.classList.add("is-live");
+                const lagFromLive = Math.round(seekableEnd - currentTime);
+                if (lagFromLive <= 5) {
+                    ctrlTimeDisplay.textContent = "LIVE";
+                } else {
+                    ctrlTimeDisplay.textContent = `-${formatTime(lagFromLive)} LIVE`;
+                }
+            }
+        } else {
+            // Pure live stream (non-seekable)
+            if (ctrlProgressFill) ctrlProgressFill.style.width = "100%";
+            if (ctrlProgressThumb) ctrlProgressThumb.style.left = "100%";
+            if (ctrlTimeDisplay) {
+                ctrlTimeDisplay.classList.add("is-live");
+                ctrlTimeDisplay.textContent = "LIVE";
+            }
+        }
+    }
+
+    function seekToPercentage(percentage) {
+        if (!isSeekableStream) return;
+
+        let duration = videoPlayer.duration;
+        let seekableStart = 0;
+        let seekableEnd = 0;
+        if (videoPlayer.seekable && videoPlayer.seekable.length > 0) {
+            seekableStart = videoPlayer.seekable.start(0);
+            seekableEnd = videoPlayer.seekable.end(videoPlayer.seekable.length - 1);
+        }
+
+        const seekRange = seekableEnd - seekableStart;
+        const hasFiniteDuration = isFinite(duration) && duration > 0;
+
+        if (hasFiniteDuration) {
+            const targetTime = (percentage / 100) * duration;
+            videoPlayer.currentTime = Math.min(duration, Math.max(0, targetTime));
+        } else if (seekRange > 15) {
+            const targetTime = seekableStart + (percentage / 100) * seekRange;
+            videoPlayer.currentTime = Math.min(seekableEnd - 1, Math.max(seekableStart, targetTime));
+        }
+    }
+
+    function handleScrub(e) {
+        if (!isSeekableStream || !ctrlProgressContainer) return;
+
+        const rect = ctrlProgressContainer.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const offsetX = Math.min(rect.width, Math.max(0, clientX - rect.left));
+        const percentage = (offsetX / rect.width) * 100;
+
+        if (ctrlProgressFill) ctrlProgressFill.style.width = `${percentage}%`;
+        if (ctrlProgressThumb) ctrlProgressThumb.style.left = `${percentage}%`;
+
+        seekToPercentage(percentage);
+    }
+
+    function loadChannelStream(targetChannel) {
+        stopCurrentPlayback();
+
+        if (errorOverlay) errorOverlay.style.display = "none";
+        if (loadingOverlay) loadingOverlay.style.display = "flex";
+
+        const streamUrl = targetChannel.streamUrl;
+        videoPlayer.style.display = "block";
+
+        // Native HLS support (Safari / iOS)
+        if (videoPlayer.canPlayType("application/vnd.apple.mpegurl")) {
+            videoPlayer.src = streamUrl;
+
+            videoPlayer.play().then(() => {
+                if (loadingOverlay) loadingOverlay.style.display = "none";
+                updatePlayPauseBtnUI(true);
+            }).catch(err => {
+                // Autoplay policy fallback: try muted playback
+                videoPlayer.muted = true;
+                updateMuteBtnUI(true, 0);
+                if (unmuteBanner) unmuteBanner.style.display = "inline-flex";
+
+                videoPlayer.play().then(() => {
+                    if (loadingOverlay) loadingOverlay.style.display = "none";
+                    updatePlayPauseBtnUI(true);
+                }).catch(e => {
+                    if (loadingOverlay) loadingOverlay.style.display = "none";
+                    showPlaybackError(`Unable to play live stream for ${targetChannel.name}. Please click Retry.`);
+                });
+            });
+
+        // HLS.js support (Chrome, Firefox, Edge, Android)
+        } else if (window.Hls && Hls.isSupported()) {
+            const hls = new Hls({
+                enableWorker: true,
+                lowLatencyMode: true,
+                backBufferLength: 90
+            });
+
+            currentHlsInstance = hls;
+            hls.loadSource(streamUrl);
+            hls.attachMedia(videoPlayer);
+
+            hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+                if (loadingOverlay) loadingOverlay.style.display = "none";
+
+                // Populate Quality Levels if multi-bitrate available
+                if (ctrlQualitySelect && data.levels && data.levels.length > 1) {
+                    ctrlQualitySelect.innerHTML = '<option value="-1">Auto Quality</option>';
+                    data.levels.forEach((level, index) => {
+                        const opt = document.createElement("option");
+                        opt.value = index;
+                        opt.textContent = level.height ? `${level.height}p (${Math.round(level.bitrate / 1000)} kbps)` : `Level ${index + 1}`;
+                        ctrlQualitySelect.appendChild(opt);
+                    });
+                } else if (ctrlQualitySelect) {
+                    ctrlQualitySelect.innerHTML = '<option value="-1">Auto (HD Broadcast)</option>';
+                }
+
+                // Autoplay attempt
+                videoPlayer.play().then(() => {
+                    updatePlayPauseBtnUI(true);
+                }).catch(err => {
+                    videoPlayer.muted = true;
+                    updateMuteBtnUI(true, 0);
+                    if (unmuteBanner) unmuteBanner.style.display = "inline-flex";
+
+                    videoPlayer.play().then(() => {
+                        updatePlayPauseBtnUI(true);
+                    }).catch(e => {
+                        showPlaybackError(`Autoplay prevented. Click Retry or central play button.`);
+                    });
+                });
+            });
+
+            hls.on(Hls.Events.ERROR, (event, data) => {
+                if (data.fatal) {
+                    console.error("Fatal HLS error encountered:", data.type, data.details);
+                    switch (data.type) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            console.log("Attempting network recovery...");
+                            hls.startLoad();
+                            break;
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            console.log("Attempting media recovery...");
+                            hls.recoverMediaError();
+                            break;
+                        default:
+                            showPlaybackError(`Stream connection failed for ${targetChannel.name}.`);
+                            break;
+                    }
+                }
+            });
+
+        } else {
+            showPlaybackError("HLS live streaming is not supported on this browser.");
         }
     }
 
@@ -979,7 +1105,7 @@ function initLiveTvWatchPage() {
         unmuteBanner.addEventListener("click", () => {
             videoPlayer.muted = false;
             unmuteBanner.style.display = "none";
-            updateMuteBtnUI(false);
+            updateMuteBtnUI(false, videoPlayer.volume);
         });
     }
 
@@ -994,11 +1120,12 @@ function initLiveTvWatchPage() {
         });
     }
 
-    // Video Player Events
+    // Video Player Event Listeners
     videoPlayer.addEventListener("playing", () => {
         if (loadingOverlay) loadingOverlay.style.display = "none";
         if (errorOverlay) errorOverlay.style.display = "none";
         updatePlayPauseBtnUI(true);
+        updateSeekCapabilities();
     });
 
     videoPlayer.addEventListener("pause", () => {
@@ -1009,17 +1136,38 @@ function initLiveTvWatchPage() {
         if (loadingOverlay) loadingOverlay.style.display = "flex";
     });
 
-    videoPlayer.addEventListener("error", () => {
-        if (currentActiveChannel) {
-            fallbackToIframeEmbed(currentActiveChannel);
-        } else {
-            showPlaybackError("An error occurred while loading the video stream.");
-        }
+    videoPlayer.addEventListener("timeupdate", () => {
+        updateTimeProgressUI();
     });
 
-    // Custom Controls Event Handlers
-    if (ctrlPlayPause) {
-        ctrlPlayPause.addEventListener("click", () => {
+    videoPlayer.addEventListener("durationchange", () => {
+        updateSeekCapabilities();
+    });
+
+    videoPlayer.addEventListener("loadedmetadata", () => {
+        updateSeekCapabilities();
+    });
+
+    videoPlayer.addEventListener("error", () => {
+        const channelName = currentActiveChannel ? currentActiveChannel.name : 'this channel';
+        showPlaybackError(`Unable to play live video stream for ${channelName}.`);
+    });
+
+    // Control A: Rewind (-10s)
+    if (ctrlRewindBtn) {
+        ctrlRewindBtn.addEventListener("click", () => {
+            if (!isSeekableStream) return;
+            let seekableStart = 0;
+            if (videoPlayer.seekable && videoPlayer.seekable.length > 0) {
+                seekableStart = videoPlayer.seekable.start(0);
+            }
+            videoPlayer.currentTime = Math.max(seekableStart, videoPlayer.currentTime - 10);
+        });
+    }
+
+    // Control B: Play/Pause
+    if (ctrlPlayPauseBtn) {
+        ctrlPlayPauseBtn.addEventListener("click", () => {
             if (videoPlayer.paused) {
                 videoPlayer.play().catch(e => console.error("Play error:", e));
             } else {
@@ -1028,46 +1176,205 @@ function initLiveTvWatchPage() {
         });
     }
 
-    if (ctrlMute) {
-        ctrlMute.addEventListener("click", () => {
+    // Control C: Forward (+10s)
+    if (ctrlForwardBtn) {
+        ctrlForwardBtn.addEventListener("click", () => {
+            if (!isSeekableStream) return;
+            let seekableEnd = videoPlayer.duration;
+            if (videoPlayer.seekable && videoPlayer.seekable.length > 0) {
+                seekableEnd = videoPlayer.seekable.end(videoPlayer.seekable.length - 1);
+            }
+            if (isFinite(seekableEnd)) {
+                videoPlayer.currentTime = Math.min(seekableEnd - 1, videoPlayer.currentTime + 10);
+            } else {
+                videoPlayer.currentTime += 10;
+            }
+        });
+    }
+
+    // Control D: Progress Bar Scrubbing
+    if (ctrlProgressContainer) {
+        ctrlProgressContainer.addEventListener("mousedown", (e) => {
+            if (!isSeekableStream) return;
+            isSeekingScrubbing = true;
+            handleScrub(e);
+        });
+
+        window.addEventListener("mousemove", (e) => {
+            if (isSeekingScrubbing) {
+                handleScrub(e);
+            }
+        });
+
+        window.addEventListener("mouseup", () => {
+            if (isSeekingScrubbing) {
+                isSeekingScrubbing = false;
+            }
+        });
+
+        ctrlProgressContainer.addEventListener("touchstart", (e) => {
+            if (!isSeekableStream) return;
+            isSeekingScrubbing = true;
+            handleScrub(e);
+        }, { passive: true });
+
+        window.addEventListener("touchmove", (e) => {
+            if (isSeekingScrubbing) {
+                handleScrub(e);
+            }
+        }, { passive: true });
+
+        window.addEventListener("touchend", () => {
+            if (isSeekingScrubbing) {
+                isSeekingScrubbing = false;
+            }
+        });
+    }
+
+    // Control E: Mute and Volume
+    if (ctrlMuteBtn) {
+        ctrlMuteBtn.addEventListener("click", () => {
             videoPlayer.muted = !videoPlayer.muted;
-            updateMuteBtnUI(videoPlayer.muted);
+            updateMuteBtnUI(videoPlayer.muted, videoPlayer.volume);
             if (!videoPlayer.muted && unmuteBanner) {
                 unmuteBanner.style.display = "none";
             }
         });
     }
 
-    if (ctrlVolume) {
-        ctrlVolume.addEventListener("input", (e) => {
+    if (ctrlVolumeSlider) {
+        ctrlVolumeSlider.addEventListener("input", (e) => {
             const val = parseFloat(e.target.value);
             videoPlayer.volume = val;
             videoPlayer.muted = (val === 0);
-            if (ctrlMute) {
-                ctrlMute.innerHTML = (val === 0) ? "&#128069;" : "&#128067;";
-            }
+            updateMuteBtnUI(videoPlayer.muted, val);
             if (val > 0 && unmuteBanner) {
                 unmuteBanner.style.display = "none";
             }
         });
     }
 
-    if (ctrlFullscreen) {
-        ctrlFullscreen.addEventListener("click", () => {
-            if (document.fullscreenElement) {
-                document.exitFullscreen();
-            } else if (videoWrapper.requestFullscreen) {
-                videoWrapper.requestFullscreen();
-            } else if (videoPlayer.webkitEnterFullscreen) {
-                videoPlayer.webkitEnterFullscreen();
+    // Control F: Settings Menu
+    if (ctrlSettingsBtn && ctrlSettingsMenu) {
+        ctrlSettingsBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isVisible = ctrlSettingsMenu.style.display !== "none";
+            ctrlSettingsMenu.style.display = isVisible ? "none" : "block";
+            ctrlSettingsBtn.setAttribute("aria-expanded", !isVisible ? "true" : "false");
+            updateSettingsInfo();
+        });
+
+        if (settingsCloseBtn) {
+            settingsCloseBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                ctrlSettingsMenu.style.display = "none";
+                ctrlSettingsBtn.setAttribute("aria-expanded", "false");
+            });
+        }
+
+        document.addEventListener("click", (e) => {
+            if (ctrlSettingsMenu.style.display !== "none" && !ctrlSettingsMenu.contains(e.target) && e.target !== ctrlSettingsBtn) {
+                ctrlSettingsMenu.style.display = "none";
+                ctrlSettingsBtn.setAttribute("aria-expanded", "false");
             }
         });
     }
 
-    if (ctrlQuality) {
-        ctrlQuality.addEventListener("change", (e) => {
+    // Settings Option: Playback Speed
+    const speedOptionsContainer = document.getElementById("speedOptions");
+    const speedStatusText = document.getElementById("speedStatusText");
+    if (speedOptionsContainer) {
+        speedOptionsContainer.querySelectorAll(".speed-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const speed = parseFloat(btn.getAttribute("data-speed"));
+                if (!isNaN(speed)) {
+                    videoPlayer.playbackRate = speed;
+                    speedOptionsContainer.querySelectorAll(".speed-btn").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    if (speedStatusText) speedStatusText.textContent = `Applied ${speed}x playback speed.`;
+                }
+            });
+        });
+    }
+
+    // Settings Option: Quality Select
+    if (ctrlQualitySelect) {
+        ctrlQualitySelect.addEventListener("change", (e) => {
+            const levelIndex = parseInt(e.target.value, 10);
             if (currentHlsInstance) {
-                currentHlsInstance.currentLevel = parseInt(e.target.value, 10);
+                currentHlsInstance.currentLevel = levelIndex;
+            }
+        });
+    }
+
+    // Settings Option: Picture in Picture
+    if (ctrlPipBtn) {
+        if (!document.pictureInPictureEnabled || !videoPlayer.requestPictureInPicture) {
+            ctrlPipBtn.disabled = true;
+            ctrlPipBtn.querySelector("span").textContent = "Picture-in-Picture (Unsupported)";
+        } else {
+            ctrlPipBtn.addEventListener("click", async () => {
+                try {
+                    if (document.pictureInPictureElement) {
+                        await document.exitPictureInPicture();
+                    } else {
+                        await videoPlayer.requestPictureInPicture();
+                    }
+                } catch (err) {
+                    console.error("Picture-in-Picture error:", err);
+                }
+            });
+        }
+    }
+
+    // Helper: Update Settings Popover Info State
+    function updateSettingsInfo() {
+        const audioStatus = document.getElementById("audioTrackStatus");
+        const subtitleStatus = document.getElementById("subtitleStatus");
+        const castStatus = document.getElementById("castStatus");
+
+        if (audioStatus) {
+            if (currentHlsInstance && currentHlsInstance.audioTracks && currentHlsInstance.audioTracks.length > 1) {
+                audioStatus.textContent = `${currentHlsInstance.audioTracks.length} Audio Tracks Available`;
+            } else {
+                audioStatus.textContent = "Default (Broadcast Stereo)";
+            }
+        }
+
+        if (subtitleStatus) {
+            if (videoPlayer.textTracks && videoPlayer.textTracks.length > 0) {
+                subtitleStatus.textContent = `${videoPlayer.textTracks.length} Caption Tracks`;
+            } else {
+                subtitleStatus.textContent = "None Available";
+            }
+        }
+
+        if (castStatus) {
+            if (window.chrome && window.chrome.cast && window.cast && window.cast.framework) {
+                castStatus.textContent = "Available (Ready)";
+            } else {
+                castStatus.textContent = "Unavailable (Cast SDK / API not loaded)";
+            }
+        }
+    }
+
+    // Control G: Fullscreen
+    if (ctrlFullscreenBtn) {
+        ctrlFullscreenBtn.addEventListener("click", () => {
+            if (document.fullscreenElement || document.webkitFullscreenElement) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            } else {
+                if (videoWrapper.requestFullscreen) {
+                    videoWrapper.requestFullscreen();
+                } else if (videoWrapper.webkitRequestFullscreen) {
+                    videoWrapper.webkitRequestFullscreen();
+                } else if (videoPlayer.webkitEnterFullscreen) {
+                    videoPlayer.webkitEnterFullscreen();
+                }
             }
         });
     }
@@ -1087,11 +1394,11 @@ function initLiveTvWatchPage() {
 
         clearTimeout(controlsTimeout);
         controlsTimeout = setTimeout(() => {
-            if (videoPlayer && !videoPlayer.paused) {
+            if (videoPlayer && !videoPlayer.paused && ctrlSettingsMenu && ctrlSettingsMenu.style.display === "none") {
                 if (controlsBar) controlsBar.style.opacity = "0";
                 if (centralPlayBtn) centralPlayBtn.style.opacity = "0";
             }
-        }, 3000);
+        }, 3500);
     }
 
     if (videoWrapper) {
