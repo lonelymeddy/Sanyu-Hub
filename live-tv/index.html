@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#222222">
-<meta name="description" content="SanyuHub — Live TV Channels">
-<title>Live TV Channels — SanyuHub</title>
+<meta name="description" content="SanyuHub — Channels">
+<title>Channels — SanyuHub</title>
 <link rel="stylesheet" href="/css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
@@ -96,19 +96,18 @@ Live TV
 
 <header class="page-header">
 <div class="page-title-group">
-<h1 class="page-title">Live TV Channels</h1>
-<p class="page-subtitle">Select a television channel below to watch its live broadcast on SanyuHub.</p>
+<h1 class="page-title">Channels</h1>
 </div>
 </header>
 
 <section class="section">
-<div class="section-heading">
-  <h2 class="section-title">Select Channel</h2>
+<div class="movie-search-bar" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+  <input type="search" id="channelSearchInput" class="movie-search-input" style="flex: 1; min-width: 240px;" placeholder="Search channels..." aria-label="Search channels">
 </div>
-<div class="categories" id="channelCategoryFilters" style="margin-bottom: 24px;">
-<button class="category active" data-filter="all">All Channels</button>
-<button class="category" data-filter="news">News</button>
-<button class="category" data-filter="entertainment">Entertainment</button>
+
+<div class="categories" id="channelTypeSelector" style="margin-bottom: 24px;">
+<button class="category active" data-type="tv">TV Channels</button>
+<button class="category" data-type="radio">Radio Channels</button>
 </div>
 
 <div class="channel-card-grid" id="channelCardGrid">

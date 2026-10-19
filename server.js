@@ -221,6 +221,58 @@ app.get(['/more', '/more/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'more.html'));
 });
 
+app.get(['/music', '/music/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'music.html'));
+});
+
+app.get(['/podcasts', '/podcasts/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'podcasts.html'));
+});
+
+app.get(['/profile', '/profile/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'profile.html'));
+});
+
+app.get(['/saved', '/saved/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'saved.html'));
+});
+
+app.get(['/downloaded', '/downloaded/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'downloaded.html'));
+});
+
+app.get(['/settings', '/settings/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'settings.html'));
+});
+
+app.get(['/settings/app-preferences', '/settings/app-preferences/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'settings-app.html'));
+});
+
+app.get(['/settings/customization', '/settings/customization/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'settings-customization.html'));
+});
+
+app.get(['/settings/other', '/settings/other/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'settings-other.html'));
+});
+
+app.get(['/about', '/about/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'about.html'));
+});
+
+app.get(['/about/terms', '/about/terms/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'about-terms.html'));
+});
+
+app.get(['/about/help', '/about/help/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'about-help.html'));
+});
+
+app.get(['/about/privacy', '/about/privacy/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'about-privacy.html'));
+});
+
 app.get('/watch/:id', (req, res) => {
   res.sendFile(path.join(__dirname, 'watch.html'));
 });

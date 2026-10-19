@@ -542,28 +542,60 @@ function initLiveTvCatalogue() {
     // Only run on catalogue page where cardGrid exists and no video player is present
     if (!cardGrid || videoPlayer) return;
 
-    function renderCards(filter = "all") {
-        cardGrid.innerHTML = "";
-        const filtered = LIVE_TV_CHANNELS.filter(ch => filter === "all" || ch.category === filter);
+    let selectedType = "tv"; // 'tv' or 'radio'
+    let searchQuery = "";
 
-        filtered.forEach(ch => {
+    function renderCards() {
+        cardGrid.innerHTML = "";
+
+        const cleanSearch = searchQuery.trim().toLowerCase();
+        let channels = LIVE_TV_CHANNELS;
+
+        // Filter by channel type (TV vs Radio)
+        if (selectedType === "radio") {
+            channels = channels.filter(ch => ch.isRadio || ch.type === "radio" || ch.category === "radio");
+        } else {
+            channels = channels.filter(ch => !ch.isRadio && ch.type !== "radio" && ch.category !== "radio");
+        }
+
+        // Filter by search query
+        if (cleanSearch) {
+            channels = channels.filter(ch => ch.name.toLowerCase().includes(cleanSearch));
+        }
+
+        if (channels.length === 0) {
+            cardGrid.innerHTML = `<div class="loading-state">No channels found</div>`;
+            return;
+        }
+
+        channels.forEach(ch => {
             cardGrid.appendChild(createChannelCard(ch, false));
         });
     }
 
-    const categoryFiltersContainer = document.getElementById("channelCategoryFilters");
-    if (categoryFiltersContainer) {
-        categoryFiltersContainer.querySelectorAll(".category").forEach(btn => {
+    // Search bar input listener
+    const searchInput = document.getElementById("channelSearchInput");
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            searchQuery = e.target.value;
+            renderCards();
+        });
+    }
+
+    // Channel type selector buttons (TV Channels vs Radio Channels)
+    const typeSelectorContainer = document.getElementById("channelTypeSelector");
+    if (typeSelectorContainer) {
+        typeSelectorContainer.querySelectorAll(".category").forEach(btn => {
             btn.addEventListener("click", () => {
-                categoryFiltersContainer.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
+                typeSelectorContainer.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
                 btn.classList.add("active");
-                const filter = btn.getAttribute("data-filter") || "all";
-                renderCards(filter);
+                selectedType = btn.getAttribute("data-type") || "tv";
+                renderCards();
             });
         });
     }
 
-    renderCards("all");
+    renderCards();
 }
 
 /* Helper: Calculate current East Africa Time (EAT = UTC+3) */
