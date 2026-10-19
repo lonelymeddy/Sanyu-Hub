@@ -921,10 +921,22 @@ font-size:38px
   line-height: 1.6;
 }
 
+/* LIVE TV WATCH PAGE MAIN & HEADER */
+.live-watch-main {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.watch-page-header {
+  padding: calc(76px + env(safe-area-inset-top, 0px)) 5% 8px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 /* LIVE TV PLAYER SECTION & ACTIVE HEADER */
 .live-player-section {
-  padding: 30px 5% 10px;
-  max-width: 1200px;
+  padding: 0 5% 12px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -937,54 +949,83 @@ font-size:38px
 }
 
 .active-channel-header {
-  padding: 18px 24px;
-  background: rgba(255,255,255,0.03);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 16px 20px;
+  background: #0d0d0d;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 
 .active-channel-info {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
 }
 
 .active-channel-logo {
-  width: 52px;
-  height: 52px;
-  border-radius: 8px;
-  object-fit: cover;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  object-fit: contain;
   border: 1px solid rgba(255,255,255,0.15);
   background: #000;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.active-channel-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
 .active-channel-title-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .active-channel-name {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   color: #fff;
+  line-height: 1.2;
 }
 
 .live-status-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
+  gap: 5px;
+  padding: 3px 8px;
   background: #d90000;
   color: #fff;
-  border-radius: 20px;
-  font-size: 10px;
+  border-radius: 4px;
+  font-size: 9px;
   font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.active-channel-category-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #f4c400;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
+.active-channel-category-row .tag-icon {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
 .live-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: #fff;
   border-radius: 50%;
   animation: livePulse 1.5s infinite;
@@ -996,17 +1037,12 @@ font-size:38px
   100% { opacity: 1; transform: scale(1); }
 }
 
-.active-channel-meta {
-  color: #888;
-  font-size: 12px;
-  margin-top: 4px;
-}
-
 /* LIVE VIDEO PLAYER WRAPPER */
 .live-video-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
+  max-height: 50vh;
   background: #000;
   overflow: hidden;
 }
@@ -1018,6 +1054,74 @@ font-size:38px
   object-fit: contain;
   background: #000;
   outline: none;
+}
+
+/* CENTRAL PLAY BUTTON OVERLAY */
+.live-central-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(217, 0, 0, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  transition: transform 0.2s ease, background 0.2s ease, opacity 0.3s ease;
+}
+
+.live-central-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: #f4c400;
+  color: #080808;
+}
+
+.live-central-play-btn svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+/* TAP TO UNMUTE BANNER OVERLAY */
+.live-unmute-banner {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #f4c400;
+  color: #f4c400;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 11;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+  animation: pulseUnmute 2s infinite;
+  backdrop-filter: blur(8px);
+}
+
+@keyframes pulseUnmute {
+  0% { border-color: #f4c400; box-shadow: 0 0 10px rgba(244,196,0,0.3); }
+  50% { border-color: #fff; box-shadow: 0 0 18px rgba(255,255,255,0.6); }
+  100% { border-color: #f4c400; box-shadow: 0 0 10px rgba(244,196,0,0.3); }
+}
+
+.live-unmute-banner .unmute-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 
 /* OVERLAYS */
@@ -1181,6 +1285,221 @@ font-size:38px
   cursor: pointer;
 }
 
+/* WATCH PAGE TABS SECTION (EPG & INFO) */
+.watch-tabs-section {
+  max-width: 960px;
+  margin: 0 auto 30px;
+  padding: 0 5%;
+}
+
+.watch-tabs-bar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.watch-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 12px 6px;
+  color: #888;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.watch-tab .tab-svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.watch-tab:hover {
+  color: #ddd;
+}
+
+.watch-tab.active {
+  color: #f4c400;
+  border-bottom-color: #f4c400;
+}
+
+.tab-content-panel {
+  width: 100%;
+}
+
+/* EPG STYLES */
+.epg-container {
+  background: #111;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 20px;
+}
+
+.epg-schedule-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.epg-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.epg-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.epg-item.now-airing {
+  background: rgba(244, 196, 0, 0.08);
+  border-color: rgba(244, 196, 0, 0.4);
+}
+
+.epg-time-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.epg-time {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f4c400;
+}
+
+.now-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  background: #d90000;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  width: fit-content;
+}
+
+.epg-info-box {
+  flex: 1;
+}
+
+.epg-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.epg-desc {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+/* INFO STYLES */
+.info-card {
+  background: #111;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 24px;
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-main h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.info-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.info-meta-table {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.info-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.info-meta-label {
+  color: #777;
+  font-weight: 600;
+}
+
+.info-meta-val {
+  color: #eee;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .epg-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .epg-time-box {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .watch-tabs-bar {
+    gap: 16px;
+  }
+  .watch-tab {
+    font-size: 13px;
+    padding: 10px 4px;
+  }
+  .live-central-play-btn {
+    width: 52px;
+    height: 52px;
+  }
+  .live-central-play-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
 /* LIVE TV CHANNEL CARDS ENHANCEMENT */
 .channel-card-grid {
   display: flex;
@@ -1220,18 +1539,36 @@ font-size:38px
 
 .channel-thumb {
   position: relative;
-  width: 88px;
-  height: 88px;
+  width: 76px;
+  height: 76px;
   aspect-ratio: 1/1;
   background: #0d0d0d;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 6px;
+}
+
+.logo-live-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 5px;
+  background: #d90000;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .channel-thumb img {
