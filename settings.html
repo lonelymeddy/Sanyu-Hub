@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#222222">
+<meta name="description" content="SanyuHub — Settings">
+<title>Settings — SanyuHub</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="background"></div>
+
+<header class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="/" class="logo">
+Sanyu<span>Hub</span>
+</a>
+<nav class="desktop-nav">
+<a href="/">Home</a>
+<a href="/movies">Movies</a>
+<a href="/series">Series</a>
+<a href="/live-tv">Live TV</a>
+</nav>
+<div class="nav-controls">
+<button class="search-button" id="topSearch" aria-label="Search">
+<span class="search-icon"></span>
+</button>
+<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+</button>
+</div>
+</div>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-content">
+<div class="sidebar-section">
+<div class="sidebar-section-title">Explore</div>
+<a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Home</span></a>
+<a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Movies</span></a>
+<a href="/series" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Series</span></a>
+<a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Live TV</span></a>
+<a href="/more" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span>More</span></a>
+</div>
+</div>
+</aside>
+
+<main>
+
+<header class="page-header">
+<div class="page-title-group">
+<h1 class="page-title">Settings</h1>
+</div>
+</header>
+
+<section class="section">
+  <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
+
+    <a href="/settings/app-preferences" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: #f4c400;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+        <span style="font-weight: 600; font-size: 16px;">App Preferences</span>
+      </div>
+      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
+    </a>
+
+    <a href="/settings/customization" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: #f4c400;"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+        <span style="font-weight: 600; font-size: 16px;">Customization</span>
+      </div>
+      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
+    </a>
+
+    <a href="/settings/other" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: #f4c400;"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+        <span style="font-weight: 600; font-size: 16px;">Other Settings</span>
+      </div>
+      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
+    </a>
+
+  </div>
+</section>
+
+</main>
+
+<nav class="bottom-nav" id="bottomNav">
+  <a href="/" class="bottom-nav-item" id="navHome"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span>Home</span></a>
+  <a href="/live-tv" class="bottom-nav-item" id="navChannels"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></div><span>Channels</span></a>
+  <a href="/movies" class="bottom-nav-item" id="navMovies"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg></div><span>Movies</span></a>
+  <a href="/more" class="bottom-nav-item active" id="navMore"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></div><span>More</span></a>
+</nav>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
