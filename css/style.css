@@ -949,9 +949,10 @@ font-size:38px
 }
 
 .active-channel-header {
-  padding: 16px 20px;
-  background: #0d0d0d;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 16px 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .active-channel-info {
@@ -961,13 +962,13 @@ font-size:38px
 }
 
 .active-channel-logo {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 10px;
   object-fit: contain;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: #000;
-  padding: 4px;
+  border: none;
+  background: transparent;
+  padding: 0;
   flex-shrink: 0;
 }
 
@@ -1004,6 +1005,19 @@ font-size:38px
   font-weight: 800;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+}
+
+.viewer-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: #a0a0a0;
+  margin-left: 6px;
+}
+
+.watch-back-btn {
+  padding: 6px 14px !important;
+  font-size: 13px !important;
+  border-radius: 6px !important;
 }
 
 .active-channel-category-row {

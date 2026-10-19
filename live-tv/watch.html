@@ -8,6 +8,7 @@
 <title>Watch Live TV — SanyuHub</title>
 <link rel="stylesheet" href="/css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 </head>
 <body>
 
@@ -95,8 +96,8 @@ Live TV
 <main class="live-watch-main">
 
 <div class="watch-page-header">
-  <a href="/live-tv/" class="btn-back-secondary" id="backToCatalogueBtn">
-    &laquo; Back to Channels
+  <a href="/live-tv/" class="btn-back-secondary watch-back-btn" id="backToCatalogueBtn">
+    &laquo; Back
   </a>
 </div>
 
@@ -156,20 +157,19 @@ Live TV
 
       <!-- Controls Middle: Timeline / Live Edge Display -->
       <div class="controls-middle" id="controlsMiddle">
-        <!-- Live Stream Indicator (Default for Live TV without DVR) -->
-        <div class="live-stream-status" id="liveStreamStatus">
-          <button class="live-edge-btn" id="liveEdgeBtn" aria-label="Go to Live Broadcast">
-            <span class="live-edge-dot"></span>
-            <span class="live-edge-text">LIVE</span>
-          </button>
-        </div>
-
-        <!-- Scrub Bar Timeline Track (Only shown when stream supports seeking/DVR/VOD) -->
-        <div class="ctrl-progress-container" id="ctrlProgressContainer" role="slider" aria-label="Seek timeline" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" style="display: none;">
+        <!-- Live Stream Slim Progress Bar Container -->
+        <div class="ctrl-progress-container live-progress-container" id="ctrlProgressContainer" role="slider" aria-label="Seek timeline" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
           <div class="ctrl-progress-track">
             <div class="ctrl-progress-fill" id="ctrlProgressFill" style="width: 100%;"></div>
             <div class="ctrl-progress-thumb" id="ctrlProgressThumb" style="left: 100%;"></div>
           </div>
+        </div>
+
+        <!-- Live Stream Edge Indicator Button (Used as fallback/live toggle) -->
+        <div class="live-stream-status" id="liveStreamStatus" style="display: none;">
+          <button class="live-edge-btn" id="liveEdgeBtn" aria-label="Go to Live Broadcast">
+            <span class="live-edge-dot"></span>
+          </button>
         </div>
 
         <!-- Time Display -->
@@ -237,6 +237,13 @@ Live TV
             </select>
           </div>
 
+          <div class="settings-group" id="castSettingsGroup">
+            <button class="settings-action-btn" id="ctrlCastBtn">
+              <svg viewBox="0 0 24 24"><path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.92-11-11-11zm20-7H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+              <span id="castBtnText">Cast to Device</span>
+            </button>
+          </div>
+
           <div class="settings-group" id="pipSettingsGroup">
             <button class="settings-action-btn" id="ctrlPipBtn">
               <svg viewBox="0 0 24 24"><path d="M19 11h-8v6h8v-6zm4 8V5c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 0H3V5h18v14z"/></svg>
@@ -248,24 +255,22 @@ Live TV
     </div>
   </div>
 
-  <!-- Active Channel Compact Info Row -->
-  <div class="active-channel-header" id="activeChannelHeader">
-    <div class="active-channel-info">
-      <img id="activeChannelLogo" src="/images/ntv-logo.jpg" alt="Active Channel Logo" class="active-channel-logo">
-      <div class="active-channel-details">
-        <div class="active-channel-title-row">
-          <h1 id="activeChannelName" class="active-channel-name">Loading Channel...</h1>
-          <span class="live-status-pill" id="liveStatusPill"><span class="live-dot"></span> LIVE</span>
-        </div>
-        <div class="active-channel-category-row" id="activeChannelCategoryRow">
-          <svg viewBox="0 0 24 24" class="tag-icon"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
-          <span id="activeChannelCategory" class="active-channel-category">News & General</span>
-        </div>
+</div>
+
+<!-- Active Channel Info Section (Directly on Page Background) -->
+<div class="active-channel-header" id="activeChannelHeader">
+  <div class="active-channel-info">
+    <img id="activeChannelLogo" src="/images/ntv-logo.jpg" alt="Active Channel Logo" class="active-channel-logo">
+    <div class="active-channel-details">
+      <div class="active-channel-title-row">
+        <h1 id="activeChannelName" class="active-channel-name">Loading Channel...</h1>
+        <span class="live-status-pill" id="liveStatusPill"><span class="live-dot"></span> LIVE</span>
+        <span class="viewer-count" id="viewerCount">Viewers unavailable</span>
       </div>
     </div>
   </div>
-
 </div>
+
 </section>
 
 <!-- WATCH PAGE TABS SECTION (EPG & INFO ONLY) -->
@@ -308,17 +313,6 @@ Live TV
   <a href="/live-tv/" class="btn-watch-primary" style="display: inline-block; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
     Return to Channel Catalogue
   </a>
-</section>
-
-<!-- Other Channels Grid Section -->
-<section class="section" id="otherChannelsSection">
-<div class="section-heading">
-  <h2 class="section-title">Other Live TV Channels</h2>
-</div>
-
-<div class="channel-card-grid" id="otherChannelsGrid">
-  <!-- Channel cards will be rendered dynamically -->
-</div>
 </section>
 
 </main>
