@@ -229,6 +229,17 @@ app.get('/watch', (req, res) => {
   res.redirect('/movies');
 });
 
+// Live TV EPG Endpoint
+app.get('/api/live-tv/epg/:id', async (req, res) => {
+  const channelId = req.params.id;
+  // Currently no official broadcaster EPG APIs exist for supported channels
+  res.json({
+    channelId: channelId,
+    schedule: [],
+    message: 'Programme schedule currently unavailable.'
+  });
+});
+
 // Live TV Watch Routes
 app.get(['/live-tv/watch/:id', '/live-tv/watch/:id/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'live-tv', 'watch.html'));

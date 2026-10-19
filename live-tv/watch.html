@@ -109,7 +109,13 @@ Live TV
     <video id="liveVideoPlayer" class="live-video-player" playsinline preload="auto"></video>
     <iframe id="liveIframePlayer" class="live-iframe-player" style="display:none;" allow="autoplay; fullscreen" frameborder="0"></iframe>
 
-    <!-- Central Play Overlay Button -->
+    <!-- Top Overlays: Rating badge & Live status badge -->
+    <div class="player-overlay-top">
+      <div class="player-rating-badge">PG 13</div>
+      <div class="player-live-badge"><span class="badge-dot"></span> Free: LIVE</div>
+    </div>
+
+    <!-- Central Red Circular Play Overlay Button -->
     <button class="live-central-play-btn" id="liveCentralPlayBtn" aria-label="Play / Pause Stream">
       <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
       <svg class="pause-icon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -137,20 +143,35 @@ Live TV
 
     <!-- Video Custom Controls Bar -->
     <div class="live-controls-bar" id="liveControlsBar">
-      <div class="controls-left">
-        <button class="ctrl-btn" id="ctrlPlayPauseBtn" aria-label="Play/Pause">&#9654;</button>
-        <div class="volume-container">
-          <button class="ctrl-btn" id="ctrlMuteBtn" aria-label="Mute/Unmute">&#128067;</button>
-          <input type="range" id="ctrlVolumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="1">
+      <button class="ctrl-btn" id="ctrlPlayPauseBtn" aria-label="Play/Pause">
+        <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="icon-pause" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+
+      <span class="ctrl-time-display" id="ctrlTimeDisplay">LIVE</span>
+
+      <div class="volume-container">
+        <button class="ctrl-btn" id="ctrlMuteBtn" aria-label="Mute/Unmute">
+          <svg class="icon-vol-high" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          <svg class="icon-vol-mute" viewBox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+        </button>
+      </div>
+
+      <!-- Scrub bar timeline track -->
+      <div class="ctrl-progress-container" id="ctrlProgressContainer">
+        <div class="ctrl-progress-track">
+          <div class="ctrl-progress-fill" id="ctrlProgressFill" style="width: 100%;"></div>
+          <div class="ctrl-progress-thumb" id="ctrlProgressThumb" style="left: 100%;"></div>
         </div>
-        <span class="live-indicator-tag"><span class="live-dot"></span> LIVE</span>
       </div>
 
       <div class="controls-right">
         <select id="ctrlQualitySelect" class="quality-select" aria-label="Stream Quality" style="display:none;">
           <option value="-1">Auto Quality</option>
         </select>
-        <button class="ctrl-btn" id="ctrlFullscreenBtn" aria-label="Fullscreen">&#9974;</button>
+        <button class="ctrl-btn" id="ctrlFullscreenBtn" aria-label="Fullscreen">
+          <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+        </button>
       </div>
     </div>
   </div>
