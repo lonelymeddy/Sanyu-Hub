@@ -321,7 +321,7 @@ function createSeriesCard(series) {
 
 function createTrendingCard(movie, rank) {
     const card = document.createElement("article");
-    card.className = "trending-card";
+    card.className = "movie-card trending-card";
     card.setAttribute("data-id", movie.id);
     card.style.cursor = "pointer";
 
