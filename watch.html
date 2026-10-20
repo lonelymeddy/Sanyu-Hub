@@ -7,6 +7,8 @@
 <meta name="description" content="SanyuHub — Stream Movie">
 <title>Watch Movie — SanyuHub</title>
 <link rel="stylesheet" href="/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 </head>
 <body>
 
@@ -104,12 +106,144 @@ Live TV
     </div>
 
     <div class="player-wrapper" id="playerWrapper">
-      <div class="loading-state" id="playerStatusText" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5;">
-        Preparing video player...
+      <div class="live-video-wrapper" id="movieVideoWrapper">
+        <video id="moviePlayer" class="live-video-player" playsinline preload="auto"></video>
+
+        <!-- Central Play/Pause Overlay Button -->
+        <button class="live-central-play-btn" id="movieCentralPlayBtn" aria-label="Play or Pause Stream">
+          <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="pause-icon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+
+        <!-- Tap To Unmute Banner Overlay -->
+        <button class="live-unmute-banner" id="movieUnmuteBanner" style="display:none;">
+          <svg viewBox="0 0 24 24" class="unmute-icon"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+          <span>Audio Muted — Tap to Unmute</span>
+        </button>
+
+        <!-- Loading Indicator Overlay -->
+        <div class="live-loading-overlay" id="movieLoadingOverlay">
+          <div class="spinner"></div>
+          <div class="loading-text" id="movieLoadingText">Loading movie stream...</div>
+        </div>
+
+        <!-- Error State Overlay -->
+        <div class="live-error-overlay" id="movieErrorOverlay" style="display:none;">
+          <div class="error-icon">&#9888;</div>
+          <div class="error-title" id="movieErrorTitle">Stream Unavailable</div>
+          <div class="error-msg" id="movieErrorMsg">The movie stream is currently unreachable.</div>
+          <button class="btn-retry" id="movieRetryBtn">&#8635; Retry</button>
+        </div>
+
+        <!-- Video Custom Controls Bar -->
+        <div class="live-controls-bar" id="movieControlsBar">
+          <div class="controls-left">
+            <!-- Rewind 10s -->
+            <button class="ctrl-btn" id="movieCtrlRewindBtn" aria-label="Rewind 10 seconds" title="Rewind 10s">
+              <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><text x="12" y="15" font-size="7.5" font-weight="bold" text-anchor="middle" fill="currentColor">10</text></svg>
+            </button>
+
+            <!-- Play/Pause -->
+            <button class="ctrl-btn" id="movieCtrlPlayPauseBtn" aria-label="Play or Pause" title="Play/Pause">
+              <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="icon-pause" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+
+            <!-- Forward 10s -->
+            <button class="ctrl-btn" id="movieCtrlForwardBtn" aria-label="Forward 10 seconds" title="Forward 10s">
+              <svg viewBox="0 0 24 24"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><text x="12" y="15" font-size="7.5" font-weight="bold" text-anchor="middle" fill="currentColor">10</text></svg>
+            </button>
+          </div>
+
+          <!-- Controls Middle: Timeline -->
+          <div class="controls-middle" id="movieControlsMiddle">
+            <div class="ctrl-progress-container" id="movieCtrlProgressContainer" role="slider" aria-label="Seek timeline">
+              <div class="ctrl-progress-track">
+                <div class="ctrl-progress-fill" id="movieCtrlProgressFill" style="width: 0%;"></div>
+                <div class="ctrl-progress-thumb" id="movieCtrlProgressThumb" style="left: 0%;"></div>
+              </div>
+            </div>
+            <span class="ctrl-time-display" id="movieCtrlTimeDisplay">0:00 / 0:00</span>
+          </div>
+
+          <div class="controls-right">
+            <!-- Mute & Volume -->
+            <div class="volume-container">
+              <button class="ctrl-btn" id="movieCtrlMuteBtn" aria-label="Mute or Unmute" title="Mute/Unmute">
+                <svg class="icon-vol-high" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                <svg class="icon-vol-mute" viewBox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              </button>
+              <input type="range" id="movieCtrlVolumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+            </div>
+
+            <!-- Settings Toggle Button -->
+            <button class="ctrl-btn" id="movieCtrlSettingsBtn" aria-label="Player Settings" title="Settings" aria-expanded="false">
+              <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6-3.6z"/></svg>
+            </button>
+
+            <!-- Fullscreen Button -->
+            <button class="ctrl-btn" id="movieCtrlFullscreenBtn" aria-label="Toggle Fullscreen" title="Fullscreen">
+              <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            </button>
+          </div>
+
+          <!-- Settings Popover Menu Panel -->
+          <div class="player-settings-menu" id="movieCtrlSettingsMenu" style="display: none;">
+            <div class="settings-menu-header">
+              <span>Playback Settings</span>
+              <button class="settings-close-btn" id="movieSettingsCloseBtn" aria-label="Close Settings">&times;</button>
+            </div>
+            <div class="settings-menu-body">
+              <div class="settings-group" id="movieSpeedSettingsGroup">
+                <label class="settings-label">Playback Speed</label>
+                <div class="speed-options" id="movieSpeedOptions">
+                  <button class="speed-btn" data-speed="0.5">0.5&times;</button>
+                  <button class="speed-btn" data-speed="0.75">0.75&times;</button>
+                  <button class="speed-btn active" data-speed="1">1&times;</button>
+                  <button class="speed-btn" data-speed="1.25">1.25&times;</button>
+                  <button class="speed-btn" data-speed="1.5">1.5&times;</button>
+                  <button class="speed-btn" data-speed="2">2&times;</button>
+                </div>
+              </div>
+
+              <div class="settings-group" id="movieQualitySettingsGroup" style="display: none;">
+                <label class="settings-label" for="movieCtrlQualitySelect">Quality</label>
+                <select id="movieCtrlQualitySelect" class="quality-select" aria-label="Stream Quality">
+                  <option value="-1">Auto Quality</option>
+                </select>
+              </div>
+
+              <div class="settings-group" id="movieAudioSettingsGroup" style="display: none;">
+                <label class="settings-label" for="movieCtrlAudioSelect">Audio Track</label>
+                <select id="movieCtrlAudioSelect" class="quality-select" aria-label="Audio Track">
+                  <option value="-1">Default Audio</option>
+                </select>
+              </div>
+
+              <div class="settings-group" id="movieSubtitleSettingsGroup" style="display: none;">
+                <label class="settings-label" for="movieCtrlSubtitleSelect">Subtitles</label>
+                <select id="movieCtrlSubtitleSelect" class="quality-select" aria-label="Subtitles">
+                  <option value="-1">Off</option>
+                </select>
+              </div>
+
+              <div class="settings-group" id="movieCastSettingsGroup">
+                <button class="settings-action-btn" id="movieCtrlCastBtn">
+                  <svg viewBox="0 0 24 24"><path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.92-11-11-11zm20-7H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+                  <span id="movieCastBtnText">Cast to Device</span>
+                </button>
+              </div>
+
+              <div class="settings-group" id="moviePipSettingsGroup">
+                <button class="settings-action-btn" id="movieCtrlPipBtn">
+                  <svg viewBox="0 0 24 24"><path d="M19 11h-8v6h8v-6zm4 8V5c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 0H3V5h18v14z"/></svg>
+                  <span>Picture-in-Picture</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <video id="moviePlayer" controls playsinline style="width: 100%; height: 100%; display: none;">
-        Your browser does not support HTML5 video streaming.
-      </video>
     </div>
 
     <div id="watchMetadataGrid" class="movie-metadata-grid" style="margin-top: 30px;">

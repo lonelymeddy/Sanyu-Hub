@@ -8,6 +8,7 @@
 <title>Watch Live TV — SanyuHub</title>
 <link rel="stylesheet" href="/css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
 </head>
 <body>
 
@@ -92,34 +93,33 @@ Live TV
 </div>
 </aside>
 
-<main>
+<main class="live-watch-main">
 
-<div class="watch-page-header" style="padding: 100px 5% 0; max-width: 1200px; margin: 0 auto;">
-  <a href="/live-tv/" class="btn-back-secondary" id="backToCatalogueBtn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; text-decoration: none; color: #fff; background: rgba(255, 255, 255, 0.08); border-radius: 8px; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.12); transition: background 0.2s ease;">
-    &laquo; Back to Channels
+<div class="watch-page-header">
+  <a href="/live-tv/" class="btn-back-secondary watch-back-btn" id="backToCatalogueBtn">
+    &laquo; Back
   </a>
 </div>
 
-<section class="live-player-section" id="liveTvPlayerSection" style="margin-top: 10px;">
+<!-- LIVE PLAYER SECTION -->
+<section class="live-player-section" id="liveTvPlayerSection">
 <div class="live-player-container">
-  <!-- Active Channel Header -->
-  <div class="active-channel-header" id="activeChannelHeader">
-    <div class="active-channel-info">
-      <img id="activeChannelLogo" src="/images/ntv-logo.jpg" alt="Active Channel Logo" class="active-channel-logo">
-      <div>
-        <div class="active-channel-title-row">
-          <h2 id="activeChannelName" class="active-channel-name">Loading Channel...</h2>
-          <span class="live-status-pill" id="liveStatusPill"><span class="live-dot"></span> LIVE</span>
-        </div>
-        <div class="active-channel-meta" id="activeChannelMeta">Official Live Stream</div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Player Box -->
+  <!-- Video Player Wrapper -->
   <div class="live-video-wrapper" id="liveVideoWrapper">
     <video id="liveVideoPlayer" class="live-video-player" playsinline preload="auto"></video>
-    <iframe id="liveIframePlayer" class="live-iframe-player" style="display:none;" allow="autoplay; fullscreen" frameborder="0"></iframe>
+
+    <!-- Central Play/Pause Overlay Button (Shown on pause or before playback) -->
+    <button class="live-central-play-btn" id="liveCentralPlayBtn" aria-label="Play or Pause Stream">
+      <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="pause-icon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+
+    <!-- Tap To Unmute Banner Overlay -->
+    <button class="live-unmute-banner" id="liveUnmuteBanner" style="display:none;">
+      <svg viewBox="0 0 24 24" class="unmute-icon"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+      <span>Audio Muted — Tap to Unmute</span>
+    </button>
 
     <!-- Loading Indicator Overlay -->
     <div class="live-loading-overlay" id="liveLoadingOverlay">
@@ -131,30 +131,176 @@ Live TV
     <div class="live-error-overlay" id="liveErrorOverlay" style="display:none;">
       <div class="error-icon">&#9888;</div>
       <div class="error-title" id="liveErrorTitle">Stream Unavailable</div>
-      <div class="error-msg" id="liveErrorMsg">The live broadcast is temporarily unreachable.</div>
-      <button class="btn-retry" id="liveRetryBtn">&#8635; Retry Connection</button>
+      <div class="error-msg" id="liveErrorMsg">The live broadcast is currently unreachable.</div>
+      <button class="btn-retry" id="liveRetryBtn">&#8635; Retry</button>
     </div>
 
     <!-- Video Custom Controls Bar -->
     <div class="live-controls-bar" id="liveControlsBar">
       <div class="controls-left">
-        <button class="ctrl-btn" id="ctrlPlayPauseBtn" aria-label="Play/Pause">&#9654;</button>
-        <div class="volume-container">
-          <button class="ctrl-btn" id="ctrlMuteBtn" aria-label="Mute/Unmute">&#128067;</button>
-          <input type="range" id="ctrlVolumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="1">
+        <!-- Rewind 10s (Only shown when seeking/DVR is supported) -->
+        <button class="ctrl-btn" id="ctrlRewindBtn" aria-label="Rewind 10 seconds" title="Rewind 10s" style="display: none;">
+          <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/><text x="12" y="15" font-size="7.5" font-weight="bold" text-anchor="middle" fill="currentColor">10</text></svg>
+        </button>
+
+        <!-- Play/Pause -->
+        <button class="ctrl-btn" id="ctrlPlayPauseBtn" aria-label="Play or Pause" title="Play/Pause">
+          <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+
+        <!-- Forward 10s (Only shown when seeking/DVR is supported) -->
+        <button class="ctrl-btn" id="ctrlForwardBtn" aria-label="Forward 10 seconds" title="Forward 10s" style="display: none;">
+          <svg viewBox="0 0 24 24"><path d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/><text x="12" y="15" font-size="7.5" font-weight="bold" text-anchor="middle" fill="currentColor">10</text></svg>
+        </button>
+      </div>
+
+      <!-- Controls Middle: Timeline / Live Edge Display -->
+      <div class="controls-middle" id="controlsMiddle">
+        <!-- Live Stream Slim Progress Bar Container -->
+        <div class="ctrl-progress-container live-progress-container" id="ctrlProgressContainer" role="slider" aria-label="Seek timeline" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+          <div class="ctrl-progress-track">
+            <div class="ctrl-progress-fill" id="ctrlProgressFill" style="width: 100%;"></div>
+            <div class="ctrl-progress-thumb" id="ctrlProgressThumb" style="left: 100%;"></div>
+          </div>
         </div>
-        <span class="live-indicator-tag"><span class="live-dot"></span> LIVE</span>
+
+        <!-- Live Stream Edge Indicator Button (Used as fallback/live toggle) -->
+        <div class="live-stream-status" id="liveStreamStatus" style="display: none;">
+          <button class="live-edge-btn" id="liveEdgeBtn" aria-label="Go to Live Broadcast">
+            <span class="live-edge-dot"></span>
+          </button>
+        </div>
+
+        <!-- Time Display -->
+        <span class="ctrl-time-display" id="ctrlTimeDisplay" style="display: none;">0:00 / 0:00</span>
       </div>
 
       <div class="controls-right">
-        <select id="ctrlQualitySelect" class="quality-select" aria-label="Stream Quality" style="display:none;">
-          <option value="auto">Auto Quality</option>
-        </select>
-        <button class="ctrl-btn" id="ctrlFullscreenBtn" aria-label="Fullscreen">&#9974;</button>
+        <!-- Mute & Volume -->
+        <div class="volume-container">
+          <button class="ctrl-btn" id="ctrlMuteBtn" aria-label="Mute or Unmute" title="Mute/Unmute">
+            <svg class="icon-vol-high" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            <svg class="icon-vol-mute" viewBox="0 0 24 24" style="display:none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+          </button>
+          <input type="range" id="ctrlVolumeSlider" class="volume-slider" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+        </div>
+
+        <!-- Settings Toggle Button -->
+        <button class="ctrl-btn" id="ctrlSettingsBtn" aria-label="Player Settings" title="Settings" aria-expanded="false">
+          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6-3.6z"/></svg>
+        </button>
+
+        <!-- Fullscreen Button -->
+        <button class="ctrl-btn" id="ctrlFullscreenBtn" aria-label="Toggle Fullscreen" title="Fullscreen">
+          <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+        </button>
+      </div>
+
+      <!-- Settings Popover Menu Panel -->
+      <div class="player-settings-menu" id="ctrlSettingsMenu" style="display: none;">
+        <div class="settings-menu-header">
+          <span>Playback Settings</span>
+          <button class="settings-close-btn" id="settingsCloseBtn" aria-label="Close Settings">&times;</button>
+        </div>
+        <div class="settings-menu-body">
+          <div class="settings-group" id="speedSettingsGroup" style="display: none;">
+            <label class="settings-label">Playback Speed</label>
+            <div class="speed-options" id="speedOptions">
+              <button class="speed-btn" data-speed="0.5">0.5&times;</button>
+              <button class="speed-btn" data-speed="0.75">0.75&times;</button>
+              <button class="speed-btn active" data-speed="1">1&times;</button>
+              <button class="speed-btn" data-speed="1.25">1.25&times;</button>
+              <button class="speed-btn" data-speed="1.5">1.5&times;</button>
+              <button class="speed-btn" data-speed="2">2&times;</button>
+            </div>
+          </div>
+
+          <div class="settings-group" id="qualitySettingsGroup" style="display: none;">
+            <label class="settings-label" for="ctrlQualitySelect">Quality</label>
+            <select id="ctrlQualitySelect" class="quality-select" aria-label="Stream Quality">
+              <option value="-1">Auto Quality</option>
+            </select>
+          </div>
+
+          <div class="settings-group" id="audioSettingsGroup" style="display: none;">
+            <label class="settings-label" for="ctrlAudioSelect">Audio Track</label>
+            <select id="ctrlAudioSelect" class="quality-select" aria-label="Audio Track">
+              <option value="-1">Default Audio</option>
+            </select>
+          </div>
+
+          <div class="settings-group" id="subtitleSettingsGroup" style="display: none;">
+            <label class="settings-label" for="ctrlSubtitleSelect">Subtitles</label>
+            <select id="ctrlSubtitleSelect" class="quality-select" aria-label="Subtitles">
+              <option value="-1">Off</option>
+            </select>
+          </div>
+
+          <div class="settings-group" id="castSettingsGroup">
+            <button class="settings-action-btn" id="ctrlCastBtn">
+              <svg viewBox="0 0 24 24"><path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.92-11-11-11zm20-7H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+              <span id="castBtnText">Cast to Device</span>
+            </button>
+          </div>
+
+          <div class="settings-group" id="pipSettingsGroup">
+            <button class="settings-action-btn" id="ctrlPipBtn">
+              <svg viewBox="0 0 24 24"><path d="M19 11h-8v6h8v-6zm4 8V5c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zm-2 0H3V5h18v14z"/></svg>
+              <span>Picture-in-Picture</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Active Channel Info Section (Directly on Page Background) -->
+<div class="active-channel-header" id="activeChannelHeader">
+  <div class="active-channel-info">
+    <img id="activeChannelLogo" src="/images/ntv-logo.jpg" alt="Active Channel Logo" class="active-channel-logo">
+    <div class="active-channel-details">
+      <div class="active-channel-title-row">
+        <h1 id="activeChannelName" class="active-channel-name">Loading Channel...</h1>
+        <span class="live-status-pill" id="liveStatusPill"><span class="live-dot"></span> LIVE</span>
+        <span class="viewer-count" id="viewerCount">Viewers unavailable</span>
       </div>
     </div>
   </div>
 </div>
+
+</section>
+
+<!-- WATCH PAGE TABS SECTION (EPG & INFO ONLY) -->
+<section class="watch-tabs-section" id="watchTabsSection">
+  <div class="watch-tabs-bar" role="tablist">
+    <button class="watch-tab active" id="tabBtnEPG" role="tab" aria-selected="true" aria-controls="tabContentEPG" data-tab="epg">
+      <svg viewBox="0 0 24 24" class="tab-svg"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
+      <span>EPG</span>
+    </button>
+    <button class="watch-tab" id="tabBtnInfo" role="tab" aria-selected="false" aria-controls="tabContentInfo" data-tab="info">
+      <svg viewBox="0 0 24 24" class="tab-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      <span>Info</span>
+    </button>
+  </div>
+
+  <div class="watch-tab-contents">
+    <!-- EPG TAB CONTENT -->
+    <div class="tab-content-panel active" id="tabContentEPG" role="tabpanel" aria-labelledby="tabBtnEPG">
+      <div class="epg-container" id="epgContainer">
+        <!-- Dynamic schedule populated via JS -->
+      </div>
+    </div>
+
+    <!-- INFO TAB CONTENT -->
+    <div class="tab-content-panel" id="tabContentInfo" role="tabpanel" aria-labelledby="tabBtnInfo" style="display:none;">
+      <div class="info-card" id="infoCardContainer">
+        <!-- Dynamic channel metadata populated via JS -->
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Channel Not Found Fallback -->
@@ -167,17 +313,6 @@ Live TV
   <a href="/live-tv/" class="btn-watch-primary" style="display: inline-block; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
     Return to Channel Catalogue
   </a>
-</section>
-
-<!-- Other Channels Grid Section -->
-<section class="section" id="otherChannelsSection">
-<div class="section-heading">
-  <h2 class="section-title">Other Live TV Channels</h2>
-</div>
-
-<div class="channel-card-grid" id="otherChannelsGrid">
-  <!-- Channel cards will be rendered dynamically -->
-</div>
 </section>
 
 </main>
@@ -212,7 +347,6 @@ Live TV
     <span>More</span>
   </a>
 </nav>
-
 
 </body>
 </html>
