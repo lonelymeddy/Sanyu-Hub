@@ -2624,6 +2624,84 @@ async function initSeriesWatchPage() {
     }
 }
 
+/* MOVIE DETAILS PAGE INTEGRATION */
+async function initMovieDetailsPage() {
+    const mainContainer = document.getElementById("movieDetailPage");
+    if (!mainContainer) return;
+
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const movieId = pathParts[pathParts.length - 1];
+
+    if (!movieId || movieId === "movie") {
+        mainContainer.innerHTML = `<div class="error-state" style="padding: 120px 20px; text-align: center;">
+            <h2>Movie Not Specified</h2>
+            <p style="margin-top: 10px;"><a href="/movies" class="btn-back-secondary">Return to Library</a></p>
+        </div>`;
+        return;
+    }
+
+    try {
+        const res = await fetch(`/api/movies/${movieId}`);
+        if (!res.ok) throw new Error("Movie not found");
+        const movie = await res.json();
+
+        document.title = `${movie.title} — SanyuHub`;
+
+        const backdropUrl = movie.backdropUrl || movie.posterUrl;
+        const backdropStyle = backdropUrl ? `style="background-image: url('${backdropUrl}');"` : '';
+
+        const posterImageHtml = movie.posterUrl
+            ? `<img src="${movie.posterUrl}" alt="${movie.title}" onerror="this.parentElement.innerHTML='<div class=\\'poster-unavailable-fallback\\'><div class=\\'poster-unavailable-icon\\'>&#127916;</div><div class=\\'poster-unavailable-text\\'>${movie.title.replace(/'/g, "&apos;")}</div><div class=\\'poster-unavailable-sub\\'>Poster Unavailable</div></div>'">`
+            : `<div class="poster-unavailable-fallback"><div class="poster-unavailable-icon">&#127916;</div><div class="poster-unavailable-text">${movie.title}</div><div class="poster-unavailable-sub">Poster Unavailable</div></div>`;
+
+        const genreBadges = (movie.genres && movie.genres.length > 0)
+            ? movie.genres.map(g => `<span class="series-badge" style="background:#333;">${g}</span>`).join(" ")
+            : `<span class="series-badge" style="background:#333;">Action</span>`;
+
+        mainContainer.innerHTML = `
+            <div class="series-hero" ${backdropStyle}>
+                <div class="series-hero-content">
+                    <div class="series-poster-box">
+                        ${posterImageHtml}
+                    </div>
+                    <div class="series-info-box">
+                        <h1 class="series-title-text">${movie.title}</h1>
+                        <div class="series-badge-row">
+                            <span class="series-badge">${movie.quality || 'HD'}</span>
+                            <span>${movie.vj || 'Luganda'}</span>
+                            ${movie.year ? `<span>• ${movie.year}</span>` : ''}
+                            <span>• ${(movie.format || 'mp4').toUpperCase()}</span>
+                        </div>
+                        <div class="series-badge-row">
+                            ${genreBadges}
+                        </div>
+                        <p class="series-overview-text">
+                            ${movie.overview || `Watch <strong>${movie.title}</strong> translated in Luganda by <strong>${movie.vj || 'Luganda VJ'}</strong> on SanyuHub.`}
+                        </p>
+                        <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+                            <a href="/watch/${movie.id}" class="btn-watch-primary" style="padding: 12px 28px; font-size: 1rem; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; background: #e50914; color: #fff; text-decoration: none;">
+                                &#9654; Watch Movie Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        initRelatedMovies("relatedMoviesGrid", movie.id);
+
+    } catch (err) {
+        console.error("Failed to load movie details:", err);
+        mainContainer.innerHTML = `
+            <div class="error-state" style="padding: 120px 20px; text-align: center;">
+                <h2>Movie Not Found</h2>
+                <p style="margin-top: 10px; color: #888;">The movie record you requested could not be found.</p>
+                <p style="margin-top: 20px;"><a href="/movies" class="btn-back-secondary">Return to Library</a></p>
+            </div>
+        `;
+    }
+}
+
 /* WATCH PAGE INTEGRATION */
 let moviePlayerController = null;
 
