@@ -14095,5 +14095,79 @@
     ],
     "rating": 8,
     "year": null
+  },
+  "tmdb:movie:jurassic world jrjb movies:": {
+    "tmdbId": null,
+    "posterUrl": null,
+    "backdropUrl": null,
+    "overview": null,
+    "genres": [
+      "Action",
+      "Luganda Translated"
+    ],
+    "rating": 8,
+    "year": null
+  },
+  "tmdb:movie:king arthur legend of the sword:": {
+    "tmdbId": 274857,
+    "posterUrl": "https://image.tmdb.org/t/p/w500/9kKXH6eJpzoFGhCbTN3FVwSQK3n.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/sVkjgKq8cwKm95LCyfrLldLbQIG.jpg",
+    "overview": "When the child Arthur’s father is murdered, Vortigern, Arthur’s uncle, seizes the crown. Robbed of his birthright and with no idea who he truly is, Arthur comes up the hard way in the back alleys of the city. But once he pulls the sword Excalibur from the stone, his life is turned upside down and he is forced to acknowledge his true legacy... whether he likes it or not.",
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy"
+    ],
+    "rating": 6.6,
+    "year": 2017
+  },
+  "tmdb:movie:king kong heavy q:": {
+    "tmdbId": null,
+    "posterUrl": null,
+    "backdropUrl": null,
+    "overview": null,
+    "genres": [
+      "Action",
+      "Luganda Translated"
+    ],
+    "rating": 8,
+    "year": null
+  },
+  "tmdb:movie:king solomon's mines movies:1985": {
+    "tmdbId": null,
+    "posterUrl": null,
+    "backdropUrl": null,
+    "overview": null,
+    "genres": [
+      "Action",
+      "Luganda Translated"
+    ],
+    "rating": 8,
+    "year": 1985
+  },
+  "tmdb:movie:kingdom of heaven jb movies:": {
+    "tmdbId": null,
+    "posterUrl": null,
+    "backdropUrl": null,
+    "overview": null,
+    "genres": [
+      "Action",
+      "Luganda Translated"
+    ],
+    "rating": 8,
+    "year": null
+  },
+  "tmdb:movie:pirates of the caribbean 5 dead men tell no tales:": {
+    "tmdbId": 166426,
+    "posterUrl": "https://image.tmdb.org/t/p/w500/6lAPOAFYFWIO3SQRemEY2wInQMC.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w1280/7C921eWK06n12c1miRXnYoEu5Yv.jpg",
+    "overview": "Thrust into an all-new adventure, a down-on-his-luck Capt. Jack Sparrow feels the winds of ill-fortune blowing even more strongly when deadly ghost sailors led by his old nemesis, the evil Capt. Salazar, escape from the Devil's Triangle. Jack's only hope of survival lies in seeking out the legendary Trident of Poseidon, but to find it, he must forge an uneasy alliance with a brilliant and beautiful astronomer and a headstrong young man in the British navy.",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Fantasy"
+    ],
+    "rating": 6.7,
+    "year": 2017
   }
 }

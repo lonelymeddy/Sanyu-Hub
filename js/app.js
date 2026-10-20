@@ -1802,7 +1802,7 @@ function initContinueWatching() {
     }
 }
 
-/* CATALOGUE PAGE (/movies) INTEGRATION */
+/* CATALOGUE / UNIFIED LIBRARY PAGE (/movies) INTEGRATION */
 const movieCardGrid = document.getElementById("movieCardGrid");
 const vjCategoriesContainer = document.getElementById("vjCategories");
 const genreFilterSelect = document.getElementById("genreFilterSelect");
@@ -1812,9 +1812,15 @@ const prevPageBtn = document.getElementById("prevPageBtn");
 const nextPageBtn = document.getElementById("nextPageBtn");
 const pageInfoSpan = document.getElementById("pageInfoSpan");
 const movieSearchInput = document.getElementById("movieSearchInput");
+const libraryCategorySelector = document.getElementById("libraryCategorySelector");
 
 if (movieCardGrid) {
     const urlParams = new URLSearchParams(window.location.search);
+    let activeCategory = (urlParams.get("category") || "movies").toLowerCase();
+    if (!["movies", "series", "tvshows"].includes(activeCategory)) {
+        activeCategory = "movies";
+    }
+
     let currentPage = parseInt(urlParams.get("page"), 10) || 1;
     let currentLimit = 24;
     let currentVj = urlParams.get("vj") || "all";
@@ -1823,13 +1829,68 @@ if (movieCardGrid) {
     let currentSearch = urlParams.get("search") || "";
     let searchDebounceTimer = null;
 
-    if (movieSearchInput && currentSearch) {
-        movieSearchInput.value = currentSearch;
+    if (movieSearchInput) {
+        if (currentSearch) movieSearchInput.value = currentSearch;
+        updateSearchPlaceholder();
+    }
+
+    function updateSearchPlaceholder() {
+        if (!movieSearchInput) return;
+        if (activeCategory === "series") {
+            movieSearchInput.placeholder = "Search Luganda series by title, VJ, overview...";
+            movieSearchInput.setAttribute("aria-label", "Search series");
+        } else if (activeCategory === "tvshows") {
+            movieSearchInput.placeholder = "Search TV shows by title, channel, description...";
+            movieSearchInput.setAttribute("aria-label", "Search TV shows");
+        } else {
+            movieSearchInput.placeholder = "Search Luganda movies by title, VJ, synopsis...";
+            movieSearchInput.setAttribute("aria-label", "Search movies");
+        }
+    }
+
+    function syncCategoryButtonsUI() {
+        if (!libraryCategorySelector) return;
+        libraryCategorySelector.querySelectorAll(".category").forEach(btn => {
+            const cat = (btn.getAttribute("data-category") || "movies").toLowerCase();
+            if (cat === activeCategory) {
+                btn.classList.add("active");
+            } else {
+                btn.classList.remove("active");
+            }
+        });
+        if (vjCategoriesContainer) {
+            vjCategoriesContainer.style.display = (activeCategory === "movies") ? "flex" : "none";
+        }
+        updateSearchPlaceholder();
+    }
+
+    function updateUrlState() {
+        const params = new URLSearchParams();
+        params.set("category", activeCategory);
+        if (currentPage > 1) params.set("page", currentPage);
+        if (currentSearch) params.set("search", currentSearch);
+        if (currentGenre && currentGenre !== "all") params.set("genre", currentGenre);
+        if (currentSort && currentSort !== "recently-added") params.set("sort", currentSort);
+        if (activeCategory === "movies" && currentVj && currentVj !== "all") params.set("vj", currentVj);
+
+        const newRelativePathQuery = window.location.pathname + '?' + params.toString();
+        window.history.replaceState(null, '', newRelativePathQuery);
     }
 
     async function fetchAndRenderCatalogue() {
-        movieCardGrid.innerHTML = '<div class="loading-state">Loading SanyuHub movie catalogue...</div>';
+        updateUrlState();
+        movieCardGrid.innerHTML = '<div class="loading-state">Loading SanyuHub Library...</div>';
 
+        if (activeCategory === "series") {
+            await fetchAndRenderLibrarySeries();
+        } else if (activeCategory === "tvshows") {
+            await fetchAndRenderLibraryTvShows();
+        } else {
+            await fetchAndRenderLibraryMovies();
+        }
+    }
+
+    async function fetchAndRenderLibraryMovies() {
         try {
             const queryParams = new URLSearchParams({
                 page: currentPage,
@@ -1850,14 +1911,7 @@ if (movieCardGrid) {
                 renderVjCategoryButtons(data.vjs);
             }
 
-            if (data.genres && data.genres.length > 0 && genreFilterSelect && genreFilterSelect.children.length <= 1) {
-                data.genres.forEach(g => {
-                    const opt = document.createElement("option");
-                    opt.value = g;
-                    opt.textContent = g;
-                    genreFilterSelect.appendChild(opt);
-                });
-            }
+            updateGenreOptions(data.genres || []);
 
             if (movies.length === 0) {
                 movieCardGrid.innerHTML = '<div class="loading-state">No movies found matching your request.</div>';
@@ -1870,21 +1924,109 @@ if (movieCardGrid) {
                 movieCardGrid.appendChild(createMovieCard(movie));
             });
 
-            if (paginationControls) {
-                if (data.totalPages > 1) {
-                    paginationControls.style.display = "flex";
-                    if (pageInfoSpan) pageInfoSpan.textContent = `Page ${data.page} of ${data.totalPages} (${data.total} movies)`;
-                    if (prevPageBtn) prevPageBtn.disabled = (data.page <= 1);
-                    if (nextPageBtn) nextPageBtn.disabled = (data.page >= data.totalPages);
-                } else {
-                    paginationControls.style.display = "none";
-                }
-            }
+            renderPagination(data.page, data.totalPages, data.total, "movies");
 
         } catch (err) {
             console.error("Failed to load movie catalogue:", err);
             movieCardGrid.innerHTML = '<div class="error-state">Unable to load movie catalogue. Please try again later.</div>';
             if (paginationControls) paginationControls.style.display = "none";
+        }
+    }
+
+    async function fetchAndRenderLibrarySeries() {
+        try {
+            const queryParams = new URLSearchParams({
+                page: currentPage,
+                limit: currentLimit
+            });
+            if (currentGenre && currentGenre !== "all") queryParams.append("genre", currentGenre);
+            if (currentSort) queryParams.append("sort", currentSort);
+            if (currentSearch) queryParams.append("search", currentSearch);
+
+            const res = await fetch(`/api/series?${queryParams.toString()}`);
+            if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
+
+            const data = await res.json();
+            const seriesList = data.series || [];
+
+            updateGenreOptions(data.genres || []);
+
+            if (seriesList.length === 0) {
+                movieCardGrid.innerHTML = '<div class="loading-state">No series found matching your request.</div>';
+                if (paginationControls) paginationControls.style.display = "none";
+                return;
+            }
+
+            movieCardGrid.innerHTML = "";
+            seriesList.forEach(series => {
+                movieCardGrid.appendChild(createSeriesCard(series));
+            });
+
+            renderPagination(data.page, data.totalPages, data.total, "series");
+
+        } catch (err) {
+            console.error("Failed to load series catalogue:", err);
+            movieCardGrid.innerHTML = '<div class="error-state">Unable to load series catalogue. Please try again later.</div>';
+            if (paginationControls) paginationControls.style.display = "none";
+        }
+    }
+
+    async function fetchAndRenderLibraryTvShows() {
+        try {
+            let shows = LIVE_TV_CHANNELS;
+            if (currentSearch) {
+                const searchLower = currentSearch.toLowerCase();
+                shows = shows.filter(ch =>
+                    (ch.name && ch.name.toLowerCase().includes(searchLower)) ||
+                    (ch.categoryLabel && ch.categoryLabel.toLowerCase().includes(searchLower)) ||
+                    (ch.description && ch.description.toLowerCase().includes(searchLower))
+                );
+            }
+
+            if (shows.length === 0) {
+                movieCardGrid.innerHTML = '<div class="loading-state">No TV shows found matching your request.</div>';
+                if (paginationControls) paginationControls.style.display = "none";
+                return;
+            }
+
+            movieCardGrid.innerHTML = "";
+            shows.forEach(ch => {
+                movieCardGrid.appendChild(createChannelCard(ch, false));
+            });
+
+            if (paginationControls) paginationControls.style.display = "none";
+
+        } catch (err) {
+            console.error("Failed to load TV shows:", err);
+            movieCardGrid.innerHTML = '<div class="error-state">Unable to load TV shows. Please try again later.</div>';
+            if (paginationControls) paginationControls.style.display = "none";
+        }
+    }
+
+    function updateGenreOptions(genresList) {
+        if (!genreFilterSelect) return;
+        const selectedValue = genreFilterSelect.value;
+        genreFilterSelect.innerHTML = '<option value="all">All Genres</option>';
+        genresList.forEach(g => {
+            const opt = document.createElement("option");
+            opt.value = g;
+            opt.textContent = g;
+            if (g.toLowerCase() === selectedValue.toLowerCase()) {
+                opt.selected = true;
+            }
+            genreFilterSelect.appendChild(opt);
+        });
+    }
+
+    function renderPagination(page, totalPages, total, itemLabel) {
+        if (!paginationControls) return;
+        if (totalPages > 1) {
+            paginationControls.style.display = "flex";
+            if (pageInfoSpan) pageInfoSpan.textContent = `Page ${page} of ${totalPages} (${total} ${itemLabel})`;
+            if (prevPageBtn) prevPageBtn.disabled = (page <= 1);
+            if (nextPageBtn) nextPageBtn.disabled = (page >= totalPages);
+        } else {
+            paginationControls.style.display = "none";
         }
     }
 
@@ -1909,6 +2051,20 @@ if (movieCardGrid) {
                 btn.classList.add("active");
                 currentVj = btn.getAttribute("data-vj") || "all";
                 currentPage = 1;
+                fetchAndRenderCatalogue();
+            });
+        });
+    }
+
+    if (libraryCategorySelector) {
+        libraryCategorySelector.querySelectorAll(".category").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const cat = (btn.getAttribute("data-category") || "movies").toLowerCase();
+                if (cat === activeCategory) return;
+
+                activeCategory = cat;
+                currentPage = 1;
+                syncCategoryButtonsUI();
                 fetchAndRenderCatalogue();
             });
         });
@@ -1959,6 +2115,7 @@ if (movieCardGrid) {
         });
     }
 
+    syncCategoryButtonsUI();
     fetchAndRenderCatalogue();
 }
 

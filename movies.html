@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#222222">
-<meta name="description" content="SanyuHub — Movies Catalogue">
-<title>Movies Catalogue — SanyuHub</title>
+<meta name="description" content="SanyuHub — Library">
+<title>Library — SanyuHub</title>
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -19,7 +19,7 @@ Sanyu<span>Hub</span>
 </a>
 <nav class="desktop-nav">
 <a href="/" class="">Home</a>
-<a href="/movies" class="active">Movies</a>
+<a href="/movies" class="active">Library</a>
 <a href="/series" class="">Series</a>
 <a href="/live-tv" class="">Live TV</a>
 </nav>
@@ -55,7 +55,7 @@ Home
 <a href="/movies" class="sidebar-link has-submenu expanded active">
 <span class="sidebar-link-left">
 <span class="sidebar-dot"></span>
-Movies
+Library
 </span>
 <span class="chevron"></span>
 </a>
@@ -95,12 +95,18 @@ Live TV
 
 <header class="page-header">
 <div class="page-title-group">
-<h1 class="page-title">Movies Catalogue</h1>
-<p class="page-subtitle">Browse all translated Luganda movies available on SanyuHub.</p>
+<h1 class="page-title">Library</h1>
+<p class="page-subtitle">Browse all translated Luganda movies, series, and TV shows available on SanyuHub.</p>
 </div>
 </header>
 
 <section class="section">
+<div class="categories" id="libraryCategorySelector" style="margin-bottom: 20px;">
+  <button class="category active" data-category="movies">Movies</button>
+  <button class="category" data-category="series">Series</button>
+  <button class="category" data-category="tvshows">TV Shows</button>
+</div>
+
 <div class="movie-search-bar" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
   <input type="search" id="movieSearchInput" class="movie-search-input" style="flex: 1; min-width: 240px;" placeholder="Search Luganda movies by title, VJ, synopsis..." aria-label="Search movies">
 
@@ -155,7 +161,7 @@ Live TV
     <div class="bottom-nav-icon">
       <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
     </div>
-    <span>Movies</span>
+    <span>Library</span>
   </a>
   <a href="/more" class="bottom-nav-item" id="navMore">
     <div class="bottom-nav-icon">
