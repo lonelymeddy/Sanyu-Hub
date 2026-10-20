@@ -551,11 +551,15 @@ function initLiveTvCatalogue() {
         const cleanSearch = searchQuery.trim().toLowerCase();
         let channels = LIVE_TV_CHANNELS;
 
-        // Filter by channel type (TV vs Radio)
+        // Filter by channel type (TV Channels, Radio Channels, Live Matches, Crusades)
         if (selectedType === "radio") {
             channels = channels.filter(ch => ch.isRadio || ch.type === "radio" || ch.category === "radio");
+        } else if (selectedType === "matches" || selectedType === "live-matches") {
+            channels = channels.filter(ch => ch.type === "matches" || ch.type === "live-matches" || ch.category === "matches" || ch.category === "live-matches" || ch.category === "sports");
+        } else if (selectedType === "crusades") {
+            channels = channels.filter(ch => ch.type === "crusades" || ch.category === "crusades" || ch.category === "religious");
         } else {
-            channels = channels.filter(ch => !ch.isRadio && ch.type !== "radio" && ch.category !== "radio");
+            channels = channels.filter(ch => !ch.isRadio && ch.type !== "radio" && ch.category !== "radio" && ch.type !== "matches" && ch.category !== "matches" && ch.type !== "crusades" && ch.category !== "crusades" && ch.category !== "sports");
         }
 
         // Filter by search query
@@ -1817,6 +1821,7 @@ if (movieCardGrid) {
     const urlParams = new URLSearchParams(window.location.search);
     let currentPage = parseInt(urlParams.get("page"), 10) || 1;
     let currentLimit = 24;
+    let currentCategory = urlParams.get("category") || "movies";
     let currentVj = urlParams.get("vj") || "all";
     let currentGenre = urlParams.get("genre") || "all";
     let currentSort = urlParams.get("sort") || "recently-added";
@@ -1827,91 +1832,158 @@ if (movieCardGrid) {
         movieSearchInput.value = currentSearch;
     }
 
-    async function fetchAndRenderCatalogue() {
-        movieCardGrid.innerHTML = '<div class="loading-state">Loading SanyuHub movie catalogue...</div>';
-
-        try {
-            const queryParams = new URLSearchParams({
-                page: currentPage,
-                limit: currentLimit
-            });
-            if (currentVj && currentVj !== "all") queryParams.append("vj", currentVj);
-            if (currentGenre && currentGenre !== "all") queryParams.append("genre", currentGenre);
-            if (currentSort) queryParams.append("sort", currentSort);
-            if (currentSearch) queryParams.append("search", currentSearch);
-
-            const res = await fetch(`/api/movies?${queryParams.toString()}`);
-            if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
-
-            const data = await res.json();
-            const movies = data.movies || [];
-
-            if (data.vjs && data.vjs.length > 0 && vjCategoriesContainer && vjCategoriesContainer.children.length <= 1) {
-                renderVjCategoryButtons(data.vjs);
-            }
-
-            if (data.genres && data.genres.length > 0 && genreFilterSelect && genreFilterSelect.children.length <= 1) {
-                data.genres.forEach(g => {
-                    const opt = document.createElement("option");
-                    opt.value = g;
-                    opt.textContent = g;
-                    genreFilterSelect.appendChild(opt);
-                });
-            }
-
-            if (movies.length === 0) {
-                movieCardGrid.innerHTML = '<div class="loading-state">No movies found matching your request.</div>';
-                if (paginationControls) paginationControls.style.display = "none";
-                return;
-            }
-
-            movieCardGrid.innerHTML = "";
-            movies.forEach(movie => {
-                movieCardGrid.appendChild(createMovieCard(movie));
-            });
-
-            if (paginationControls) {
-                if (data.totalPages > 1) {
-                    paginationControls.style.display = "flex";
-                    if (pageInfoSpan) pageInfoSpan.textContent = `Page ${data.page} of ${data.totalPages} (${data.total} movies)`;
-                    if (prevPageBtn) prevPageBtn.disabled = (data.page <= 1);
-                    if (nextPageBtn) nextPageBtn.disabled = (data.page >= data.totalPages);
-                } else {
-                    paginationControls.style.display = "none";
-                }
-            }
-
-        } catch (err) {
-            console.error("Failed to load movie catalogue:", err);
-            movieCardGrid.innerHTML = '<div class="error-state">Unable to load movie catalogue. Please try again later.</div>';
-            if (paginationControls) paginationControls.style.display = "none";
-        }
-    }
-
-    function renderVjCategoryButtons(vjs) {
-        if (!vjCategoriesContainer) return;
-        vjCategoriesContainer.innerHTML = '<button class="category active" data-vj="all">All</button>';
-        vjs.forEach(vjName => {
-            const btn = document.createElement("button");
-            btn.className = "category";
-            if (vjName.toLowerCase() === currentVj.toLowerCase()) {
-                vjCategoriesContainer.querySelector(".category")?.classList.remove("active");
-                btn.className = "category active";
-            }
-            btn.setAttribute("data-vj", vjName);
-            btn.textContent = vjName;
-            vjCategoriesContainer.appendChild(btn);
-        });
-
-        vjCategoriesContainer.querySelectorAll(".category").forEach(btn => {
-            btn.addEventListener("click", function() {
-                vjCategoriesContainer.querySelectorAll(".category").forEach(b => b.classList.remove("active"));
+    if (vjCategoriesContainer) {
+        const catButtons = vjCategoriesContainer.querySelectorAll(".category");
+        catButtons.forEach(btn => {
+            const cat = btn.getAttribute("data-category");
+            if (cat === currentCategory) {
+                catButtons.forEach(b => b.classList.remove("active"));
                 btn.classList.add("active");
-                currentVj = btn.getAttribute("data-vj") || "all";
+            }
+            btn.addEventListener("click", function() {
+                catButtons.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentCategory = btn.getAttribute("data-category") || "movies";
                 currentPage = 1;
                 fetchAndRenderCatalogue();
             });
         });
+    }
+
+    async function fetchAndRenderCatalogue() {
+        movieCardGrid.innerHTML = '<div class="loading-state">Loading Library content...</div>';
+
+        try {
+            if (currentCategory === "series") {
+                const queryParams = new URLSearchParams({
+                    page: currentPage,
+                    limit: currentLimit
+                });
+                if (currentVj && currentVj !== "all") queryParams.append("vj", currentVj);
+                if (currentGenre && currentGenre !== "all") queryParams.append("genre", currentGenre);
+                if (currentSort) queryParams.append("sort", currentSort);
+                if (currentSearch) queryParams.append("search", currentSearch);
+
+                const res = await fetch(`/api/series?${queryParams.toString()}`);
+                if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
+
+                const data = await res.json();
+                const seriesList = data.series || [];
+
+                if (data.genres && data.genres.length > 0 && genreFilterSelect && genreFilterSelect.children.length <= 1) {
+                    data.genres.forEach(g => {
+                        const opt = document.createElement("option");
+                        opt.value = g;
+                        opt.textContent = g;
+                        genreFilterSelect.appendChild(opt);
+                    });
+                }
+
+                if (seriesList.length === 0) {
+                    movieCardGrid.innerHTML = '<div class="loading-state">No series found matching your request.</div>';
+                    if (paginationControls) paginationControls.style.display = "none";
+                    return;
+                }
+
+                movieCardGrid.innerHTML = "";
+                seriesList.forEach(item => {
+                    movieCardGrid.appendChild(createSeriesCard(item));
+                });
+
+                if (paginationControls) {
+                    if (data.totalPages > 1) {
+                        paginationControls.style.display = "flex";
+                        if (pageInfoSpan) pageInfoSpan.textContent = `Page ${data.page} of ${data.totalPages} (${data.total} series)`;
+                        if (prevPageBtn) prevPageBtn.disabled = (data.page <= 1);
+                        if (nextPageBtn) nextPageBtn.disabled = (data.page >= data.totalPages);
+                    } else {
+                        paginationControls.style.display = "none";
+                    }
+                }
+            } else if (currentCategory === "concerts") {
+                const queryParams = new URLSearchParams({
+                    page: currentPage,
+                    limit: currentLimit
+                });
+                if (currentSearch) queryParams.append("search", currentSearch);
+                queryParams.append("genre", "concert");
+
+                const res = await fetch(`/api/movies?${queryParams.toString()}`);
+                if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
+
+                const data = await res.json();
+                const concerts = (data.movies || []).filter(m =>
+                    /concert|live|performance/i.test(m.title) ||
+                    (m.genres && m.genres.some(g => /concert|music/i.test(g)))
+                );
+
+                if (concerts.length === 0) {
+                    movieCardGrid.innerHTML = '<div class="loading-state">No concerts found matching your request.</div>';
+                    if (paginationControls) paginationControls.style.display = "none";
+                    return;
+                }
+
+                movieCardGrid.innerHTML = "";
+                concerts.forEach(movie => {
+                    movieCardGrid.appendChild(createMovieCard(movie));
+                });
+
+                if (paginationControls) {
+                    paginationControls.style.display = "none";
+                }
+            } else {
+                // Default: Movies category
+                const queryParams = new URLSearchParams({
+                    page: currentPage,
+                    limit: currentLimit
+                });
+                if (currentVj && currentVj !== "all") queryParams.append("vj", currentVj);
+                if (currentGenre && currentGenre !== "all") queryParams.append("genre", currentGenre);
+                if (currentSort) queryParams.append("sort", currentSort);
+                if (currentSearch) queryParams.append("search", currentSearch);
+
+                const res = await fetch(`/api/movies?${queryParams.toString()}`);
+                if (!res.ok) throw new Error(`Server returned HTTP ${res.status}`);
+
+                const data = await res.json();
+                const movies = data.movies || [];
+
+                if (data.genres && data.genres.length > 0 && genreFilterSelect && genreFilterSelect.children.length <= 1) {
+                    data.genres.forEach(g => {
+                        const opt = document.createElement("option");
+                        opt.value = g;
+                        opt.textContent = g;
+                        genreFilterSelect.appendChild(opt);
+                    });
+                }
+
+                if (movies.length === 0) {
+                    movieCardGrid.innerHTML = '<div class="loading-state">No movies found matching your request.</div>';
+                    if (paginationControls) paginationControls.style.display = "none";
+                    return;
+                }
+
+                movieCardGrid.innerHTML = "";
+                movies.forEach(movie => {
+                    movieCardGrid.appendChild(createMovieCard(movie));
+                });
+
+                if (paginationControls) {
+                    if (data.totalPages > 1) {
+                        paginationControls.style.display = "flex";
+                        if (pageInfoSpan) pageInfoSpan.textContent = `Page ${data.page} of ${data.totalPages} (${data.total} movies)`;
+                        if (prevPageBtn) prevPageBtn.disabled = (data.page <= 1);
+                        if (nextPageBtn) nextPageBtn.disabled = (data.page >= data.totalPages);
+                    } else {
+                        paginationControls.style.display = "none";
+                    }
+                }
+            }
+        } catch (err) {
+            console.error("Failed to load Library catalogue:", err);
+            movieCardGrid.innerHTML = '<div class="error-state">Unable to load Library catalogue. Please try again later.</div>';
+            if (paginationControls) paginationControls.style.display = "none";
+        }
     }
 
     if (genreFilterSelect) {
@@ -2424,7 +2496,7 @@ async function initMovieDetailsPage() {
             <div class="error-state" style="padding: 120px 20px;">
                 <h2>Movie Not Found</h2>
                 <p style="margin-top: 10px; color: #888;">The movie you requested could not be found or is unavailable.</p>
-                <p style="margin-top: 20px;"><a href="/movies" class="btn-back-secondary">Return to Movies Catalogue</a></p>
+                <p style="margin-top: 20px;"><a href="/movies" class="btn-back-secondary">Return to Library</a></p>
             </div>
         `;
     }
