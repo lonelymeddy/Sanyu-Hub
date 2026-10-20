@@ -545,11 +545,35 @@ async function fetchNanaMovieHubMovies() {
 /**
  * Build and return the full verified movie catalogue and series catalogue.
  */
+let isBuildingCatalogue = false;
+
 async function buildCatalogues(forceRefresh = false) {
   const now = Date.now();
   if (!forceRefresh && catalogueCache && seriesCatalogueCache && (now - cacheTime < CACHE_TTL_MS)) {
     return { movies: catalogueCache, series: seriesCatalogueCache };
   }
+
+  if (catalogueCache && seriesCatalogueCache) {
+    if (!isBuildingCatalogue) {
+      isBuildingCatalogue = true;
+      setImmediate(async () => {
+        try {
+          await runBuildCatalogues();
+        } catch (e) {
+          console.error("Background catalogue build error:", e.message);
+        } finally {
+          isBuildingCatalogue = false;
+        }
+      });
+    }
+    return { movies: catalogueCache, series: seriesCatalogueCache };
+  }
+
+  return await runBuildCatalogues();
+}
+
+async function runBuildCatalogues() {
+  const now = Date.now();
 
   console.log('Fetching fresh Ugandan catalogue from sources...');
   const [vjluga, pearlplay, nanamovie] = await Promise.all([
