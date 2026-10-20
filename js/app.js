@@ -493,6 +493,81 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://bx-tv.com/watch/trace-mziki-893902",
         meta: "Official Live Broadcast • HD • We Love East African Music",
         description: "Trace Mziki is the ultimate music channel dedicated to East African music, featuring hit video countdowns, artist showcases, and urban culture."
+    },
+    {
+        id: "dembe-fm",
+        aliases: ["dembefm", "dembe"],
+        name: "Dembe FM",
+        type: "radio",
+        isRadio: true,
+        category: "radio",
+        categoryLabel: "90.4 FM • Luganda Music & Shows",
+        logo: "/images/dembefm-logo.jpg",
+        streamType: "audio",
+        streamUrl: "http://radio.dembefm.ug:8000/stream",
+        embedUrl: "https://dembefm.ug",
+        meta: "Official Live Broadcast • 90.4 FM",
+        description: "Dembe FM is Uganda's premier Luganda music and entertainment radio station."
+    },
+    {
+        id: "galaxy-fm",
+        aliases: ["galaxyfm", "zzina"],
+        name: "Galaxy FM",
+        type: "radio",
+        isRadio: true,
+        category: "radio",
+        categoryLabel: "100.2 FM • Zzina",
+        logo: "/images/galaxyfm-logo.png",
+        streamType: "audio",
+        streamUrl: "https://stream.zeno.fm/ahtmyttw5mftv",
+        embedUrl: "https://www.galaxyfm.co.ug/radio/",
+        meta: "Official Live Broadcast • 100.2 FM Zzina",
+        description: "Galaxy FM 100.2 Zzina is Uganda's leading youth urban music station."
+    },
+    {
+        id: "bukedde-fm",
+        aliases: ["bukeddefm"],
+        name: "Bukedde FM",
+        type: "radio",
+        isRadio: true,
+        category: "radio",
+        categoryLabel: "100.5 FM • Luganda News & Shows",
+        logo: "https://newvision-media.s3.amazonaws.com/cms/491c5aed-a6d9-412c-85cf-fe4e090e2510.png",
+        streamType: "audio",
+        streamUrl: "https://stream.hydeinnovations.com:2020/stream/bukeddefm/stream",
+        embedUrl: "https://www.bukedde.co.ug/radiolist",
+        meta: "Official Live Broadcast • 100.5 FM",
+        description: "Bukedde FM is Uganda's top Luganda radio station for news, talk shows, and local music."
+    },
+    {
+        id: "xfm",
+        aliases: ["xfm-948"],
+        name: "XFM 94.8",
+        type: "radio",
+        isRadio: true,
+        category: "radio",
+        categoryLabel: "94.8 FM • Top 40 Hits",
+        logo: "https://newvision-media.s3.amazonaws.com/cms/cb5df600-7c65-49d3-95c4-2af6616eefc0.png",
+        streamType: "audio",
+        streamUrl: "https://stream.hydeinnovations.com:2020/stream/xfm/stream",
+        embedUrl: "https://www.bukedde.co.ug/radiolist",
+        meta: "Official Live Broadcast • 94.8 FM",
+        description: "XFM 94.8 is a Top 40 hit music radio station based in Kampala, Uganda."
+    },
+    {
+        id: "radio-west",
+        aliases: ["radiowest"],
+        name: "Radio West",
+        type: "radio",
+        isRadio: true,
+        category: "radio",
+        categoryLabel: "100.2 FM • Western Region",
+        logo: "https://newvision-media.s3.amazonaws.com/cms/64332ddd-eecd-47ce-899f-e7ebcff5a5a6.png",
+        streamType: "audio",
+        streamUrl: "https://stream.hydeinnovations.com:2020/stream/radiowest/stream",
+        embedUrl: "https://www.bukedde.co.ug/radiolist",
+        meta: "Official Live Broadcast • 100.2 FM",
+        description: "Radio West is the leading radio station in Western Uganda."
     }
 ];
 
@@ -542,7 +617,7 @@ function initLiveTvCatalogue() {
     // Only run on catalogue page where cardGrid exists and no video player is present
     if (!cardGrid || videoPlayer) return;
 
-    let selectedType = "tv"; // 'tv' or 'radio'
+    let selectedType = "tv"; // 'tv', 'radio', 'matches', 'crusades'
     let searchQuery = "";
 
     function renderCards() {
@@ -551,11 +626,16 @@ function initLiveTvCatalogue() {
         const cleanSearch = searchQuery.trim().toLowerCase();
         let channels = LIVE_TV_CHANNELS;
 
-        // Filter by channel type (TV vs Radio)
+        // Filter by channel type selector
         if (selectedType === "radio") {
             channels = channels.filter(ch => ch.isRadio || ch.type === "radio" || ch.category === "radio");
+        } else if (selectedType === "matches") {
+            channels = channels.filter(ch => ch.type === "matches" || ch.category === "matches");
+        } else if (selectedType === "crusades") {
+            channels = channels.filter(ch => ch.type === "crusades" || ch.category === "crusades");
         } else {
-            channels = channels.filter(ch => !ch.isRadio && ch.type !== "radio" && ch.category !== "radio");
+            // Default: 'tv'
+            channels = channels.filter(ch => !ch.isRadio && ch.type !== "radio" && ch.category !== "radio" && ch.category !== "matches" && ch.category !== "crusades" && ch.type !== "matches" && ch.type !== "crusades");
         }
 
         // Filter by search query
@@ -564,7 +644,15 @@ function initLiveTvCatalogue() {
         }
 
         if (channels.length === 0) {
-            cardGrid.innerHTML = `<div class="loading-state">No channels found</div>`;
+            if (selectedType === "matches") {
+                cardGrid.innerHTML = `<div class="loading-state">No live matches available at the moment.</div>`;
+            } else if (selectedType === "crusades") {
+                cardGrid.innerHTML = `<div class="loading-state">No crusades available at the moment.</div>`;
+            } else if (selectedType === "radio") {
+                cardGrid.innerHTML = `<div class="loading-state">No radio channels found.</div>`;
+            } else {
+                cardGrid.innerHTML = `<div class="loading-state">No TV channels found.</div>`;
+            }
             return;
         }
 
@@ -582,7 +670,7 @@ function initLiveTvCatalogue() {
         });
     }
 
-    // Channel type selector buttons (TV Channels vs Radio Channels)
+    // Channel type selector buttons (TV Channels, Radio Channels, Live Matches, Crusades)
     const typeSelectorContainer = document.getElementById("channelTypeSelector");
     if (typeSelectorContainer) {
         typeSelectorContainer.querySelectorAll(".category").forEach(btn => {
@@ -1817,7 +1905,7 @@ const libraryCategorySelector = document.getElementById("libraryCategorySelector
 if (movieCardGrid) {
     const urlParams = new URLSearchParams(window.location.search);
     let activeCategory = (urlParams.get("category") || "movies").toLowerCase();
-    if (!["movies", "series", "tvshows"].includes(activeCategory)) {
+    if (!["movies", "series", "music", "concerts"].includes(activeCategory)) {
         activeCategory = "movies";
     }
 
@@ -1837,13 +1925,16 @@ if (movieCardGrid) {
     function updateSearchPlaceholder() {
         if (!movieSearchInput) return;
         if (activeCategory === "series") {
-            movieSearchInput.placeholder = "Search Luganda series by title, VJ, overview...";
+            movieSearchInput.placeholder = "Search series by title, VJ, overview...";
             movieSearchInput.setAttribute("aria-label", "Search series");
-        } else if (activeCategory === "tvshows") {
-            movieSearchInput.placeholder = "Search TV shows by title, channel, description...";
-            movieSearchInput.setAttribute("aria-label", "Search TV shows");
+        } else if (activeCategory === "music") {
+            movieSearchInput.placeholder = "Search music by title, artist, album...";
+            movieSearchInput.setAttribute("aria-label", "Search music");
+        } else if (activeCategory === "concerts") {
+            movieSearchInput.placeholder = "Search concerts by event, performer, location...";
+            movieSearchInput.setAttribute("aria-label", "Search concerts");
         } else {
-            movieSearchInput.placeholder = "Search Luganda movies by title, VJ, synopsis...";
+            movieSearchInput.placeholder = "Search movies by title, VJ, synopsis...";
             movieSearchInput.setAttribute("aria-label", "Search movies");
         }
     }
@@ -1883,8 +1974,10 @@ if (movieCardGrid) {
 
         if (activeCategory === "series") {
             await fetchAndRenderLibrarySeries();
-        } else if (activeCategory === "tvshows") {
-            await fetchAndRenderLibraryTvShows();
+        } else if (activeCategory === "music") {
+            await fetchAndRenderLibraryMusic();
+        } else if (activeCategory === "concerts") {
+            await fetchAndRenderLibraryConcerts();
         } else {
             await fetchAndRenderLibraryMovies();
         }
@@ -1971,34 +2064,95 @@ if (movieCardGrid) {
         }
     }
 
-    async function fetchAndRenderLibraryTvShows() {
+    async function fetchAndRenderLibraryMusic() {
         try {
-            let shows = LIVE_TV_CHANNELS;
+            const MUSIC_RECORDS = [
+                {
+                    id: "trace-mziki-music",
+                    title: "Trace Mziki Live Broadcast",
+                    vj: "East African Music",
+                    year: "2026",
+                    quality: "HD",
+                    posterUrl: "/images/tracemziki-logo.png",
+                    streamUrl: "https://channels.trace.plus/Traceprod/MZIKI_hd/index.m3u8",
+                    targetUrl: "/live-tv/watch/trace-mziki/"
+                }
+            ];
+
+            let filtered = MUSIC_RECORDS;
             if (currentSearch) {
                 const searchLower = currentSearch.toLowerCase();
-                shows = shows.filter(ch =>
-                    (ch.name && ch.name.toLowerCase().includes(searchLower)) ||
-                    (ch.categoryLabel && ch.categoryLabel.toLowerCase().includes(searchLower)) ||
-                    (ch.description && ch.description.toLowerCase().includes(searchLower))
+                filtered = filtered.filter(m =>
+                    (m.title && m.title.toLowerCase().includes(searchLower)) ||
+                    (m.vj && m.vj.toLowerCase().includes(searchLower))
                 );
             }
 
-            if (shows.length === 0) {
-                movieCardGrid.innerHTML = '<div class="loading-state">No TV shows found matching your request.</div>';
+            if (filtered.length === 0) {
+                movieCardGrid.innerHTML = currentSearch ?
+                    '<div class="loading-state">No music found matching your request.</div>' :
+                    '<div class="loading-state">No music content available at the moment.</div>';
                 if (paginationControls) paginationControls.style.display = "none";
                 return;
             }
 
             movieCardGrid.innerHTML = "";
-            shows.forEach(ch => {
-                movieCardGrid.appendChild(createChannelCard(ch, false));
+            filtered.forEach(m => {
+                const card = document.createElement("article");
+                card.className = "movie-card";
+                card.style.cursor = "pointer";
+                card.innerHTML = `
+                    <div class="poster">
+                        <img src="${m.posterUrl}" alt="${m.title}">
+                        <span class="badge">${m.quality}</span>
+                    </div>
+                    <div class="card-title" title="${m.title}">${m.title}</div>
+                    <div class="card-meta">${m.vj} • ${m.year}</div>
+                `;
+                card.addEventListener("click", () => {
+                    window.location.href = m.targetUrl;
+                });
+                movieCardGrid.appendChild(card);
             });
 
             if (paginationControls) paginationControls.style.display = "none";
 
         } catch (err) {
-            console.error("Failed to load TV shows:", err);
-            movieCardGrid.innerHTML = '<div class="error-state">Unable to load TV shows. Please try again later.</div>';
+            console.error("Failed to load music content:", err);
+            movieCardGrid.innerHTML = '<div class="error-state">Unable to load music content.</div>';
+            if (paginationControls) paginationControls.style.display = "none";
+        }
+    }
+
+    async function fetchAndRenderLibraryConcerts() {
+        try {
+            let concerts = [];
+            if (currentSearch) {
+                const searchLower = currentSearch.toLowerCase();
+                concerts = concerts.filter(c =>
+                    (c.title && c.title.toLowerCase().includes(searchLower)) ||
+                    (c.performer && c.performer.toLowerCase().includes(searchLower))
+                );
+            }
+
+            if (concerts.length === 0) {
+                movieCardGrid.innerHTML = currentSearch ?
+                    '<div class="loading-state">No concerts found matching your request.</div>' :
+                    '<div class="loading-state">No concerts available at the moment.</div>';
+                if (paginationControls) paginationControls.style.display = "none";
+                return;
+            }
+
+            movieCardGrid.innerHTML = "";
+            concerts.forEach(c => {
+                movieCardGrid.appendChild(createMovieCard(c));
+            });
+
+            if (paginationControls) paginationControls.style.display = "none";
+
+        } catch (err) {
+            console.error("Failed to load concert content:", err);
+            movieCardGrid.innerHTML = '<div class="error-state">Unable to load concert content.</div>';
             if (paginationControls) paginationControls.style.display = "none";
         }
     }
