@@ -2200,21 +2200,20 @@ font-size:38px
 /* MOVIE DETAILS & WATCH PLAYER STYLES */
 .movie-detail-hero {
   position: relative;
-  min-height: 480px;
-  display: flex;
-  align-items: flex-end;
-  padding: 120px 5% 40px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding: 60px 5% 40px;
+  border-radius: 12px;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 
 .movie-detail-hero::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to top, #080808 10%, rgba(8,8,8,0.7) 60%, rgba(8,8,8,0.9) 100%);
+  background: linear-gradient(180deg, rgba(18,18,18,0.85) 0%, rgba(18,18,18,0.98) 100%);
   z-index: 1;
 }
 
@@ -2222,20 +2221,18 @@ font-size:38px
   position: relative;
   z-index: 2;
   display: flex;
-  gap: 36px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 30px;
+  flex-wrap: wrap;
   align-items: flex-start;
 }
 
 .movie-detail-poster {
-  width: 260px;
+  width: 240px;
   flex-shrink: 0;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-  background: #181818;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  background: #111;
   aspect-ratio: 2/3;
 }
 
@@ -2248,47 +2245,46 @@ font-size:38px
 
 .movie-detail-info {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  min-width: 280px;
 }
 
 .movie-detail-title {
-  font-size: 36px;
-  font-weight: 800;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
   color: #fff;
-  line-height: 1.2;
 }
 
 .movie-detail-meta {
   display: flex;
+  gap: 10px;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  color: #ccc;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: #aaa;
 }
 
 .movie-meta-badge {
-  background: #f4c400;
-  color: #080808;
-  font-weight: 700;
-  font-size: 12px;
+  background: #e50914;
+  color: #fff;
   padding: 3px 8px;
   border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .movie-detail-overview {
-  font-size: 15px;
+  font-size: 1rem;
   line-height: 1.6;
-  color: #bbb;
-  max-width: 800px;
+  color: #ddd;
+  margin-bottom: 24px;
 }
 
 .movie-detail-actions {
   display: flex;
-  gap: 16px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 24px;
   flex-wrap: wrap;
 }
 

@@ -627,7 +627,9 @@ function initLiveTvCatalogue() {
         let channels = LIVE_TV_CHANNELS;
 
         // Filter by channel type selector
-        if (selectedType === "radio") {
+        if (selectedType === "kids") {
+            channels = channels.filter(ch => ch.category === "kids" || ch.type === "kids");
+        } else if (selectedType === "radio") {
             channels = channels.filter(ch => ch.isRadio || ch.type === "radio" || ch.category === "radio");
         } else if (selectedType === "matches") {
             channels = channels.filter(ch => ch.type === "matches" || ch.category === "matches");
@@ -635,7 +637,7 @@ function initLiveTvCatalogue() {
             channels = channels.filter(ch => ch.type === "crusades" || ch.category === "crusades");
         } else {
             // Default: 'tv'
-            channels = channels.filter(ch => !ch.isRadio && ch.type !== "radio" && ch.category !== "radio" && ch.category !== "matches" && ch.category !== "crusades" && ch.type !== "matches" && ch.type !== "crusades");
+            channels = channels.filter(ch => !ch.isRadio && ch.type !== "radio" && ch.category !== "radio" && ch.category !== "matches" && ch.category !== "crusades" && ch.type !== "matches" && ch.type !== "crusades" && ch.category !== "kids" && ch.type !== "kids");
         }
 
         // Filter by search query
@@ -644,7 +646,9 @@ function initLiveTvCatalogue() {
         }
 
         if (channels.length === 0) {
-            if (selectedType === "matches") {
+            if (selectedType === "kids") {
+                cardGrid.innerHTML = `<div class="loading-state">No Children's TV channels available at the moment.</div>`;
+            } else if (selectedType === "matches") {
                 cardGrid.innerHTML = `<div class="loading-state">No live matches available at the moment.</div>`;
             } else if (selectedType === "crusades") {
                 cardGrid.innerHTML = `<div class="loading-state">No crusades available at the moment.</div>`;
@@ -2659,26 +2663,26 @@ async function initMovieDetailsPage() {
             : `<span class="series-badge" style="background:#333;">Action</span>`;
 
         mainContainer.innerHTML = `
-            <div class="series-hero" ${backdropStyle}>
-                <div class="series-hero-content">
-                    <div class="series-poster-box">
+            <div class="movie-detail-hero" ${backdropStyle}>
+                <div class="movie-detail-layout">
+                    <div class="movie-detail-poster">
                         ${posterImageHtml}
                     </div>
-                    <div class="series-info-box">
-                        <h1 class="series-title-text">${movie.title}</h1>
-                        <div class="series-badge-row">
-                            <span class="series-badge">${movie.quality || 'HD'}</span>
+                    <div class="movie-detail-info">
+                        <h1 class="movie-detail-title">${movie.title}</h1>
+                        <div class="movie-detail-meta">
+                            <span class="movie-meta-badge">${movie.quality || 'HD'}</span>
                             <span>${movie.vj || 'Luganda'}</span>
                             ${movie.year ? `<span>• ${movie.year}</span>` : ''}
                             <span>• ${(movie.format || 'mp4').toUpperCase()}</span>
                         </div>
-                        <div class="series-badge-row">
+                        <div class="movie-detail-meta">
                             ${genreBadges}
                         </div>
-                        <p class="series-overview-text">
+                        <p class="movie-detail-overview">
                             ${movie.overview || `Watch <strong>${movie.title}</strong> translated in Luganda by <strong>${movie.vj || 'Luganda VJ'}</strong> on SanyuHub.`}
                         </p>
-                        <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+                        <div class="movie-detail-actions">
                             <a href="/watch/${movie.id}" class="btn-watch-primary" style="padding: 12px 28px; font-size: 1rem; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; background: #e50914; color: #fff; text-decoration: none;">
                                 &#9654; Watch Movie Now
                             </a>
