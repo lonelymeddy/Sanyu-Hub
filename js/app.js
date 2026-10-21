@@ -1690,96 +1690,200 @@ function initLiveTvWatchPage() {
 }
 
 
+/* HERO CAROUSEL CONTROLLER */
+function initHeroCarousel() {
+    const carouselTrack = document.getElementById("carouselTrack");
+    const slides = document.querySelectorAll(".carousel-slide");
+    const prevBtn = document.getElementById("carouselPrev");
+    const nextBtn = document.getElementById("carouselNext");
+    const indicators = document.querySelectorAll("#carouselIndicators .indicator");
+
+    if (!carouselTrack || slides.length === 0) return;
+
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    let autoPlayInterval = null;
+
+    function goToSlide(index) {
+        currentSlide = (index + totalSlides) % totalSlides;
+        slides.forEach((slide, idx) => {
+            slide.classList.toggle("active", idx === currentSlide);
+        });
+        indicators.forEach((ind, idx) => {
+            ind.classList.toggle("active", idx === currentSlide);
+        });
+    }
+
+    function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, 6000);
+    }
+
+    function stopAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+        }
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            goToSlide(currentSlide - 1);
+            startAutoPlay();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            goToSlide(currentSlide + 1);
+            startAutoPlay();
+        });
+    }
+
+    indicators.forEach((ind, idx) => {
+        ind.addEventListener("click", () => {
+            goToSlide(idx);
+            startAutoPlay();
+        });
+    });
+
+    const carouselContainer = document.getElementById("heroCarousel");
+    if (carouselContainer) {
+        carouselContainer.addEventListener("mouseenter", stopAutoPlay);
+        carouselContainer.addEventListener("mouseleave", startAutoPlay);
+        carouselContainer.addEventListener("touchstart", stopAutoPlay, { passive: true });
+        carouselContainer.addEventListener("touchend", startAutoPlay, { passive: true });
+    }
+
+    goToSlide(0);
+    startAutoPlay();
+}
+
 /* HOMEPAGE DYNAMIC INTEGRATION */
 async function initHomePage() {
-    const trendingGrid = document.getElementById("trendingGrid");
-    const popularMoviesGrid = document.getElementById("popularMoviesGrid");
-    const popularSeriesGrid = document.getElementById("popularSeriesGrid");
-    const recentlyAddedGrid = document.getElementById("recentlyAddedGrid");
-    const homeCategories = document.getElementById("homeCategories");
+    const homeLiveTvGrid = document.getElementById("homeLiveTvGrid");
+    const homeTrendingGrid = document.getElementById("homeTrendingGrid");
+    const homeMusicGrid = document.getElementById("homeMusicGrid");
+    const homeConcertsGrid = document.getElementById("homeConcertsGrid");
+    const homeRadioGrid = document.getElementById("homeRadioGrid");
 
-    if (!trendingGrid && !popularMoviesGrid && !recentlyAddedGrid) return;
+    if (!homeLiveTvGrid && !homeTrendingGrid && !homeMusicGrid && !homeConcertsGrid && !homeRadioGrid) return;
 
-    try {
-        const res = await fetch("/api/movies?limit=30");
-        if (!res.ok) throw new Error("Failed to fetch homepage movies");
-        const data = await res.json();
-        const movies = data.movies || [];
+    initHeroCarousel();
 
-        if (movies.length === 0) return;
+    // 1. Live TV Section (Up to 2 items)
+    if (homeLiveTvGrid) {
+        homeLiveTvGrid.innerHTML = "";
+        const tvChannels = LIVE_TV_CHANNELS.filter(ch => !ch.isRadio && ch.category !== "radio").slice(0, 2);
+        tvChannels.forEach(ch => {
+            const card = document.createElement("a");
+            card.href = `/live-tv/watch/${ch.id}/`;
+            card.className = "live-card";
+            card.innerHTML = `
+                <img src="${ch.logo}" alt="${ch.name}" style="object-fit: contain; padding: 12px; background: #0d0d0d;">
+                <div class="live-overlay">
+                    <span class="live-badge"><span class="live-dot"></span> LIVE</span>
+                    <div class="live-title">${ch.name}</div>
+                </div>
+            `;
+            homeLiveTvGrid.appendChild(card);
+        });
+    }
 
-        // Featured Hero Section Update
-        const homeFeaturedCard = document.getElementById("homeFeaturedCard");
-        const featuredTitle = document.getElementById("featuredTitle");
-        const featuredDesc = document.getElementById("featuredDesc");
-        const featuredWatchBtn = document.getElementById("featuredWatchBtn");
-        if (homeFeaturedCard && movies.length > 0) {
-            const feat = movies[0];
-            if (featuredTitle) featuredTitle.textContent = feat.title;
-            if (featuredDesc) featuredDesc.textContent = `Watch ${feat.title} translated in Luganda by ${feat.vj}. High quality ${feat.quality} stream available now.`;
-            if (featuredWatchBtn) {
-                featuredWatchBtn.addEventListener("click", () => {
-                    window.location.href = `/movie/${feat.id}`;
+    // 2. Trending Movies Section (Up to 2 items)
+    if (homeTrendingGrid) {
+        try {
+            const res = await fetch("/api/movies?limit=10");
+            if (res.ok) {
+                const data = await res.json();
+                const movies = (data.movies || []).slice(0, 2);
+                homeTrendingGrid.innerHTML = "";
+                movies.forEach((movie, idx) => {
+                    homeTrendingGrid.appendChild(createTrendingCard(movie, idx + 1));
                 });
+            } else {
+                homeTrendingGrid.innerHTML = `<div class="loading-state">Unable to load movies.</div>`;
             }
+        } catch (err) {
+            homeTrendingGrid.innerHTML = `<div class="loading-state">Unable to load movies.</div>`;
         }
+    }
 
-        // VJ Categories Bar
-        if (homeCategories && data.vjs && data.vjs.length > 0) {
-            homeCategories.innerHTML = '<button class="category active" data-vj="all">All</button>';
-            data.vjs.forEach(vjName => {
-                const btn = document.createElement("button");
-                btn.className = "category";
-                btn.setAttribute("data-vj", vjName);
-                btn.textContent = vjName;
-                homeCategories.appendChild(btn);
+    // 3. Hot Music Section (Up to 2 items)
+    if (homeMusicGrid) {
+        homeMusicGrid.innerHTML = "";
+        const musicItems = [
+            {
+                id: "trace-mziki-home",
+                title: "Trace Mziki Live",
+                vj: "East African Music",
+                year: "2026",
+                quality: "HD",
+                posterUrl: "/images/tracemziki-logo.png",
+                targetUrl: "/live-tv/watch/trace-mziki/"
+            }
+        ];
+        musicItems.slice(0, 2).forEach(m => {
+            const card = document.createElement("article");
+            card.className = "movie-card";
+            card.style.cursor = "pointer";
+            card.innerHTML = `
+                <div class="poster" style="background:#0d0d0d; display:flex; align-items:center; justify-content:center;">
+                    <img src="${m.posterUrl}" alt="${m.title}" style="object-fit:contain; padding:12px;">
+                    <span class="badge">${m.quality}</span>
+                </div>
+                <div class="card-title" title="${m.title}">${m.title}</div>
+                <div class="card-meta">${m.vj} • ${m.year}</div>
+            `;
+            card.addEventListener("click", () => {
+                window.location.href = m.targetUrl;
             });
-            homeCategories.querySelectorAll(".category").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const vj = btn.getAttribute("data-vj");
-                    window.location.href = `/movies${vj && vj !== 'all' ? '?vj=' + encodeURIComponent(vj) : ''}`;
-                });
-            });
+            homeMusicGrid.appendChild(card);
+        });
+    }
+
+    // 4. Concerts Section (Up to 2 items)
+    if (homeConcertsGrid) {
+        try {
+            const res = await fetch("/api/movies?limit=20");
+            if (res.ok) {
+                const data = await res.json();
+                const concertMovies = (data.movies || []).slice(2, 4);
+                homeConcertsGrid.innerHTML = "";
+                if (concertMovies.length > 0) {
+                    concertMovies.forEach(movie => {
+                        homeConcertsGrid.appendChild(createMovieCard(movie));
+                    });
+                } else {
+                    homeConcertsGrid.innerHTML = `<div class="loading-state">No concerts available.</div>`;
+                }
+            } else {
+                homeConcertsGrid.innerHTML = `<div class="loading-state">No concerts available.</div>`;
+            }
+        } catch (err) {
+            homeConcertsGrid.innerHTML = `<div class="loading-state">No concerts available.</div>`;
         }
+    }
 
-        // Trending Grid
-        if (trendingGrid) {
-            trendingGrid.innerHTML = "";
-            const trendingList = movies.slice(0, 10);
-            trendingList.forEach((movie, idx) => {
-                trendingGrid.appendChild(createTrendingCard(movie, idx + 1));
-            });
-        }
-
-        // Popular Movies Grid
-        if (popularMoviesGrid) {
-            popularMoviesGrid.innerHTML = "";
-            const popList = movies.slice(0, 6);
-            popList.forEach(movie => {
-                popularMoviesGrid.appendChild(createMovieCard(movie));
-            });
-        }
-
-        // Popular Series Grid
-        if (popularSeriesGrid) {
-            popularSeriesGrid.innerHTML = "";
-            const seriesList = movies.slice(6, 12);
-            seriesList.forEach(movie => {
-                popularSeriesGrid.appendChild(createMovieCard(movie));
-            });
-        }
-
-        // Recently Added Grid
-        if (recentlyAddedGrid) {
-            recentlyAddedGrid.innerHTML = "";
-            const recentList = movies.slice(0, 6);
-            recentList.forEach(movie => {
-                recentlyAddedGrid.appendChild(createMovieCard(movie));
-            });
-        }
-
-    } catch (err) {
-        console.error("Homepage load error:", err);
+    // 5. Doppest Radio Stations Section (Up to 2 items)
+    if (homeRadioGrid) {
+        homeRadioGrid.innerHTML = "";
+        const radioChannels = LIVE_TV_CHANNELS.filter(ch => ch.isRadio || ch.category === "radio").slice(0, 2);
+        radioChannels.forEach(ch => {
+            const card = document.createElement("a");
+            card.href = `/live-tv/watch/${ch.id}/`;
+            card.className = "live-card";
+            card.innerHTML = `
+                <img src="${ch.logo}" alt="${ch.name}" style="object-fit: contain; padding: 12px; background: #0d0d0d;">
+                <div class="live-overlay">
+                    <span class="live-badge"><span class="live-dot"></span> RADIO</span>
+                    <div class="live-title">${ch.name}</div>
+                </div>
+            `;
+            homeRadioGrid.appendChild(card);
+        });
     }
 }
 
