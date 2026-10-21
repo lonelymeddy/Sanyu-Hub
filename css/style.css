@@ -42,7 +42,10 @@ body {
     );
 }
 a{text-decoration:none;color:inherit}
-button{font-family:inherit}
+button{font-family:inherit;touch-action:manipulation}
+a, input, select, .category, .movie-card, .channel-card, .bottom-nav-item {
+  touch-action: manipulation;
+}
 
 /* NAVBAR */
 .navbar{
@@ -195,7 +198,8 @@ top:72px;
 left:0;
 width:100%;
 height:auto;
-max-height:none;
+max-height:calc(100vh - 72px);
+max-height:calc(100dvh - 72px);
 z-index:1050;
 background:#0b0b0b;
 border-top:1px solid rgba(255,255,255,.07);
@@ -203,7 +207,8 @@ border-bottom:1px solid rgba(255,255,255,.08);
 box-shadow:0 15px 35px rgba(0,0,0,.45);
 transform:translateX(-105%);
 transition:transform .32s cubic-bezier(.22,.61,.36,1);
-overflow:hidden
+overflow-y:auto;
+-webkit-overflow-scrolling:touch
 }
 
 .sidebar.active{
@@ -964,7 +969,10 @@ gap:1px
 .sidebar{
 top:67px;
 height:auto;
-max-height:none
+max-height:calc(100vh - 67px);
+max-height:calc(100dvh - 67px);
+overflow-y:auto;
+-webkit-overflow-scrolling:touch
 }
 
 .sidebar-overlay{
@@ -1008,8 +1016,40 @@ font-size:19px
 
 .card-grid,
 .trending-grid{
-grid-template-columns:repeat(2,1fr);
-gap:14px
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px
+}
+
+.categories{
+flex-wrap:nowrap;
+overflow-x:auto;
+-webkit-overflow-scrolling:touch;
+padding-bottom:6px;
+margin-left:-20px;
+margin-right:-20px;
+padding-left:20px;
+padding-right:20px;
+scrollbar-width:none
+}
+
+.categories::-webkit-scrollbar{
+display:none
+}
+
+.category{
+flex-shrink:0;
+white-space:nowrap
+}
+
+.movie-search-bar{
+max-width:100%;
+flex-direction:column;
+gap:8px
+}
+
+.movie-search-input{
+width:100% !important;
+min-width:0 !important
 }
 
 .featured-card{
