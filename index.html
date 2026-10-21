@@ -159,232 +159,170 @@ Live TV
 
 </aside>
 
-<section class="hero" id="home">
+<!-- HERO CAROUSEL -->
+<section class="hero-carousel-container" id="home">
+  <div class="hero-carousel" id="heroCarousel">
+    <div class="carousel-track" id="carouselTrack">
 
-<div class="hero-background"></div>
+      <!-- Slide 1: Live TV -->
+      <div class="carousel-slide active" data-slide="0">
+        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('/images/ntv-logo.jpg');"></div>
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="ugandan-text">LIVE</span> &nbsp; BROADCAST
+          </div>
+          <h1>Experience Live Ugandan TV</h1>
+          <p class="hero-description">Watch breaking news, entertainment shows, and live regional broadcasts directly on SanyuHub.</p>
+          <div class="hero-buttons">
+            <a href="/live-tv" class="btn btn-primary">Watch Live TV</a>
+            <a href="/movies" class="btn btn-secondary">Explore Library</a>
+          </div>
+        </div>
+      </div>
 
-<div class="hero-content">
+      <!-- Slide 2: Trending Movies -->
+      <div class="carousel-slide" data-slide="1">
+        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('https://image.tmdb.org/t/p/w1280/i8V32GInnjIKSkE3YHKHJQLeXWn.jpg');"></div>
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="ugandan-text">UGANDAN</span> &nbsp; MOVIES
+          </div>
+          <h1>Top Translated Movies</h1>
+          <p class="hero-description">Enjoy blockbuster hits translated in Luganda by your favorite VJs including VJ Junior, VJ Emmy, and VJ Jingo.</p>
+          <div class="hero-buttons">
+            <a href="/movies" class="btn btn-primary">Browse Movies</a>
+            <a href="/trending" class="btn btn-secondary">Trending Now</a>
+          </div>
+        </div>
+      </div>
 
-<div class="hero-badge">
+      <!-- Slide 3: Hot Music -->
+      <div class="carousel-slide" data-slide="2">
+        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('/images/tracemziki-logo.png');"></div>
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="ugandan-text">HOT</span> &nbsp; MUSIC
+          </div>
+          <h1>East African Music Streams</h1>
+          <p class="hero-description">Stream non-stop hit music countdowns, East African urban sounds, and live music channels.</p>
+          <div class="hero-buttons">
+            <a href="/music" class="btn btn-primary">Stream Music</a>
+            <a href="/live-tv/watch/trace-mziki/" class="btn btn-secondary">Trace Mziki</a>
+          </div>
+        </div>
+      </div>
 
-<span class="ugandan-text">
-UGANDAN
-</span>
+      <!-- Slide 4: Concerts -->
+      <div class="carousel-slide" data-slide="3">
+        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="ugandan-text">LIVE</span> &nbsp; CONCERTS
+          </div>
+          <h1>Concerts & Live Shows</h1>
+          <p class="hero-description">Watch live music concerts, stage performances, and cultural festivals from top artists.</p>
+          <div class="hero-buttons">
+            <a href="/movies?category=concerts" class="btn btn-primary">Watch Concerts</a>
+            <a href="/more" class="btn btn-secondary">Explore More</a>
+          </div>
+        </div>
+      </div>
 
-&nbsp; MOVIES
+      <!-- Slide 5: Doppest Radio Stations -->
+      <div class="carousel-slide" data-slide="4">
+        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('/images/galaxyfm-logo.png');"></div>
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="ugandan-text">DOPPEST</span> &nbsp; RADIO
+          </div>
+          <h1>Live Radio Stations</h1>
+          <p class="hero-description">Tune in to top FM radio stations including Galaxy FM 100.2 Zzina, Dembe FM 90.4, and Bukedde FM.</p>
+          <div class="hero-buttons">
+            <a href="/live-tv?category=radio" class="btn btn-primary">Listen Live Radio</a>
+            <a href="/live-tv" class="btn btn-secondary">All Channels</a>
+          </div>
+        </div>
+      </div>
 
-</div>
+    </div>
 
-<h1>
-Stories that<br>
-bring us together.
-</h1>
+    <!-- Carousel Nav Buttons -->
+    <button class="carousel-arrow prev" id="carouselPrev" aria-label="Previous Slide">&lsaquo;</button>
+    <button class="carousel-arrow next" id="carouselNext" aria-label="Next Slide">&rsaquo;</button>
 
-<p class="hero-description">
-Discover translated movies, series and live television in one simple place. Find something to watch and enjoy stories from around the world.
-</p>
-
-<div class="hero-buttons">
-
-<button
-class="btn btn-primary"
-id="exploreButton">
-
-Explore Movies
-
-</button>
-
-<button
-class="btn btn-secondary"
-id="categoriesButton">
-
-Browse Categories
-
-</button>
-
-</div>
-
-</div>
-
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators" id="carouselIndicators">
+      <span class="indicator active" data-slide="0"></span>
+      <span class="indicator" data-slide="1"></span>
+      <span class="indicator" data-slide="2"></span>
+      <span class="indicator" data-slide="3"></span>
+      <span class="indicator" data-slide="4"></span>
+    </div>
+  </div>
 </section>
 
-<main>
+<main class="home-main">
 
-<section class="section" id="categories">
-
-<div class="section-heading">
-
-<h2 class="section-title">
-Browse Categories
-</h2>
-
-</div>
-
-<div class="categories" id="homeCategories">
-<button class="category active" data-vj="all">All</button>
-</div>
+<!-- 1. Live TV -->
+<section class="section" id="section-live-tv">
+  <div class="section-heading">
+    <h2 class="section-title">Live TV</h2>
+    <a href="/live-tv" class="view-more">View More</a>
+  </div>
+  <div class="live-grid" id="homeLiveTvGrid">
+    <!-- Populated dynamically via JS -->
+  </div>
 </section>
 
-<section class="section" id="trending">
-
-<div class="section-heading">
-
-<h2 class="section-title">
-Trending Now
-</h2>
-
-<a href="/trending" class="view-more">
-View More
-</a>
-
-</div>
-
-<div class="trending-grid" id="trendingGrid">
-<div class="loading-state">Loading trending movies...</div>
-</div>
+<!-- 2. Trending Movies -->
+<section class="section" id="section-trending-movies">
+  <div class="section-heading">
+    <h2 class="section-title">Trending Movies</h2>
+    <a href="/trending" class="view-more">View More</a>
+  </div>
+  <div class="trending-grid" id="homeTrendingGrid">
+    <div class="loading-state">Loading trending movies...</div>
+  </div>
 </section>
 
-<section class="section" id="popular-movies">
-
-<div class="section-heading">
-
-<h2 class="section-title">
-Popular Movies
-</h2>
-
-<a href="/popular" class="view-more">
-View More
-</a>
-
-</div>
-
-<div class="card-grid" id="popularMoviesGrid">
-<div class="loading-state">Loading popular movies...</div>
-</div>
+<!-- 3. Hot Music -->
+<section class="section" id="section-hot-music">
+  <div class="section-heading">
+    <h2 class="section-title">Hot Music</h2>
+    <a href="/music" class="view-more">View More</a>
+  </div>
+  <div class="card-grid" id="homeMusicGrid">
+    <!-- Populated dynamically via JS -->
+  </div>
 </section>
 
-<section class="section" id="featured">
-
-<div class="section-heading">
-
-<h2 class="section-title">
-Featured
-</h2>
-
-</div>
-
-<div class="featured-card" id="homeFeaturedCard">
-<div class="featured-content">
-<span id="featuredTag">FEATURED MOVIE</span>
-<h3 id="featuredTitle">Loading featured movie...</h3>
-<p id="featuredDesc">Discover translated movies available on SanyuHub.</p>
-<button class="btn btn-primary" id="featuredWatchBtn" style="margin-top:22px;">Watch Now</button>
-</div>
-</div>
-</section>
-<section class="section" id="series">
-
-<div class="section-heading">
-<h2 class="section-title">Popular Series</h2>
-<a href="/popular-series" class="view-more">View More</a>
-</div>
-<div class="card-grid" id="popularSeriesGrid">
-<div class="loading-state">Loading popular series...</div>
-</div>
+<!-- 4. Concerts -->
+<section class="section" id="section-concerts">
+  <div class="section-heading">
+    <h2 class="section-title">Concerts</h2>
+    <a href="/movies?category=concerts" class="view-more">View More</a>
+  </div>
+  <div class="card-grid" id="homeConcertsGrid">
+    <!-- Populated dynamically via JS -->
+  </div>
 </section>
 
-<section class="section" id="continue">
-
-<div class="section-heading">
-
-<h2 class="section-title">
-Continue Watching
-</h2>
-
-</div>
-
-<div class="continue-grid" id="continueWatchingGrid">
-<div class="loading-state">No recent watch history</div>
-</div>
-</section>
-
-<section class="section" id="live-tv">
-
-<div class="section-heading">
-
-<h2 class="section-title">
-Live TV
-</h2>
-
-<a href="/live-tv" class="view-more">
-View More
-</a>
-
-</div>
-
-<div class="live-grid">
-
-<a href="/live-tv?channel=ntv-uganda" class="live-card">
-
-<img
-src="/images/ntv-logo.jpg"
-alt="NTV Uganda">
-
-<div class="live-overlay">
-
-<span class="live-badge">
-LIVE
-</span>
-
-<div class="live-title">
-NTV Uganda
-</div>
-
-</div>
-
-</a>
-
-<a href="/live-tv?channel=spark-tv" class="live-card">
-
-<img
-src="/images/spark-logo.png"
-alt="Spark TV">
-
-<div class="live-overlay">
-
-<span class="live-badge">
-LIVE
-</span>
-
-<div class="live-title">
-Spark TV
-</div>
-
-</div>
-
-</a>
-
-</div>
-
-</section>
-
-<section class="section" id="recent">
-
-<div class="section-heading">
-<h2 class="section-title">Recently Added</h2>
-<a href="/recently-added" class="view-more">View More</a>
-</div>
-<div class="card-grid" id="recentlyAddedGrid">
-<div class="loading-state">Loading recently added movies...</div>
-</div>
+<!-- 5. Doppest Radio Stations -->
+<section class="section" id="section-doppest-radio">
+  <div class="section-heading">
+    <h2 class="section-title">Doppest Radio Stations</h2>
+    <a href="/live-tv?category=radio" class="view-more">View More</a>
+  </div>
+  <div class="live-grid" id="homeRadioGrid">
+    <!-- Populated dynamically via JS -->
+  </div>
 </section>
 
 </main>
 
-
 <!-- PERSISTENT APP-STYLE BOTTOM NAVIGATION BAR -->
 <nav class="bottom-nav" id="bottomNav">
-  <a href="/" class="bottom-nav-item" id="navHome">
+  <a href="/" class="bottom-nav-item active" id="navHome">
     <div class="bottom-nav-icon">
       <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
     </div>
