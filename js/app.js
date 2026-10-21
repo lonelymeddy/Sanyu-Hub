@@ -495,6 +495,58 @@ const LIVE_TV_CHANNELS = [
         description: "Trace Mziki is the ultimate music channel dedicated to East African music, featuring hit video countdowns, artist showcases, and urban culture."
     },
     {
+        id: "cartoon-network",
+        aliases: ["cartoonnetwork", "cn"],
+        name: "Cartoon Network",
+        category: "kids",
+        categoryLabel: "Animation & Kids Shows",
+        logo: "/images/cartoon-network-logo.png",
+        streamType: "hls",
+        streamUrl: "https://vodzong.mjunoon.tv:8087/streamtest/cartoon-network-87/playlist.m3u8",
+        embedUrl: "https://www.cartoonnetwork.com",
+        meta: "Official Live Broadcast • HD • Cartoons & Animation",
+        description: "Cartoon Network is home to top animated shows, classic cartoons, and kids entertainment."
+    },
+    {
+        id: "baby-shark-tv",
+        aliases: ["babysharktv", "baby-shark", "babyshark"],
+        name: "Baby Shark TV",
+        category: "kids",
+        categoryLabel: "Children's Songs & Animation",
+        logo: "/images/baby-shark-logo.png",
+        streamType: "hls",
+        streamUrl: "https://newidco-babysharktv-1-eu.rakuten.wurl.tv/playlist.m3u8",
+        embedUrl: "https://www.pinkfong.com",
+        meta: "Official Live Broadcast • HD • Kids & Nursery Rhymes",
+        description: "Baby Shark TV features non-stop nursery rhymes, fun songs, educational animation, and kids entertainment."
+    },
+    {
+        id: "pbs-kids-pacific",
+        aliases: ["pbskids", "pbs-kids"],
+        name: "PBS Kids Pacific",
+        category: "kids",
+        categoryLabel: "Educational & Kids TV",
+        logo: "/images/pbs-kids-pacific-logo.png",
+        streamType: "hls",
+        streamUrl: "https://livestream.pbskids.org/out/v1/11f2e6b73eaa4887b3746cb863960e79/pst.m3u8",
+        embedUrl: "https://pbskids.org",
+        meta: "Official Live Broadcast • HD • Educational Shows",
+        description: "PBS Kids Pacific delivers educational television, fun children's series, and inspiring programming."
+    },
+    {
+        id: "telemundo",
+        aliases: ["telemundo-pr"],
+        name: "Telemundo",
+        category: "entertainment",
+        categoryLabel: "Spanish Series & News",
+        logo: "/images/telemundo-logo.png",
+        streamType: "hls",
+        streamUrl: "https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream1/master_1080.m3u8",
+        embedUrl: "https://www.telemundo.com",
+        meta: "Official Live Broadcast • HD • Spanish Entertainment",
+        description: "Telemundo offers premier Spanish-language telenovelas, live news, reality TV, and entertainment."
+    },
+    {
         id: "dembe-fm",
         aliases: ["dembefm", "dembe"],
         name: "Dembe FM",
@@ -636,8 +688,8 @@ function initLiveTvCatalogue() {
         } else if (selectedType === "crusades") {
             channels = channels.filter(ch => ch.type === "crusades" || ch.category === "crusades");
         } else {
-            // Default: 'tv'
-            channels = channels.filter(ch => !ch.isRadio && ch.type !== "radio" && ch.category !== "radio" && ch.category !== "matches" && ch.category !== "crusades" && ch.type !== "matches" && ch.type !== "crusades" && ch.category !== "kids" && ch.type !== "kids");
+            // Default: 'tv' - shows all TV channels
+            channels = channels.filter(ch => !ch.isRadio && ch.type !== "radio" && ch.category !== "radio" && ch.category !== "matches" && ch.category !== "crusades" && ch.type !== "matches" && ch.type !== "crusades");
         }
 
         // Filter by search query
