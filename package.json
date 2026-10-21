@@ -4,12 +4,16 @@
   "description": "SanyuHub — Movies, Series and Live TV",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node tests/player-design-lock.test.js && node tests/visual-baseline.js"
   },
   "dependencies": {
     "express": "^4.19.2"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.1"
   }
 }
