@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;touch-action:pan-y}
 html,
 body {
   width: 100%;
+  max-width: 100%;
   min-height: 100%;
+  touch-action: pan-y;
 }
 
 body {
@@ -43,7 +45,7 @@ body {
 }
 a{text-decoration:none;color:inherit}
 button{font-family:inherit;touch-action:manipulation}
-a, input, select, .category, .movie-card, .channel-card, .bottom-nav-item {
+a, input, select, .category, .movie-card, .channel-card, .bottom-nav-item, .btn, .ctrl-btn, .speed-btn, .more-compact-card, .watch-tab, .sidebar-link {
   touch-action: manipulation;
 }
 
@@ -331,12 +333,14 @@ transform:translateY(0)
   max-height: 70vh;
   background: #000;
   overflow: hidden;
+  touch-action: pan-x pan-y;
 }
 
 .carousel-track {
   position: relative;
   width: 100%;
   height: 100%;
+  touch-action: pan-x pan-y;
 }
 
 .carousel-slide {
@@ -556,7 +560,8 @@ font-size:11px
 .categories{
 display:flex;
 flex-wrap:wrap;
-gap:9px
+gap:9px;
+touch-action: pan-x pan-y;
 }
 
 .category{
@@ -1069,6 +1074,7 @@ margin-right: -16px;
 padding-left: 16px;
 padding-right: 16px;
 scrollbar-width: none;
+touch-action: pan-x pan-y;
 }
 
 .categories::-webkit-scrollbar {
@@ -1131,6 +1137,8 @@ font-size:38px
   font-weight: 800;
   letter-spacing: -1px;
   margin-bottom: 8px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .page-subtitle {
@@ -1209,6 +1217,8 @@ font-size:38px
   font-weight: 800;
   color: #fff;
   line-height: 1.2;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .live-status-pill {
@@ -2619,13 +2629,22 @@ font-size:38px
 }
 
 @media (max-width: 768px) {
+  .movie-detail-hero {
+    padding: 30px 16px 24px;
+  }
   .movie-detail-layout {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
+  }
+  .movie-detail-info {
+    min-width: 0;
+    width: 100%;
   }
   .movie-detail-poster {
-    width: 200px;
+    width: 180px;
+    max-width: 100%;
   }
   .movie-detail-meta {
     justify-content: center;
@@ -2634,13 +2653,18 @@ font-size:38px
     justify-content: center;
   }
   .movie-detail-title {
-    font-size: 26px;
+    font-size: 24px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   .watch-section {
     margin-top: 80px;
+    padding: 0 16px;
   }
   .watch-title {
     font-size: 22px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 

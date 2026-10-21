@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node tests/player-design-lock.test.js && node tests/visual-baseline.js"
+    "test": "node tests/player-design-lock.test.js && node tests/visual-baseline.js && node tests/verify-mobile-layout.js"
   },
   "dependencies": {
     "express": "^4.19.2"
