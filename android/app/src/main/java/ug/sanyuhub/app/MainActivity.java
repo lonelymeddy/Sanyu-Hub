@@ -1,9 +1,10 @@
 package ug.sanyuhub.app;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -12,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
-import android.webkit.ValueCallback;
+import android.webkit.PermissionRequest;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -23,13 +24,14 @@ import android.widget.FrameLayout;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class MainActivity extends AppCompatActivity {
 
     // Default target URL for SanyuHub production application.
-    // Can be configured via BuildConfig or intent string extra if needed.
-    private static final String DEFAULT_APP_URL = "https://sanyuhub.onrender.com";
+    public static final String DEFAULT_APP_URL = "https://sanyuhub.onrender.com";
+    private static final int PERMISSION_REQUEST_NOTIFICATIONS = 101;
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private WebView webView;
@@ -43,12 +45,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize Android Notification Channels
+        NotificationHelper.createNotificationChannels(this);
+
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         webView = findViewById(R.id.webView);
         customViewContainer = findViewById(R.id.customViewContainer);
 
         configureSwipeRefresh();
         configureWebView();
+
+        // Register Native JavaScript Bridge for SanyuHub Web App
+        webView.addJavascriptInterface(new SanyuHubNativeInterface(this), "SanyuHubNative");
 
         // Handle System Back Button
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
@@ -71,11 +79,82 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             webView.restoreState(savedInstanceState);
         } else {
-            String appUrl = getIntent().hasExtra("APP_URL")
-                    ? getIntent().getStringExtra("APP_URL")
-                    : DEFAULT_APP_URL;
-            webView.loadUrl(appUrl);
+            handleIntentNavigation(getIntent());
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleIntentNavigation(intent);
+    }
+
+    private void handleIntentNavigation(Intent intent) {
+        if (intent == null) {
+            webView.loadUrl(DEFAULT_APP_URL);
+            return;
+        }
+
+        String targetUrl = null;
+        if (intent.hasExtra(NotificationHelper.EXTRA_TARGET_URL)) {
+            targetUrl = intent.getStringExtra(NotificationHelper.EXTRA_TARGET_URL);
+        } else if (intent.hasExtra("TARGET_URL")) {
+            targetUrl = intent.getStringExtra("TARGET_URL");
+        } else if (intent.hasExtra("APP_URL")) {
+            targetUrl = intent.getStringExtra("APP_URL");
+        }
+
+        if (targetUrl != null && NotificationHelper.isValidSanyuHubUrl(targetUrl)) {
+            String fullUrl = resolveSanyuHubUrl(targetUrl);
+            webView.loadUrl(fullUrl);
+        } else if (webView.getUrl() == null || webView.getUrl().isEmpty()) {
+            webView.loadUrl(DEFAULT_APP_URL);
+        }
+    }
+
+    private String resolveSanyuHubUrl(String targetUrl) {
+        if (targetUrl == null || targetUrl.trim().isEmpty()) {
+            return DEFAULT_APP_URL;
+        }
+        String cleanUrl = targetUrl.trim();
+        if (cleanUrl.startsWith("/")) {
+            return DEFAULT_APP_URL + cleanUrl;
+        }
+        return cleanUrl;
+    }
+
+    public void requestNotificationPermissionFromJs() {
+        if (Build.VERSION.SDK_INT >= 33) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                        PERMISSION_REQUEST_NOTIFICATIONS
+                );
+            } else {
+                notifyPermissionResultToJs(true);
+            }
+        } else {
+            notifyPermissionResultToJs(NotificationHelper.isNotificationPermissionGranted(this));
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_NOTIFICATIONS) {
+            boolean granted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+            notifyPermissionResultToJs(granted);
+        }
+    }
+
+    private void notifyPermissionResultToJs(boolean granted) {
+        webView.post(() -> webView.evaluateJavascript(
+                "if (typeof window.onNotificationPermissionResult === 'function') { window.onNotificationPermissionResult(" + granted + "); }",
+                null
+        ));
     }
 
     private void configureSwipeRefresh() {
@@ -159,6 +238,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public Bitmap getDefaultVideoPoster() {
                 return Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888);
+            }
+
+            @Override
+            public void onPermissionRequest(final PermissionRequest request) {
+                if (request != null && request.getOrigin() != null) {
+                    String host = request.getOrigin().getHost();
+                    if (host != null && (host.contains("sanyuhub") || host.contains("onrender.com") || host.contains("localhost"))) {
+                        request.grant(request.getResources());
+                        return;
+                    }
+                }
+                super.onPermissionRequest(request);
             }
         });
     }
