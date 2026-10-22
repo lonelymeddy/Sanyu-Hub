@@ -620,6 +620,71 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://www.bukedde.co.ug/radiolist",
         meta: "Official Live Broadcast • 100.2 FM",
         description: "Radio West is the leading radio station in Western Uganda."
+    },
+    {
+        id: "smurf-tv",
+        aliases: ["smurftv", "smurfs-tv"],
+        name: "Smurf TV",
+        category: "kids",
+        categoryLabel: "Kids TV & Animation",
+        logo: "/images/smurf-tv-logo.png",
+        streamType: "hls",
+        streamUrl: "https://stream.ads.ottera.tv/playlist.m3u8?network_id=4065",
+        embedUrl: "https://stream.ads.ottera.tv/playlist.m3u8?network_id=4065",
+        meta: "Official Live Broadcast • Animated Series",
+        description: "Smurf TV brings non-stop Smurfs animated series, classic cartoons, and adventures from the Smurf Village."
+    },
+    {
+        id: "lego-channel",
+        aliases: ["the-lego-channel", "lego"],
+        name: "The LEGO Channel",
+        category: "kids",
+        categoryLabel: "Kids TV & Animation",
+        logo: "/images/lego-channel-logo.png",
+        streamType: "hls",
+        streamUrl: "https://dltiqboxjw21d.cloudfront.net/index.m3u8",
+        embedUrl: "https://dltiqboxjw21d.cloudfront.net/index.m3u8",
+        meta: "Official Live Broadcast • LEGO Animated Shows",
+        description: "The LEGO Channel features exciting LEGO animated adventures, Ninjago, Friends, City, and creative brick-building entertainment."
+    },
+    {
+        id: "toongoggles",
+        aliases: ["toon-goggles"],
+        name: "ToonGoggles",
+        category: "kids",
+        categoryLabel: "Kids TV & Animation",
+        logo: "/images/toongoggles-logo.png",
+        streamType: "hls",
+        streamUrl: "https://amg01329-otterainc-toongoggles-samsungau-ad-4c.amagi.tv/playlist/amg01329-otterainc-toongoggles-samsungau/playlist.m3u8",
+        embedUrl: "https://amg01329-otterainc-toongoggles-samsungau-ad-4c.amagi.tv/playlist/amg01329-otterainc-toongoggles-samsungau/playlist.m3u8",
+        meta: "Official Live Broadcast • Kids Shows & Cartoons",
+        description: "ToonGoggles offers fun-filled animated series, games, and entertainment for children of all ages."
+    },
+    {
+        id: "moonbug",
+        aliases: ["moonbug-kids", "moonbugtv"],
+        name: "Moonbug",
+        category: "kids",
+        categoryLabel: "Kids TV & Animation",
+        logo: "/images/moonbug-logo.jpg",
+        streamType: "hls",
+        streamUrl: "https://moonbug-rokuus.amagi.tv/playlist.m3u8",
+        embedUrl: "https://moonbug-rokuus.amagi.tv/playlist.m3u8",
+        meta: "Official Live Broadcast • CoComelon & Blippi",
+        description: "Moonbug features popular children's shows including CoComelon, Blippi, Little Angel, Morphle, and educational songs."
+    },
+    {
+        id: "minimax",
+        aliases: ["minimax-tv", "minimax-cee"],
+        name: "MiniMax",
+        category: "kids",
+        categoryLabel: "Kids TV & Animation",
+        logo: "/images/minimax-logo.png",
+        streamType: "hls",
+        streamUrl: "http://88.212.15.17/live/minimax_hun/index.m3u8",
+        embedUrl: "http://88.212.15.17/live/minimax_hun/index.m3u8",
+        meta: "Official Live Broadcast • Children's Television Network",
+        description: "MiniMax delivers beloved children's television series, animated features, and educational family entertainment."
     }
 ];
 
