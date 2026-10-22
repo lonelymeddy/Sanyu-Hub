@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const { getUgandanMovieCatalogue, getUgandanSeriesCatalogue } = require('./ugandan-movies');
+const { getUpcomingConcerts } = require('./allevents-concerts');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -196,7 +197,69 @@ app.get('/api/series/:id', async (req, res) => {
   }
 });
 
+// API Route for Concerts (AllEvents Uganda)
+app.get('/api/concerts', async (req, res) => {
+  try {
+    const concerts = await getUpcomingConcerts();
+
+    const search = (req.query.search || '').trim().toLowerCase();
+
+    let filtered = concerts.filter(c => {
+      if (search) {
+        const matchTitle = c.title && c.title.toLowerCase().includes(search);
+        const matchVenue = c.venue && c.venue.toLowerCase().includes(search);
+        const matchDesc = c.description && c.description.toLowerCase().includes(search);
+        const matchOrganizer = c.organizer && c.organizer.toLowerCase().includes(search);
+        if (!matchTitle && !matchVenue && !matchDesc && !matchOrganizer) return false;
+      }
+      return true;
+    });
+
+    let page = parseInt(req.query.page, 10) || 1;
+    let limit = parseInt(req.query.limit, 10) || 24;
+    if (page < 1) page = 1;
+    if (limit < 1) limit = 24;
+    if (limit > 100) limit = 100;
+
+    const total = filtered.length;
+    const totalPages = Math.ceil(total / limit) || 1;
+    if (page > totalPages && totalPages > 0) page = totalPages;
+
+    const startIndex = (page - 1) * limit;
+    const paginatedConcerts = filtered.slice(startIndex, startIndex + limit);
+
+    res.json({
+      concerts: paginatedConcerts,
+      page: page,
+      limit: limit,
+      total: total,
+      totalPages: totalPages
+    });
+
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve upcoming concerts.' });
+  }
+});
+
+// Single concert detail API
+app.get('/api/concerts/:id', async (req, res) => {
+  try {
+    const concerts = await getUpcomingConcerts();
+    const concert = concerts.find(c => c.id === req.params.id || c.slug === req.params.id);
+    if (!concert) {
+      return res.status(404).json({ error: 'Concert not found' });
+    }
+    res.json(concert);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve concert details.' });
+  }
+});
+
 // Dynamic Page Routes
+app.get('/concert/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, 'concert.html'));
+});
+
 app.get('/movie/:id', (req, res) => {
   res.sendFile(path.join(__dirname, 'movie.html'));
 });
