@@ -91,8 +91,24 @@ Live TV
 </div>
 </aside>
 
-<main id="movieDetailPage">
-  <div class="loading-state" style="padding: 120px 20px; text-align: center;">Loading movie details...</div>
+<main id="movieDetailPage" style="max-width: 1200px; margin: 0 auto; padding: 20px 5% 40px;">
+  <div class="skeleton-detail-hero">
+    <div class="skeleton-detail-poster skeleton"></div>
+    <div class="skeleton-detail-info">
+      <div class="skeleton-detail-title skeleton"></div>
+      <div class="skeleton-detail-badges">
+        <div class="skeleton-badge skeleton"></div>
+        <div class="skeleton-badge skeleton"></div>
+        <div class="skeleton-badge skeleton"></div>
+      </div>
+      <div class="skeleton-detail-paragraph">
+        <div class="skeleton-line skeleton" style="width: 95%;"></div>
+        <div class="skeleton-line skeleton" style="width: 88%;"></div>
+        <div class="skeleton-line skeleton" style="width: 70%;"></div>
+      </div>
+      <div class="skeleton-detail-action skeleton"></div>
+    </div>
+  </div>
 </main>
 
 <section class="section" style="max-width: 1200px; margin: 0 auto; padding: 0 5% 40px;">
@@ -101,7 +117,10 @@ Live TV
     <a href="/movies" class="view-more">View All</a>
   </div>
   <div class="card-grid" id="relatedMoviesGrid">
-    <div class="loading-state">Loading recommendations...</div>
+    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
   </div>
 </section>
 

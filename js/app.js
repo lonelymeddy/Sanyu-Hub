@@ -245,6 +245,111 @@ function renderPosterUnavailableFallback(posterDiv, movie) {
     posterDiv.appendChild(fallback);
 }
 
+/* SKELETON GENERATOR HELPERS */
+function createMovieSkeletonGrid(count = 6) {
+    let html = '';
+    for (let i = 0; i < count; i++) {
+        html += `
+            <article class="movie-card skeleton-card">
+                <div class="skeleton-poster skeleton"></div>
+                <div class="skeleton-line title skeleton"></div>
+                <div class="skeleton-line subtitle skeleton"></div>
+            </article>
+        `;
+    }
+    return html;
+}
+
+function createLiveTvSkeletonGrid(count = 4) {
+    let html = '';
+    for (let i = 0; i < count; i++) {
+        html += `
+            <div class="live-card skeleton-card">
+                <div class="skeleton-live-poster skeleton"></div>
+            </div>
+        `;
+    }
+    return html;
+}
+
+function createChannelSkeletonList(count = 6) {
+    let html = '';
+    for (let i = 0; i < count; i++) {
+        html += `
+            <div class="skeleton-channel-card">
+                <div class="skeleton-channel-thumb skeleton"></div>
+                <div class="skeleton-channel-info">
+                    <div class="skeleton-line title skeleton" style="width: 60%;"></div>
+                    <div class="skeleton-line subtitle skeleton" style="width: 40%;"></div>
+                </div>
+                <div class="skeleton-btn skeleton"></div>
+            </div>
+        `;
+    }
+    return html;
+}
+
+function createConcertSkeletonGrid(count = 6) {
+    let html = '';
+    for (let i = 0; i < count; i++) {
+        html += `
+            <article class="movie-card skeleton-card">
+                <div class="skeleton-poster skeleton"></div>
+                <div class="skeleton-line title skeleton" style="width: 85%;"></div>
+                <div class="skeleton-line subtitle skeleton" style="width: 60%;"></div>
+            </article>
+        `;
+    }
+    return html;
+}
+
+function createMusicSkeletonGrid(count = 6) {
+    return createMovieSkeletonGrid(count);
+}
+
+function createMovieDetailSkeleton() {
+    return `
+        <div class="skeleton-detail-hero">
+            <div class="skeleton-detail-poster skeleton"></div>
+            <div class="skeleton-detail-info">
+                <div class="skeleton-detail-title skeleton"></div>
+                <div class="skeleton-detail-badges">
+                    <div class="skeleton-badge skeleton"></div>
+                    <div class="skeleton-badge skeleton"></div>
+                    <div class="skeleton-badge skeleton"></div>
+                </div>
+                <div class="skeleton-detail-paragraph">
+                    <div class="skeleton-line skeleton" style="width: 95%;"></div>
+                    <div class="skeleton-line skeleton" style="width: 88%;"></div>
+                    <div class="skeleton-line skeleton" style="width: 70%;"></div>
+                </div>
+                <div class="skeleton-detail-action skeleton"></div>
+            </div>
+        </div>
+    `;
+}
+
+function createSeriesDetailSkeleton() {
+    return createMovieDetailSkeleton();
+}
+
+function createConcertDetailSkeleton() {
+    return createMovieDetailSkeleton();
+}
+
+function createEpisodeSkeletonList(count = 4) {
+    let html = '';
+    for (let i = 0; i < count; i++) {
+        html += `
+            <div class="skeleton-episode-card">
+                <div class="skeleton-line skeleton" style="width: 60%; height: 16px; margin: 0;"></div>
+                <div class="skeleton-badge skeleton" style="width: 40px; height: 24px;"></div>
+            </div>
+        `;
+    }
+    return html;
+}
+
 function createMovieCard(movie) {
     const card = document.createElement("article");
     card.className = "movie-card";
@@ -2023,6 +2128,7 @@ async function initHomePage() {
 
     // 2. Trending Movies Section (Up to 2 items)
     if (homeTrendingGrid) {
+        homeTrendingGrid.innerHTML = createMovieSkeletonGrid(2);
         try {
             const res = await fetch("/api/movies?limit=10");
             if (res.ok) {
@@ -2075,6 +2181,7 @@ async function initHomePage() {
 
     // 4. Concerts Section (Up to 2 items)
     if (homeConcertsGrid) {
+        homeConcertsGrid.innerHTML = createConcertSkeletonGrid(2);
         try {
             const res = await fetch("/api/concerts?limit=2");
             if (res.ok) {
@@ -2125,7 +2232,7 @@ async function initSubpage(containerId, isTrending = false, limit = 24) {
     const isHomepage = document.getElementById("home") !== null;
     if (isHomepage) return;
 
-    container.innerHTML = `<div class="loading-state">Loading SanyuHub movies...</div>`;
+    container.innerHTML = createMovieSkeletonGrid(12);
 
     try {
         const res = await fetch(`/api/movies?limit=${limit}`);
@@ -2256,15 +2363,17 @@ if (movieCardGrid) {
 
     async function fetchAndRenderCatalogue() {
         updateUrlState();
-        movieCardGrid.innerHTML = '<div class="loading-state">Loading SanyuHub Library...</div>';
-
         if (activeCategory === "series") {
+            movieCardGrid.innerHTML = createMovieSkeletonGrid(12);
             await fetchAndRenderLibrarySeries();
         } else if (activeCategory === "music") {
+            movieCardGrid.innerHTML = createMusicSkeletonGrid(12);
             await fetchAndRenderLibraryMusic();
         } else if (activeCategory === "concerts") {
+            movieCardGrid.innerHTML = createConcertSkeletonGrid(12);
             await fetchAndRenderLibraryConcerts();
         } else {
+            movieCardGrid.innerHTML = createMovieSkeletonGrid(12);
             await fetchAndRenderLibraryMovies();
         }
     }
@@ -2581,7 +2690,7 @@ if (seriesCardGrid) {
     let sDebounce = null;
 
     async function fetchAndRenderSeries() {
-        seriesCardGrid.innerHTML = '<div class="loading-state">Loading SanyuHub series catalogue...</div>';
+        seriesCardGrid.innerHTML = createMovieSkeletonGrid(12);
 
         try {
             const queryParams = new URLSearchParams({
@@ -2699,6 +2808,8 @@ async function initSeriesDetailPage() {
         </div>`;
         return;
     }
+
+    mainContainer.innerHTML = createSeriesDetailSkeleton();
 
     try {
         const res = await fetch(`/api/series/${seriesId}`);
@@ -2980,6 +3091,8 @@ async function initMovieDetailsPage() {
         return;
     }
 
+    mainContainer.innerHTML = createMovieDetailSkeleton();
+
     try {
         const res = await fetch(`/api/movies/${movieId}`);
         if (!res.ok) throw new Error("Movie not found");
@@ -3155,6 +3268,8 @@ async function initRelatedMovies(targetGridId, currentMovieId) {
     const targetGrid = document.getElementById(targetGridId);
     if (!targetGrid) return;
 
+    targetGrid.innerHTML = createMovieSkeletonGrid(6);
+
     try {
         const res = await fetch("/api/movies?limit=12");
         if (!res.ok) return;
@@ -3236,6 +3351,8 @@ async function initConcertDetailPage() {
         </div>`;
         return;
     }
+
+    mainContainer.innerHTML = createConcertDetailSkeleton();
 
     try {
         const res = await fetch(`/api/concerts/${concertId}`);

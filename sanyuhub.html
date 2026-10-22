@@ -240,7 +240,10 @@ View More
 </div>
 
 <div class="trending-grid" id="trendingGrid">
-<div class="loading-state">Loading trending movies...</div>
+<div class="trending-grid" style="display:grid; grid-template-columns: repeat(2, 1fr); gap:12px;">
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+</div>
 </div>
 </section>
 
@@ -259,7 +262,10 @@ View More
 </div>
 
 <div class="card-grid" id="popularMoviesGrid">
-<div class="loading-state">Loading popular movies...</div>
+<div class="trending-grid" style="display:grid; grid-template-columns: repeat(2, 1fr); gap:12px;">
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+</div>
 </div>
 </section>
 
@@ -276,7 +282,7 @@ Featured
 <div class="featured-card" id="homeFeaturedCard">
 <div class="featured-content">
 <span id="featuredTag">FEATURED MOVIE</span>
-<h3 id="featuredTitle">Loading featured movie...</h3>
+<h3 id="featuredTitle">&nbsp;</h3>
 <p id="featuredDesc">Discover translated movies available on SanyuHub.</p>
 <button class="btn btn-primary" id="featuredWatchBtn" style="margin-top:22px;">Watch Now</button>
 </div>
@@ -289,7 +295,10 @@ Featured
 <a href="/popular-series" class="view-more">View More</a>
 </div>
 <div class="card-grid" id="popularSeriesGrid">
-<div class="loading-state">Loading popular series...</div>
+<div class="trending-grid" style="display:grid; grid-template-columns: repeat(2, 1fr); gap:12px;">
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+</div>
 </div>
 </section>
 
@@ -375,7 +384,10 @@ Spark TV
 <a href="/recently-added" class="view-more">View More</a>
 </div>
 <div class="card-grid" id="recentlyAddedGrid">
-<div class="loading-state">Loading recently added movies...</div>
+<div class="trending-grid" style="display:grid; grid-template-columns: repeat(2, 1fr); gap:12px;">
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+</div>
 </div>
 </section>
 
