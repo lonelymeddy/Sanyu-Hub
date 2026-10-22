@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A100000129B0100100000001 /* SanyuHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000129B0100100000001 /* SanyuHubApp.swift */; };
+		A100000229B0100100000002 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000229B0100100000002 /* AppEnvironment.swift */; };
+		A100000329B0100100000003 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000329B0100100000003 /* APIEndpoint.swift */; };
+		A100000429B0100100000004 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000429B0100100000004 /* NetworkService.swift */; };
+		A100000529B0100100000005 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000529B0100100000005 /* NetworkError.swift */; };
+		A100000629B0100100000006 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000629B0100100000006 /* Movie.swift */; };
+		A100000729B0100100000007 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000729B0100100000007 /* Series.swift */; };
+		A100000829B0100100000008 /* Concert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000829B0100100000008 /* Concert.swift */; };
+		A100000929B0100100000009 /* LiveChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000929B0100100000009 /* LiveChannel.swift */; };
+		A100001029B0100100000010 /* HeroItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001029B0100100000010 /* HeroItem.swift */; };
+		A100001129B0100100000011 /* PaginatedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001129B0100100000011 /* PaginatedResponse.swift */; };
+		A100001229B0100100000012 /* ContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001229B0100100000012 /* ContentRepository.swift */; };
+		A100001329B0100100000013 /* LiveTVRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001329B0100100000013 /* LiveTVRepository.swift */; };
+		A100001429B0100100000014 /* AudioSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001429B0100100000014 /* AudioSessionManager.swift */; };
+		A100001529B0100100000015 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001529B0100100000015 /* Theme.swift */; };
+		A100001629B0100100000016 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001629B0100100000016 /* Constants.swift */; };
+		A100001729B0100100000017 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001729B0100100000017 /* ImageLoader.swift */; };
+		A100001829B0100100000018 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001829B0100100000018 /* BadgeView.swift */; };
+		A100001929B0100100000019 /* DynamicAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100001929B0100100000019 /* DynamicAsyncImage.swift */; };
+		A100002029B0100100000020 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002029B0100100000020 /* NavigationBarView.swift */; };
+		A100002129B0100100000021 /* PosterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002129B0100100000021 /* PosterCardView.swift */; };
+		A100002229B0100100000022 /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002229B0100100000022 /* SkeletonView.swift */; };
+		A100002329B0100100000023 /* PosterCardSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002329B0100100000023 /* PosterCardSkeleton.swift */; };
+		A100002429B0100100000024 /* HeroSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002429B0100100000024 /* HeroSkeleton.swift */; };
+		A100002529B0100100000025 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002529B0100100000025 /* HomeView.swift */; };
+		A100002629B0100100000026 /* HeroCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002629B0100100000026 /* HeroCarouselView.swift */; };
+		A100002729B0100100000027 /* SectionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002729B0100100000027 /* SectionRowView.swift */; };
+		A100002829B0100100000028 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002829B0100100000028 /* HomeViewModel.swift */; };
+		A100002929B0100100000029 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002929B0100100000029 /* LibraryView.swift */; };
+		A100003029B0100100000030 /* FilterSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003029B0100100000030 /* FilterSelectorView.swift */; };
+		A100003129B0100100000031 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003129B0100100000031 /* LibraryViewModel.swift */; };
+		A100003229B0100100000032 /* LiveTVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003229B0100100000032 /* LiveTVView.swift */; };
+		A100003329B0100100000033 /* ChannelCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003329B0100100000033 /* ChannelCardView.swift */; };
+		A100003429B0100100000034 /* LiveTVViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003429B0100100000034 /* LiveTVViewModel.swift */; };
+		A100003529B0100100000035 /* SearchOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003529B0100100000035 /* SearchOverlayView.swift */; };
+		A100003629B0100100000036 /* SearchResultCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003629B0100100000036 /* SearchResultCardView.swift */; };
+		A100003729B0100100000037 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003729B0100100000037 /* SearchViewModel.swift */; };
+		A100003829B0100100000038 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003829B0100100000038 /* MovieDetailView.swift */; };
+		A100003929B0100100000039 /* SeriesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003929B0100100000039 /* SeriesDetailView.swift */; };
+		A100004029B0100100000040 /* ConcertDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004029B0100100000040 /* ConcertDetailView.swift */; };
+		A100004129B0100100000041 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004129B0100100000041 /* DetailViewModel.swift */; };
+		A100004229B0100100000042 /* NativePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004229B0100100000042 /* NativePlayerView.swift */; };
+		A100004329B0100100000043 /* CustomPlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004329B0100100000043 /* CustomPlayerControlsView.swift */; };
+		A100004429B0100100000044 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004429B0100100000044 /* PlayerViewModel.swift */; };
+		A100004529B0100100000045 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F100004529B0100100000045 /* Assets.xcassets */; };
+
+		T100000129B0100100000001 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FT00000129B0100100000001 /* APITests.swift */; };
+		T100000229B0100100000002 /* ModelDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FT00000229B0100100000002 /* ModelDecodingTests.swift */; };
+		T100000329B0100100000003 /* LiveChannelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FT00000329B0100100000003 /* LiveChannelsTests.swift */; };
+		T100000429B0100100000004 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FT00000429B0100100000004 /* ViewModelTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C100000129B0100100000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = P100000129B0100100000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = TR10000129B0100100000001 /* SanyuHub */;
+			remoteInfo = SanyuHub;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		TR10000129B0100100000001 /* SanyuHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SanyuHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		TR10000229B0100100000002 /* SanyuHubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SanyuHubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+
+		F100000129B0100100000001 /* SanyuHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/App/SanyuHubApp.swift; sourceTree = "<group>"; };
+		F100000229B0100100000002 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/App/AppEnvironment.swift; sourceTree = "<group>"; };
+		F100000329B0100100000003 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Networking/APIEndpoint.swift; sourceTree = "<group>"; };
+		F100000429B0100100000004 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Networking/NetworkService.swift; sourceTree = "<group>"; };
+		F100000529B0100100000005 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Networking/NetworkError.swift; sourceTree = "<group>"; };
+		F100000629B0100100000006 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Models/Movie.swift; sourceTree = "<group>"; };
+		F100000729B0100100000007 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Models/Series.swift; sourceTree = "<group>"; };
+		F100000829B0100100000008 /* Concert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Models/Concert.swift; sourceTree = "<group>"; };
+		F100000929B0100100000009 /* LiveChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Models/LiveChannel.swift; sourceTree = "<group>"; };
+		F100001029B0100100000010 /* HeroItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Models/HeroItem.swift; sourceTree = "<group>"; };
+		F100001129B0100100000011 /* PaginatedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Models/PaginatedResponse.swift; sourceTree = "<group>"; };
+		F100001229B0100100000012 /* ContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Services/ContentRepository.swift; sourceTree = "<group>"; };
+		F100001329B0100100000013 /* LiveTVRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Services/LiveTVRepository.swift; sourceTree = "<group>"; };
+		F100001429B0100100000014 /* AudioSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Services/AudioSessionManager.swift; sourceTree = "<group>"; };
+		F100001529B0100100000015 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Utilities/Theme.swift; sourceTree = "<group>"; };
+		F100001629B0100100000016 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/Utilities/Constants.swift; sourceTree = "<group>"; };
+		F100001729B0100100000017 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Core/ImageLoading/ImageLoader.swift; sourceTree = "<group>"; };
+		F100001829B0100100000018 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Components/BadgeView.swift; sourceTree = "<group>"; };
+		F100001929B0100100000019 /* DynamicAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Components/DynamicAsyncImage.swift; sourceTree = "<group>"; };
+		F100002029B0100100000020 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Components/NavigationBarView.swift; sourceTree = "<group>"; };
+		F100002129B0100100000021 /* PosterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Components/PosterCardView.swift; sourceTree = "<group>"; };
+		F100002229B0100100000022 /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Components/Skeletons/SkeletonView.swift; sourceTree = "<group>"; };
+		F100002329B0100100000023 /* PosterCardSkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Components/Skeletons/PosterCardSkeleton.swift; sourceTree = "<group>"; };
+		F100002429B0100100000024 /* HeroSkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Components/Skeletons/HeroSkeleton.swift; sourceTree = "<group>"; };
+		F100002529B0100100000025 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Home/Views/HomeView.swift; sourceTree = "<group>"; };
+		F100002629B0100100000026 /* HeroCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Home/Views/HeroCarouselView.swift; sourceTree = "<group>"; };
+		F100002729B0100100000027 /* SectionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Home/Views/SectionRowView.swift; sourceTree = "<group>"; };
+		F100002829B0100100000028 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Home/ViewModels/HomeViewModel.swift; sourceTree = "<group>"; };
+		F100002929B0100100000029 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Library/Views/LibraryView.swift; sourceTree = "<group>"; };
+		F100003029B0100100000030 /* FilterSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Library/Views/FilterSelectorView.swift; sourceTree = "<group>"; };
+		F100003129B0100100000031 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Library/ViewModels/LibraryViewModel.swift; sourceTree = "<group>"; };
+		F100003229B0100100000032 /* LiveTVView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/LiveTV/Views/LiveTVView.swift; sourceTree = "<group>"; };
+		F100003329B0100100000033 /* ChannelCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/LiveTV/Views/ChannelCardView.swift; sourceTree = "<group>"; };
+		F100003429B0100100000034 /* LiveTVViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/LiveTV/ViewModels/LiveTVViewModel.swift; sourceTree = "<group>"; };
+		F100003529B0100100000035 /* SearchOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Search/Views/SearchOverlayView.swift; sourceTree = "<group>"; };
+		F100003629B0100100000036 /* SearchResultCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Search/Views/SearchResultCardView.swift; sourceTree = "<group>"; };
+		F100003729B0100100000037 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Search/ViewModels/SearchViewModel.swift; sourceTree = "<group>"; };
+		F100003829B0100100000038 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Details/Views/MovieDetailView.swift; sourceTree = "<group>"; };
+		F100003929B0100100000039 /* SeriesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Details/Views/SeriesDetailView.swift; sourceTree = "<group>"; };
+		F100004029B0100100000040 /* ConcertDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Details/Views/ConcertDetailView.swift; sourceTree = "<group>"; };
+		F100004129B0100100000041 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Details/ViewModels/DetailViewModel.swift; sourceTree = "<group>"; };
+		F100004229B0100100000042 /* NativePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Player/Views/NativePlayerView.swift; sourceTree = "<group>"; };
+		F100004329B0100100000043 /* CustomPlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Player/Views/CustomPlayerControlsView.swift; sourceTree = "<group>"; };
+		F100004429B0100100000044 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanyuHub/Features/Player/ViewModels/PlayerViewModel.swift; sourceTree = "<group>"; };
+		F100004529B0100100000045 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SanyuHub/Resources/Assets.xcassets; sourceTree = "<group>"; };
+		F100004629B0100100000046 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SanyuHub/Info.plist; sourceTree = "<group>"; };
+		F100004729B0100100000047 /* AppConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration/AppConfig.xcconfig; sourceTree = "<group>"; };
+
+		FT00000129B0100100000001 /* APITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/SanyuHubTests/APITests.swift; sourceTree = "<group>"; };
+		FT00000229B0100100000002 /* ModelDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/SanyuHubTests/ModelDecodingTests.swift; sourceTree = "<group>"; };
+		FT00000329B0100100000003 /* LiveChannelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/SanyuHubTests/LiveChannelsTests.swift; sourceTree = "<group>"; };
+		FT00000429B0100100000004 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests/SanyuHubTests/ViewModelTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FR10000129B0100100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FR10000229B0100100000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		G100000129B0100100000001 = {
+			isa = PBXGroup;
+			children = (
+				G100000229B0100100000002 /* SanyuHub */,
+				G100000329B0100100000003 /* Tests */,
+				G100000429B0100100000004 /* Configuration */,
+				G100000529B0100100000005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		G100000229B0100100000002 /* SanyuHub */ = {
+			isa = PBXGroup;
+			children = (
+				F100000129B0100100000001 /* SanyuHubApp.swift */,
+				F100000229B0100100000002 /* AppEnvironment.swift */,
+				F100000329B0100100000003 /* APIEndpoint.swift */,
+				F100000429B0100100000004 /* NetworkService.swift */,
+				F100000529B0100100000005 /* NetworkError.swift */,
+				F100000629B0100100000006 /* Movie.swift */,
+				F100000729B0100100000007 /* Series.swift */,
+				F100000829B0100100000008 /* Concert.swift */,
+				F100000929B0100100000009 /* LiveChannel.swift */,
+				F100001029B0100100000010 /* HeroItem.swift */,
+				F100001129B0100100000011 /* PaginatedResponse.swift */,
+				F100001229B0100100000012 /* ContentRepository.swift */,
+				F100001329B0100100000013 /* LiveTVRepository.swift */,
+				F100001429B0100100000014 /* AudioSessionManager.swift */,
+				F100001529B0100100000015 /* Theme.swift */,
+				F100001629B0100100000016 /* Constants.swift */,
+				F100001729B0100100000017 /* ImageLoader.swift */,
+				F100001829B0100100000018 /* BadgeView.swift */,
+				F100001929B0100100000019 /* DynamicAsyncImage.swift */,
+				F100002029B0100100000020 /* NavigationBarView.swift */,
+				F100002129B0100100000021 /* PosterCardView.swift */,
+				F100002229B0100100000022 /* SkeletonView.swift */,
+				F100002329B0100100000023 /* PosterCardSkeleton.swift */,
+				F100002429B0100100000024 /* HeroSkeleton.swift */,
+				F100002529B0100100000025 /* HomeView.swift */,
+				F100002629B0100100000026 /* HeroCarouselView.swift */,
+				F100002729B0100100000027 /* SectionRowView.swift */,
+				F100002829B0100100000028 /* HomeViewModel.swift */,
+				F100002929B0100100000029 /* LibraryView.swift */,
+				F100003029B0100100000030 /* FilterSelectorView.swift */,
+				F100003129B0100100000031 /* LibraryViewModel.swift */,
+				F100003229B0100100000032 /* LiveTVView.swift */,
+				F100003329B0100100000033 /* ChannelCardView.swift */,
+				F100003429B0100100000034 /* LiveTVViewModel.swift */,
+				F100003529B0100100000035 /* SearchOverlayView.swift */,
+				F100003629B0100100000036 /* SearchResultCardView.swift */,
+				F100003729B0100100000037 /* SearchViewModel.swift */,
+				F100003829B0100100000038 /* MovieDetailView.swift */,
+				F100003929B0100100000039 /* SeriesDetailView.swift */,
+				F100004029B0100100000040 /* ConcertDetailView.swift */,
+				F100004129B0100100000041 /* DetailViewModel.swift */,
+				F100004229B0100100000042 /* NativePlayerView.swift */,
+				F100004329B0100100000043 /* CustomPlayerControlsView.swift */,
+				F100004429B0100100000044 /* PlayerViewModel.swift */,
+				F100004529B0100100000045 /* Assets.xcassets */,
+				F100004629B0100100000046 /* Info.plist */,
+			);
+			path = ..;
+			sourceTree = "<group>";
+		};
+		G100000329B0100100000003 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FT00000129B0100100000001 /* APITests.swift */,
+				FT00000229B0100100000002 /* ModelDecodingTests.swift */,
+				FT00000329B0100100000003 /* LiveChannelsTests.swift */,
+				FT00000429B0100100000004 /* ViewModelTests.swift */,
+			);
+			path = ..;
+			sourceTree = "<group>";
+		};
+		G100000429B0100100000004 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				F100004729B0100100000047 /* AppConfig.xcconfig */,
+			);
+			path = ..;
+			sourceTree = "<group>";
+		};
+		G100000529B0100100000005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				TR10000129B0100100000001 /* SanyuHub.app */,
+				TR10000229B0100100000002 /* SanyuHubTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		TR10000129B0100100000001 /* SanyuHub */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC10000129B0100100000001 /* Build configuration list for PBXNativeTarget "SanyuHub" */;
+			buildPhases = (
+				SR10000129B0100100000001 /* Sources */,
+				FR10000129B0100100000001 /* Frameworks */,
+				RR10000129B0100100000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SanyuHub;
+			productName = SanyuHub;
+			productReference = TR10000129B0100100000001 /* SanyuHub.app */;
+			productType = "com.apple.product-type.application";
+		};
+		TR10000229B0100100000002 /* SanyuHubTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC10000229B0100100000002 /* Build configuration list for PBXNativeTarget "SanyuHubTests" */;
+			buildPhases = (
+				SR10000229B0100100000002 /* Sources */,
+				FR10000229B0100100000002 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D100000129B0100100000001 /* PBXTargetDependency */,
+			);
+			name = SanyuHubTests;
+			productName = SanyuHubTests;
+			productReference = TR10000229B0100100000002 /* SanyuHubTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		P100000129B0100100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					TR10000129B0100100000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					TR10000229B0100100000002 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = TR10000129B0100100000001;
+					};
+				};
+			};
+			buildConfigurationList = BC10000029B0100100000000 /* Build configuration list for PBXProject "SanyuHub" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = G100000129B0100100000001;
+			productRefGroup = G100000529B0100100000005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				TR10000129B0100100000001 /* SanyuHub */,
+				TR10000229B0100100000002 /* SanyuHubTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		RR10000129B0100100000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100004529B0100100000045 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		SR10000129B0100100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100000129B0100100000001 /* SanyuHubApp.swift in Sources */,
+				A100000229B0100100000002 /* AppEnvironment.swift in Sources */,
+				A100000329B0100100000003 /* APIEndpoint.swift in Sources */,
+				A100000429B0100100000004 /* NetworkService.swift in Sources */,
+				A100000529B0100100000005 /* NetworkError.swift in Sources */,
+				A100000629B0100100000006 /* Movie.swift in Sources */,
+				A100000729B0100100000007 /* Series.swift in Sources */,
+				A100000829B0100100000008 /* Concert.swift in Sources */,
+				A100000929B0100100000009 /* LiveChannel.swift in Sources */,
+				A100001029B0100100000010 /* HeroItem.swift in Sources */,
+				A100001129B0100100000011 /* PaginatedResponse.swift in Sources */,
+				A100001229B0100100000012 /* ContentRepository.swift in Sources */,
+				A100001329B0100100000013 /* LiveTVRepository.swift in Sources */,
+				A100001429B0100100000014 /* AudioSessionManager.swift in Sources */,
+				A100001529B0100100000015 /* Theme.swift in Sources */,
+				A100001629B0100100000016 /* Constants.swift in Sources */,
+				A100001729B0100100000017 /* ImageLoader.swift in Sources */,
+				A100001829B0100100000018 /* BadgeView.swift in Sources */,
+				A100001929B0100100000019 /* DynamicAsyncImage.swift in Sources */,
+				A100002029B0100100000020 /* NavigationBarView.swift in Sources */,
+				A100002129B0100100000021 /* PosterCardView.swift in Sources */,
+				A100002229B0100100000022 /* SkeletonView.swift in Sources */,
+				A100002329B0100100000023 /* PosterCardSkeleton.swift in Sources */,
+				A100002429B0100100000024 /* HeroSkeleton.swift in Sources */,
+				A100002529B0100100000025 /* HomeView.swift in Sources */,
+				A100002629B0100100000026 /* HeroCarouselView.swift in Sources */,
+				A100002729B0100100000027 /* SectionRowView.swift in Sources */,
+				A100002829B0100100000028 /* HomeViewModel.swift in Sources */,
+				A100002929B0100100000029 /* LibraryView.swift in Sources */,
+				A100003029B0100100000030 /* FilterSelectorView.swift in Sources */,
+				A100003129B0100100000031 /* LibraryViewModel.swift in Sources */,
+				A100003229B0100100000032 /* LiveTVView.swift in Sources */,
+				A100003329B0100100000033 /* ChannelCardView.swift in Sources */,
+				A100003429B0100100000034 /* LiveTVViewModel.swift in Sources */,
+				A100003529B0100100000035 /* SearchOverlayView.swift in Sources */,
+				A100003629B0100100000036 /* SearchResultCardView.swift in Sources */,
+				A100003729B0100100000037 /* SearchViewModel.swift in Sources */,
+				A100003829B0100100000038 /* MovieDetailView.swift in Sources */,
+				A100003929B0100100000039 /* SeriesDetailView.swift in Sources */,
+				A100004029B0100100000040 /* ConcertDetailView.swift in Sources */,
+				A100004129B0100100000041 /* DetailViewModel.swift in Sources */,
+				A100004229B0100100000042 /* NativePlayerView.swift in Sources */,
+				A100004329B0100100000043 /* CustomPlayerControlsView.swift in Sources */,
+				A100004429B0100100000044 /* PlayerViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		SR10000229B0100100000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				T100000129B0100100000001 /* APITests.swift in Sources */,
+				T100000229B0100100000002 /* ModelDecodingTests.swift in Sources */,
+				T100000329B0100100000003 /* LiveChannelsTests.swift in Sources */,
+				T100000429B0100100000004 /* ViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D100000129B0100100000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = TR10000129B0100100000001 /* SanyuHub */;
+			targetProxy = C100000129B0100100000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C100000129B0100100000000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F100004729B0100100000047 /* AppConfig.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C100000229B0100100000000 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F100004729B0100100000047 /* AppConfig.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C100000129B0100100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SanyuHub/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ug.sanyuhub.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C100000229B0100100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SanyuHub/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ug.sanyuhub.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C100000129B0100100000002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ug.sanyuhub.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SanyuHub.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SanyuHub";
+			};
+			name = Debug;
+		};
+		C100000229B0100100000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ug.sanyuhub.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SanyuHub.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SanyuHub";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC10000029B0100100000000 /* Build configuration list for PBXProject "SanyuHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C100000129B0100100000000 /* Debug */,
+				C100000229B0100100000000 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC10000129B0100100000001 /* Build configuration list for PBXNativeTarget "SanyuHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C100000129B0100100000001 /* Debug */,
+				C100000229B0100100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC10000229B0100100000002 /* Build configuration list for PBXNativeTarget "SanyuHubTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C100000129B0100100000002 /* Debug */,
+				C100000229B0100100000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = P100000129B0100100000001 /* Project object */;
+}
