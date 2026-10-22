@@ -192,16 +192,421 @@ if (categoriesBtn) {
     });
 }
 
-/* SEARCH BUTTON NAVIGATION */
-document.querySelectorAll(".search-button").forEach(function(button){
-    button.addEventListener("click",function(){
-        const movieSearchInput = document.getElementById("movieSearchInput");
-        if (movieSearchInput) {
-            movieSearchInput.focus();
-            movieSearchInput.scrollIntoView({ behavior: "smooth" });
+/* FULL-SCREEN LIVE SEARCH SYSTEM */
+let cachedSearchMovies = null;
+let cachedSearchSeries = null;
+let cachedSearchConcerts = null;
+let searchDebounceTimer = null;
+
+function ensureSearchOverlayExists() {
+    if (document.getElementById("searchOverlay")) return;
+
+    const overlay = document.createElement("div");
+    overlay.id = "searchOverlay";
+    overlay.className = "search-overlay";
+    overlay.setAttribute("aria-hidden", "true");
+
+    overlay.innerHTML = `
+        <div class="search-page-header">
+            <div class="search-bar-wrapper">
+                <span class="search-input-icon">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </span>
+                <input type="text" id="fullSearchInput" class="search-page-input" placeholder="Search movies, series, channels, radio..." aria-label="Search SanyuHub" autocomplete="off" spellcheck="false">
+                <button type="button" class="search-inside-clear" id="searchInsideClear" aria-label="Clear search text" style="display: none;">
+                    <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <button type="button" class="search-outside-close" id="searchOutsideClose" aria-label="Close search">
+                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            </button>
+        </div>
+        <div class="search-page-body">
+            <div id="searchRecommendationsSection" class="search-section">
+                <h3 class="search-section-title">You May Like</h3>
+                <div id="searchRecommendationsGrid" class="search-results-grid"></div>
+            </div>
+            <div id="searchResultsSection" class="search-section" style="display: none;">
+                <h3 class="search-section-title">Results</h3>
+                <div id="searchResultsGrid" class="search-results-grid"></div>
+            </div>
+            <div id="searchEmptyState" class="search-empty-state" style="display: none;">
+                <div class="search-empty-icon">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+                <h4 id="searchEmptyTitle" class="search-empty-title">No results found</h4>
+                <p id="searchEmptySub" class="search-empty-sub">Check your spelling or try searching for another title, VJ, or channel.</p>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const input = document.getElementById("fullSearchInput");
+    const clearBtn = document.getElementById("searchInsideClear");
+    const closeBtn = document.getElementById("searchOutsideClose");
+
+    input.addEventListener("input", (e) => {
+        const query = e.target.value;
+        if (query.trim().length > 0) {
+            clearBtn.style.display = "flex";
         } else {
-            window.location.href = "/movies";
+            clearBtn.style.display = "none";
         }
+
+        clearTimeout(searchDebounceTimer);
+        searchDebounceTimer = setTimeout(() => {
+            handleLiveSearchQuery(query);
+        }, 180);
+    });
+
+    clearBtn.addEventListener("click", () => {
+        input.value = "";
+        clearBtn.style.display = "none";
+        handleLiveSearchQuery("");
+        input.focus();
+    });
+
+    closeBtn.addEventListener("click", () => {
+        closeFullSearch();
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay.classList.contains("active")) {
+            closeFullSearch();
+        }
+    });
+}
+
+function openFullSearch() {
+    ensureSearchOverlayExists();
+    const overlay = document.getElementById("searchOverlay");
+    const input = document.getElementById("fullSearchInput");
+
+    document.body.classList.add("search-open");
+    overlay.classList.add("active");
+    overlay.setAttribute("aria-hidden", "false");
+
+    loadInitialRecommendations();
+
+    setTimeout(() => {
+        input.focus();
+    }, 50);
+}
+
+function closeFullSearch() {
+    const overlay = document.getElementById("searchOverlay");
+    if (!overlay) return;
+
+    document.body.classList.remove("search-open");
+    overlay.classList.remove("active");
+    overlay.setAttribute("aria-hidden", "true");
+}
+
+function createHorizontalSearchCard(item) {
+    const card = document.createElement("div");
+    card.className = "search-card-horizontal";
+
+    const thumb = document.createElement("div");
+    thumb.className = "search-horizontal-thumb";
+
+    const img = document.createElement("img");
+    img.src = item.logo || item.posterUrl || "/images/ntv-logo.jpg";
+    img.alt = item.title || item.name || "Media";
+    img.loading = "lazy";
+    img.onerror = () => {
+        thumb.innerHTML = `<span style="font-size:20px; color:#f4c400;">&#127916;</span>`;
+    };
+    thumb.appendChild(img);
+
+    const info = document.createElement("div");
+    info.className = "search-horizontal-info";
+
+    const title = document.createElement("span");
+    title.className = "search-horizontal-title";
+    title.textContent = item.title || item.name || "Untitled";
+
+    const type = document.createElement("span");
+    type.className = "search-horizontal-type";
+    type.textContent = item.contentType || "Item";
+
+    info.appendChild(title);
+    info.appendChild(type);
+
+    card.appendChild(thumb);
+    card.appendChild(info);
+
+    card.addEventListener("click", () => {
+        closeFullSearch();
+        if (item.targetUrl) {
+            window.location.href = item.targetUrl;
+        }
+    });
+
+    return card;
+}
+
+async function loadInitialRecommendations() {
+    const recsGrid = document.getElementById("searchRecommendationsGrid");
+    const recsSection = document.getElementById("searchRecommendationsSection");
+    const resultsSection = document.getElementById("searchResultsSection");
+    const emptyState = document.getElementById("searchEmptyState");
+
+    recsSection.style.display = "block";
+    resultsSection.style.display = "none";
+    emptyState.style.display = "none";
+
+    recsGrid.innerHTML = createMovieSkeletonGrid(6);
+
+    const recommendations = [];
+
+    // Add prominent TV channel & Radio station
+    const sampleTv = LIVE_TV_CHANNELS.find(ch => ch.id === "ntv-uganda") || LIVE_TV_CHANNELS[0];
+    if (sampleTv) {
+        recommendations.push({
+            id: sampleTv.id,
+            name: sampleTv.name,
+            logo: sampleTv.logo,
+            contentType: "Live TV",
+            targetUrl: `/live-tv/watch/${sampleTv.id}/`
+        });
+    }
+
+    const sampleRadio = LIVE_TV_CHANNELS.find(ch => ch.isRadio || ch.category === "radio");
+    if (sampleRadio) {
+        recommendations.push({
+            id: sampleRadio.id,
+            name: sampleRadio.name,
+            logo: sampleRadio.logo,
+            contentType: "Radio Station",
+            targetUrl: `/live-tv/watch/${sampleRadio.id}/`
+        });
+    }
+
+    // Fetch movies catalogue for recommendations
+    if (!cachedSearchMovies) {
+        try {
+            const res = await fetch("/api/movies?limit=24");
+            if (res.ok) {
+                const data = await res.json();
+                cachedSearchMovies = data.movies || [];
+            }
+        } catch (e) {
+            cachedSearchMovies = [];
+        }
+    }
+
+    if (cachedSearchMovies && cachedSearchMovies.length > 0) {
+        cachedSearchMovies.slice(0, 4).forEach(m => {
+            recommendations.push({
+                id: m.id,
+                title: m.title,
+                posterUrl: m.posterUrl,
+                quality: m.quality,
+                vj: m.vj,
+                year: m.year,
+                contentType: "Movie",
+                isStandardCard: true,
+                rawMovie: m
+            });
+        });
+    }
+
+    recsGrid.innerHTML = "";
+
+    recommendations.forEach(item => {
+        if (item.isStandardCard && item.rawMovie) {
+            recsGrid.appendChild(createMovieCard(item.rawMovie));
+        } else {
+            recsGrid.appendChild(createHorizontalSearchCard(item));
+        }
+    });
+}
+
+async function handleLiveSearchQuery(rawQuery) {
+    const query = rawQuery.trim().toLowerCase();
+    const recsSection = document.getElementById("searchRecommendationsSection");
+    const resultsSection = document.getElementById("searchResultsSection");
+    const resultsGrid = document.getElementById("searchResultsGrid");
+    const emptyState = document.getElementById("searchEmptyState");
+    const emptyTitle = document.getElementById("searchEmptyTitle");
+
+    if (!query) {
+        recsSection.style.display = "block";
+        resultsSection.style.display = "none";
+        emptyState.style.display = "none";
+        return;
+    }
+
+    recsSection.style.display = "none";
+    resultsSection.style.display = "block";
+    emptyState.style.display = "none";
+    resultsGrid.innerHTML = createMovieSkeletonGrid(6);
+
+    // Ensure datasets are loaded
+    if (!cachedSearchMovies) {
+        try {
+            const res = await fetch("/api/movies?limit=100");
+            if (res.ok) {
+                const data = await res.json();
+                cachedSearchMovies = data.movies || [];
+            }
+        } catch (e) {
+            cachedSearchMovies = [];
+        }
+    }
+
+    if (!cachedSearchSeries) {
+        try {
+            const res = await fetch("/api/series?limit=50");
+            if (res.ok) {
+                const data = await res.json();
+                cachedSearchSeries = data.series || [];
+            }
+        } catch (e) {
+            cachedSearchSeries = [];
+        }
+    }
+
+    if (!cachedSearchConcerts) {
+        try {
+            const res = await fetch("/api/concerts?limit=50");
+            if (res.ok) {
+                const data = await res.json();
+                cachedSearchConcerts = data.concerts || [];
+            }
+        } catch (e) {
+            cachedSearchConcerts = [];
+        }
+    }
+
+    const matches = [];
+
+    // Search Live TV & Radio channels
+    LIVE_TV_CHANNELS.forEach(ch => {
+        const nameMatch = ch.name && ch.name.toLowerCase().includes(query);
+        const catMatch = (ch.categoryLabel && ch.categoryLabel.toLowerCase().includes(query)) || (ch.category && ch.category.toLowerCase().includes(query));
+        const descMatch = ch.description && ch.description.toLowerCase().includes(query);
+
+        if (nameMatch || catMatch || descMatch) {
+            let score = 0;
+            if (ch.name.toLowerCase() === query) score = 100;
+            else if (ch.name.toLowerCase().startsWith(query)) score = 80;
+            else if (nameMatch) score = 60;
+            else score = 40;
+
+            matches.push({
+                score: score,
+                type: ch.isRadio ? "Radio Station" : "Live TV",
+                item: {
+                    id: ch.id,
+                    name: ch.name,
+                    logo: ch.logo,
+                    contentType: ch.isRadio ? "Radio Station" : "Live TV",
+                    targetUrl: `/live-tv/watch/${ch.id}/`
+                }
+            });
+        }
+    });
+
+    // Search Movies
+    (cachedSearchMovies || []).forEach(m => {
+        const titleMatch = m.title && m.title.toLowerCase().includes(query);
+        const vjMatch = m.vj && m.vj.toLowerCase().includes(query);
+        const overviewMatch = m.overview && m.overview.toLowerCase().includes(query);
+        const genreMatch = m.genres && m.genres.some(g => g.toLowerCase().includes(query));
+
+        if (titleMatch || vjMatch || overviewMatch || genreMatch) {
+            let score = 0;
+            const tLower = (m.title || "").toLowerCase();
+            if (tLower === query) score = 100;
+            else if (tLower.startsWith(query)) score = 80;
+            else if (titleMatch) score = 60;
+            else score = 40;
+
+            matches.push({
+                score: score,
+                type: "Movie",
+                isStandardMovieCard: true,
+                rawMovie: m
+            });
+        }
+    });
+
+    // Search Series
+    (cachedSearchSeries || []).forEach(s => {
+        const titleMatch = s.title && s.title.toLowerCase().includes(query);
+        const vjMatch = s.vj && s.vj.toLowerCase().includes(query);
+        const overviewMatch = s.overview && s.overview.toLowerCase().includes(query);
+
+        if (titleMatch || vjMatch || overviewMatch) {
+            let score = 0;
+            const tLower = (s.title || "").toLowerCase();
+            if (tLower === query) score = 100;
+            else if (tLower.startsWith(query)) score = 80;
+            else if (titleMatch) score = 60;
+            else score = 40;
+
+            matches.push({
+                score: score,
+                type: "Series",
+                isStandardSeriesCard: true,
+                rawSeries: s
+            });
+        }
+    });
+
+    // Search Concerts
+    (cachedSearchConcerts || []).forEach(c => {
+        const titleMatch = c.title && c.title.toLowerCase().includes(query);
+        const venueMatch = c.venue && c.venue.toLowerCase().includes(query);
+        const descMatch = c.description && c.description.toLowerCase().includes(query);
+
+        if (titleMatch || venueMatch || descMatch) {
+            let score = 0;
+            const tLower = (c.title || "").toLowerCase();
+            if (tLower === query) score = 100;
+            else if (tLower.startsWith(query)) score = 80;
+            else if (titleMatch) score = 60;
+            else score = 40;
+
+            matches.push({
+                score: score,
+                type: "Concert",
+                isStandardConcertCard: true,
+                rawConcert: c
+            });
+        }
+    });
+
+    matches.sort((a, b) => b.score - a.score);
+
+    resultsGrid.innerHTML = "";
+
+    if (matches.length === 0) {
+        resultsSection.style.display = "none";
+        emptyState.style.display = "flex";
+        emptyTitle.textContent = `No results found for "${rawQuery}"`;
+        return;
+    }
+
+    matches.forEach(m => {
+        if (m.isStandardMovieCard) {
+            resultsGrid.appendChild(createMovieCard(m.rawMovie));
+        } else if (m.isStandardSeriesCard) {
+            resultsGrid.appendChild(createSeriesCard(m.rawSeries));
+        } else if (m.isStandardConcertCard) {
+            resultsGrid.appendChild(createConcertCard(m.rawConcert));
+        } else {
+            resultsGrid.appendChild(createHorizontalSearchCard(m.item));
+        }
+    });
+}
+
+document.querySelectorAll(".search-button").forEach(function(button){
+    button.addEventListener("click",function(e){
+        e.preventDefault();
+        openFullSearch();
     });
 });
 
