@@ -9,7 +9,12 @@ const channelsToTest = [
   { id: 'cartoon-network', name: 'Cartoon Network', logo: '/images/cartoon-network-logo.png' },
   { id: 'baby-shark-tv', name: 'Baby Shark TV', logo: '/images/baby-shark-logo.png' },
   { id: 'pbs-kids-pacific', name: 'PBS Kids Pacific', logo: '/images/pbs-kids-pacific-logo.png' },
-  { id: 'telemundo', name: 'Telemundo', logo: '/images/telemundo-logo.png' }
+  { id: 'telemundo', name: 'Telemundo', logo: '/images/telemundo-logo.png' },
+  { id: 'b4u-movies', name: 'B4U Movies', logo: '/images/b4u-movies-logo.jpg' },
+  { id: 'kidsflix', name: 'KIDS FLIX', logo: '/images/kidsflix-logo.png' },
+  { id: 'fifa-plus', name: 'FB | FIFA+', logo: '/images/fifa-plus-logo.png' },
+  { id: 'cnn', name: 'CNN', logo: '/images/cnn-logo.png' },
+  { id: 'tom-and-jerry-2', name: 'Tom and Jerry 2', logo: '/images/tom-and-jerry-2-logo.jpg' }
 ];
 
 (async () => {
@@ -112,7 +117,7 @@ const channelsToTest = [
 
   if (allPassed) {
     console.log('\n========================================');
-    console.log('ALL 4 CHANNELS PASSED PLAYBACK VERIFICATION IN SAN YUHUB PLAYER!');
+    console.log(`ALL ${channelsToTest.length} CHANNELS PASSED PLAYBACK VERIFICATION IN SAN YUHUB PLAYER!`);
     console.log('========================================\n');
     process.exit(0);
   } else {
