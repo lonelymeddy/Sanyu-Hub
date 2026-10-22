@@ -82,6 +82,8 @@ Sanyu<span>Hub</span>
       </select>
     </div>
 
+    <div id="androidNotificationContainer" style="display: none;"></div>
+
   </div>
 </section>
 
@@ -118,6 +120,60 @@ document.addEventListener("DOMContentLoaded", () => {
     qualEl.addEventListener("change", (e) => {
       localStorage.setItem("sanyuhub_pref_quality", e.target.value);
     });
+  }
+
+  // Graceful Android Native Integration
+  if (window.SanyuHubNative && typeof window.SanyuHubNative.isAndroidApp === "function" && window.SanyuHubNative.isAndroidApp()) {
+    const container = document.getElementById("androidNotificationContainer");
+    if (container) {
+      const renderAndroidNotifSection = () => {
+        const isGranted = window.SanyuHubNative.isNotificationPermissionGranted();
+        container.style.display = "block";
+        container.innerHTML = `
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <div style="font-weight: 600; font-size: 15px; color: #fff;">Push Notifications</div>
+                <div style="font-size: 12px; color: #aaa; margin-top: 2px;">Receive announcements for new movies, series, and live events.</div>
+              </div>
+              <span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; background: ${isGranted ? 'rgba(76,175,80,0.15)' : 'rgba(255,152,0,0.15)'}; color: ${isGranted ? '#66bb6a' : '#ffa726'};">
+                ${isGranted ? 'Enabled' : 'Disabled'}
+              </span>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 4px;">
+              ${!isGranted ? `
+                <button id="btnEnableNotif" style="background: #f4c400; color: #000; border: none; padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">
+                  Enable Notifications
+                </button>
+              ` : ''}
+              <button id="btnNotifSettings" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer;">
+                Notification Settings
+              </button>
+            </div>
+          </div>
+        `;
+
+        const btnEnable = document.getElementById("btnEnableNotif");
+        if (btnEnable) {
+          btnEnable.addEventListener("click", () => {
+            window.SanyuHubNative.requestNotificationPermission();
+          });
+        }
+
+        const btnSettings = document.getElementById("btnNotifSettings");
+        if (btnSettings) {
+          btnSettings.addEventListener("click", () => {
+            window.SanyuHubNative.openNotificationSettings();
+          });
+        }
+      };
+
+      renderAndroidNotifSection();
+
+      window.onNotificationPermissionResult = (granted) => {
+        renderAndroidNotifSection();
+      };
+    }
   }
 });
 </script>

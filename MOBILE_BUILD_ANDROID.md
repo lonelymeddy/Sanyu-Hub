@@ -133,7 +133,89 @@ The Android application is built as a native Android project hosting an optimize
 
 ---
 
-## 7. Future Website Updates & Application Maintenance
+## 7. Android Permissions & Rationale
+
+The application requests only the minimal necessary permissions required for media streaming, web browsing, and system notification alerts:
+
+* **`android.permission.INTERNET`**: Required to load SanyuHub web pages, media manifests, APIs, and video streams.
+* **`android.permission.ACCESS_NETWORK_STATE`**: Allows detecting network connectivity status to gracefully handle network transitions and offline scenarios.
+* **`android.permission.WAKE_LOCK`**: Keeps the screen active during HTML5 video and audio playback.
+* **`android.permission.POST_NOTIFICATIONS`**: Required on Android 13+ (API level 33+) to display system notifications for new releases, live TV events, and announcements.
+* **`android.permission.VIBRATE`**: Enables tactile haptic feedback during notification deliveries.
+
+*Sensitive permissions (e.g., location, contacts, camera, microphone, SMS) are strictly avoided.*
+
+---
+
+## 8. Notification Architecture & Web Integration
+
+### Notification Channel Infrastructure
+* **Channel ID**: `sanyuhub_announcements`
+* **Channel Name**: `SanyuHub Announcements`
+* **Description**: Notifications for new movies, series, live TV events, and platform updates.
+* **Default Importance**: `IMPORTANCE_DEFAULT` with system launcher badges and vibration.
+
+### Android 13+ (API 33+) Permission Handling
+* Notification permissions are requested contextually when the user interacts with notification settings or enables updates (e.g., in `settings-app.html`).
+* Denying notification permission does not block app usage, web navigation, or video playback.
+* Native App Notification Settings can be accessed directly from the in-app preferences page (`settings-app.html`) via `NotificationHelper.openNotificationSettings()`.
+
+### Native JavaScript Bridge (`window.SanyuHubNative`)
+The WebView injects a safe JavaScript interface `window.SanyuHubNative` providing:
+* `isAndroidApp()`: Returns `true` when running inside the Android app wrapper.
+* `isNotificationPermissionGranted()`: Returns `true` if system notifications are enabled.
+* `requestNotificationPermission()`: Triggers the native Android 13+ permission dialog.
+* `openNotificationSettings()`: Opens the system notification settings page for SanyuHub.
+* `postNotification(title, message, targetUrl)`: Displays a local notification that deep-links directly to an internal SanyuHub route when tapped.
+
+### Deep Linking & Notification Taps
+* Tapping a notification launches or resumes `MainActivity` with the target route (e.g., `/movies`, `/series`, `/live-tv/watch/galaxy-tv`).
+* All notification URLs are strictly validated to ensure navigation remains inside authorized SanyuHub domains (`sanyuhub.onrender.com`, `localhost`, or relative paths).
+
+---
+
+## 9. Testing Notifications
+
+### A. Testing via JavaScript Console (In-App)
+When running the Android application, execute in the WebView DevTools console:
+
+```javascript
+if (window.SanyuHubNative) {
+  // Request notification permission
+  window.SanyuHubNative.requestNotificationPermission();
+
+  // Post a test notification with deep link
+  window.SanyuHubNative.postNotification("New Movie Added!", "Watch the latest release on SanyuHub now.", "/movies");
+}
+```
+
+### B. Testing via App Preferences
+1. Open the Android application and navigate to **More > Preferences** (`/settings-app`).
+2. The **Push Notifications** card will automatically appear when running inside the native Android app.
+3. Tap **Enable Notifications** or **Notification Settings** to test permission requests and settings navigation.
+
+---
+
+## 10. Firebase Cloud Messaging (FCM) Integration Guide
+
+If remote push notifications are added to the backend in the future:
+
+1. **Firebase Project Setup**:
+   * Create a Firebase Project in the [Firebase Console](https://console.firebase.google.com/).
+   * Register the Android App with Package Name `ug.sanyuhub.app`.
+   * Download `google-services.json` and place it in `android/app/google-services.json`.
+
+2. **Gradle Dependency Setup**:
+   * Add `com.google.gms:google-services` plugin to `android/build.gradle` and `android/app/build.gradle`.
+   * Add dependency `implementation 'com.google.firebase:firebase-messaging:23.4.0'`.
+
+3. **Service Implementation**:
+   * Create `FirebaseMessagingService` subclass in `ug.sanyuhub.app`.
+   * In `onMessageReceived(RemoteMessage message)`, pass payload data to `NotificationHelper.showNotification(context, title, body, targetUrl)`.
+
+---
+
+## 11. Future Website Updates & Application Maintenance
 
 Since the Android application directly renders the production SanyuHub web platform using native WebView acceleration:
 
