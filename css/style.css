@@ -905,17 +905,61 @@ display:none
 
 .card-grid,
 .trending-grid{
-grid-template-columns:repeat(4,1fr)
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr))
 }
 
 .continue-grid{
-grid-template-columns:repeat(2,1fr)
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr))
 }
 
 .live-grid{
-grid-template-columns:repeat(2,1fr)
+grid-template-columns:repeat(auto-fill,minmax(200px,1fr))
 }
 
+}
+
+/* TABLET AND MEDIUM SCREEN RESPONSIVE OPTIMIZATIONS (768px - 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .main-content,
+  .container {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .bottom-nav {
+    max-width: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px 20px 0 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .bottom-nav-item {
+    min-height: 48px;
+  }
+
+  .movie-detail-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 28px;
+  }
+
+  .movie-detail-poster {
+    width: 220px;
+    flex-shrink: 0;
+  }
+
+  .movie-detail-info {
+    flex: 1;
+  }
+
+  .movie-detail-meta,
+  .movie-detail-actions {
+    justify-content: flex-start;
+  }
 }
 
 @media(max-width:600px){
