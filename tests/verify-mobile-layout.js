@@ -93,7 +93,8 @@ const BASE_URL = `http://localhost:${PORT}`;
   }
 
   await browser.close();
-  serverProcess.kill();
+  serverProcess.kill('SIGKILL');
+  await new Promise(r => setTimeout(r, 500));
 
   if (overflowFailures > 0) {
     console.error(`\nFAILED: ${overflowFailures} route(s) failed mobile verification.`);

@@ -743,7 +743,7 @@ async function loadInitialRecommendations() {
     recsGrid.innerHTML = "";
 
     if (recommendations.length === 0) {
-        recsGrid.innerHTML = `<div class="loading-state">Nothing here yet</div>`;
+        recsGrid.innerHTML = `<div class="loading-state">Nothing here</div>`;
         return;
     }
 
@@ -1383,63 +1383,6 @@ const LIVE_TV_CHANNELS = [
         description: "Base2 TV (Telefwunkeni) delivers vibrant Luganda entertainment, translated blockbuster movies, youth shows, and local music.",
         countries: ["ug"]
     },
-    // KENYAN TV CHANNELS
-    {
-        id: "ktn-news-kenya",
-        aliases: ["ktn-news", "ktn"],
-        name: "KTN News Kenya",
-        category: "news",
-        categoryLabel: "24/7 Kenyan News & Current Affairs",
-        logo: "/images/ntvkenya-logo.png",
-        streamType: "hls",
-        streamUrl: "https://stream.hydeinnovations.com:443/ktnnews/index.m3u8",
-        embedUrl: "https://www.standardmedia.co.ke/ktnnews",
-        meta: "Official Live Broadcast • HD • Kenyan News & Current Affairs",
-        description: "KTN News Kenya is Kenya's leading 24-hour news channel delivering breaking news, political discourse, and live events.",
-        countries: ["ke"]
-    },
-    {
-        id: "ntv-kenya",
-        aliases: ["ntvkenya"],
-        name: "NTV Kenya",
-        category: "news",
-        categoryLabel: "Kenyan News, Shows & Documentaries",
-        logo: "/images/ntvkenya-logo.png",
-        streamType: "hls",
-        streamUrl: "https://ams-2629.antmedia.cloud/LiveApp/streams/ntvkenya2026.m3u8",
-        embedUrl: "https://ntvkenya.co.ke",
-        meta: "Official Live Broadcast • HD • Kenyan Entertainment & News",
-        description: "NTV Kenya delivers premier Kenyan broadcast television, investigatives, comedy series, live news, and current affairs.",
-        countries: ["ke"]
-    },
-    {
-        id: "citizen-tv-kenya",
-        aliases: ["citizentv", "citizen-tv"],
-        name: "Citizen TV Kenya",
-        category: "entertainment",
-        categoryLabel: "Kenyan Drama, News & Entertainment",
-        logo: "/images/citizentv-logo.png",
-        streamType: "hls",
-        streamUrl: "https://stream.hydeinnovations.com:443/citizentv/index.m3u8",
-        embedUrl: "https://citizentv.co.ke",
-        meta: "Official Live Broadcast • HD • Top Kenyan TV Station",
-        description: "Citizen TV is Kenya's most watched television station featuring hit local shows, Swahili drama series, and live news.",
-        countries: ["ke"]
-    },
-    {
-        id: "k24-tv-kenya",
-        aliases: ["k24", "k24tv"],
-        name: "K24 TV Kenya",
-        category: "news",
-        categoryLabel: "Kenyan News & Sports",
-        logo: "/images/k24tv-logo.png",
-        streamType: "hls",
-        streamUrl: "https://stream.hydeinnovations.com:443/k24tv/index.m3u8",
-        embedUrl: "https://www.k24tv.co.ug",
-        meta: "Official Live Broadcast • HD • News & Entertainment",
-        description: "K24 TV brings breaking Kenyan news, live football coverage, lifestyle shows, and local entertainment.",
-        countries: ["ke"]
-    },
     // SHARED / INTERNATIONAL CHANNELS
     {
         id: "trace-mziki",
@@ -1453,7 +1396,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://bx-tv.com/watch/trace-mziki-893902",
         meta: "Official Live Broadcast • HD • We Love East African Music",
         description: "Trace Mziki is the ultimate music channel dedicated to East African music, featuring hit video countdowns, artist showcases, and urban culture.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "cartoon-network",
@@ -1467,7 +1410,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://www.cartoonnetwork.com",
         meta: "Official Live Broadcast • HD • Cartoons & Animation",
         description: "Cartoon Network is home to top animated shows, classic cartoons, and kids entertainment.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "baby-shark-tv",
@@ -1481,7 +1424,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://www.pinkfong.com",
         meta: "Official Live Broadcast • HD • Kids & Nursery Rhymes",
         description: "Baby Shark TV features non-stop nursery rhymes, fun songs, educational animation, and kids entertainment.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "pbs-kids-pacific",
@@ -1495,7 +1438,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://pbskids.org",
         meta: "Official Live Broadcast • HD • Educational Shows",
         description: "PBS Kids Pacific delivers educational television, fun children's series, and inspiring programming.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "telemundo",
@@ -1509,7 +1452,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://www.telemundo.com",
         meta: "Official Live Broadcast • HD • Spanish Entertainment",
         description: "Telemundo offers premier Spanish-language telenovelas, live news, reality TV, and entertainment.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "b4u-movies",
@@ -1523,7 +1466,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://b4umovies.co.uk",
         meta: "Official Live Broadcast • HD • Bollywood Blockbusters",
         description: "B4U Movies brings you premier Bollywood feature films, classic Hindi cinema, behind-the-scenes specials, and star interviews.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "kidsflix",
@@ -1537,7 +1480,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://www.kidsflix.com",
         meta: "Official Live Broadcast • HD • Family & Kids Entertainment",
         description: "KIDS FLIX delivers continuous family-friendly animated movies, kids series, educational adventures, and fun entertainment.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "fifa-plus",
@@ -1551,7 +1494,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://www.fifa.com/fifaplus",
         meta: "Official Live Broadcast • HD • FIFA Football & Highlights",
         description: "FB | FIFA+ brings you live international football coverage, classic match archives, player documentaries, and original sports series.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "cnn",
@@ -1565,7 +1508,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://www.cnn.com",
         meta: "Official Live Broadcast • HD • Breaking News & World Affairs",
         description: "CNN delivers live global breaking news, expert political analysis, international reporting, and in-depth documentary coverage.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "tom-and-jerry-2",
@@ -1579,7 +1522,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://www.cartoonnetwork.com",
         meta: "Official Live Broadcast • HD • Tom and Jerry Animated Stream",
         description: "Tom and Jerry 2 brings non-stop classic animated episodes, comical adventures, and timeless slapstick cartoon entertainment.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     // UGANDAN RADIO STATIONS
     {
@@ -1662,71 +1605,6 @@ const LIVE_TV_CHANNELS = [
         description: "Radio West is the leading radio station in Western Uganda.",
         countries: ["ug"]
     },
-    // KENYAN RADIO STATIONS
-    {
-        id: "capital-fm-kenya",
-        aliases: ["capitalfm", "capital-fm"],
-        name: "Capital FM Kenya",
-        type: "radio",
-        isRadio: true,
-        category: "radio",
-        categoryLabel: "98.4 FM • Kenya's Best Music",
-        logo: "/images/galaxyfm-logo.png",
-        streamType: "audio",
-        streamUrl: "https://capitalfm.streamguys1.com/capitalfm",
-        embedUrl: "https://www.capitalfm.co.ke",
-        meta: "Official Live Broadcast • 98.4 FM Kenya",
-        description: "Capital FM Kenya is Kenya's premier radio station broadcasting top urban hits, news, and entertainment.",
-        countries: ["ke"]
-    },
-    {
-        id: "radio-citizen-kenya",
-        aliases: ["radiocitizen"],
-        name: "Radio Citizen",
-        type: "radio",
-        isRadio: true,
-        category: "radio",
-        categoryLabel: "106.7 FM • Kenya News & Music",
-        logo: "/images/citizentv-logo.png",
-        streamType: "audio",
-        streamUrl: "https://stream.zeno.fm/4e48a1c9703vv",
-        embedUrl: "https://radiocitizen.co.ke",
-        meta: "Official Live Broadcast • 106.7 FM Kenya",
-        description: "Radio Citizen is Kenya's most listened to Swahili radio station for news, music, and talk shows.",
-        countries: ["ke"]
-    },
-    {
-        id: "classic-105-kenya",
-        aliases: ["classic105"],
-        name: "Classic 105",
-        type: "radio",
-        isRadio: true,
-        category: "radio",
-        categoryLabel: "105.2 FM • Good Times & Great Hits",
-        logo: "/images/dembefm-logo.jpg",
-        streamType: "audio",
-        streamUrl: "https://stream.zeno.fm/f3wvbb1v38quv",
-        embedUrl: "https://classic105.com",
-        meta: "Official Live Broadcast • 105.2 FM Kenya",
-        description: "Classic 105 Kenya features soul classics, morning talk shows, and great hits.",
-        countries: ["ke"]
-    },
-    {
-        id: "kiss-100-kenya",
-        aliases: ["kiss100"],
-        name: "Kiss 100 Kenya",
-        type: "radio",
-        isRadio: true,
-        category: "radio",
-        categoryLabel: "100.0 FM • Kenya's No.1 Hit Station",
-        logo: "/images/galaxyfm-logo.png",
-        streamType: "audio",
-        streamUrl: "https://stream.zeno.fm/91eb81v38quv",
-        embedUrl: "https://kiss100.co.ke",
-        meta: "Official Live Broadcast • 100.0 FM Kenya",
-        description: "Kiss 100 Kenya is Nairobi's leading youth hit music radio station.",
-        countries: ["ke"]
-    },
     // SHARED KIDS CHANNELS
     {
         id: "smurf-tv",
@@ -1740,7 +1618,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://stream.ads.ottera.tv/playlist.m3u8?network_id=4065",
         meta: "Official Live Broadcast • Animated Series",
         description: "Smurf TV brings non-stop Smurfs animated series, classic cartoons, and adventures from the Smurf Village.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "lego-channel",
@@ -1754,7 +1632,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://dltiqboxjw21d.cloudfront.net/index.m3u8",
         meta: "Official Live Broadcast • LEGO Animated Shows",
         description: "The LEGO Channel features exciting LEGO animated adventures, Ninjago, Friends, City, and creative brick-building entertainment.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "toongoggles",
@@ -1768,7 +1646,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://amg01329-otterainc-toongoggles-samsungau-ad-4c.amagi.tv/playlist/amg01329-otterainc-toongoggles-samsungau/playlist.m3u8",
         meta: "Official Live Broadcast • Kids Shows & Cartoons",
         description: "ToonGoggles offers fun-filled animated series, games, and entertainment for children of all ages.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "moonbug",
@@ -1782,7 +1660,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "https://moonbug-rokuus.amagi.tv/playlist.m3u8",
         meta: "Official Live Broadcast • CoComelon & Blippi",
         description: "Moonbug features popular children's shows including CoComelon, Blippi, Little Angel, Morphle, and educational songs.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     },
     {
         id: "minimax",
@@ -1796,7 +1674,7 @@ const LIVE_TV_CHANNELS = [
         embedUrl: "http://88.212.15.17/live/minimax_hun/index.m3u8",
         meta: "Official Live Broadcast • Children's Television Network",
         description: "MiniMax delivers beloved children's television series, animated features, and educational family entertainment.",
-        countries: ["ug", "ke"]
+        countries: ["ug"]
     }
 ];
 
@@ -1881,7 +1759,7 @@ function initLiveTvCatalogue() {
             cardGrid.innerHTML = `
                 <div class="country-empty-state" style="grid-column: 1 / -1;">
                     <div class="country-empty-icon">🌐</div>
-                    <h3 class="country-empty-title">Nothing here yet</h3>
+                    <h3 class="country-empty-title">Nothing here</h3>
                     <p class="country-empty-sub">No channels available for ${countryConfig.name} in this section right now.</p>
                 </div>
             `;
@@ -3110,7 +2988,7 @@ async function initHomePage() {
                 quality: "HD",
                 posterUrl: "/images/tracemziki-logo.png",
                 targetUrl: "/live-tv/watch/trace-mziki/",
-                countries: ["ug", "ke"]
+                countries: ["ug"]
             }
         ];
 
@@ -3212,7 +3090,7 @@ async function initHomePage() {
             emptyEl.className = "country-empty-state";
             emptyEl.innerHTML = `
                 <div class="country-empty-icon">🌐</div>
-                <h3 class="country-empty-title">Nothing here yet</h3>
+                <h3 class="country-empty-title">Nothing here</h3>
                 <p class="country-empty-sub">Entertainment content for ${countryConfig.name} is currently unavailable. Check back soon!</p>
             `;
             homeMain.appendChild(emptyEl);
@@ -3244,7 +3122,7 @@ async function initSubpage(containerId, isTrending = false, limit = 24) {
             container.innerHTML = `
                 <div class="country-empty-state" style="grid-column: 1 / -1;">
                     <div class="country-empty-icon">🌐</div>
-                    <h3 class="country-empty-title">Nothing here yet</h3>
+                    <h3 class="country-empty-title">Nothing here</h3>
                     <p class="country-empty-sub">No titles available for ${countryConfig.name} right now.</p>
                 </div>
             `;
@@ -3415,7 +3293,7 @@ if (movieCardGrid) {
                 movieCardGrid.innerHTML = `
                     <div class="country-empty-state" style="grid-column: 1 / -1;">
                         <div class="country-empty-icon">🌐</div>
-                        <h3 class="country-empty-title">Nothing here yet</h3>
+                        <h3 class="country-empty-title">Nothing here</h3>
                         <p class="country-empty-sub">No movies available for ${countryConfig.name} right now.</p>
                     </div>
                 `;
@@ -3463,7 +3341,7 @@ if (movieCardGrid) {
                 movieCardGrid.innerHTML = `
                     <div class="country-empty-state" style="grid-column: 1 / -1;">
                         <div class="country-empty-icon">🌐</div>
-                        <h3 class="country-empty-title">Nothing here yet</h3>
+                        <h3 class="country-empty-title">Nothing here</h3>
                         <p class="country-empty-sub">No series available for ${countryConfig.name} right now.</p>
                     </div>
                 `;
@@ -3500,7 +3378,7 @@ if (movieCardGrid) {
                     posterUrl: "/images/tracemziki-logo.png",
                     streamUrl: "https://channels.trace.plus/Traceprod/MZIKI_hd/index.m3u8",
                     targetUrl: "/live-tv/watch/trace-mziki/",
-                    countries: ["ug", "ke"]
+                    countries: ["ug"]
                 }
             ];
 
@@ -3517,7 +3395,7 @@ if (movieCardGrid) {
                 movieCardGrid.innerHTML = `
                     <div class="country-empty-state" style="grid-column: 1 / -1;">
                         <div class="country-empty-icon">🌐</div>
-                        <h3 class="country-empty-title">Nothing here yet</h3>
+                        <h3 class="country-empty-title">Nothing here</h3>
                         <p class="country-empty-sub">No music available for ${countryConfig.name} right now.</p>
                     </div>
                 `;
@@ -3575,7 +3453,7 @@ if (movieCardGrid) {
                 movieCardGrid.innerHTML = `
                     <div class="country-empty-state" style="grid-column: 1 / -1;">
                         <div class="country-empty-icon">🌐</div>
-                        <h3 class="country-empty-title">Nothing here yet</h3>
+                        <h3 class="country-empty-title">Nothing here</h3>
                         <p class="country-empty-sub">No upcoming concerts in ${countryConfig.name} right now.</p>
                     </div>
                 `;
@@ -3766,7 +3644,7 @@ if (seriesCardGrid) {
                 seriesCardGrid.innerHTML = `
                     <div class="country-empty-state" style="grid-column: 1 / -1;">
                         <div class="country-empty-icon">🌐</div>
-                        <h3 class="country-empty-title">Nothing here yet</h3>
+                        <h3 class="country-empty-title">Nothing here</h3>
                         <p class="country-empty-sub">No series available for ${countryConfig.name} right now.</p>
                     </div>
                 `;

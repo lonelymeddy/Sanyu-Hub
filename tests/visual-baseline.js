@@ -71,7 +71,8 @@ if (!fs.existsSync(BASELINES_DIR)) {
   }
 
   await browser.close();
-  serverProcess.kill();
+  serverProcess.kill('SIGKILL');
+  await new Promise(r => setTimeout(r, 500));
   console.log('Visual baseline processing complete.');
   process.exit(0);
 })();
