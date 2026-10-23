@@ -1,31 +1,43 @@
 const express = require('express');
 const path = require('path');
-const { getUgandanMovieCatalogue, getUgandanSeriesCatalogue } = require('./ugandan-movies');
-const { getUpcomingConcerts } = require('./allevents-concerts');
+const { loadCountryCatalogue } = require('./src/countries/shared/country-loader');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// API Route for Live TV Channels
+app.get('/api/live-tv/channels', async (req, res) => {
+  try {
+    const country = (req.query.country || 'ug').trim().toLowerCase();
+    const catalogueData = await loadCountryCatalogue(country, 'tv');
+    res.json({
+      channels: catalogueData.tvChannels || []
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve TV channels.' });
+  }
+});
+
+// API Route for Radio Stations
+app.get('/api/radio', async (req, res) => {
+  try {
+    const country = (req.query.country || 'ug').trim().toLowerCase();
+    const catalogueData = await loadCountryCatalogue(country, 'radio');
+    res.json({
+      stations: catalogueData.radioStations || []
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve radio stations.' });
+  }
+});
 
 // API Route for Movies Catalogue
 app.get('/api/movies', async (req, res) => {
   try {
     const country = (req.query.country || 'ug').trim().toLowerCase();
 
-    // Unready countries return empty catalogue
-    const READY_COUNTRIES = ['ug', 'ke'];
-    if (!READY_COUNTRIES.includes(country)) {
-      return res.json({
-        movies: [],
-        page: 1,
-        limit: 24,
-        total: 0,
-        totalPages: 1,
-        vjs: [],
-        genres: []
-      });
-    }
-
-    const catalogue = await getUgandanMovieCatalogue();
+    const catalogueData = await loadCountryCatalogue(country, 'movies');
+    const movies = catalogueData.movies || [];
 
     // Extract query parameters
     const search = (req.query.search || '').trim().toLowerCase();
@@ -34,20 +46,10 @@ app.get('/api/movies', async (req, res) => {
     const yearFilter = req.query.year ? parseInt(req.query.year, 10) : null;
     const sort = (req.query.sort || 'recently-added').trim().toLowerCase();
 
-    // Filter catalogue by country eligibility first
-    let countryEligible = catalogue;
-    if (country === 'ke') {
-      // For Kenya: include international movies / general catalogue entries eligible for KE
-      countryEligible = catalogue.filter(movie => {
-        // Exclude strictly Luganda-specific local titles if specified, otherwise include international titles
-        return true; // Supported international and local entries available in Kenyan market
-      });
-    }
-
     // Extract unique VJs and Genres
     const vjSet = new Set();
     const genreSet = new Set();
-    countryEligible.forEach(m => {
+    movies.forEach(m => {
       if (m.vj) vjSet.add(m.vj);
       if (m.genres && Array.isArray(m.genres)) {
         m.genres.forEach(g => genreSet.add(g));
@@ -57,7 +59,7 @@ app.get('/api/movies', async (req, res) => {
     const genres = Array.from(genreSet).sort();
 
     // Filter catalogue
-    let filtered = countryEligible.filter(movie => {
+    let filtered = movies.filter(movie => {
       if (search) {
         const matchTitle = movie.title && movie.title.toLowerCase().includes(search);
         const matchVj = movie.vj && movie.vj.toLowerCase().includes(search);
@@ -119,15 +121,18 @@ app.get('/api/movies', async (req, res) => {
     });
 
   } catch (err) {
-    res.status(500).json({ error: 'Failed to retrieve Ugandan movie catalogue.' });
+    res.status(500).json({ error: 'Failed to retrieve movie catalogue.' });
   }
 });
 
 // Single movie detail API
 app.get('/api/movies/:id', async (req, res) => {
   try {
-    const catalogue = await getUgandanMovieCatalogue();
-    const movie = catalogue.find(m => m.id === req.params.id);
+    const ugData = await loadCountryCatalogue('ug', 'movies');
+    const keData = await loadCountryCatalogue('ke', 'movies');
+    const allMovies = [...(ugData.movies || []), ...(keData.movies || [])];
+
+    const movie = allMovies.find(m => m.id === req.params.id);
     if (!movie) {
       return res.status(404).json({ error: 'Movie not found' });
     }
@@ -142,40 +147,23 @@ app.get('/api/series', async (req, res) => {
   try {
     const country = (req.query.country || 'ug').trim().toLowerCase();
 
-    // Unready countries return empty catalogue
-    const READY_COUNTRIES = ['ug', 'ke'];
-    if (!READY_COUNTRIES.includes(country)) {
-      return res.json({
-        series: [],
-        page: 1,
-        limit: 24,
-        total: 0,
-        totalPages: 1,
-        genres: []
-      });
-    }
-
-    const seriesCatalogue = await getUgandanSeriesCatalogue();
+    const catalogueData = await loadCountryCatalogue(country, 'series');
+    const seriesList = catalogueData.series || [];
 
     const search = (req.query.search || '').trim().toLowerCase();
     const vjFilter = (req.query.vj || '').trim().toLowerCase();
     const genreFilter = (req.query.genre || '').trim().toLowerCase();
     const sort = (req.query.sort || 'popular').trim().toLowerCase();
 
-    let countryEligible = seriesCatalogue;
-    if (country === 'ke') {
-      countryEligible = seriesCatalogue.filter(s => true);
-    }
-
     const genreSet = new Set();
-    countryEligible.forEach(s => {
+    seriesList.forEach(s => {
       if (s.genres && Array.isArray(s.genres)) {
         s.genres.forEach(g => genreSet.add(g));
       }
     });
     const genres = Array.from(genreSet).sort();
 
-    let filtered = countryEligible.filter(s => {
+    let filtered = seriesList.filter(s => {
       if (search) {
         const matchTitle = s.title && s.title.toLowerCase().includes(search);
         const matchVj = s.vj && s.vj.toLowerCase().includes(search);
@@ -225,15 +213,18 @@ app.get('/api/series', async (req, res) => {
     });
 
   } catch (err) {
-    res.status(500).json({ error: 'Failed to retrieve Ugandan series catalogue.' });
+    res.status(500).json({ error: 'Failed to retrieve series catalogue.' });
   }
 });
 
 // Single Series Detail API
 app.get('/api/series/:id', async (req, res) => {
   try {
-    const seriesCatalogue = await getUgandanSeriesCatalogue();
-    const series = seriesCatalogue.find(s => s.id === req.params.id);
+    const ugData = await loadCountryCatalogue('ug', 'series');
+    const keData = await loadCountryCatalogue('ke', 'series');
+    const allSeries = [...(ugData.series || []), ...(keData.series || [])];
+
+    const series = allSeries.find(s => s.id === req.params.id);
     if (!series) {
       return res.status(404).json({ error: 'Series not found' });
     }
@@ -243,36 +234,17 @@ app.get('/api/series/:id', async (req, res) => {
   }
 });
 
-// API Route for Concerts (AllEvents Uganda)
+// API Route for Concerts
 app.get('/api/concerts', async (req, res) => {
   try {
     const country = (req.query.country || 'ug').trim().toLowerCase();
 
-    // Unready countries return empty catalogue
-    const READY_COUNTRIES = ['ug', 'ke'];
-    if (!READY_COUNTRIES.includes(country)) {
-      return res.json({
-        concerts: [],
-        page: 1,
-        limit: 24,
-        total: 0,
-        totalPages: 1
-      });
-    }
-
-    const concerts = await getUpcomingConcerts();
+    const catalogueData = await loadCountryCatalogue(country, 'concerts');
+    const concerts = catalogueData.concerts || [];
 
     const search = (req.query.search || '').trim().toLowerCase();
 
-    let countryEligible = concerts.filter(c => {
-      if (country === 'ke') {
-        return c.country === 'ke';
-      }
-      // Default ug
-      return !c.country || c.country === 'ug';
-    });
-
-    let filtered = countryEligible.filter(c => {
+    let filtered = concerts.filter(c => {
       if (search) {
         const matchTitle = c.title && c.title.toLowerCase().includes(search);
         const matchVenue = c.venue && c.venue.toLowerCase().includes(search);
@@ -312,8 +284,11 @@ app.get('/api/concerts', async (req, res) => {
 // Single concert detail API
 app.get('/api/concerts/:id', async (req, res) => {
   try {
-    const concerts = await getUpcomingConcerts();
-    const concert = concerts.find(c => c.id === req.params.id || c.slug === req.params.id);
+    const ugData = await loadCountryCatalogue('ug', 'concerts');
+    const keData = await loadCountryCatalogue('ke', 'concerts');
+    const allConcerts = [...(ugData.concerts || []), ...(keData.concerts || [])];
+
+    const concert = allConcerts.find(c => c.id === req.params.id || c.slug === req.params.id);
     if (!concert) {
       return res.status(404).json({ error: 'Concert not found' });
     }
@@ -415,7 +390,6 @@ app.get('/watch', (req, res) => {
 // Live TV EPG Endpoint
 app.get('/api/live-tv/epg/:id', async (req, res) => {
   const channelId = req.params.id;
-  // Currently no official broadcaster EPG APIs exist for supported channels
   res.json({
     channelId: channelId,
     schedule: [],
@@ -426,7 +400,6 @@ app.get('/api/live-tv/epg/:id', async (req, res) => {
 // Live TV Concurrent Viewer Count Endpoint
 app.get('/api/live-tv/viewers/:id', async (req, res) => {
   const channelId = req.params.id;
-  // Broadcaster HLS streams do not expose genuine concurrent viewer metrics
   res.json({
     channelId: channelId,
     viewers: null,
