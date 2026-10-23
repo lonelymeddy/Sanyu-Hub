@@ -367,6 +367,10 @@ app.get(['/settings', '/settings/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'settings.html'));
 });
 
+app.get(['/settings/country', '/settings/country/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'settings-country.html'));
+});
+
 app.get(['/settings/app-preferences', '/settings/app-preferences/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'settings-app.html'));
 });

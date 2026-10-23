@@ -207,18 +207,65 @@ function ensureCountryOnboardingOverlayExists() {
 
 function updateControlValueUI() {
     const valEl = document.getElementById("countrySelectControlValue");
-    if (!valEl) return;
+    const settingsValEl = document.getElementById("settingsCountrySelectValue");
 
     if (tempSelectedCountry && COUNTRIES_CONFIG[tempSelectedCountry]) {
-        valEl.textContent = COUNTRIES_CONFIG[tempSelectedCountry].name;
-        valEl.classList.remove("placeholder");
+        const countryName = COUNTRIES_CONFIG[tempSelectedCountry].name;
+        if (valEl) {
+            valEl.textContent = countryName;
+            valEl.classList.remove("placeholder");
+        }
+        if (settingsValEl) {
+            settingsValEl.textContent = countryName;
+            settingsValEl.classList.remove("placeholder");
+        }
     } else {
-        valEl.textContent = "Choose your country";
-        valEl.classList.add("placeholder");
+        if (valEl) {
+            valEl.textContent = "Choose your country";
+            valEl.classList.add("placeholder");
+        }
+        if (settingsValEl) {
+            settingsValEl.textContent = "Choose your country";
+            settingsValEl.classList.add("placeholder");
+        }
     }
 
     const msg = document.getElementById("countryValidationMsg");
     if (msg) msg.style.display = "none";
+}
+
+function initSettingsCountryPage() {
+    const control = document.getElementById("settingsCountrySelectControl");
+    const saveBtn = document.getElementById("saveCountryBtn");
+    if (!control && !saveBtn) return;
+
+    ensureCountryOnboardingOverlayExists();
+    tempSelectedCountry = getActiveCountryCode();
+    updateControlValueUI();
+
+    if (control) {
+        control.addEventListener("click", () => {
+            openCountryBottomSheet();
+        });
+    }
+
+    if (saveBtn) {
+        saveBtn.addEventListener("click", () => {
+            if (!tempSelectedCountry || !COUNTRIES_CONFIG[tempSelectedCountry]) {
+                return;
+            }
+
+            const currentCode = getActiveCountryCode();
+
+            if (tempSelectedCountry === currentCode) {
+                window.location.href = "/";
+                return;
+            }
+
+            setActiveCountryCode(tempSelectedCountry);
+            window.location.href = "/";
+        });
+    }
 }
 
 function renderCountrySheetList(filterText = "") {
@@ -4390,4 +4437,5 @@ document.addEventListener("DOMContentLoaded", () => {
     initSeriesWatchPage();
     initLiveTvCatalogue();
     initLiveTvWatchPage();
+    initSettingsCountryPage();
 });
