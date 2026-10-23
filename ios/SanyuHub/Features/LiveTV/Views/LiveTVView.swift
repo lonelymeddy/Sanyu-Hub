@@ -2,7 +2,16 @@ import SwiftUI
 
 public struct LiveTVView: View {
     @EnvironmentObject private var env: AppEnvironment
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @StateObject private var viewModel = LiveTVViewModel()
+
+    private var gridColumns: [GridItem] {
+        if horizontalSizeClass == .regular {
+            return [GridItem(.adaptive(minimum: 220, maximum: 320), spacing: 16)]
+        } else {
+            return [GridItem(.flexible()), GridItem(.flexible())]
+        }
+    }
 
     public init() {}
 
@@ -43,7 +52,7 @@ public struct LiveTVView: View {
                         emptyChannelsView
                     } else {
                         ScrollView {
-                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                            LazyVGrid(columns: gridColumns, spacing: 16) {
                                 ForEach(viewModel.channels) { channel in
                                     ChannelCardView(channel: channel) {
                                         env.activePlayerMedia = .liveChannel(channel: channel)

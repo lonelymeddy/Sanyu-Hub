@@ -2,11 +2,20 @@ import SwiftUI
 
 public struct LibraryView: View {
     @EnvironmentObject private var env: AppEnvironment
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @StateObject private var viewModel = LibraryViewModel()
 
     @State private var selectedMovie: Movie?
     @State private var selectedSeries: Series?
     @State private var selectedConcert: Concert?
+
+    private var gridColumns: [GridItem] {
+        if horizontalSizeClass == .regular {
+            return [GridItem(.adaptive(minimum: 160, maximum: 220), spacing: 16)]
+        } else {
+            return [GridItem(.flexible()), GridItem(.flexible())]
+        }
+    }
 
     public init() {}
 
@@ -54,7 +63,7 @@ public struct LibraryView: View {
                     // Content Area
                     if viewModel.isLoading {
                         ScrollView {
-                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                            LazyVGrid(columns: gridColumns, spacing: 16) {
                                 ForEach(0..<8, id: \.self) { _ in
                                     PosterCardSkeleton()
                                 }
@@ -79,7 +88,7 @@ public struct LibraryView: View {
                                 if viewModel.movies.isEmpty {
                                     emptyStateView
                                 } else {
-                                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                                    LazyVGrid(columns: gridColumns, spacing: 16) {
                                         ForEach(viewModel.movies) { movie in
                                             PosterCardView(
                                                 title: movie.title,
@@ -99,7 +108,7 @@ public struct LibraryView: View {
                                 if viewModel.seriesList.isEmpty {
                                     emptyStateView
                                 } else {
-                                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                                    LazyVGrid(columns: gridColumns, spacing: 16) {
                                         ForEach(viewModel.seriesList) { series in
                                             PosterCardView(
                                                 title: series.title,
@@ -118,7 +127,7 @@ public struct LibraryView: View {
                                 if viewModel.concertsList.isEmpty {
                                     emptyStateView
                                 } else {
-                                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                                    LazyVGrid(columns: gridColumns, spacing: 16) {
                                         ForEach(viewModel.concertsList) { concert in
                                             PosterCardView(
                                                 title: concert.title,

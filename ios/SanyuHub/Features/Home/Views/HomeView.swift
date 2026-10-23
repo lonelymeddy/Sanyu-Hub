@@ -2,10 +2,19 @@ import SwiftUI
 
 public struct HomeView: View {
     @EnvironmentObject private var env: AppEnvironment
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @StateObject private var viewModel = HomeViewModel()
 
     @State private var selectedMovie: Movie?
     @State private var selectedConcert: Concert?
+
+    private var gridColumns: [GridItem] {
+        if horizontalSizeClass == .regular {
+            return [GridItem(.adaptive(minimum: 180, maximum: 240), spacing: 16)]
+        } else {
+            return [GridItem(.flexible()), GridItem(.flexible())]
+        }
+    }
 
     public init() {}
 
@@ -83,7 +92,7 @@ public struct HomeView: View {
                                     env.selectedTab = .liveTv
                                 }
 
-                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                                LazyVGrid(columns: gridColumns, spacing: 12) {
                                     ForEach(viewModel.liveTvSection) { channel in
                                         ChannelCardView(channel: channel) {
                                             env.activePlayerMedia = .liveChannel(channel: channel)
@@ -98,7 +107,7 @@ public struct HomeView: View {
                                     env.selectedTab = .library
                                 }
 
-                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                                LazyVGrid(columns: gridColumns, spacing: 12) {
                                     ForEach(viewModel.trendingMoviesSection) { movie in
                                         PosterCardView(
                                             title: movie.title,
@@ -119,7 +128,7 @@ public struct HomeView: View {
                                     env.selectedTab = .library
                                 }
 
-                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                                LazyVGrid(columns: gridColumns, spacing: 12) {
                                     ForEach(viewModel.hotMusicSection) { movie in
                                         PosterCardView(
                                             title: movie.title,
@@ -140,7 +149,7 @@ public struct HomeView: View {
                                     env.selectedTab = .library
                                 }
 
-                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                                LazyVGrid(columns: gridColumns, spacing: 12) {
                                     ForEach(viewModel.concertsSection) { concert in
                                         PosterCardView(
                                             title: concert.title,
@@ -159,7 +168,7 @@ public struct HomeView: View {
                                     env.selectedTab = .liveTv
                                 }
 
-                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                                LazyVGrid(columns: gridColumns, spacing: 12) {
                                     ForEach(viewModel.radioSection) { radio in
                                         ChannelCardView(channel: radio) {
                                             env.activePlayerMedia = .liveChannel(channel: radio)
