@@ -6,7 +6,7 @@ final class LiveChannelsTests: XCTestCase {
         let repo = LiveTVRepository()
         let channels = repo.getAllChannels()
 
-        XCTAssertGreaterThanOrEqual(channels.count, 27)
+        XCTAssertGreaterThanOrEqual(channels.count, 30)
 
         let ntv = repo.getChannel(byId: "ntv-uganda")
         XCTAssertNotNil(ntv)
@@ -16,6 +16,14 @@ final class LiveChannelsTests: XCTestCase {
         let galaxyTv = repo.getChannel(byId: "galaxy-tv")
         XCTAssertNotNil(galaxyTv)
         XCTAssertEqual(galaxyTv?.streamUrl, "https://livestream.galaxytv.ug/jikonkone/playlist.m3u8")
+
+        let dembeFm = repo.getChannel(byId: "dembe-fm")
+        XCTAssertNotNil(dembeFm)
+        XCTAssertTrue(dembeFm?.isRadio == true)
+
+        let xfm = repo.getChannel(byId: "xfm")
+        XCTAssertNotNil(xfm)
+        XCTAssertTrue(xfm?.isRadio == true)
     }
 
     func testChannelFilteringByType() {
