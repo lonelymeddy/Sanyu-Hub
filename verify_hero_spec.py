@@ -14,24 +14,25 @@ def verify_hero():
         print(f"Total carousel slides: {len(slides)}")
         assert len(slides) == 6, f"Expected 6 slides, got {len(slides)}"
 
-        # Check collaboration banner elements
+        # Confirm extra collaboration banner below hero does NOT exist
         banner = page.query_selector(".hero-collaboration-banner")
-        assert banner is not None, "Hero collaboration banner not found!"
+        assert banner is None, "Extra hero collaboration banner should not exist below the hero!"
 
-        badge = page.query_selector(".collaboration-text-content .ugandan-text")
-        assert badge and badge.inner_text().strip() == "LET'S BUILD TOGETHER", f"Badge mismatch: {badge.inner_text() if badge else None}"
+        # Confirm collaboration slide exists in carousel track (slide 6 / data-slide 5)
+        collab_slide = page.query_selector(".carousel-slide[data-slide='5']")
+        assert collab_slide is not None, "Hero collaboration slide 6 not found in hero carousel!"
 
-        heading = page.query_selector(".collaboration-heading")
-        assert heading and heading.inner_text().strip() == "Let's create something amazing together.", f"Heading mismatch: {heading.inner_text() if heading else None}"
+        badge = collab_slide.query_selector(".hero-badge .ugandan-text")
+        assert badge and badge.text_content().strip() == "LET'S BUILD TOGETHER", f"Badge mismatch: {badge.text_content() if badge else None}"
 
-        desc = page.query_selector(".collaboration-description")
-        assert desc and "Want to collaborate with sanyuhub, sponsor our platform, or become a partner?" in desc.inner_text(), f"Desc mismatch: {desc.inner_text() if desc else None}"
+        heading = collab_slide.query_selector("h1")
+        assert heading and heading.text_content().strip() == "Let's create something amazing together.", f"Heading mismatch: {heading.text_content() if heading else None}"
 
-        btn = page.query_selector(".collaboration-actions .btn-get-started")
+        desc = collab_slide.query_selector(".hero-description")
+        assert desc and "Want to collaborate with sanyuhub, sponsor our platform, or become a partner?" in desc.text_content(), f"Desc mismatch: {desc.text_content() if desc else None}"
+
+        btn = collab_slide.query_selector(".btn-get-started")
         assert btn and btn.get_attribute("href") == "https://sanyuhub.vercel.app/contact", f"Button href mismatch: {btn.get_attribute('href') if btn else None}"
-
-        img = page.query_selector(".collaboration-image")
-        assert img and "/images/hero-collaboration.png" in img.get_attribute("src"), "Image src mismatch"
 
         page.screenshot(path="verification_desktop.png", full_page=False)
         print("Desktop verification passed!")
