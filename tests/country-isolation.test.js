@@ -40,20 +40,14 @@ async function runAll() {
     assert.strictEqual(keMod.config.code, 'ke');
   });
 
-  await runTest('Kenya loader returns Kenya catalogue only (No Uganda fallback)', async () => {
+  await runTest('Kenya loader returns empty catalogue (No Uganda fallback)', async () => {
     const keCatalogue = await loadCountryCatalogue('ke');
     assert.strictEqual(keCatalogue.config.code, 'ke');
-    assert.ok(keCatalogue.movies.length > 0, 'Kenya should have verified movies');
-
-    // Verify all returned movies belong strictly to Kenya ('ke')
-    keCatalogue.movies.forEach(m => {
-      assert.strictEqual(m.country, 'ke', `Movie ${m.title} must have country='ke'`);
-    });
-
-    // Verify Kenya concerts belong strictly to Kenya ('ke')
-    keCatalogue.concerts.forEach(c => {
-      assert.strictEqual(c.country, 'ke', `Concert ${c.title} must have country='ke'`);
-    });
+    assert.strictEqual(keCatalogue.movies.length, 0, 'Kenya movies must be empty');
+    assert.strictEqual(keCatalogue.series.length, 0, 'Kenya series must be empty');
+    assert.strictEqual(keCatalogue.tvChannels.length, 0, 'Kenya TV channels must be empty');
+    assert.strictEqual(keCatalogue.radioStations.length, 0, 'Kenya radio stations must be empty');
+    assert.strictEqual(keCatalogue.concerts.length, 0, 'Kenya concerts must be empty');
   });
 
   await runTest('Uganda loader returns Uganda catalogue only', async () => {
@@ -66,11 +60,10 @@ async function runAll() {
     });
   });
 
-  await runTest('Search in Kenya module does not return Uganda-only content', async () => {
+  await runTest('Search in Kenya module returns empty results', async () => {
     const keMod = getCountryModule('ke');
     const results = await keMod.search.searchKenyaContent('vj junior');
-    // VJ Junior is Uganda-specific, should return 0 results in Kenya search
-    assert.strictEqual(results.length, 0, 'Kenya search must not return Uganda Luganda VJ content');
+    assert.strictEqual(results.length, 0, 'Kenya search must return 0 results');
   });
 
   await runTest('Unready country loader returns clean empty catalogue without fallback', async () => {

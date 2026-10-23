@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const { loadCountryCatalogue } = require('./src/countries/shared/country-loader');
+const { getSupportedCountries } = require('./src/countries/registry');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -128,9 +129,14 @@ app.get('/api/movies', async (req, res) => {
 // Single movie detail API
 app.get('/api/movies/:id', async (req, res) => {
   try {
-    const ugData = await loadCountryCatalogue('ug', 'movies');
-    const keData = await loadCountryCatalogue('ke', 'movies');
-    const allMovies = [...(ugData.movies || []), ...(keData.movies || [])];
+    const supported = getSupportedCountries();
+    let allMovies = [];
+    for (const c of supported) {
+      const cData = await loadCountryCatalogue(c.code, 'movies');
+      if (cData && cData.movies) {
+        allMovies.push(...cData.movies);
+      }
+    }
 
     const movie = allMovies.find(m => m.id === req.params.id);
     if (!movie) {
@@ -220,9 +226,14 @@ app.get('/api/series', async (req, res) => {
 // Single Series Detail API
 app.get('/api/series/:id', async (req, res) => {
   try {
-    const ugData = await loadCountryCatalogue('ug', 'series');
-    const keData = await loadCountryCatalogue('ke', 'series');
-    const allSeries = [...(ugData.series || []), ...(keData.series || [])];
+    const supported = getSupportedCountries();
+    let allSeries = [];
+    for (const c of supported) {
+      const cData = await loadCountryCatalogue(c.code, 'series');
+      if (cData && cData.series) {
+        allSeries.push(...cData.series);
+      }
+    }
 
     const series = allSeries.find(s => s.id === req.params.id);
     if (!series) {
@@ -284,9 +295,14 @@ app.get('/api/concerts', async (req, res) => {
 // Single concert detail API
 app.get('/api/concerts/:id', async (req, res) => {
   try {
-    const ugData = await loadCountryCatalogue('ug', 'concerts');
-    const keData = await loadCountryCatalogue('ke', 'concerts');
-    const allConcerts = [...(ugData.concerts || []), ...(keData.concerts || [])];
+    const supported = getSupportedCountries();
+    let allConcerts = [];
+    for (const c of supported) {
+      const cData = await loadCountryCatalogue(c.code, 'concerts');
+      if (cData && cData.concerts) {
+        allConcerts.push(...cData.concerts);
+      }
+    }
 
     const concert = allConcerts.find(c => c.id === req.params.id || c.slug === req.params.id);
     if (!concert) {

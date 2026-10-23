@@ -113,7 +113,8 @@ const channelsToTest = [
   }
 
   await browser.close();
-  serverProcess.kill();
+  serverProcess.kill('SIGKILL');
+  await new Promise(r => setTimeout(r, 500));
 
   if (allPassed) {
     console.log('\n========================================');
