@@ -82,6 +82,16 @@ Sanyu<span>Hub</span>
       </select>
     </div>
 
+    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between;">
+      <div>
+        <div style="font-weight: 600; font-size: 15px; color: #fff;">Country Location</div>
+        <div style="font-size: 12px; color: #aaa; margin-top: 2px;">Tailors movies, TV, radio, channels, and concerts to your location.</div>
+      </div>
+      <button type="button" id="btnChangeCountrySettings" style="background: #f4c400; color: #080808; border: none; padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer;">
+        Change Country
+      </button>
+    </div>
+
     <div id="androidNotificationContainer" style="display: none;"></div>
 
   </div>
@@ -119,6 +129,15 @@ document.addEventListener("DOMContentLoaded", () => {
     qualEl.value = localStorage.getItem("sanyuhub_pref_quality") || "auto";
     qualEl.addEventListener("change", (e) => {
       localStorage.setItem("sanyuhub_pref_quality", e.target.value);
+    });
+  }
+
+  const btnCountry = document.getElementById("btnChangeCountrySettings");
+  if (btnCountry) {
+    btnCountry.addEventListener("click", () => {
+      if (typeof openCountryOnboardingModal === "function") {
+        openCountryOnboardingModal(true);
+      }
     });
   }
 

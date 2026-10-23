@@ -1,3 +1,215 @@
+/* CENTRAL COUNTRY PERSONALIZATION & ONBOARDING SYSTEM */
+const COUNTRIES_CONFIG = {
+    ug: {
+        code: "ug",
+        name: "Uganda",
+        flag: "🇺🇬",
+        ready: true,
+        categories: { movies: true, series: true, radio: true, tv: true, music: true, concerts: true }
+    },
+    ke: {
+        code: "ke",
+        name: "Kenya",
+        flag: "🇰🇪",
+        ready: true,
+        categories: { movies: true, series: true, radio: true, tv: true, music: true, concerts: true }
+    },
+    tz: { code: "tz", name: "Tanzania", flag: "🇹🇿", ready: false, categories: {} },
+    rw: { code: "rw", name: "Rwanda", flag: "🇷🇼", ready: false, categories: {} },
+    bi: { code: "bi", name: "Burundi", flag: "🇧🇮", ready: false, categories: {} },
+    ss: { code: "ss", name: "South Sudan", flag: "🇸🇸", ready: false, categories: {} },
+    ng: { code: "ng", name: "Nigeria", flag: "🇳🇬", ready: false, categories: {} },
+    gh: { code: "gh", name: "Ghana", flag: "🇬🇭", ready: false, categories: {} },
+    za: { code: "za", name: "South Africa", flag: "🇿🇦", ready: false, categories: {} },
+    us: { code: "us", name: "United States", flag: "🇺🇸", ready: false, categories: {} },
+    gb: { code: "gb", name: "United Kingdom", flag: "🇬🇧", ready: false, categories: {} }
+};
+
+function getActiveCountryCode() {
+    try {
+        const saved = localStorage.getItem("sanyuhub_country");
+        if (saved && COUNTRIES_CONFIG[saved.toLowerCase()]) {
+            return saved.toLowerCase();
+        }
+    } catch (e) {}
+    return "ug"; // Default country
+}
+
+function hasUserSetCountry() {
+    try {
+        const saved = localStorage.getItem("sanyuhub_country");
+        return Boolean(saved && COUNTRIES_CONFIG[saved.toLowerCase()]);
+    } catch (e) {
+        return false;
+    }
+}
+
+function setActiveCountryCode(code) {
+    const cleanCode = (code || "ug").toLowerCase();
+    if (!COUNTRIES_CONFIG[cleanCode]) return;
+
+    try {
+        localStorage.setItem("sanyuhub_country", cleanCode);
+    } catch (e) {}
+
+    // Invalidate search cache
+    cachedSearchMovies = null;
+    cachedSearchSeries = null;
+    cachedSearchConcerts = null;
+
+    updateNavbarCountryUI();
+    refreshPageForCountryChange();
+}
+
+function updateNavbarCountryUI() {
+    const code = getActiveCountryCode();
+    const config = COUNTRIES_CONFIG[code] || COUNTRIES_CONFIG.ug;
+    const btn = document.getElementById("navCountryBtn");
+    if (btn) {
+        btn.innerHTML = `<span class="nav-country-flag">${config.flag}</span> <span class="nav-country-code">${config.code.toUpperCase()}</span>`;
+        btn.title = `Country: ${config.name} (Click to change)`;
+    }
+}
+
+function ensureNavbarCountryButton() {
+    const navControls = document.querySelector(".nav-controls");
+    if (!navControls || document.getElementById("navCountryBtn")) return;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.id = "navCountryBtn";
+    btn.className = "nav-country-btn";
+    btn.setAttribute("aria-label", "Change country");
+
+    const topSearch = document.getElementById("topSearch");
+    if (topSearch) {
+        navControls.insertBefore(btn, topSearch);
+    } else {
+        navControls.appendChild(btn);
+    }
+
+    btn.addEventListener("click", () => {
+        openCountryOnboardingModal(true);
+    });
+
+    updateNavbarCountryUI();
+}
+
+let tempSelectedCountry = "ug";
+
+function ensureCountryOnboardingOverlayExists() {
+    if (document.getElementById("countryOnboardingOverlay")) return;
+
+    const overlay = document.createElement("div");
+    overlay.id = "countryOnboardingOverlay";
+    overlay.className = "country-onboarding-overlay";
+    overlay.setAttribute("aria-hidden", "true");
+
+    overlay.innerHTML = `
+        <div class="country-modal-card">
+            <div class="country-modal-header">
+                <div class="country-modal-brand">sanyu<span>hub</span></div>
+                <h2 class="country-modal-headline">Your entertainment. Your country. Your world.</h2>
+                <p class="country-modal-desc">Discover movies, TV shows, radio, TV channels, music, and concerts tailored to your selected country.</p>
+                <div class="country-modal-prompt">Which country are you watching from?</div>
+                <div class="country-search-wrapper">
+                    <svg class="country-search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <input type="text" id="countrySearchInput" class="country-search-input" placeholder="Search country..." aria-label="Search country">
+                </div>
+            </div>
+            <div class="country-select-list" id="countrySelectList"></div>
+            <div class="country-modal-footer">
+                <button type="button" id="countryContinueBtn" class="country-continue-btn">Continue</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const searchInput = document.getElementById("countrySearchInput");
+    const continueBtn = document.getElementById("countryContinueBtn");
+
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            renderCountryOptionsList(e.target.value);
+        });
+    }
+
+    if (continueBtn) {
+        continueBtn.addEventListener("click", () => {
+            setActiveCountryCode(tempSelectedCountry);
+            closeCountryOnboardingModal();
+        });
+    }
+}
+
+function renderCountryOptionsList(filterText = "") {
+    const list = document.getElementById("countrySelectList");
+    if (!list) return;
+
+    list.innerHTML = "";
+    const query = (filterText || "").trim().toLowerCase();
+
+    Object.values(COUNTRIES_CONFIG).forEach(country => {
+        if (query && !country.name.toLowerCase().includes(query) && !country.code.toLowerCase().includes(query)) {
+            return;
+        }
+
+        const item = document.createElement("div");
+        item.className = "country-option-item" + (country.code === tempSelectedCountry ? " selected" : "");
+        item.setAttribute("data-code", country.code);
+
+        item.innerHTML = `
+            <div class="country-option-left">
+                <span class="country-option-flag">${country.flag}</span>
+                <span class="country-option-name">${country.name}</span>
+                ${country.ready ? '<span class="country-option-badge ready">Ready</span>' : '<span class="country-option-badge">Coming Soon</span>'}
+            </div>
+            <div class="country-option-radio"></div>
+        `;
+
+        item.addEventListener("click", () => {
+            tempSelectedCountry = country.code;
+            list.querySelectorAll(".country-option-item").forEach(el => el.classList.remove("selected"));
+            item.classList.add("selected");
+        });
+
+        list.appendChild(item);
+    });
+}
+
+function openCountryOnboardingModal(forceOpen = false) {
+    ensureCountryOnboardingOverlayExists();
+    const overlay = document.getElementById("countryOnboardingOverlay");
+
+    if (!hasUserSetCountry() || forceOpen) {
+        tempSelectedCountry = getActiveCountryCode();
+        renderCountryOptionsList();
+        overlay.classList.add("active");
+        overlay.setAttribute("aria-hidden", "false");
+    }
+}
+
+function closeCountryOnboardingModal() {
+    const overlay = document.getElementById("countryOnboardingOverlay");
+    if (!overlay) return;
+
+    overlay.classList.remove("active");
+    overlay.setAttribute("aria-hidden", "true");
+}
+
+function refreshPageForCountryChange() {
+    if (document.getElementById("home")) {
+        initHomePage();
+    } else if (document.getElementById("movieCardGrid")) {
+        window.location.reload();
+    } else if (document.getElementById("seriesCardGrid")) {
+        window.location.reload();
+    } else if (document.getElementById("channelCardGrid")) {
+        initLiveTvCatalogue();
+    }
+}
+
 /* NAVBAR + SIDEBAR SCROLL BEHAVIOR */
 
 const navbar = document.getElementById("navbar");
@@ -358,10 +570,11 @@ async function loadInitialRecommendations() {
 
     recsGrid.innerHTML = createMovieSkeletonGrid(6);
 
+    const countryCode = getActiveCountryCode();
     const recommendations = [];
 
-    // Add prominent TV channel & Radio station
-    const sampleTv = LIVE_TV_CHANNELS.find(ch => ch.id === "ntv-uganda") || LIVE_TV_CHANNELS[0];
+    // Add prominent TV channel & Radio station for active country
+    const sampleTv = LIVE_TV_CHANNELS.find(ch => (ch.countries || ["ug"]).includes(countryCode) && !ch.isRadio && ch.category !== "radio") || LIVE_TV_CHANNELS.find(ch => (ch.countries || ["ug"]).includes(countryCode));
     if (sampleTv) {
         recommendations.push({
             id: sampleTv.id,
@@ -372,7 +585,7 @@ async function loadInitialRecommendations() {
         });
     }
 
-    const sampleRadio = LIVE_TV_CHANNELS.find(ch => ch.isRadio || ch.category === "radio");
+    const sampleRadio = LIVE_TV_CHANNELS.find(ch => (ch.countries || ["ug"]).includes(countryCode) && (ch.isRadio || ch.category === "radio"));
     if (sampleRadio) {
         recommendations.push({
             id: sampleRadio.id,
@@ -386,7 +599,7 @@ async function loadInitialRecommendations() {
     // Fetch movies catalogue for recommendations
     if (!cachedSearchMovies) {
         try {
-            const res = await fetch("/api/movies?limit=24");
+            const res = await fetch(`/api/movies?country=${countryCode}&limit=24`);
             if (res.ok) {
                 const data = await res.json();
                 cachedSearchMovies = data.movies || [];
@@ -413,6 +626,11 @@ async function loadInitialRecommendations() {
     }
 
     recsGrid.innerHTML = "";
+
+    if (recommendations.length === 0) {
+        recsGrid.innerHTML = `<div class="loading-state">Nothing here yet</div>`;
+        return;
+    }
 
     recommendations.forEach(item => {
         if (item.isStandardCard && item.rawMovie) {
@@ -443,10 +661,12 @@ async function handleLiveSearchQuery(rawQuery) {
     emptyState.style.display = "none";
     resultsGrid.innerHTML = createMovieSkeletonGrid(6);
 
+    const countryCode = getActiveCountryCode();
+
     // Ensure datasets are loaded
     if (!cachedSearchMovies) {
         try {
-            const res = await fetch("/api/movies?limit=100");
+            const res = await fetch(`/api/movies?country=${countryCode}&limit=100`);
             if (res.ok) {
                 const data = await res.json();
                 cachedSearchMovies = data.movies || [];
@@ -458,7 +678,7 @@ async function handleLiveSearchQuery(rawQuery) {
 
     if (!cachedSearchSeries) {
         try {
-            const res = await fetch("/api/series?limit=50");
+            const res = await fetch(`/api/series?country=${countryCode}&limit=50`);
             if (res.ok) {
                 const data = await res.json();
                 cachedSearchSeries = data.series || [];
@@ -470,7 +690,7 @@ async function handleLiveSearchQuery(rawQuery) {
 
     if (!cachedSearchConcerts) {
         try {
-            const res = await fetch("/api/concerts?limit=50");
+            const res = await fetch(`/api/concerts?country=${countryCode}&limit=50`);
             if (res.ok) {
                 const data = await res.json();
                 cachedSearchConcerts = data.concerts || [];
@@ -482,8 +702,8 @@ async function handleLiveSearchQuery(rawQuery) {
 
     const matches = [];
 
-    // Search Live TV & Radio channels
-    LIVE_TV_CHANNELS.forEach(ch => {
+    // Search Live TV & Radio channels for active country
+    LIVE_TV_CHANNELS.filter(ch => (ch.countries || ["ug"]).includes(countryCode)).forEach(ch => {
         const nameMatch = ch.name && ch.name.toLowerCase().includes(query);
         const catMatch = (ch.categoryLabel && ch.categoryLabel.toLowerCase().includes(query)) || (ch.category && ch.category.toLowerCase().includes(query));
         const descMatch = ch.description && ch.description.toLowerCase().includes(query);
@@ -925,7 +1145,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://ams-2629.antmedia.cloud/LiveApp/streams/abul2026.m3u8",
         embedUrl: "https://ams-2629.antmedia.cloud/LiveApp/play.html?id=abul2026",
         meta: "Official Live Broadcast • HD • News & Shows",
-        description: "NTV Uganda brings you live breaking news, current affairs, talk shows, and top Ugandan entertainment."
+        description: "NTV Uganda brings you live breaking news, current affairs, talk shows, and top Ugandan entertainment.",
+        countries: ["ug"]
     },
     {
         id: "spark-tv",
@@ -937,7 +1158,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://ams-2629.antmedia.cloud/LiveApp/streams/spark2026.m3u8",
         embedUrl: "https://ams-2629.antmedia.cloud/LiveApp/play.html?id=spark2026",
         meta: "Official Live Broadcast • HD • Movies & Lifestyle",
-        description: "Spark TV Uganda is your home for celebrity gossip, music, local drama series, and women lifestyle programming."
+        description: "Spark TV Uganda is your home for celebrity gossip, music, local drama series, and women lifestyle programming.",
+        countries: ["ug"]
     },
     {
         id: "bukedde-1",
@@ -949,7 +1171,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://stream.hydeinnovations.com:443/bukedde1flussonic/index.m3u8",
         embedUrl: "https://www.bukedde.co.ug/tv/4",
         meta: "Official Live Broadcast • HD • Luganda News & Shows",
-        description: "Bukedde 1 TV delivers top Luganda news, live events, traditional culture, and family entertainment across Uganda."
+        description: "Bukedde 1 TV delivers top Luganda news, live events, traditional culture, and family entertainment across Uganda.",
+        countries: ["ug"]
     },
     {
         id: "bukedde-2",
@@ -961,7 +1184,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://stream.hydeinnovations.com:443/bukedde2flussonic/index.m3u8",
         embedUrl: "https://www.bukedde.co.ug/tv/5",
         meta: "Official Live Broadcast • HD • Music & Sports",
-        description: "Bukedde 2 offers vibrant Luganda music programming, sports coverage, and youth entertainment."
+        description: "Bukedde 2 offers vibrant Luganda music programming, sports coverage, and youth entertainment.",
+        countries: ["ug"]
     },
     {
         id: "tv-west",
@@ -973,7 +1197,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://stream.hydeinnovations.com:443/tvwest-flussonic/index.m3u8",
         embedUrl: "https://www.bukedde.co.ug/tv/6",
         meta: "Official Live Broadcast • HD • Runyankole & News",
-        description: "TV West is the leading television station for Western Uganda, broadcasting local news, culture, and entertainment in Runyankole."
+        description: "TV West is the leading television station for Western Uganda, broadcasting local news, culture, and entertainment in Runyankole.",
+        countries: ["ug"]
     },
     {
         id: "wan-luo-tv",
@@ -986,7 +1211,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://stream.hydeinnovations.com:443/luotv-flussonic/index.m3u8",
         embedUrl: "https://www.bukedde.co.ug/tv",
         meta: "Official Live Broadcast • HD • Luo Language & Shows",
-        description: "Wan Luo TV is the premier Luo-language television channel broadcasting cultural programming, music, and news for Northern Uganda."
+        description: "Wan Luo TV is the premier Luo-language television channel broadcasting cultural programming, music, and news for Northern Uganda.",
+        countries: ["ug"]
     },
     {
         id: "bbs-terefayina",
@@ -998,7 +1224,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://bbstv.ug/hls/ch01/index.m3u8",
         embedUrl: "https://bbstv.ug/live/",
         meta: "Official Live Broadcast • HD • Buganda & News",
-        description: "BBS Terefayina brings you live news, culture, entertainment, and current affairs from Buganda Kingdom and across Uganda."
+        description: "BBS Terefayina brings you live news, culture, entertainment, and current affairs from Buganda Kingdom and across Uganda.",
+        countries: ["ug"]
     },
     {
         id: "galaxy-tv",
@@ -1010,7 +1237,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://livestream.galaxytv.ug/jikonkone/playlist.m3u8",
         embedUrl: "https://galaxytv.ug/home",
         meta: "Official Live Broadcast • HD • Jikonkone",
-        description: "Galaxy TV is Uganda's funkiest television station featuring the best music, movies, celebrity news, and entertainment."
+        description: "Galaxy TV is Uganda's funkiest television station featuring the best music, movies, celebrity news, and entertainment.",
+        countries: ["ug"]
     },
     {
         id: "kbs-tv",
@@ -1023,7 +1251,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://www.kbstv.co.ug/live/abr/master.m3u8",
         embedUrl: "https://www.kbstv.co.ug/",
         meta: "Official Live Broadcast • HD • Maaso ku Lutimbe",
-        description: "KBS TV Uganda (Maaso ku Lutimbe) brings you live news, top entertainment, local talk shows, movies, and family programming."
+        description: "KBS TV Uganda (Maaso ku Lutimbe) brings you live news, top entertainment, local talk shows, movies, and family programming.",
+        countries: ["ug"]
     },
     {
         id: "base2-tv",
@@ -1036,8 +1265,67 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://base2tv.ug/live/stream.m3u8",
         embedUrl: "https://base2tv.ug/",
         meta: "Official Live Broadcast • HD • Telefwunkeni",
-        description: "Base2 TV (Telefwunkeni) delivers vibrant Luganda entertainment, translated blockbuster movies, youth shows, and local music."
+        description: "Base2 TV (Telefwunkeni) delivers vibrant Luganda entertainment, translated blockbuster movies, youth shows, and local music.",
+        countries: ["ug"]
     },
+    // KENYAN TV CHANNELS
+    {
+        id: "ktn-news-kenya",
+        aliases: ["ktn-news", "ktn"],
+        name: "KTN News Kenya",
+        category: "news",
+        categoryLabel: "24/7 Kenyan News & Current Affairs",
+        logo: "/images/ntvkenya-logo.png",
+        streamType: "hls",
+        streamUrl: "https://stream.hydeinnovations.com:443/ktnnews/index.m3u8",
+        embedUrl: "https://www.standardmedia.co.ke/ktnnews",
+        meta: "Official Live Broadcast • HD • Kenyan News & Current Affairs",
+        description: "KTN News Kenya is Kenya's leading 24-hour news channel delivering breaking news, political discourse, and live events.",
+        countries: ["ke"]
+    },
+    {
+        id: "ntv-kenya",
+        aliases: ["ntvkenya"],
+        name: "NTV Kenya",
+        category: "news",
+        categoryLabel: "Kenyan News, Shows & Documentaries",
+        logo: "/images/ntvkenya-logo.png",
+        streamType: "hls",
+        streamUrl: "https://ams-2629.antmedia.cloud/LiveApp/streams/ntvkenya2026.m3u8",
+        embedUrl: "https://ntvkenya.co.ke",
+        meta: "Official Live Broadcast • HD • Kenyan Entertainment & News",
+        description: "NTV Kenya delivers premier Kenyan broadcast television, investigatives, comedy series, live news, and current affairs.",
+        countries: ["ke"]
+    },
+    {
+        id: "citizen-tv-kenya",
+        aliases: ["citizentv", "citizen-tv"],
+        name: "Citizen TV Kenya",
+        category: "entertainment",
+        categoryLabel: "Kenyan Drama, News & Entertainment",
+        logo: "/images/citizentv-logo.png",
+        streamType: "hls",
+        streamUrl: "https://stream.hydeinnovations.com:443/citizentv/index.m3u8",
+        embedUrl: "https://citizentv.co.ke",
+        meta: "Official Live Broadcast • HD • Top Kenyan TV Station",
+        description: "Citizen TV is Kenya's most watched television station featuring hit local shows, Swahili drama series, and live news.",
+        countries: ["ke"]
+    },
+    {
+        id: "k24-tv-kenya",
+        aliases: ["k24", "k24tv"],
+        name: "K24 TV Kenya",
+        category: "news",
+        categoryLabel: "Kenyan News & Sports",
+        logo: "/images/k24tv-logo.png",
+        streamType: "hls",
+        streamUrl: "https://stream.hydeinnovations.com:443/k24tv/index.m3u8",
+        embedUrl: "https://www.k24tv.co.ug",
+        meta: "Official Live Broadcast • HD • News & Entertainment",
+        description: "K24 TV brings breaking Kenyan news, live football coverage, lifestyle shows, and local entertainment.",
+        countries: ["ke"]
+    },
+    // SHARED / INTERNATIONAL CHANNELS
     {
         id: "trace-mziki",
         aliases: ["tracemziki"],
@@ -1049,7 +1337,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://channels.trace.plus/Traceprod/MZIKI_hd/index.m3u8",
         embedUrl: "https://bx-tv.com/watch/trace-mziki-893902",
         meta: "Official Live Broadcast • HD • We Love East African Music",
-        description: "Trace Mziki is the ultimate music channel dedicated to East African music, featuring hit video countdowns, artist showcases, and urban culture."
+        description: "Trace Mziki is the ultimate music channel dedicated to East African music, featuring hit video countdowns, artist showcases, and urban culture.",
+        countries: ["ug", "ke"]
     },
     {
         id: "cartoon-network",
@@ -1062,7 +1351,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://vodzong.mjunoon.tv:8087/streamtest/cartoon-network-87/playlist.m3u8",
         embedUrl: "https://www.cartoonnetwork.com",
         meta: "Official Live Broadcast • HD • Cartoons & Animation",
-        description: "Cartoon Network is home to top animated shows, classic cartoons, and kids entertainment."
+        description: "Cartoon Network is home to top animated shows, classic cartoons, and kids entertainment.",
+        countries: ["ug", "ke"]
     },
     {
         id: "baby-shark-tv",
@@ -1075,7 +1365,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://newidco-babysharktv-1-eu.rakuten.wurl.tv/playlist.m3u8",
         embedUrl: "https://www.pinkfong.com",
         meta: "Official Live Broadcast • HD • Kids & Nursery Rhymes",
-        description: "Baby Shark TV features non-stop nursery rhymes, fun songs, educational animation, and kids entertainment."
+        description: "Baby Shark TV features non-stop nursery rhymes, fun songs, educational animation, and kids entertainment.",
+        countries: ["ug", "ke"]
     },
     {
         id: "pbs-kids-pacific",
@@ -1088,7 +1379,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://livestream.pbskids.org/out/v1/11f2e6b73eaa4887b3746cb863960e79/pst.m3u8",
         embedUrl: "https://pbskids.org",
         meta: "Official Live Broadcast • HD • Educational Shows",
-        description: "PBS Kids Pacific delivers educational television, fun children's series, and inspiring programming."
+        description: "PBS Kids Pacific delivers educational television, fun children's series, and inspiring programming.",
+        countries: ["ug", "ke"]
     },
     {
         id: "telemundo",
@@ -1101,7 +1393,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream1/master_1080.m3u8",
         embedUrl: "https://www.telemundo.com",
         meta: "Official Live Broadcast • HD • Spanish Entertainment",
-        description: "Telemundo offers premier Spanish-language telenovelas, live news, reality TV, and entertainment."
+        description: "Telemundo offers premier Spanish-language telenovelas, live news, reality TV, and entertainment.",
+        countries: ["ug", "ke"]
     },
     {
         id: "b4u-movies",
@@ -1114,7 +1407,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://app.ncare.live/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/channels.stream/live-orgin/channels.stream/playlist.m3u8",
         embedUrl: "https://b4umovies.co.uk",
         meta: "Official Live Broadcast • HD • Bollywood Blockbusters",
-        description: "B4U Movies brings you premier Bollywood feature films, classic Hindi cinema, behind-the-scenes specials, and star interviews."
+        description: "B4U Movies brings you premier Bollywood feature films, classic Hindi cinema, behind-the-scenes specials, and star interviews.",
+        countries: ["ug", "ke"]
     },
     {
         id: "kidsflix",
@@ -1127,7 +1421,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://stream-us-east-1.getpublica.com/playlist.m3u8?network_id=50",
         embedUrl: "https://www.kidsflix.com",
         meta: "Official Live Broadcast • HD • Family & Kids Entertainment",
-        description: "KIDS FLIX delivers continuous family-friendly animated movies, kids series, educational adventures, and fun entertainment."
+        description: "KIDS FLIX delivers continuous family-friendly animated movies, kids series, educational adventures, and fun entertainment.",
+        countries: ["ug", "ke"]
     },
     {
         id: "fifa-plus",
@@ -1140,7 +1435,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://37b4c228.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWZyX0ZJRkFQbHVzRnJlbmNoX0hMUw/playlist.m3u8",
         embedUrl: "https://www.fifa.com/fifaplus",
         meta: "Official Live Broadcast • HD • FIFA Football & Highlights",
-        description: "FB | FIFA+ brings you live international football coverage, classic match archives, player documentaries, and original sports series."
+        description: "FB | FIFA+ brings you live international football coverage, classic match archives, player documentaries, and original sports series.",
+        countries: ["ug", "ke"]
     },
     {
         id: "cnn",
@@ -1153,7 +1449,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://amg01448-samsungin-cnnnow-samsungin-4npqg.amagi.tv/playlist/amg01448-samsungin-cnnnow-samsungin/playlist.m3u8",
         embedUrl: "https://www.cnn.com",
         meta: "Official Live Broadcast • HD • Breaking News & World Affairs",
-        description: "CNN delivers live global breaking news, expert political analysis, international reporting, and in-depth documentary coverage."
+        description: "CNN delivers live global breaking news, expert political analysis, international reporting, and in-depth documentary coverage.",
+        countries: ["ug", "ke"]
     },
     {
         id: "tom-and-jerry-2",
@@ -1166,8 +1463,10 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://live20.bozztv.com/giatvplayout7/giatv-208314/playlist.m3u8",
         embedUrl: "https://www.cartoonnetwork.com",
         meta: "Official Live Broadcast • HD • Tom and Jerry Animated Stream",
-        description: "Tom and Jerry 2 brings non-stop classic animated episodes, comical adventures, and timeless slapstick cartoon entertainment."
+        description: "Tom and Jerry 2 brings non-stop classic animated episodes, comical adventures, and timeless slapstick cartoon entertainment.",
+        countries: ["ug", "ke"]
     },
+    // UGANDAN RADIO STATIONS
     {
         id: "dembe-fm",
         aliases: ["dembefm", "dembe"],
@@ -1181,7 +1480,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "http://radio.dembefm.ug:8000/stream",
         embedUrl: "https://dembefm.ug",
         meta: "Official Live Broadcast • 90.4 FM",
-        description: "Dembe FM is Uganda's premier Luganda music and entertainment radio station."
+        description: "Dembe FM is Uganda's premier Luganda music and entertainment radio station.",
+        countries: ["ug"]
     },
     {
         id: "galaxy-fm",
@@ -1196,7 +1496,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://stream.zeno.fm/ahtmyttw5mftv",
         embedUrl: "https://www.galaxyfm.co.ug/radio/",
         meta: "Official Live Broadcast • 100.2 FM Zzina",
-        description: "Galaxy FM 100.2 Zzina is Uganda's leading youth urban music station."
+        description: "Galaxy FM 100.2 Zzina is Uganda's leading youth urban music station.",
+        countries: ["ug"]
     },
     {
         id: "bukedde-fm",
@@ -1211,7 +1512,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://stream.hydeinnovations.com:2020/stream/bukeddefm/stream",
         embedUrl: "https://www.bukedde.co.ug/radiolist",
         meta: "Official Live Broadcast • 100.5 FM",
-        description: "Bukedde FM is Uganda's top Luganda radio station for news, talk shows, and local music."
+        description: "Bukedde FM is Uganda's top Luganda radio station for news, talk shows, and local music.",
+        countries: ["ug"]
     },
     {
         id: "xfm",
@@ -1226,7 +1528,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://stream.hydeinnovations.com:2020/stream/xfm/stream",
         embedUrl: "https://www.bukedde.co.ug/radiolist",
         meta: "Official Live Broadcast • 94.8 FM",
-        description: "XFM 94.8 is a Top 40 hit music radio station based in Kampala, Uganda."
+        description: "XFM 94.8 is a Top 40 hit music radio station based in Kampala, Uganda.",
+        countries: ["ug"]
     },
     {
         id: "radio-west",
@@ -1241,8 +1544,75 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://stream.hydeinnovations.com:2020/stream/radiowest/stream",
         embedUrl: "https://www.bukedde.co.ug/radiolist",
         meta: "Official Live Broadcast • 100.2 FM",
-        description: "Radio West is the leading radio station in Western Uganda."
+        description: "Radio West is the leading radio station in Western Uganda.",
+        countries: ["ug"]
     },
+    // KENYAN RADIO STATIONS
+    {
+        id: "capital-fm-kenya",
+        aliases: ["capitalfm", "capital-fm"],
+        name: "Capital FM Kenya",
+        type: "radio",
+        isRadio: true,
+        category: "radio",
+        categoryLabel: "98.4 FM • Kenya's Best Music",
+        logo: "/images/galaxyfm-logo.png",
+        streamType: "audio",
+        streamUrl: "https://capitalfm.streamguys1.com/capitalfm",
+        embedUrl: "https://www.capitalfm.co.ke",
+        meta: "Official Live Broadcast • 98.4 FM Kenya",
+        description: "Capital FM Kenya is Kenya's premier radio station broadcasting top urban hits, news, and entertainment.",
+        countries: ["ke"]
+    },
+    {
+        id: "radio-citizen-kenya",
+        aliases: ["radiocitizen"],
+        name: "Radio Citizen",
+        type: "radio",
+        isRadio: true,
+        category: "radio",
+        categoryLabel: "106.7 FM • Kenya News & Music",
+        logo: "/images/citizentv-logo.png",
+        streamType: "audio",
+        streamUrl: "https://stream.zeno.fm/4e48a1c9703vv",
+        embedUrl: "https://radiocitizen.co.ke",
+        meta: "Official Live Broadcast • 106.7 FM Kenya",
+        description: "Radio Citizen is Kenya's most listened to Swahili radio station for news, music, and talk shows.",
+        countries: ["ke"]
+    },
+    {
+        id: "classic-105-kenya",
+        aliases: ["classic105"],
+        name: "Classic 105",
+        type: "radio",
+        isRadio: true,
+        category: "radio",
+        categoryLabel: "105.2 FM • Good Times & Great Hits",
+        logo: "/images/dembefm-logo.jpg",
+        streamType: "audio",
+        streamUrl: "https://stream.zeno.fm/f3wvbb1v38quv",
+        embedUrl: "https://classic105.com",
+        meta: "Official Live Broadcast • 105.2 FM Kenya",
+        description: "Classic 105 Kenya features soul classics, morning talk shows, and great hits.",
+        countries: ["ke"]
+    },
+    {
+        id: "kiss-100-kenya",
+        aliases: ["kiss100"],
+        name: "Kiss 100 Kenya",
+        type: "radio",
+        isRadio: true,
+        category: "radio",
+        categoryLabel: "100.0 FM • Kenya's No.1 Hit Station",
+        logo: "/images/galaxyfm-logo.png",
+        streamType: "audio",
+        streamUrl: "https://stream.zeno.fm/91eb81v38quv",
+        embedUrl: "https://kiss100.co.ke",
+        meta: "Official Live Broadcast • 100.0 FM Kenya",
+        description: "Kiss 100 Kenya is Nairobi's leading youth hit music radio station.",
+        countries: ["ke"]
+    },
+    // SHARED KIDS CHANNELS
     {
         id: "smurf-tv",
         aliases: ["smurftv", "smurfs-tv"],
@@ -1254,7 +1624,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://stream.ads.ottera.tv/playlist.m3u8?network_id=4065",
         embedUrl: "https://stream.ads.ottera.tv/playlist.m3u8?network_id=4065",
         meta: "Official Live Broadcast • Animated Series",
-        description: "Smurf TV brings non-stop Smurfs animated series, classic cartoons, and adventures from the Smurf Village."
+        description: "Smurf TV brings non-stop Smurfs animated series, classic cartoons, and adventures from the Smurf Village.",
+        countries: ["ug", "ke"]
     },
     {
         id: "lego-channel",
@@ -1267,7 +1638,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://dltiqboxjw21d.cloudfront.net/index.m3u8",
         embedUrl: "https://dltiqboxjw21d.cloudfront.net/index.m3u8",
         meta: "Official Live Broadcast • LEGO Animated Shows",
-        description: "The LEGO Channel features exciting LEGO animated adventures, Ninjago, Friends, City, and creative brick-building entertainment."
+        description: "The LEGO Channel features exciting LEGO animated adventures, Ninjago, Friends, City, and creative brick-building entertainment.",
+        countries: ["ug", "ke"]
     },
     {
         id: "toongoggles",
@@ -1280,7 +1652,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://amg01329-otterainc-toongoggles-samsungau-ad-4c.amagi.tv/playlist/amg01329-otterainc-toongoggles-samsungau/playlist.m3u8",
         embedUrl: "https://amg01329-otterainc-toongoggles-samsungau-ad-4c.amagi.tv/playlist/amg01329-otterainc-toongoggles-samsungau/playlist.m3u8",
         meta: "Official Live Broadcast • Kids Shows & Cartoons",
-        description: "ToonGoggles offers fun-filled animated series, games, and entertainment for children of all ages."
+        description: "ToonGoggles offers fun-filled animated series, games, and entertainment for children of all ages.",
+        countries: ["ug", "ke"]
     },
     {
         id: "moonbug",
@@ -1293,7 +1666,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "https://moonbug-rokuus.amagi.tv/playlist.m3u8",
         embedUrl: "https://moonbug-rokuus.amagi.tv/playlist.m3u8",
         meta: "Official Live Broadcast • CoComelon & Blippi",
-        description: "Moonbug features popular children's shows including CoComelon, Blippi, Little Angel, Morphle, and educational songs."
+        description: "Moonbug features popular children's shows including CoComelon, Blippi, Little Angel, Morphle, and educational songs.",
+        countries: ["ug", "ke"]
     },
     {
         id: "minimax",
@@ -1306,7 +1680,8 @@ const LIVE_TV_CHANNELS = [
         streamUrl: "http://88.212.15.17/live/minimax_hun/index.m3u8",
         embedUrl: "http://88.212.15.17/live/minimax_hun/index.m3u8",
         meta: "Official Live Broadcast • Children's Television Network",
-        description: "MiniMax delivers beloved children's television series, animated features, and educational family entertainment."
+        description: "MiniMax delivers beloved children's television series, animated features, and educational family entertainment.",
+        countries: ["ug", "ke"]
     }
 ];
 
@@ -1363,7 +1738,10 @@ function initLiveTvCatalogue() {
         cardGrid.innerHTML = "";
 
         const cleanSearch = searchQuery.trim().toLowerCase();
-        let channels = LIVE_TV_CHANNELS;
+        const countryCode = getActiveCountryCode();
+        const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
+
+        let channels = LIVE_TV_CHANNELS.filter(ch => (ch.countries || ["ug"]).includes(countryCode));
 
         // Filter by channel type selector
         if (selectedType === "kids") {
@@ -1385,17 +1763,13 @@ function initLiveTvCatalogue() {
         }
 
         if (channels.length === 0) {
-            if (selectedType === "kids") {
-                cardGrid.innerHTML = `<div class="loading-state">No Children's TV channels available at the moment.</div>`;
-            } else if (selectedType === "matches") {
-                cardGrid.innerHTML = `<div class="loading-state">No live matches available at the moment.</div>`;
-            } else if (selectedType === "crusades") {
-                cardGrid.innerHTML = `<div class="loading-state">No crusades available at the moment.</div>`;
-            } else if (selectedType === "radio") {
-                cardGrid.innerHTML = `<div class="loading-state">No radio channels found.</div>`;
-            } else {
-                cardGrid.innerHTML = `<div class="loading-state">No TV channels found.</div>`;
-            }
+            cardGrid.innerHTML = `
+                <div class="country-empty-state" style="grid-column: 1 / -1;">
+                    <div class="country-empty-icon">🌐</div>
+                    <h3 class="country-empty-title">Nothing here yet</h3>
+                    <p class="country-empty-sub">No channels available for ${countryConfig.name} in this section right now.</p>
+                </div>
+            `;
             return;
         }
 
@@ -2512,49 +2886,79 @@ async function initHomePage() {
 
     initHeroCarousel();
 
+    const countryCode = getActiveCountryCode();
+    const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
+
+    const secLiveTv = document.getElementById("section-live-tv");
+    const secTrending = document.getElementById("section-trending-movies");
+    const secMusic = document.getElementById("section-hot-music");
+    const secConcerts = document.getElementById("section-concerts");
+    const secRadio = document.getElementById("section-doppest-radio");
+
+    let totalVisibleItems = 0;
+
+    // Remove any existing home empty state
+    const existingEmpty = document.getElementById("homeCountryEmptyState");
+    if (existingEmpty) existingEmpty.remove();
+
     // 1. Live TV Section (Up to 2 items)
-    if (homeLiveTvGrid) {
+    if (homeLiveTvGrid && secLiveTv) {
         homeLiveTvGrid.innerHTML = "";
-        const tvChannels = LIVE_TV_CHANNELS.filter(ch => !ch.isRadio && ch.category !== "radio").slice(0, 2);
-        tvChannels.forEach(ch => {
-            const card = document.createElement("a");
-            card.href = `/live-tv/watch/${ch.id}/`;
-            card.className = "live-card";
-            card.innerHTML = `
-                <img src="${ch.logo}" alt="${ch.name}" style="object-fit: contain; padding: 12px; background: #0d0d0d;">
-                <div class="live-overlay">
-                    <span class="live-badge"><span class="live-dot"></span> LIVE</span>
-                    <div class="live-title">${ch.name}</div>
-                </div>
-            `;
-            homeLiveTvGrid.appendChild(card);
-        });
+        const tvChannels = LIVE_TV_CHANNELS.filter(ch =>
+            (ch.countries || ["ug"]).includes(countryCode) && !ch.isRadio && ch.category !== "radio"
+        ).slice(0, 2);
+
+        if (tvChannels.length > 0) {
+            secLiveTv.style.display = "block";
+            totalVisibleItems += tvChannels.length;
+            tvChannels.forEach(ch => {
+                const card = document.createElement("a");
+                card.href = `/live-tv/watch/${ch.id}/`;
+                card.className = "live-card";
+                card.innerHTML = `
+                    <img src="${ch.logo}" alt="${ch.name}" style="object-fit: contain; padding: 12px; background: #0d0d0d;">
+                    <div class="live-overlay">
+                        <span class="live-badge"><span class="live-dot"></span> LIVE</span>
+                        <div class="live-title">${ch.name}</div>
+                    </div>
+                `;
+                homeLiveTvGrid.appendChild(card);
+            });
+        } else {
+            secLiveTv.style.display = "none";
+        }
     }
 
     // 2. Trending Movies Section (Up to 2 items)
-    if (homeTrendingGrid) {
+    if (homeTrendingGrid && secTrending) {
         homeTrendingGrid.innerHTML = createMovieSkeletonGrid(2);
         try {
-            const res = await fetch("/api/movies?limit=10");
+            const res = await fetch(`/api/movies?country=${countryCode}&limit=10`);
             if (res.ok) {
                 const data = await res.json();
                 const movies = (data.movies || []).slice(0, 2);
                 homeTrendingGrid.innerHTML = "";
-                movies.forEach((movie, idx) => {
-                    homeTrendingGrid.appendChild(createTrendingCard(movie, idx + 1));
-                });
+                if (movies.length > 0) {
+                    secTrending.style.display = "block";
+                    totalVisibleItems += movies.length;
+                    movies.forEach((movie, idx) => {
+                        homeTrendingGrid.appendChild(createTrendingCard(movie, idx + 1));
+                    });
+                } else {
+                    secTrending.style.display = "none";
+                }
             } else {
-                homeTrendingGrid.innerHTML = `<div class="loading-state">Unable to load movies.</div>`;
+                secTrending.style.display = "none";
             }
         } catch (err) {
-            homeTrendingGrid.innerHTML = `<div class="loading-state">Unable to load movies.</div>`;
+            secTrending.style.display = "none";
         }
     }
 
     // 3. Hot Music Section (Up to 2 items)
-    if (homeMusicGrid) {
+    if (homeMusicGrid && secMusic) {
         homeMusicGrid.innerHTML = "";
-        const musicItems = [
+        const MUSIC_RECORDS = [
             {
                 id: "trace-mziki-home",
                 title: "Trace Mziki Live",
@@ -2562,69 +2966,105 @@ async function initHomePage() {
                 year: "2026",
                 quality: "HD",
                 posterUrl: "/images/tracemziki-logo.png",
-                targetUrl: "/live-tv/watch/trace-mziki/"
+                targetUrl: "/live-tv/watch/trace-mziki/",
+                countries: ["ug", "ke"]
             }
         ];
-        musicItems.slice(0, 2).forEach(m => {
-            const card = document.createElement("article");
-            card.className = "movie-card";
-            card.style.cursor = "pointer";
-            card.innerHTML = `
-                <div class="poster" style="background:#0d0d0d; display:flex; align-items:center; justify-content:center;">
-                    <img src="${m.posterUrl}" alt="${m.title}" style="object-fit:contain; padding:12px;">
-                    <span class="badge">${m.quality}</span>
-                </div>
-                <div class="card-title" title="${m.title}">${m.title}</div>
-                <div class="card-meta">${m.vj} • ${m.year}</div>
-            `;
-            card.addEventListener("click", () => {
-                window.location.href = m.targetUrl;
+
+        const musicItems = MUSIC_RECORDS.filter(m => m.countries.includes(countryCode)).slice(0, 2);
+        if (musicItems.length > 0) {
+            secMusic.style.display = "block";
+            totalVisibleItems += musicItems.length;
+            musicItems.forEach(m => {
+                const card = document.createElement("article");
+                card.className = "movie-card";
+                card.style.cursor = "pointer";
+                card.innerHTML = `
+                    <div class="poster" style="background:#0d0d0d; display:flex; align-items:center; justify-content:center;">
+                        <img src="${m.posterUrl}" alt="${m.title}" style="object-fit:contain; padding:12px;">
+                        <span class="badge">${m.quality}</span>
+                    </div>
+                    <div class="card-title" title="${m.title}">${m.title}</div>
+                    <div class="card-meta">${m.vj} • ${m.year}</div>
+                `;
+                card.addEventListener("click", () => {
+                    window.location.href = m.targetUrl;
+                });
+                homeMusicGrid.appendChild(card);
             });
-            homeMusicGrid.appendChild(card);
-        });
+        } else {
+            secMusic.style.display = "none";
+        }
     }
 
     // 4. Concerts Section (Up to 2 items)
-    if (homeConcertsGrid) {
+    if (homeConcertsGrid && secConcerts) {
         homeConcertsGrid.innerHTML = createConcertSkeletonGrid(2);
         try {
-            const res = await fetch("/api/concerts?limit=2");
+            const res = await fetch(`/api/concerts?country=${countryCode}&limit=2`);
             if (res.ok) {
                 const data = await res.json();
                 const realConcerts = (data.concerts || []).slice(0, 2);
                 homeConcertsGrid.innerHTML = "";
                 if (realConcerts.length > 0) {
+                    secConcerts.style.display = "block";
+                    totalVisibleItems += realConcerts.length;
                     realConcerts.forEach(concert => {
                         homeConcertsGrid.appendChild(createConcertCard(concert));
                     });
                 } else {
-                    homeConcertsGrid.innerHTML = `<div class="loading-state">No upcoming concerts found.</div>`;
+                    secConcerts.style.display = "none";
                 }
             } else {
-                homeConcertsGrid.innerHTML = `<div class="loading-state">Unable to load concerts.</div>`;
+                secConcerts.style.display = "none";
             }
         } catch (err) {
-            homeConcertsGrid.innerHTML = `<div class="loading-state">Unable to load concerts.</div>`;
+            secConcerts.style.display = "none";
         }
     }
 
     // 5. Doppest Radio Stations Section (Up to 2 items)
-    if (homeRadioGrid) {
+    if (homeRadioGrid && secRadio) {
         homeRadioGrid.innerHTML = "";
-        const radioChannels = LIVE_TV_CHANNELS.filter(ch => ch.isRadio || ch.category === "radio").slice(0, 2);
-        radioChannels.forEach(ch => {
-            const card = document.createElement("a");
-            card.href = `/live-tv/watch/${ch.id}/`;
-            card.className = "live-card";
-            card.innerHTML = `
-                <img src="${ch.logo}" alt="${ch.name}" style="object-fit: contain; padding: 12px; background: #0d0d0d;">
-                <div class="live-overlay">
-                    <span class="live-badge"><span class="live-dot"></span> RADIO</span>
-                    <div class="live-title">${ch.name}</div>
-                </div>
+        const radioChannels = LIVE_TV_CHANNELS.filter(ch =>
+            (ch.countries || ["ug"]).includes(countryCode) && (ch.isRadio || ch.category === "radio")
+        ).slice(0, 2);
+
+        if (radioChannels.length > 0) {
+            secRadio.style.display = "block";
+            totalVisibleItems += radioChannels.length;
+            radioChannels.forEach(ch => {
+                const card = document.createElement("a");
+                card.href = `/live-tv/watch/${ch.id}/`;
+                card.className = "live-card";
+                card.innerHTML = `
+                    <img src="${ch.logo}" alt="${ch.name}" style="object-fit: contain; padding: 12px; background: #0d0d0d;">
+                    <div class="live-overlay">
+                        <span class="live-badge"><span class="live-dot"></span> RADIO</span>
+                        <div class="live-title">${ch.name}</div>
+                    </div>
+                `;
+                homeRadioGrid.appendChild(card);
+            });
+        } else {
+            secRadio.style.display = "none";
+        }
+    }
+
+    // If active country has NO entertainment items, show clean empty state below hero
+    if (totalVisibleItems === 0) {
+        const homeMain = document.querySelector(".home-main");
+        if (homeMain) {
+            const emptyEl = document.createElement("div");
+            emptyEl.id = "homeCountryEmptyState";
+            emptyEl.className = "country-empty-state";
+            emptyEl.innerHTML = `
+                <div class="country-empty-icon">🌐</div>
+                <h3 class="country-empty-title">Nothing here yet</h3>
+                <p class="country-empty-sub">Entertainment content for ${countryConfig.name} is currently unavailable. Check back soon!</p>
             `;
-            homeRadioGrid.appendChild(card);
-        });
+            homeMain.appendChild(emptyEl);
+        }
     }
 }
 
@@ -2637,16 +3077,25 @@ async function initSubpage(containerId, isTrending = false, limit = 24) {
     const isHomepage = document.getElementById("home") !== null;
     if (isHomepage) return;
 
+    const countryCode = getActiveCountryCode();
+    const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
+
     container.innerHTML = createMovieSkeletonGrid(12);
 
     try {
-        const res = await fetch(`/api/movies?limit=${limit}`);
+        const res = await fetch(`/api/movies?country=${countryCode}&limit=${limit}`);
         if (!res.ok) throw new Error("HTTP error " + res.status);
         const data = await res.json();
         const movies = data.movies || [];
 
         if (movies.length === 0) {
-            container.innerHTML = `<div class="loading-state">No movies found.</div>`;
+            container.innerHTML = `
+                <div class="country-empty-state" style="grid-column: 1 / -1;">
+                    <div class="country-empty-icon">🌐</div>
+                    <h3 class="country-empty-title">Nothing here yet</h3>
+                    <p class="country-empty-sub">No titles available for ${countryConfig.name} right now.</p>
+                </div>
+            `;
             return;
         }
 
@@ -2785,9 +3234,13 @@ if (movieCardGrid) {
 
     async function fetchAndRenderLibraryMovies() {
         try {
+            const countryCode = getActiveCountryCode();
+            const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
+
             const queryParams = new URLSearchParams({
                 page: currentPage,
-                limit: currentLimit
+                limit: currentLimit,
+                country: countryCode
             });
             if (currentVj && currentVj !== "all") queryParams.append("vj", currentVj);
             if (currentGenre && currentGenre !== "all") queryParams.append("genre", currentGenre);
@@ -2807,7 +3260,13 @@ if (movieCardGrid) {
             updateGenreOptions(data.genres || []);
 
             if (movies.length === 0) {
-                movieCardGrid.innerHTML = '<div class="loading-state">No movies found matching your request.</div>';
+                movieCardGrid.innerHTML = `
+                    <div class="country-empty-state" style="grid-column: 1 / -1;">
+                        <div class="country-empty-icon">🌐</div>
+                        <h3 class="country-empty-title">Nothing here yet</h3>
+                        <p class="country-empty-sub">No movies available for ${countryConfig.name} right now.</p>
+                    </div>
+                `;
                 if (paginationControls) paginationControls.style.display = "none";
                 return;
             }
@@ -2828,9 +3287,13 @@ if (movieCardGrid) {
 
     async function fetchAndRenderLibrarySeries() {
         try {
+            const countryCode = getActiveCountryCode();
+            const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
+
             const queryParams = new URLSearchParams({
                 page: currentPage,
-                limit: currentLimit
+                limit: currentLimit,
+                country: countryCode
             });
             if (currentGenre && currentGenre !== "all") queryParams.append("genre", currentGenre);
             if (currentSort) queryParams.append("sort", currentSort);
@@ -2845,7 +3308,13 @@ if (movieCardGrid) {
             updateGenreOptions(data.genres || []);
 
             if (seriesList.length === 0) {
-                movieCardGrid.innerHTML = '<div class="loading-state">No series found matching your request.</div>';
+                movieCardGrid.innerHTML = `
+                    <div class="country-empty-state" style="grid-column: 1 / -1;">
+                        <div class="country-empty-icon">🌐</div>
+                        <h3 class="country-empty-title">Nothing here yet</h3>
+                        <p class="country-empty-sub">No series available for ${countryConfig.name} right now.</p>
+                    </div>
+                `;
                 if (paginationControls) paginationControls.style.display = "none";
                 return;
             }
@@ -2866,6 +3335,9 @@ if (movieCardGrid) {
 
     async function fetchAndRenderLibraryMusic() {
         try {
+            const countryCode = getActiveCountryCode();
+            const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
+
             const MUSIC_RECORDS = [
                 {
                     id: "trace-mziki-music",
@@ -2875,11 +3347,12 @@ if (movieCardGrid) {
                     quality: "HD",
                     posterUrl: "/images/tracemziki-logo.png",
                     streamUrl: "https://channels.trace.plus/Traceprod/MZIKI_hd/index.m3u8",
-                    targetUrl: "/live-tv/watch/trace-mziki/"
+                    targetUrl: "/live-tv/watch/trace-mziki/",
+                    countries: ["ug", "ke"]
                 }
             ];
 
-            let filtered = MUSIC_RECORDS;
+            let filtered = MUSIC_RECORDS.filter(m => m.countries.includes(countryCode));
             if (currentSearch) {
                 const searchLower = currentSearch.toLowerCase();
                 filtered = filtered.filter(m =>
@@ -2889,9 +3362,13 @@ if (movieCardGrid) {
             }
 
             if (filtered.length === 0) {
-                movieCardGrid.innerHTML = currentSearch ?
-                    '<div class="loading-state">No music found matching your request.</div>' :
-                    '<div class="loading-state">No music content available at the moment.</div>';
+                movieCardGrid.innerHTML = `
+                    <div class="country-empty-state" style="grid-column: 1 / -1;">
+                        <div class="country-empty-icon">🌐</div>
+                        <h3 class="country-empty-title">Nothing here yet</h3>
+                        <p class="country-empty-sub">No music available for ${countryConfig.name} right now.</p>
+                    </div>
+                `;
                 if (paginationControls) paginationControls.style.display = "none";
                 return;
             }
@@ -2926,9 +3403,13 @@ if (movieCardGrid) {
 
     async function fetchAndRenderLibraryConcerts() {
         try {
+            const countryCode = getActiveCountryCode();
+            const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
+
             const queryParams = new URLSearchParams({
                 page: currentPage,
-                limit: currentLimit
+                limit: currentLimit,
+                country: countryCode
             });
             if (currentSearch) queryParams.append("search", currentSearch);
 
@@ -2939,9 +3420,13 @@ if (movieCardGrid) {
             const concerts = data.concerts || [];
 
             if (concerts.length === 0) {
-                movieCardGrid.innerHTML = currentSearch ?
-                    '<div class="loading-state">No concerts found matching your request.</div>' :
-                    '<div class="loading-state">No upcoming concerts available at the moment.</div>';
+                movieCardGrid.innerHTML = `
+                    <div class="country-empty-state" style="grid-column: 1 / -1;">
+                        <div class="country-empty-icon">🌐</div>
+                        <h3 class="country-empty-title">Nothing here yet</h3>
+                        <p class="country-empty-sub">No upcoming concerts in ${countryConfig.name} right now.</p>
+                    </div>
+                `;
                 if (paginationControls) paginationControls.style.display = "none";
                 return;
             }
@@ -3098,10 +3583,14 @@ if (seriesCardGrid) {
         seriesCardGrid.innerHTML = createMovieSkeletonGrid(12);
 
         try {
+            const countryCode = getActiveCountryCode();
+            const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
+
             const queryParams = new URLSearchParams({
                 page: sPage,
                 limit: sLimit,
-                sort: sSort
+                sort: sSort,
+                country: countryCode
             });
             if (sGenre && sGenre !== "all") queryParams.append("genre", sGenre);
             if (sSearch) queryParams.append("search", sSearch);
@@ -3122,7 +3611,13 @@ if (seriesCardGrid) {
             }
 
             if (seriesList.length === 0) {
-                seriesCardGrid.innerHTML = '<div class="loading-state">No series found matching your request.</div>';
+                seriesCardGrid.innerHTML = `
+                    <div class="country-empty-state" style="grid-column: 1 / -1;">
+                        <div class="country-empty-icon">🌐</div>
+                        <h3 class="country-empty-title">Nothing here yet</h3>
+                        <p class="country-empty-sub">No series available for ${countryConfig.name} right now.</p>
+                    </div>
+                `;
                 if (seriesPaginationControls) seriesPaginationControls.style.display = "none";
                 return;
             }
@@ -3847,6 +4342,8 @@ async function initConcertDetailPage() {
 
 /* DOM INITIALIZATION */
 document.addEventListener("DOMContentLoaded", () => {
+    ensureNavbarCountryButton();
+    openCountryOnboardingModal(false);
     updateBottomNavActiveState();
     initHomePage();
     initSubpage("trendingGrid", true, 20);

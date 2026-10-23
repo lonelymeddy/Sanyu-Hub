@@ -106,6 +106,21 @@ async function scrapeAllEvents() {
           }
         }
 
+        const venueStr = decodeHtmlEntities(venue.trim());
+        const venueLower = venueStr.toLowerCase();
+        const descLower = description.toLowerCase();
+        const nameLower = data.name.toLowerCase();
+
+        let countryCode = 'ug';
+        if (
+          venueLower.includes('kenya') || venueLower.includes('nairobi') || venueLower.includes('mombasa') ||
+          venueLower.includes('nakuru') || venueLower.includes('kisumu') || venueLower.includes('eldoret') ||
+          venueLower.includes('thika') || venueLower.includes('kilifi') || venueLower.includes('naivasha') ||
+          descLower.includes('nairobi, kenya') || nameLower.includes('nairobi')
+        ) {
+          countryCode = 'ke';
+        }
+
         const slug = url.split('/events/')[1].replace(/\/$/, '');
         const concert = {
           id: 'allevents-' + slug,
@@ -114,7 +129,8 @@ async function scrapeAllEvents() {
           posterUrl: posterUrl || '',
           startDate: startDateStr,
           endDate: endDateStr,
-          venue: decodeHtmlEntities(venue.trim()),
+          venue: venueStr,
+          country: countryCode,
           description: description,
           ticketInfo: ticketInfo,
           organizer: data.organizer ? decodeHtmlEntities(data.organizer.name) : 'All Events Kampala',

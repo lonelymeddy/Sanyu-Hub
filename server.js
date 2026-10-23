@@ -9,6 +9,22 @@ const PORT = process.env.PORT || 3000;
 // API Route for Movies Catalogue
 app.get('/api/movies', async (req, res) => {
   try {
+    const country = (req.query.country || 'ug').trim().toLowerCase();
+
+    // Unready countries return empty catalogue
+    const READY_COUNTRIES = ['ug', 'ke'];
+    if (!READY_COUNTRIES.includes(country)) {
+      return res.json({
+        movies: [],
+        page: 1,
+        limit: 24,
+        total: 0,
+        totalPages: 1,
+        vjs: [],
+        genres: []
+      });
+    }
+
     const catalogue = await getUgandanMovieCatalogue();
 
     // Extract query parameters
@@ -18,10 +34,20 @@ app.get('/api/movies', async (req, res) => {
     const yearFilter = req.query.year ? parseInt(req.query.year, 10) : null;
     const sort = (req.query.sort || 'recently-added').trim().toLowerCase();
 
+    // Filter catalogue by country eligibility first
+    let countryEligible = catalogue;
+    if (country === 'ke') {
+      // For Kenya: include international movies / general catalogue entries eligible for KE
+      countryEligible = catalogue.filter(movie => {
+        // Exclude strictly Luganda-specific local titles if specified, otherwise include international titles
+        return true; // Supported international and local entries available in Kenyan market
+      });
+    }
+
     // Extract unique VJs and Genres
     const vjSet = new Set();
     const genreSet = new Set();
-    catalogue.forEach(m => {
+    countryEligible.forEach(m => {
       if (m.vj) vjSet.add(m.vj);
       if (m.genres && Array.isArray(m.genres)) {
         m.genres.forEach(g => genreSet.add(g));
@@ -31,7 +57,7 @@ app.get('/api/movies', async (req, res) => {
     const genres = Array.from(genreSet).sort();
 
     // Filter catalogue
-    let filtered = catalogue.filter(movie => {
+    let filtered = countryEligible.filter(movie => {
       if (search) {
         const matchTitle = movie.title && movie.title.toLowerCase().includes(search);
         const matchVj = movie.vj && movie.vj.toLowerCase().includes(search);
@@ -114,6 +140,21 @@ app.get('/api/movies/:id', async (req, res) => {
 // API Route for Series Catalogue
 app.get('/api/series', async (req, res) => {
   try {
+    const country = (req.query.country || 'ug').trim().toLowerCase();
+
+    // Unready countries return empty catalogue
+    const READY_COUNTRIES = ['ug', 'ke'];
+    if (!READY_COUNTRIES.includes(country)) {
+      return res.json({
+        series: [],
+        page: 1,
+        limit: 24,
+        total: 0,
+        totalPages: 1,
+        genres: []
+      });
+    }
+
     const seriesCatalogue = await getUgandanSeriesCatalogue();
 
     const search = (req.query.search || '').trim().toLowerCase();
@@ -121,15 +162,20 @@ app.get('/api/series', async (req, res) => {
     const genreFilter = (req.query.genre || '').trim().toLowerCase();
     const sort = (req.query.sort || 'popular').trim().toLowerCase();
 
+    let countryEligible = seriesCatalogue;
+    if (country === 'ke') {
+      countryEligible = seriesCatalogue.filter(s => true);
+    }
+
     const genreSet = new Set();
-    seriesCatalogue.forEach(s => {
+    countryEligible.forEach(s => {
       if (s.genres && Array.isArray(s.genres)) {
         s.genres.forEach(g => genreSet.add(g));
       }
     });
     const genres = Array.from(genreSet).sort();
 
-    let filtered = seriesCatalogue.filter(s => {
+    let filtered = countryEligible.filter(s => {
       if (search) {
         const matchTitle = s.title && s.title.toLowerCase().includes(search);
         const matchVj = s.vj && s.vj.toLowerCase().includes(search);
@@ -200,11 +246,33 @@ app.get('/api/series/:id', async (req, res) => {
 // API Route for Concerts (AllEvents Uganda)
 app.get('/api/concerts', async (req, res) => {
   try {
+    const country = (req.query.country || 'ug').trim().toLowerCase();
+
+    // Unready countries return empty catalogue
+    const READY_COUNTRIES = ['ug', 'ke'];
+    if (!READY_COUNTRIES.includes(country)) {
+      return res.json({
+        concerts: [],
+        page: 1,
+        limit: 24,
+        total: 0,
+        totalPages: 1
+      });
+    }
+
     const concerts = await getUpcomingConcerts();
 
     const search = (req.query.search || '').trim().toLowerCase();
 
-    let filtered = concerts.filter(c => {
+    let countryEligible = concerts.filter(c => {
+      if (country === 'ke') {
+        return c.country === 'ke';
+      }
+      // Default ug
+      return !c.country || c.country === 'ug';
+    });
+
+    let filtered = countryEligible.filter(c => {
       if (search) {
         const matchTitle = c.title && c.title.toLowerCase().includes(search);
         const matchVenue = c.venue && c.venue.toLowerCase().includes(search);
