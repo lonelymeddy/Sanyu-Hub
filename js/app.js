@@ -62,120 +62,224 @@ function setActiveCountryCode(code) {
 }
 
 function updateNavbarCountryUI() {
-    const code = getActiveCountryCode();
-    const config = COUNTRIES_CONFIG[code] || COUNTRIES_CONFIG.ug;
+    // Country selector removed from header navbar per specifications
     const btn = document.getElementById("navCountryBtn");
     if (btn) {
-        btn.innerHTML = `<span class="nav-country-flag">${config.flag}</span> <span class="nav-country-code">${config.code.toUpperCase()}</span>`;
-        btn.title = `Country: ${config.name} (Click to change)`;
+        btn.remove();
     }
 }
 
 function ensureNavbarCountryButton() {
-    const navControls = document.querySelector(".nav-controls");
-    if (!navControls || document.getElementById("navCountryBtn")) return;
-
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.id = "navCountryBtn";
-    btn.className = "nav-country-btn";
-    btn.setAttribute("aria-label", "Change country");
-
-    const topSearch = document.getElementById("topSearch");
-    if (topSearch) {
-        navControls.insertBefore(btn, topSearch);
-    } else {
-        navControls.appendChild(btn);
+    // Country selection icon/button removed from header navbar
+    const btn = document.getElementById("navCountryBtn");
+    if (btn) {
+        btn.remove();
     }
-
-    btn.addEventListener("click", () => {
-        openCountryOnboardingModal(true);
-    });
-
-    updateNavbarCountryUI();
 }
 
-let tempSelectedCountry = "ug";
+let tempSelectedCountry = null;
 
 function ensureCountryOnboardingOverlayExists() {
     if (document.getElementById("countryOnboardingOverlay")) return;
 
+    // Main onboarding overlay container
     const overlay = document.createElement("div");
     overlay.id = "countryOnboardingOverlay";
     overlay.className = "country-onboarding-overlay";
     overlay.setAttribute("aria-hidden", "true");
 
     overlay.innerHTML = `
-        <div class="country-modal-card">
-            <div class="country-modal-header">
-                <div class="country-modal-brand">sanyu<span>hub</span></div>
-                <h2 class="country-modal-headline">Your entertainment. Your country. Your world.</h2>
-                <p class="country-modal-desc">Discover movies, TV shows, radio, TV channels, music, and concerts tailored to your selected country.</p>
-                <div class="country-modal-prompt">Which country are you watching from?</div>
-                <div class="country-search-wrapper">
-                    <svg class="country-search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                    <input type="text" id="countrySearchInput" class="country-search-input" placeholder="Search country..." aria-label="Search country">
-                </div>
+        <div class="country-screen-container">
+            <!-- 1. INFORMATION SECTION - TOP -->
+            <div class="country-intro-section">
+                <div class="country-intro-logo">sanyu<span>hub</span></div>
+                <h1 class="country-intro-headline">Your entertainment.<br>Your country.</h1>
+                <p class="country-intro-desc">Selecting a country helps personalize your available movies, TV shows, radio stations, live channels, and concerts.</p>
             </div>
-            <div class="country-select-list" id="countrySelectList"></div>
-            <div class="country-modal-footer">
+
+            <!-- 2. SEPARATE COUNTRY-SELECTION SECTION -->
+            <div class="country-selection-section">
+                <h2 class="country-section-heading">Select your country</h2>
+                <p class="country-section-subtext">You can change this anytime in your settings.</p>
+
+                <!-- CLOSED CONTROL -->
+                <button type="button" id="countrySelectControl" class="country-select-control" aria-label="Open country selector">
+                    <span id="countrySelectControlValue" class="country-select-value">Choose your country</span>
+                    <svg class="country-select-chevron" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+
+                <div id="countryValidationMsg" class="country-validation-msg">Please select a country to continue</div>
+            </div>
+
+            <!-- 5. CONTINUE BUTTON -->
+            <div class="country-continue-container">
                 <button type="button" id="countryContinueBtn" class="country-continue-btn">Continue</button>
+            </div>
+        </div>
+
+        <!-- 3. INTERACTIVE BOTTOM SHEET PICKER -->
+        <div id="countrySheetOverlay" class="country-sheet-overlay" aria-hidden="true">
+            <div class="country-sheet-card" role="dialog" aria-label="Select your country">
+                <div class="country-sheet-header">
+                    <h3 class="country-sheet-title">Select your country</h3>
+                    <button type="button" id="countrySheetClose" class="country-sheet-close" aria-label="Close country selector">
+                        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                    </button>
+                </div>
+                <div class="country-sheet-search-box">
+                    <svg class="country-sheet-search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <input type="text" id="countrySheetSearchInput" class="country-sheet-search-input" placeholder="Search country..." aria-label="Search country name" autocomplete="off" spellcheck="false">
+                </div>
+                <div class="country-sheet-list" id="countrySheetList"></div>
             </div>
         </div>
     `;
 
     document.body.appendChild(overlay);
 
-    const searchInput = document.getElementById("countrySearchInput");
+    const selectControl = document.getElementById("countrySelectControl");
+    const sheetOverlay = document.getElementById("countrySheetOverlay");
+    const sheetClose = document.getElementById("countrySheetClose");
+    const searchInput = document.getElementById("countrySheetSearchInput");
     const continueBtn = document.getElementById("countryContinueBtn");
+
+    if (selectControl) {
+        selectControl.addEventListener("click", () => {
+            openCountryBottomSheet();
+        });
+    }
+
+    if (sheetClose) {
+        sheetClose.addEventListener("click", () => {
+            closeCountryBottomSheet();
+        });
+    }
+
+    if (sheetOverlay) {
+        sheetOverlay.addEventListener("click", (e) => {
+            if (e.target === sheetOverlay) {
+                closeCountryBottomSheet();
+            }
+        });
+    }
 
     if (searchInput) {
         searchInput.addEventListener("input", (e) => {
-            renderCountryOptionsList(e.target.value);
+            renderCountrySheetList(e.target.value);
         });
     }
 
     if (continueBtn) {
         continueBtn.addEventListener("click", () => {
+            if (!tempSelectedCountry || !COUNTRIES_CONFIG[tempSelectedCountry]) {
+                const msg = document.getElementById("countryValidationMsg");
+                if (msg) msg.style.display = "block";
+                continueBtn.classList.add("disabled-hint");
+                setTimeout(() => continueBtn.classList.remove("disabled-hint"), 500);
+                return;
+            }
+
+            const isFromSettings = overlay.getAttribute("data-from-settings") === "true";
             setActiveCountryCode(tempSelectedCountry);
             closeCountryOnboardingModal();
+
+            if (isFromSettings) {
+                // If country changed from Settings, return user to Home page smoothly
+                if (!window.location.pathname.endsWith("/") && window.location.pathname !== "/index.html") {
+                    window.location.href = "/";
+                } else {
+                    refreshPageForCountryChange();
+                }
+            } else {
+                refreshPageForCountryChange();
+            }
         });
     }
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            if (sheetOverlay && sheetOverlay.classList.contains("active")) {
+                closeCountryBottomSheet();
+            }
+        }
+    });
 }
 
-function renderCountryOptionsList(filterText = "") {
-    const list = document.getElementById("countrySelectList");
+function updateControlValueUI() {
+    const valEl = document.getElementById("countrySelectControlValue");
+    if (!valEl) return;
+
+    if (tempSelectedCountry && COUNTRIES_CONFIG[tempSelectedCountry]) {
+        valEl.textContent = COUNTRIES_CONFIG[tempSelectedCountry].name;
+        valEl.classList.remove("placeholder");
+    } else {
+        valEl.textContent = "Choose your country";
+        valEl.classList.add("placeholder");
+    }
+
+    const msg = document.getElementById("countryValidationMsg");
+    if (msg) msg.style.display = "none";
+}
+
+function renderCountrySheetList(filterText = "") {
+    const list = document.getElementById("countrySheetList");
     if (!list) return;
 
     list.innerHTML = "";
     const query = (filterText || "").trim().toLowerCase();
 
-    Object.values(COUNTRIES_CONFIG).forEach(country => {
-        if (query && !country.name.toLowerCase().includes(query) && !country.code.toLowerCase().includes(query)) {
-            return;
-        }
+    const matchedCountries = Object.values(COUNTRIES_CONFIG).filter(c => {
+        if (!query) return true;
+        return c.name.toLowerCase().includes(query) || c.code.toLowerCase().includes(query);
+    });
 
-        const item = document.createElement("div");
-        item.className = "country-option-item" + (country.code === tempSelectedCountry ? " selected" : "");
-        item.setAttribute("data-code", country.code);
+    if (matchedCountries.length === 0) {
+        list.innerHTML = `<div class="country-sheet-empty">No countries found</div>`;
+        return;
+    }
 
-        item.innerHTML = `
-            <div class="country-option-left">
-                <span class="country-option-flag">${country.flag}</span>
-                <span class="country-option-name">${country.name}</span>
-                ${country.ready ? '<span class="country-option-badge ready">Ready</span>' : '<span class="country-option-badge">Coming Soon</span>'}
-            </div>
-            <div class="country-option-radio"></div>
+    matchedCountries.forEach(country => {
+        const row = document.createElement("div");
+        row.className = "country-sheet-row" + (country.code === tempSelectedCountry ? " selected" : "");
+        row.setAttribute("data-code", country.code);
+
+        row.innerHTML = `
+            <span class="country-sheet-row-name">${country.name}</span>
+            <div class="country-sheet-radio"></div>
         `;
 
-        item.addEventListener("click", () => {
+        row.addEventListener("click", () => {
             tempSelectedCountry = country.code;
-            list.querySelectorAll(".country-option-item").forEach(el => el.classList.remove("selected"));
-            item.classList.add("selected");
+            updateControlValueUI();
+            closeCountryBottomSheet();
         });
 
-        list.appendChild(item);
+        list.appendChild(row);
     });
+}
+
+function openCountryBottomSheet() {
+    const sheetOverlay = document.getElementById("countrySheetOverlay");
+    const searchInput = document.getElementById("countrySheetSearchInput");
+    if (!sheetOverlay) return;
+
+    if (searchInput) searchInput.value = "";
+    renderCountrySheetList("");
+
+    sheetOverlay.classList.add("active");
+    sheetOverlay.setAttribute("aria-hidden", "false");
+
+    setTimeout(() => {
+        if (searchInput) searchInput.focus();
+    }, 100);
+}
+
+function closeCountryBottomSheet() {
+    const sheetOverlay = document.getElementById("countrySheetOverlay");
+    if (!sheetOverlay) return;
+
+    sheetOverlay.classList.remove("active");
+    sheetOverlay.setAttribute("aria-hidden", "true");
 }
 
 function openCountryOnboardingModal(forceOpen = false) {
@@ -184,9 +288,11 @@ function openCountryOnboardingModal(forceOpen = false) {
 
     if (!hasUserSetCountry() || forceOpen) {
         tempSelectedCountry = getActiveCountryCode();
-        renderCountryOptionsList();
+        overlay.setAttribute("data-from-settings", forceOpen ? "true" : "false");
+        updateControlValueUI();
         overlay.classList.add("active");
         overlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
     }
 }
 
@@ -196,6 +302,15 @@ function closeCountryOnboardingModal() {
 
     overlay.classList.remove("active");
     overlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+
+    // Update setting options labels if on settings page
+    const settingsNameEl = document.getElementById("currentCountryName");
+    const appPrefNameEl = document.getElementById("appPrefCountryName");
+    const code = getActiveCountryCode();
+    const config = COUNTRIES_CONFIG[code] || COUNTRIES_CONFIG.ug;
+    if (settingsNameEl) settingsNameEl.textContent = config.name;
+    if (appPrefNameEl) appPrefNameEl.textContent = config.name;
 }
 
 function refreshPageForCountryChange() {
@@ -2875,6 +2990,8 @@ function initHeroCarousel() {
 }
 
 /* HOMEPAGE DYNAMIC INTEGRATION */
+let activeHomePageCountry = null;
+
 async function initHomePage() {
     const homeLiveTvGrid = document.getElementById("homeLiveTvGrid");
     const homeTrendingGrid = document.getElementById("homeTrendingGrid");
@@ -2887,6 +3004,7 @@ async function initHomePage() {
     initHeroCarousel();
 
     const countryCode = getActiveCountryCode();
+    activeHomePageCountry = countryCode;
     const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
 
     const secLiveTv = document.getElementById("section-live-tv");
@@ -2901,13 +3019,37 @@ async function initHomePage() {
     const existingEmpty = document.getElementById("homeCountryEmptyState");
     if (existingEmpty) existingEmpty.remove();
 
+    // Render initial skeletons for active sections during loading phase
+    if (homeLiveTvGrid && secLiveTv) {
+        secLiveTv.style.display = "block";
+        homeLiveTvGrid.innerHTML = createLiveTvSkeletonGrid(2);
+    }
+    if (homeTrendingGrid && secTrending) {
+        secTrending.style.display = "block";
+        homeTrendingGrid.innerHTML = createMovieSkeletonGrid(2);
+    }
+    if (homeMusicGrid && secMusic) {
+        secMusic.style.display = "block";
+        homeMusicGrid.innerHTML = createMovieSkeletonGrid(2);
+    }
+    if (homeConcertsGrid && secConcerts) {
+        secConcerts.style.display = "block";
+        homeConcertsGrid.innerHTML = createConcertSkeletonGrid(2);
+    }
+    if (homeRadioGrid && secRadio) {
+        secRadio.style.display = "block";
+        homeRadioGrid.innerHTML = createLiveTvSkeletonGrid(2);
+    }
+
     // 1. Live TV Section (Up to 2 items)
     if (homeLiveTvGrid && secLiveTv) {
-        homeLiveTvGrid.innerHTML = "";
         const tvChannels = LIVE_TV_CHANNELS.filter(ch =>
             (ch.countries || ["ug"]).includes(countryCode) && !ch.isRadio && ch.category !== "radio"
         ).slice(0, 2);
 
+        if (activeHomePageCountry !== countryCode) return;
+
+        homeLiveTvGrid.innerHTML = "";
         if (tvChannels.length > 0) {
             secLiveTv.style.display = "block";
             totalVisibleItems += tvChannels.length;
@@ -2931,9 +3073,9 @@ async function initHomePage() {
 
     // 2. Trending Movies Section (Up to 2 items)
     if (homeTrendingGrid && secTrending) {
-        homeTrendingGrid.innerHTML = createMovieSkeletonGrid(2);
         try {
             const res = await fetch(`/api/movies?country=${countryCode}&limit=10`);
+            if (activeHomePageCountry !== countryCode) return;
             if (res.ok) {
                 const data = await res.json();
                 const movies = (data.movies || []).slice(0, 2);
@@ -2951,13 +3093,14 @@ async function initHomePage() {
                 secTrending.style.display = "none";
             }
         } catch (err) {
-            secTrending.style.display = "none";
+            if (activeHomePageCountry === countryCode) {
+                secTrending.style.display = "none";
+            }
         }
     }
 
     // 3. Hot Music Section (Up to 2 items)
     if (homeMusicGrid && secMusic) {
-        homeMusicGrid.innerHTML = "";
         const MUSIC_RECORDS = [
             {
                 id: "trace-mziki-home",
@@ -2972,6 +3115,9 @@ async function initHomePage() {
         ];
 
         const musicItems = MUSIC_RECORDS.filter(m => m.countries.includes(countryCode)).slice(0, 2);
+        if (activeHomePageCountry !== countryCode) return;
+
+        homeMusicGrid.innerHTML = "";
         if (musicItems.length > 0) {
             secMusic.style.display = "block";
             totalVisibleItems += musicItems.length;
@@ -2999,9 +3145,9 @@ async function initHomePage() {
 
     // 4. Concerts Section (Up to 2 items)
     if (homeConcertsGrid && secConcerts) {
-        homeConcertsGrid.innerHTML = createConcertSkeletonGrid(2);
         try {
             const res = await fetch(`/api/concerts?country=${countryCode}&limit=2`);
+            if (activeHomePageCountry !== countryCode) return;
             if (res.ok) {
                 const data = await res.json();
                 const realConcerts = (data.concerts || []).slice(0, 2);
@@ -3019,17 +3165,21 @@ async function initHomePage() {
                 secConcerts.style.display = "none";
             }
         } catch (err) {
-            secConcerts.style.display = "none";
+            if (activeHomePageCountry === countryCode) {
+                secConcerts.style.display = "none";
+            }
         }
     }
 
     // 5. Doppest Radio Stations Section (Up to 2 items)
     if (homeRadioGrid && secRadio) {
-        homeRadioGrid.innerHTML = "";
         const radioChannels = LIVE_TV_CHANNELS.filter(ch =>
             (ch.countries || ["ug"]).includes(countryCode) && (ch.isRadio || ch.category === "radio")
         ).slice(0, 2);
 
+        if (activeHomePageCountry !== countryCode) return;
+
+        homeRadioGrid.innerHTML = "";
         if (radioChannels.length > 0) {
             secRadio.style.display = "block";
             totalVisibleItems += radioChannels.length;
@@ -3050,6 +3200,8 @@ async function initHomePage() {
             secRadio.style.display = "none";
         }
     }
+
+    if (activeHomePageCountry !== countryCode) return;
 
     // If active country has NO entertainment items, show clean empty state below hero
     if (totalVisibleItems === 0) {

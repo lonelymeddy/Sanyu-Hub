@@ -64,6 +64,17 @@ Sanyu<span>Hub</span>
 <section class="section">
   <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
 
+    <div id="settingsCountryOption" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; cursor: pointer;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: #ffd43b;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        <div>
+          <span style="font-weight: 600; font-size: 16px; display: block;">Country / Region</span>
+          <span id="currentCountryName" style="font-size: 13px; color: #aaa; margin-top: 2px; display: block;">Uganda</span>
+        </div>
+      </div>
+      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
+    </div>
+
     <a href="/settings/app-preferences" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
       <div style="display: flex; align-items: center; gap: 14px;">
         <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: #f4c400;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
@@ -101,5 +112,29 @@ Sanyu<span>Hub</span>
 </nav>
 
 <script src="/js/app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const option = document.getElementById("settingsCountryOption");
+  const nameEl = document.getElementById("currentCountryName");
+
+  function updateSettingsCountryName() {
+    if (nameEl && typeof getActiveCountryCode === "function" && typeof COUNTRIES_CONFIG !== "undefined") {
+      const code = getActiveCountryCode();
+      const config = COUNTRIES_CONFIG[code] || COUNTRIES_CONFIG.ug;
+      nameEl.textContent = config.name;
+    }
+  }
+
+  updateSettingsCountryName();
+
+  if (option) {
+    option.addEventListener("click", () => {
+      if (typeof openCountryOnboardingModal === "function") {
+        openCountryOnboardingModal(true);
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
