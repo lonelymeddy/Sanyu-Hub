@@ -87,9 +87,9 @@ Sanyu<span>Hub</span>
         <div style="font-weight: 600; font-size: 15px; color: #fff;">Country / Region</div>
         <div id="appPrefCountryName" style="font-size: 13px; color: #aaa; margin-top: 2px;">Uganda</div>
       </div>
-      <button type="button" id="btnChangeCountrySettings" style="background: #ffd43b; color: #080808; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer;">
+      <a href="/settings/country" id="btnChangeCountrySettings" style="background: #ffd43b; color: #080808; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; text-decoration: none;">
         Change
-      </button>
+      </a>
     </div>
 
     <div id="androidNotificationContainer" style="display: none;"></div>
@@ -139,14 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
     countryNameEl.textContent = config.name;
   }
 
-  const btnCountry = document.getElementById("btnChangeCountrySettings");
-  if (btnCountry) {
-    btnCountry.addEventListener("click", () => {
-      if (typeof openCountryOnboardingModal === "function") {
-        openCountryOnboardingModal(true);
-      }
-    });
-  }
 
   // Graceful Android Native Integration
   if (window.SanyuHubNative && typeof window.SanyuHubNative.isAndroidApp === "function" && window.SanyuHubNative.isAndroidApp()) {
