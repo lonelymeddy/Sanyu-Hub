@@ -1,0 +1,28 @@
+{
+  "id": "movie-2343",
+  "title": "Like Mike 2 Street ball",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-soul"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2343",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZGE2ZjZkYTgtNTAwZS00MDA4LWE3YzAtNTY4ZDMzNmZlMmE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/LIKE MIKE .2 .STREETBALL - SOUL.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/LIKE MIKE .2 .STREETBALL - SOUL.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Like Mike 2: Streetball (2006) is a family sports comedy about Jerome Jr. (\"Triple-J\"), a young basketball hopeful who finds a pair of old sneakers once owned b",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

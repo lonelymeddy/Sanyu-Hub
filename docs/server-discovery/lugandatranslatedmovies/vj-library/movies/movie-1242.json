@@ -1,0 +1,28 @@
+{
+  "id": "movie-1242",
+  "title": "Breaking In",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1242",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNmVmZDgyYzQtZWNkZi00OTY1LWI0YTktMWQ1ZjY5MzUzNGZiXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/breakingin.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Professional thief Ernie takes Mike on as an apprentice, but while Mike clearly has \"larceny in his heart\", it will take him a long time to get as good as Ernie",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

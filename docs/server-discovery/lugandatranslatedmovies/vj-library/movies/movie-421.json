@@ -1,0 +1,28 @@
+{
+  "id": "movie-421",
+  "title": "Crazy Fist",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=421",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNTI0OTc0NzgtZmE0YS00ZGExLWIwZmQtZDhjMGMxYmY5NTllXkEyXkFqcGdeQXVyNzczMzU1ODE@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/crazyfist.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A mixed martial arts champion is forced out of retirement for one last fight in order to unravel a major conspiracy. A mixed martial arts champion is forced out",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-784",
+  "title": "The Challenger",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=784",
+  "image_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p11631760_p_v8_aa.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/Thechallenger.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "A legendary trainer comes out of retirement to help an underdog boxer fight his way to a better life",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

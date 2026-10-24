@@ -1,0 +1,28 @@
+{
+  "id": "movie-379",
+  "title": "Secrete Admirer",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=379",
+  "image_url": "https://m.media-amazon.com/images/I/5111WZD1SML._AC_UF894,1000_QL80_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/secretadmirer.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "A 16-year-old high school student receives an unsigned love letter, which causes a chain of confusion. It continues to fall into the wrong hands, and each recip",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

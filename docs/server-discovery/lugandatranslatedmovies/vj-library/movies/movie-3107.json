@@ -1,0 +1,28 @@
+{
+  "id": "movie-3107",
+  "title": "Survive",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3107",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOWJjZWVjMjYtMzk1My00N2ZlLTliNzgtMGM0MzlkMDlhNjE1XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Survive_VJ_Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "A couple, Tom and Julia, are on a boat in the middle of the ocean celebrating their young son Ben's birthday alongside their teenage daughter Cassie",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

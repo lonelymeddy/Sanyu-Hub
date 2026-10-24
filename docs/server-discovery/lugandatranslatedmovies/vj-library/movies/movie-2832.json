@@ -1,0 +1,28 @@
+{
+  "id": "movie-2832",
+  "title": "Alice Through the Looking Glass",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2832",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTc2NjExMTIyN15BMl5BanBnXkFtZTgwMjg0OTIwODE@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/SERIES%2010/SINGLES/ALICE%20THROUGH%20THE%20LOOKING%20GLASS%20-%20EMMY.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "In Disney's Alice Through the Looking Glass (2016), Alice Kingsleigh (Mia Wasikowska) returns to Underland via a magical mirror to save the Mad Hatter (Johnny D",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

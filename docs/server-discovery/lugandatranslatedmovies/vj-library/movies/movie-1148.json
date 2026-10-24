@@ -1,0 +1,28 @@
+{
+  "id": "movie-1148",
+  "title": "Noctumal",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1148",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZTU5OWY0MjctMDU1NC00NTI3LWJmOTUtYmY4OTJlODBmYTMwXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/noctumal.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"Nocturnal\" is a 2019 drama film about a teenage girl, Laurie, who forms a close friendship with an older man, Pete, while struggling to fit in at her new schoo",
+  "release_year": 2019,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

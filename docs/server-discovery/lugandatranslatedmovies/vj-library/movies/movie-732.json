@@ -1,0 +1,28 @@
+{
+  "id": "movie-732",
+  "title": "The Menu",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=732",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/db/The_Menu_%282022_film%29.jpg/220px-The_Menu_%282022_film%29.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/menu.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "The Menu is a 2022 movie about a wealthy couple who visit a remote island restaurant where the chef has prepared a lavish menu with shocking surprises. The movi",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

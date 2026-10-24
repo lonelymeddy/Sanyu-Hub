@@ -1,0 +1,28 @@
+{
+  "id": "movie-455",
+  "title": "Uri: The Surgical Strike",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=455",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/3/3b/URI_-_New_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/uri.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Uri: The Surgical Strike is the dramatized account of the retaliation to the 2016 Uri attack by Indian forces against terrorist camps based in POK. It is a rous",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

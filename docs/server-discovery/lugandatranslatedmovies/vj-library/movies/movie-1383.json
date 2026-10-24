@@ -1,0 +1,28 @@
+{
+  "id": "movie-1383",
+  "title": "Witch board",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1383",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOTliNzk4ZWItYTkzZS00MGQzLWIzOGYtNjU5OTRkYjZkMzE1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/Witchboard.2024.720%20VJ%20JUNIOR%40katflix..mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Witchboard is a supernatural horror film that follows Emily, who finds a cursed 17th-century French witchboard that allows her to summon spirits, but its power",
+  "release_year": 2025,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

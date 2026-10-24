@@ -1,0 +1,28 @@
+{
+  "id": "movie-2104",
+  "title": "Valley of the wolves palestine",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2104",
+  "image_url": "https://cdn-2.cinemaparadiso.co.uk/2106031045258_l.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/KURTRA%20VANSISI%20FILISTIN%20____VJ%20JINGO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Valley of the Wolves: Palestine (2011) is a Turkish action film where Turkish secret agent Polat Alemdar and his team travel to Palestine to hunt down the Israe",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

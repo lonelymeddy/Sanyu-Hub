@@ -1,0 +1,28 @@
+{
+  "id": "movie-2827",
+  "title": "Valiente A Tracker Story",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-uncle-t"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2827",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZWExODQ3OTYtMWZiNi00OTQ5LTg2MDUtNjQ3ZDM4YzBkNDdkXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/VALIENTE_UNCLE_T.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Tracker and Carlos come across a series of nocturnal animals fleeing the Shadow Jungle. Tracker, with the help from Ryder and the PAW Patrol, must brave his fea",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

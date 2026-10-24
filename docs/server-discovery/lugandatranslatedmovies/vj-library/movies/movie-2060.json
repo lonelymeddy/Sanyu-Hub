@@ -1,0 +1,28 @@
+{
+  "id": "movie-2060",
+  "title": "The Messengers",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2060",
+  "image_url": "https://images.moviesanywhere.com/8b661d5c2df01143f6ea025fe341e6c1/93a59df6-27a3-4d16-bfcd-aaa55697bf1c.jpg",
+  "video_sources": [
+    {
+      "url": "https://watch.kpsounds.com/watch/The%20Messengers%20-%20VJ%20Junior%20Kp%20Sounds%20Watch.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "watch.kpsounds.com",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "A family moves into a haunted farmhouse plagued by terrifying spirits.",
+  "release_year": 2007,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

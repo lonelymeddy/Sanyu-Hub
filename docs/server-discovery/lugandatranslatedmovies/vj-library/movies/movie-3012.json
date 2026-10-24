@@ -1,0 +1,28 @@
+{
+  "id": "movie-3012",
+  "title": "The Machine",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3012",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMGFlZjI3OWItMTg4YS00NjViLTliYjktOTU4YmJlZjNjM2Y4XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/THE%20MACHINE%20-%20ICE%20P.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "The Machine (2023) is an action-comedy film based on stand-up comedian Bert Kreischer's famous real-life viral story about accidentally partying with the Russia",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

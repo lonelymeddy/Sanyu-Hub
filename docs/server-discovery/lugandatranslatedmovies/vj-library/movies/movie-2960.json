@@ -1,0 +1,28 @@
+{
+  "id": "movie-2960",
+  "title": "Night born",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2960",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZTMwNGI2OTAtYjM3Ny00ZDk1LThkNjktOTc5MzJhZTBhYTkyXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/NIGHT%20BORN%20JR.2026.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Nightborn (2026) is a fantasy horror film directed by Hanna Bergholm. It stars Seidi Haarla as Saga and Rupert Grint as her British husband, Jon. The couple mov",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

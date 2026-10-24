@@ -1,0 +1,28 @@
+{
+  "id": "movie-1543",
+  "title": "Kama Sutra: A Tale",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1543",
+  "image_url": "https://a.ltrbxd.com/resized/film-poster/3/4/0/0/7/34007-kama-sutra-a-tale-of-love-0-230-0-345-crop.jpg?v=720c9fbd13",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/kalailai/junior/Kama%20Sutra%20A%20Tale%20Of%20Love%201996%20720%20Vj%20JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "Tara and Maya are two inseparable friends in India. Their tastes, habits, and hobbies are the same. Years later, the two have matured, but have maintained their",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-605",
+  "title": "The Golden Campass",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=605",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/b/b6/The_Golden_Compass.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/goldencampass.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Lyra joins a race of water-workers and seafarers on a trip to the far North in search of children kidnapped by the Gobblers, a group supported by the world's ru",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

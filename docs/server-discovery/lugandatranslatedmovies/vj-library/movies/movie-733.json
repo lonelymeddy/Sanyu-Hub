@@ -1,0 +1,28 @@
+{
+  "id": "movie-733",
+  "title": "The Woman King",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=733",
+  "image_url": "https://images.moviesanywhere.com/ad2b1c973e54429e064e163c12a84a46/f91edcb6-37bc-4ec3-b64a-741954153dae.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/womanking.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The Woman King follows the emotionally epic journey of General Nanisca (Oscar\u00ae-winner Viola Davis) as she trains the next generation of recruits and readies th",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

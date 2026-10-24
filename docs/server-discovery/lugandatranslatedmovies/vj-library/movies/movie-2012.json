@@ -1,0 +1,28 @@
+{
+  "id": "movie-2012",
+  "title": "Dragonquest",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2012",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNDYwNDU2MzQ5N15BMl5BanBnXkFtZTcwMDcxODUzMg@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW PRO/DRAGONQUEST VJ EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/NEW PRO/DRAGONQUEST VJ EMMY.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Dragonquest (2009) is a fantasy film about a young hero seeking a dragon to defeat a dark knight.",
+  "release_year": 2010,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1418",
+  "title": "After burn",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1418",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzJlZjJkZWItZGU4YS00ZWYwLTk3M2YtMDk2MGI4ZjNlYTI4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://munoserver51.club/hvt43/kai43/BULLET%20VJ%20JINGO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver51.club",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Afterburn is a 2025 post-apocalyptic action film where ex-soldier and treasure hunter Jake (Dave Bautista) travels to Europe to recover the Mona Lisa after a so",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

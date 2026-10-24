@@ -1,0 +1,28 @@
+{
+  "id": "movie-2031",
+  "title": "Fantastic Four 3",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2031",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTk0OTMyMDA0OF5BMl5BanBnXkFtZTgwMzY5NTkzNTE@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jport.pearlpix.xyz/1000/Fantastic%20Four%203.1080HP.Jr.A-B@(E.L.Pro+256782778952).mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jport.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "A canceled sequel concept focusing on Doctor Doom, Super-Skrull and the Fantastic Four legacy.",
+  "release_year": 2015,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

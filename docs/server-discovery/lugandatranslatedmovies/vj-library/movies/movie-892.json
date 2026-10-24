@@ -1,0 +1,28 @@
+{
+  "id": "movie-892",
+  "title": "Resident Evil 5 : Retribution",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=892",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNGJhZTNlNmYtN2YwNi00OWQwLThhNTUtY2NlOTYwZTQ5ZjNiXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/residentevil5retribution.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "In \"Resident Evil: Retribution,\" Alice, humanity's last hope, awakes in a top-secret Umbrella Corporation facility, battling through virtual simulations and und",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

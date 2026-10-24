@@ -1,0 +1,28 @@
+{
+  "id": "movie-865",
+  "title": "We're the Millers",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=865",
+  "image_url": "https://i.ebayimg.com/00/s/MTYwMFgxMDgw/z/nVIAAOSwguJnGB2b/$_57.JPG?set_id=880000500F",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/werethemillers.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "\"We're the Millers\" is a comedy film where a small-time pot dealer, David Burke (Jason Sudeikis), is forced to take a road trip with a fake family to smuggle dr",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

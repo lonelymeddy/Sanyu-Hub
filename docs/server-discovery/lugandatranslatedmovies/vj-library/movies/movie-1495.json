@@ -1,0 +1,28 @@
+{
+  "id": "movie-1495",
+  "title": "Ick",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1495",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNTQ4ZWM4MTAtNjMwZS00MTBiLWFlOGItODNjM2NkY2I4NTJmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/REMAKES%203/ICK%20___%20CB.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Ick is a 2025 sci-fi horror film directed by Joseph Kahn, starring Brandon Routh, Mena Suvari, and Malina Pauli Weissman. The plot follows a former high school",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

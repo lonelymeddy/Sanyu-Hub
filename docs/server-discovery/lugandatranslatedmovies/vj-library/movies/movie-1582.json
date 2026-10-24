@@ -1,0 +1,28 @@
+{
+  "id": "movie-1582",
+  "title": "White House Down",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1582",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNTZkMmRiY2EtOTljZS00MjJjLWFiNDQtNjEwYWE0NWNkYjI4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.newlinebusega.com/SINGLES/SINGLES%20NEW%20AND%20OLD/MOVIES%20THAT%20ARE%20CONVERTED%20FROM%20TOWN/MARCH%202023/29th-03-2023/White.House.Down%20-%20JINGO%5bJB%20HD%20movies%5d.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.newlinebusega.com",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "White House Down is an action thriller film about a Capitol Police officer, John Cale (Channing Tatum), who must save his daughter and the President of the Unit",
+  "release_year": 2013,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-133",
+  "title": "Zero",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=133",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/e/e6/Zero_official_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/zero.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "Through his relationships with two wildly different women, a vertically challenged bachelor with a larger-than-life persona must discover his purpose. Through h",
+  "release_year": 2020,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

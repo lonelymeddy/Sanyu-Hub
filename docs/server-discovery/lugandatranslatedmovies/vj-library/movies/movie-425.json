@@ -1,0 +1,28 @@
+{
+  "id": "movie-425",
+  "title": "Viking Wolf",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=425",
+  "image_url": "https://image.tmdb.org/t/p/w500/2sJgljCEHQxuHbCJK6p15zM9vVM.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/vikingwolf.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "It tells the story of a 17-year-old girl who gets bitten by a werewolf and slowly transforms into it as her police officer mother is unaware of her daughter's c",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

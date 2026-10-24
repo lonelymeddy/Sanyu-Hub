@@ -1,0 +1,28 @@
+{
+  "id": "movie-1385",
+  "title": "Doomsday",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1385",
+  "image_url": "https://images.moviesanywhere.com/e8fa720d2e5cc7f8bbd43216f9db727d/f492876b-9192-4ef3-8132-ef405f3857ba.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.kampalarelaxation.com/allmovies/Movies/Vj%20Junior/Dooms%20Day.2008.Junior.1080.Emma.Soft.0753088855.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.kampalarelaxation.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Doomsday is a 2008 science fiction action film where, after a deadly virus (the Reaper) quarantines Scotland, an elite team led by Major Eden Sinclair is sent i",
+  "release_year": 2008,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

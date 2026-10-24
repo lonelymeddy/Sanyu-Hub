@@ -1,0 +1,28 @@
+{
+  "id": "movie-1341",
+  "title": "Greyhound",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1341",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYTc5YTlmYWEtMzRjYy00ZWE5LTgwZTUtMzMwMDA1OGZlOGEzXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://munoserver11.club/11c97/465/b2f93~24.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver11.club",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 441: status code 441"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Greyhound is a 2020 World War II film starring Tom Hanks as U.S. Navy Commander Ernest Krause, who leads an Allied convoy across the treacherous North Atlantic",
+  "release_year": 2020,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

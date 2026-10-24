@@ -1,0 +1,28 @@
+{
+  "id": "movie-2046",
+  "title": "A Christmas Treasure",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2046",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZGM1ZjIyNjItYWQyYi00NzM3LWI5NTktNTk4ODE5MDAyZWZjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/A%20CHRISTMAS%20TREASURE%20JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "A woman discovers a time capsule that leads to love and life-changing decisions.",
+  "release_year": 2021,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

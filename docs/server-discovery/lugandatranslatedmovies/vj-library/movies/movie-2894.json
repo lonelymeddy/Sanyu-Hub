@@ -1,0 +1,28 @@
+{
+  "id": "movie-2894",
+  "title": "Your fault London",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2894",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNzI2YmMxZWItNjlhOS00ODNmLWEzYjQtYWIyNjc0ZTQwOTZlXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/YOUR_FAULT_LONDON_JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "A forbidden love story between 18-year-old Noah and stepbrother Nick faces challenges as they pursue different paths - him in business, her at Oxford - while de",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

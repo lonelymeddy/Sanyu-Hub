@@ -1,0 +1,28 @@
+{
+  "id": "movie-603",
+  "title": "Prepare to Die",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=603",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNGE0NzA5OWMtNmFmMy00NWUwLWExZjgtNzc5YWE5MDRkYmNjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/preparetodie.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "A young man trains in the ways of martial arts to seek vengeance on the corrupt landowner who murdered his family. A young man trains in the ways of martial art",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

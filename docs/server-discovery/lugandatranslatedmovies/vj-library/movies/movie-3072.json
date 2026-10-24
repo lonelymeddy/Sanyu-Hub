@@ -1,0 +1,28 @@
+{
+  "id": "movie-3072",
+  "title": "Three Housewives And A Body",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3072",
+  "image_url": "https://resizing.flixster.com/chF7fTGhEh6-zZt0ypD3Q0x9-iI=/fit-in/352x330/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p33527450_v_v11_aa.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Three_Housewives_and_a_Body_VJ_Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Three suburban friends make a desperate pact to bury an intruder after a girls' night goes wrong in the thriller Three Housewives and a Body",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

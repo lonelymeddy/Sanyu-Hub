@@ -1,0 +1,28 @@
+{
+  "id": "movie-1441",
+  "title": "Eenie Meanie",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1441",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMDJiMDM4YzYtOWY3Zi00ODEwLTgxNjAtOTdiMDc2ZDI1MjczXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/EENIE%20MEANIE%20EMMY%202025.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Eenie Meanie is a heist comedy-thriller about Edie (Samara Weaving), a former teenage getaway driver, who is forced back into her criminal past to save her unre",
+  "release_year": 2025,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1250",
+  "title": "See No Evil",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1250",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTg3MTgxNDI1MV5BMl5BanBnXkFtZTcwMTkzMjYzMQ@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://oopstry.mlegacytv.com/MOVIES/EMMY/See.No.Evil%20VJ%20EMMY.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "oopstry.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "\"See No Evil\" is a 2006 American slasher film directed by Gregory Dark, where a group of young offenders sent to clean an abandoned hotel are terrorized by a re",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1374",
+  "title": "The Way Back",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1374",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/9/9b/The_Way_Back_Poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://munoserver19.club/99ff7/515/69eee~19.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver19.club",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 441: status code 441"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "The Way Back (2020) is a sports drama starring Ben Affleck as Jack Cunningham, a former high school basketball phenom who becomes a construction worker struggli",
+  "release_year": 2020,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

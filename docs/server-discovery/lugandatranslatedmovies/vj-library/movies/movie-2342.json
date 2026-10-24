@@ -1,0 +1,28 @@
+{
+  "id": "movie-2342",
+  "title": "Flora Ulysses",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-soul"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2342",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/d/dc/Flora_and_Ulysses_Poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/Flora-Ulysses_720p VJ SOUL.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/Flora-Ulysses_720p VJ SOUL.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Flora & Ulysses (2021) is a Disney+ family comedy about a cynical 10-year-old girl, Flora, who rescues a squirrel named Ulysses after it is sucked up by a vacuu",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

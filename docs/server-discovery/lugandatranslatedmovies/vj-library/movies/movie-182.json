@@ -1,0 +1,28 @@
+{
+  "id": "movie-182",
+  "title": "Burning Betrayal",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=182",
+  "image_url": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1699057234i/200418280.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/burningbtrayal.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "An accountant sees her fianc\u00e9's betrayal as an opportunity for a sexual awakening, with dangerous consequences.",
+  "release_year": 2020,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

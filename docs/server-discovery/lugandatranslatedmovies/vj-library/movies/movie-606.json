@@ -1,0 +1,28 @@
+{
+  "id": "movie-606",
+  "title": "Incoming",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=606",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYWMyYmFhMzMtYjMwYS00Zjg0LWE0NmYtNzZmZWQ5MjkwZTJkXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/incoming.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Incoming is a 2024 American teen comedy film written and directed by Dave Chernin and John Chernin in their feature length debut. The film stars Mason Thames an",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

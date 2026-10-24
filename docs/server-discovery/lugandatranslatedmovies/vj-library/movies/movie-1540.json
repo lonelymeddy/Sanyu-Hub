@@ -1,0 +1,28 @@
+{
+  "id": "movie-1540",
+  "title": "Hit Man",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1540",
+  "image_url": "https://themoviespoiler.com/wp-content/uploads/2024/05/hit_man_ver3.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/yarabi/movies%202/HIT-MAN%202024%20JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "A mild-mannered professor moonlighting as a fake hit man in police stings ignites a chain reaction of trouble when he falls for a potential client.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

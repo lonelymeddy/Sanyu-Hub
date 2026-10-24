@@ -1,0 +1,28 @@
+{
+  "id": "movie-1281",
+  "title": "Love at First Hiccup",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1281",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjEyNTcxNjU4OF5BMl5BanBnXkFtZTgwNzg4MjA2MDE@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://munoserver37.club/as86/hyu/Love%20at%20First%20Hiccup%201080P%20VJ-ULIO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver37.club",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "\"Love at First Hiccup\" is a romantic comedy about Victor, a freshman who falls for Anya, a popular senior dating a rich jock",
+  "release_year": 2009,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

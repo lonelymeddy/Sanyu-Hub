@@ -1,0 +1,28 @@
+{
+  "id": "movie-3043",
+  "title": "Jana Nayagan 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-shield"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3043",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZWFmMGQ4YjUtNmNjYS00MWRlLWI1YzMtMmMyZGIzMmE1NWYwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Jana_Nayagan_2_VJ_SHIELD.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Indian"
+  ],
+  "description": "Jana Nayagan is a 2026 Indian Tamil-language political action drama film directed by H. Vinoth and starring Thalapathy Vijay in the lead role",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

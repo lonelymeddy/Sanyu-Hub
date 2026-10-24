@@ -1,0 +1,28 @@
+{
+  "id": "movie-1581",
+  "title": "The Comeback",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-juinor"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1581",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNDE2NDljMmYtYWY2Mi00MDViLWFjNzctOTIxMTE5NWI5ZDczXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/kalailai/junior/The%20Comeback%20.720%20Vj%20JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "\"The Comeback\" can refer to several films, most notably the 1978 British horror film about a pop star stalked by a killer after retreating to a manor,",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-2419",
+  "title": "Dead shot",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2419",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjAxMzQyMDYtYjdmNC00NDA4LTkxMzQtMDk0YjZhNWE2MzU1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/DEAD_SHOT_JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Dead Shot (2023) is a gritty British-Irish action thriller following a retired IRA paramilitary seeking vengeance against an SAS officer who killed his pregnant",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

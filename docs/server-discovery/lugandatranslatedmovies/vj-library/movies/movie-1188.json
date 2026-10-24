@@ -1,0 +1,28 @@
+{
+  "id": "movie-1188",
+  "title": "The Deaths of Ian Stone",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1188",
+  "image_url": "https://m.media-amazon.com/images/I/61JxM0naL2S._UF1000,1000_QL80_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/thedeathofianstone.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "\"The Deaths of Ian Stone\" is a 2007 horror film where an American man named Ian Stone, living in Britain, experiences a Groundhog Day-like scenario where he die",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

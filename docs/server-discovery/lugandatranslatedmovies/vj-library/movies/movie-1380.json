@@ -1,0 +1,28 @@
+{
+  "id": "movie-1380",
+  "title": "Don't Be a Menace to South Central While Drinking Your Juice in the Hood",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1380",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZGM0NTAyMWEtNDBjNi00MjkwLWFhM2UtNDExNmVmMzEzNzExXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.kampalarelaxation.com/allmovies/Movies/Vj%20Junior/Don%27t%20Be%20a%20Menace%20to%20South%20Central%20While%20Drinking%20Your%20Juice%20in%20the%20Hood%20VJ%20Jr.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.kampalarelaxation.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Synopsis Innocent young black man Ashtray (Shawn Wayans) is forced to move into a tough Los Angeles slum with his family, including his oddly streetwise, pot-sm",
+  "release_year": 2000,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

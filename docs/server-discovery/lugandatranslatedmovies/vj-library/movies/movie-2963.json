@@ -1,0 +1,28 @@
+{
+  "id": "movie-2963",
+  "title": "Soulmate",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2963",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZjA5Y2I4NzYtN2YzOC00NjZlLWIxNzYtZGU1MmRiY2YxYTYzXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/SOUL%20MATE%20JR.2026.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Adapted from a Chinese story, it follows Mi-so and Ha-eun, who meet at age 13. Their lives intertwine through deep affection, teenage separation, contrasting li",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

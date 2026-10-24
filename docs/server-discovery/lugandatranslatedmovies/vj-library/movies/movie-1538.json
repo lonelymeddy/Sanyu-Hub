@@ -1,0 +1,28 @@
+{
+  "id": "movie-1538",
+  "title": "Son of a Gun",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1538",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BODZlMDQ5MjEtNjU0NS00M2JjLWJiM2UtMDBjZDMxZGEzOTVhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/yarabi/movies%202/Son%20of%20a%20Gun.2014%20720.%20Vj%20JUNIOR%40katflix.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Son of a Gun is a 2014 Australian crime thriller about a young criminal named JR, who is taken under the wing of notorious convict Brendan Lynch after they meet",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

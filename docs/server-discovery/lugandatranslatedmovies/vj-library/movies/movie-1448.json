@@ -1,0 +1,28 @@
+{
+  "id": "movie-1448",
+  "title": "Sniper Ultimate Kill",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1448",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOWFmNjg3ZjAtMThjNy00MGVkLWIxMTAtOTgyYjA5MTJmMjBlXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/17/SNIPER%20ULTIMATE%20KILL%20JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Sniper: Ultimate Kill is a 2017 action movie where Marine sniper Brandon Beckett teams up with DEA agent Kate Estrada to take down a Colombian drug lord who is",
+  "release_year": 2017,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

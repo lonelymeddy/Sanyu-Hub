@@ -1,0 +1,28 @@
+{
+  "id": "movie-2002",
+  "title": "The Objective",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2002",
+  "image_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p190374_p_v8_aa.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW PRO/The.Objective.2008.720 VJ EMMY@katflix..mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/NEW PRO/The.Objective.2008.720 VJ EMMY@katflix..mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The Objective (2008) is a sci-fi horror-thriller...",
+  "release_year": 2008,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

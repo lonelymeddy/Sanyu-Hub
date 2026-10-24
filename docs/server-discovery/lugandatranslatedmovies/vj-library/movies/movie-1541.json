@@ -1,0 +1,28 @@
+{
+  "id": "movie-1541",
+  "title": "Death at a Funeral",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1541",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTYzMDQxODE0NF5BMl5BanBnXkFtZTcwODE0MDk0Mw@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/kalailai/junior/Death.At.A.Funeral.2010.720%20Vj%20JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Aaron's father's funeral is today at the family home, and everything goes wrong: the funeral home delivers the wrong body, his cousin accidentally drugs her fia",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

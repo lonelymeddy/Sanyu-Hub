@@ -1,0 +1,28 @@
+{
+  "id": "movie-131",
+  "title": "Hooking Up",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-juniors"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=131",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOGUzMjU4OWItMjU4NC00MjllLWJhYjUtMjliZDM3MmU2YWU0XkEyXkFqcGdeQXVyMTI1MTg5NTgw._V1_QL75_UY281_CR15,0,190,281_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/hookingup.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "In Atlanta, strangers Darla and Bailey cross paths when her court-ordered sexual addiction recovery meeting is held next door to his cancer support group. Baile",
+  "release_year": 2019,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

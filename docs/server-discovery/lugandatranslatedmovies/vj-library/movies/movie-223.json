@@ -1,0 +1,28 @@
+{
+  "id": "movie-223",
+  "title": "Always Be My Maybe",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=223",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ21_ewQxJq_qvYNTFxJAdf2g4Py9ZdG4ww6jlC8ic0bQ&amp;s",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/alwaysbemymaybe.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "Childhood sweethearts have a falling out and don't speak for 15 years, only reconnecting as adults when Sasha runs into Marcus in San Francisco. Although the ol",
+  "release_year": 2022,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

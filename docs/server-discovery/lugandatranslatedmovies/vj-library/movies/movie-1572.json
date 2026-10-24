@@ -1,0 +1,28 @@
+{
+  "id": "movie-1572",
+  "title": "Play dead",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1572",
+  "image_url": "https://play-lh.googleusercontent.com/To6u0Mtxrr6qsOdCzoIChVOEp8r06S7_C-N7o9lYLtX4Z28d-OgYjEzH4p64LSzkDdZEx_OPG9yA6XFRFLw=w240-h480-rw",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/relord/Play%20Dead%202023.720%20Vj%20JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Play Dead is a 2022 American horror thriller where a criminology student, Chloe, fakes her own death to break into a morgue to retrieve a phone that could impli",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-2063",
+  "title": "The lone Samurai",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2063",
+  "image_url": "https://cdn.moviepilot.de/files/46782cdea1e8bb31da45d910250d08fbf95615d533fec2426be2c725f1ef/copyright/MV5BYTViMTI2ZWYtZDMxZS00YzBhLTk4MDUtNDU0ZTJhMWQ5NWZlXkEyXkFqcGc@.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/LONE%20SAMURAI__VJ%20TONNY%202025.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "A 13th-century samurai shipwrecked on a remote island fights a violent cannibalistic tribe to survive.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

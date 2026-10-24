@@ -1,0 +1,28 @@
+{
+  "id": "movie-1446",
+  "title": "President Down",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1446",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjNjMzM3ZjYtZWMzYy00MjUyLTg1MGQtM2VjZjliMjJlMjIxXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/President.Down.2025.720%20VJ%20ICEP%40katflix..mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "President Down is a 2025 action thriller about a secret message revealing the President's pacemaker has been compromised, leading to a race against time to stop",
+  "release_year": 2025,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

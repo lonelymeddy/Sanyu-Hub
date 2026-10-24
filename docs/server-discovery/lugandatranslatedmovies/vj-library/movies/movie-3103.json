@@ -1,0 +1,28 @@
+{
+  "id": "movie-3103",
+  "title": "In Time",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3103",
+  "image_url": "https://images.moviesanywhere.com/c4c631728840c91da52e380c69e3576f/50166e10-1ec0-42af-a9c7-4807c232d3ef.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/In_Time_VJ_Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "Humanity is genetically engineered to stop aging at 25, at which point a digital clock on each person's forearm counts down their remaining lifespan. Time is li",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

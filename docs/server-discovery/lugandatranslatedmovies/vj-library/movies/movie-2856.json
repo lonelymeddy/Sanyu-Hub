@@ -1,0 +1,28 @@
+{
+  "id": "movie-2856",
+  "title": "Scandal Queen",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ham"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2856",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOWI1YjM2NjQtZWM2YS00MGNhLTk5OWYtOTA3ZWMyZDc2NWRiXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/SCANDAL_QUEEN_HAM.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "Scandal Queen (directed by Topel Lee) is a suspense film about Mara, a woman who seduces celebrities and influencers to secretly film them and blackmail them fo",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

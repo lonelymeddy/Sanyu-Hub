@@ -1,0 +1,28 @@
+{
+  "id": "movie-1049",
+  "title": "And Soon the Darkness",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1049",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTNjMzhmNzEtNTQ5ZC00NWIzLTk1NWUtYjM0YTc2YzZjMjkwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/andsoonthedarkness.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "And Soon the Darkness\" is a thriller film with two main versions: a 1970 British film and a 2010 remake. Both versions revolve around two young women on a trip",
+  "release_year": 2010,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

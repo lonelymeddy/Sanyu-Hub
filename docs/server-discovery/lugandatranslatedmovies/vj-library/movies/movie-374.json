@@ -1,0 +1,28 @@
+{
+  "id": "movie-374",
+  "title": "The Brink",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=374",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/7/7a/The_Brink_-_%E7%8B%82%E7%8D%B8.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/brink.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Sai Gau, a police officer, does everything in his power to track down Shing, a smuggler of black market gold. When he learns about his next target, he makes sur",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

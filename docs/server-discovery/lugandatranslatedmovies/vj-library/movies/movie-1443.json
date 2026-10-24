@@ -1,0 +1,28 @@
+{
+  "id": "movie-1443",
+  "title": "Scurry",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1443",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZDliOTBhMWUtMDU5Ny00ZmExLTk5YTMtMTFkYWIwMjg3NmFkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/REMAKES%203/2/SCURRY%20JOVAN%202025.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Scurry is a 2024 horror-thriller about two strangers who become trapped underground during a city-wide attack by monstrous spiders.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1510",
+  "title": "Hidden Dragon Battle",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1510",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZmJlMTFlNDktNzdjZS00ZDUwLWI3YzgtMzRjMTNkOTFmODdmXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/REMAKES%204/HIDDEN%20DRAGON%20BATTLE%20ICE%20P.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"Hidden Dragon Battle\" most likely refers to the 2000 martial arts film Crouching Tiger, Hidden Dragon, which is a story about a warrior who entrusts his legend",
+  "release_year": 2017,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "the-witch",
+  "title": "The Witch",
+  "content_type": "series",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=432",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/b/bf/The_Witch_poster.png",
+  "description": "After a girl emerges as the sole survivor of a bloody raid on the research facility behind the top-secret Witch Program, she is rescued by a pair of civilians w",
+  "release_year": 2024,
+  "episodes": [
+    "the-witch-ep-432"
+  ]
+}

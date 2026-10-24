@@ -1,0 +1,28 @@
+{
+  "id": "movie-2981",
+  "title": "Bottoms",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-soul"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2981",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNzEyNTNlNDAtNTMxOC00YzMzLWFkM2QtZmRiNGE5ZTQyMWFmXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/BOTTOMS___VJ%20SOUL.2025.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Bottoms is a 2023 satirical teen dark comedy directed by Emma Seligman and co-written by Seligman and Rachel Sennott. The plot follows PJ and Josie, two unpopul",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

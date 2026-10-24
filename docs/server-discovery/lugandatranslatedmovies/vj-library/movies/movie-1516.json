@@ -1,0 +1,28 @@
+{
+  "id": "movie-1516",
+  "title": "The Cutting Edge Fire & Ice",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1516",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzcxZTYyNzYtZGJhMy00N2E0LTk5MGMtNGY3MmNjYTE1ZmU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/REMAKES%204/THE%20CUTTING%20ADGE.FIRE%20AND%20ICE___VJ%20JR.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Romantic"
+  ],
+  "description": "The Cutting Edge: Fire and Ice is a 2010 film about figure skater Alejandra \"Alex\" Delgado (Francia Raisa) who, after her previous partner's injury, returns to",
+  "release_year": 2010,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

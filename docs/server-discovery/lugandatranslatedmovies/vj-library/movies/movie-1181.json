@@ -1,0 +1,28 @@
+{
+  "id": "movie-1181",
+  "title": "The Final Destination 4",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1181",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNGJiMzVjYzktMTNkNC00NTgzLTk4OTUtY2ZlNTZkMzI1ZmJiXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/thefinaldestination4.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "But Death won't take no for an answer. And the visions keep coming in horrifying as one-by-one the crash survivors die in every more gruesome ways. Now, Nick mu",
+  "release_year": 2014,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-3172",
+  "title": "Chakradhhaar",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-mk-kisule"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3172",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzhjMjVhZjctZWM0Mi00ODVhLTk5MTktNTNiNTNkYTc0MDljXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Chakradhhaar_VJ_MK_Kisule.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Indian"
+  ],
+  "description": "Shravan enrolls himself in the University of Banaras as per his father's wishes. Being a man of principles, he soon finds himself amidst the fight against the c",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

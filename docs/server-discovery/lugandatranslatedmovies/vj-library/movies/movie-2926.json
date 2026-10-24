@@ -1,0 +1,28 @@
+{
+  "id": "movie-2926",
+  "title": "Kill code",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2926",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzY4NGU4YjQtZjc2Zi00YmNiLThjMTQtOGI2M2M3ZDM5YmQzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/KILL_CODE_ICEP.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Kill Code (2026) is a cyberpunk action-thriller directed by Justin Price, starring Franzi Schissler, Tyrese Gibson, Frank Grillo, and Harvey Keitel. Set in a cr",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

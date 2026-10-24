@@ -1,0 +1,28 @@
+{
+  "id": "movie-2848",
+  "title": "Alita the battle Angel",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2848",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYmZhZGQzM2MtMWEyZC00YTU1LTk4YTQtMTg3ZjEzM2U1NTkxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/ALITA_BATTLE_ANGEL_JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Alita: Battle Angel is a 2019 cyberpunk action film set in the 26th century. It follows a resurrected, amnesiac cyborg named Alita who awakens in a post-apocaly",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

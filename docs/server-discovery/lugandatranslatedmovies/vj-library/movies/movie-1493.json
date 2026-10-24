@@ -1,0 +1,28 @@
+{
+  "id": "movie-1493",
+  "title": "The New Mutants",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1493",
+  "image_url": "https://jimmy.pearlpix.xyz/MOVIES/REMAKES%203/THE%20NEW%20MUTANTS___VJ%20EMMY.mkv",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/REMAKES%203/THE%20NEW%20MUTANTS___VJ%20EMMY.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The New Mutants is a superhero horror film about five young mutants held against their will in a secret institution.",
+  "release_year": 2021,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

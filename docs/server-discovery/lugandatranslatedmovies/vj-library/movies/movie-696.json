@@ -1,0 +1,28 @@
+{
+  "id": "movie-696",
+  "title": "Canary Black",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=696",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/4/4c/Canary_Black_Poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/canaryblack.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Canary Black is an action drama directed by Pierre Morel, director of Taken and Peppermint. CIA agent Avery Graves (Kate Beckinsale) is blackmailed by terrorist",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

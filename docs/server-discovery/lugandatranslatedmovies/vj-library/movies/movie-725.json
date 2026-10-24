@@ -1,0 +1,28 @@
+{
+  "id": "movie-725",
+  "title": "Ad Vitam",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=725",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvNRMGjv2ub98GouyPVUHYRK0jbrn_ZmyO7w&amp;s",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/advintam.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "When he and his pregnant wife are attacked in their home, a former elite agent becomes trapped in a deadly manhunt tied to his own painful past. A tense thrille",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

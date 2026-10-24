@@ -1,0 +1,28 @@
+{
+  "id": "movie-2889",
+  "title": "The last whale singer",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-mosco"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2889",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzUzNzEyYmMtNWMwOC00MGU3LTlkNDctYWNmZGMzMjM5ZTlhXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/THE_LAST_WHALE_SINGER_MOSCO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "The Last Whale Singer is an animated fantasy-adventure about Vincent, a self-doubting teenage humpback whale. Burdened by the loss of his parents, he must find",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

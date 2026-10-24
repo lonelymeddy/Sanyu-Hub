@@ -1,0 +1,28 @@
+{
+  "id": "movie-589",
+  "title": "Flawless",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=589",
+  "image_url": "https://m.media-amazon.com/images/S/pv-target-images/b5c7a8171f49b2739015e0268b673263665e5abf135902fa0ccd289e7e49f8cc.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/flawless.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "FLAWLESS is the story of Laura Quinn (Demi Moore), a driven executive at a diamond company in 1960 London, who finds herself frustrated by a \u201cglass ceiling\u201d",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

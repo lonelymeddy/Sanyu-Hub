@@ -1,0 +1,28 @@
+{
+  "id": "movie-1384",
+  "title": "Doom",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1384",
+  "image_url": "https://images.moviesanywhere.com/3cabacd1269557310d6d6498a2efed52/5c975f18-232d-4bee-a430-76fe041c1be1.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.kampalarelaxation.com/allmovies/Movies/Vj%20Junior/Doom.2005.EXTENDED.1080p%20-%20VJ%20Emmy.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.kampalarelaxation.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "The 2005 film Doom follows a team of space marines, including the protagonist John \"Reaper\" Grimm (Karl Urban), as they are sent to investigate a security breac",
+  "release_year": 2005,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1463",
+  "title": "Step up revolution",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1463",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxbjwimy7W1aSe5KJHvHGLOnR8eBCJJmGC3A&amp;s",
+  "video_sources": [
+    {
+      "url": "https://nicetry.mlegacytv.com/MOVIES/JUNIOR/Step.Up%20Part%204.Revolution.1080p%20Vj%20Junior.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "nicetry.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Step Up Revolution is about a dance crew called \"The Mob\" who use elaborate flash mobs as a form of protest to save their neighborhood in Miami from being redev",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

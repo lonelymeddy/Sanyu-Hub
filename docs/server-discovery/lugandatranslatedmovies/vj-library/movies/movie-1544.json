@@ -1,0 +1,28 @@
+{
+  "id": "movie-1544",
+  "title": "Nights in Rodanthe",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1544",
+  "image_url": "https://images.moviesanywhere.com/12ac2328fb8802d084d104b5b5cf1c1d/42323f89-c7bb-409d-a960-b2053edaa43e.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/kalailai/junior/Nights%20In%20Rodanthe.2008.720%20Vj%20JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "Adrienne is trying to decide whether to stay in her unhappy marriage or not, and her life changes when Paul, a doctor who is travelling to reconcile with his",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

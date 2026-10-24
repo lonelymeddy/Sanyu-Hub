@@ -1,0 +1,28 @@
+{
+  "id": "movie-2983",
+  "title": "Cobra 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2983",
+  "image_url": "https://resizing.flixster.com/uXXdbgLQWHRnNCVtrR1jS3gVVR4=/fit-in/352x330/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p17642605_p_v10_aa.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/COBRA%202%20VJ%20EMMY%20(LBM).mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A Datsun driving, face-punching moody super-cop Cobra Cumera battles homicidal mobsters intent on causing mayhem and trouble in beautifully shot Tokyo. Complete",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

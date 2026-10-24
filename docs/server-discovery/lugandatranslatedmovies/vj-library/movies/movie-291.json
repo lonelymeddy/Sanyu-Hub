@@ -1,0 +1,28 @@
+{
+  "id": "movie-291",
+  "title": "I Shrunk the Kids",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=291",
+  "image_url": "https://lumiere-a.akamaihd.net/v1/images/p_honeyishrunkthekids_19900_19125f54.jpeg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/ishunkthekids.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "In the film, a struggling inventor accidentally shrinks his kids, along with the neighbors' kids, down to the size of a quarter-inch. After being accidentally t",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

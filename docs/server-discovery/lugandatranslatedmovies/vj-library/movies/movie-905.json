@@ -1,0 +1,28 @@
+{
+  "id": "movie-905",
+  "title": "Counterattack",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=905",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYmExM2ZiOGItMDcxZi00NDc3LTk3MmItNGQyZWNlYzBiOTI2XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/counterattack.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"Counterattack\" is a Mexican action thriller on Netflix where a team of special forces, led by Captain Guerrero, becomes the target of a drug cartel after they",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

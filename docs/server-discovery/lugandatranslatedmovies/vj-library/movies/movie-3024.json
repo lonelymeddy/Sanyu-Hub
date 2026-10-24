@@ -1,0 +1,28 @@
+{
+  "id": "movie-3024",
+  "title": "Minions and Monsters",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-mosco"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3024",
+  "image_url": "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/large/minions-and-monsters-et00487783-1785417112.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/MINIONS_AND_MONSTERS_2026_VJ_MOSCO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Minions & Monsters (2026) is an animated comedy film by Universal Pictures and Illumination. It follows new Minions James and Henry in 1920s Hollywood as they b",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

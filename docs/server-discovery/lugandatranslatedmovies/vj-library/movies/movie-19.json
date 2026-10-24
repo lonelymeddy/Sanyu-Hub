@@ -1,0 +1,28 @@
+{
+  "id": "movie-19",
+  "title": "Arctic Dogs",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-kevo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=19",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwt7JCbTfaVl0AEATsUnbuaxh0lp769cbP_F_wP4Go3Q&amp;s",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/project/bad%20man/Arctic%20Dogs%20by%20Vj%20Kevo.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Animals band together to save the day when the evil Otto Von Walrus hatches a sinister scheme to accelerate global warming and melt the Arctic Circle.",
+  "release_year": 2022,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

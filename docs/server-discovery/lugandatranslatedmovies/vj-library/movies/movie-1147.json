@@ -1,0 +1,28 @@
+{
+  "id": "movie-1147",
+  "title": "Revelations",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1147",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOGU2YWNiMTgtMDdmMi00M2FjLWE1MmQtMDg3NTE3MzA1YWQ3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/revelations.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "\"Revelations\" is a 2025 Korean psychological thriller about a pastor and a detective, both driven by their own intense beliefs, who become entangled in a missin",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

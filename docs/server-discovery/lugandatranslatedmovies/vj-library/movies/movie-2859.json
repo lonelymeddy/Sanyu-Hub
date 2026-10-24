@@ -1,0 +1,28 @@
+{
+  "id": "movie-2859",
+  "title": "The bosk",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ham"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2859",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNDZlY2Q3YjUtMWRiNy00ZDgwLTkwMmYtYWExMzYxZjEwZjkyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/THE_BOSK_HAM.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "The Bosk (2026) is a horror-thriller film directed by Joe Lujan. The story follows two best friends, Kim and Erin, who become stranded in a snowy forest. They s",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

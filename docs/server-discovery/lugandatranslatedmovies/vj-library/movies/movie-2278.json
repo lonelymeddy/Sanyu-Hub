@@ -1,0 +1,28 @@
+{
+  "id": "movie-2278",
+  "title": "You may not kiss the bride",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2278",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMDZlMWIyOGMtOTJmNy00MjJhLTg0YTctODA5NGYwYjNiMjM1XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/You May Not Kiss.the Bride.1080HP.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/You May Not Kiss.the Bride.1080HP.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Forced into marriage for citizenship, Bryan must rescue his kidnapped bride and realizes he truly loves her.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

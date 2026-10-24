@@ -1,0 +1,28 @@
+{
+  "id": "movie-1217",
+  "title": "Walking Tall",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1217",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTM0MjYzNzM1N15BMl5BanBnXkFtZTcwMDcwNDc3NA@@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/walkingtall.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"Walking Tall\" (2004) is an action film starring Dwayne Johnson as Chris Vaughn, a former U.S. Army soldier who returns to his hometown in Washington state.",
+  "release_year": 2010,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

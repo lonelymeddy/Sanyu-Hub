@@ -1,0 +1,28 @@
+{
+  "id": "movie-2070",
+  "title": "The way back",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2070",
+  "image_url": "https://images.moviesanywhere.com/0c0751e50663cc97fa8775d3fef8e1fc/b3392725-28cb-48b3-b66b-5de473121629.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/Thewayback.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "A former basketball star battles alcoholism while coaching his old high school team.",
+  "release_year": 2010,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

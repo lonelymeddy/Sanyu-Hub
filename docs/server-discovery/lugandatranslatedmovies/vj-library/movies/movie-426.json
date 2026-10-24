@@ -1,0 +1,28 @@
+{
+  "id": "movie-426",
+  "title": "Tenet",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=426",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMzU3YWYwNTQtZTdiMC00NjY5LTlmMTMtZDFlYTEyODBjMTk5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/tenet.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "This is a science fiction-action-thriller film starring John David Washington, Robert Pattinson, Elizabeth Debicki, and Kenneth Branagh, among others. It's the",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

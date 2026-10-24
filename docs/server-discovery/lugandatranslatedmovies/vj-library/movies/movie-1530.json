@@ -1,0 +1,28 @@
+{
+  "id": "movie-1530",
+  "title": "Good Fortune",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1530",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYjk3ZTgwZmUtOTVlMy00ODExLTkzMTUtYzRhM2FjNGYyMzZkXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/Good.Fortune.2025.720%20VJ%20JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Good Fortune is a fantasy comedy about a well-meaning but inept angel named Gabriel, played by Keanu Reeves, who meddles in the lives of a struggling gig worker",
+  "release_year": 2025,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

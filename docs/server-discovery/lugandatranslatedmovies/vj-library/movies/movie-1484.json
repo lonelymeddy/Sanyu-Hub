@@ -1,0 +1,28 @@
+{
+  "id": "movie-1484",
+  "title": "Badland Hunters",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1484",
+  "image_url": "https://images.justwatch.com/poster/310675859/s718/badland-hunters.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/REMAKES%201/Badland.Hunters.2024.1080p%20jr.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Badland Hunters is a 2024 South Korean post-apocalyptic action film where a hunter, Nam-san (Don Lee), must rescue a teenage girl abducted by a mad doctor in th",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

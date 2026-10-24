@@ -1,0 +1,28 @@
+{
+  "id": "movie-1333",
+  "title": "Black Hawk Down",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1333",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMmYyMGU1YTAtNmRhYy00ZjAwLWE0MWUtZGZhMDk1MjQwYzBkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.kampalarelaxation.com/allmovies/Movies/Vj%20Junior/Black%20Hawk%20Down%202001%201080p%20Vj%20Mac.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.kampalarelaxation.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Black Hawk Down is a 2001 war film directed by Ridley Scott that depicts the true story of the 1993 Battle of Mogadishu in Somalia",
+  "release_year": 2010,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

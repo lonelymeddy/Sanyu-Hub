@@ -1,0 +1,28 @@
+{
+  "id": "movie-2263",
+  "title": "Martial law 2 (Karate cop)",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2263",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/3/34/Martial-law-ii-undercover-movie-poster-1992-1020211861.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/MARTIAL LAW II AKA KARATE COP ____VJ JINGO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/MARTIAL LAW II AKA KARATE COP ____VJ JINGO.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "While investigating a colleague's death, two police officers uncover a criminal organisation made up of the corrupt, rich, and powerful.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

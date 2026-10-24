@@ -1,0 +1,28 @@
+{
+  "id": "movie-2338",
+  "title": "Braven",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2338",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjM1ODUzMTU1NV5BMl5BanBnXkFtZTgwMzcwMzY1NDM@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/Braven.1080HP.Jr.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Braven (2018) is an action-thriller starring Jason Momoa as Joe Braven, a logger who must protect his family when he discovers a stash of heroin hidden in his r",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

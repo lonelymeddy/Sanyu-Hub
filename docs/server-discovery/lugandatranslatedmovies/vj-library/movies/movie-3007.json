@@ -1,0 +1,28 @@
+{
+  "id": "movie-3007",
+  "title": "Tailless",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-uncle-t"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3007",
+  "image_url": "https://www.esma-3d.fr/app/uploads/2026/07/Affiche-film-3D-2024-Tailless.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/TAILLESS%202026%20-%20VJ%20UNCLE%20T%201080p%20(LBM).mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Tailless is a 6-minute 3D animated short film created by students at the French animation school ESMA. It follows Sam, a young lizard born without a tail, who t",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

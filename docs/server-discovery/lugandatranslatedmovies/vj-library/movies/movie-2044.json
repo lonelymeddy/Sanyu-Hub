@@ -1,0 +1,28 @@
+{
+  "id": "movie-2044",
+  "title": "Now You See Me 3: Now You Don't",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2044",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNTZlYzdjMzgtYjU2ZC00MGQ5LWFiMDYtOTIwNzQ0M2MyNmU2XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/NOW%20YOU%20SEE%20ME%20NOW%20YOU%20DON%27T%20JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "The Four Horsemen reunite to expose a global money laundering scheme.",
+  "release_year": 2025,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

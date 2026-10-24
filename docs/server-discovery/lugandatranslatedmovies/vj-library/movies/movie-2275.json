@@ -1,0 +1,28 @@
+{
+  "id": "movie-2275",
+  "title": "The SpongeBob Movie Search for SquarePants",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-uncle-t"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2275",
+  "image_url": "https://dx35vtwkllhj9.cloudfront.net/paramountpictures/the-spongebob-movie-search-for-squarepants-intl/images/regions/au/onesheet.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/VJ UNCLE T The-SpongeBob-Movie-Search-for-SquarePants.2026.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/VJ UNCLE T The-SpongeBob-Movie-Search-for-SquarePants.2026.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "SpongeBob sets out to prove his bravery by following the Flying Dutchman on a deep-sea adventure.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1522",
+  "title": "The Hand That Rocks the Cradle",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1522",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYWRhYzA1NDUtY2ExZC00MTQzLWE4MjYtMGJlODJkNTYwNzI5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/VJ%20JUNIOR/NEW%20NEW/THE.HAND.THAT.ROCKS.THE.CRADLE.EMMY.2025.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "The Hand That Rocks the Cradle is a 1992 psychological thriller about a revenge-seeking nanny who infiltrates a family,",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

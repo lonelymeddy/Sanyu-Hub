@@ -1,0 +1,28 @@
+{
+  "id": "movie-2008",
+  "title": "Girl in the Attic",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2008",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOTZjMDdiZWMtMDRlNi00MGY5LTkxNWQtM2U0MjUwNDgwOGFlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW PRO/Girl in the Attic vj emmy.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/NEW PRO/Girl in the Attic vj emmy.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Girl in the Attic (2025) is a thriller about a young woman abducted and held captive in an attic, fighting for survival.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

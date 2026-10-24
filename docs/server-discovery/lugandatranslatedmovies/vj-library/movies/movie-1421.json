@@ -1,0 +1,28 @@
+{
+  "id": "movie-1421",
+  "title": "Ambulance",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1421",
+  "image_url": "https://cdn.kinocheck.com/i/ak6ghnb9rx.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.newlinebusega.com/SINGLES/SINGLES%20NEW%20AND%20OLD/MOVIES%20THAT%20ARE%20CONVERTED%20FROM%20TOWN/MARCH%202023/29th-03-2023/AMBULANCE%20VJ%20JJINGO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.newlinebusega.com",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Ambulance is a 2022 Michael Bay-directed action film starring Jake Gyllenhaal and Yahya Abdul-Mateen II as two brothers who hijack an ambulance during a botched",
+  "release_year": 2022,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

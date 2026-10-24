@@ -1,0 +1,28 @@
+{
+  "id": "movie-558",
+  "title": "Parallels",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=558",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYTdjN2QyOTMtMGUwYS00Y2Y4LTk2N2YtNzhkYTQ3YzQ0MzM1XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/parallels.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "A sci-fi adventure, Parallels follows the lives of estranged brother and sister, Ronan and Beatrix, who are reunited when their father mysteriously disappears.",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

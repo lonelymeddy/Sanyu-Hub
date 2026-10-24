@@ -1,0 +1,28 @@
+{
+  "id": "movie-427",
+  "title": "Gulliver Returns",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-kevo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=427",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNmI0ODExYWQtNWU3NS00YTlkLTkxOGYtOWIyZDBkM2Q4MzViXkEyXkFqcGdeQXVyNjM0MTI4Mw@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/guliverreturns.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Adventurer Gulliver is invited to return to Lilliput, the town he saved from their enemy, neighboring Blefuscu. Expecting a giant, they instead discover an ordi",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

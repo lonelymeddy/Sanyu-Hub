@@ -1,0 +1,28 @@
+{
+  "id": "movie-2102",
+  "title": "Crazy, Stupid Love",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2102",
+  "image_url": "https://images.justwatch.com/poster/243710976/s332/crazy-stupid-love.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/CRAZY,STUPID,LOVE--%20JR.2026.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Crazy, Stupid, Love. is a 2011 romantic comedy film that follows a recently separated, middle-aged man who gets a life makeover from a younger, suave ladies' ma",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

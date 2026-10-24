@@ -1,0 +1,28 @@
+{
+  "id": "movie-1477",
+  "title": "Please Don't Destroy: The Treasure of Foggy Mountain",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1477",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYTcxYzhjOTQtZWIwNC00M2FlLWI1YjctNzlhY2NmMWExZjFiXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/NEW/1/PLEASE%20DONT%20DESTROY%20.THE%20TREASURE%20OF%20FOGGY%20MOUNTAIN%20-%20SOUL.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Please Don't Destroy: The Treasure of Foggy Mountain is a comedy film about three childhood friends who, unhappy with their current lives, embark on a quest to",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

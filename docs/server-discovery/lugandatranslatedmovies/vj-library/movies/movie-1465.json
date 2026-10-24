@@ -1,0 +1,28 @@
+{
+  "id": "movie-1465",
+  "title": "Wrong turn 3",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1465",
+  "image_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p7860349_p_v7_ab.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/A;PRIL%20SINGLES/28%20march/WRONG%20TURN%203.1080HP.Jo.A-B@(E.L.+256782778952).mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Wrong Turn 3: Left for Dead follows a group of convicts and a corrections officer after their transport bus crashes in a West Virginia forest. They encounter a",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

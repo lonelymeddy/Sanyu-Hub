@@ -1,0 +1,28 @@
+{
+  "id": "movie-2946",
+  "title": "Surya power of love B",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-shield"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2946",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNDI4NDAzNzAtNTljOS00ZjllLTk1MzktYWMwNDliODRjNWZkXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/SURYA_POWER_OF_LOVE_B_SHIELD.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Indian"
+  ],
+  "description": "Surya: The Power of Love is a 2026 Kannada-language romantic action drama film directed by Sagar Dass and starring Prashanth Surya and Harshitha MK. The plot fo",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

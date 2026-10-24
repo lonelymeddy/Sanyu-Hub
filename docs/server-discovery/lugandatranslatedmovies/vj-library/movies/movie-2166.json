@@ -1,0 +1,28 @@
+{
+  "id": "movie-2166",
+  "title": "Bad man VJ Soul",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2166",
+  "image_url": "https://resizing.flixster.com/ZpZ4jQ9j-3SPcpte2oMvcEFpxsw=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzU5MTU3NmMwLTI5ZDMtNGJiYi1hNmZhLWY1MjQ0ZmI4MjQzMy5qcGc=",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/BAD%20MAN%202026%20VJ%20SOUL.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "The Bad Man (2018) is a horror/thriller about a couple kidnapped by a sadistic clown to be tortured and sold, while the 2025 Bad Man is an action-comedy about a",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1517",
+  "title": "Monk Comes Down the Mountain",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1517",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZjEwZDQyNDYtMTVhNC00ZDhlLWFmZjMtYjk1ZjIzYTBlNzVkXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/REMAKES%204/MONKS%20COMES%20DOWN%20THE%20MOUNTAIN%20-%20EMMY.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Monk Comes Down the Mountain is a 2015 Chinese martial arts film directed by Chen Kaige, about a young monk who is expelled from his impoverished monastery and",
+  "release_year": 2017,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

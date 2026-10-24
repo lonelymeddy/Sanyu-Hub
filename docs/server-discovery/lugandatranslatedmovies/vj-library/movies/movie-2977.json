@@ -1,0 +1,28 @@
+{
+  "id": "movie-2977",
+  "title": "Gayong 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2977",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZTc0MGIwOGMtMWZiMi00YmQ4LTk2YjgtYzk4ZDE1Y2NjNzUzXkEyXkFqcGc@.V1_FMjpg_UX1000.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/GAYONG%2002%20-%20VJ%20EMMY%202026%201080P%20(LBM).mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Directed by Faisal Ishak, Gayong 2 is a 2026 Malaysian martial arts action drama that premiered in cinemas on April 9, 2026. It continues the biographical saga",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

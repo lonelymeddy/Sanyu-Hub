@@ -1,0 +1,28 @@
+{
+  "id": "movie-1529",
+  "title": "Icefall",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1529",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzVkZjM5ZDQtODgxNS00MjZhLWFhZDYtZTUzOGUxZTk3NTlhXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/Ice.Fall.2025.720%20VJ%20JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Icefall is an action-thriller where a young Indigenous game warden arrests a poacher, only to discover the poacher knows the location of a plane crash containin",
+  "release_year": 2025,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

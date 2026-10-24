@@ -1,0 +1,28 @@
+{
+  "id": "movie-1053",
+  "title": "The Last Boy Scout",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1053",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNTI4MDcyZTktNTVhMC00NmQ3LWJiN2UtMzZkNDgwMzRkMzIwXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/thelastboyscout.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The Last Boy Scout\" is a 1991 action crime thriller starring Bruce Willis and Damon Wayans. The film follows a cynical private investigator, Joe Hallenbeck (Wil",
+  "release_year": 2010,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1458",
+  "title": "The Forever Purge",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1458",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZWVmYmE5ZWQtY2E3NC00Mzk1LWEzMzYtNjkyM2E0MGY0MjcxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/18/THE%20FOREVER%20PURGE.1080HP.Emmy.A-B@(E.L.Pro+256782778952)2025.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The Forever Purge is a 2021 horror film where a group of marauders decides to make the annual Purge illegal crime-fighting holiday a permanent state of chaos, f",
+  "release_year": 2021,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

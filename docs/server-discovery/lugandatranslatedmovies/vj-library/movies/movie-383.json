@@ -1,0 +1,28 @@
+{
+  "id": "movie-383",
+  "title": "Agent Recon",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=383",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOTEwNTIwMjktOTEzYi00OWE2LTk2ZGYtYWEyNGU3MTZlYWI5XkEyXkFqcGdeQXVyOTIzNjUxODY@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/agentrecon.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A covert military task force tracks a mysterious energy disturbance at a secret base in New Mexico where experiments on alien technology are suspected of taking",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

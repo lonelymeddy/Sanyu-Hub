@@ -1,0 +1,28 @@
+{
+  "id": "movie-1275",
+  "title": "Badges of Fury",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1275",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjcyODQ3ODk1MF5BMl5BanBnXkFtZTgwNDI2NjI2MDE@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jim.pearlpix.xyz/SERIES%203/VJ%20IVO/IRON%20HEART/BADGES%20OF%20FURY.1080HP.Jr.A-B@(E.L.Pro+256782778952).mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jim.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Badges of Fury is a 2013 Hong Kong action-comedy film about two contrasting Hong Kong detectives, reckless young Wang (Zhang Wen) and experienced but grizzled H",
+  "release_year": 2013,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-3",
+  "title": "Gods Of Egypt",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/2/2f/Gods_of_Egypt_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://thistime.mlegacytv.com/MOVIE/TRENDS/GODS%20OF%20EGYPT.2016.1080p.JR.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "thistime.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Set, the merciless god of darkness, has taken over the throne of Egypt and plunged the once peaceful and prosperous empire into chaos and conflict. Few dare to",
+  "release_year": 2021,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-2840",
+  "title": "Jojos bizzare Adventure",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-soul"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2840",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjU3OWVhMWItMzRlZS00MzhhLThkMGEtNDE3ZmQ3OWJhYTI3XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/JOJOS_BIZARRE_ADVENTURE_SOUL.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "JoJo's Bizarre Adventure is a multi-generational saga focusing on the Joestar family, whose descendants possess a star-shaped birthmark and must battle supernat",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

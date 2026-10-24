@@ -1,0 +1,28 @@
+{
+  "id": "movie-368",
+  "title": "Beverly Hills Ninja",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=368",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOTJlMTQwY2EtZWY5Ni00YjJkLTgxYmQtYzhjYjY4NWVjYTQ4XkEyXkFqcGdeQXVyNjc5NjEzNA@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/beverlyhills.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Despite being raised by ninjas, Haru never fits into their clan. But he gets an opportunity to prove his mettle when Sally approaches him to investigate the whe",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

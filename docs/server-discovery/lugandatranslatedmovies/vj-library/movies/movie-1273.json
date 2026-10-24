@@ -1,0 +1,28 @@
+{
+  "id": "movie-1273",
+  "title": "Pirates of the Caribbean 4 : On Stranger Tides",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1273",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjE5MjkwODI3Nl5BMl5BanBnXkFtZTcwNjcwMDk4NA@@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.kampalarelaxation.com/allmovies/July24/junior/Pirates/Pirates.Of.The.Carribean.4.Junior.%40Bryn%2BMedia%2BMovie..mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.kampalarelaxation.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Captain Jack Sparrow crosses paths with a woman from his past, and he's not sure if it's love \u2014 or if she's a ruthless con artist who's using him to find the",
+  "release_year": 2011,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

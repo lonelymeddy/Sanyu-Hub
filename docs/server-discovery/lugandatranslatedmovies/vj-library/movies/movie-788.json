@@ -1,0 +1,28 @@
+{
+  "id": "movie-788",
+  "title": "Cirque du Freak: The Vampire's Assistant",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=788",
+  "image_url": "https://images.moviesanywhere.com/c37d98386d954695bf211919f5a8e530/d090805c-021c-42e8-8cff-35fe4f98d21b.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/vampierassistant.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Darren Shan is a regular teenage kid. He and his friend Steve find out about a Freak Show coming to town and work hard at trying to find tickets. They do, and t",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

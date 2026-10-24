@@ -1,0 +1,28 @@
+{
+  "id": "movie-1244",
+  "title": "Long Gone Heroes",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1244",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Long_Gone_Heroes.jpg/250px-Long_Gone_Heroes.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/lgheroes.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"Long Gone Heroes\" is a 2024 action thriller about a special forces soldier, Gunner, who is forced back into action to rescue his niece, a journalist, from a da",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

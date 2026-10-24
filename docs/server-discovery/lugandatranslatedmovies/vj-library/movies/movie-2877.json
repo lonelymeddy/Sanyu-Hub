@@ -1,0 +1,28 @@
+{
+  "id": "movie-2877",
+  "title": "Storm Crashers",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-mosco"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2877",
+  "image_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p27706575_v_v12_aa.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/CRASHERS_MOSCO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Storm Crashers (released as Giants of La Mancha in some regions) is an animated family adventure that follows 11-year-old Alfonso, the eccentric heir to Don Qui",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

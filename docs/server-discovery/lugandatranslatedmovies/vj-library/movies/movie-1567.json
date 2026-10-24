@@ -1,0 +1,28 @@
+{
+  "id": "movie-1567",
+  "title": "Nerve",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1567",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/3/3a/Nerve_2016_poster.png",
+  "video_sources": [
+    {
+      "url": "https://uc0ecf40cfd7b625ef1d8a03ec97.dl.dropboxusercontent.com/cd/0/inline/CjzQ6CqA6PdOMsS3B5sZGrt2K7hUeu_kz8sHU_r-ZouytNYbA5CF7OpxPBXcN68JcT5ieWOdHk_RaVQANOOHNGqxSgCDKfZx3pHNQfe7ljEobZ5ZC7hb_QU8PPcmXMgA03ak5NxoXKuqi2mdlVmIS5Jz/file",
+      "source_type": "direct_file",
+      "hosting_domain": "uc0ecf40cfd7b625ef1d8a03ec97.dl.dropboxusercontent.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "A high school senior joins an anonymous online \u2018truth or dare\u2019 game, but the stakes soon become lethal as watchers gain control.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

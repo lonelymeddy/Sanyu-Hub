@@ -1,0 +1,28 @@
+{
+  "id": "movie-1549",
+  "title": "Guns of Eden",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1549",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZDI2M2FiYzktMjc2My00ODMzLWJhOTUtMzgxMGJiZGIxOWRjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/relord/two/Guns.Of.Eden.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Guns of Eden is an action movie about a group of friends on a camping trip who witness a murder by a corrupt sheriff's department",
+  "release_year": 2022,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

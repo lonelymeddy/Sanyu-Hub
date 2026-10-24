@@ -1,0 +1,28 @@
+{
+  "id": "movie-2272",
+  "title": "Tafiti Across the Desert",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-uncle-t"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2272",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNzc3NjUzOGYtY2U5MC00NWI0LWE4MGMtMDhlYTlkNGExNWJiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/VJ UNCLE T Tafiti-Across-the-Desert.2026.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/VJ UNCLE T Tafiti-Across-the-Desert.2026.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "When his grandfather is bitten by a snake, a young meerkat journeys across the desert to find a magical cure.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

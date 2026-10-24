@@ -1,0 +1,28 @@
+{
+  "id": "movie-1570",
+  "title": "Friends with Benefits",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1570",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/4/4e/Friends_with_benefits_poster.jpg",
+  "video_sources": [
+    {
+      "url": "http://namzentertainments.xyz/projects/omu%20serie/MUN/Friends%20With%20Benefits%20by%20Vj%20Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "Two friends decide to add casual sex to their relationship \u2013 but their high school nostalgia and fears about real feelings complicate things.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

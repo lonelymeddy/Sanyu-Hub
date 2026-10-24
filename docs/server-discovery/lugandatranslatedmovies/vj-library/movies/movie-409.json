@@ -1,0 +1,28 @@
+{
+  "id": "movie-409",
+  "title": "Code Name Tiranga",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=409",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjlkOWNiYmUtM2NhMi00NGNiLTg5ZjktMDg1N2FlODc1ZWZlXkEyXkFqcGdeQXVyOTI3MzI4MzA@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/codename.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Tiranga is a story of a spy on an unfaltering and fearless mission for her nation in a race against time where sacrifice is her only choice.",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

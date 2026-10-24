@@ -1,0 +1,28 @@
+{
+  "id": "movie-1422",
+  "title": "Alone",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1422",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/2/27/Alone2020poster.webp",
+  "video_sources": [
+    {
+      "url": "https://lugandatranslatedmovies.com/movies/ALONEJR_compressed.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "lugandatranslatedmovies.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "The movie \"Alone\" (2020) is a psychological thriller about a grieving young widow, Jessica (Jules Willcox), who is kidnapped by a ruthless man (Marc Menchaca) d",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-3252",
+  "title": "Honey 3 Dare To Dance",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3252",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOTgyMjRkMDQtZjFkZS00OTExLThjODEtOTg1ZjBhNzIxNDY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Honey_3_Dare_to_Dance_VJ_Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "A college student drops out to use her talents as a dancer in the community. She rents a failing theatre to put on a hip-hop production of 'Romeo and Juliet,' b",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

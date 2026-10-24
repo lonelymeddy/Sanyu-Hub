@@ -1,0 +1,28 @@
+{
+  "id": "movie-1585",
+  "title": "Hellhound",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1585",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMzRhM2FkZWEtYTlmZS00N2ViLThkNTctYzE1OTE0NTdiYWRkXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.mobifliks.info/videos/luganda/Hellhound%20by%20Vj%20Jingo%20-%20Mobifliks.com.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.mobifliks.info",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The 2024 action/crime film Hellhound is about a hitman named Loreno who takes one last job in Thailand to hunt a kingpin, but a lapse in judgment causes the ass",
+  "release_year": 2024,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

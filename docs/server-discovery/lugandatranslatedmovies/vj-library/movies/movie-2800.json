@@ -1,0 +1,28 @@
+{
+  "id": "movie-2800",
+  "title": "The Possession of Hannah Grace",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2800",
+  "image_url": "https://resizing.flixster.com/cnUzh0mGhfdeLwOGtPcJH_BORWE=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2Q4MWZlNjFlLTU2MDktNDkyMi05ZWQ3LTk4OTlkYjNkNThiZS53ZWJw",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/JUNE%20/GRACE%20.THE%20POSSESSION%20-%20JINGO%201080p%20(NO%20S).mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "The Possession of Hannah Grace is a 2018 supernatural horror film. It follows Megan Reed, a former police officer battling addiction and PTSD, who takes the gra",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

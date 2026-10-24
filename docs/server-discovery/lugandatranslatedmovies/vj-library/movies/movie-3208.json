@@ -1,0 +1,28 @@
+{
+  "id": "movie-3208",
+  "title": "Run Hide Fight",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3208",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzA4OTNhMzgtN2VkYS00MmUxLWEzOTItOTYzYjc2ZTkzYTI4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Run_Hide_Fight_VJ_Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Zoe Hull, 17, uses her wits, survival skills, and compassion to fight for her life, and the lives of her classmates, against a group of live-streaming school sh",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

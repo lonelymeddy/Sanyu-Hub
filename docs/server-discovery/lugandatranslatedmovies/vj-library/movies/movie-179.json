@@ -1,0 +1,28 @@
+{
+  "id": "movie-179",
+  "title": "Awareness",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=179",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNzM4YzYzM2ItYTIxNy00MDIyLWE0ZTEtMTIxMmRiODE5MzQxXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/awereness.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "Ian is a rebel who lives with his dad on the margins of society. They survive on small scams thanks to Ian's extraordinary ability to project visual illusion in",
+  "release_year": 2019,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1419",
+  "title": "All Good Things",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1419",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTcwMjIyMTc2Nl5BMl5BanBnXkFtZTcwOTQyMzc5Mw@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/LAW/A%20TIME%20TO%20KILL%201-2.1080HP.Jr.A-B@(E.L.Pro+256782778952).mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Romantic"
+  ],
+  "description": "All Good Things is a 2010 mystery/crime romantic drama film starring Ryan Gosling and Kirsten Dunst, inspired by the real-life story of Robert Durst.",
+  "release_year": 2020,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

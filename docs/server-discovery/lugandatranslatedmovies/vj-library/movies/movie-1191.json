@@ -1,0 +1,28 @@
+{
+  "id": "movie-1191",
+  "title": "The Fire Inside",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1191",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/3/32/The_Fire_Inside_film_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/thefireinside.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "\"The Fire Inside\" is a 2024 biographical sports film that tells the inspiring true story of Claressa \"T-Rex\" Shields, a boxer from Flint, Michigan, who became t",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

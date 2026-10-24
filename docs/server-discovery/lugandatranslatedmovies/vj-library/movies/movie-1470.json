@@ -1,0 +1,28 @@
+{
+  "id": "movie-1470",
+  "title": "1000 Words",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1470",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/c/cf/A_Thousand_Words_Poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://nicetry.mlegacytv.com/MOVIES/JUNIOR/A%20THOUSAND%20WORDS%20JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "nicetry.mlegacytv.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Jack McCall is a fast-talking literary agent, who can close any deal, any time, any way. He has set his sights on New Age guru Dr. Sinja for his own selfish pur",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

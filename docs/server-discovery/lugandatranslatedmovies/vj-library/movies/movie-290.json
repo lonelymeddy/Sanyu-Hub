@@ -1,0 +1,28 @@
+{
+  "id": "movie-290",
+  "title": "Road House",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=290",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTOMpNnQeA4i14vZIQ0Lvyv8S7RbzMVyZ--g&amp;s",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/roadhouse.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Road House is a 2024 American action film that is a remake of the 1989 film Road House and stars Jake Gyllenhaal as an ex-UFC fighter who takes a job as a bounc",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

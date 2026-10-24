@@ -1,0 +1,28 @@
+{
+  "id": "movie-2887",
+  "title": "Stung",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2887",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/5/58/Strung_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/STUNG_JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Strung (2026) is a psychological thriller that follows Laila, a struggling classical violinist who takes a lucrative job as a private music tutor for a young gi",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

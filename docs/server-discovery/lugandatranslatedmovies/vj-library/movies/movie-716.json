@@ -1,0 +1,28 @@
+{
+  "id": "movie-716",
+  "title": "Drug Hunter 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=716",
+  "image_url": "https://lh5.googleusercontent.com/proxy/rYYhgrAq_tgcVEOoyhKYiwlYWdsIuvbJzyDGIVw2oGMx1IfzJXZtWDw2HehLPH7m6MMidUq2re4VpfK-JuhdYP4QFxdW_aBunt7D8K1_EeDx09yhmTV__kkrTlJcJ1mqzA",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/drughunter2.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Captain Ren Yufan of the city's anti-narcotics squad targets a cunning group of drug dealers. Upon learning that they plan to conduct a drug deal at the old doc",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

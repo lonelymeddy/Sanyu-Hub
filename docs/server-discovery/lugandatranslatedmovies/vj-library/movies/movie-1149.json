@@ -1,0 +1,28 @@
+{
+  "id": "movie-1149",
+  "title": "No Chains No Masters",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1149",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzk4NTAxNGQtY2JhMC00YjQ4LTllOTktMjBjODFkNGNhODI1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/nochainsnomaster.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "\"No Chains No Masters\" is a historical drama set in 1759 on the French colony of Mauritius Island, where enslaved people toil on a sugar plantation",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

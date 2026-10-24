@@ -1,0 +1,28 @@
+{
+  "id": "movie-1185",
+  "title": "The Old Guard 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1185",
+  "image_url": "https://dnm.nflximg.net/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABZlR-wnRbc0NA6818LE8KKlXiVGf30ecr2uVS5JHzQ3aWc6QNqJkR_RHmGyImlODpzhNuxx4f0q2SW8SXhvqgR1zU46xHLTVMgHmc2vqOVZHvKAHjROALIueuxh8DDGM-cHiQQ.jpg?r=2a5",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/theoldguard2.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "The Old Guard 2\" is a 2025 action-fantasy film and sequel to \"The Old Guard\", where Andy and her team of immortal warriors continue their mission to protect hum",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

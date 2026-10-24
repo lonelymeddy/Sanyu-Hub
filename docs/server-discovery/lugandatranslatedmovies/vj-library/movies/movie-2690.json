@@ -1,0 +1,28 @@
+{
+  "id": "movie-2690",
+  "title": "Invasion",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2690",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzY4YzgxZTAtMDBiNi00MzQxLWFkN2MtZDc5ZTViYzI0NjU0XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/APIRL/REMAKES%202/ATTRACTION%2002.INVASION___VJ%20EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "The Invasion (2007) is a sci-fi thriller starring Nicole Kidman and Daniel Craig about an alien virus spread by a space shuttle crash. It turns humans into emot",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

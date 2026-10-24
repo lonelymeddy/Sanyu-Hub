@@ -1,0 +1,28 @@
+{
+  "id": "movie-886",
+  "title": "Fight or Flight",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=886",
+  "image_url": "https://resizing.flixster.com/rCytcAIyp2jb5MrF3oNSbORs8C4=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p28270848_v_v13_ab.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/fightorflight.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"Fight or Flight\" (2025) is a movie where a mercenary, tasked with tracking down a target on a plane, must protect her when they are both surrounded by people t",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

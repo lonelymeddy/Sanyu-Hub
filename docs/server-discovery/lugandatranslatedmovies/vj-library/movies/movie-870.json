@@ -1,0 +1,28 @@
+{
+  "id": "movie-870",
+  "title": "Baby Assassins: Nice Days",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=870",
+  "image_url": "https://resizing.flixster.com/mUFn3JQLDIh6yyGfpbyYs6hvcos=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzE4ZWFiNjk3LWE3YmQtNGJjZS1iYmRmLWRmZDk4YzQxYzVlYS5qcGc=",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/babyassassins.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"Baby Assassins: Nice Days\" (also known as \"Baby Walkure: Naisu Deizu\") is a 2024 action, comedy, and crime film following teenage assassins Chisato and Mahiro",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

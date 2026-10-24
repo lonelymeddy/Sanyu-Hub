@@ -1,0 +1,28 @@
+{
+  "id": "movie-717",
+  "title": "Your Fault",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=717",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/0/04/Culpa_tuya.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/yourfault.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Your Fault is a 2024 Spanish-language romance drama film about the relationship between Noah and Nick, two step-siblings who fall in love. The movie explores ho",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

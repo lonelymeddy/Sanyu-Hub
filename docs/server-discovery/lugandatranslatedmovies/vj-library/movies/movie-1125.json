@@ -1,0 +1,28 @@
+{
+  "id": "movie-1125",
+  "title": "Rust",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1125",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzkzMzVmMGItYjFmOC00MzU2LThmNDItMzY4MDRkYzM1MDZjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://oopstry.mlegacytv.com/MOVIES/ULIO/RUST%202025%20VJ.ULIO.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "oopstry.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"Rust\" is a 2024 Western film about a 13-year-old boy, Lucas Hollister, who is sentenced to hang for accidentally killing a rancher in 1880s Wyoming",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

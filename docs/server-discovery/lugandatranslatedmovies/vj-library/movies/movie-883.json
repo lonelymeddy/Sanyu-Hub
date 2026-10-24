@@ -1,0 +1,28 @@
+{
+  "id": "movie-883",
+  "title": "About Time",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=883",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzchbnethuIbZ4qGD1Lnjhxv6hI_PRo79lZw&amp;s",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/abouttime.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "\"About Time\" follows Tim Lake (Domhnall Gleeson), who discovers at 21 that his family has the ability to travel through time, and he uses this ability to try an",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

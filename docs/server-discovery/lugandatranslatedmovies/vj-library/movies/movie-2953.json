@@ -1,0 +1,28 @@
+{
+  "id": "movie-2953",
+  "title": "Super Girl",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-soul"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2953",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMmJkOTE0MWUtY2E5OS00NzEyLWI4NjEtYzQzYzFmMjk5ODE3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/SUPERGIRL_SOUL.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Supergirl (released on June 26, 2026) is a sci-fi superhero action film starring Milly Alcock as Kara Zor-El. Directed by Craig Gillespie, the story follows a d",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

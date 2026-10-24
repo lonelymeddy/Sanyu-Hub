@@ -1,0 +1,28 @@
+{
+  "id": "movie-451",
+  "title": "A Quiet Place: Day One",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=451",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNGZmODU3ZDEtMjQwZC00NTA5LThmNWYtYzk5MmY5ZmM4NGIxXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/aquietplaceplacedayone.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "A Quiet Place: Day One follows a woman named Sam (Lupita Nyong'o) who is dying from cancer. She lives in hospice care and one day, she's been convinced to go ou",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

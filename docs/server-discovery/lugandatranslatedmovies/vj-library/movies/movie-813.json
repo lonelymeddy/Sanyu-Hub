@@ -1,0 +1,28 @@
+{
+  "id": "movie-813",
+  "title": "Miss Sloane",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=813",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTAyODY4Njc4MjBeQTJeQWpwZ15BbWU4MDI0NTIzMDAy._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/misssloane.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Miss Sloane is a 2016 political thriller film about a powerful lobbyist in Washington, D.C. The movie stars Jessica Chastain as Elizabeth Sloane, a ruthless lob",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

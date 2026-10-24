@@ -1,0 +1,28 @@
+{
+  "id": "movie-3131",
+  "title": "The Art Of War",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ulio"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3131",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNGM3NjZiNWMtMDVlZi00NTNjLThjN2YtZjI1Nzk3ZDNlNTk1XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/The_Art_of_War_VJ_Ulio.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "[The Art of War] (2000) is an action spy thriller about a covert United Nations operative who goes on the run after being framed for the assassination of a Chin",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

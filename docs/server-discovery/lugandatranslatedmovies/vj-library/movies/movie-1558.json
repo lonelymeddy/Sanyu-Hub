@@ -1,0 +1,28 @@
+{
+  "id": "movie-1558",
+  "title": "The Kissing Booth 3",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1558",
+  "image_url": "https://play-lh.googleusercontent.com/proxy/2IU080sJj9BG5AGfpJf0UmNPiG18kSV349OdHCgtWyxgGOmDeeS9trkSTBAPomSuUmLj8YeY2OiaAlFrfI3q1LLKKdb-9bgwP5TruBGXrwYs7u1QewU96Jj2qnJCoHn6mK4au7iFNmnZk5MkIxU_1iql8DuvChycRm5FoA=w240-h480-rw",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/firs%202/UNSORT/four/KISSING%20BOOTH%203%20@NAMZ%20JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "After a post-graduation road trip, Elle still hasn\u2019t decided between going to Berkeley or Harvard, while Noah and Marco navigate their futures.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

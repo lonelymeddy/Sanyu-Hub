@@ -1,0 +1,28 @@
+{
+  "id": "movie-2353",
+  "title": "Bullet to the head",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2353",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/3/3f/Bullet_to_the_Head_Poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/BULLET TO THE HEAD.1080HP.Jr.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/BULLET TO THE HEAD.1080HP.Jr.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Bullet to the Head (2012) is an R-rated action-thriller starring Sylvester Stallone as Jimmy Bobo, a New Orleans hitman who teams up with a D.C. detective (Sung",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

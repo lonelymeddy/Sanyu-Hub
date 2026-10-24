@@ -1,0 +1,28 @@
+{
+  "id": "movie-1087",
+  "title": "Twin dragon",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1087",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTI5MDcwNTg3MV5BMl5BanBnXkFtZTYwMDk0NjQ5._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/twindragon.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"Twin Dragons\" is a 1992 Hong Kong action-comedy film starring Jackie Chan. The movie follows identical twins, John Ma and Boomer, who are separated at birth an",
+  "release_year": 2007,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

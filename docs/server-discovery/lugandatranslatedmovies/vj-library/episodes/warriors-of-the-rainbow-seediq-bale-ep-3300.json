@@ -1,0 +1,28 @@
+{
+  "id": "warriors-of-the-rainbow-seediq-bale-ep-3300",
+  "title": "Warriors Of The Rainbow Seediq Bale Part 1 The Sun Flag",
+  "content_type": "episode",
+  "series_id": "warriors-of-the-rainbow-seediq-bale",
+  "season_number": 1,
+  "episode_number": null,
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3300",
+  "image_url": "https://image.tmdb.org/t/p/w500/xDgmCasmrbzPDyJO4Ngg01YsIIv.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Warriors_of_the_Rainbow_Seediq_Bale_-_Part_1_The_Sun_Flag_VJ_Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "description": "In 1930 Taiwan, Mouna Rudo, a Seediq tribal leader, forms a coalition with the island's other tribes to rise up against their Japanese colonial masters.",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-803",
+  "title": "Dog Soldiers",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=803",
+  "image_url": "https://resizing.flixster.com/OroZ3KARhKM1pKGT2VEZDmGcpDc=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p30014_v_v10_aa.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/dogsolider.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A band of soldiers is dispatched to war games deep in the woods. When they stumble across a rival team slaughtered in camp, they realize they're not alone",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

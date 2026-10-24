@@ -1,0 +1,28 @@
+{
+  "id": "movie-2057",
+  "title": "Luther: The Fallen Sun",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2057",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMDFmYzdjOGYtMWY3MC00ZjQ0LWJiYjgtODc3ZDUzZmM4MmQ3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/next%20level%202/%20neri/fahad/Luther-%20The%20Fallen%20Sun%20JUNIOR%20%40%20NAMZ.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "John Luther breaks out of prison to hunt a cyber-serial killer.",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

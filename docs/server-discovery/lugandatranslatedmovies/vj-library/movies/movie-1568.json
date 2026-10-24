@@ -1,0 +1,28 @@
+{
+  "id": "movie-1568",
+  "title": "All Styles",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1568",
+  "image_url": "https://play-lh.googleusercontent.com/DdKi32RqC6VkahA34i3S-OpaZMcqKD4NKFcSuA-HHuEEyqyxPM3-CVW3IpHAqUVOY0tC",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/project/SMART%202/All%20Styles%20by%20Vj%20Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "A dance crew from different cliques comes together for a high school showcase, battling egos to create something spectacular.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

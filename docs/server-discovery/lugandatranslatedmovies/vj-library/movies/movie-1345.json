@@ -1,0 +1,28 @@
+{
+  "id": "movie-1345",
+  "title": "The Show",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1345",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOWNiNjUxMjEtODY5ZC00NzA3LWEwNzgtNDgyNmU4MDRmNWNjXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://munowatch.co/6ac6e/e2a/d3215~1.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munowatch.co",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "The Show is a 2020 British fantasy neo-noir film directed by Mitch Jenkins and written by Alan Moore. The story follows Fletcher Dennis (Tom Burke), a detectiv",
+  "release_year": 2020,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

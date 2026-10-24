@@ -1,0 +1,28 @@
+{
+  "id": "movie-2801",
+  "title": "In the Grey",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2801",
+  "image_url": "https://images2.vudu.com/poster2/4957760-194",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/JUNE%20/IN%20THE%20GREY%20JR.2026.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The 2026 action thriller In the Grey follows a high-powered debt recovery lawyer named Rachel Wild (Eiza Gonz\u00e1lez) and her covert team of elite operatives, Bro",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

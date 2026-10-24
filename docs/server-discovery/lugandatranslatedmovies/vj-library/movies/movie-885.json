@@ -1,0 +1,28 @@
+{
+  "id": "movie-885",
+  "title": "Dead Zone",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=885",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGntsUzuSTteq27f_FQ77FR6Ntsr4HsrGUjA&amp;s",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/deadzone.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "a science fiction thriller about a man, Johnny Smith, who awakens from a coma with the ability to see into people's futures through physical contact, and must g",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

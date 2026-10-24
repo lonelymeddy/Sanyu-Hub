@@ -1,0 +1,28 @@
+{
+  "id": "movie-492",
+  "title": "American Ultra",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=492",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTcwMTM1NDU1Ml5BMl5BanBnXkFtZTgwNDk5MTgzNjE@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/americanultra.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A stoner - who is in fact a government agent - is marked as a liability and targeted for extermination. But he's too well-trained and too high for them to hand",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

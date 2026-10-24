@@ -1,0 +1,28 @@
+{
+  "id": "movie-10",
+  "title": "Beautiful disaster",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=10",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BY2E5MzIxNmYtOWY1OC00ZDVmLWIxZDctOWFhZjljOWMzZjcxXkEyXkFqcGdeQXVyNTA3MTU2MjE@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.mobifliks.info/videos/luganda/Beautiful%20Disaster%20by%20Vj%20Muba%20-%20Mobifliks.com.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.mobifliks.info",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "College freshman, Abby, tries to distance herself from her dark past while resisting her attraction to bad boy, Travis.",
+  "release_year": 2022,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-2842",
+  "title": "The last stand of Ellen cole",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2842",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZGVhMGY3MzYtNGU4Ni00MmY5LWI1YzctYTY2Nzk4YWVmNTA1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/THE_LAST_STAND_OF_ELLEN_COLE_EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The Last Stand of Ellen Cole is a 2024 neo-Western action film starring Lin Shaye as an 80-year-old widow who turns out to be a retired, trained operative. She",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

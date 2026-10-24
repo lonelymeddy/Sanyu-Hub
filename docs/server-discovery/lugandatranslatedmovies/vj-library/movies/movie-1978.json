@@ -1,0 +1,28 @@
+{
+  "id": "movie-1978",
+  "title": "Monolith",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1978",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYTVhZTQxODYtZjg0NC00OTE4LTgxNWItYTBjYThmYmM2YTRjXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/MONOLITHJR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Monolith (2022) is a tense, single-location sci-fi thriller about a disgraced journalist (Lily Sullivan) who starts an investigative podcast, Beyond Believable,",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

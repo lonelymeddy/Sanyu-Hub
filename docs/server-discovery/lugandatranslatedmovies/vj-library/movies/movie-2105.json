@@ -1,0 +1,28 @@
+{
+  "id": "movie-2105",
+  "title": "Long Shadows",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2105",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZmQxOTliMDgtNzc0Zi00NWY3LTgxYWUtZjZkMDg4OGUzMjEwXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/LONG%20SHADOWS---EMMY%202026.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Long Shadows (2025) is a Western film about a young man seeking revenge for his parents' murder in the 1880s American West, whose path toward vengeance is compl",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

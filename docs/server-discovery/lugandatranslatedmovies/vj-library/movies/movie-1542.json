@@ -1,0 +1,28 @@
+{
+  "id": "movie-1542",
+  "title": "I Am Legend",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1542",
+  "image_url": "https://images.moviesanywhere.com/56c992f18d66817a14cd68de04a10e57/2838a862-a8a4-4f54-9a22-bc2fba7264a3.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/kalailai/junior/I%20AM%20LEGEND%20JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Robert Neville is a scientist who was unable to stop the spread of the terrible virus that was incurable and man-made. Immune, Neville is now the last human s",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

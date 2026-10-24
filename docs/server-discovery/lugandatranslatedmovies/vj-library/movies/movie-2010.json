@@ -1,0 +1,28 @@
+{
+  "id": "movie-2010",
+  "title": "Money Talks",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2010",
+  "image_url": "https://cdn.chili.com/images/public/cms/a9/24/b1/12/a924b112-2a60-4a34-b533-7cfbdb381f46.jpg?width=800",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW PRO/Money.Talks.1997.720 VJ JUNIOR@katflix..mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/NEW PRO/Money.Talks.1997.720 VJ JUNIOR@katflix..mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Money Talks (1997) is an action-comedy starring Chris Tucker as a hustler wrongfully accused of murder.",
+  "release_year": 2008,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-294",
+  "title": "The Bouncer",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=294",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/d/d9/The_Bouncer_%282018%29_Film_Poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/bouncer.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "A film noir, cheerless and violent. The protagonist is an antihero, struggling through life to nurture his eight-year-old daughter, and working in nightclubs as",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

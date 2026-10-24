@@ -1,0 +1,28 @@
+{
+  "id": "movie-2269",
+  "title": "Untitled Home invasion",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2269",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNTkzYzJhZDQtYzg3OC00ODhmLTgwNGQtNTEwZTFhYWQyMWYwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/UNTITLED HOME INVASION ROMANCE JR.2026.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/UNTITLED HOME INVASION ROMANCE JR.2026.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "With his marriage failing, Kevin plans a fake break-in to play hero, but when someone dies he becomes the center of a murder investigation.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

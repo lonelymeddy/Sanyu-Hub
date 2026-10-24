@@ -1,0 +1,28 @@
+{
+  "id": "movie-1578",
+  "title": "Exit Protocol",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1578",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzRhMmFiMjQtNmQ4MS00Y2U0LWJiYTEtMmUyOTljMWIzOWRiXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/SERIES%207/NOV/Exit%20Protocol.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Exit Protocol is a 2025 action-thriller about an elite assassin who specializes in killing other assassins who try to leave the business, only to become a targe",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

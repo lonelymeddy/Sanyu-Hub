@@ -1,0 +1,28 @@
+{
+  "id": "movie-1387",
+  "title": "Elektra",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1387",
+  "image_url": "https://images.moviesanywhere.com/31cbde379f33e8b97f0c3eb425ddeded/6bb0b9da-ff27-4f8e-8135-59fa0c32b71a.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.kampalarelaxation.com/allmovies/Movies/Vj%20Junior/Elektra%202005.Junior.1080.Emma.Soft.0753088855.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.kampalarelaxation.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The Elektra movie is a 2005 Marvel Comics spin-off where Jennifer Garner reprises her role as the titular assassin",
+  "release_year": 2005,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

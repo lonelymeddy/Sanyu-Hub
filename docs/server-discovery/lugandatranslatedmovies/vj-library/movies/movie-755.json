@@ -1,0 +1,28 @@
+{
+  "id": "movie-755",
+  "title": "The Prosecutor",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=755",
+  "image_url": "https://resizing.flixster.com/gIXatah-MO-JPILYRTqvC7rgJ4U=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzk5ZWM1Yzc0LTA1YTMtNGE2ZC1iOTliLTY0MjZiMDE2MGE3OC5qcGc=",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/theprosecutor.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A poor young man is wrongly charged with drug trafficking after being deceived. An ex-prosecutor investigates the case, uncovers a corrupt lawyer team's scheme,",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

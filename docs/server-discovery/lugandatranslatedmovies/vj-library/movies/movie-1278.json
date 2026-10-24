@@ -1,0 +1,28 @@
+{
+  "id": "movie-1278",
+  "title": "Puppy Love",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1278",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTU0MTBlMDYtNDBlYS00ZjlmLThlZTctZTVmNTM5ZTA4MWQyXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://munoserver51.club/hvt43/kai43/PUPPY%20LOVE%201080pVJ-ULIO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver51.club",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>"
+    }
+  ],
+  "genres": [
+    "Romantic"
+  ],
+  "description": "Britannica Dictionary definition of PUPPY LOVE. [noncount] : romantic love that is felt by a child or teenager and that is not considered by adults to be real l",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

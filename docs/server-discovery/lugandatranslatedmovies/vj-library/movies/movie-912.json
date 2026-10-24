@@ -1,0 +1,28 @@
+{
+  "id": "movie-912",
+  "title": "The kill team",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=912",
+  "image_url": "https://m.media-amazon.com/images/I/917MuYSnx8L._AC_UF1000,1000_QL80_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/thekillteam.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"The Kill Team\" is a 2019 American war drama film, a fictionalized adaptation of the Maywand District murders, based on Dan Krauss's 2013 documentary of the sam",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

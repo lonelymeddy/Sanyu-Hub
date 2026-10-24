@@ -1,0 +1,28 @@
+{
+  "id": "movie-252",
+  "title": "Love Don't Cost a Thing",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=252",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSrYhpJhXvTUxpVxjdWhDmOMg-RnXjDY8pLfn5K1GHzg&amp;s",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/lovedontcostathing.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "Alvin, a nerd, yearns to associate with the popular groups at high school. His dream comes true, when Paris, a pretty cheerleader, agrees to pose as his girlfri",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

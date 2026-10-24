@@ -1,0 +1,28 @@
+{
+  "id": "movie-1342",
+  "title": "Pick A Side",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1342",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMGQ1MjVlNjUtOWVlNy00NDc4LTkwOTAtZTg1OGZlZWIwMTgxXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://munoserver2.club/12359/e90/Pick.A.Side.2021.1080P.Amzn.Webrip.1400Mb.Dd5.1.X264-Galaxyrg-1%20VJ%20JINGO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver2.club",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 441: status code 441"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Pick A Side is a 2021 action-drama film about a straight-laced computer programmer, Marcus, who is forced to enter the criminal world of his gangster brother, C",
+  "release_year": 2021,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1489",
+  "title": "The Last Days of American Crime",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1489",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjkxZTFhYWUtMjFlYy00Y2M1LTg4MDUtZTViY2MxMmEwZTg0XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/REMAKES%203/THE%20LAST%20DAYS%20OF%20AMERICAN%20CRIME.JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The Last Days of American Crime is a 2020 action/crime film about a bank robber who partners with a hacker and a gangster's son to pull off a final, massive hei",
+  "release_year": 2020,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

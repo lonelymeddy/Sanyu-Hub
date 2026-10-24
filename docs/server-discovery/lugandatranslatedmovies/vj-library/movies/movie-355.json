@@ -1,0 +1,28 @@
+{
+  "id": "movie-355",
+  "title": "Screwed",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=355",
+  "image_url": "https://m.media-amazon.com/images/I/51DSelu2RfL._AC_UF894,1000_QL80_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/screwed.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "Seventeen-year-old Miku is trying to come to terms with his sexuality and find his place in the world. After his parents find out he threw a wild party while th",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

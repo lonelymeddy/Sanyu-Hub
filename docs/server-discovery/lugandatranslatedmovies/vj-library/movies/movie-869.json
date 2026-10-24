@@ -1,0 +1,28 @@
+{
+  "id": "movie-869",
+  "title": "The Waterboy",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=869",
+  "image_url": "https://resizing.flixster.com/FctDIzs9ooWCrM3GPw0I8KOj73I=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p21986_v_v10_ac.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/thewaterboy.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "\"The Waterboy\" (1998) follows Bobby Boucher, a socially awkward waterboy for a struggling college football team, who discovers his surprising talent for tacklin",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-877",
+  "title": "Soul Food",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=877",
+  "image_url": "https://m.media-amazon.com/images/I/91NyHhKpxNL._AC_UF894,1000_QL80_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/soulfood.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "\"Soul Food\" (1997) is an African-American drama that follows a family's journey as they navigate the aftermath of their matriarch's illness, exploring themes of",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

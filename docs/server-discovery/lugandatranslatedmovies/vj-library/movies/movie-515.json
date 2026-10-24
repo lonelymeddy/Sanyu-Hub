@@ -1,0 +1,28 @@
+{
+  "id": "movie-515",
+  "title": "5 Power Kids",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=515",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BODIyNzg4ODg2OF5BMl5BanBnXkFtZTgwNTM0MzA2MDE@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/5powerkids.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Power Kids is a thrilling action movie that packs a serious punch. Directed by Krissanapong Rachata, the film follows a group of children who must use their mar",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

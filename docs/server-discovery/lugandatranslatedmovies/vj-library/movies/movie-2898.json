@@ -1,0 +1,28 @@
+{
+  "id": "movie-2898",
+  "title": "Masha and Bear",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-uncle-t"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2898",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMGQwNmM0ZmQtYTQ0Zi00MTViLWFlMzUtNGZjOGExYmYyMTdkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/MASHA_AND_BEAR_UNCLE_T.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Masha and the Bear is a popular animated comedy adventure series based on a Russian folk tale. It follows a lively, energetic little girl named Masha who wander",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

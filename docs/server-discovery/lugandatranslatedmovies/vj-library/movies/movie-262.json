@@ -1,0 +1,28 @@
+{
+  "id": "movie-262",
+  "title": "Land of Bad",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=262",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMzkyOTUzYTUtY2UzYS00MjY4LTljZWYtYzMyMmZlMWYwMjQ5XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/landofbad.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "When a Delta Force team is ambushed in enemy territory, a rookie officer refuses to abandon them. Their only hope lies with an Air Force drone pilot as the eyes",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

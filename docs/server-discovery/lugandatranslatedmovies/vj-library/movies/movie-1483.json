@@ -1,0 +1,28 @@
+{
+  "id": "movie-1483",
+  "title": "All of You",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1483",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/b/bf/All_of_You_film_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/VJ%20ULIO/ALL%20OF%20YOU%202025%20VJ.ULIO.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Romantic"
+  ],
+  "description": "All of You is a romance drama about two long-time best friends, Simon and Laura, whose deep connection goes unspoken until a scientific soulmate test separates",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

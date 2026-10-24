@@ -1,0 +1,28 @@
+{
+  "id": "movie-2001",
+  "title": "Vice",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2001",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjE4OTg3Mjg5OV5BMl5BanBnXkFtZTgwMzYxMTg0MzE@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://watch.kpsounds.com/watch/Vice JR Kp Sounds Watch.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "watch.kpsounds.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/watch/Vice JR Kp Sounds Watch.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Vice (2018) is a biographical dark comedy...",
+  "release_year": 2018,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

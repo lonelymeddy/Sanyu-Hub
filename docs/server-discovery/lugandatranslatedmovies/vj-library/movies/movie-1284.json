@@ -1,0 +1,28 @@
+{
+  "id": "movie-1284",
+  "title": "Absolute Deception",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1284",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BODg1MTcyNDk3N15BMl5BanBnXkFtZTgwMzAyMTA1MTE@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://munoserver1.club/7e910/d5c/ABSOLUTE%20DECEPTION%20JR_x264.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver1.club",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 441: status code 441"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Absolute Deception is a 2013 action thriller about a widowed reporter who teams up with an FBI agent to investigate her husband's murder, only to uncover a dang",
+  "release_year": 2013,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}
