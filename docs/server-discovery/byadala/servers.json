@@ -1,0 +1,20 @@
+[
+  {
+    "server_name": "Byadala Web Streaming Server",
+    "player_url": "https://byadala.com/watch/the-mongoose",
+    "hostname": "byadala.com",
+    "source_page": "https://byadala.com/movie/the-mongoose",
+    "status": "REACHABLE",
+    "tested_at": "2026-10-24T13:14:31Z",
+    "notes": "HTTP 200 OK. Player web interface loads successfully. Direct media stream URL requires subscriber authentication token."
+  },
+  {
+    "server_name": "Byadala Main Platform Server",
+    "player_url": "https://byadala.com/movies",
+    "hostname": "byadala.com",
+    "source_page": "https://byadala.com/",
+    "status": "REACHABLE",
+    "tested_at": "2026-10-24T13:14:31Z",
+    "notes": "HTTP 200 OK. Video catalogue and player routes accessible."
+  }
+]

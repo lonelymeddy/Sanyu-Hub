@@ -1,0 +1,4 @@
+https://byadala.com/movie/a-quiet-place - Movie details page (No direct media stream or public embed exposed without login)
+https://byadala.com/movie/avengers-endgame - Movie details page (No direct media stream or public embed exposed without login)
+https://byadala.com/series/the-polygamist - Series details page (No direct media stream or public embed exposed without login)
+https://byadala.com/vjs - VJ listing page (No direct media stream exposed)

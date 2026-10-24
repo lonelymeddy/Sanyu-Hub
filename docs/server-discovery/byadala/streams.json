@@ -1,0 +1,22 @@
+[
+  {
+    "source_page": "https://byadala.com/watch/the-mongoose",
+    "server_name": "Byadala Stream Acquisition API",
+    "stream_url": "https://byadala.com/api/streams/take",
+    "format": "JSON API",
+    "status": "BLOCKED",
+    "http_status": 401,
+    "tested_at": "2026-10-24T13:14:31Z",
+    "notes": "HTTP 401 Unauthorized ('missing token'). Stream manifest generation requires subscriber authentication token."
+  },
+  {
+    "source_page": "https://byadala.com/watch/the-mongoose",
+    "server_name": "Byadala Stream Heartbeat API",
+    "stream_url": "https://byadala.com/api/streams/beat",
+    "format": "JSON API",
+    "status": "BLOCKED",
+    "http_status": 401,
+    "tested_at": "2026-10-24T13:14:31Z",
+    "notes": "HTTP 401 Unauthorized ('missing token'). Active session heartbeat endpoint requires subscriber authentication token."
+  }
+]
