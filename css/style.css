@@ -3386,8 +3386,7 @@ body.search-open .bottom-nav {
   background-color: #080808;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -3401,18 +3400,19 @@ body.search-open .bottom-nav {
 /* REDESIGNED LANDING PAGE LAYOUT */
 .landing-page-wrapper {
   width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   background-color: #080808;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* TOP HALF — CINEMATIC COLLAGE (~50% HEIGHT) */
+/* TOP PORTION — CINEMATIC COLLAGE (~45-50% HEIGHT) */
 .landing-top-collage {
-  height: 50vh;
-  height: 50dvh;
+  height: 48vh;
+  height: 48dvh;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -3431,18 +3431,16 @@ body.search-open .bottom-nav {
   display: block;
 }
 
-/* BOTTOM HALF — WEBSITE INFORMATION AND COUNTRY SELECTION (~50% HEIGHT) */
+/* BOTTOM PORTION — WEBSITE INFORMATION AND COUNTRY SELECTION */
 .landing-bottom-content {
   flex: 1;
-  min-height: 50vh;
-  min-height: 50dvh;
   width: 100%;
   background: #080808;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 24px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  justify-content: flex-end;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
   box-sizing: border-box;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -3453,7 +3451,15 @@ body.search-open .bottom-nav {
   max-width: 440px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  justify-content: flex-end;
+  min-height: 100%;
+  box-sizing: border-box;
+  gap: 0;
+}
+
+.landing-top-flex-spacer {
+  flex: 1 1 auto;
+  min-height: 8px;
 }
 
 .landing-brand-title {
@@ -3461,7 +3467,7 @@ body.search-open .bottom-nav {
   font-weight: 800;
   color: #ffffff;
   letter-spacing: -0.8px;
-  margin: 0;
+  margin: 0 0 4px 0;
   line-height: 1.1;
   text-align: left;
 }
@@ -3474,7 +3480,7 @@ body.search-open .bottom-nav {
   font-size: 15px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.75);
-  margin: -4px 0 8px 0;
+  margin: 0 0 16px 0;
   line-height: 1.3;
   text-align: left;
 }
@@ -3482,6 +3488,7 @@ body.search-open .bottom-nav {
 .landing-country-search-section {
   position: relative;
   width: 100%;
+  margin: 0;
 }
 
 .landing-country-search-wrapper {
@@ -3489,16 +3496,22 @@ body.search-open .bottom-nav {
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
   height: 48px;
+  margin: 0;
 }
 
 .landing-country-results {
-  margin-top: 8px;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  right: 0;
   max-height: 180px;
   overflow-y: auto;
   background: #141414;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  box-shadow: 0 -8px 24px rgba(0,0,0,0.8);
+  z-index: 100;
+  display: none;
 }
 
 .landing-country-result-item {
@@ -3537,13 +3550,14 @@ body.search-open .bottom-nav {
 .landing-country-selected-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
+  margin: 0;
 }
 
 .landing-selected-country-card {
   width: 100%;
-  height: 50px;
+  height: 48px;
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 212, 59, 0.4);
   border-radius: 8px;
@@ -3573,21 +3587,15 @@ body.search-open .bottom-nav {
 
 @media (max-height: 650px) {
   .landing-top-collage {
-    height: 45vh;
-    height: 45dvh;
-  }
-  .landing-bottom-content {
-    min-height: 55vh;
-    min-height: 55dvh;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    height: 42vh;
+    height: 42dvh;
   }
   .landing-brand-title {
     font-size: 24px;
   }
   .landing-brand-desc {
     font-size: 14px;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
   }
 }
 
@@ -3604,10 +3612,20 @@ body.search-open .bottom-nav {
   }
   .landing-bottom-content {
     width: 50%;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
     justify-content: center;
     padding: 40px;
+  }
+  .landing-bottom-inner {
+    min-height: auto;
+    justify-content: center;
+  }
+  .landing-country-results {
+    position: relative;
+    bottom: auto;
+    margin-top: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.8);
   }
 }
 
