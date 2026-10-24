@@ -1,0 +1,30 @@
+{
+  "id": "movie_6375014515918691076_the_amateur",
+  "title": "THE AMATEUR",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj_junior"
+  ],
+  "source_page_url": "https://www.kibandavibes.com/2025/06/the-amateur-vj-junior.html",
+  "image_url": "https://images.moviesanywhere.com/912c841a6de7a4f5f616cd5d6f4bb0af/1b54febe-2c75-4d9d-b4d7-d4f15c4ccda2.jpg?h=375&resize=fit&w=250",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver61.club/port/str/eyJkcyI6InlnSCtCVGVNZUw0clJZdmhwYzdYcFFwbXUxUzlXVmpablhtSVp0azF3KzVmd2VTam9WZDc5QktiS1hsaUZFN2pIYnZ3YThva1J4RXIrNW5QMm9DcHNIMzJcL0JxU2EzTVVUMUFKZVVReSs4RnZkbzJzckxQNnZpSjR2ejVsczN5WTgzemI5VUZ0TktOYlFpNjFLQVA1Vmg2aG44ZFVaRUVpdmxTdnRtcXp0Rkk9IiwiZnYiOiI4NDc5YzY0ZWFkNzg2ZWJlNGE5OTYyNTE4YmMxZTUzNyIsImNlIjoiZDM5ZGMyMzkzYTg2YjI3ZSJ9",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver61.club/port/str/eyJkcyI6InlnSCtCVGVNZUw0clJZdmhwYzdYcFFwbXUxUzlXVmpablhtSVp0azF3KzVmd2VTam9WZDc5QktiS1hsaUZFN2pIYnZ3YThva1J4RXIrNW5QMm9DcHNIMzJcL0JxU2EzTVVUMUFKZVVReSs4RnZkbzJzckxQNnZpSjR2ejVsczN5WTgzemI5VUZ0TktOYlFpNjFLQVA1Vmg2aG44ZFVaRUVpdmxTdnRtcXp0Rkk9IiwiZnYiOiI4NDc5YzY0ZWFkNzg2ZWJlNGE5OTYyNTE4YmMxZTUzNyIsImNlIjoiZDM5ZGMyMzkzYTg2YjI3ZSJ9",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver61.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": null,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Direct video source from Kibanda Vibes. HTTP status: None (Server: <urlopen error timed out>)."
+    }
+  ],
+  "description": null,
+  "genre": null,
+  "release_year": null,
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}

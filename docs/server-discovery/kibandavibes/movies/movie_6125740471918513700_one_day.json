@@ -1,0 +1,30 @@
+{
+  "id": "movie_6125740471918513700_one_day",
+  "title": "ONE DAY",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj_junior"
+  ],
+  "source_page_url": "https://www.kibandavibes.com/2025/06/one-day-vj-junior.html",
+  "image_url": "https://images.moviesanywhere.com/411e39d1f798d3eefccfa938cb07633e/23e6f6ba-c526-4c2f-a093-f24cc92d600b.jpg",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver64.club/port/str/eyJkcyI6IlR6RjJuU1p1a1VVdk42aUV5YjFoUE9QN1I1OFU2cENkS1dUYkZkYUlvYUF0YytrN2hCd0ZJM2YyWU5YdDFkVWV0ZVZOZWVmVU5meDYzZVFtVFV2aTh2NHROWGlGM3N3Vm1Sc2QyWVM1eGVhXC92VGFjbStEQ3ZQOG90Nnk2VU1JeGZ2N0o4cndCUmEwMVhwREFPd0xQb0E9PSIsImZ2IjoiNjBhMzU5NDE2NTdlZjJlN2IzZDMxZDk4N2U5YTc1MDgiLCJjZSI6ImRjN2M3OWZiNjA4MTY3MGIifQ==",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver64.club/port/str/eyJkcyI6IlR6RjJuU1p1a1VVdk42aUV5YjFoUE9QN1I1OFU2cENkS1dUYkZkYUlvYUF0YytrN2hCd0ZJM2YyWU5YdDFkVWV0ZVZOZWVmVU5meDYzZVFtVFV2aTh2NHROWGlGM3N3Vm1Sc2QyWVM1eGVhXC92VGFjbStEQ3ZQOG90Nnk2VU1JeGZ2N0o4cndCUmEwMVhwREFPd0xQb0E9PSIsImZ2IjoiNjBhMzU5NDE2NTdlZjJlN2IzZDMxZDk4N2U5YTc1MDgiLCJjZSI6ImRjN2M3OWZiNjA4MTY3MGIifQ==",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver64.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": null,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Direct video source from Kibanda Vibes. HTTP status: None (Server: <urlopen error [Errno -2] Name or service not known>)."
+    }
+  ],
+  "description": "Two people meet on the same day every year, sharing laughs, pain, and deep emotions. From friendship to love, their journey is full of unexpected turns. VJ Junior adds that Ugandan flavor, making this romantic story even more heartfelt and real!",
+  "genre": "Romance",
+  "release_year": null,
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}

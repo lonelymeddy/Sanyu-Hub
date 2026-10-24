@@ -1,0 +1,31 @@
+{
+  "id": "ep_2026918550461992526_s01_e01",
+  "title": "JASON X - Episode 01",
+  "content_type": "episode",
+  "vj_ids": [
+    "vj_emmy"
+  ],
+  "series_id": "series_2026918550461992526_jason_x",
+  "season_number": 1,
+  "episode_number": 1,
+  "source_page_url": "https://www.kibandavibes.com/2025/07/jason-x-vj-emmy.html",
+  "image_url": "https://static.wikia.nocookie.net/fridaythe13th-game/images/c/cc/Jason_Voorhees_Part_X_Friday_the_13th_The_Game.png/revision/latest?cb=20180623022540",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver54.club/port/str/eyJkcyI6ImNuWjdrREF0UUJGcHloTWtPVWpkbWhqTDlnaW1PTlpQZ3ZaMHV0N2VwWGVGdTlkWE9paFI2QjhIN21vU1c3cnVtQnJzbmpja1VNVk1Tbms5Z2preUpWZmpFbFVSbkV6dmtDVThGNldSZzR6NitrK3h3aVhvbithZEZNazkzR0FoeHUya1o1NlRpaTRvTnFQQ1RZN2dUQT09IiwiZnYiOiJiMDQ3MmQ2ZTVlZjU1OGMwNDJiNTZjOGYzN2JjZjY4YSIsImNlIjoiYzhiOWE0YzMwZTY4ZTIwOSJ9",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver54.club/port/str/eyJkcyI6ImNuWjdrREF0UUJGcHloTWtPVWpkbWhqTDlnaW1PTlpQZ3ZaMHV0N2VwWGVGdTlkWE9paFI2QjhIN21vU1c3cnVtQnJzbmpja1VNVk1Tbms5Z2preUpWZmpFbFVSbkV6dmtDVThGNldSZzR6NitrK3h3aVhvbithZEZNazkzR0FoeHUya1o1NlRpaTRvTnFQQ1RZN2dUQT09IiwiZnYiOiJiMDQ3MmQ2ZTVlZjU1OGMwNDJiNTZjOGYzN2JjZjY4YSIsImNlIjoiYzhiOWE0YzMwZTY4ZTIwOSJ9",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver54.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": null,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Series episode stream URL from Kibanda Vibes JS playlist. HTTP status: None (Server: <urlopen error timed out>)."
+    }
+  ],
+  "description": "The legendary killer Jason Voorhees returns \u2014 but this time, in space! Frozen for centuries, he awakens aboard a spaceship, and the body count starts to rise.",
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}

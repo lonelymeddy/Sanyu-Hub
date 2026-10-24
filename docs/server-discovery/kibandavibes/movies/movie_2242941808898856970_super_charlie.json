@@ -1,0 +1,30 @@
+{
+  "id": "movie_2242941808898856970_super_charlie",
+  "title": "SUPER CHARLIE",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj_uncle_t"
+  ],
+  "source_page_url": "https://www.kibandavibes.com/2025/06/super-charlie-vj-uncle-t.html",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjY2OGZiNmYtYjBkOC00ZjU5LThmZjUtMjYxNjhmZDliOWE4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver61.club/port/str/eyJkcyI6Iit3SU9oVVFEcXdRTlZRRVZlWmpSclFMaktJRVhLRnl1d2ZPQ3k1Zk5QSHBYc0x1MGMrbzU0QzlCdjRDSWpXbDdoRnJqeFlkTHM2bzZkUEhmMEg3d0xjczhjVENSN0x2UEtNQ3RnMVFSQ0lKaTh1MlpZeVlwSnJWT2dVeUc1ZG8zIiwiZnYiOiI1ODlkMDFjZmU0ZmJhYmEyMzhkNzcxMWM4NmFmNjFhMCIsImNlIjoiNzViZGY3NzFjZjRhOWVlNyJ9",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver61.club/port/str/eyJkcyI6Iit3SU9oVVFEcXdRTlZRRVZlWmpSclFMaktJRVhLRnl1d2ZPQ3k1Zk5QSHBYc0x1MGMrbzU0QzlCdjRDSWpXbDdoRnJqeFlkTHM2bzZkUEhmMEg3d0xjczhjVENSN0x2UEtNQ3RnMVFSQ0lKaTh1MlpZeVlwSnJWT2dVeUc1ZG8zIiwiZnYiOiI1ODlkMDFjZmU0ZmJhYmEyMzhkNzcxMWM4NmFmNjFhMCIsImNlIjoiNzViZGY3NzFjZjRhOWVlNyJ9",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver61.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": 445,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Direct video source from Kibanda Vibes. HTTP status: 445 (Server: Parking/1.0)."
+    }
+  ],
+  "description": null,
+  "genre": null,
+  "release_year": null,
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}

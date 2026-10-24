@@ -1,0 +1,235 @@
+KIBANDA VIBES DISCOVERY — UNVERIFIED & INACCESSIBLE RECORDS
+=================================================================
+
+Generated: 2026-10-24T20:20:40Z
+
+Expired or Parked Video Stream Hosts (HTTP 445):
+  - munoserver54.club: 75 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver56.club: 55 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver58.club: 53 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver63.club: 48 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver62.club: 46 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver55.club: 25 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver64.club: 25 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver60.club: 25 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver61.club: 22 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver65.org: 11 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver66.club: 8 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver49.club: 7 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver3.club: 6 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver29.club: 6 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver77.club: 5 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver78.club: 5 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver45.club: 5 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver75.club: 4 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver76.club: 4 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver72.club: 4 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver68.club: 4 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver52.club: 3 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver67.club: 3 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver36.club: 3 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver11.club: 2 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver74.club: 2 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver53.club: 2 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver5.club: 2 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver71.club: 2 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver69.club: 2 direct stream URLs return HTTP 445 (Parking server).
+  - munolaba.com: 2 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver51.club: 2 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver34.club: 2 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver38.club: 2 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver1.club: 1 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver70.club: 1 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver42.club: 1 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver32.club: 1 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver41.club: 1 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver19.club: 1 direct stream URLs return HTTP 445 (Parking server).
+  - munowatch.co: 1 direct stream URLs return HTTP 445 (Parking server).
+  - munoserver46.club: 1 direct stream URLs return HTTP 445 (Parking server).
+
+Posts/Records without Video Sources or Embeds:
+  - Movie/Post 'Top 5 Reasons Ugandans Love Watching Translated Movies on Kibanda Vibes' (ID: movie_6752332643362490122_top_5_reasons_ugandans_love_watching_translated_movies_on_kibanda_vibes) at https://www.kibandavibes.com/2025/06/top-5-reasons-ugandans-love-watching.html does not expose a video tag or embed player.
+  - Movie/Post 'Why Kibanda Vibes Is the Best Place to Watch VJ Translated Movies in Uganda' (ID: movie_8289077213512213905_why_kibanda_vibes_is_the_best_place_to_watch_vj_translated_movies_in_uganda) at https://www.kibandavibes.com/2025/06/why-kibanda-vibes-is-best-place-to.html does not expose a video tag or embed player.
+  - Movie/Post 'Best Action Movies Translated by VJ Junior (You Must Watch)' (ID: movie_5802651577816331001_best_action_movies_translated_by_vj_junior_you_must_watch) at https://www.kibandavibes.com/2025/06/best-action-movies-translated-by-vj.html does not expose a video tag or embed player.
+  - Movie/Post 'Top 5 Reasons Ugandans Love Watching VJ Movies Online' (ID: movie_5861368797503605776_top_5_reasons_ugandans_love_watching_vj_movies_online) at https://www.kibandavibes.com/2025/06/top-5-reasons-ugandans-love-watching-vj.html does not expose a video tag or embed player.
+  - Movie/Post 'Why Gangs of London Season 3 Is a Must-Watch — VJ Junior Style' (ID: movie_2743820022199094311_why_gangs_of_london_season_3_is_a_must_watch_vj_junior_style) at https://www.kibandavibes.com/2025/06/why-gangs-of-london-season-3-is-must.html does not expose a video tag or embed player.
+  - Movie/Post 'GANGS OF LONDON SEASON 3 - VJ JUNIOR' (ID: movie_7029122671521755745_gangs_of_london_season_3) at https://www.kibandavibes.com/2025/05/gangs-of-london-season-3-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'STRANGER THINGS - VJ EMMY' (ID: movie_7052350583289178057_stranger_things) at https://www.kibandavibes.com/2025/05/stranger-things-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'PRESUMED INNOCENT - VJ JUNIOR' (ID: movie_4107026140652222053_presumed_innocent) at https://www.kibandavibes.com/2025/05/presumed-innocent-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'DROP - VJ JUNIOR' (ID: movie_8077049790050575719_drop) at https://www.kibandavibes.com/2025/05/drop-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'MOB LAND' (ID: movie_5097628458075988808_mob_land) at https://www.kibandavibes.com/2025/05/mob-land.html does not expose a video tag or embed player.
+  - Movie/Post 'FUCK MARRY KILL - VJ ULIO' (ID: movie_6773685049646562410_fuck_marry_kill) at https://www.kibandavibes.com/2025/05/fuck-marry-kill-vj-ulio.html does not expose a video tag or embed player.
+  - Movie/Post 'OPERATION BLOOD HUNT - VJ ICEP' (ID: movie_7709325577029575810_operation_blood_hunt) at https://www.kibandavibes.com/2025/05/operation-blood-hunt-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'DEATH GAME - VJ ICEP' (ID: movie_6601905095726584233_death_game) at https://www.kibandavibes.com/2025/05/death-game-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'BULLET TRAIN EXPLOSION - VJ ICEP' (ID: movie_5095462149778542298_bullet_train_explosion) at https://www.kibandavibes.com/2025/05/bullet-train-explosion-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'BREED APART' (ID: movie_5224708326178647016_breed_apart) at https://www.kibandavibes.com/2025/05/breed-apart.html does not expose a video tag or embed player.
+  - Movie/Post 'ELECTRIC STATE - VJ ULIO' (ID: movie_663423333488149588_electric_state) at https://www.kibandavibes.com/2025/05/electric-state-vj-ulio.html does not expose a video tag or embed player.
+  - Movie/Post 'EVERYONE IS GOING TO DIE' (ID: movie_6335935588939823096_everyone_is_going_to_die) at https://www.kibandavibes.com/2025/05/everyone-is-going-to-die.html does not expose a video tag or embed player.
+  - Movie/Post 'MINECRAFT' (ID: movie_5880999097036626706_minecraft) at https://www.kibandavibes.com/2025/05/minecraft.html does not expose a video tag or embed player.
+  - Movie/Post 'BLOODY DADDY' (ID: movie_1726252182909587149_bloody_daddy) at https://www.kibandavibes.com/2025/05/bloody-daddy.html does not expose a video tag or embed player.
+  - Movie/Post 'ENDERS GAME' (ID: movie_3846530105202505299_enders_game) at https://www.kibandavibes.com/2025/05/enders-game.html does not expose a video tag or embed player.
+  - Movie/Post '12 ANGRY MEN' (ID: movie_5623266660958925968_12_angry_men) at https://www.kibandavibes.com/2025/05/12-angry-men.html does not expose a video tag or embed player.
+  - Movie/Post 'TOTAL RECALL' (ID: movie_2618627890017193973_total_recall) at https://www.kibandavibes.com/2025/05/total-recall.html does not expose a video tag or embed player.
+  - Movie/Post 'ASHIAP MAN' (ID: movie_6072854659002934906_ashiap_man) at https://www.kibandavibes.com/2025/05/ashiap-man.html does not expose a video tag or embed player.
+  - Movie/Post 'GOD COMMITTE' (ID: movie_6956356256566533889_god_committe) at https://www.kibandavibes.com/2025/05/god-committe.html does not expose a video tag or embed player.
+  - Movie/Post 'WHITE SNOW - VJ JUNIOR' (ID: movie_4203322818764546850_white_snow) at https://www.kibandavibes.com/2025/05/white-snow-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'HUNT THE WICKED' (ID: movie_2001856941821738305_hunt_the_wicked) at https://www.kibandavibes.com/2025/05/hunt-wicked.html does not expose a video tag or embed player.
+  - Movie/Post 'LAST BULLET' (ID: movie_5283297267863918418_last_bullet) at https://www.kibandavibes.com/2025/05/last-bullet.html does not expose a video tag or embed player.
+  - Movie/Post 'ECHO 8' (ID: movie_6069420499696247858_echo_8) at https://www.kibandavibes.com/2025/05/echo-8.html does not expose a video tag or embed player.
+  - Movie/Post 'I CARE A LOT - VJ JUNIOR' (ID: movie_4850236750210010689_i_care_a_lot) at https://www.kibandavibes.com/2025/05/i-care-lot-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'IF I STAY - VJ JUNIOR' (ID: movie_5739297493275936248_if_i_stay) at https://www.kibandavibes.com/2025/05/if-i-stay-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'TADAP - VJ ICEP' (ID: movie_3616272395971405098_tadap) at https://www.kibandavibes.com/2025/05/tadap-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'BRICK LAYER - VJ ICE P' (ID: movie_6881846557768380315_brick_layer) at https://www.kibandavibes.com/2025/05/brick-layer-vj-ice-p.html does not expose a video tag or embed player.
+  - Movie/Post 'SYLIVIES LOVE - VJ JUNIOR' (ID: movie_324810884707105643_sylivies_love) at https://www.kibandavibes.com/2025/05/sylivies-love-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'HOUSE OF DAVID - VJ JUNIOR' (ID: movie_8906437314761439609_house_of_david) at https://www.kibandavibes.com/2025/05/house-of-david-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'LOCKED - VJ JUNIOR' (ID: movie_1326213755135946341_locked) at https://www.kibandavibes.com/2025/05/locked-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'HAVOC - VJ JUNIOR' (ID: movie_141001861968053022_havoc) at https://www.kibandavibes.com/2025/05/havoc-vj-junior_1.html does not expose a video tag or embed player.
+  - Movie/Post 'CUKUROVA -VJ SAMMY' (ID: movie_8094912454087989654_cukurova) at https://www.kibandavibes.com/2025/05/cukurova-vj-sammy.html does not expose a video tag or embed player.
+  - Movie/Post 'NO HARD FEELINGS - VJ JUNIOR' (ID: movie_1106974527988937791_no_hard_feelings) at https://www.kibandavibes.com/2025/04/no-hard-feelings-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'SEVERANCE - VJ JUNIOR' (ID: movie_4700776281093769754_severance) at https://www.kibandavibes.com/2025/04/severance-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'WORKING MAN - VJ EMMY' (ID: movie_8785686335549935429_working_man) at https://www.kibandavibes.com/2025/04/working-man-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'THE OLD GUY - VJ EMMY' (ID: movie_8947779940092185732_the_old_guy) at https://www.kibandavibes.com/2025/04/the-old-guy-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'NOVOCAINE - VJ EMMY' (ID: movie_8826617740288298346_novocaine) at https://www.kibandavibes.com/2025/04/novocaine-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'MATRIX RESURRECTION - VJ JUNIOR' (ID: movie_597802211949020115_matrix_resurrection) at https://www.kibandavibes.com/2025/04/matrix-resurrection-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'G20 - VJ JUNIOR' (ID: movie_4330681785806276109_g20) at https://www.kibandavibes.com/2025/04/g20-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'FATEH - VJ EMMY' (ID: movie_6988027167596796767_fateh) at https://www.kibandavibes.com/2025/03/fateh-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'CAPTAIN AMERICA THE BRAVE NEW WORLD - VJ JUNIOR' (ID: movie_3981296119552213614_captain_america_the_brave_new_world) at https://www.kibandavibes.com/2025/03/captain-america-brave-new-world-vj.html does not expose a video tag or embed player.
+  - Movie/Post 'CLEANER - VJ JUNIOR' (ID: movie_3975241372884897724_cleaner) at https://www.kibandavibes.com/2025/03/cleaner-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'MY FAULT PART 2 - VJ JUNIOR' (ID: movie_1404112444340008155_my_fault_part_2) at https://www.kibandavibes.com/2025/03/my-fault-part-2-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'MY FAULT LONDON - VJ JUNIOR' (ID: movie_8884793387507263804_my_fault_london) at https://www.kibandavibes.com/2025/03/my-fault-london-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'WILD AGENT PEACH ASSASSINATION' (ID: movie_6395852510645730914_wild_agent_peach_assassination) at https://www.kibandavibes.com/2025/02/wild-agent-peach-assassination.html does not expose a video tag or embed player.
+  - Movie/Post 'FLIGHT RISK - VJ JUNIOR' (ID: movie_165325686159585924_flight_risk) at https://www.kibandavibes.com/2025/02/flight-risk-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'BLEED FOR JUSTICE - VJ JINGO' (ID: movie_4427181121269211106_bleed_for_justice) at https://www.kibandavibes.com/2025/02/bleed-for-justice-vj-jingo.html does not expose a video tag or embed player.
+  - Movie/Post 'BABY GIRL - VJ JUNIOR' (ID: movie_6114655643441300571_baby_girl) at https://www.kibandavibes.com/2025/02/baby-girl-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'MOLLYS GAME - VJ ULIO' (ID: movie_3227871706905959427_mollys_game) at https://www.kibandavibes.com/2025/02/mollys-game-vj-ulio.html does not expose a video tag or embed player.
+  - Movie/Post 'ANNA - VJ JUNIOR' (ID: movie_8207304702536205413_anna) at https://www.kibandavibes.com/2025/02/anna-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'REBELLIOUS - VJ MARTIN K' (ID: movie_2374167799848139461_rebellious) at https://www.kibandavibes.com/2025/02/rebellious-vj-martin-k.html does not expose a video tag or embed player.
+  - Movie/Post 'IN TO DEEP WATERS - VJ EMMY' (ID: movie_1293501826010408475_in_to_deep_waters) at https://www.kibandavibes.com/2025/02/in-to-deep-waters-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'THE MUTANT - VJ JINGO' (ID: movie_1981198996897556304_the_mutant) at https://www.kibandavibes.com/2025/02/the-mutant-vj-jingo.html does not expose a video tag or embed player.
+  - Movie/Post 'AD VITAM - VJ JINGO' (ID: movie_6506712378170692781_ad_vitam) at https://www.kibandavibes.com/2025/02/ad-vitam-vj-jingo.html does not expose a video tag or embed player.
+  - Movie/Post 'TRAPPED DAUGHTER - VJ JUNIOR' (ID: movie_2117066227925282689_trapped_daughter) at https://www.kibandavibes.com/2025/02/trapped-daughter-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'STOKER - VJ JUNIOR' (ID: movie_9125292422179883354_stoker) at https://www.kibandavibes.com/2025/02/stoker-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'THE GORGE - VJ JUNIOR' (ID: movie_6508257605702101117_the_gorge) at https://www.kibandavibes.com/2025/02/the-gorge-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'MUFASA THE LION KING - VJ JUNIOR' (ID: movie_5685222097493686381_mufasa_the_lion_king) at https://www.kibandavibes.com/2025/02/mufasa-lion-king-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'KRAVEN THE HUNTER - VJ JUNIOR' (ID: movie_6540605850365116908_kraven_the_hunter) at https://www.kibandavibes.com/2025/02/kraven-hunter-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'WISH YOU WERE HERE - VJ JUNIOR' (ID: movie_9048131207606068140_wish_you_were_here) at https://www.kibandavibes.com/2025/02/wish-you-were-here-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'WRATH OF A MAN - VJ JUNIOR' (ID: movie_8223422067717302828_wrath_of_a_man) at https://www.kibandavibes.com/2025/02/wrath-of-man-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'TREADSTONE - VJ ICEP' (ID: movie_8897738813698623755_treadstone) at https://www.kibandavibes.com/2025/02/treadstone-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'CITADEL - VJ ICEP' (ID: movie_8511929319001604089_citadel) at https://www.kibandavibes.com/2025/02/citadel-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'ANTI DRUG OPERATION - VJ JUNIOR' (ID: movie_6291746551106243166_anti_drug_operation) at https://www.kibandavibes.com/2025/02/anti-drug-operation-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'GLADIATOR 2 - VJ JUNIOR' (ID: movie_3363067688215332994_gladiator_2) at https://www.kibandavibes.com/2025/02/gladiator-2-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'ELEVATION - VJ JUNIOR' (ID: movie_9203532433339920961_elevation) at https://www.kibandavibes.com/2025/02/elevation-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'PROSECUTOR - VJ JUNIOR' (ID: movie_1720051903944783508_prosecutor) at https://www.kibandavibes.com/2025/02/prosecutor-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'A MAN WITH NO PAST - VJ ICEP' (ID: movie_3515797801153155196_a_man_with_no_past) at https://www.kibandavibes.com/2025/01/a-man-with-no-past-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'SQUID GAME SEASON 2: EPISODE1' (ID: movie_3196850250044875019_squid_game_season_2_episode1) at https://www.kibandavibes.com/2025/01/squid-game-season-2-episode1.html does not expose a video tag or embed player.
+  - Movie/Post 'ART OF EIGHT LIMBS- VJ JINGO' (ID: movie_4719823288231991196_art_of_eight_limbs) at https://www.kibandavibes.com/2024/11/art-of-eight-limbs-vj-jingo.html does not expose a video tag or embed player.
+  - Movie/Post 'BREAKING AND RE-ENTERING - VJ MUBA' (ID: movie_8636469254623718532_breaking_and_re_entering) at https://www.kibandavibes.com/2024/10/breaking-and-re-entering-vj-muba.html does not expose a video tag or embed player.
+  - Movie/Post 'APOCALYPTO- VJ HEAVY Q' (ID: movie_5768633577513762750_apocalypto) at https://www.kibandavibes.com/2024/10/apocalypto-vj-heavy-q.html does not expose a video tag or embed player.
+  - Movie/Post 'SHADOW STRAYS- VJ JUNIOR' (ID: movie_6785097363926654039_shadow_strays) at https://www.kibandavibes.com/2024/10/shadow-strays-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'GIRL HAUNTS BOY- VJ JUNIOR' (ID: movie_8924395583465079469_girl_haunts_boy) at https://www.kibandavibes.com/2024/10/girl-haunts-boy-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'TAKE COVER- VJ JUNIOR' (ID: movie_6816833741975289540_take_cover) at https://www.kibandavibes.com/2024/10/take-cover-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'NEVER LET GO- VJ JUNIOR.' (ID: movie_4571596974295696687_never_let_go) at https://www.kibandavibes.com/2024/10/never-let-go-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'KILLERS GAME- VJ JUNIOR' (ID: movie_6170335182552885355_killers_game) at https://www.kibandavibes.com/2024/10/killers-game-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'THE KILLER&#39;S GAME- VJ JUNIOR' (ID: movie_7408333857371701659_the_killer_39_s_game) at https://www.kibandavibes.com/2024/10/the-killer-game-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'PLAY DEAD- VJ EMMY' (ID: movie_9219219514996552449_play_dead) at https://www.kibandavibes.com/2024/10/play-dead-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'THE LIAR- VJ JINGO' (ID: movie_1205978685594585007_the_liar) at https://www.kibandavibes.com/2024/10/the-liar-vj-jingo.html does not expose a video tag or embed player.
+  - Movie/Post 'OLD PEOPLE - VJ JUNIOR' (ID: movie_3942475401637458752_old_people) at https://www.kibandavibes.com/2024/10/old-people-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'BAD BOYS RIDE OR DIE - VJ JUNIOR' (ID: movie_838507967589508512_bad_boys_ride_or_die) at https://www.kibandavibes.com/2024/10/bad-boys-ride-or-die-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'DEATH FOR ME- VJ JUNIOR' (ID: movie_8404765510908434975_death_for_me) at https://www.kibandavibes.com/2024/10/death-for-me-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'THE BRIDAL MASK- VJ HD' (ID: movie_4089512460962172529_the_bridal_mask) at https://www.kibandavibes.com/2024/10/the-bridal-mask-vj-hd.html does not expose a video tag or embed player.
+  - Movie/Post 'CIVIL WAR -VJ JUNIOR' (ID: movie_7150551646261736771_civil_war) at https://www.kibandavibes.com/2024/10/civil-war-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'KINGDOM OF THE PLANET OF APES - VJ JUNIOR' (ID: movie_7105218944204804488_kingdom_of_the_planet_of_apes) at https://www.kibandavibes.com/2024/10/kingdom-of-planet-of-apes-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'FOREVER LOVE- VJ LANCE' (ID: movie_3428647434702799540_forever_love) at https://www.kibandavibes.com/2024/10/forever-love-vj-lance.html does not expose a video tag or embed player.
+  - Movie/Post 'BRIDES MAIDS- VJ JUNIOR' (ID: movie_3404502711336925053_brides_maids) at https://www.kibandavibes.com/2024/10/brides-maids-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'SERIOUSLY SINGLE - VJ JUNIOR' (ID: movie_3591888091619118036_seriously_single) at https://www.kibandavibes.com/2024/10/seriously-single-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'INTO THE BADLANDS - VJ JUNIOR' (ID: movie_173599227567790133_into_the_badlands) at https://www.kibandavibes.com/2024/10/into-badlands-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'THE GUARDIAN- VJ EMMY' (ID: movie_817636461205961612_the_guardian) at https://www.kibandavibes.com/2024/10/the-guardian-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'SHIVAAVY- VJ EMMY' (ID: movie_6429848390701809199_shivaavy) at https://www.kibandavibes.com/2024/10/shivaavy-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'CAN&amp;#39;T BUY MY LOVE- VJ JUNIOR' (ID: movie_602804293925086151_can_amp_39_t_buy_my_love) at https://www.kibandavibes.com/2024/10/can-buy-my-love-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'INDIAN POLICE FORCE VJ BAROS' (ID: movie_7450619124325772061_indian_police_force_vj_baros) at https://www.kibandavibes.com/2024/10/indian-police-force-vj-baros.html does not expose a video tag or embed player.
+  - Movie/Post 'WOMAN IN BLACK ANGEL OF DEATH-  VJ JUNIOR' (ID: movie_1528814412138456611_woman_in_black_angel_of_death) at https://www.kibandavibes.com/2024/10/woman-in-black-angel-of-death-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'THE NIGHT AGENT - VJ JUNIOR' (ID: movie_2747956818749952438_the_night_agent) at https://www.kibandavibes.com/2024/10/the-night-agent-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'Liger.part 1' (ID: movie_9055166808555615206_liger_part_1) at https://www.kibandavibes.com/2024/10/ligerpart-1.html does not expose a video tag or embed player.
+  - Movie/Post 'THE GUEST- VJ ICEP' (ID: movie_2245786885758081226_the_guest) at https://www.kibandavibes.com/2024/10/the-guest-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'BLOOD RED SKY- VJ JINGO' (ID: movie_790008733227899182_blood_red_sky) at https://www.kibandavibes.com/2024/10/blood-red-sky-vj-jingo.html does not expose a video tag or embed player.
+  - Movie/Post 'NEXT- VJ JUNIOR' (ID: movie_3631449812472806294_next) at https://www.kibandavibes.com/2024/10/next-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'THOSE WHO WISH ME DEAD- VJ JUNIOR' (ID: movie_4296217164352112492_those_who_wish_me_dead) at https://www.kibandavibes.com/2024/10/those-who-wish-me-dead-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'BREAKING THROUGH- VJ JUNIOR' (ID: movie_8305387696815709017_breaking_through) at https://www.kibandavibes.com/2024/10/breaking-through-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'BAD BOYS FOR LIFE - VJ JUNIOR' (ID: movie_1799791499166192402_bad_boys_for_life) at https://www.kibandavibes.com/2024/10/bad-boys-for-life-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'FURIOSA, A MAD MAX SAGA- VJ JUNIOR' (ID: movie_3775867039206282790_furiosa_a_mad_max_saga) at https://www.kibandavibes.com/2024/10/furiosa-mad-max-saga-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'RED GHOST- VJ JUNIOR 720P' (ID: movie_3873511206742939787_red_ghost) at https://www.kibandavibes.com/2024/10/red-ghost-vj-junior-720p.html does not expose a video tag or embed player.
+  - Movie/Post 'DESIGNATED SURVIVOR - VJ JUNIOR' (ID: movie_5083569716283358315_designated_survivor) at https://www.kibandavibes.com/2024/10/designated-survivor-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'ESCAPE PLAN 2 -VJ JUNIOR' (ID: movie_288218913463990012_escape_plan_2) at https://www.kibandavibes.com/2024/10/escape-plan-2-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'DARK DESIRE  - VJ JUNIOR' (ID: movie_8278145942729134867_dark_desire) at https://www.kibandavibes.com/2024/10/dark-desire-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'HEAVENLY SWORD AND DRAGON SLAYING SABRE- VJ ICE P' (ID: movie_2498946408581671032_heavenly_sword_and_dragon_slaying_sabre) at https://www.kibandavibes.com/2024/10/heavenly-sword-and-dragon-slaying-sabre.html does not expose a video tag or embed player.
+  - Movie/Post 'BREAK THROUGH THE LINE OF FIRE- VJ EMMY' (ID: movie_7893894866551241447_break_through_the_line_of_fire) at https://www.kibandavibes.com/2024/10/break-through-line-of-fire-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'THE SUSPECT- VJ ICEP' (ID: movie_444997654210318812_the_suspect) at https://www.kibandavibes.com/2024/10/the-suspect-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'FAST AND FURIOUS - VJ JUNIOR' (ID: movie_2766216574904466055_fast_and_furious) at https://www.kibandavibes.com/2024/10/fast-and-furious-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'NEVER SAY DIE- VJ JINGO' (ID: movie_7610906092213655065_never_say_die) at https://www.kibandavibes.com/2024/10/never-say-die-vj-jingo.html does not expose a video tag or embed player.
+  - Movie/Post 'LA LA LAND -VJ LANCE' (ID: movie_5886786389647299049_la_la_land) at https://www.kibandavibes.com/2024/10/la-la-land-vj-lance.html does not expose a video tag or embed player.
+  - Movie/Post 'A QUIET PLACE - VJ KEVIN' (ID: movie_2353100761379398567_a_quiet_place) at https://www.kibandavibes.com/2024/10/a-quiet-place-vj-kevin.html does not expose a video tag or embed player.
+  - Movie/Post 'A PRAYER BEFORE DAWN- VJ JINGO' (ID: movie_3455050181837768275_a_prayer_before_dawn) at https://www.kibandavibes.com/2024/10/a-prayer-before-dawn-vj-jingo.html does not expose a video tag or embed player.
+  - Movie/Post 'INSPIRING GENERATION - VJ SHAO KHAN' (ID: movie_4122212461507244078_inspiring_generation) at https://www.kibandavibes.com/2024/10/inspiring-generation-vj-shao-khan.html does not expose a video tag or embed player.
+  - Movie/Post 'PIRATES OF THE CARIBBEAN- VJ JUNIOR' (ID: movie_3968356450586108408_pirates_of_the_caribbean) at https://www.kibandavibes.com/2024/10/pirates-of-caribbean-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'DEFENDING JACOB - VJ JUNIOR' (ID: movie_6458594598130223142_defending_jacob) at https://www.kibandavibes.com/2024/10/defending-jacob-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'GODZILLA VS KINGDOM THE NEW EMPIRE - VJ UNIOR' (ID: movie_2832055382406983458_godzilla_vs_kingdom_the_new_empire) at https://www.kibandavibes.com/2024/10/godzilla-vs-kingdom-new-empire-vj-unior.html does not expose a video tag or embed player.
+  - Movie/Post 'THE PERFECT FIND - VJ JUNIOR' (ID: movie_8143226137383991691_the_perfect_find) at https://www.kibandavibes.com/2024/10/the-perfect-find-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'KILL 2024 - VJ EMMY' (ID: movie_2395225625696616682_kill_2024) at https://www.kibandavibes.com/2024/10/kill-2024-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'THE WIZARD OF LIES - VJ ULIO' (ID: movie_1710659958186786933_the_wizard_of_lies) at https://www.kibandavibes.com/2024/10/the-wizard-of-lies-vj-ulio.html does not expose a video tag or embed player.
+  - Movie/Post 'THE MENU - VJ ULIO' (ID: movie_5863430254771526724_the_menu) at https://www.kibandavibes.com/2024/10/the-menu-vj-ulio.html does not expose a video tag or embed player.
+  - Movie/Post 'RIPD - VJ EMMY' (ID: movie_5500082850224325973_ripd) at https://www.kibandavibes.com/2024/10/ripd-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'AGAINST THE ICE - VJ ULIO' (ID: movie_138962463994835092_against_the_ice) at https://www.kibandavibes.com/2024/10/against-ice-vj-ulio.html does not expose a video tag or embed player.
+  - Movie/Post 'THE TO DO LIST - VJ JUNIIOR' (ID: movie_1402641878257506692_the_to_do_list) at https://www.kibandavibes.com/2024/10/the-to-do-list-vj-juniior.html does not expose a video tag or embed player.
+  - Movie/Post 'PURPLE HEARTS - VJ JUNIOR' (ID: movie_57541592985879943_purple_hearts) at https://www.kibandavibes.com/2024/10/purple-hearts-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'SPY THE ETERNAL CITY - VJ EMMY' (ID: movie_52690103969444113_spy_the_eternal_city) at https://www.kibandavibes.com/2024/10/spy-eternal-city-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'A QUIET PLACE - VJ JUNIOR' (ID: movie_6798966829986928247_a_quiet_place) at https://www.kibandavibes.com/2024/10/a-quiet-place-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'LINE WALKER 2 - VJ ICEP' (ID: movie_3607393514904351264_line_walker_2) at https://www.kibandavibes.com/2024/10/line-walker-2-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'SUPER SHARK - VJ ICEP' (ID: movie_2709814251912603212_super_shark) at https://www.kibandavibes.com/2024/10/super-shark-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'THE BLACK PHONE- VJ JUNIOR' (ID: movie_6915701691561622577_the_black_phone) at https://www.kibandavibes.com/2024/10/the-black-phone-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'IN THE LAND OF SAINTS AND SINNERS- VJ ICEP' (ID: movie_7076762621502269912_in_the_land_of_saints_and_sinners) at https://www.kibandavibes.com/2024/10/in-land-of-saints-and-sinners-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'KISS OF DEATH- VJ JUNIOR' (ID: movie_5904724678955680504_kiss_of_death) at https://www.kibandavibes.com/2024/10/kiss-of-death-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'DUVVADA JAGANNADHAM part 2' (ID: movie_2998977820478630888_duvvada_jagannadham_part_2) at https://www.kibandavibes.com/2024/10/duvvada-jagannadham-part-2.html does not expose a video tag or embed player.
+  - Movie/Post 'Coast.Guard.Malaysia.Ops.Helang.2023 Vj JUNIOR@katflix' (ID: movie_6276568083339646027_coast_guard_malaysia_ops_helang_2023_vj_junior_katflix) at https://www.kibandavibes.com/2024/10/coastguardmalaysiaopshelang2023-vj.html does not expose a video tag or embed player.
+  - Movie/Post 'DANGER BELOW DECK JR HD' (ID: movie_4401781223455196712_danger_below_deck_jr_hd) at https://www.kibandavibes.com/2024/10/danger-below-deck-jr-hd.html does not expose a video tag or embed player.
+  - Movie/Post 'DUVVADA JAGANNADHAM part 1' (ID: movie_6475041266889662226_duvvada_jagannadham_part_1) at https://www.kibandavibes.com/2024/10/duvvada-jagannadham-part-1.html does not expose a video tag or embed player.
+  - Movie/Post 'Faraaz part 1' (ID: movie_6683875622369054298_faraaz_part_1) at https://www.kibandavibes.com/2024/10/faraaz-part-1.html does not expose a video tag or embed player.
+  - Movie/Post 'Faraaz part 2' (ID: movie_1947285043128646423_faraaz_part_2) at https://www.kibandavibes.com/2024/10/faraaz-part-2.html does not expose a video tag or embed player.
+  - Movie/Post 'DEAD POOL AND WOLVERINE - VJ ICEP' (ID: movie_5451594232238739380_dead_pool_and_wolverine) at https://www.kibandavibes.com/2024/10/dead-pool-and-wolverine-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'LEIO.ICE P@KATFLIX' (ID: movie_6330929130464083489_leio_ice_p_katflix) at https://www.kibandavibes.com/2024/10/leioice-pkatflix.html does not expose a video tag or embed player.
+  - Movie/Post 'THE OUT LAWS EMMY New' (ID: movie_7876783976099361230_the_out_laws_emmy_new) at https://www.kibandavibes.com/2024/10/the-out-laws-emmy-new.html does not expose a video tag or embed player.
+  - Movie/Post 'THE ROUNDUP NO WAY OUT EMMY' (ID: movie_7617908753587045405_the_roundup_no_way_out_emmy) at https://www.kibandavibes.com/2024/10/the-roundup-no-way-out-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'THE TWISTERS - VJ EMMY' (ID: movie_4661850550276304129_the_twisters) at https://www.kibandavibes.com/2024/10/the-twisters-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'BURNING FLAMES -VJ KAM' (ID: movie_8361840900349121079_burning_flames) at https://www.kibandavibes.com/2024/10/burning-flames-vj-kam.html does not expose a video tag or embed player.
+  - Movie/Post 'WHIRLWIND - VJ JUNIOR' (ID: movie_8568551273755307036_whirlwind) at https://www.kibandavibes.com/2024/10/whirlwind-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'THE UNION - VJ JUNIOR 1080P' (ID: movie_4136109018526760253_the_union) at https://www.kibandavibes.com/2024/10/the-union-vj-junior-1080p.html does not expose a video tag or embed player.
+  - Movie/Post 'BORDERLANDS - VJ JUNIOR FULL HD' (ID: movie_6761583314089456847_borderlands) at https://www.kibandavibes.com/2024/10/borderlands-vj-junior-full-hd.html does not expose a video tag or embed player.
+  - Movie/Post 'BABY DRIVER - VJ JUNIOR' (ID: movie_5691330926346748336_baby_driver) at https://www.kibandavibes.com/2024/10/baby-driver-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'SISTER DEATH -VJ JUNIOR' (ID: movie_630704463026143708_sister_death) at https://www.kibandavibes.com/2024/10/sister-death-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'The Exorcist: Believer- VJ JUNIOR' (ID: movie_6387340956891458211_the_exorcist_believer) at https://www.kibandavibes.com/2024/10/the-exorcist-believer-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'Waltair Veerayya part 1' (ID: movie_4698886924772610345_waltair_veerayya_part_1) at https://www.kibandavibes.com/2024/10/waltair-veerayya-part-1.html does not expose a video tag or embed player.
+  - Movie/Post 'The.Fist.Of.The.Condor.' (ID: movie_2494747464223690025_the_fist_of_the_condor) at https://www.kibandavibes.com/2024/10/thefistofthecondor.html does not expose a video tag or embed player.
+  - Movie/Post 'Spy part 2' (ID: movie_910025727764684977_spy_part_2) at https://www.kibandavibes.com/2024/10/spy-part-2.html does not expose a video tag or embed player.
+  - Movie/Post 'Waltair Veerayya part 2' (ID: movie_6932965753514468726_waltair_veerayya_part_2) at https://www.kibandavibes.com/2024/10/waltair-veerayya-part-2.html does not expose a video tag or embed player.
+  - Movie/Post 'IB.71.2023. part 2' (ID: movie_5242774043693441298_ib_71_2023_part_2) at https://www.kibandavibes.com/2024/10/ib712023-part-2.html does not expose a video tag or embed player.
+  - Movie/Post 'IB.71.2023. part' (ID: movie_2958688673211913934_ib_71_2023_part) at https://www.kibandavibes.com/2024/10/ib712023-part.html does not expose a video tag or embed player.
+  - Movie/Post 'Liger.part 2' (ID: movie_717776418523514526_liger_part_2) at https://www.kibandavibes.com/2024/10/ligerpart-2.html does not expose a video tag or embed player.
+  - Movie/Post 'Acharya part 2' (ID: movie_1101212579170537391_acharya_part_2) at https://www.kibandavibes.com/2024/10/acharya-part-2.html does not expose a video tag or embed player.
+  - Movie/Post 'Acharya part 1' (ID: movie_1447795441958432132_acharya_part_1) at https://www.kibandavibes.com/2024/10/acharya-part-1.html does not expose a video tag or embed player.
+  - Movie/Post 'DARK HOUSE- VJ JINGO' (ID: movie_843605240009241753_dark_house) at https://www.kibandavibes.com/2024/10/dark-house-vj-jingo.html does not expose a video tag or embed player.
+  - Movie/Post 'CRIMSON PEAK- VJ JUNIOR' (ID: movie_3822318851874116653_crimson_peak) at https://www.kibandavibes.com/2024/10/crimson-peak-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'The secret kingdom' (ID: movie_6677855524125918581_the_secret_kingdom) at https://www.kibandavibes.com/2024/10/the-secret-kingdom.html does not expose a video tag or embed player.
+  - Movie/Post 'Heart.of.Stone' (ID: movie_7491721820789051315_heart_of_stone) at https://www.kibandavibes.com/2024/10/heartofstone.html does not expose a video tag or embed player.
+  - Movie/Post 'WHO IS KILLING THE CHEERLEADERS - VJ EMMY' (ID: movie_2105546128677373459_who_is_killing_the_cheerleaders) at https://www.kibandavibes.com/2024/10/who-is-killing-cheerleaders-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'THE WOMAN IN BLACK - JUNIOR' (ID: movie_107077988284427477_the_woman_in_black_junior) at https://www.kibandavibes.com/2024/10/the-woman-in-black-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'Oppenheimer- Vj Ulio' (ID: movie_8981564516259504305_oppenheimer) at https://www.kibandavibes.com/2024/10/oppenheimer-vj-ulio.html does not expose a video tag or embed player.
+  - Movie/Post 'THE ROULETTE - VJ FREDY' (ID: movie_1461963913489668088_the_roulette) at https://www.kibandavibes.com/2024/10/the-roulette-vj-fredy.html does not expose a video tag or embed player.
+  - Movie/Post 'BEN AND JODI - VJ MUBA' (ID: movie_4907010396928987567_ben_and_jodi) at https://www.kibandavibes.com/2024/10/ben-and-jodi-vj-muba.html does not expose a video tag or embed player.
+  - Movie/Post 'STAR GIRL - VJ JUNIOR' (ID: movie_5665273030619515849_star_girl) at https://www.kibandavibes.com/2024/10/star-girl-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'LEGEND OF AWAKENING - VJ LITTLE T' (ID: movie_7592221779866507905_legend_of_awakening) at https://www.kibandavibes.com/2024/10/legend-of-awakening-vj-little-t.html does not expose a video tag or embed player.
+  - Movie/Post 'SISU - VJ JUNIOR' (ID: movie_8722191571803811386_sisu) at https://www.kibandavibes.com/2024/10/sisu-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'THE INHERITANCE - VJ EMMY' (ID: movie_384523756715373469_the_inheritance) at https://www.kibandavibes.com/2024/10/the-inheritance-vj-emmy.html does not expose a video tag or embed player.
+  - Movie/Post 'THE LOCKDOWN - VJ JUNIOR' (ID: movie_1086165703891412929_the_lockdown) at https://www.kibandavibes.com/2024/10/the-lockdown-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'ANACONDA 2024 - VJ ICEP' (ID: movie_9117836210263037503_anaconda_2024) at https://www.kibandavibes.com/2024/10/anaconda-2024-vj-icep.html does not expose a video tag or embed player.
+  - Movie/Post 'COBRA KAI- VJ JUNIOR' (ID: movie_4585555741735761244_cobra_kai) at https://www.kibandavibes.com/2024/10/cobra-kai-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'TRESPASSERS- VJ JUNIOR' (ID: movie_4814358378071743127_trespassers) at https://www.kibandavibes.com/2024/10/trespassers-vj-junior.html does not expose a video tag or embed player.
+  - Movie/Post 'YOU ARE NEXT- VJ JUNIOR' (ID: movie_3994820258740551246_you_are_next) at https://www.kibandavibes.com/2024/10/you-are-next-vj-junior.html does not expose a video tag or embed player.

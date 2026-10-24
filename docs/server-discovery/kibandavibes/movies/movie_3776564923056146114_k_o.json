@@ -1,0 +1,30 @@
+{
+  "id": "movie_3776564923056146114_k_o",
+  "title": "K.O",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj_junior"
+  ],
+  "source_page_url": "https://www.kibandavibes.com/2025/06/ko-vj-junior.html",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMzUxZmM3ZmItNGFjMS00MTdiLTk0ZDItYjk5MzBkMTM3ZTAwXkEyXkFqcGc@._V1_.jpg",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver56.club/port/str/eyJkcyI6IjJLc1d6YUpVWUF2M0hZTDJJWlp0aXJUMm9ZVzZWd2tIVXNLTzNqaTVlZTFcLzJJeUowYWZvUkE2MytDTmFWR0dRSStGaDF2KzRhNThHOGh2RjVramRidFA2Tm9sRVRlTG95TTlwQTRsY3VkaEhIN2Q5SFFQZkRTakx4OXBUZzRPNHFWOUxXS3czdUtuSTRSYlcrSVRvR3dLdmEyZTBjZzBZWXFnUVkxZzVLTW89IiwiZnYiOiJjMjc5MmExY2JlODFlYTVhM2U5M2Q4MTdmMDBlYTA3NyIsImNlIjoiNWRmYmFkOTIxMDRlMTNmMCJ9",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver56.club/port/str/eyJkcyI6IjJLc1d6YUpVWUF2M0hZTDJJWlp0aXJUMm9ZVzZWd2tIVXNLTzNqaTVlZTFcLzJJeUowYWZvUkE2MytDTmFWR0dRSStGaDF2KzRhNThHOGh2RjVramRidFA2Tm9sRVRlTG95TTlwQTRsY3VkaEhIN2Q5SFFQZkRTakx4OXBUZzRPNHFWOUxXS3czdUtuSTRSYlcrSVRvR3dLdmEyZTBjZzBZWXFnUVkxZzVLTW89IiwiZnYiOiJjMjc5MmExY2JlODFlYTVhM2U5M2Q4MTdmMDBlYTA3NyIsImNlIjoiNWRmYmFkOTIxMDRlMTNmMCJ9",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver56.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": null,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Direct video source from Kibanda Vibes. HTTP status: None (Server: <urlopen error timed out>)."
+    }
+  ],
+  "description": null,
+  "genre": null,
+  "release_year": null,
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}

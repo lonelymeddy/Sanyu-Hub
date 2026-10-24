@@ -1,0 +1,38 @@
+{
+  "title": "Kibanda Vibes Complete Content & Stream-Source Discovery",
+  "target_website": "https://www.kibandavibes.com/",
+  "last_updated": "2026-10-24T20:20:40Z",
+  "summary": {
+    "total_vjs_discovered": 14,
+    "total_movies_discovered": 392,
+    "total_series_discovered": 28,
+    "total_episodes_discovered": 273,
+    "total_images_discovered": 402,
+    "total_images_reachable_200": 331,
+    "total_direct_video_urls_discovered": 466,
+    "total_streams_inventory_records": 480,
+    "confirmed_playback_count": 2,
+    "temporary_or_expired_count": 478,
+    "total_hosting_domains_identified": 42,
+    "main_hosting_domain": "munoserver54.club"
+  },
+  "vjs": [
+    "vj_junior",
+    "vj_emmy",
+    "vj_ice_p",
+    "vj_heavy_q",
+    "vj_jingo",
+    "vj_se7en",
+    "vj_banks",
+    "vj_jovan",
+    "vj_kriss_sweet",
+    "vj_lance",
+    "vj_muba",
+    "vj_pauleta",
+    "vj_ulio",
+    "vj_uncle_t"
+  ],
+  "movies_count": 392,
+  "series_count": 28,
+  "episodes_count": 273
+}

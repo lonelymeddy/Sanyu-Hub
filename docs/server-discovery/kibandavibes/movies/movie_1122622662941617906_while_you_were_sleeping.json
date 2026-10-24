@@ -1,0 +1,30 @@
+{
+  "id": "movie_1122622662941617906_while_you_were_sleeping",
+  "title": "WHILE YOU WERE SLEEPING",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj_ulio"
+  ],
+  "source_page_url": "https://www.kibandavibes.com/2025/06/while-you-were-sleeping-vj-ulio.html",
+  "image_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p16680_p_v8_an.jpg",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver54.club/port/str/eyJkcyI6Im5oSzc0bStSa21wUHNEZXRqdFlUWUFrbmlOY3pKUTZqTTJZTzFGblFMU0htQmppc3B5dEZjeUFwVnVLTTFGNlRJOEVua1NDWSttUjZwOFlcL0xxRU9NVDBKeHNDM3FnR3hHQU9rb2ZqanVYcXl0bm5FSGhOXC9hbHZNUTVCMU5OSmY0d1wvbkR4U0hvbXRQZXE4SE0xQ24yUT09IiwiZnYiOiI2OTlmYmE1NzUxZWMwODU5ZGNmMTVjMmM2NGNkZWNjOCIsImNlIjoiZjI3N2FjNGEyYjg5NjI3MSJ9",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver54.club/port/str/eyJkcyI6Im5oSzc0bStSa21wUHNEZXRqdFlUWUFrbmlOY3pKUTZqTTJZTzFGblFMU0htQmppc3B5dEZjeUFwVnVLTTFGNlRJOEVua1NDWSttUjZwOFlcL0xxRU9NVDBKeHNDM3FnR3hHQU9rb2ZqanVYcXl0bm5FSGhOXC9hbHZNUTVCMU5OSmY0d1wvbkR4U0hvbXRQZXE4SE0xQ24yUT09IiwiZnYiOiI2OTlmYmE1NzUxZWMwODU5ZGNmMTVjMmM2NGNkZWNjOCIsImNlIjoiZjI3N2FjNGEyYjg5NjI3MSJ9",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver54.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": 445,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Direct video source from Kibanda Vibes. HTTP status: 445 (Server: Parking/1.0)."
+    }
+  ],
+  "description": null,
+  "genre": null,
+  "release_year": null,
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}

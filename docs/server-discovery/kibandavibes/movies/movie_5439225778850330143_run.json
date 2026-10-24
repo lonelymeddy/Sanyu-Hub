@@ -1,0 +1,30 @@
+{
+  "id": "movie_5439225778850330143_run",
+  "title": "RUN",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj_jingo"
+  ],
+  "source_page_url": "https://www.kibandavibes.com/2025/06/run-vj-jingo.html",
+  "image_url": "https://resizing.flixster.com/oo2VOm__t6ToEbO52CsoLGmIrC4=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2E3ODA5ZGQ3LTRlZDYtNGE3MC1iY2Y5LWQ3ZjQ4YjJiNDcyYi5qcGc=",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver49.club/port/str/eyJkcyI6IjRkdFlFQ3RWUExsSUN6RkI4VWhicEJwVjZSS3lKYklHbHU0RGdjSHBVQjlmUUJDUmlpMmVsZkJxRHJNdEQ1QU8xb0NwWERneDZhTmQ1SGNGUGxuRlZoeWlpZFdKdDFHeVBVc2crR1JDY1dpdlZvQzJMTFM1VjdlV0JyM0phb1M2IiwiZnYiOiJjMjU4NjY1NWI2ZDM0YWZkMjQ2YzExZmQ3OWMxYzU0MSIsImNlIjoiNWZhYTk5YmQ1OWNkNGQwZCJ9",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver49.club/port/str/eyJkcyI6IjRkdFlFQ3RWUExsSUN6RkI4VWhicEJwVjZSS3lKYklHbHU0RGdjSHBVQjlmUUJDUmlpMmVsZkJxRHJNdEQ1QU8xb0NwWERneDZhTmQ1SGNGUGxuRlZoeWlpZFdKdDFHeVBVc2crR1JDY1dpdlZvQzJMTFM1VjdlV0JyM0phb1M2IiwiZnYiOiJjMjU4NjY1NWI2ZDM0YWZkMjQ2YzExZmQ3OWMxYzU0MSIsImNlIjoiNWZhYTk5YmQ1OWNkNGQwZCJ9",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver49.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": 445,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Direct video source from Kibanda Vibes. HTTP status: 445 (Server: Parking/1.0)."
+    }
+  ],
+  "description": null,
+  "genre": null,
+  "release_year": null,
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}

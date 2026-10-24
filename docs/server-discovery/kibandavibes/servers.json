@@ -1,0 +1,345 @@
+{
+  "summary": {
+    "total_video_hosts": 42,
+    "main_hosting_domain": "munoserver54.club",
+    "evidence": "Primary media hosting domain 'munoserver54.club' supports 75 movies/episodes with direct stream URLs."
+  },
+  "servers": [
+    {
+      "domain": "munoserver54.club",
+      "server_type": "video_host",
+      "total_titles_supported": 75,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver56.club",
+      "server_type": "video_host",
+      "total_titles_supported": 55,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver58.club",
+      "server_type": "video_host",
+      "total_titles_supported": 53,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver63.club",
+      "server_type": "video_host",
+      "total_titles_supported": 48,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver62.club",
+      "server_type": "video_host",
+      "total_titles_supported": 46,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver55.club",
+      "server_type": "video_host",
+      "total_titles_supported": 25,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver64.club",
+      "server_type": "video_host",
+      "total_titles_supported": 25,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver60.club",
+      "server_type": "video_host",
+      "total_titles_supported": 25,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver61.club",
+      "server_type": "video_host",
+      "total_titles_supported": 22,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver65.org",
+      "server_type": "video_host",
+      "total_titles_supported": 11,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver66.club",
+      "server_type": "video_host",
+      "total_titles_supported": 8,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver49.club",
+      "server_type": "video_host",
+      "total_titles_supported": 7,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver3.club",
+      "server_type": "video_host",
+      "total_titles_supported": 6,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver29.club",
+      "server_type": "video_host",
+      "total_titles_supported": 6,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver77.club",
+      "server_type": "video_host",
+      "total_titles_supported": 5,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver78.club",
+      "server_type": "video_host",
+      "total_titles_supported": 5,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver45.club",
+      "server_type": "video_host",
+      "total_titles_supported": 5,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver75.club",
+      "server_type": "video_host",
+      "total_titles_supported": 4,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver76.club",
+      "server_type": "video_host",
+      "total_titles_supported": 4,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver72.club",
+      "server_type": "video_host",
+      "total_titles_supported": 4,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver68.club",
+      "server_type": "video_host",
+      "total_titles_supported": 4,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver52.club",
+      "server_type": "video_host",
+      "total_titles_supported": 3,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver67.club",
+      "server_type": "video_host",
+      "total_titles_supported": 3,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver36.club",
+      "server_type": "video_host",
+      "total_titles_supported": 3,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver11.club",
+      "server_type": "video_host",
+      "total_titles_supported": 2,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver74.club",
+      "server_type": "video_host",
+      "total_titles_supported": 2,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver53.club",
+      "server_type": "video_host",
+      "total_titles_supported": 2,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver5.club",
+      "server_type": "video_host",
+      "total_titles_supported": 2,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver71.club",
+      "server_type": "video_host",
+      "total_titles_supported": 2,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver69.club",
+      "server_type": "video_host",
+      "total_titles_supported": 2,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munolaba.com",
+      "server_type": "video_host",
+      "total_titles_supported": 2,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver51.club",
+      "server_type": "video_host",
+      "total_titles_supported": 2,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver34.club",
+      "server_type": "video_host",
+      "total_titles_supported": 2,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver38.club",
+      "server_type": "video_host",
+      "total_titles_supported": 2,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver1.club",
+      "server_type": "video_host",
+      "total_titles_supported": 1,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver70.club",
+      "server_type": "video_host",
+      "total_titles_supported": 1,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver42.club",
+      "server_type": "video_host",
+      "total_titles_supported": 1,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver32.club",
+      "server_type": "video_host",
+      "total_titles_supported": 1,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver41.club",
+      "server_type": "video_host",
+      "total_titles_supported": 1,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver19.club",
+      "server_type": "video_host",
+      "total_titles_supported": 1,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munowatch.co",
+      "server_type": "video_host",
+      "total_titles_supported": 1,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    },
+    {
+      "domain": "munoserver46.club",
+      "server_type": "video_host",
+      "total_titles_supported": 1,
+      "http_status": 445,
+      "status": "expired_or_parked",
+      "notes": "Host returns HTTP 445 (Parking server / domain expired)."
+    }
+  ]
+}
