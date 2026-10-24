@@ -1,0 +1,2 @@
+https://www.movietuneug.com/channels/details?id=1 - Channel player page (No direct video stream exposed)
+https://www.movietuneug.com/radios/details?id=1 - Radio player page (No direct audio stream exposed)
