@@ -1,0 +1,28 @@
+{
+  "id": "movie-184",
+  "title": "Avengers 1",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=184",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/avengers.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "Synopsis. The Asgardian Loki (Tom Hiddleston) encounters the Other, the leader of an extraterrestrial race known as the Chitauri. In exchange for retrieving the",
+  "release_year": 2018,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

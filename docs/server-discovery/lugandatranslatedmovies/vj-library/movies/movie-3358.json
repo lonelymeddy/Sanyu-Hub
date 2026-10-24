@@ -1,0 +1,28 @@
+{
+  "id": "movie-3358",
+  "title": "The Uprising",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ulio"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3358",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/d/d7/The_Uprising_%282026_film%29_poster.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/The_Uprising_VJ_Ulio.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Based on the true story of the uprising that inspired the legend of Robin Hood, Andrew Garfield stars as the leader of a rebellion against the tyranny of King R",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

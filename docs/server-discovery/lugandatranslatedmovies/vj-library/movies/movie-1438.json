@@ -1,0 +1,28 @@
+{
+  "id": "movie-1438",
+  "title": "Becky",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1438",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjllZWQyMGEtYTA2YS00ZTRkLTk5ZDMtYjU3YjI2OWM4ZmU2XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/project/smart%203/Becky%20by%20Vj%20Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Becky is a 2020 thriller film about a rebellious teenager who must defend herself and her family when a group of escaped convicts, led by a ruthless Neo-Nazi, i",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

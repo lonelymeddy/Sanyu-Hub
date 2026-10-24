@@ -1,0 +1,28 @@
+{
+  "id": "movie-1336",
+  "title": "Night Always Comes",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1336",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/3/30/Night_Always_Comes_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.kampalarelaxation.com/allmovies/2025AUG/HMSON7/NIGHT%20ALWAYS%20COME%20VJ%20EMMY%2020251.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.kampalarelaxation.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Trilller"
+  ],
+  "description": "Night Always Comes is a drama thriller about Lynette (Vanessa Kirby), who has just one night to raise $25,000 to save her family home after her mother spends th",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

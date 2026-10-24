@@ -1,0 +1,28 @@
+{
+  "id": "movie-1279",
+  "title": "Naked",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1279",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMDA0M2Y0YjEtMTUwYi00YmYyLWFhNDEtYWY4NTdlNjVlYTIyXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://munowatch.co/6ac6e/e2a/f40ec~1.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munowatch.co",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "The movie Naked (2017) is a comedy about Rob, played by Marlon Wayans, who wakes up naked in an elevator on the morning of his wedding and is forced to relive t",
+  "release_year": 2017,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

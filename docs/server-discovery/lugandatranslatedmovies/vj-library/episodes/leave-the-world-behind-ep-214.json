@@ -1,0 +1,28 @@
+{
+  "id": "leave-the-world-behind-ep-214",
+  "title": "Leave The World Behind part 1",
+  "content_type": "episode",
+  "series_id": "leave-the-world-behind",
+  "season_number": 1,
+  "episode_number": null,
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=214",
+  "image_url": "https://d2ajy4iry6zk4j.cloudfront.net/pubvat/81314956/thumbnail/medium/p34bwb9qe",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/leaveworldbehind.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "description": "A family vacation on Long Island is interrupted by two strangers bearing news of a blackout. As the threat grows, both families must decide how best to survive",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

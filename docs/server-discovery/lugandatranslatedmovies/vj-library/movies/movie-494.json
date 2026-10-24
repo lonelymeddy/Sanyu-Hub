@@ -1,0 +1,28 @@
+{
+  "id": "movie-494",
+  "title": "The Kill Room",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=494",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/5/54/Kill_room_poster.png",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/thekillroom.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "The Kill Room follows an art dealer (Uma Thurman) who teams with a hitman (Joe Manganiello) and his boss (Samuel L. Jackson) for a money laundering scheme that",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

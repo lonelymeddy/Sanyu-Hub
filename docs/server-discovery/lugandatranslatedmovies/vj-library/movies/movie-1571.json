@@ -1,0 +1,28 @@
+{
+  "id": "movie-1571",
+  "title": "Love Hard",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1571",
+  "image_url": "https://images.plex.tv/photo?size=large-1280&amp;url=https%3A%2F%2Fmetadata-static.plex.tv%2F7%2Fgracenote%2F7fdeb4806dfd812b0232051b5693392c.jpg",
+  "video_sources": [
+    {
+      "url": "https://katflix.xyz/RASHIDA/baby/sex/Love.Hard.2021.%20vj%20junior@katflixx.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "katflix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error timed out>"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "A girl flies across the country to surprise her online crush, only to find out she\u2019s been cat-fished by his friend.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

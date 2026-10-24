@@ -1,0 +1,28 @@
+{
+  "id": "movie-774",
+  "title": "Pistolera",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=774",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYjdhZWZjMWYtYWE3NC00NjgwLTlmNjctZmE5OWM0Y2QxYjM4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/PISTOLERA.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A ruthless drug lord murders the family of a little girl in Spain, he makes a fatal mistake: letting her live, setting in motion a bloody chain of events in thi",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

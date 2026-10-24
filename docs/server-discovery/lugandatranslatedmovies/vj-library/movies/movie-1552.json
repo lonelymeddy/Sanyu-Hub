@@ -1,0 +1,28 @@
+{
+  "id": "movie-1552",
+  "title": "Retribution",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1552",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BY2YxNzhlNTktY2EwYy00MGRmLTkyOTQtMGRjOTAzNTY1ZDVjXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/relord%203/junior/RETRIBUTION%20JR%20HD%202023.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The movie \"Retribution\" (2023) is an action thriller about a bank executive, Matt Turner (Liam Neeson), who is driving his two children to school when he receiv",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-175",
+  "title": "Black Adam",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=175",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL0UVuPV2is16vGoFwT9_WO32s2cF2e4HOQZ_J5hmW3w&amp;s",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/blackadam.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "Synopsis Nearly 5,000 years after he was bestowed with the almighty powers of the ancient gods--and imprisoned just as quickly--Black Adam (Dwayne Johnson) is f",
+  "release_year": 2022,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

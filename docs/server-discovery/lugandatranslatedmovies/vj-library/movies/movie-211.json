@@ -1,0 +1,28 @@
+{
+  "id": "movie-211",
+  "title": "Secret Life of Pets",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-kevo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=211",
+  "image_url": "https://images.moviesanywhere.com/cb141a7d0f9183b2e626db5bef697f1d/1ba70436-9b46-49bd-a7ac-1371811705f3.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/secret.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Max, a pet dog, is not very pleased when his master brings home another dog named Duke. However, they set aside their differences after they learn their owner i",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

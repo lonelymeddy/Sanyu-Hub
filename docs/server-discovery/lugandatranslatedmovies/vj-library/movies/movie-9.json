@@ -1,0 +1,28 @@
+{
+  "id": "movie-9",
+  "title": "Float",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=9",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/c/c5/Float_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/float.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "After she nearly drowns, a young woman unexpectedly falls for the small-town lifeguard who rescued her. Based on the novel by Kate Marchant",
+  "release_year": 2022,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

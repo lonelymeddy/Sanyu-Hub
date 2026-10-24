@@ -1,0 +1,28 @@
+{
+  "id": "movie-760",
+  "title": "Bleed For Justice",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=760",
+  "image_url": "https://pic2.iqiyipic.com/image/20250116/4c/aa/v_179254436_m_601_en_260_360.webp",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/bleedforjustice.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The peace of Donghai City was shattered by a gang shootout, as the duo assassins, Chainsaw and Yangyang, stormed a money house and emptied its assets",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

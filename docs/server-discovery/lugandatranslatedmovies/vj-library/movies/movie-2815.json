@@ -1,0 +1,28 @@
+{
+  "id": "movie-2815",
+  "title": "The Passenger",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2815",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNzQ4MWI4NGUtYmNkMi00MjBhLThiOTgtMTIyNmNhNWJlZThmXkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.streamzonemovies.online/Telegram/THE%20PASSENGER___VJ%20EMMY.2026.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.streamzonemovies.online",
+      "format": "mkv",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/x-matroska"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Hassan, a Somali-American airport shuttle driver in Minneapolis, is struggling to make ends meet. When Lloyd, a stranded twenty-something at the airport, offers",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

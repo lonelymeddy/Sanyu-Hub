@@ -1,0 +1,28 @@
+{
+  "id": "movie-205",
+  "title": "LOL",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=205",
+  "image_url": "https://occ-0-1167-300.1.nflxso.net/dnm/api/v6/Da_vleYcahiCE7JMYt8LJRyoenc/AAAABajED7zN_YdK54cyJWM6ZCXy31knCXOR4K6VWYEKs0xIlSDxFhGpgXP1Lo36rZwZAA8UDg9cxbs1d_P7cZh_a0tVLWlp.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/lol.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "Lola, a teenager, learns to deal with the ups and downs of adolescent life, relationships, misunderstandings, friends and her single mother, who is shocked when",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

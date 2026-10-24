@@ -1,0 +1,28 @@
+{
+  "id": "movie-1006",
+  "title": "She's Obsessed With My Husband",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1006",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzRhMjA4MjAtZTZlZC00ODI5LTgyZmMtZDlmMjFjNzIwNWMzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/Shesobsessedwithmyhusband.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "\"She's Obsessed With My Husband\" is a 2024 thriller about Violet, an obsessive woman who moves next door to her high school crush, Garrett, now married to Daisy",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

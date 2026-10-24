@@ -1,0 +1,28 @@
+{
+  "id": "movie-3199",
+  "title": "You Me against The world",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-soul"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3199",
+  "image_url": "https://m.media-amazon.com/images/S/pv-target-images/a328b49db4595b6959256bfe3fc35744988096fa0f89a11b7dc29dab65837f2f.png",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/YouMe_-_Against_the_World_VJ_Soul.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "Alma Lancaster, conceals her filmmaking ambitions from her rich family who believe she's in law school. She falls for rebel Vadim Arcadi, while creating a stude",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

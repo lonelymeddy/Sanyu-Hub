@@ -1,0 +1,28 @@
+{
+  "id": "movie-770",
+  "title": "Babygirl",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=770",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/0/0c/Babygirl_%28film_poster%29.png",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/BABYGIRL.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "A high-powered CEO puts her career and family on the line when she begins a torrid affair with her much younger intern.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

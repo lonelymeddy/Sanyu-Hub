@@ -1,0 +1,28 @@
+{
+  "id": "movie-1475",
+  "title": "The Phone",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1475",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNDIzMjljMTEtMjI4Zi00NTVmLThlZmUtMWU3MDk4YzczYzllXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/NEW/The.Phone.2025.720p..VJ%20NELLY.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"The Phone\" can refer to several films, but the most likely are the 2015 South Korean action-thriller The Phone or the 2021 supernatural horror film The Black P",
+  "release_year": 2015,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

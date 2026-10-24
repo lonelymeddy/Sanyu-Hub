@@ -1,0 +1,28 @@
+{
+  "id": "movie-3405",
+  "title": "Spy Kids: Armageddon",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-soul"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3405",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNDI1MDQ2MmQtNjgyZC00N2NmLThmMzMtMWI5ZDlkMTU0Y2I2XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Spy_Kids_Armageddon_VJ_Soul.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Two young siblings discover that their parents are secret agents and must save their family and the world after a powerful game developer unleashes a global thr",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

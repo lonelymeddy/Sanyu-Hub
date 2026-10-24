@@ -1,0 +1,28 @@
+{
+  "id": "movie-194",
+  "title": "Aeon Flux",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=194",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f4/%C3%86on_Flux_%28film%29.png",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/flux.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "A skilled warrior, named \u00c6on Flux, is a member of the Monicans, an underground rebel organization who communicate through telepathy-enabling technology and are",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

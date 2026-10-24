@@ -1,0 +1,28 @@
+{
+  "id": "movie-3210",
+  "title": "Spider Island",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-baros"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3210",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjFmZjE5ZDAtOTYxYi00M2U2LWI2YWEtZjM5NTQyMDA2ZjNmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Spider_Island_VJ_Baros.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "A bunch of young men and women just want to have some fun in the sun. What could go wrong?",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

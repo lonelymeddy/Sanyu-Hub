@@ -1,0 +1,28 @@
+{
+  "id": "movie-1150",
+  "title": "Carjackers",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1150",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZjY3NzI3YTktN2JiMy00MmVlLWE1OTYtODE3ZTk5ZGIxMjIyXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/carjackers.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "\u201cCarjackers\u201d is a suspenseful action film that tells the story of a group of talented car thieves who immerse themselves in the world of organized crime.",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

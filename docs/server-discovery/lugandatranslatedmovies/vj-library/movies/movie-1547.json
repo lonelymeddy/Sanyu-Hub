@@ -1,0 +1,28 @@
+{
+  "id": "movie-1547",
+  "title": "Ruined",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1547",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e7/Ruined_%28film%29.jpg/250px-Ruined_%28film%29.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/kalailai/junior/Ruined%202023%20720%20Vj%20JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "When a woman seeks counseling to save her marriage, she has no idea that her therapist shares a secret past with her husband and is out for revenge. In this p",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

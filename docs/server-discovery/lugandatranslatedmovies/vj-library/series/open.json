@@ -1,0 +1,15 @@
+{
+  "id": "open",
+  "title": "Open",
+  "content_type": "series",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1013",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTQwOTg2MjU0OV5BMl5BanBnXkFtZTcwMzIzNTQzMQ@@._V1_.jpg",
+  "description": "In the \"Open Season\" movie, Boog, a 900-pound domesticated grizzly bear, finds himself in the wilderness three days before hunting season.",
+  "release_year": 2025,
+  "episodes": [
+    "open-ep-1013"
+  ]
+}

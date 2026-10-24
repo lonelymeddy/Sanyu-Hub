@@ -1,0 +1,28 @@
+{
+  "id": "movie-2681",
+  "title": "Fatal Contact",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2681",
+  "image_url": "https://play-lh.googleusercontent.com/Dwg8qBXVt0EjCxa9tPSm5ATdOHmGGZdGeCdLJo0LxjEzEllqvvGIeVd-QpgW2L8C7ERHZcxkj71BSYWQLLkG",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/APIRL/REMAKES/FATAL%20CONTACT%202006%20JR%201080p%20MR.NO%20S%20ENT%200766009748.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A fighter is drawn into underground combat.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

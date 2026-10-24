@@ -1,0 +1,28 @@
+{
+  "id": "movie-2684",
+  "title": "The collection",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2684",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BODQ0MDgzNDA0NV5BMl5BanBnXkFtZTcwNDM4MDQ1OA@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/project/SMART%202/The%20Collection%20by%20Vj%20Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "The Collection (2012) is a gory, high-octane horror sequel to The Collector (2009), following Arkin (Josh Stewart) as he is forced by mercenaries to navigate a",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

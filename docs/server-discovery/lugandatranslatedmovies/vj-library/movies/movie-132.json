@@ -1,0 +1,28 @@
+{
+  "id": "movie-132",
+  "title": "Arctic Dogs",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-kevo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=132",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwt7JCbTfaVl0AEATsUnbuaxh0lp769cbP_F_wP4Go3Q&amp;s",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/arcticdogs.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Animals band together to save the day when the evil Otto Von Walrus hatches a sinister scheme to accelerate global warming and melt the Arctic Circle.",
+  "release_year": 2022,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1088",
+  "title": "Animal Farm",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1088",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMmQ2Mjg4ZjYtYzNhOS00MDcyLTk3YTctMTM4MzdmYmE4YzA3XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/animalfarm.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Animal Farm\" movie, based on George Orwell's novella, tells the story of farm animals who rebel against their human owner, driven by a desire for equality and f",
+  "release_year": 2018,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-2118",
+  "title": "L Lipad",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2118",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYmE3MDRmYWEtZmRlZS00Mjk3LTgwZjQtMjE1OWE5YmZiNjY1XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/L-Lipad__vj%20ham%202026(erotic).mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "L - Lipad is a drama exploring a provocative marital arrangement that evolves into an emotionally complex and morally challenging journey.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

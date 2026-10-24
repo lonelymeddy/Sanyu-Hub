@@ -1,0 +1,28 @@
+{
+  "id": "movie-1464",
+  "title": "Wrong turn 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1464",
+  "image_url": "https://images.moviesanywhere.com/777e601dcd340eb9e5d547bcf914ccd5/747c3b39-244b-4e00-8552-54387d6bb218.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/A;PRIL%20SINGLES/28%20march/WRONG%20TURN%202.Dead%20End.1080HP.Jo.A-B@(E.L.Pro+256782778952).mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Wrong Turn 2: Dead End is a horror film where a group of strangers competes in a survival-themed reality TV show in the West Virginia woods. When they are attac",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

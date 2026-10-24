@@ -1,0 +1,28 @@
+{
+  "id": "movie-2208",
+  "title": "Devil",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2208",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/7/7c/Devil_film_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie/DEVIL.1080HP.Jr.A-B@(E.L.Pro+256782778952).mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Devil (2010), produced by M. Night Shyamalan, is a supernatural horror-thriller about five strangers trapped in an elevator where the Devil is secretly present,",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

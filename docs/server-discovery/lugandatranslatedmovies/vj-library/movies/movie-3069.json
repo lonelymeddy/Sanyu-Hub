@@ -1,0 +1,28 @@
+{
+  "id": "movie-3069",
+  "title": "The Shadow Strays",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3069",
+  "image_url": "https://resizing.flixster.com/nmEvKWN6uM0KTfQXEO9j2hUbr-M=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2QyZDc0MDVmLTIwMTQtNGUxNC1hYmJlLTNmMjZmNzMzNjVjYi5wbmc=",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/The_Shadow_Strays_VJ_Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The Shadow Strays follows Codename 13, a 17-year-old elite assassin suspended after a botched mission in Japan",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

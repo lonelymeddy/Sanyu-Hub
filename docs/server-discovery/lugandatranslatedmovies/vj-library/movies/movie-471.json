@@ -1,0 +1,28 @@
+{
+  "id": "movie-471",
+  "title": "Off the Menu",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=471",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNGVjZTdkYmYtOTc3Ny00NTlmLWEzYjAtNjdmYWZlNzczNTQ5XkEyXkFqcGdeQXVyNTE1OTQ3NTA@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/offthemenu.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "An unlikely heir to a Mexican fast-food franchise goes 'cuisine' hunting for the next culinary big thing, and finds himself in a small, dusty New Mexican town w",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-719",
+  "title": "Pixie",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=719",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/1/1b/Pixie_film_poster.png",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/pixie.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "To avenge her mother's death, Pixie masterminds a heist but must flee across Ireland from gangsters, take on the patriarchy, and choose her own destiny.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

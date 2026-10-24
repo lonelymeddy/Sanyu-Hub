@@ -1,0 +1,631 @@
+{
+  "primary_host": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+  "summary": "Cloudflare R2 storage (pub-86fb3181579649118df994b2cd3cb437.r2.dev) serves as the primary high-speed host with confirmed playback for recent additions, supplemented by legacy hosts like mlegacytv.com and mobifliks.info.",
+  "hosts": [
+    {
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "role": "primary_media_host",
+      "movies_associated_count": 256,
+      "direct_media_urls_count": 256,
+      "confirmed_playback_count": 252,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/ANTBOY_SOUL.mp4",
+        "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/BLACK_BOX_EMMY.mp4",
+        "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/ASSASSIN_1932_JR.mp4",
+        "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/ENOLA_2_ULIO.mp4",
+        "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/ENOLA_3_ULIO.mp4"
+      ],
+      "verification_status": "confirmed_playback"
+    },
+    {
+      "hosting_domain": "namzentertainments.xyz",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 69,
+      "direct_media_urls_count": 69,
+      "confirmed_playback_count": 22,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://namzentertainments.xyz/project/SMART%202/Adore%20by%20Vj%20Junior.mp4",
+        "https://namzentertainments.xyz/project/bad%20man/Arctic%20Dogs%20by%20Vj%20Kevo.mp4",
+        "https://namzentertainments.xyz/projects/next%202/New%20folder/Oblivion.2013.1080p.mp4",
+        "https://namzentertainments.xyz/project/junior%20new/Coyote%20Ugly%20by%20Vj%20Junior.mp4",
+        "https://namzentertainments.xyz/NEW%20PRO/Jurassic.World.Rebirth.2025.720%20VJ%20JUNIOR%40katflix..mp4"
+      ],
+      "verification_status": "confirmed_playback"
+    },
+    {
+      "hosting_domain": "www.mobifliks.info",
+      "role": "primary_media_host",
+      "movies_associated_count": 3,
+      "direct_media_urls_count": 3,
+      "confirmed_playback_count": 3,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://www.mobifliks.info/videos/luganda/Beautiful%20Disaster%20by%20Vj%20Muba%20-%20Mobifliks.com.mp4",
+        "https://www.mobifliks.info/videos/luganda/Vivarium%20by%20Vj%20Muba%20-%20Mobifliks.com.mp4",
+        "https://www.mobifliks.info/videos/luganda/Hellhound%20by%20Vj%20Jingo%20-%20Mobifliks.com.mp4"
+      ],
+      "verification_status": "confirmed_playback"
+    },
+    {
+      "hosting_domain": "storage.newlinebusega.com",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 3,
+      "direct_media_urls_count": 3,
+      "confirmed_playback_count": 2,
+      "supported_formats": [
+        "mkv",
+        "mp4"
+      ],
+      "example_urls": [
+        "https://storage.newlinebusega.com/SINGLES/SINGLES%20NEW%20AND%20OLD/MOVIES%20THAT%20ARE%20CONVERTED%20FROM%20TOWN/MARCH%202023/29th-03-2023/AMBULANCE%20VJ%20JJINGO.mp4",
+        "https://storage.newlinebusega.com/SINGLES/SINGLES%20REMAKE/THE%20OLD%20MAN%20&amp;%20THE%20GUN%20_____VJ%20EMMY.mkv",
+        "https://storage.newlinebusega.com/SINGLES/SINGLES%20NEW%20AND%20OLD/MOVIES%20THAT%20ARE%20CONVERTED%20FROM%20TOWN/MARCH%202023/29th-03-2023/White.House.Down%20-%20JINGO%5bJB%20HD%20movies%5d.mp4"
+      ],
+      "verification_status": "confirmed_playback"
+    },
+    {
+      "hosting_domain": "munolaba.com",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 2,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munolaba.com/5752b/f80/d1dec.mp4",
+        "https://munolaba.com/5752b/f80/2b464.mp4"
+      ],
+      "verification_status": "confirmed_playback"
+    },
+    {
+      "hosting_domain": "mobifliks.info",
+      "role": "primary_media_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 2,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://mobifliks.info/downloadmp4.php?file=luganda/Frat%20Party%20by%20Vj%20Junior%20-%20Mobifliks.com.mp4",
+        "https://mobifliks.info/downloadmp4.php?file=luganda/Guardians%20of%20The%20Night%20by%20Vj%20Emmy%20%20-%20Mobifliks.com.mp4"
+      ],
+      "verification_status": "confirmed_playback"
+    },
+    {
+      "hosting_domain": "watch.kpsounds.com",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 4,
+      "direct_media_urls_count": 4,
+      "confirmed_playback_count": 1,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://watch.kpsounds.com/watch/Lockout JR Kp Sounds Watch.mp4",
+        "https://watch.kpsounds.com/watch/Vice JR Kp Sounds Watch.mp4",
+        "https://watch.kpsounds.com/watch/Please dont feed the children(2025)- Emmy Kp Sounds Watch.mp4",
+        "https://watch.kpsounds.com/watch/The%20Messengers%20-%20VJ%20Junior%20Kp%20Sounds%20Watch.mp4"
+      ],
+      "verification_status": "confirmed_playback"
+    },
+    {
+      "hosting_domain": "ajuna.streamzonemovies.online",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 4,
+      "direct_media_urls_count": 4,
+      "confirmed_playback_count": 1,
+      "supported_formats": [
+        "mkv"
+      ],
+      "example_urls": [
+        "https://ajuna.streamzonemovies.online/Ajuna2026/VJ%20ARAFA/JUN%203R/MABKA%20VJARAFA%202026.mkv",
+        "https://ajuna.streamzonemovies.online/Ajuna2026/VJ%20ARAFA/DRAGON%20GIRL%20VJARAFA%202026.mkv",
+        "https://ajuna.streamzonemovies.online/Ajuna2026/VJ%20NEIL/TRAPED%20OUTSIDE%20VJARAFA.2026.mov",
+        "https://ajuna.streamzonemovies.online/Ajuna2026/VJ%20ARAFA/THE%20SEX%20TRIP%20VJARAFA%20NEW%202026.mkv"
+      ],
+      "verification_status": "confirmed_playback"
+    },
+    {
+      "hosting_domain": "storage.streamzonemovies.online",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 1,
+      "supported_formats": [
+        "mkv"
+      ],
+      "example_urls": [
+        "https://storage.streamzonemovies.online/Telegram/THE%20PASSENGER___VJ%20EMMY.2026.mkv"
+      ],
+      "verification_status": "confirmed_playback"
+    },
+    {
+      "hosting_domain": "jtzmag.com",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 563,
+      "direct_media_urls_count": 563,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://jtzmag.com/mov/float.html",
+        "https://jtzmag.com/mov/addicted.html",
+        "https://jtzmag.com/mov/theescortwife.html",
+        "https://jtzmag.com/mov/coyoteugly.html",
+        "https://jtzmag.com/mov/hookingup.html"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 82,
+      "direct_media_urls_count": 82,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mkv",
+        "mp4"
+      ],
+      "example_urls": [
+        "https://jimmy.pearlpix.xyz/MOVIES/LAW/A%20TIME%20TO%20KILL%201-2.1080HP.Jr.A-B@(E.L.Pro+256782778952).mkv",
+        "https://jimmy.pearlpix.xyz/MOVIES/REMAKES%203/THE%20PURGE%20%20.1%20%20-%20ICE%20P.mkv",
+        "https://jimmy.pearlpix.xyz/MOVIES/REMAKES%203/2/SCURRY%20JOVAN%202025.mkv",
+        "https://jimmy.pearlpix.xyz/MOVIES/17/Impasse%20Rescue.mp4",
+        "https://jimmy.pearlpix.xyz/MOVIES/17/SNIPER%20ULTIMATE%20KILL%20JR.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 73,
+      "direct_media_urls_count": 73,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mkv",
+        "mp4"
+      ],
+      "example_urls": [
+        "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/AVENGERSINFINITYWAR_compressed.mp4",
+        "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/shorts/shortsfolder/1738233845898000.mp4",
+        "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/APOLARBATTEFIELDMUSA_compressed.mkv",
+        "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/BREAKINALL%20THERULES.mkv",
+        "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/Lust_compressed.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "www.vibez.site",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 38,
+      "direct_media_urls_count": 38,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://www.vibez.site/ANIMAL_FARM_MOSCO.mp4",
+        "https://www.vibez.site/MICHAEL_JR.mp4",
+        "https://www.vibez.site/OFFICE_ROMANCE_JR.mp4",
+        "https://www.vibez.site/OWL_HUNT_STORM_ICEP.mp4",
+        "https://www.vibez.site/VALIENTE_UNCLE_T.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "storage.kampalarelaxation.com",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 20,
+      "direct_media_urls_count": 20,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mkv",
+        "mp4"
+      ],
+      "example_urls": [
+        "https://storage.kampalarelaxation.com/allmovies/July24/junior/Pirates/Pirates_Of_The_Carribean_2_Junior_BRUMP_MOVIES_0701896198_0775981788.mp4",
+        "https://storage.kampalarelaxation.com/allmovies/July24/junior/Pirates/Pirates.Of.The.Carribean.4.Junior.%40Bryn%2BMedia%2BMovie..mp4",
+        "https://storage.kampalarelaxation.com/allmovies/Movies/Vj%20Junior/Black%20Hawk%20Down%202001%201080p%20Vj%20Mac.mp4",
+        "https://storage.kampalarelaxation.com/allmovies/2025AUG/HMSON7/NIGHT%20ALWAYS%20COME%20VJ%20EMMY%2020251.mkv",
+        "https://storage.kampalarelaxation.com/allmovies/Movies/Vj%20Junior/Captain%20Phillips%20%282013%29%20Vj%20Jr.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "oopstry.mlegacytv.com",
+      "role": "primary_media_host",
+      "movies_associated_count": 10,
+      "direct_media_urls_count": 10,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mkv"
+      ],
+      "example_urls": [
+        "https://oopstry.mlegacytv.com/MOVIES/EMMY/EVERYONE%20IS%20GOING%20TO%20DIE%20VJ%20EMMY%202025.mkv",
+        "https://oopstry.mlegacytv.com/MOVIES/ULIO/RUST%202025%20VJ.ULIO.mkv",
+        "https://oopstry.mlegacytv.com/MOVIES/ULIO/HOLLAND%202025.HD%20VJ.ULIO.mkv",
+        "https://oopstry.mlegacytv.com/MOVIES/JR/HUNT%20THE%20WICKED%20JR.mkv",
+        "https://oopstry.mlegacytv.com/MOVIES/JR/12%20ANGRY%20MEN%20___%20JR.mkv"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "nicetry.mlegacytv.com",
+      "role": "primary_media_host",
+      "movies_associated_count": 4,
+      "direct_media_urls_count": 4,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mkv",
+        "mp4"
+      ],
+      "example_urls": [
+        "https://nicetry.mlegacytv.com/MOVIES/JUNIOR%20LATEST/KILL%20JR%202024.mkv",
+        "https://nicetry.mlegacytv.com/movies2/MOVIES/VJ%20JUNIOR%20LATEST/JUROR%20No.2%20JR%202024.mkv",
+        "https://nicetry.mlegacytv.com/MOVIES/JUNIOR/Step.Up%20Part%204.Revolution.1080p%20Vj%20Junior.mkv",
+        "https://nicetry.mlegacytv.com/MOVIES/JUNIOR/A%20THOUSAND%20WORDS%20JR.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "jim.pearlpix.xyz",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 4,
+      "direct_media_urls_count": 4,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mkv",
+        "mp4"
+      ],
+      "example_urls": [
+        "https://jim.pearlpix.xyz/MOVIES/REMAKES%201/THE%20BUTCHER%20BOYS%20-%20JR%20[JB%20HD%20movies].mkv",
+        "https://jim.pearlpix.xyz/MOVIES/VJ%20EMMY/21%20JULY/video_2023-05-05_07-54-42_.mp4",
+        "https://jim.pearlpix.xyz/SERIES%203/VJ%20IVO/IRON%20HEART/BADGES%20OF%20FURY.1080HP.Jr.A-B@(E.L.Pro+256782778952).mp4",
+        "https://jim.pearlpix.xyz/SERIES%203/VJ%20IVO/IRON%20HEART/Sleepless.1080HP.Jr.A-B@(E.L.+256782778952).mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "thistime.mlegacytv.com",
+      "role": "primary_media_host",
+      "movies_associated_count": 3,
+      "direct_media_urls_count": 3,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mkv"
+      ],
+      "example_urls": [
+        "https://thistime.mlegacytv.com/MOVIE/TRENDS/GODS%20OF%20EGYPT.2016.1080p.JR.mkv",
+        "https://thistime.mlegacytv.com/MOVIE/JR/OUR%20FAULT%20JR.mkv",
+        "https://thistime.mlegacytv.com/MOVIE/ULIO/RELAY%202025%20VJ.ULIO.mkv"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "kaguje.xyz",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://kaguje.xyz/KAGUJE/1ST%20OFF%20OCTOBER/SINGLESSS/34567/ZZZ%20GODLOVE/I%20Care%20a%20Lot.2020.720%20Vj%20JUNIOR%40katflix..mp4",
+        "https://kaguje.xyz/KAGUJE/1ST%20OFF%20OCTOBER/SINGLESSS/34567/ZZZ%20GODLOVE/Picture.This.2025.%20720%20Vj%20JUNIOR%40katflix.mp4https://kaguje.xyz/KAGUJE/1ST%20OFF%20OCTOBER/SINGLESSS/34567/ZZZ%20GODLOVE/Picture.This.2025.%20720%20Vj%20JUNIOR%40katflix.mp"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "coward.mlegacytv.com",
+      "role": "primary_media_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mkv"
+      ],
+      "example_urls": [
+        "https://coward.mlegacytv.com/movies/only%20vj_junior/THE%20CHAIN%20LETTER%20-%20JR.mkv",
+        "https://coward.mlegacytv.com/movies2/MOVIES2/JINGO%20/WRONG%20TURN%205%20VJ%20JJINGO.mkv"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver51.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver51.club/hvt43/kai43/PUPPY%20LOVE%201080pVJ-ULIO.mp4",
+        "https://munoserver51.club/hvt43/kai43/BULLET%20VJ%20JINGO.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munowatch.co",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munowatch.co/6ac6e/e2a/f40ec~1.mp4",
+        "https://munowatch.co/6ac6e/e2a/d3215~1.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver19.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver19.club/99ff7/515/69eee~19.mp4",
+        "https://munoserver19.club/99ff7/515/85ab7~19.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "lugandatranslatedmovies.com",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mkv",
+        "mp4"
+      ],
+      "example_urls": [
+        "https://lugandatranslatedmovies.com/movies/ALONEJR_compressed.mp4",
+        "https://lugandatranslatedmovies.com/movies/SUPERMANJR_compressed.mkv"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "s3.eu-west-1.wasabisys.com",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mkv",
+        "mp4"
+      ],
+      "example_urls": [
+        "https://s3.eu-west-1.wasabisys.com/fred/THE%20CIRCLE.mp4",
+        "https://s3.eu-west-1.wasabisys.com/jimmy.pearlpix.xyz/SERIES%2010/POLYGAMIST/HOPPERS%20PEARL%20PIX.mkv"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "katflix.xyz",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "http://katflix.xyz/RASHIDA/baby/sex/You.Got.Served.2004.%20vj%20junior@katflixxxxxxx.mp4",
+        "https://katflix.xyz/RASHIDA/baby/sex/Love.Hard.2021.%20vj%20junior@katflixx.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "jport.pearlpix.xyz",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 2,
+      "direct_media_urls_count": 2,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://jport.pearlpix.xyz/Day1/WRONG%20TURN%20VJ%20ICE%20P.mp4",
+        "https://jport.pearlpix.xyz/1000/Fantastic%20Four%203.1080HP.Jr.A-B@(E.L.Pro+256782778952).mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver25.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver25.club/ca709/215/6690f.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver1.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver1.club/7e910/d5c/ABSOLUTE%20DECEPTION%20JR_x264.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver37.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver37.club/as86/hyu/Love%20at%20First%20Hiccup%201080P%20VJ-ULIO.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver2.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver2.club/12359/e90/Pick.A.Side.2021.1080P.Amzn.Webrip.1400Mb.Dd5.1.X264-Galaxyrg-1%20VJ%20JINGO.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver11.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver11.club/11c97/465/b2f93~24.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver3.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver3.club/d06f6/171/inrusion.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver62.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver62.club/naks/naks42/The.Map.That.Leads.To.You.2025.1080p.WEBRip.x264.AAC5.1.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver56.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver56.club/coco/coco22/BAD%20INFLUENCE%202025%20VJ.ULIO.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "munoserver5.club",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://munoserver5.club/c4d33/4de/great%20white.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "uc0ecf40cfd7b625ef1d8a03ec97.dl.dropboxusercontent.com",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [],
+      "example_urls": [
+        "https://uc0ecf40cfd7b625ef1d8a03ec97.dl.dropboxusercontent.com/cd/0/inline/CjzQ6CqA6PdOMsS3B5sZGrt2K7hUeu_kz8sHU_r-ZouytNYbA5CF7OpxPBXcN68JcT5ieWOdHk_RaVQANOOHNGqxSgCDKfZx3pHNQfe7ljEobZ5ZC7hb_QU8PPcmXMgA03ak5NxoXKuqi2mdlVmIS5Jz/file"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "ucc337225910e1b69e9e42dd488d.dl.dropboxusercontent.com",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [],
+      "example_urls": [
+        "https://ucc337225910e1b69e9e42dd488d.dl.dropboxusercontent.com/cd/0/inline/Cj0pfFca4iVJELR--G2c9NYrTH38jWC2luFikgus_qf4ivKKGUY9TQlUFp4H8xMPGK3K5-g0Z_p6u_X8F6-XZMRAU2kMP0pjpH_KUYCQfenm21nmocRoYUTxz66M8hps8d_em7CIyHsPei7YgEIYNSY5/file"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "watch.kpsoundscom",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://watch.kpsoundscom/watch/Skyfall JR Kp Sounds Watch.mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    },
+    {
+      "hosting_domain": "icepug.xyz",
+      "role": "secondary_or_embed_host",
+      "movies_associated_count": 1,
+      "direct_media_urls_count": 1,
+      "confirmed_playback_count": 0,
+      "supported_formats": [
+        "mp4"
+      ],
+      "example_urls": [
+        "https://icepug.xyz/Action movies/july 12 2021/The.Tomorrow.War.2021.720p.WEBRip.x264.AAC-[YTS.MX].mp4"
+      ],
+      "verification_status": "reachable_not_playback_verified"
+    }
+  ]
+}

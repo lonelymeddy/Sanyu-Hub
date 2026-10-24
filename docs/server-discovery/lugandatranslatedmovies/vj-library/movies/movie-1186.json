@@ -1,0 +1,28 @@
+{
+  "id": "movie-1186",
+  "title": "The Unholy Trinity",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1186",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/0/06/The_Unholy_Trinity.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/unholytrinity.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "The Unholy Trinity\" is a Western film set in 1870s Montana, where a young man named Henry Broadway seeks to avenge his father's death after his execution. He ar",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1479",
+  "title": "Play Dirty",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1479",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BN2E4MmM2ODctYTIyNS00ZGIxLWJmYjctYTUxYThhNzY4MmMzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/VJ%20ULIO/Play%20Dirty%20Mush%20Movies%20Ug%20Ice%20P%202025%20HD%201080p%200705753715.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Play Dirty is a 2025 action-heist movie directed by Shane Black and starring Mark Wahlberg, LaKeith Stanfield, and Rosa Salazar",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

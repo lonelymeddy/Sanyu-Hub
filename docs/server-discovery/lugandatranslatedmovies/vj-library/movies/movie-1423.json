@@ -1,0 +1,28 @@
+{
+  "id": "movie-1423",
+  "title": "Super man 2025",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1423",
+  "image_url": "https://images.justwatch.com/poster/331088181/s718/superman-legacy.jpg",
+  "video_sources": [
+    {
+      "url": "https://lugandatranslatedmovies.com/movies/SUPERMANJR_compressed.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "lugandatranslatedmovies.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The 2025 \"Superman\" movie focuses on the hero's journey to balance his Kryptonian heritage with his human upbringing as Clark Kent, all while being challenged b",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

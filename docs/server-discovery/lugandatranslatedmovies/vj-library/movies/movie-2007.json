@@ -1,0 +1,28 @@
+{
+  "id": "movie-2007",
+  "title": "Dracula: A Love Tale",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2007",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTZiMjBjM2ItN2U1ZC00MmU0LTkxZTktNjg3MThmZDUwNzI0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW PRO/Dracula.A.Love.Tale.2025.720 VJ JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/NEW PRO/Dracula.A.Love.Tale.2025.720 VJ JUNIOR.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Dracula: A Love Tale (2025) is a dark romantic fantasy about an immortal prince cursed after losing his wife and searching centuries for her reincarnation.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,253 @@
+{
+  "total_vjs": 31,
+  "vjs": [
+    {
+      "id": "vj-junior",
+      "name": "VJ Junior",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Junior",
+      "movies_count": 508,
+      "series_count": 2,
+      "data_file": "vjs/vj-junior.json"
+    },
+    {
+      "id": "others",
+      "name": "Others",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=Others",
+      "movies_count": 152,
+      "series_count": 1,
+      "data_file": "vjs/others.json"
+    },
+    {
+      "id": "vj-kevo",
+      "name": "VJ Kevo",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Kevo",
+      "movies_count": 28,
+      "series_count": 0,
+      "data_file": "vjs/vj-kevo.json"
+    },
+    {
+      "id": "vj-juniors",
+      "name": "VJ Juniors",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Juniors",
+      "movies_count": 3,
+      "series_count": 0,
+      "data_file": "vjs/vj-juniors.json"
+    },
+    {
+      "id": "vj-emmy",
+      "name": "VJ Emmy",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Emmy",
+      "movies_count": 157,
+      "series_count": 1,
+      "data_file": "vjs/vj-emmy.json"
+    },
+    {
+      "id": "vj-ice-p",
+      "name": "VJ Ice P",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Ice%20P",
+      "movies_count": 108,
+      "series_count": 2,
+      "data_file": "vjs/vj-ice-p.json"
+    },
+    {
+      "id": "vj-others",
+      "name": "VJ Others",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Others",
+      "movies_count": 14,
+      "series_count": 0,
+      "data_file": "vjs/vj-others.json"
+    },
+    {
+      "id": "vj-jingo",
+      "name": "VJ Jingo",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Jingo",
+      "movies_count": 65,
+      "series_count": 0,
+      "data_file": "vjs/vj-jingo.json"
+    },
+    {
+      "id": "vj-juinor",
+      "name": "VJ Juinor",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Juinor",
+      "movies_count": 2,
+      "series_count": 0,
+      "data_file": "vjs/vj-juinor.json"
+    },
+    {
+      "id": "vj-soul",
+      "name": "VJ Soul",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Soul",
+      "movies_count": 31,
+      "series_count": 0,
+      "data_file": "vjs/vj-soul.json"
+    },
+    {
+      "id": "vj-uncle-t",
+      "name": "VJ Uncle T",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Uncle%20T",
+      "movies_count": 10,
+      "series_count": 0,
+      "data_file": "vjs/vj-uncle-t.json"
+    },
+    {
+      "id": "vj-ham",
+      "name": "VJ Ham",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Ham",
+      "movies_count": 6,
+      "series_count": 0,
+      "data_file": "vjs/vj-ham.json"
+    },
+    {
+      "id": "vj-shield",
+      "name": "VJ Shield",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Shield",
+      "movies_count": 31,
+      "series_count": 0,
+      "data_file": "vjs/vj-shield.json"
+    },
+    {
+      "id": "vj-ulio",
+      "name": "VJ Ulio",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Ulio",
+      "movies_count": 15,
+      "series_count": 0,
+      "data_file": "vjs/vj-ulio.json"
+    },
+    {
+      "id": "vj-mosco",
+      "name": "VJ Mosco",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Mosco",
+      "movies_count": 6,
+      "series_count": 0,
+      "data_file": "vjs/vj-mosco.json"
+    },
+    {
+      "id": "vj-ivo",
+      "name": "VJ Ivo",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Ivo",
+      "movies_count": 1,
+      "series_count": 0,
+      "data_file": "vjs/vj-ivo.json"
+    },
+    {
+      "id": "vj-neil",
+      "name": "VJ Neil",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Neil",
+      "movies_count": 1,
+      "series_count": 0,
+      "data_file": "vjs/vj-neil.json"
+    },
+    {
+      "id": "vj-mark",
+      "name": "VJ Mark",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Mark",
+      "movies_count": 2,
+      "series_count": 0,
+      "data_file": "vjs/vj-mark.json"
+    },
+    {
+      "id": "vj-arafah",
+      "name": "VJ Arafah",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Arafah",
+      "movies_count": 5,
+      "series_count": 0,
+      "data_file": "vjs/vj-arafah.json"
+    },
+    {
+      "id": "vj-kriss-sweet",
+      "name": "VJ Kriss Sweet",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Kriss%20Sweet",
+      "movies_count": 2,
+      "series_count": 0,
+      "data_file": "vjs/vj-kriss-sweet.json"
+    },
+    {
+      "id": "vj-nelly",
+      "name": "VJ Nelly",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Nelly",
+      "movies_count": 1,
+      "series_count": 0,
+      "data_file": "vjs/vj-nelly.json"
+    },
+    {
+      "id": "vj-heavy-q",
+      "name": "VJ Heavy Q",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Heavy%20Q",
+      "movies_count": 2,
+      "series_count": 0,
+      "data_file": "vjs/vj-heavy-q.json"
+    },
+    {
+      "id": "vj-aaron",
+      "name": "VJ Aaron",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Aaron",
+      "movies_count": 1,
+      "series_count": 0,
+      "data_file": "vjs/vj-aaron.json"
+    },
+    {
+      "id": "vj-mk-kisule",
+      "name": "VJ MK Kisule",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20MK%20Kisule",
+      "movies_count": 5,
+      "series_count": 0,
+      "data_file": "vjs/vj-mk-kisule.json"
+    },
+    {
+      "id": "vj-kevin",
+      "name": "VJ Kevin",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Kevin",
+      "movies_count": 2,
+      "series_count": 0,
+      "data_file": "vjs/vj-kevin.json"
+    },
+    {
+      "id": "vj-tonny",
+      "name": "VJ Tonny",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Tonny",
+      "movies_count": 1,
+      "series_count": 0,
+      "data_file": "vjs/vj-tonny.json"
+    },
+    {
+      "id": "vj-muba",
+      "name": "VJ Muba",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Muba",
+      "movies_count": 3,
+      "series_count": 0,
+      "data_file": "vjs/vj-muba.json"
+    },
+    {
+      "id": "vj-moscow",
+      "name": "VJ Moscow",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Moscow",
+      "movies_count": 1,
+      "series_count": 0,
+      "data_file": "vjs/vj-moscow.json"
+    },
+    {
+      "id": "vj-mira",
+      "name": "VJ Mira",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Mira",
+      "movies_count": 1,
+      "series_count": 0,
+      "data_file": "vjs/vj-mira.json"
+    },
+    {
+      "id": "vj-baros",
+      "name": "VJ Baros",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Baros",
+      "movies_count": 1,
+      "series_count": 0,
+      "data_file": "vjs/vj-baros.json"
+    },
+    {
+      "id": "vj-bonny",
+      "name": "VJ Bonny",
+      "profile_url": "https://lugandatranslatedmovies.com/vj.php?vj=VJ%20Bonny",
+      "movies_count": 1,
+      "series_count": 0,
+      "data_file": "vjs/vj-bonny.json"
+    }
+  ]
+}

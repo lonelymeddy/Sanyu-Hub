@@ -1,0 +1,28 @@
+{
+  "id": "movie-443",
+  "title": "Margaux",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=443",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BODE1NjRiYjUtZmQwYi00Yzg5LWE1YWUtZjRkZmMzN2FiMTBmXkEyXkFqcGdeQXVyNjE2MzI5ODM@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/marguax.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "A carefree weekend of partying turns into a dystopian nightmare as they realize Margaux's plans to eliminate her tenants one way or another. Time begins to run",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

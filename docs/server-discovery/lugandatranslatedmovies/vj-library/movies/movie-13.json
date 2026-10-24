@@ -1,0 +1,28 @@
+{
+  "id": "movie-13",
+  "title": "Oblivion",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=13",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFVi32MAvvdC2XQf9lZxVjQ0YqKTJbF_kElmnsax1hXQ&amp;s",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/next%202/New%20folder/Oblivion.2013.1080p.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Synopsis. In the year 2077, Tech 49 Jack Harper (Tom Cruise) is one of the last drone repairmen stationed on Earth. According to Jack, the planet was nearly des",
+  "release_year": 2013,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

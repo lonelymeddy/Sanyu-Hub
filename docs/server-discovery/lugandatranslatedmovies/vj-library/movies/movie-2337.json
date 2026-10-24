@@ -1,0 +1,28 @@
+{
+  "id": "movie-2337",
+  "title": "Bring him to me",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2337",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjVjZGNhNGYtMzU3Yy00ZDgxLWEzNDEtZmQwMTAwNmRlNjVjXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/BRING HIM TO ME.1080HP.Jr.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/BRING HIM TO ME.1080HP.Jr.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "BRING HIM TO ME is an action-packed crime thriller in which a getaway driver is ordered to deliver a young man suspected of skimming from the take of a robbery",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1335",
+  "title": "Psychokinesis",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1335",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOGRjMzcxZTgtODg3NC00MWJjLTlkNjQtMzVjNmY1OTRlMGNhXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://oopstry.mlegacytv.com/MOVIES/TRENDS/PHYCHOKINESIS.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "oopstry.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Psychokinesis is a 2018 South Korean superhero film directed by Yeon Sang-ho, about a man who gains telekinetic powers after drinking water affected by a meteor",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

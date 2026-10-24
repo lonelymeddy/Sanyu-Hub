@@ -1,0 +1,28 @@
+{
+  "id": "movie-1531",
+  "title": "Safe House (2025)",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1531",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjM2Y2Q0NGMtOGUwZC00MDcyLWEzNzAtZTg4YjMyYTAxODRjXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/Safe.House.2025.2025.720%20VJ%20JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Safe House (2025) is a thriller about six government agents who must figure out who among them is a traitor after they shelter in a secure safe house following",
+  "release_year": 2025,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

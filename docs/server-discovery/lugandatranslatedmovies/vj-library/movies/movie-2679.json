@@ -1,0 +1,28 @@
+{
+  "id": "movie-2679",
+  "title": "A lonely place to die",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2679",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZjg2NTIyNzctZjkzNy00NWVlLTkzYzQtZjQ2ZGYxZmNiOTc4XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/APIRL/REMAKES/A%20LONELY%20PLACE%20TO%20DIE%20%20-%20EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Mountaineers become targets after rescuing a buried girl.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

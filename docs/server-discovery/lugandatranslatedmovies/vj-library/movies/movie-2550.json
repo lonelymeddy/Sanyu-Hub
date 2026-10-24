@@ -1,0 +1,28 @@
+{
+  "id": "movie-2550",
+  "title": "Shazam fury of Gods",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2550",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Shazam%21_Fury_of_the_Gods_%282023%29_Main_Poster.png/250px-Shazam%21_Fury_of_the_Gods_%282023%29_Main_Poster.png",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/SHAZAM_FURY_OF_GODS_ICEP.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "Shazam! Fury of the Gods (2023) is a fantasy-action sequel following teenage Billy Batson and his foster siblings who transform into superheroes and face the Da",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

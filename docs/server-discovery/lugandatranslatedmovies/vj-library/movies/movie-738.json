@@ -1,0 +1,28 @@
+{
+  "id": "movie-738",
+  "title": "The Tiger Hunter",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=738",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjU3ZmMwMGYtY2NiYy00MmQ3LWIzMmYtNGU5ZDA1YTZkYmY0XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/thetigerhunter.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "The Tiger Hunter is a movie about an Indian man who travels to the United States in the 1970s to become an engineer. He wants to impress his childhood crush and",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

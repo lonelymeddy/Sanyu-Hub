@@ -1,0 +1,28 @@
+{
+  "id": "movie-2349",
+  "title": "Argo",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2349",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/e/e1/Argo2012Poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/Argo.1080HP.Jr.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Argo (2012) is a tense, Oscar-winning political thriller directed by and starring Ben Affleck, based on the true \"Canadian Caper\" during the 1979 Iran hostage c",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1122",
+  "title": "Everyone is Going to Die",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1122",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZjgyM2ZkYzYtNjE3OC00ZGE2LTkyMzktZjY4NjgxOWY2MmE4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://oopstry.mlegacytv.com/MOVIES/EMMY/EVERYONE%20IS%20GOING%20TO%20DIE%20VJ%20EMMY%202025.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "oopstry.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "\"Everyone Is Going to Die\" is a thriller about an entrepreneur attempting to reconnect with his estranged daughter on her birthday.",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

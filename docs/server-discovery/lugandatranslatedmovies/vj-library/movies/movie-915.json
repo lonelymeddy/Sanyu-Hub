@@ -1,0 +1,28 @@
+{
+  "id": "movie-915",
+  "title": "Ride or Die",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=915",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYTBkZTU0ZWYtYWI4Ni00YmE5LWIyNzUtYzAxMTA0YjM4ZmE2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/rideordie.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Rei helps the woman she's been in love with for years escape her abusive husband. While on the run, their feelings for each other catch fire.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

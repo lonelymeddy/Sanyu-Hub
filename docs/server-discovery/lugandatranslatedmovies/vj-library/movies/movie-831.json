@@ -1,0 +1,28 @@
+{
+  "id": "movie-831",
+  "title": "Maleficent: Mistress of Evil 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=831",
+  "image_url": "https://npr.brightspotcdn.com/dims4/default/5b24cca/2147483647/strip/true/crop/634x944+0+0/resize/880x1310!/quality/90/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2Flegacy%2Fsites%2Fupr%2Ffiles%2F201911%2F13587086-7037913-image-a-48_1558027254001.jp",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/maleficent.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Maleficent and her goddaughter Aurora begin to question the complex family ties that bind them as they are pulled in different directions by impending nuptials,",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

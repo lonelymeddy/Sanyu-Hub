@@ -1,0 +1,28 @@
+{
+  "id": "movie-452",
+  "title": "The Exorcism",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=452",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZGFmN2Q0NDYtYjI5OS00MDA5LThjYTctNTFiY2ZmMDNkNjAwXkEyXkFqcGdeQXVyMTM1NjM2ODg1._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/exorcism.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "A troubled actor begins to unravel while shooting a horror film. His estranged daughter wonders if he's slipping back into his past addictions or if there's som",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

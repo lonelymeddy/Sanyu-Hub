@@ -1,0 +1,28 @@
+{
+  "id": "movie-789",
+  "title": "The Tale of Despereaux",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-kevo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=789",
+  "image_url": "https://images.moviesanywhere.com/18f798213b838568427aaba1791e62ad/5ff97ede-085e-4d58-a522-982c80a68e23.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/talesofdespruxo.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "The Tale of Despereaux is an animated movie about a mouse who teams up with a rat to rescue a princess",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

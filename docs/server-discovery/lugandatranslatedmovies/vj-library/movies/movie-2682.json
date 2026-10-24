@@ -1,0 +1,28 @@
+{
+  "id": "movie-2682",
+  "title": "My Father's Shadow",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ham"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2682",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNzNmNTE2YzMtZTgwZC00NGNhLWFlZWEtOGRjMzkzMGJjMTY4XkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/APRIL%20SERIES/WATCHING%20YOU/MY%20FATHERS%20SHADOW%20_%20VJ%20HAM%202026.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "A father reconnects with his sons during political unrest in Lagos.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

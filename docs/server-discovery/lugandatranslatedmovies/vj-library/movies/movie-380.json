@@ -1,0 +1,28 @@
+{
+  "id": "movie-380",
+  "title": "Look Both Ways",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=380",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYmU5ZTU3MWUtMmExZi00YjIxLWIyOWUtZTliNjFjMTEzNDEzXkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/lookbothways.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "On the eve of her college graduation, Natalie's life diverges into two parallel realities: one in which she becomes pregnant and must navigate motherhood in her",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

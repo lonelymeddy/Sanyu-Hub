@@ -1,0 +1,28 @@
+{
+  "id": "movie-1123",
+  "title": "I care A Lot",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1123",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNTg5M2NlZDItMmI5Yi00N2VmLTgyYmMtNDgzMzQ2ZjlmNzg5XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://kaguje.xyz/KAGUJE/1ST%20OFF%20OCTOBER/SINGLESSS/34567/ZZZ%20GODLOVE/I%20Care%20a%20Lot.2020.720%20Vj%20JUNIOR%40katflix..mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "kaguje.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 441: status code 441"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "\"I Care a Lot\" is a dark, satirical thriller about Marla Grayson, a professional, court-appointed guardian who exploits her elderly wards for financial gain.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

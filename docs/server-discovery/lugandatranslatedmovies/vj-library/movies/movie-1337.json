@@ -1,0 +1,28 @@
+{
+  "id": "movie-1337",
+  "title": "Ashfall",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1337",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMmIzNzkwMmUtZmZkNC00ZjkwLWFmOGItNGE3ZjQ1NmJlOGExXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://oopstry.mlegacytv.com/MOVIES/TRENDS/ASHFALL%201%20VJ%20IVO.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "oopstry.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Ashfall is a 2019 South Korean disaster-action film about a volcanic eruption on the China-North Korea border at Mount Baekdu, which threatens to destroy the Ko",
+  "release_year": 2019,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

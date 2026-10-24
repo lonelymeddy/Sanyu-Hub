@@ -1,0 +1,28 @@
+{
+  "id": "movie-591",
+  "title": "Hitch",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=591",
+  "image_url": "https://m.media-amazon.com/images/I/41I7gWBorAL._AC_UF894,1000_QL80_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/hitch.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "A smooth-talking man falls for a hardened columnist while helping a shy accountant woo a beautiful heiress. A smooth-talking man falls for a hardened columnist",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

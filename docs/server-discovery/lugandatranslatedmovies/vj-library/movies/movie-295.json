@@ -1,0 +1,28 @@
+{
+  "id": "movie-295",
+  "title": "The Devil Conspiracy",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=295",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMDc4NDYwM2YtYjdiNy00ZDZhLWFjNmItOTQwODg3NDZhNTk0XkEyXkFqcGdeQXVyMzQyMzY1MDk@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/thedevilconspiracy.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "In modern times, Laura investigates the angels' battle and is skeptical of its reality. A biotech firm, secretly a Lucifer-worshipping cult, aims to free Lucife",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

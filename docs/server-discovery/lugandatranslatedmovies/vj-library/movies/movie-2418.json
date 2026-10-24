@@ -1,0 +1,28 @@
+{
+  "id": "movie-2418",
+  "title": "4 minute mile",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2418",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTUwMzY4OTI5NV5BMl5BanBnXkFtZTgwNDUzNzYwMjE@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/4_MINUTE_MILE_JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "4 Minute Mile (2014) is a drama about Drew Jacobs, a troubled high school student who uses his speed to run drug errands. A former track coach trains him to run",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

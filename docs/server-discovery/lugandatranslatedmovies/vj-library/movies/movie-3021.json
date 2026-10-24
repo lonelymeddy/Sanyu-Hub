@@ -1,0 +1,28 @@
+{
+  "id": "movie-3021",
+  "title": "Lucky Strike",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ulio"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3021",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BODBhMTU2MzEtNjgwZS00YzA5LWE3MjctNTljZmZjYjNjYzhhXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/LUCKY%20STRIKE%20%20VJ%20ULIO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Lucky Strike is a 2026 World War II action thriller set during the Battle of the Bulge. It follows Captain John Castle, an engineering officer who is left stran",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1573",
+  "title": "Wrong Turn 1",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1573",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/8/85/Wrong_Turn_movie.jpg",
+  "video_sources": [
+    {
+      "url": "https://jport.pearlpix.xyz/Day1/WRONG%20TURN%20VJ%20ICE%20P.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jport.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Wrong Turn (2003) is a horror film about a group of friends who get stranded in the West Virginia woods after taking a wrong turn and become the prey of a famil",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

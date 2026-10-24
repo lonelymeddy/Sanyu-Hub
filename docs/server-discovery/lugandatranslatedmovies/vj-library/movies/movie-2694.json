@@ -1,0 +1,28 @@
+{
+  "id": "movie-2694",
+  "title": "Fred the movie",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-soul"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2694",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMWVhMjk4NTctYjYyYS00NjYxLWE5NTgtNTIzMTgzZDQyNzIyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/APIRL/FRED%20THE%20MOVIE%202026%20VJ%20SOUL%201080p%20(NO%20S).mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Fred: The Movie (2010) is a Nickelodeon comedy following hyperactive, high-pitched teen Fred Figglehorn (Lucas Cruikshank) on an \"epic\" journey to find his crus",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

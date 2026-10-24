@@ -1,0 +1,28 @@
+{
+  "id": "movie-2838",
+  "title": "Fury in the shadows",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2838",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZDVhNWVlZmYtOTUyNy00ODMxLTlkODEtOTgxZTIyMjkwN2U4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/BURY_IN_THE_SHADOW.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Fury in the Shadows (2026) is an action-crime-mystery film set in Southeast Asia during the 1980s. It follows a ruthless gang of armed robbers led by Tan Li (Xi",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

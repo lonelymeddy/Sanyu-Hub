@@ -1,0 +1,28 @@
+{
+  "id": "movie-2121",
+  "title": "Chasing Secrets",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2121",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNmJiYzBkZTctYjI4NS00YjMzLWExNTktN2JjMWE3YjgwNjI0XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/CHASINGSECRETSJR.2026.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "A WWII-era drama about an abused young girl who finds hope and love with an elderly Black couple, confronting racism and hardship.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

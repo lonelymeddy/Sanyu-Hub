@@ -1,0 +1,28 @@
+{
+  "id": "movie-2689",
+  "title": "Paul",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2689",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f7/Paul_2011_British_poster.jpg/250px-Paul_2011_British_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/APIRL/REMAKES%202/PAUL%20-%20EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Paul (2011) is a British-American sci-fi comedy road film starring Simon Pegg and Nick Frost as two British comic-book geeks, Graeme and Clive, who are on a pil",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

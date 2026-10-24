@@ -1,0 +1,28 @@
+{
+  "id": "movie-1249",
+  "title": "Chain Letter",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1249",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOTU4MDE4MDE2OF5BMl5BanBnXkFtZTcwMDQ0Njg4Mw@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://coward.mlegacytv.com/movies/only%20vj_junior/THE%20CHAIN%20LETTER%20-%20JR.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "coward.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "\"Chain Letter\" is a 2010 horror film about a group of high school friends who are targeted by a killer after they fail to forward a chain email.",
+  "release_year": 2010,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

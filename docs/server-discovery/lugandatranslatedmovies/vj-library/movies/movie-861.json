@@ -1,0 +1,28 @@
+{
+  "id": "movie-861",
+  "title": "Splice",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=861",
+  "image_url": "https://webservice.mymovies.dk/Posters/108959af-1e28-47b6-9397-c2e5a5398ced.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/splice.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "\"Splice\" is a 2009 science fiction horror film about two scientists, Clive and Elsa, who secretly experiment with splicing animal and human DNA, resulting in th",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

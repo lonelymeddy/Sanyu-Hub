@@ -1,0 +1,28 @@
+{
+  "id": "movie-389",
+  "title": "Come Play",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=389",
+  "image_url": "https://play-lh.googleusercontent.com/wR7D7Yc-BVp1o1So9cPZxFDSfOw1dnPjg11Bz0upn4YpTOzxE_jwhCau7DetwDFBzuymrE8IrYKz3_-mFXYR",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/comeplay.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Oliver, a young boy with non-verbal autism, uses a smartphone to communicate with people. But when he gets introduced to a monster through it, his parents rush",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

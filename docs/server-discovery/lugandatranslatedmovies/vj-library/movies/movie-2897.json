@@ -1,0 +1,28 @@
+{
+  "id": "movie-2897",
+  "title": "Little Brother",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2897",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/0/02/Little_Brother_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/LITTLE_BROTHER_EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Little Brother (2026) is an American buddy comedy film streaming on Netflix. It follows Rudd Landy, an uptight real estate agent, whose carefully curated life f",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

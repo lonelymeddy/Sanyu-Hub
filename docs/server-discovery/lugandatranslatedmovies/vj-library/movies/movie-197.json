@@ -1,0 +1,28 @@
+{
+  "id": "movie-197",
+  "title": "Puss in Boots",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-kevo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=197",
+  "image_url": "https://www.uphe.com/sites/default/files/styles/scale__344w_/public/2018/04/PussInBoots_PosterArt.jpg?itok=d5m-WMBC",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/puss.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Puss in Boots tries to steal magic beans from the infamous criminals Jack and Jill. The hero crosses paths with his female match, who leads Puss to his old frie",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

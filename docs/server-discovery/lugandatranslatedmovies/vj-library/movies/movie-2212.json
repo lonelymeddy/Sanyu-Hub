@@ -1,0 +1,28 @@
+{
+  "id": "movie-2212",
+  "title": "Equilibrium",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2212",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f6/Equilibriumposter.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie/EQUILIBRIUM.1080HP.Jr.A-B@(E.L.Pro+256782778952).mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Equilibrium (2002) is a dystopian sci-fi action thriller where emotions, art, and literature are outlawed to prevent war.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

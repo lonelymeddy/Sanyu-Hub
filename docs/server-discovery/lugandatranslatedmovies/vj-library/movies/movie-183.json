@@ -1,0 +1,28 @@
+{
+  "id": "movie-183",
+  "title": "Roleplay",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=183",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZWM3YjdhZjQtNWEwMS00YjVhLWFmMDUtMzU0ZTI0OTdkNWExXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/roleplay.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The story revolves around Emma (played by Kaley Cuoco), who leads a double life. To the outside world, she is a loving wife to Dave (played by David Oyelowo) an",
+  "release_year": 2019,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

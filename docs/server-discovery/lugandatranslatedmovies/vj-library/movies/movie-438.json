@@ -1,0 +1,28 @@
+{
+  "id": "movie-438",
+  "title": "Kill",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=438",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZjI1ZjM3NjUtYTc1Ni00ODJmLWI5YjQtMWZiZTAyNTFiZGY1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://nicetry.mlegacytv.com/MOVIES/JUNIOR%20LATEST/KILL%20JR%202024.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "nicetry.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "But when a gang of knife-wielding thieves led by the ruthless Fani (Raghav Juyal) begin to terrorize innocent passengers on his train, Amrit takes them on himse",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

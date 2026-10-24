@@ -1,0 +1,28 @@
+{
+  "id": "movie-2890",
+  "title": "The passenger 57",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ulio"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2890",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMGZkZGRiNmEtMjcyMC00OWVmLThhZjEtOWVmNmM3MTI2NjhmXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/THE_PASSENGER_57_ULIO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Passenger 57 (1992) is an action-thriller starring Wesley Snipes as John Cutter, an airline security expert. Cutter boards a commercial flight to Los Angeles to",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

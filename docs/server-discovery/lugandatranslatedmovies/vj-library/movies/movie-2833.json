@@ -1,0 +1,28 @@
+{
+  "id": "movie-2833",
+  "title": "Custody 1&2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2833",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZGMzMjIxMzItYTRlNi00YWM0LWJjOWYtMWJjODE1OTVlNGIxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/SERIES%209/ZHEN%20ZHAO/Custody%201.1080HP.ICE.P.A-B@(E.L.+256782778952)__Merged.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Indian"
+  ],
+  "description": "This is an action-thriller directed by Venkat Prabhu, starring Naga Chaitanya and Krithi Shetty. It follows an honest police constable who is assigned to escort",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

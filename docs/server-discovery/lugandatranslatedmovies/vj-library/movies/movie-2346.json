@@ -1,0 +1,28 @@
+{
+  "id": "movie-2346",
+  "title": "Boy Next Door",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2346",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/a/a7/The_Boy_Next_Door_2015.png",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/Boy Next Door.1080HP.Jr.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/Boy Next Door.1080HP.Jr.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "The Boy Next Door (2015) is an erotic thriller starring Jennifer Lopez as Claire Peterson, a separated high-school teacher who has a fleeting affair with her ch",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

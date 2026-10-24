@@ -1,0 +1,28 @@
+{
+  "id": "movie-2056",
+  "title": "Medellin",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2056",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOGY3NjJhYzUtN2RmMC00NGRhLTk2MWMtYWUzNDYxMmYxNWNiXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/next%20level%202/%20neri/fahad/MEDELIN%20JR..WebM",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A rescue mission in Colombia spirals into explosive chaos.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-2335",
+  "title": "Born A Champion",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2335",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZDY1MjI5NTQtNGU0OC00OWZkLWIxMmItNGU1Mjg0NTI0Njc5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/Born A Champion.1080HP.Jr.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/Born A Champion.1080HP.Jr.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Born a Champion (2021) is an action-drama starring and co-written by Sean Patrick Flanery as Mickey Kelley, one of the first American black belts in Brazilian J",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

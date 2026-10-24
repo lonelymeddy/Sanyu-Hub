@@ -1,0 +1,28 @@
+{
+  "id": "movie-1562",
+  "title": "You Got Served",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1562",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMGQ3Y2ZjYmUtNTUxYy00MThhLTg1N2UtZTU2Yzg0NTA5ZDE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "http://katflix.xyz/RASHIDA/baby/sex/You.Got.Served.2004.%20vj%20junior@katflixxxxxxx.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "katflix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error timed out>"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "A tight-knit crew of street dancers competes in a live dance-battle competition to win respect and cash.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

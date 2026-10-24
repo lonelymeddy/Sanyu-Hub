@@ -1,0 +1,28 @@
+{
+  "id": "movie-1563",
+  "title": "Born to Dance",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1563",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjIxMzA0MDA0M15BMl5BanBnXkFtZTgwMjMxMzY2NjE@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "http://namzentertainments.xyz/project/smart%201/Born%20to%20Dance%20by%20Vj%20Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "A young dancer from a tough neighborhood dreams of ballet-school success while juggling school, family pressure, and her rivals.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1434",
+  "title": "Nobody 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1434",
+  "image_url": "https://images.moviesanywhere.com/46a9a64b8fe35b51d94f21978614ec08/d7c811ed-66ac-4829-ac42-802c6d3b0a08.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.kampalarelaxation.com/allmovies/2025AUG/Halaand/Nobody%202%20VJ%20ICE%20P.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.kampalarelaxation.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "In Nobody 2, former assassin Hutch Mansell (Bob Odenkirk) takes his family on a vacation to a nostalgic theme park to reconnect, but a minor scuffle with a loca",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

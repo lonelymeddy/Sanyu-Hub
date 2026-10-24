@@ -1,0 +1,28 @@
+{
+  "id": "movie-691",
+  "title": "Shadow Dancer",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=691",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZmNmNTc3YzEtZjFhZC00OWE1LTk4MjEtNzc0N2E3MzRiMGM3XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/shadowdancer.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "After a failed bombing attack in London, Collette is arrested and offered a choice by an MI5 officer, Mac, who is assigned as her handler. Either she spends 25",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

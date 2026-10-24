@@ -1,0 +1,28 @@
+{
+  "id": "movie-2892",
+  "title": "Viswasam A",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-shield"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2892",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BY2EzNDUxODktMDIzNC00ZGFiLTk5NTItMTk3MDIyNjMxZTZlXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/VISWASAM_A_SHIELD.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Indian"
+  ],
+  "description": "Viswasam (2019) is a Tamil-language action-drama starring Ajith Kumar and Nayanthara, directed by Siva. It follows a charismatic village chief who reunites with",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

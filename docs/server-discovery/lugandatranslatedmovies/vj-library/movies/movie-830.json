@@ -1,0 +1,28 @@
+{
+  "id": "movie-830",
+  "title": "Don't Buy the Seller",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=830",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/6/68/Don%27t_Buy_the_Seller_poster.webp",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/dontbuytheseller.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Don't Buy the Seller (Korean: \ud0c0\uac9f; RR: Tages; lit. Target) is a 2023 South Korean crime thriller film co-written and directed by Park Hee-gon, starring Shin",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-353",
+  "title": "Would You Rather",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=353",
+  "image_url": "https://play-lh.googleusercontent.com/7q0NQ6v9hgAeQ0T3RI_lX_aAGohDcrF2ZxvV4AItK21QCCXtjYKzLGhVqfEiWuW9lf63=w240-h480-rw",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/wouldyourather.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "It is based on the party game \"would you rather\", and centers on a woman named Iris as she attends a dinner party, where she must partake in life-threatening ga",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

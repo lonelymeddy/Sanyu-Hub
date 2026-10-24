@@ -1,0 +1,28 @@
+{
+  "id": "movie-457",
+  "title": "Anyone But You",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=457",
+  "image_url": "https://resizing.flixster.com/JdMayYRDBiWLQAcfMSIhgpddN20=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzNkNTI4ODdiLTAyYTQtNGMxYS1hNGEwLTYzNDMwM2JjZDIwYi5qcGc=",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/anyonebutyou.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "In the edgy comedy Anyone But You, Bea (Sydney Sweeney) and Ben (Glen Powell) look like the perfect couple, but after an amazing first date something happens th",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

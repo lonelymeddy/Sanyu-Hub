@@ -1,0 +1,28 @@
+{
+  "id": "movie-3119",
+  "title": "Dolemite Is My Name",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ulio"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3119",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOTYyNGU3MDctZWU1NS00N2Y5LWE2MDUtOWFlMmVmM2IzNDQ5XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Dolemite_Is_My_Name_VJ_Ulio.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Dolemite Is My Name is a 2019 biographical comedy-drama film on Netflix about Rudy Ray Moore, a struggling 1970s Los Angeles artist who achieves underground sta",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

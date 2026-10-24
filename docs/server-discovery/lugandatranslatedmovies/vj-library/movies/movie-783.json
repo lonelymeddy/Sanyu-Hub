@@ -1,0 +1,28 @@
+{
+  "id": "movie-783",
+  "title": "The Howling: Reborn",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=783",
+  "image_url": "https://images.justwatch.com/poster/176597980/s718/the-howling-reborn.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/thehowling.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "On the eve of his high school graduation, unremarkable Will Kidman finally bonds with the girl he has long yearned for, reclusive Eliana Wynter. But he also dis",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

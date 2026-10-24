@@ -1,0 +1,28 @@
+{
+  "id": "movie-388",
+  "title": "You can't Run Forever",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=388",
+  "image_url": "https://www.signature-entertainment.co.uk/wp-content/uploads/2024/04/53829_2_YOU_CANT_RUN_FOREVER_AMAZON_FILM_1200x1600-415x553.jpg.webp",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/cantrunforever.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Suffering from acute anxiety, young Miranda faces a new terror when a serial killer chooses her as his next target. As he chases her through the woods, she soon",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

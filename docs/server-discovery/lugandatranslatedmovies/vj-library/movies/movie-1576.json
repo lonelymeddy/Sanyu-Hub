@@ -1,0 +1,28 @@
+{
+  "id": "movie-1576",
+  "title": "Black Ransom",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1576",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNmQ5NjY5ZDQtZjAzYy00NDBmLWFhNzYtMjM3Mjg1OTc4ZmViXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/BLACK%20RANSOM%20-%20BAD%20BLOOD%20JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Black Ransom is a 2010 Hong Kong action film about a former supercop, Inspector Mann Cheung (Simon Yam), who is pulled out of retirement to hunt down a gang of",
+  "release_year": 2010,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

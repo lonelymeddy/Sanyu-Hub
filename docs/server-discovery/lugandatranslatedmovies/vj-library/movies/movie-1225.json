@@ -1,0 +1,28 @@
+{
+  "id": "movie-1225",
+  "title": "How to Train Your Dragon",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1225",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/8/80/How_To_Train_Your_Dragon_2025_Poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/howtotrainyourdragon.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "\"How to Train Your Dragon\" tells the story of Hiccup, a young Viking who aspires to be a dragon slayer but instead becomes the unlikely friend of a young Night",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

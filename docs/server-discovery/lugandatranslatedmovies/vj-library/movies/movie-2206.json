@@ -1,0 +1,28 @@
+{
+  "id": "movie-2206",
+  "title": "Dark Tide",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2206",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTc4NTUxOTc3NV5BMl5BanBnXkFtZTcwNDkwOTgzNw@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie/DARK%20TIDE.1080HP.Jr.A-B@(E.L.Pro+256782778952).mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Dark Tide (2012) is a survival thriller starring Halle Berry as Kate, a haunted shark expert who, after a fatal attack kills a diver under her watch, reluctantl",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

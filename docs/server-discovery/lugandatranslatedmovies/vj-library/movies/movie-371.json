@@ -1,0 +1,28 @@
+{
+  "id": "movie-371",
+  "title": "Double Jeopardy",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=371",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/a/ab/Double_Jeopardy_%281992_film%29.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/doublejeopardy.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "A woman is found guilty for her husband's murder, but she thinks that he isn't dead and has deceitfully framed her. After releasing from prison, she searches fo",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1086",
+  "title": "George of the Jungle",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1086",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOWYwMzU2MDgtNTJmNy00MGRjLWI4N2ItNjA2ZGZkMTVjNjhmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/georgeofthejungle.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "\"George of the Jungle\" tells the story of George, a man raised by apes in the African jungle after being stranded as a baby",
+  "release_year": 2009,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

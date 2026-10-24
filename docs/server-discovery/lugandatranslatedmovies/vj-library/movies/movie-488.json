@@ -1,0 +1,28 @@
+{
+  "id": "movie-488",
+  "title": "The Borrowers",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=488",
+  "image_url": "https://images.moviesanywhere.com/2009aad9d48fea077445615af1f4fd1f/552dd649-53d4-4433-9cfe-dd43fbed7047.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/borrowers.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "A secret family of four-inch people living inside the walls of a house must save their home from an evil real estate developer. A secret family of four-inch peo",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

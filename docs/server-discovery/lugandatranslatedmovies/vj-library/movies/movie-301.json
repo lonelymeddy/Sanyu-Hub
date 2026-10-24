@@ -1,0 +1,28 @@
+{
+  "id": "movie-301",
+  "title": "The Piper",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=301",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNDlhYTEzOTMtYWU3ZC00NjU0LTg0YTgtNDRlMTI4YWYwMDg1XkEyXkFqcGdeQXVyNjcwMzExMzU@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/thepiper.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "When a composer is tasked with finishing her late mentor's concerto, she soon discovers that playing the music summons deadly consequences, leading her to uncov",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

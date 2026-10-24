@@ -1,0 +1,28 @@
+{
+  "id": "movie-2043",
+  "title": "Ocean Rescue",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2043",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYmQzNWM2NTEtNGU2Yi00MmVlLWE5MWItMGE1M2ZlNzI0Y2Y5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/OCEAN%20RESCUE%20MUSA%202025.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Chinese special forces race to stop terrorists from detonating a nuclear bomb at sea.",
+  "release_year": 2023,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-10-24T17:10:49.011668+00:00",
+  "source_website": "https://lugandatranslatedmovies.com/",
+  "statistics": {
+    "vjs_discovered": 31,
+    "movies_discovered": 1166,
+    "series_discovered": 6,
+    "episodes_discovered": 7,
+    "total_catalog_items": 1173,
+    "direct_image_urls_collected": 1129,
+    "direct_image_urls_verified": 971,
+    "direct_video_urls_discovered": 1165,
+    "video_sources_confirmed_playback": 282,
+    "video_sources_unverified_or_failed": 883,
+    "hosting_domains_identified": 40,
+    "failed_catalog_ids_count": 2326
+  }
+}

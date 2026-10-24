@@ -1,0 +1,28 @@
+{
+  "id": "movie-1127",
+  "title": "12 Angry Men",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1127",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMmI3Mzg0NTQtZjkwNi00YTgwLWI5M2QtNjVhMjM2OGExMGEyXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://oopstry.mlegacytv.com/MOVIES/JR/12%20ANGRY%20MEN%20___%20JR.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "oopstry.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "\"12 Angry Men\" is a 1957 American drama film about a jury of twelve men deliberating the fate of a young man accused of murder.",
+  "release_year": 2004,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

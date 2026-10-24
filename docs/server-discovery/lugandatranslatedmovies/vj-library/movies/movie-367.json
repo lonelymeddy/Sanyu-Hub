@@ -1,0 +1,28 @@
+{
+  "id": "movie-367",
+  "title": "Interrogation",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=367",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/a/a5/Interrogation_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/interogation.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "When the FBI find out that there is a bomb set to go off, they call an ace interrogator and an IT specialist to play the mastermind's games, only to realize tha",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

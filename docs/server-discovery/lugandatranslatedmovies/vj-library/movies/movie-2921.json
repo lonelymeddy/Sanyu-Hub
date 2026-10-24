@@ -1,0 +1,28 @@
+{
+  "id": "movie-2921",
+  "title": "Sorcerer heavenly master Dark Hades",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-shield"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2921",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZmYwNTA3ZDctMmExOC00NDg3LWEyMmYtMjEyZTNkMjk2YjAzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/SORCERER_HEAVENLY_MASTER_DARK_HADES_SHIELD.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Sorcerer Heavenly Master: Dark Hades is a 2025 Chinese action fantasy movie. It follows an ancient evil demon reborn after 100 years. Before the demon dies, it",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

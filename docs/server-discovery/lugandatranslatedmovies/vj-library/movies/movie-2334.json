@@ -1,0 +1,28 @@
+{
+  "id": "movie-2334",
+  "title": "Blind fire",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2334",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjQxOTNiZmUtNzRjYi00MDdjLTkyOWMtYjNlYTM5ZmE1MTEwXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/BLINDFIRE.1080HP.Jr.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Blindfire (2020) is a gritty crime drama inspired by true events, following a white police officer who kills an innocent Black man during a panicked hostage res",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

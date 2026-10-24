@@ -1,0 +1,28 @@
+{
+  "id": "movie-887",
+  "title": "Formed Police Unit",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=887",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjkxZDYwZTUtYmQ1Yy00MDJiLTlkNDEtM2I0YWM1YzY0NWEzXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/Formedpoliceunit.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "follows a Chinese peacekeeping police riot squad on an overseas mission, exploring their responses to new and serious challenges in war-torn areas",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

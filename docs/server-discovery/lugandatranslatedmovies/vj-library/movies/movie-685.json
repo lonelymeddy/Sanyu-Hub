@@ -1,0 +1,28 @@
+{
+  "id": "movie-685",
+  "title": "Hidden Fox",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=685",
+  "image_url": "https://pic4.iqiyipic.com/image/20220801/89/b1/v_168316754_m_601_en_260_360.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/hiddenfox.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "After two heroes are killed during an outside attempt to steal a hidden fortune, the treasure map inexplicably disappears -- until a decade later when the origi",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

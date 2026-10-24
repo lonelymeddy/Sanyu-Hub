@@ -1,0 +1,28 @@
+{
+  "id": "movie-2114",
+  "title": "Invasion USA",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2114",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjIxNDk2ZTQtMjgzNy00NTNmLWJhOTItZWY5NTFkMmMzMGYzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/INVASIONU.S.AJINGO.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Invasion U.S.A. is a Chuck Norris action film where a retired CIA agent must stop a communist-led terrorist invasion of America.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

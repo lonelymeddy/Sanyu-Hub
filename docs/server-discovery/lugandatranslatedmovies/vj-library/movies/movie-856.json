@@ -1,0 +1,28 @@
+{
+  "id": "movie-856",
+  "title": "Unthinkable",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=856",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTg4MTc3OTI4Nl5BMl5BanBnXkFtZTgwNDQyNjcxMTE@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/unthinkable.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "\"Unthinkable\" is a 2010 thriller about an FBI agent and a black ops interrogator racing against time to extract information from a terrorist suspect who has pla",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-2539",
+  "title": "Murder at highland manor",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2539",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYmJiMzA3YTctOTBlMC00NDQ4LTg3NmMtMTMzYWFmMjkyODc4XkEyXkFqcGc@._V1_QL75_UY281_CR15,0,190,281_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/MURDER_AT_HIGHLAND_MANOR_EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Thriller involving dark secrets in a remote estate.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

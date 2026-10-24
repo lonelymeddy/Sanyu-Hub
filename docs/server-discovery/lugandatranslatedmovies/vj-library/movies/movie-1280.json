@@ -1,0 +1,28 @@
+{
+  "id": "movie-1280",
+  "title": "Instant Family",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1280",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZDE5MDAzNTItMmM5ZC00NGZmLTlhOTMtOTJhYzQ4NDQyY2QwXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://munolaba.com/5752b/f80/d1dec.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munolaba.com",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "When Pete and Ellie decide to start a family, they stumble into the world of foster care adoption. They hope to take in one small child, but when they meet thre",
+  "release_year": 2020,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

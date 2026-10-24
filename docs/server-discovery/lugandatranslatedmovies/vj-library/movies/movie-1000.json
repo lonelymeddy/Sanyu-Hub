@@ -1,0 +1,28 @@
+{
+  "id": "movie-1000",
+  "title": "The Siege of Jadotville",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1000",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjJhZGY0NTUtOTI0Yi00NGY5LTk4ZWYtYmVmNGFiMTZiZTgwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/thesiegeofjadotville.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"The Siege of Jadotville\" is a 2016 action-war film based on the true story of a battle during the Congo Crisis in 1961.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

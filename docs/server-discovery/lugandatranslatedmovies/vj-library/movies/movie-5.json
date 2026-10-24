@@ -1,0 +1,28 @@
+{
+  "id": "movie-5",
+  "title": "Adore",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=5",
+  "image_url": "https://m.media-amazon.com/images/I/71MVqG8x0vL._AC_UF1000,1000_QL80_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/project/SMART%202/Adore%20by%20Vj%20Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "Lil (Naomi Watts) and Roz (Robin Wright) are two lifelong friends, having grown up together as neighbors in an idyllic beach town.",
+  "release_year": 2018,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-2900",
+  "title": "Razor A",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2900",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYjI1MTJmYWEtNDA2MC00N2JlLWIwMmItODM4ODAxMDFkOTA2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/RAZOR_A_EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Indian"
+  ],
+  "description": "Razor (2026) is a Telugu-language action-thriller directed by Ravi Babu. The plot follows a young girl hunted by a ruthless politician. An unassuming dog groome",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

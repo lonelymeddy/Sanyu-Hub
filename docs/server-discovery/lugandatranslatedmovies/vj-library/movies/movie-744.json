@@ -1,0 +1,28 @@
+{
+  "id": "movie-744",
+  "title": "Headless Horseman",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=744",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjM5YzAyZGEtMjQ4Yy00OTU0LTlhNTItYjE4YWNhMTA3NDY3XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/headlesshorsemen.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "There are multiple movies about the Headless Horseman, including a 2022 action horror film, a 1922 film, and a 2007 film.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

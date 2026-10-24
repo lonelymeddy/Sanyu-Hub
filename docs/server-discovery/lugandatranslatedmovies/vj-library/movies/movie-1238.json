@@ -1,0 +1,28 @@
+{
+  "id": "movie-1238",
+  "title": "In the Land of Saints and Sinners",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1238",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/IntheLandofSaintsandSinners.jpg/250px-IntheLandofSaintsandSinners.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/landofsaintsandsinners.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "In a remote Irish village, a damaged Finbar is forced to fight for redemption after a lifetime of sins, but what price is he willing to pay? In the land of sain",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

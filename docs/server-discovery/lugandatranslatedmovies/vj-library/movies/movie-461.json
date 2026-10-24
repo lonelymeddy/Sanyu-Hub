@@ -1,0 +1,28 @@
+{
+  "id": "movie-461",
+  "title": "Survivor",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=461",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/f/f0/Survivor_poster.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/survivor.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Framed for a terrorist bombing, a foreign service officer (Milla Jovovich) must dodge a top assassin (Pierce Brosnan), while racing against time to thwart a dea",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

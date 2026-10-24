@@ -1,0 +1,28 @@
+{
+  "id": "movie-1340",
+  "title": "China Salesman",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1340",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNzNhYTgyOGUtYWUxOC00MjA0LTljNDEtM2M5N2NkNjgyMmRjXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://storage.kampalarelaxation.com/allmovies/Movies/Vj%20Junior/China%20Salesman.2012..Junior.1080.Emma.Soft.0753088855.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "storage.kampalarelaxation.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "China Salesman is a 2017 Chinese action film about a young Chinese IT engineer who travels to a war-torn African country to win a telecommunications contract, o",
+  "release_year": 2017,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

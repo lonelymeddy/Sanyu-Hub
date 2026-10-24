@@ -1,0 +1,28 @@
+{
+  "id": "movie-2881",
+  "title": "Kill house A",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2881",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMmI2Y2Y1NjMtNDI1YS00N2ZhLWJhZTgtNzU3NzZiOGU0MmZhXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/KILL_HOUSE_A_EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The story follows a desperate civilian couple who venture into a deadly, Russian-occupied \"gray zone\" to rescue their kidnapped daughter. After their car is she",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

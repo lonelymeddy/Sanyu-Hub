@@ -1,0 +1,28 @@
+{
+  "id": "movie-2219",
+  "title": "Thirst VJ Ham",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2219",
+  "image_url": "https://images.amcsvod.io/7a74b74c936dcbb0_boxart.jpg?w=600&amp;h=900&amp;fit=crop&amp;crop=edges&amp;auto=format,compress",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie/Thirst__vj%20ham%202026.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "Park Chan-wook\u2019s Thirst (2009) is a stylish, dark erotic horror-thriller about a devoted priest who becomes a vampire.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

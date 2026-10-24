@@ -1,0 +1,28 @@
+{
+  "id": "movie-456",
+  "title": "Secret Defence",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=456",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZjU2MzNmYWEtZjM5Yy00MTkxLTkyNjMtMTdkYmM1ODc1YjRkXkEyXkFqcGdeQXVyMjUyNDk2ODc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/secretdefence.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The world of Secret Defense is however today's France and Middle East, and a parallel thread develops the background of an abused criminal who falls of dark sid",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

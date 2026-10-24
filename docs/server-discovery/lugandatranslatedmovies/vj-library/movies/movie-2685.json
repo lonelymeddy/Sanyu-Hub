@@ -1,0 +1,28 @@
+{
+  "id": "movie-2685",
+  "title": "The dead lands",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2685",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMzE1YzRlMjUtMWY4Yy00Mjc1LWFlZjEtZDJhYzc1MTk1OWViXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/project/SMART%202/The%20Dead%20Lands%20by%20Vj%20Junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "The Dead Lands (2014) is a New Zealand action-adventure film set in pre-European M\u0101ori times, following Hongi, a chieftain's teenage son who seeks revenge afte",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

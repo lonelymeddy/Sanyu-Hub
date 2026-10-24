@@ -1,0 +1,28 @@
+{
+  "id": "movie-2888",
+  "title": "The land of sometimes",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-mosco"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2888",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNWExNmFlNTEtYmQzNC00NzQ4LWFlMjQtZjVjZjEyMTJiNDY4XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/THE_LAND_OF_SOMETIMES_MOSCO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "The Land of Sometimes is a 2026 animated musical-fantasy film where twin siblings, Alfie and Elise, use a magical Wish Watch on Christmas Eve. Whisked away to a",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1407",
+  "title": "Great White",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1407",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOTUzMDk0MDEtYjUzYy00YWE4LTlhNTktYjgyYTczNjZiNjQ5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://munoserver5.club/c4d33/4de/great%20white.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver5.club",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 441: status code 441"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Great White is a 2021 Australian monster horror-thriller about a seaplane trip that turns into a nightmare for five passengers when their plane is destroyed by",
+  "release_year": 2021,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1566",
+  "title": "Bring It On Again",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1566",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BY2Y2ZTc5MmMtNjBmOC00ZmNkLTgxOWUtOTE3ZjAxMWFlNGViXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://ucc337225910e1b69e9e42dd488d.dl.dropboxusercontent.com/cd/0/inline/Cj0pfFca4iVJELR--G2c9NYrTH38jWC2luFikgus_qf4ivKKGUY9TQlUFp4H8xMPGK3K5-g0Z_p6u_X8F6-XZMRAU2kMP0pjpH_KUYCQfenm21nmocRoYUTxz66M8hps8d_em7CIyHsPei7YgEIYNSY5/file",
+      "source_type": "direct_file",
+      "hosting_domain": "ucc337225910e1b69e9e42dd488d.dl.dropboxusercontent.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "A group of outcasts starts their own cheer squad to challenge the varsity team and prove they belong.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

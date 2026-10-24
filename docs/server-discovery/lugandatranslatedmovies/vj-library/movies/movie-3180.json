@@ -1,0 +1,28 @@
+{
+  "id": "movie-3180",
+  "title": "The Blackout",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3180",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYjUyMmI3OTEtYjFmOC00M2E5LWFkMWUtMTIwMzE4MTViODczXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/The_Blackout_VJ_Ice_P.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "The The Blackout (2019 film) is a Russian science fiction action thriller directed by Egor Baranov that follows a mysterious global event plunging Earth into da",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-871",
+  "title": "Strange Darling",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=871",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BODhjYjgzNDktYmJhNi00OGUzLWE5NDgtMzk5YWExZTkzMDViXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/strangedarling.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Strange Darling is a 2023 American thriller film written and directed by JT Mollner and starring Willa Fitzgerald, Kyle Gallner, Barbara Hershey, and Ed Begley",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

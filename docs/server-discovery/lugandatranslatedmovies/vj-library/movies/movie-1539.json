@@ -1,0 +1,28 @@
+{
+  "id": "movie-1539",
+  "title": "Red Eye",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1539",
+  "image_url": "https://images.plex.tv/photo?size=large-1920&amp;scale=1&amp;url=https%3A%2F%2Fmetadata-static.plex.tv%2Fc%2Fgracenote%2Fc1c788980d839b0aa823db367e75357c.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/projects/yarabi/movies%202/RED%20EYE%20JR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 404: Not Found"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "An overnight flight to Miami quickly becomes a battle for survival when Lisa realizes her seatmate plans to use her as part of a chilling assassination plot a",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

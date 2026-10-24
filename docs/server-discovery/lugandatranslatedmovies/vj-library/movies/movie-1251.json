@@ -1,0 +1,28 @@
+{
+  "id": "movie-1251",
+  "title": "Butcher Boys",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1251",
+  "image_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10134885_p_v8_aa.jpg",
+  "video_sources": [
+    {
+      "url": "https://jim.pearlpix.xyz/MOVIES/REMAKES%201/THE%20BUTCHER%20BOYS%20-%20JR%20[JB%20HD%20movies].mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jim.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "\"Butcher Boys\" is a 2013 horror film about a group of friends celebrating a birthday at a fancy restaurant who are then terrorized by a group of cannibalistic t",
+  "release_year": 2021,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

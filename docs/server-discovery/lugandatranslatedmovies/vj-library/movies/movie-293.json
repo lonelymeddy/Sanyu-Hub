@@ -1,0 +1,28 @@
+{
+  "id": "movie-293",
+  "title": "Ambush",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=293",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYjBlZmE1YzgtZTcxYS00ZjJiLTg4NmEtOTg0OTdlYjI5YjFhXkEyXkFqcGdeQXVyOTg4MDYyNw@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/ambush.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A group of young elite commandos, led by Captain Drummond are tasked with collecting highly classified information that can change the fate of the war. A group",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

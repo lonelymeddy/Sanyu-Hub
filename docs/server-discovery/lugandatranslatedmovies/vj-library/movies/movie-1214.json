@@ -1,0 +1,28 @@
+{
+  "id": "movie-1214",
+  "title": "The Division Agent Origins",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1214",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjk3MzE1NzIyOF5BMl5BanBnXkFtZTgwNTEwMDc3NzE@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/thedivisionagentorigin.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Clancy's The Division\". It depicts the activation of a secret, self-supporting unit of agents, known as The Division, in a chaotic, pandemic-stricken New York C",
+  "release_year": 2019,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

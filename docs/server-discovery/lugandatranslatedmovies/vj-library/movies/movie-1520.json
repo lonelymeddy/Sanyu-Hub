@@ -1,0 +1,28 @@
+{
+  "id": "movie-1520",
+  "title": "Life With Luca",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1520",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMmM1OWJmY2MtYjk4OS00NGRjLWJlN2UtNWU5ODNmMzFlOTYxXkEyXkFqcGc@._V1_QL75_UY281_CR19,0,190,281_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/VJ%20JUNIOR/NEW%20NEW/LIFE.WITH.LUCA.SOUL.2025.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Life With Luca is a 2023 spinoff movie from the Canadian series Life with Derek, following Derek and Casey 15 years after the finale.",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

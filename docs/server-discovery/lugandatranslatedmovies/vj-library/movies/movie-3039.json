@@ -1,0 +1,28 @@
+{
+  "id": "movie-3039",
+  "title": "Crush The Wicked",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3039",
+  "image_url": "https://jambofilms.com/img/storage/gallery/movies/crush%20the%20wicked/images%20P.jpg?w=640&amp;fm=webp",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Crush_The_Wicked_VJ_EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The Conflict: In 1992, a violent criminal gang led by Zhang Bin commits brutal carjackings and murders.",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

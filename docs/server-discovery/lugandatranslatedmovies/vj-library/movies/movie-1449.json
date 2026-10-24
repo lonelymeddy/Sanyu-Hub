@@ -1,0 +1,28 @@
+{
+  "id": "movie-1449",
+  "title": "Rescue Under Fire",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1449",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BOTljMTI2NDUtZGZhYi00NDFiLWJmNTYtY2U0YTlhOGMxMjc4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/17/Rescue%20Under%20Fire.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Rescue Under Fire is a 2017 Spanish war action film about a Spanish army unit in Afghanistan sent on a rescue mission that quickly turns into a fight for surviv",
+  "release_year": 2017,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

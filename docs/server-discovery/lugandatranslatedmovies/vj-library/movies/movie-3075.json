@@ -1,0 +1,28 @@
+{
+  "id": "movie-3075",
+  "title": "Whale Rider",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-mark"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3075",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjM3MzE2OTEwNF5BMl5BanBnXkFtZTcwNTkyMTg4NA@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Whale_Rider_VJ_Mark.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Whale Rider is a 2002 drama film about a twelve-year-old M\u0101ori girl named Paikea (Pai) who fights to prove she can be the leader of her tribe, despite her gran",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1010",
+  "title": "Star Trek Section 31 Angry",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1010",
+  "image_url": "https://mlpnk72yciwc.i.optimole.com/cqhiHLc.IIZS~2ef73/w:600/h:889/q:75/https://bleedingcool.com/wp-content/uploads/2024/12/PASU-215_SocialAdapts_BRANDED_ChairArt_4x5_Vertical_2700x4000_120424_2c446a46ddbd1b7c3a318862584c931f04148c41-600x889.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/startreksection31.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "\"Star Trek: Section 31\" is a 2025 American science fiction film starring Michelle Yeoh as Emperor Philippa Georgiou, who joins a covert Starfleet division to pr",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

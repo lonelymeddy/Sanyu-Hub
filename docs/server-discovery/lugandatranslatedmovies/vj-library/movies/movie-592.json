@@ -1,0 +1,28 @@
+{
+  "id": "movie-592",
+  "title": "The Wedding Date",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=592",
+  "image_url": "https://images.moviesanywhere.com/e77a1a097e129948f5ee44e2e467d780/4fc2c52b-55e3-4b16-998f-fe0f247fb056.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/weddingdate.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Single-girl anxiety causes Kat Ellis to hire a male escort to pose as her boyfriend at her sister's wedding. Her plan, an attempt to dupe her ex-fianc\u00e9, who du",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

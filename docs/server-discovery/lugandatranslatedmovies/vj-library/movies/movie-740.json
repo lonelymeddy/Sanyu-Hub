@@ -1,0 +1,28 @@
+{
+  "id": "movie-740",
+  "title": "Moana 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=740",
+  "image_url": "https://lumiere-a.akamaihd.net/v1/images/au_movies_moana2_poster_540x810_ed6c0c86.jpeg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/moana2.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "In \"Moana 2\", Moana, now a skilled wayfinder, receives a call from her ancestors, leading her on a new voyage across the vast Pacific Ocean to explore dangerous",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

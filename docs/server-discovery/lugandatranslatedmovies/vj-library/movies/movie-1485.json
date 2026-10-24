@@ -1,0 +1,28 @@
+{
+  "id": "movie-1485",
+  "title": "Soldier",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1485",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZjY2ZDg4ZTktNDU2Zi00NzA0LThlZDktZjUwOTQwMDgyZjhjXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/REMAKES%201/SOLDIER___JINGO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Soldier is a 1998 sci-fi action film starring Kurt Russell as a genetically-bred super-soldier who is deemed obsolete and left for dead on a waste planet",
+  "release_year": 2000,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

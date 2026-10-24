@@ -1,0 +1,28 @@
+{
+  "id": "movie-594",
+  "title": "We Have a Ghost",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=594",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLaTlv5U9jzvt2JbH6wGjyI51djwuQ7U9zJg&amp;s",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/wehaveaghost.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "After finding a ghost with a murky past haunting their new house, a family becomes internet sensations \u2014 and the targets of a shadowy government agency.",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1343",
+  "title": "Intrusion",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1343",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/e/e2/Intrusion_2021_film_poster.png",
+  "video_sources": [
+    {
+      "url": "https://munoserver3.club/d06f6/171/inrusion.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver3.club",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "ntrusion is a 2021 American psychological thriller film available on Netflix about a couple, Meera (Freida Pinto) and Henry (Logan Marshall-Green), who move to",
+  "release_year": 2021,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

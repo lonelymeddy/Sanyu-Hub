@@ -1,0 +1,28 @@
+{
+  "id": "movie-1215",
+  "title": "Norbit",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1215",
+  "image_url": "https://m.media-amazon.com/images/I/81N6lCiT4FL._SL1500_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/norbit.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "\"Norbit\" is a 2007 comedy film directed by Brian Robbins and starring Eddie Murphy in multiple roles. The story revolves around Norbit, a man who grew up in an",
+  "release_year": 2011,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

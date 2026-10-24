@@ -1,0 +1,28 @@
+{
+  "id": "movie-1285",
+  "title": "Extremely Wicked, Shockingly Evil and Vile",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1285",
+  "image_url": "https://m.media-amazon.com/images/I/81MEN8VUolL._UF894,1000_QL80_.jpg",
+  "video_sources": [
+    {
+      "url": "https://oopstry.mlegacytv.com/MOVIES/JR/EXTREMELY%20WICKED%20SHOCKINGLY%20EVIL%20AND%20VILE%20__%20JR.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "oopstry.mlegacytv.com",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "A chronicle of the crimes of Ted Bundy from the perspective of Liz, his longtime girlfriend, who refused to believe the truth about him for years",
+  "release_year": 2019,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

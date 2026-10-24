@@ -1,0 +1,28 @@
+{
+  "id": "movie-1524",
+  "title": "Shadow of God",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1524",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYWRmOTllMjQtZTY2Ny00YjM5LWJhNWYtNjBlMjAwNzE3YjFhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/REMAKES%205/shadow%20of%20god%20__vj%20ham%202025.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Shadow of God is a 2025 horror film about an elite exorcist, Father Mason Harper, who returns home to find his long-thought-dead father, Angus, is alive but see",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

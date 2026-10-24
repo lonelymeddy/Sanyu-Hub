@@ -1,0 +1,28 @@
+{
+  "id": "movie-1982",
+  "title": "The Rough Neck",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1982",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNzVjNjRiNjEtMzM3YS00ZDZiLWFiY2YtMjVlYjNkNWUwNzNiXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/THEROUGHNECK.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "The Roughneck (2025) is a gritty revenge thriller about a young oil worker, Chris Davis, brutally attacked on his way to his wedding, who enlists his estranged,",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

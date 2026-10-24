@@ -1,0 +1,28 @@
+{
+  "id": "movie-2014",
+  "title": "Afterburn",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2014",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BYzJlZjJkZWItZGU4YS00ZWYwLTk3M2YtMDk2MGI4ZjNlYTI4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW PRO/Afterburn.2025.720 VJ JUNIOR@katflix..mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/NEW PRO/Afterburn.2025.720 VJ JUNIOR@katflix..mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Afterburn (2025) is a post-apocalyptic action film starring Dave Bautista.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

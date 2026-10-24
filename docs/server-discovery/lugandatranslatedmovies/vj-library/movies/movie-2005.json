@@ -1,0 +1,28 @@
+{
+  "id": "movie-2005",
+  "title": "Hunting Season",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2005",
+  "image_url": "https://i1.wp.com/image.tmdb.org/t/p/w500/cbryTyaWdqrKpQCw6K7zm2jrB5v.jpg?ssl=1&amp;resize=256,384",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW PRO/Hunting Season vj junior.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/NEW PRO/Hunting Season vj junior.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Hunting Season (2025) is an action-thriller about a reclusive survivalist and his daughter who rescue a wounded woman and are hunted by a ruthless drug lord.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

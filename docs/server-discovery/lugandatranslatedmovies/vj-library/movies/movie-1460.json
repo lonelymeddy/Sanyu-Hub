@@ -1,0 +1,28 @@
+{
+  "id": "movie-1460",
+  "title": "Stolen Girl",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1460",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMzdmOWE0ZDgtMjVhOS00ZTk5LThjZDYtN2U5OTU4OTFkNTA2XkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW%20PRO/STOLEN%20GIRL%20JR%202025.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Stolen Girl is a 2025 action-thriller based on a true story about a single mother, Maureen (Kate Beckinsale), who hires an ex-Marine mercenary, Robeson (Scott E",
+  "release_year": 2025,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

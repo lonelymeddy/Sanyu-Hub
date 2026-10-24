@@ -1,0 +1,28 @@
+{
+  "id": "movie-248",
+  "title": "We are the Millers",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=248",
+  "image_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p9742380_p_v8_ad.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/werthemillers.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "David, a drug dealer, plans to go to Mexico to pick up a shipment of Marijuana. He hires a stripper, Rose, and two teenagers to pose as his family and cross the",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

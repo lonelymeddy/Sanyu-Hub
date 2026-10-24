@@ -1,0 +1,28 @@
+{
+  "id": "movie-503",
+  "title": "Line Walker 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=503",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoC1v2B8bR1RTghgXbco1pu05wCyfkX_4zRQ&amp;s",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/linewalker2.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "After they uncover evidence that there is corruption in the police force, three police officers in Hong Kong try to discover which of them can be trusted.",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-517",
+  "title": "Teenage Mutant Ninja Turtles 1",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=517",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjUzODQ5MDY5NV5BMl5BanBnXkFtZTgwOTc1NzcyMjE@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/tmnt.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Teenage Mutant Ninja Turtles follows the Turtles on a quest to save their master, Splinter, with their new allies, April O'Neil and Casey Jones, from the Shredd",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

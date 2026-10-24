@@ -1,0 +1,28 @@
+{
+  "id": "movie-1435",
+  "title": "The Circle",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1435",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjY2OTM2Njc3Ml5BMl5BanBnXkFtZTgwNDgzODU3MTI@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://s3.eu-west-1.wasabisys.com/fred/THE%20CIRCLE.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "s3.eu-west-1.wasabisys.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 400: Bad Request"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "The 2017 film The Circle is a dystopian thriller about Mae Holland, who takes a dream job at a powerful tech company called the Circle, a place that blends soci",
+  "release_year": 2017,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1482",
+  "title": "Blood for Dust",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1482",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNjllYWViN2QtNzE4NS00ODRmLWFjNTktMmYxZWI4ZjY5ODhmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/MOVIES/VJ%20ULIO/BLOOD%20FOR%20DUST%202025%20VJ.ULIO.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Blood for Dust is a crime thriller about a former salesman named Cliff (Scoot McNairy) who gets pulled back into a criminal past after losing his job.",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-508",
+  "title": "Fortunes of War",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=508",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BN2ZiZmEzZmUtNmY4Yy00ZWMzLWFjZmQtNzQ5MmFhNTk5YWIzXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/fortunesofwar.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "When a raid in Normandy goes wrong, a British commando team find themselves holed up in a barn, cut off from their comrades and encircled by Wehrmacht forces. S",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

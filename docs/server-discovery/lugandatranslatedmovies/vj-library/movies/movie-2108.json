@@ -1,0 +1,28 @@
+{
+  "id": "movie-2108",
+  "title": "The Hand",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2108",
+  "image_url": "https://images.moviesanywhere.com/b879a8595a90a2d36f40bc8b4c8fbed0/f294a2a0-e068-42e1-ab8f-dcdcae5d230e.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/THEHAND--%20JR.2026.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "The Hand (1981) is a psychological horror film about a comic book artist who loses his hand in an accident, only for it to return and commit murders.",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

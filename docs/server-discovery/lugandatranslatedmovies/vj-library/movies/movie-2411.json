@@ -1,0 +1,28 @@
+{
+  "id": "movie-2411",
+  "title": "Survivor VJ Muba",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2411",
+  "image_url": "https://play-lh.googleusercontent.com/ag_DTd61M4B3c8l4KMiTV7UKRwhA6vnzWeu31dO6R-ILF1MqJIMO4Ad9O1x6pHQiVGs",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/Survivor.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "Survivor (2015) is a high-stakes action-thriller starring Milla Jovovich as a U.S. State Department employee stationed in London. After being framed for a terro",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

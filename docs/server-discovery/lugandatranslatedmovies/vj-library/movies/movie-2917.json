@@ -1,0 +1,28 @@
+{
+  "id": "movie-2917",
+  "title": "My Dearest Assassin",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-ice-p"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2917",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZTMyMDM1ZjMtZjIyZS00MGMwLThiOTItZDk0MWE4MzNlZjExXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/MY_DEAREST_ASSASSIN_ICEP.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "My Dearest Assassin is a Thai action-romance film. It follows Lhan, a woman born with an extremely rare blood type that makes her a valuable black market target",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

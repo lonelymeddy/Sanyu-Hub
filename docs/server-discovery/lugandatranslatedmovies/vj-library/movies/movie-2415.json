@@ -1,0 +1,28 @@
+{
+  "id": "movie-2415",
+  "title": "Wicked VJ Kevin",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2415",
+  "image_url": "https://upload.wikimedia.org/wikipedia/en/3/3c/Wicked_%282024_film%29_poster.png",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movies1/Wicked by Vj Kevin.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jtzmag.com",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/movies1/Wicked by Vj Kevin.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Adventure"
+  ],
+  "description": "Wicked (2024), directed by Jon M. Chu, is a musical fantasy film that serves as a prequel to The Wizard of Oz, chronicling the untold origin story of the witche",
+  "release_year": null,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-2896",
+  "title": "Aporia",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2896",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BODRmZDQ4MDMtMWEzMC00ZWNlLWFhOGItNDBjODIzMjhlMzYwXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://www.vibez.site/Aporia_2019_Vj_EMMY.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "www.vibez.site",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Horror"
+  ],
+  "description": "Aporia (2023) is a sci-fi drama directed by Jared Mosh\u00e9, following Sophie (Judy Greer), a grieving widow struggling to care for her teenage daughter after her",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

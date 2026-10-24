@@ -1,0 +1,28 @@
+{
+  "id": "movie-2064",
+  "title": "Mr and Mrs Smith",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2064",
+  "image_url": "https://images.moviesanywhere.com/289ac862a716798dfc1672759fbca60d/598331e6-d61c-4fea-ad55-d219d858ad89.jpg",
+  "video_sources": [
+    {
+      "url": "https://hzupaqgkflmqjjrivkwc.supabase.co/storage/v1/object/public/movies/movie1/Mr.and.Mrs.Smith.2005.DC.1080p.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "hzupaqgkflmqjjrivkwc.supabase.co",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "A married couple discover they are both secret assassins working for rival agencies.",
+  "release_year": 2005,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

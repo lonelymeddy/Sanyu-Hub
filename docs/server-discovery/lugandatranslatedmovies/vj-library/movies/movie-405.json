@@ -1,0 +1,28 @@
+{
+  "id": "movie-405",
+  "title": "6 Underground",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=405",
+  "image_url": "https://imageio.forbes.com/specials-images/imageserve/5df13e10e961e1000738da93/0x0.jpg?format=jpg&amp;crop=1156,649,x227,y0,safe&amp;height=900&amp;width=1600&amp;fit=bounds",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/6underground.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Bay produced the film with his longtime business partner Ian Bryce and Skydance's David Ellison, Dana Goldberg and Don Granger. It follows a group of people who",
+  "release_year": 2024,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

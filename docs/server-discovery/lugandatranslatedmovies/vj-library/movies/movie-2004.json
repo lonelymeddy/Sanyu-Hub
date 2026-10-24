@@ -1,0 +1,28 @@
+{
+  "id": "movie-2004",
+  "title": "Sarah's Oil",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2004",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BODYwNmM0NjUtMGFlMS00YjIzLWEwYTAtZGE3ZWYzMGUxMmZkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://namzentertainments.xyz/NEW PRO/Sarahs.Oil.2025.720 VJ JUNIOR.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "namzentertainments.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: URL can't contain control characters. '/NEW PRO/Sarahs.Oil.2025.720 VJ JUNIOR.mp4' (found at least ' ')"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "Sarah's Oil is a faith-based historical drama based on the true story of Sarah Rector, a young African American girl in early 1900s Oklahoma who inherits worthl",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

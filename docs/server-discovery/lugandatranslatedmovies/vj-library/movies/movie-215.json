@@ -1,0 +1,28 @@
+{
+  "id": "movie-215",
+  "title": "Boonie Bears",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-kevo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=215",
+  "image_url": "https://allvj.com/upload/fav%20icons/boni%20small.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/bonnie.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Animation"
+  ],
+  "description": "Two bears, Briar and Bramble, try to stop Logger Vick from destroying their forest home.",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

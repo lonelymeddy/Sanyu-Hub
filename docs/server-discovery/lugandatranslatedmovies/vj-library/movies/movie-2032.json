@@ -1,0 +1,28 @@
+{
+  "id": "movie-2032",
+  "title": "Hush",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2032",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjNjYWZjOGUtZDhjMS00ZWQ1LTg2OGEtNDY3MTdmZTA1YWNmXkEyXkFqcGc@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/december/VJ%20JUNIOR/HUSH.VJ.JUNIOR.2025.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Thriller"
+  ],
+  "description": "A deaf writer must outsmart a masked killer in a silent game of survival.",
+  "release_year": 2016,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-2686",
+  "title": "Legend of the Fist The Return of Chen Zhen",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-jingo"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=2686",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNmJjZTBhMWYtNDk3Ni00YjkyLTg0OWItNmM2MWViNjM2MjZmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/APIRL/REMAKES%202/LEGEND%20OF%20THE%20FIST.CHENZHEN___VJ%20JINGO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Legend of the Fist: The Return of Chen Zhen (2010) is a high-octane martial arts film starring Donnie Yen as the legendary hero, who returns to 1920s Shanghai t",
+  "release_year": 2026,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

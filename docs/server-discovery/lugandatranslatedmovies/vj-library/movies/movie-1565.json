@@ -1,0 +1,28 @@
+{
+  "id": "movie-1565",
+  "title": "Picture This 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-junior"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1565",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMjI4MTQ0MTU2N15BMl5BanBnXkFtZTcwMjMwMDU2NA@@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://kaguje.xyz/KAGUJE/1ST%20OFF%20OCTOBER/SINGLESSS/34567/ZZZ%20GODLOVE/Picture.This.2025.%20720%20Vj%20JUNIOR%40katflix.mp4https://kaguje.xyz/KAGUJE/1ST%20OFF%20OCTOBER/SINGLESSS/34567/ZZZ%20GODLOVE/Picture.This.2025.%20720%20Vj%20JUNIOR%40katflix.mp",
+      "source_type": "direct_file",
+      "hosting_domain": "kaguje.xyz",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 405: Method Not Allowed"
+    }
+  ],
+  "genres": [
+    "High School"
+  ],
+  "description": "When her summer job forces her back into high school, she must confront old crushes, new rivals, and the art of growing up.",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "movie-1525",
+  "title": "Are We Done Yet? 2",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1525",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTIwMDQyNjQzNl5BMl5BanBnXkFtZTcwMjEwODI0MQ@@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jimmy.pearlpix.xyz/REMAKES%205/ARE%20WE%20DONE%20YET%20%20.%202%20-%20EMMY.mkv",
+      "source_type": "direct_file",
+      "hosting_domain": "jimmy.pearlpix.xyz",
+      "format": "mkv",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 403: Forbidden"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "There is no official movie titled Are We Done Yet? 2; however, there is a sequel to the 2005 film Are We There Yet? called Are We Done Yet? (2007), which follow",
+  "release_year": 2007,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

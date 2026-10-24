@@ -1,0 +1,28 @@
+{
+  "id": "movie-3211",
+  "title": "Street Fighter Assassins Fist The Movie",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=3211",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BNzg1ODQ2MzUxOV5BMl5BanBnXkFtZTgwMjg2MDk4MDE@._V1_.jpg",
+  "video_sources": [
+    {
+      "url": "https://pub-86fb3181579649118df994b2cd3cb437.r2.dev/Street_Fighter_Assassins_Fist_The_Movie_VJ_Emmy.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "pub-86fb3181579649118df994b2cd3cb437.r2.dev",
+      "format": "mp4",
+      "verification_status": "confirmed_playback",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP 200, Content-Type: video/mp4"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "Street Fighter: Assassin's Fist takes us back to the formative years of the iconic characters, Ryu and Ken, as they live a traditional warrior's life in the sec",
+  "release_year": 2026,
+  "verification_status": "confirmed_playback",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

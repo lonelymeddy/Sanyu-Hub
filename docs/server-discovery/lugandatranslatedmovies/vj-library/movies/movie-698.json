@@ -1,0 +1,28 @@
+{
+  "id": "movie-698",
+  "title": "Alien Country",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=698",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZTA1NGRjZTEtN2Y1Ny00Y2IzLWIxZmMtNzkxMjFhMzQ4MWUzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/aliencountry.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Sci-Fi"
+  ],
+  "description": "Biologically engineered alien creatures have invaded the small town of Blue River. Now Jimmy, and his pregnant girlfriend, Everly must work together to stop the",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

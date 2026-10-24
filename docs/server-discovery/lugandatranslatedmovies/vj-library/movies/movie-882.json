@@ -1,0 +1,28 @@
+{
+  "id": "movie-882",
+  "title": "La Dolce Villa",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=882",
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLZnYbfOv1guesD3NQfyNZ4wMHNEbsAWgQv8QHRuU2UZBg2tzK_604T8o85yWGITHwpoo&amp;usqp=CAU",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/Ladolcevilla.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "\"La Dolce Villa\" follows a successful businessman, Eric, who travels to Italy to dissuade his daughter Olivia from restoring a crumbling villa, but instead find",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

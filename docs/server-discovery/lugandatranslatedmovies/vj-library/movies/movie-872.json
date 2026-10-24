@@ -1,0 +1,28 @@
+{
+  "id": "movie-872",
+  "title": "The Six Triple Eight",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=872",
+  "image_url": "https://images.squarespace-cdn.com/content/60455d6a513f6b5c4dccdb4c/1735996413498-GU0I835DCK9Y9ZPHOTH9/six_triple_eight_ver3_xlg.jpg?content-type=image%2Fjpeg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/thesixtripleeight.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Drama"
+  ],
+  "description": "What is The Six Triple Eight about? The Six Triple Eight tells the inspiring true story of the incredible and brave women of the first and only Women's Army Cor",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

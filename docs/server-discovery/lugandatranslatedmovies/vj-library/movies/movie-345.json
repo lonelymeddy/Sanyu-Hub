@@ -1,0 +1,28 @@
+{
+  "id": "movie-345",
+  "title": "Lazareth",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj-emmy"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=345",
+  "image_url": "https://resizing.flixster.com/O2lE9cW5UWdyy-hVmzmEZ3cuDFQ=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p26873247_v_v13_aa.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/mov/lazareth.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Action"
+  ],
+  "description": "A woman protects her orphaned nieces from a self- destructing world, raising them in isolation until an outsider threatens their peaceful existence.",
+  "release_year": 2023,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

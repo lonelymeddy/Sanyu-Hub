@@ -1,0 +1,28 @@
+{
+  "id": "movie-1401",
+  "title": "Bad Influence",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=1401",
+  "image_url": "https://image.tmdb.org/t/p/w342//3xVWCNDAgr01G1Lkjd7F9sAGOc4.jpg",
+  "video_sources": [
+    {
+      "url": "https://munoserver56.club/coco/coco22/BAD%20INFLUENCE%202025%20VJ.ULIO.mp4",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver56.club",
+      "format": "mp4",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "HTTP Error: HTTP Error 441: status code 441"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "Bad Influence is a 2025 Spanish film available on Netflix about an ex-convict hired to protect a wealthy heiress from a stalker, only to develop a forbidden att",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}

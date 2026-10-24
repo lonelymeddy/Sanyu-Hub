@@ -1,0 +1,28 @@
+{
+  "id": "movie-693",
+  "title": "A Guy Thing",
+  "content_type": "movie",
+  "vj_ids": [
+    "others"
+  ],
+  "source_page_url": "https://lugandatranslatedmovies.com/movie_details.php?id=693",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BMTMxOTg3MDczMl5BMl5BanBnXkFtZTcwNzU5MTkzNA@@._V1_FMjpg_UX1000_.jpg",
+  "video_sources": [
+    {
+      "url": "https://jtzmag.com/movie/aguything.html",
+      "source_type": "embed",
+      "hosting_domain": "jtzmag.com",
+      "format": "unknown",
+      "verification_status": "unverified",
+      "last_checked": "2026-10-24T17:10:49.011668+00:00",
+      "notes": "Connection/Network Error: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "genres": [
+    "Romance"
+  ],
+  "description": "Paul Morse and Karen Cooper are about to get married in Seattle. During his bachelor party, Paul has a chat with one of the dancers at the party, Becky Jackson,",
+  "release_year": 2025,
+  "verification_status": "unverified",
+  "last_checked": "2026-10-24T17:10:49.011668+00:00"
+}
