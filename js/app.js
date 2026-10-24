@@ -89,35 +89,45 @@ function ensureCountryOnboardingOverlayExists() {
     overlay.setAttribute("aria-hidden", "true");
 
     overlay.innerHTML = `
-        <div class="country-screen-container">
-            <!-- 1. INFORMATION SECTION - TOP -->
-            <div class="country-intro-section">
-                <div class="country-intro-logo">sanyu<span>hub</span></div>
-                <h1 class="country-intro-headline">Your entertainment.<br>Your country.</h1>
-                <p class="country-intro-desc">Selecting a country helps personalize your available movies, TV shows, radio stations, live channels, and concerts.</p>
+        <div class="landing-page-wrapper">
+            <!-- TOP HALF: CINEMATIC COLLAGE -->
+            <div class="landing-top-collage">
+                <img src="/images/landing-collage.png" alt="SanyuHub Collage" class="landing-collage-img">
             </div>
 
-            <!-- 2. SEPARATE COUNTRY-SELECTION SECTION -->
-            <div class="country-selection-section">
-                <h2 class="country-section-heading">Select your country</h2>
-                <p class="country-section-subtext">You can change this anytime in your settings.</p>
+            <!-- BOTTOM HALF: WEBSITE INFORMATION & COUNTRY SELECTION -->
+            <div class="landing-bottom-content">
+                <div class="landing-bottom-inner">
+                    <!-- 1. WEBSITE NAME -->
+                    <h1 class="landing-brand-title">sanyu<span>hub</span></h1>
 
-                <!-- CLOSED CONTROL -->
-                <button type="button" id="countrySelectControl" class="country-select-control" aria-label="Open country selector">
-                    <span id="countrySelectControlValue" class="country-select-value">Choose your country</span>
-                    <svg class="country-select-chevron" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                </button>
+                    <!-- 2. WEBSITE DESCRIPTION -->
+                    <p class="landing-brand-desc">Your entertainment. Your country.</p>
 
-                <div id="countryValidationMsg" class="country-validation-msg">Please select a country to continue</div>
-            </div>
+                    <!-- 3. COUNTRY SEARCH SECTION -->
+                    <div id="landingCountrySearchSection" class="landing-country-search-section">
+                        <div class="search-bar-wrapper landing-country-search-wrapper">
+                            <span class="search-input-icon">
+                                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                            </span>
+                            <input type="text" id="landingCountryInput" class="search-page-input" placeholder="Search your country" aria-label="Search your country" autocomplete="off" spellcheck="false">
+                        </div>
+                        <div id="landingCountryResults" class="landing-country-results"></div>
+                    </div>
 
-            <!-- 5. CONTINUE BUTTON -->
-            <div class="country-continue-container">
-                <button type="button" id="countryContinueBtn" class="country-continue-btn">Continue</button>
+                    <!-- 4. SELECTED COUNTRY & CONTINUE SECTION -->
+                    <div id="landingCountrySelectedSection" class="landing-country-selected-section" style="display: none;">
+                        <div class="landing-selected-country-card">
+                            <span id="landingSelectedCountryName" class="landing-selected-country-name"></span>
+                            <button type="button" id="landingChangeCountryBtn" class="landing-change-country-btn" aria-label="Change country selection">Change</button>
+                        </div>
+                        <button type="button" id="countryContinueBtn" class="country-continue-btn">Continue</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 3. INTERACTIVE BOTTOM SHEET PICKER -->
+        <!-- INTERACTIVE BOTTOM SHEET PICKER FOR SETTINGS -->
         <div id="countrySheetOverlay" class="country-sheet-overlay" aria-hidden="true">
             <div class="country-sheet-card" role="dialog" aria-label="Select your country">
                 <div class="country-sheet-header">
@@ -137,17 +147,58 @@ function ensureCountryOnboardingOverlayExists() {
 
     document.body.appendChild(overlay);
 
-    const selectControl = document.getElementById("countrySelectControl");
-    const sheetOverlay = document.getElementById("countrySheetOverlay");
-    const sheetClose = document.getElementById("countrySheetClose");
-    const searchInput = document.getElementById("countrySheetSearchInput");
+    const countryInput = document.getElementById("landingCountryInput");
     const continueBtn = document.getElementById("countryContinueBtn");
+    const changeBtn = document.getElementById("landingChangeCountryBtn");
 
-    if (selectControl) {
-        selectControl.addEventListener("click", () => {
-            openCountryBottomSheet();
+    if (countryInput) {
+        countryInput.addEventListener("focus", () => {
+            renderLandingCountryResults(countryInput.value);
+        });
+
+        countryInput.addEventListener("input", (e) => {
+            renderLandingCountryResults(e.target.value);
         });
     }
+
+    if (changeBtn) {
+        changeBtn.addEventListener("click", () => {
+            tempSelectedCountry = null;
+            updateLandingCountryStateUI();
+            if (countryInput) {
+                countryInput.value = "";
+                countryInput.focus();
+                renderLandingCountryResults("");
+            }
+        });
+    }
+
+    if (continueBtn) {
+        continueBtn.addEventListener("click", () => {
+            if (!tempSelectedCountry || !COUNTRIES_CONFIG[tempSelectedCountry]) {
+                return;
+            }
+
+            const isFromSettings = overlay.getAttribute("data-from-settings") === "true";
+            setActiveCountryCode(tempSelectedCountry);
+            closeCountryOnboardingModal();
+
+            if (isFromSettings) {
+                if (!window.location.pathname.endsWith("/") && window.location.pathname !== "/index.html") {
+                    window.location.href = "/";
+                } else {
+                    refreshPageForCountryChange();
+                }
+            } else {
+                refreshPageForCountryChange();
+            }
+        });
+    }
+
+    // Bottom sheet listeners for Settings change country page
+    const sheetOverlay = document.getElementById("countrySheetOverlay");
+    const sheetClose = document.getElementById("countrySheetClose");
+    const sheetSearchInput = document.getElementById("countrySheetSearchInput");
 
     if (sheetClose) {
         sheetClose.addEventListener("click", () => {
@@ -163,36 +214,9 @@ function ensureCountryOnboardingOverlayExists() {
         });
     }
 
-    if (searchInput) {
-        searchInput.addEventListener("input", (e) => {
+    if (sheetSearchInput) {
+        sheetSearchInput.addEventListener("input", (e) => {
             renderCountrySheetList(e.target.value);
-        });
-    }
-
-    if (continueBtn) {
-        continueBtn.addEventListener("click", () => {
-            if (!tempSelectedCountry || !COUNTRIES_CONFIG[tempSelectedCountry]) {
-                const msg = document.getElementById("countryValidationMsg");
-                if (msg) msg.style.display = "block";
-                continueBtn.classList.add("disabled-hint");
-                setTimeout(() => continueBtn.classList.remove("disabled-hint"), 500);
-                return;
-            }
-
-            const isFromSettings = overlay.getAttribute("data-from-settings") === "true";
-            setActiveCountryCode(tempSelectedCountry);
-            closeCountryOnboardingModal();
-
-            if (isFromSettings) {
-                // If country changed from Settings, return user to Home page smoothly
-                if (!window.location.pathname.endsWith("/") && window.location.pathname !== "/index.html") {
-                    window.location.href = "/";
-                } else {
-                    refreshPageForCountryChange();
-                }
-            } else {
-                refreshPageForCountryChange();
-            }
         });
     }
 
@@ -203,6 +227,59 @@ function ensureCountryOnboardingOverlayExists() {
             }
         }
     });
+}
+
+function renderLandingCountryResults(filterText = "") {
+    const resultsContainer = document.getElementById("landingCountryResults");
+    if (!resultsContainer) return;
+
+    resultsContainer.innerHTML = "";
+    const query = (filterText || "").trim().toLowerCase();
+
+    const matches = Object.values(COUNTRIES_CONFIG).filter(c => {
+        if (!query) return true;
+        return c.name.toLowerCase().includes(query) || c.code.toLowerCase().includes(query);
+    });
+
+    if (matches.length === 0) {
+        resultsContainer.innerHTML = `<div class="landing-country-no-results">No supported country matches "${filterText.replace(/</g, "&lt;")}"</div>`;
+        resultsContainer.style.display = "block";
+        return;
+    }
+
+    matches.forEach(country => {
+        const item = document.createElement("button");
+        item.type = "button";
+        item.className = "landing-country-result-item";
+        item.textContent = country.name;
+
+        item.addEventListener("click", () => {
+            tempSelectedCountry = country.code;
+            updateLandingCountryStateUI();
+        });
+
+        resultsContainer.appendChild(item);
+    });
+
+    resultsContainer.style.display = "block";
+}
+
+function updateLandingCountryStateUI() {
+    const searchSection = document.getElementById("landingCountrySearchSection");
+    const selectedSection = document.getElementById("landingCountrySelectedSection");
+    const selectedNameEl = document.getElementById("landingSelectedCountryName");
+
+    if (tempSelectedCountry && COUNTRIES_CONFIG[tempSelectedCountry]) {
+        const config = COUNTRIES_CONFIG[tempSelectedCountry];
+        if (selectedNameEl) selectedNameEl.textContent = config.name;
+        if (searchSection) searchSection.style.display = "none";
+        if (selectedSection) selectedSection.style.display = "flex";
+    } else {
+        if (searchSection) searchSection.style.display = "block";
+        if (selectedSection) selectedSection.style.display = "none";
+    }
+
+    updateControlValueUI();
 }
 
 function updateControlValueUI() {
@@ -334,9 +411,9 @@ function openCountryOnboardingModal(forceOpen = false) {
     const overlay = document.getElementById("countryOnboardingOverlay");
 
     if (!hasUserSetCountry() || forceOpen) {
-        tempSelectedCountry = getActiveCountryCode();
+        tempSelectedCountry = hasUserSetCountry() ? getActiveCountryCode() : null;
         overlay.setAttribute("data-from-settings", forceOpen ? "true" : "false");
-        updateControlValueUI();
+        updateLandingCountryStateUI();
         overlay.classList.add("active");
         overlay.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
