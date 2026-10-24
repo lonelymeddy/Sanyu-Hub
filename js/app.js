@@ -80,6 +80,8 @@ function ensureNavbarCountryButton() {
 let tempSelectedCountry = null;
 
 function ensureCountryOnboardingOverlayExists() {
+    ensureCountrySheetOverlayExists();
+
     if (document.getElementById("countryOnboardingOverlay")) return;
 
     // Main onboarding overlay container
@@ -98,6 +100,7 @@ function ensureCountryOnboardingOverlayExists() {
             <!-- BOTTOM HALF: WEBSITE INFORMATION & COUNTRY SELECTION -->
             <div class="landing-bottom-content">
                 <div class="landing-bottom-inner">
+                    <div class="landing-top-flex-spacer"></div>
                     <!-- 1. WEBSITE NAME -->
                     <h1 class="landing-brand-title">sanyu<span>hub</span></h1>
 
@@ -112,7 +115,7 @@ function ensureCountryOnboardingOverlayExists() {
                             </span>
                             <input type="text" id="landingCountryInput" class="search-page-input" placeholder="Search your country" aria-label="Search your country" autocomplete="off" spellcheck="false">
                         </div>
-                        <div id="landingCountryResults" class="landing-country-results"></div>
+                        <div id="landingCountryResults" class="landing-country-results" style="display: none;"></div>
                     </div>
 
                     <!-- 4. SELECTED COUNTRY & CONTINUE SECTION -->
@@ -124,23 +127,6 @@ function ensureCountryOnboardingOverlayExists() {
                         <button type="button" id="countryContinueBtn" class="country-continue-btn">Continue</button>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- INTERACTIVE BOTTOM SHEET PICKER FOR SETTINGS -->
-        <div id="countrySheetOverlay" class="country-sheet-overlay" aria-hidden="true">
-            <div class="country-sheet-card" role="dialog" aria-label="Select your country">
-                <div class="country-sheet-header">
-                    <h3 class="country-sheet-title">Select your country</h3>
-                    <button type="button" id="countrySheetClose" class="country-sheet-close" aria-label="Close country selector">
-                        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-                    </button>
-                </div>
-                <div class="country-sheet-search-box">
-                    <svg class="country-sheet-search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                    <input type="text" id="countrySheetSearchInput" class="country-sheet-search-input" placeholder="Search country..." aria-label="Search country name" autocomplete="off" spellcheck="false">
-                </div>
-                <div class="country-sheet-list" id="countrySheetList"></div>
             </div>
         </div>
     `;
@@ -179,24 +165,38 @@ function ensureCountryOnboardingOverlayExists() {
                 return;
             }
 
-            const isFromSettings = overlay.getAttribute("data-from-settings") === "true";
             setActiveCountryCode(tempSelectedCountry);
             closeCountryOnboardingModal();
-
-            if (isFromSettings) {
-                if (!window.location.pathname.endsWith("/") && window.location.pathname !== "/index.html") {
-                    window.location.href = "/";
-                } else {
-                    refreshPageForCountryChange();
-                }
-            } else {
-                refreshPageForCountryChange();
-            }
+            refreshPageForCountryChange();
         });
     }
+}
 
-    // Bottom sheet listeners for Settings change country page
-    const sheetOverlay = document.getElementById("countrySheetOverlay");
+function ensureCountrySheetOverlayExists() {
+    if (document.getElementById("countrySheetOverlay")) return;
+
+    const sheetOverlay = document.createElement("div");
+    sheetOverlay.id = "countrySheetOverlay";
+    sheetOverlay.className = "country-sheet-overlay";
+    sheetOverlay.setAttribute("aria-hidden", "true");
+    sheetOverlay.innerHTML = `
+        <div class="country-sheet-card" role="dialog" aria-label="Select your country">
+            <div class="country-sheet-header">
+                <h3 class="country-sheet-title">Select your country</h3>
+                <button type="button" id="countrySheetClose" class="country-sheet-close" aria-label="Close country selector">
+                    <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:currentColor;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="country-sheet-search-box">
+                <svg class="country-sheet-search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                <input type="text" id="countrySheetSearchInput" class="country-sheet-search-input" placeholder="Search country..." aria-label="Search country name" autocomplete="off" spellcheck="false">
+            </div>
+            <div class="country-sheet-list" id="countrySheetList"></div>
+        </div>
+    `;
+
+    document.body.appendChild(sheetOverlay);
+
     const sheetClose = document.getElementById("countrySheetClose");
     const sheetSearchInput = document.getElementById("countrySheetSearchInput");
 
@@ -236,8 +236,13 @@ function renderLandingCountryResults(filterText = "") {
     resultsContainer.innerHTML = "";
     const query = (filterText || "").trim().toLowerCase();
 
+    // Hide country list initially and whenever query is empty
+    if (!query) {
+        resultsContainer.style.display = "none";
+        return;
+    }
+
     const matches = Object.values(COUNTRIES_CONFIG).filter(c => {
-        if (!query) return true;
         return c.name.toLowerCase().includes(query) || c.code.toLowerCase().includes(query);
     });
 
@@ -282,6 +287,21 @@ function updateLandingCountryStateUI() {
     updateControlValueUI();
 }
 
+function updateSettingsCountryName() {
+    const settingsNameEl = document.getElementById("currentCountryName");
+    const appPrefNameEl = document.getElementById("appPrefCountryName");
+    const settingsValEl = document.getElementById("settingsCountrySelectValue");
+    const code = getActiveCountryCode();
+    const config = COUNTRIES_CONFIG[code] || COUNTRIES_CONFIG.ug;
+
+    if (settingsNameEl) settingsNameEl.textContent = config.name;
+    if (appPrefNameEl) appPrefNameEl.textContent = config.name;
+    if (settingsValEl) {
+        settingsValEl.textContent = config.name;
+        settingsValEl.classList.remove("placeholder");
+    }
+}
+
 function updateControlValueUI() {
     const valEl = document.getElementById("countrySelectControlValue");
     const settingsValEl = document.getElementById("settingsCountrySelectValue");
@@ -311,36 +331,46 @@ function updateControlValueUI() {
     if (msg) msg.style.display = "none";
 }
 
+function initSettingsMainPage() {
+    const option = document.getElementById("settingsCountryOption");
+    const nameEl = document.getElementById("currentCountryName");
+
+    if (nameEl || option) {
+        updateSettingsCountryName();
+    }
+
+    if (option) {
+        option.addEventListener("click", (e) => {
+            e.preventDefault();
+            ensureCountrySheetOverlayExists();
+            tempSelectedCountry = getActiveCountryCode();
+            openCountryBottomSheet();
+        });
+    }
+}
+
 function initSettingsCountryPage() {
     const control = document.getElementById("settingsCountrySelectControl");
     const saveBtn = document.getElementById("saveCountryBtn");
-    if (!control && !saveBtn) return;
 
-    ensureCountryOnboardingOverlayExists();
+    ensureCountrySheetOverlayExists();
     tempSelectedCountry = getActiveCountryCode();
     updateControlValueUI();
+    updateSettingsCountryName();
 
     if (control) {
         control.addEventListener("click", () => {
+            tempSelectedCountry = getActiveCountryCode();
             openCountryBottomSheet();
         });
     }
 
     if (saveBtn) {
         saveBtn.addEventListener("click", () => {
-            if (!tempSelectedCountry || !COUNTRIES_CONFIG[tempSelectedCountry]) {
-                return;
+            if (tempSelectedCountry && COUNTRIES_CONFIG[tempSelectedCountry]) {
+                setActiveCountryCode(tempSelectedCountry);
             }
-
-            const currentCode = getActiveCountryCode();
-
-            if (tempSelectedCountry === currentCode) {
-                window.location.href = "/";
-                return;
-            }
-
-            setActiveCountryCode(tempSelectedCountry);
-            window.location.href = "/";
+            window.location.href = "/settings";
         });
     }
 }
@@ -358,7 +388,7 @@ function renderCountrySheetList(filterText = "") {
     });
 
     if (matchedCountries.length === 0) {
-        list.innerHTML = `<div class="country-sheet-empty">No countries found</div>`;
+        list.innerHTML = `<div class="country-sheet-empty">No supported countries match "${filterText.replace(/</g, "&lt;")}"</div>`;
         return;
     }
 
@@ -374,8 +404,11 @@ function renderCountrySheetList(filterText = "") {
 
         row.addEventListener("click", () => {
             tempSelectedCountry = country.code;
+            setActiveCountryCode(tempSelectedCountry);
             updateControlValueUI();
+            updateSettingsCountryName();
             closeCountryBottomSheet();
+            refreshPageForCountryChange();
         });
 
         list.appendChild(row);
@@ -383,10 +416,12 @@ function renderCountrySheetList(filterText = "") {
 }
 
 function openCountryBottomSheet() {
+    ensureCountrySheetOverlayExists();
     const sheetOverlay = document.getElementById("countrySheetOverlay");
     const searchInput = document.getElementById("countrySheetSearchInput");
     if (!sheetOverlay) return;
 
+    tempSelectedCountry = getActiveCountryCode();
     if (searchInput) searchInput.value = "";
     renderCountrySheetList("");
 
@@ -4514,5 +4549,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initSeriesWatchPage();
     initLiveTvCatalogue();
     initLiveTvWatchPage();
+    initSettingsMainPage();
     initSettingsCountryPage();
 });
