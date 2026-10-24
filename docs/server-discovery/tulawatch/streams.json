@@ -1,0 +1,42 @@
+[
+  {
+    "source_page": "https://www.tulawatch.com/watch.php?type=series&id=506",
+    "server_name": "TulaWatch Stream Episode API",
+    "stream_url": "https://www.tulawatch.com/ajax/episode.php",
+    "format": "JSON API",
+    "status": "BLOCKED",
+    "http_status": 200,
+    "tested_at": "2026-10-24T13:51:16Z",
+    "notes": "HTTP 200 OK ('{\"error\":\"login\"}'). Episode stream source resolution endpoint requires subscriber session token."
+  },
+  {
+    "source_page": "https://www.tulawatch.com/watch.php?type=movie&id=1001",
+    "server_name": "TulaWatch Download API",
+    "stream_url": "https://www.tulawatch.com/ajax/download.php",
+    "format": "JSON API",
+    "status": "BLOCKED",
+    "http_status": 200,
+    "tested_at": "2026-10-24T13:51:16Z",
+    "notes": "HTTP 200 OK ('{\"ok\":false,\"reason\":\"login\",\"error\":\"Please log in to download.\"}'). Direct media download API requires subscriber session."
+  },
+  {
+    "source_page": "https://www.tulawatch.com/tv-player.php?id=1",
+    "server_name": "TulaWatch Watch Session Heartbeat API",
+    "stream_url": "https://www.tulawatch.com/ajax/watch-session.php",
+    "format": "JSON API",
+    "status": "BLOCKED",
+    "http_status": 200,
+    "tested_at": "2026-10-24T13:51:16Z",
+    "notes": "HTTP 200 OK ('{\"ok\":false}'). Stream playback tracking and timer heartbeat API requires subscriber session token."
+  },
+  {
+    "source_page": "https://www.tulawatch.com/watch.php?type=movie&id=1001",
+    "server_name": "TulaWatch Download Proxy Server",
+    "stream_url": "https://www.tulawatch.com/ajax/download-proxy.php",
+    "format": "BINARY PROXY",
+    "status": "BLOCKED",
+    "http_status": 403,
+    "tested_at": "2026-10-24T13:51:16Z",
+    "notes": "HTTP 403 Forbidden. Direct media download proxy endpoint requires authorized subscriber session."
+  }
+]

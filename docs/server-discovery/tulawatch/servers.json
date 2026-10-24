@@ -1,0 +1,38 @@
+[
+  {
+    "server_name": "TulaWatch Main Platform Server",
+    "player_url": "https://www.tulawatch.com/",
+    "hostname": "www.tulawatch.com",
+    "source_page": "https://www.tulawatch.com/",
+    "status": "REACHABLE",
+    "tested_at": "2026-10-24T13:51:16Z",
+    "notes": "HTTP 200 OK (LiteSpeed/PHP). Web interface, video catalog, and landing pages accessible."
+  },
+  {
+    "server_name": "TulaWatch Live TV Player Server",
+    "player_url": "https://www.tulawatch.com/tv-player.php?id=1",
+    "hostname": "www.tulawatch.com",
+    "source_page": "https://www.tulawatch.com/live-tv.php",
+    "status": "REACHABLE",
+    "tested_at": "2026-10-24T13:51:16Z",
+    "notes": "HTTP 302 Redirect to /login.php for unauthenticated users. Live TV HLS player page requires authenticated session."
+  },
+  {
+    "server_name": "TulaWatch Movie & Series Player Server",
+    "player_url": "https://www.tulawatch.com/watch.php?type=movie&id=1001",
+    "hostname": "www.tulawatch.com",
+    "source_page": "https://www.tulawatch.com/movies.php",
+    "status": "REACHABLE",
+    "tested_at": "2026-10-24T13:51:16Z",
+    "notes": "HTTP 302 Redirect to /login.php for unauthenticated users. Plyr/HLS player page for movies and series requires authenticated session."
+  },
+  {
+    "server_name": "TulaWatch AJAX & Stream Acquisition API Server",
+    "player_url": "https://www.tulawatch.com/ajax/",
+    "hostname": "www.tulawatch.com",
+    "source_page": "https://www.tulawatch.com/js/watch-timer.js",
+    "status": "REACHABLE",
+    "tested_at": "2026-10-24T13:51:16Z",
+    "notes": "HTTP 200 OK open directory listing. Endpoints return authentication status / errors for unauthenticated requests."
+  }
+]
