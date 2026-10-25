@@ -8,25 +8,24 @@ const { getSupportedCountries } = require('./src/countries/registry');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// API Stream Proxy for Protected Media Streams (e.g. Swahix storage requiring Referer headers)
-app.get('/api/stream-proxy', (req, res) => {
-  const targetUrl = req.query.url;
+// Generic Media Stream Proxy Helper
+function proxyStream(targetUrl, req, res, defaultReferer) {
   if (!targetUrl || !targetUrl.startsWith('http')) {
-    return res.status(400).json({ error: 'Missing or invalid media URL parameter.' });
+    return res.status(400).json({ error: 'Missing or invalid target media URL parameter.' });
   }
 
   try {
     const parsed = new URL(targetUrl);
-    const allowedHosts = ['storage.swahix.com', 'swahix.com', 'www.swahix.com'];
-    if (!allowedHosts.includes(parsed.hostname.toLowerCase())) {
-      return res.status(403).json({ error: 'Proxy access restricted to authorized media domains.' });
-    }
-
     const clientHeaders = {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-      'Referer': 'https://swahix.com/',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       'Accept': '*/*'
     };
+
+    if (defaultReferer) {
+      clientHeaders['Referer'] = defaultReferer;
+    } else if (parsed.hostname.includes('swahix.com')) {
+      clientHeaders['Referer'] = 'https://swahix.com/';
+    }
 
     if (req.headers.range) {
       clientHeaders['Range'] = req.headers.range;
@@ -34,6 +33,11 @@ app.get('/api/stream-proxy', (req, res) => {
 
     const mod = parsed.protocol === 'https:' ? https : http;
     const proxyReq = mod.get(targetUrl, { headers: clientHeaders }, (proxyRes) => {
+      // Follow redirects internally
+      if (proxyRes.statusCode >= 300 && proxyRes.statusCode < 400 && proxyRes.headers.location) {
+        return proxyStream(proxyRes.headers.location, req, res, defaultReferer);
+      }
+
       res.status(proxyRes.statusCode);
 
       const passHeaders = ['content-type', 'content-length', 'accept-ranges', 'content-range', 'cache-control'];
@@ -56,15 +60,157 @@ app.get('/api/stream-proxy', (req, res) => {
       res.status(400).json({ error: 'Invalid URL formatting.' });
     }
   }
+}
+
+// Stream Proxy API Route for protected media URLs
+app.get('/api/stream-proxy', (req, res) => {
+  proxyStream(req.query.url, req, res);
 });
+
+// Stream Proxy Endpoints for Movies
+app.get('/api/stream/movie/:id', async (req, res) => {
+  try {
+    const supported = getSupportedCountries();
+    let allMovies = [];
+    for (const c of supported) {
+      const cData = await loadCountryCatalogue(c.code, 'movies');
+      if (cData && cData.movies) {
+        allMovies.push(...cData.movies);
+      }
+    }
+    const movie = allMovies.find(m => m.id === req.params.id);
+    if (!movie || !movie.mediaUrl) {
+      return res.status(404).json({ error: 'Movie stream not found.' });
+    }
+    proxyStream(movie.mediaUrl, req, res);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to process movie stream request.' });
+  }
+});
+
+// Stream Proxy Endpoints for Series
+app.get('/api/stream/series/:id', async (req, res) => {
+  try {
+    const supported = getSupportedCountries();
+    let allSeries = [];
+    for (const c of supported) {
+      const cData = await loadCountryCatalogue(c.code, 'series');
+      if (cData && cData.series) {
+        allSeries.push(...cData.series);
+      }
+    }
+    let targetEp = null;
+    for (const s of allSeries) {
+      if (s.episodes) {
+        const ep = s.episodes.find(e => e.id === req.params.id);
+        if (ep) {
+          targetEp = ep;
+          break;
+        }
+      }
+    }
+    if (!targetEp || !targetEp.mediaUrl) {
+      return res.status(404).json({ error: 'Series episode stream not found.' });
+    }
+    proxyStream(targetEp.mediaUrl, req, res);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to process series episode stream request.' });
+  }
+});
+
+// Stream Proxy Endpoints for Live TV Channels
+app.get('/api/stream/tv/:id', async (req, res) => {
+  try {
+    const supported = getSupportedCountries();
+    let allChannels = [];
+    for (const c of supported) {
+      const cData = await loadCountryCatalogue(c.code, 'tv');
+      if (cData && cData.tvChannels) {
+        allChannels.push(...cData.tvChannels);
+      }
+    }
+    const channel = allChannels.find(ch => ch.id === req.params.id);
+    if (!channel || !channel.streamUrl) {
+      return res.status(404).json({ error: 'Live TV channel stream not found.' });
+    }
+    proxyStream(channel.streamUrl, req, res);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to process TV channel stream request.' });
+  }
+});
+
+// Stream Proxy Endpoints for Radio
+app.get('/api/stream/radio/:id', async (req, res) => {
+  try {
+    const supported = getSupportedCountries();
+    let allRadio = [];
+    for (const c of supported) {
+      const cData = await loadCountryCatalogue(c.code, 'radio');
+      if (cData && cData.radioStations) {
+        allRadio.push(...cData.radioStations);
+      }
+    }
+    const station = allRadio.find(st => st.id === req.params.id);
+    if (!station || !station.streamUrl) {
+      return res.status(404).json({ error: 'Radio station stream not found.' });
+    }
+    proxyStream(station.streamUrl, req, res);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to process radio stream request.' });
+  }
+});
+
+// Helper to sanitize items and hide direct media URLs from API consumers
+function sanitizeMovieItem(movie, host) {
+  const clone = { ...movie };
+  clone.streamUrl = `${host}/api/stream/movie/${movie.id}`;
+  clone.embedUrl = `${host}/embed?type=movie&id=${movie.id}`;
+  delete clone.mediaUrl;
+  delete clone.externalUrl;
+  delete clone.source;
+  return clone;
+}
+
+function sanitizeSeriesItem(series, host) {
+  const clone = { ...series };
+  clone.embedUrl = `${host}/embed?type=series&id=${series.id}`;
+  if (clone.episodes && Array.isArray(clone.episodes)) {
+    clone.episodes = clone.episodes.map(ep => {
+      const epClone = { ...ep };
+      epClone.streamUrl = `${host}/api/stream/series/${ep.id}`;
+      epClone.embedUrl = `${host}/embed?type=series&id=${ep.id}`;
+      delete epClone.mediaUrl;
+      delete epClone.externalUrl;
+      delete epClone.source;
+      return epClone;
+    });
+  }
+  return clone;
+}
+
+function sanitizeTvItem(channel, host) {
+  const clone = { ...channel };
+  clone.streamUrl = `${host}/api/stream/tv/${channel.id}`;
+  clone.embedUrl = `${host}/embed?type=tv&id=${channel.id}`;
+  return clone;
+}
+
+function sanitizeRadioItem(station, host) {
+  const clone = { ...station };
+  clone.streamUrl = `${host}/api/stream/radio/${station.id}`;
+  clone.embedUrl = `${host}/embed?type=radio&id=${station.id}`;
+  return clone;
+}
 
 // API Route for Live TV Channels
 app.get('/api/live-tv/channels', async (req, res) => {
   try {
+    const host = `${req.protocol}://${req.get('host')}`;
     const country = (req.query.country || 'ug').trim().toLowerCase();
     const catalogueData = await loadCountryCatalogue(country, 'tv');
+    const sanitized = (catalogueData.tvChannels || []).map(ch => sanitizeTvItem(ch, host));
     res.json({
-      channels: catalogueData.tvChannels || []
+      channels: sanitized
     });
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve TV channels.' });
@@ -74,10 +220,12 @@ app.get('/api/live-tv/channels', async (req, res) => {
 // API Route for Radio Stations
 app.get('/api/radio', async (req, res) => {
   try {
+    const host = `${req.protocol}://${req.get('host')}`;
     const country = (req.query.country || 'ug').trim().toLowerCase();
     const catalogueData = await loadCountryCatalogue(country, 'radio');
+    const sanitized = (catalogueData.radioStations || []).map(st => sanitizeRadioItem(st, host));
     res.json({
-      stations: catalogueData.radioStations || []
+      stations: sanitized
     });
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve radio stations.' });
@@ -87,6 +235,7 @@ app.get('/api/radio', async (req, res) => {
 // API Route for Movies Catalogue
 app.get('/api/movies', async (req, res) => {
   try {
+    const host = `${req.protocol}://${req.get('host')}`;
     const country = (req.query.country || 'ug').trim().toLowerCase();
 
     const catalogueData = await loadCountryCatalogue(country, 'movies');
@@ -145,7 +294,6 @@ app.get('/api/movies', async (req, res) => {
     } else if (sort === 'rating') {
       filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
     } else {
-      // Default: recently-added
       filtered.reverse();
     }
 
@@ -161,7 +309,7 @@ app.get('/api/movies', async (req, res) => {
     if (page > totalPages && totalPages > 0) page = totalPages;
 
     const startIndex = (page - 1) * limit;
-    const paginatedMovies = filtered.slice(startIndex, startIndex + limit);
+    const paginatedMovies = filtered.slice(startIndex, startIndex + limit).map(m => sanitizeMovieItem(m, host));
 
     res.json({
       movies: paginatedMovies,
@@ -181,6 +329,7 @@ app.get('/api/movies', async (req, res) => {
 // Single movie detail API
 app.get('/api/movies/:id', async (req, res) => {
   try {
+    const host = `${req.protocol}://${req.get('host')}`;
     const supported = getSupportedCountries();
     let allMovies = [];
     for (const c of supported) {
@@ -194,7 +343,7 @@ app.get('/api/movies/:id', async (req, res) => {
     if (!movie) {
       return res.status(404).json({ error: 'Movie not found' });
     }
-    res.json(movie);
+    res.json(sanitizeMovieItem(movie, host));
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve movie details.' });
   }
@@ -203,6 +352,7 @@ app.get('/api/movies/:id', async (req, res) => {
 // API Route for Series Catalogue
 app.get('/api/series', async (req, res) => {
   try {
+    const host = `${req.protocol}://${req.get('host')}`;
     const country = (req.query.country || 'ug').trim().toLowerCase();
 
     const catalogueData = await loadCountryCatalogue(country, 'series');
@@ -259,7 +409,7 @@ app.get('/api/series', async (req, res) => {
     if (page > totalPages && totalPages > 0) page = totalPages;
 
     const startIndex = (page - 1) * limit;
-    const paginatedSeries = filtered.slice(startIndex, startIndex + limit);
+    const paginatedSeries = filtered.slice(startIndex, startIndex + limit).map(s => sanitizeSeriesItem(s, host));
 
     res.json({
       series: paginatedSeries,
@@ -278,6 +428,7 @@ app.get('/api/series', async (req, res) => {
 // Single Series Detail API
 app.get('/api/series/:id', async (req, res) => {
   try {
+    const host = `${req.protocol}://${req.get('host')}`;
     const supported = getSupportedCountries();
     let allSeries = [];
     for (const c of supported) {
@@ -291,7 +442,7 @@ app.get('/api/series/:id', async (req, res) => {
     if (!series) {
       return res.status(404).json({ error: 'Series not found' });
     }
-    res.json(series);
+    res.json(sanitizeSeriesItem(series, host));
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve series details.' });
   }
@@ -364,6 +515,11 @@ app.get('/api/concerts/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve concert details.' });
   }
+});
+
+// Embeddable Video Player Route
+app.get('/embed', (req, res) => {
+  res.sendFile(path.join(__dirname, 'embed.html'));
 });
 
 // Dynamic Page Routes
@@ -511,5 +667,5 @@ app.use((req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`SanyuHub web service running on port ${PORT}`);
+  console.log(`Meddy API web service running on port ${PORT}`);
 });

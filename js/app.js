@@ -3,26 +3,26 @@ const COUNTRIES_CONFIG = {
     ug: {
         code: "ug",
         name: "Uganda",
-        flag: "🇺🇬",
+        flag: "UG",
         ready: true,
         categories: { movies: true, series: true, radio: true, tv: true, music: true, concerts: true }
     },
     ke: {
         code: "ke",
         name: "Kenya",
-        flag: "🇰🇪",
+        flag: "KE",
         ready: true,
         categories: { movies: true, series: true, radio: true, tv: true, music: true, concerts: true }
     },
-    tz: { code: "tz", name: "Tanzania", flag: "🇹🇿", ready: false, categories: {} },
-    rw: { code: "rw", name: "Rwanda", flag: "🇷🇼", ready: false, categories: {} },
-    bi: { code: "bi", name: "Burundi", flag: "🇧🇮", ready: false, categories: {} },
-    ss: { code: "ss", name: "South Sudan", flag: "🇸🇸", ready: false, categories: {} },
-    ng: { code: "ng", name: "Nigeria", flag: "🇳🇬", ready: false, categories: {} },
-    gh: { code: "gh", name: "Ghana", flag: "🇬🇭", ready: false, categories: {} },
-    za: { code: "za", name: "South Africa", flag: "🇿🇦", ready: false, categories: {} },
-    us: { code: "us", name: "United States", flag: "🇺🇸", ready: false, categories: {} },
-    gb: { code: "gb", name: "United Kingdom", flag: "🇬🇧", ready: false, categories: {} }
+    tz: { code: "tz", name: "Tanzania", flag: "TZ", ready: false, categories: {} },
+    rw: { code: "rw", name: "Rwanda", flag: "RW", ready: false, categories: {} },
+    bi: { code: "bi", name: "Burundi", flag: "BI", ready: false, categories: {} },
+    ss: { code: "ss", name: "South Sudan", flag: "SS", ready: false, categories: {} },
+    ng: { code: "ng", name: "Nigeria", flag: "NG", ready: false, categories: {} },
+    gh: { code: "gh", name: "Ghana", flag: "GH", ready: false, categories: {} },
+    za: { code: "za", name: "South Africa", flag: "ZA", ready: false, categories: {} },
+    us: { code: "us", name: "United States", flag: "US", ready: false, categories: {} },
+    gb: { code: "gb", name: "United Kingdom", flag: "GB", ready: false, categories: {} }
 };
 
 function getActiveCountryCode() {
@@ -801,7 +801,7 @@ function createHorizontalSearchCard(item) {
     img.alt = item.title || item.name || "Media";
     img.loading = "lazy";
     img.onerror = () => {
-        thumb.innerHTML = `<span style="font-size:20px; color:#f4c400;">&#127916;</span>`;
+        thumb.innerHTML = `<span style="font-size:20px; color:#f4c400;">Media</span>`;
     };
     thumb.appendChild(img);
 
@@ -1127,7 +1127,7 @@ function renderPosterUnavailableFallback(posterDiv, movie) {
 
     const icon = document.createElement("div");
     icon.className = "poster-unavailable-icon";
-    icon.innerHTML = "&#127916;"; // Movie slate icon
+    icon.innerHTML = "Media"; // Movie slate icon
 
     const text = document.createElement("div");
     text.className = "poster-unavailable-text";
@@ -1917,7 +1917,7 @@ function initLiveTvCatalogue() {
         if (channels.length === 0) {
             cardGrid.innerHTML = `
                 <div class="country-empty-state" style="grid-column: 1 / -1;">
-                    <div class="country-empty-icon">🌐</div>
+                    <div class="country-empty-icon">Global</div>
                     <h3 class="country-empty-title">Nothing here</h3>
                     <p class="country-empty-sub">No channels available for ${countryConfig.name} in this section right now.</p>
                 </div>
@@ -3248,7 +3248,7 @@ async function initHomePage() {
             emptyEl.id = "homeCountryEmptyState";
             emptyEl.className = "country-empty-state";
             emptyEl.innerHTML = `
-                <div class="country-empty-icon">🌐</div>
+                <div class="country-empty-icon">Global</div>
                 <h3 class="country-empty-title">Nothing here</h3>
                 <p class="country-empty-sub">Entertainment content for ${countryConfig.name} is currently unavailable. Check back soon!</p>
             `;
@@ -3280,7 +3280,7 @@ async function initSubpage(containerId, isTrending = false, limit = 24) {
         if (movies.length === 0) {
             container.innerHTML = `
                 <div class="country-empty-state" style="grid-column: 1 / -1;">
-                    <div class="country-empty-icon">🌐</div>
+                    <div class="country-empty-icon">Global</div>
                     <h3 class="country-empty-title">Nothing here</h3>
                     <p class="country-empty-sub">No titles available for ${countryConfig.name} right now.</p>
                 </div>
@@ -3451,7 +3451,7 @@ if (movieCardGrid) {
             if (movies.length === 0) {
                 movieCardGrid.innerHTML = `
                     <div class="country-empty-state" style="grid-column: 1 / -1;">
-                        <div class="country-empty-icon">🌐</div>
+                        <div class="country-empty-icon">Global</div>
                         <h3 class="country-empty-title">Nothing here</h3>
                         <p class="country-empty-sub">No movies available for ${countryConfig.name} right now.</p>
                     </div>
@@ -3499,7 +3499,7 @@ if (movieCardGrid) {
             if (seriesList.length === 0) {
                 movieCardGrid.innerHTML = `
                     <div class="country-empty-state" style="grid-column: 1 / -1;">
-                        <div class="country-empty-icon">🌐</div>
+                        <div class="country-empty-icon">Global</div>
                         <h3 class="country-empty-title">Nothing here</h3>
                         <p class="country-empty-sub">No series available for ${countryConfig.name} right now.</p>
                     </div>
@@ -3553,7 +3553,7 @@ if (movieCardGrid) {
             if (filtered.length === 0) {
                 movieCardGrid.innerHTML = `
                     <div class="country-empty-state" style="grid-column: 1 / -1;">
-                        <div class="country-empty-icon">🌐</div>
+                        <div class="country-empty-icon">Global</div>
                         <h3 class="country-empty-title">Nothing here</h3>
                         <p class="country-empty-sub">No music available for ${countryConfig.name} right now.</p>
                     </div>
@@ -3611,7 +3611,7 @@ if (movieCardGrid) {
             if (concerts.length === 0) {
                 movieCardGrid.innerHTML = `
                     <div class="country-empty-state" style="grid-column: 1 / -1;">
-                        <div class="country-empty-icon">🌐</div>
+                        <div class="country-empty-icon">Global</div>
                         <h3 class="country-empty-title">Nothing here</h3>
                         <p class="country-empty-sub">No upcoming concerts in ${countryConfig.name} right now.</p>
                     </div>
@@ -3802,7 +3802,7 @@ if (seriesCardGrid) {
             if (seriesList.length === 0) {
                 seriesCardGrid.innerHTML = `
                     <div class="country-empty-state" style="grid-column: 1 / -1;">
-                        <div class="country-empty-icon">🌐</div>
+                        <div class="country-empty-icon">Global</div>
                         <h3 class="country-empty-title">Nothing here</h3>
                         <p class="country-empty-sub">No series available for ${countryConfig.name} right now.</p>
                     </div>
@@ -3911,8 +3911,8 @@ async function initSeriesDetailPage() {
         const backdropStyle = backdropUrl ? `style="background-image: url('${backdropUrl}');"` : '';
 
         const posterImageHtml = series.posterUrl
-            ? `<img src="${series.posterUrl}" alt="${series.title}" onerror="this.parentElement.innerHTML='<div class=\\'poster-unavailable-fallback\\'><div class=\\'poster-unavailable-icon\\'>&#127916;</div><div class=\\'poster-unavailable-text\\'>${series.title.replace(/'/g, "&apos;")}</div><div class=\\'poster-unavailable-sub\\'>Poster Unavailable</div></div>'">`
-            : `<div class="poster-unavailable-fallback"><div class="poster-unavailable-icon">&#127916;</div><div class="poster-unavailable-text">${series.title}</div><div class="poster-unavailable-sub">Poster Unavailable</div></div>`;
+            ? `<img src="${series.posterUrl}" alt="${series.title}" onerror="this.parentElement.innerHTML='<div class=\\'poster-unavailable-fallback\\'><div class=\\'poster-unavailable-icon\\'>Media</div><div class=\\'poster-unavailable-text\\'>${series.title.replace(/'/g, "&apos;")}</div><div class=\\'poster-unavailable-sub\\'>Poster Unavailable</div></div>'">`
+            : `<div class="poster-unavailable-fallback"><div class="poster-unavailable-icon">Media</div><div class="poster-unavailable-text">${series.title}</div><div class="poster-unavailable-sub">Poster Unavailable</div></div>`;
 
         const genreBadges = (series.genres && series.genres.length > 0)
             ? series.genres.map(g => `<span class="series-badge" style="background:#333;">${g}</span>`).join(" ")
@@ -4193,8 +4193,8 @@ async function initMovieDetailsPage() {
         const backdropStyle = backdropUrl ? `style="background-image: url('${backdropUrl}');"` : '';
 
         const posterImageHtml = movie.posterUrl
-            ? `<img src="${movie.posterUrl}" alt="${movie.title}" onerror="this.parentElement.innerHTML='<div class=\\'poster-unavailable-fallback\\'><div class=\\'poster-unavailable-icon\\'>&#127916;</div><div class=\\'poster-unavailable-text\\'>${movie.title.replace(/'/g, "&apos;")}</div><div class=\\'poster-unavailable-sub\\'>Poster Unavailable</div></div>'">`
-            : `<div class="poster-unavailable-fallback"><div class="poster-unavailable-icon">&#127916;</div><div class="poster-unavailable-text">${movie.title}</div><div class="poster-unavailable-sub">Poster Unavailable</div></div>`;
+            ? `<img src="${movie.posterUrl}" alt="${movie.title}" onerror="this.parentElement.innerHTML='<div class=\\'poster-unavailable-fallback\\'><div class=\\'poster-unavailable-icon\\'>Media</div><div class=\\'poster-unavailable-text\\'>${movie.title.replace(/'/g, "&apos;")}</div><div class=\\'poster-unavailable-sub\\'>Poster Unavailable</div></div>'">`
+            : `<div class="poster-unavailable-fallback"><div class="poster-unavailable-icon">Media</div><div class="poster-unavailable-text">${movie.title}</div><div class="poster-unavailable-sub">Poster Unavailable</div></div>`;
 
         const genreBadges = (movie.genres && movie.genres.length > 0)
             ? movie.genres.map(g => `<span class="series-badge" style="background:#333;">${g}</span>`).join(" ")
@@ -4393,141 +4393,6 @@ function saveToContinueWatching(movie) {
     }
 }
 
-/* BOTTOM NAVIGATION ACTIVE TAB HIGHLIGHTING */
-function updateBottomNavActiveState() {
-    const path = window.location.pathname.toLowerCase();
-    const navItems = document.querySelectorAll(".bottom-nav-item");
-    if (!navItems || navItems.length === 0) return;
-
-    navItems.forEach(item => item.classList.remove("active"));
-
-    if (path.startsWith("/live-tv")) {
-        const channelsTab = document.getElementById("navChannels");
-        if (channelsTab) channelsTab.classList.add("active");
-    } else if (path.startsWith("/movies") || path.startsWith("/movie") || path.startsWith("/watch")) {
-        const moviesTab = document.getElementById("navMovies");
-        if (moviesTab) moviesTab.classList.add("active");
-    } else if (
-        path.startsWith("/more") ||
-        path.startsWith("/series") ||
-        path.startsWith("/popular-series") ||
-        path.startsWith("/trending") ||
-        path.startsWith("/popular") ||
-        path.startsWith("/recently-added") ||
-        path.startsWith("/featured") ||
-        path.startsWith("/continue-watching")
-    ) {
-        const moreTab = document.getElementById("navMore");
-        if (moreTab) moreTab.classList.add("active");
-    } else {
-        const homeTab = document.getElementById("navHome");
-        if (homeTab) homeTab.classList.add("active");
-    }
-}
-
-/* CONCERT DETAILS PAGE INTEGRATION */
-async function initConcertDetailPage() {
-    const mainContainer = document.getElementById("concertDetailPage");
-    if (!mainContainer) return;
-
-    const pathParts = window.location.pathname.split("/").filter(Boolean);
-    const concertId = pathParts[pathParts.length - 1];
-
-    if (!concertId || concertId === "concert") {
-        mainContainer.innerHTML = `<div class="error-state" style="padding: 120px 20px; text-align: center;">
-            <h2>Concert Not Specified</h2>
-            <p style="margin-top: 10px;"><a href="/movies?category=concerts" class="btn-back-secondary">Return to Concerts</a></p>
-        </div>`;
-        return;
-    }
-
-    mainContainer.innerHTML = createConcertDetailSkeleton();
-
-    try {
-        const res = await fetch(`/api/concerts/${concertId}`);
-        if (!res.ok) throw new Error("Concert not found");
-        const concert = await res.json();
-
-        document.title = `${concert.title} — Live Concerts — SanyuHub`;
-
-        const backdropUrl = concert.posterUrl;
-        const backdropStyle = backdropUrl ? `style="background-image: url('${backdropUrl}');"` : '';
-
-        const posterImageHtml = concert.posterUrl
-            ? `<img src="${concert.posterUrl}" alt="${concert.title}" onerror="this.parentElement.innerHTML='<div class=\\'poster-unavailable-fallback\\'><div class=\\'poster-unavailable-icon\\'>&#127915;</div><div class=\\'poster-unavailable-text\\'>${concert.title.replace(/'/g, "&apos;")}</div><div class=\\'poster-unavailable-sub\\'>Poster Unavailable</div></div>'">`
-            : `<div class="poster-unavailable-fallback"><div class="poster-unavailable-icon">&#127915;</div><div class="poster-unavailable-text">${concert.title}</div><div class="poster-unavailable-sub">Poster Unavailable</div></div>`;
-
-        let formattedStart = "Date TBA";
-        if (concert.startDate) {
-            try {
-                const d = new Date(concert.startDate);
-                formattedStart = d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit" });
-            } catch (e) {}
-        }
-
-        mainContainer.innerHTML = `
-            <div class="movie-detail-hero" ${backdropStyle}>
-                <div class="movie-detail-layout">
-                    <div class="movie-detail-poster">
-                        ${posterImageHtml}
-                    </div>
-                    <div class="movie-detail-info">
-                        <h1 class="movie-detail-title">${concert.title}</h1>
-                        <div class="movie-detail-meta">
-                            <span class="movie-meta-badge" style="background: #e50914;">${concert.ticketInfo || 'LIVE EVENT'}</span>
-                            <span>📍 ${concert.venue || 'Uganda'}</span>
-                            <span>• 📅 ${formattedStart}</span>
-                        </div>
-                        <div class="movie-detail-meta">
-                            <span class="series-badge" style="background:#333;">Organized by ${concert.organizer || 'AllEvents Kampala'}</span>
-                            <span class="series-badge" style="background:#222; color:#f4c400;">Powered by AllEvents Uganda</span>
-                        </div>
-                        <p class="movie-detail-overview">
-                            ${concert.description || `Experience <strong>${concert.title}</strong> live in ${concert.venue}. Check event details and official listings on AllEvents Uganda.`}
-                        </p>
-                        <div class="movie-detail-actions">
-                            <a href="${concert.eventUrl}" target="_blank" rel="noopener noreferrer" class="btn-watch-primary" style="padding: 14px 28px; font-size: 1rem; border-radius: 8px; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; background: #f4c400; color: #080808; text-decoration: none;">
-                                🔗 View Original Event on AllEvents
-                            </a>
-                            <a href="/movies?category=concerts" class="btn-back-secondary">
-                                Back to Concerts
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="movie-metadata-grid" style="margin-top: 30px;">
-                <div class="metadata-item">
-                    <label>Event Date & Time</label>
-                    <span>${formattedStart}</span>
-                </div>
-                <div class="metadata-item">
-                    <label>Venue & Location</label>
-                    <span>${concert.venue || 'Uganda'}</span>
-                </div>
-                <div class="metadata-item">
-                    <label>Ticket / Entry Fee</label>
-                    <span>${concert.ticketInfo || 'Available'}</span>
-                </div>
-                <div class="metadata-item">
-                    <label>Event Organizer</label>
-                    <span>${concert.organizer || 'AllEvents Kampala'}</span>
-                </div>
-            </div>
-        `;
-
-    } catch (err) {
-        console.error("Failed to load concert details:", err);
-        mainContainer.innerHTML = `
-            <div class="error-state" style="padding: 120px 20px; text-align: center;">
-                <h2>Concert Event Not Found</h2>
-                <p style="margin-top: 10px; color: #888;">The requested concert listing could not be found or has expired.</p>
-                <p style="margin-top: 20px;"><a href="/movies?category=concerts" class="btn-back-secondary">Return to Concerts</a></p>
-            </div>
-        `;
-    }
-}
 
 /* CODE SNIPPET COPY HELPER */
 function copyCodeSnippet(buttonElement) {
@@ -4645,7 +4510,6 @@ function initApiExplorers() {
 document.addEventListener("DOMContentLoaded", () => {
     ensureNavbarCountryButton();
     openCountryOnboardingModal(false);
-    updateBottomNavActiveState();
     initApiExplorers();
     initHomePage();
     initSubpage("trendingGrid", true, 20);
