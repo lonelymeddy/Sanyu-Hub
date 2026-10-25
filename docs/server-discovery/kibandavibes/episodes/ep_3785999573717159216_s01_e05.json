@@ -1,0 +1,31 @@
+{
+  "id": "ep_3785999573717159216_s01_e05",
+  "title": "LOVE AND SWORD - Episode 05",
+  "content_type": "episode",
+  "vj_ids": [
+    "vj_ice_p"
+  ],
+  "series_id": "series_3785999573717159216_love_and_sword",
+  "season_number": 1,
+  "episode_number": 5,
+  "source_page_url": "https://www.kibandavibes.com/2025/06/love-and-sword-vj-ice-p.html",
+  "image_url": "https://media.themoviedb.org/t/p/w500/kF8HNiregCw8eeo3uW70SyxwzoD.jpg",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver54.club/port/str/eyJkcyI6ImN2N3Buc00zcUF0Q2pZcmM0RHR0MFhHcFM2TGNpR1diaVlwMDlzU2lLTGtMM00zYVlZeUh1RzRcL3VPRFRCQldNTnlwa1pGM2Rlck02SHZGMFl4UXNDNkkwM1hsUXdMY252UnVwN0ZmcXRYZmVOSVFMbnkxVmxBK3pMbmhSSWlJQiIsImZ2IjoiYjBlNmU1YWM0MTQ2NTZkNzNmZDA3MzBlYTU1NTlkNmUiLCJjZSI6Ijk3Njk2MzQwOTA3MjEyMTYifQ==",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver54.club/port/str/eyJkcyI6ImN2N3Buc00zcUF0Q2pZcmM0RHR0MFhHcFM2TGNpR1diaVlwMDlzU2lLTGtMM00zYVlZeUh1RzRcL3VPRFRCQldNTnlwa1pGM2Rlck02SHZGMFl4UXNDNkkwM1hsUXdMY252UnVwN0ZmcXRYZmVOSVFMbnkxVmxBK3pMbmhSSWlJQiIsImZ2IjoiYjBlNmU1YWM0MTQ2NTZkNzNmZDA3MzBlYTU1NTlkNmUiLCJjZSI6Ijk3Njk2MzQwOTA3MjEyMTYifQ==",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver54.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": null,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Series episode stream URL from Kibanda Vibes JS playlist. HTTP status: None (Server: <urlopen error timed out>)."
+    }
+  ],
+  "description": null,
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}

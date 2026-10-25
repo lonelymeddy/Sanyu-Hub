@@ -1,0 +1,30 @@
+{
+  "id": "movie_3667137820394803662_sinners",
+  "title": "SINNERS",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj_junior"
+  ],
+  "source_page_url": "https://www.kibandavibes.com/2025/06/sinners-vj-junior.html",
+  "image_url": "https://resizing.flixster.com/VR3Tfr9zpNllsU6RchvnbhGmPkc=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2VhOTdiZDNjLTlmODQtNGNlYi1iZWYwLWNkYjY2YmI5YzZjYS5qcGc=",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver63.club/port/str/eyJkcyI6ImNHSmFXXC9jVVB3OUNUUFlwZXhCZW41cmZFVUI2ZkY4VTR4cG02SDZCNzVYOUwySmEwQkpLK25SV3cxcUNLTzE1RFwvaXVqZVQ3M3VPU0VnWHgzaVZhXC8ycGdaV0FjOUtVVDdRZTNsRENHVElnYUNrOUpQeDZENWJOUU5CVXZYTFV5amdtdTB5MENxQ1ZmT3Rhd01ob1Bldz09IiwiZnYiOiI4YTZiZGVkYWI3YTkzODlhNjJiOGJmNTRkZDQ2MzA2ZiIsImNlIjoiMzI0ZWE5NzQ5MWQxNjljYyJ9",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver63.club/port/str/eyJkcyI6ImNHSmFXXC9jVVB3OUNUUFlwZXhCZW41cmZFVUI2ZkY4VTR4cG02SDZCNzVYOUwySmEwQkpLK25SV3cxcUNLTzE1RFwvaXVqZVQ3M3VPU0VnWHgzaVZhXC8ycGdaV0FjOUtVVDdRZTNsRENHVElnYUNrOUpQeDZENWJOUU5CVXZYTFV5amdtdTB5MENxQ1ZmT3Rhd01ob1Bldz09IiwiZnYiOiI4YTZiZGVkYWI3YTkzODlhNjJiOGJmNTRkZDQ2MzA2ZiIsImNlIjoiMzI0ZWE5NzQ5MWQxNjljYyJ9",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver63.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": null,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Direct video source from Kibanda Vibes. HTTP status: None (Server: <urlopen error [Errno -2] Name or service not known>)."
+    }
+  ],
+  "description": null,
+  "genre": null,
+  "release_year": null,
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}

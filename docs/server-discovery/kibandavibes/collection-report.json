@@ -1,0 +1,32 @@
+{
+  "target_website": "https://www.kibandavibes.com/",
+  "repository": "lonelymeddy/Sanyu-Hub",
+  "generated_at": "2026-10-24T20:20:40Z",
+  "statistics": {
+    "total_vjs_discovered": 14,
+    "total_movies_discovered": 392,
+    "total_series_discovered": 28,
+    "total_episodes_discovered": 273,
+    "total_images_discovered": 402,
+    "total_images_reachable_200": 331,
+    "total_direct_video_urls_discovered": 466,
+    "total_streams_inventory_records": 480,
+    "confirmed_playback_count": 2,
+    "temporary_or_expired_count": 478,
+    "total_hosting_domains_identified": 42,
+    "main_hosting_domain": "munoserver54.club"
+  },
+  "catalogue_coverage": "100% of publicly discoverable posts (420 entries) processed.",
+  "output_files": [
+    "docs/server-discovery/kibandavibes/index.json",
+    "docs/server-discovery/kibandavibes/images.json",
+    "docs/server-discovery/kibandavibes/servers.json",
+    "docs/server-discovery/kibandavibes/streams.json",
+    "docs/server-discovery/kibandavibes/unverified.txt",
+    "docs/server-discovery/kibandavibes/collection-report.json",
+    "docs/server-discovery/kibandavibes/vjs/",
+    "docs/server-discovery/kibandavibes/movies/",
+    "docs/server-discovery/kibandavibes/series/",
+    "docs/server-discovery/kibandavibes/episodes/"
+  ]
+}

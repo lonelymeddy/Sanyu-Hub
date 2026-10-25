@@ -1,0 +1,30 @@
+{
+  "id": "movie_7482962337259903070_presto",
+  "title": "PRESTO",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj_uncle_t"
+  ],
+  "source_page_url": "https://www.kibandavibes.com/2025/06/presto-vj-uncle-t.html",
+  "image_url": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p183611_p_v8_aa.jpg",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver64.club/port/str/eyJkcyI6InRua0ErNjFjZ3RlTW9XNm5maUZSMjJROTN3aTl1OWpkOU1tYXpwWEs2XC9CVHJib254NFBETUc5UlpLSk1zc0VHVXdEb2RyQlV1Z0FYOFo1WXA3eFI4Ym9BZXVvekF3bzNPaE5OZjlvQ29iUkNGdjJUMGVoZllVUktKcE9lb1JRNiIsImZ2IjoiOTFiYjYyZGNiOGE4YjFlNmI4YmU1MjNiYTM0MmZmYWEiLCJjZSI6IjJjODZmZmZhY2ExY2Q3YzIifQ==",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver64.club/port/str/eyJkcyI6InRua0ErNjFjZ3RlTW9XNm5maUZSMjJROTN3aTl1OWpkOU1tYXpwWEs2XC9CVHJib254NFBETUc5UlpLSk1zc0VHVXdEb2RyQlV1Z0FYOFo1WXA3eFI4Ym9BZXVvekF3bzNPaE5OZjlvQ29iUkNGdjJUMGVoZllVUktKcE9lb1JRNiIsImZ2IjoiOTFiYjYyZGNiOGE4YjFlNmI4YmU1MjNiYTM0MmZmYWEiLCJjZSI6IjJjODZmZmZhY2ExY2Q3YzIifQ==",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver64.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": null,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Direct video source from Kibanda Vibes. HTTP status: None (Server: <urlopen error [Errno -2] Name or service not known>)."
+    }
+  ],
+  "description": null,
+  "genre": null,
+  "release_year": null,
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}

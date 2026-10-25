@@ -1,0 +1,30 @@
+{
+  "id": "movie_2340522901711032829_locked",
+  "title": "LOCKED",
+  "content_type": "movie",
+  "vj_ids": [
+    "vj_ice_p"
+  ],
+  "source_page_url": "https://www.kibandavibes.com/2025/05/locked-vj-ice-p.html",
+  "image_url": "https://m.media-amazon.com/images/M/MV5BZjg2NDFhZDEtYzZlZC00ZTRkLTg4NDctYjIwNTQxYWY4ODFiXkEyXkFqcGc@._V1_.jpg",
+  "embed_url": null,
+  "direct_video_url": "https://munoserver55.club/port/str/eyJkcyI6IkQzZWNVV1p2Z3FsYUdPbGZyQlM4ZlRaTWt3UmtWczR1VllwcDNDRUpyd1hTbDZyV3BTeXM3ckJkTytuY1haM3Ewd0NMQWhyaDlOOXdmT0NvZUVDdWFmWGhOT3E0NkI1emNwZnVZS1pmdnFJPSIsImZ2IjoiZWZlMjk4NGUxYzFhNWE4ZGVhNTQ2MDI1YzVjZmRlYTgiLCJjZSI6IjdlMzQ2MmQ2M2E4YjNhOGMifQ==",
+  "manifest_url": null,
+  "video_sources": [
+    {
+      "url": "https://munoserver55.club/port/str/eyJkcyI6IkQzZWNVV1p2Z3FsYUdPbGZyQlM4ZlRaTWt3UmtWczR1VllwcDNDRUpyd1hTbDZyV3BTeXM3ckJkTytuY1haM3Ewd0NMQWhyaDlOOXdmT0NvZUVDdWFmWGhOT3E0NkI1emNwZnVZS1pmdnFJPSIsImZ2IjoiZWZlMjk4NGUxYzFhNWE4ZGVhNTQ2MDI1YzVjZmRlYTgiLCJjZSI6IjdlMzQ2MmQ2M2E4YjNhOGMifQ==",
+      "source_type": "direct_file",
+      "hosting_domain": "munoserver55.club",
+      "format": "mp4",
+      "verification_status": "temporary_or_expired",
+      "http_status": 445,
+      "last_checked": "2026-10-24T20:20:40Z",
+      "notes": "Direct video source from Kibanda Vibes. HTTP status: 445 (Server: Parking/1.0)."
+    }
+  ],
+  "description": null,
+  "genre": null,
+  "release_year": null,
+  "verification_status": "temporary_or_expired",
+  "last_checked": "2026-10-24T20:20:40Z"
+}
