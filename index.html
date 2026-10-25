@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#0b0f19">
-<meta name="description" content="SanyuHub Media API — Professional REST API Platform for East African Movies, VJ Translations, Live TV & Radio Streams.">
-<title>SanyuHub Media API — Developer Platform Portal</title>
+<meta name="description" content="Meddy API — The API Playground for Lord Voyage — Professional REST API Platform for East African Movies, VJ Translations, Live TV & Radio Streams.">
+<title>Meddy API — The API Playground for Lord Voyage — Developer Platform Portal</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -17,7 +17,7 @@
 <header class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="/" class="logo">
-      Sanyu<span>Hub</span> <span class="api-navbar-badge"><span class="api-status-dot"></span> API v1.0</span>
+      Meddy <span>API</span> <span class="api-navbar-badge"><span class="api-status-dot"></span> Lord Voyage Playground</span>
     </a>
 
     <nav class="desktop-nav">
@@ -25,8 +25,8 @@
       <a href="/movies">Movies API</a>
       <a href="/series">Series API</a>
       <a href="/live-tv">Live TV API</a>
-      <a href="#quickstart">Quickstart</a>
-      <a href="#explorer">Explorer</a>
+      <a href="#playground">API Playground</a>
+      <a href="#player-embed">Embed Player</a>
     </nav>
 
     <div class="nav-controls">
@@ -77,45 +77,45 @@
   <div class="api-hero-container">
     <div class="api-hero-text">
       <div class="api-hero-badge">
-        <span class="api-status-dot"></span> OPERATIONAL • EAST AFRICA MEDIA API PLATFORM
+        <span class="api-status-dot"></span> OPERATIONAL • MEDDY API PLAYGROUND FOR LORD VOYAGE
       </div>
-      <h1 class="api-hero-title">Build Next-Gen Media Apps with SanyuHub API</h1>
+      <h1 class="api-hero-title">Meddy API — The API Playground for Lord Voyage</h1>
       <p class="api-hero-subtitle">
-        Integrate localized movie catalogs, VJ-narrated Luganda and Swahili translations, HLS Live TV channels, radio streams, and concert listings directly into your web, mobile, and streaming applications.
+        Integrate localized movie catalogs, VJ-narrated Luganda and Swahili translations, HLS Live TV channels, radio streams, and embeddable player capabilities using clean endpoints that never expose direct stream links.
       </p>
       <div class="api-hero-actions">
-        <a href="/movies" class="btn-api-primary">
-          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
-          Explore Movies API
-        </a>
-        <a href="#explorer" class="btn-api-secondary">
+        <a href="#playground" class="btn-api-primary">
           <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-          Interactive Explorer
+          API Playground
+        </a>
+        <a href="#player-embed" class="btn-api-secondary">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+          Embed Player Tester
         </a>
       </div>
     </div>
 
-    <!-- VISUAL CLOUD / SERVER STACK CARD ARCHITECTURE MATCHING DESIGN REFERENCE -->
+    <!-- VISUAL CLOUD / SERVER STACK CARD ARCHITECTURE -->
     <div class="api-hero-graphic">
       <div class="api-card" style="position: relative; overflow: hidden; border-color: rgba(56, 189, 248, 0.3); background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95), rgba(3, 7, 18, 0.98));">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 12px;">
-          <span style="font-size: 12px; font-weight: 700; color: #38bdf8; font-family: monospace;">sanyuhub-gateway-v1</span>
+          <span style="font-size: 12px; font-weight: 700; color: #38bdf8; font-family: monospace;" id="heroServerHost">meddy-api-gateway</span>
           <span class="method-badge method-get">GET 200 OK</span>
         </div>
         <div style="display: flex; flex-direction: column; gap: 10px; font-family: monospace; font-size: 12px; color: #94a3b8;">
-          <div><span style="color: #3b82f6;">HOST:</span> api.sanyuhub.com</div>
-          <div><span style="color: #3b82f6;">REGION:</span> East Africa (UG / KE)</div>
+          <div><span style="color: #3b82f6;">PLATFORM:</span> Meddy API (Lord Voyage)</div>
+          <div><span style="color: #3b82f6;">STREAM PROTECTION:</span> Active (Direct URLs Hidden)</div>
           <div><span style="color: #3b82f6;">ENDPOINTS:</span> Movies, Series, Live TV, Radio, Concerts</div>
-          <div><span style="color: #3b82f6;">RESPONSE:</span> application/json (caching enabled)</div>
+          <div><span style="color: #3b82f6;">EMBED PLAYER:</span> Ready (/embed)</div>
         </div>
         <div style="margin-top: 16px; padding: 12px; background: rgba(3, 7, 18, 0.9); border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.2);">
-          <pre style="margin: 0; color: #38bdf8; font-size: 11px; overflow-x: auto;"><code>{
+          <pre style="margin: 0; color: #38bdf8; font-size: 11px; overflow-x: auto;"><code id="heroJsonSnippet">{
   "status": "success",
   "data": {
-    "movies_total": 58,
-    "vjs_available": ["VJ Junior", "VJ Emmy", "DJ Mark"],
-    "live_tv_channels": 20,
-    "latency_ms": 24
+    "platform": "Meddy API",
+    "direct_streams_exposed": false,
+    "proxy_stream_endpoint": "/api/stream/tv/ntv-uganda",
+    "embed_player_url": "/embed?type=tv&id=ntv-uganda"
   }
 }</code></pre>
         </div>
@@ -132,7 +132,7 @@
     <div class="section-heading">
       <div>
         <h2 class="section-title" style="font-size: 28px;">API Resources & Capabilities</h2>
-        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Comprehensive media endpoints built for effortless external integration.</p>
+        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Comprehensive media endpoints built for effortless external integration without revealing direct stream links.</p>
       </div>
     </div>
 
@@ -141,10 +141,10 @@
       <!-- Movies API Card -->
       <div class="api-card">
         <div class="api-card-title">
-          <span style="color: #38bdf8; font-size: 20px;">🎬</span> Movies & VJs API
+          <span style="color: #38bdf8; font-size: 20px;">API</span> Movies & VJs API
         </div>
         <p class="api-card-desc">
-          Retrieve movie records with VJ narration attribution (VJ Junior, VJ Emmy, VJ Jingo, DJ Mark), original languages, poster assets, genres, release years, and country availability.
+          Retrieve movie records with VJ narration attribution, posters, genres, and obfuscated stream endpoints.
         </p>
         <div style="margin-top: 16px;">
           <a href="/movies" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Movies Reference &rarr;</a>
@@ -154,10 +154,10 @@
       <!-- Live TV & Radio Card -->
       <div class="api-card">
         <div class="api-card-title">
-          <span style="color: #38bdf8; font-size: 20px;">📺</span> Live TV & Radio API
+          <span style="color: #38bdf8; font-size: 20px;">TV</span> Live TV & Radio API
         </div>
         <p class="api-card-desc">
-          Access verified HLS live broadcast stream manifests (.m3u8), EPG schedules, and concurrent viewer statistics for NTV Uganda, Bukedde TV, Spark TV, BBS, and top FM Radio stations.
+          Access verified HLS live broadcast stream proxies, EPG schedules, and concurrent viewer statistics for NTV Uganda, Bukedde TV, Spark TV, BBS, and FM Radio stations.
         </p>
         <div style="margin-top: 16px;">
           <a href="/live-tv" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Live TV Reference &rarr;</a>
@@ -167,64 +167,38 @@
       <!-- Series API Card -->
       <div class="api-card">
         <div class="api-card-title">
-          <span style="color: #38bdf8; font-size: 20px;">🍿</span> Series & Episodes API
+          <span style="color: #38bdf8; font-size: 20px;">Series</span> Series & Episodes API
         </div>
         <p class="api-card-desc">
-          Query multi-season translated series with full episode lists, season numbers, episode titles, VJ narration metadata, and direct playback links.
+          Query multi-season translated series with full episode lists, season numbers, episode titles, and protected playback proxies.
         </p>
         <div style="margin-top: 16px;">
           <a href="/series" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Series Reference &rarr;</a>
         </div>
       </div>
 
-      <!-- Concerts & Events Card -->
+      <!-- Embeddable Player Card -->
       <div class="api-card">
         <div class="api-card-title">
-          <span style="color: #38bdf8; font-size: 20px;">🎤</span> Live Concerts API
+          <span style="color: #38bdf8; font-size: 20px;">Player</span> Embeddable Custom Video Player
         </div>
         <p class="api-card-desc">
-          Discover upcoming East African music concerts, stage performances, venue locations, ticket prices, organizers, and event URLs.
+          Embed the fully functional custom video player on external third-party websites with iframe support.
         </p>
         <div style="margin-top: 16px;">
-          <a href="/more" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Concerts Reference &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Media Stream Proxy Card -->
-      <div class="api-card">
-        <div class="api-card-title">
-          <span style="color: #38bdf8; font-size: 20px;">🛡️</span> Media Stream Proxy
-        </div>
-        <p class="api-card-desc">
-          Proxy protected stream requests (such as storage.swahix.com) through SanyuHub's domain-restricted streaming proxy endpoint with appropriate HTTP Referer headers.
-        </p>
-        <div style="margin-top: 16px;">
-          <span style="color: #f59e0b; font-size: 11px; font-weight: 700;">GET /api/stream-proxy?url={target_url}</span>
-        </div>
-      </div>
-
-      <!-- Country Isolation Card -->
-      <div class="api-card">
-        <div class="api-card-title">
-          <span style="color: #38bdf8; font-size: 20px;">🌐</span> Multi-Country Catalog
-        </div>
-        <p class="api-card-desc">
-          Query regional content using the <code>country</code> parameter (<code>ug</code> for Uganda, <code>ke</code> for Kenya) with zero cross-country catalog bleeding.
-        </p>
-        <div style="margin-top: 16px;">
-          <span style="color: #10b981; font-size: 11px; font-weight: 700;">country=ug | country=ke</span>
+          <a href="#player-embed" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">Test Embed Player &rarr;</a>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- QUICKSTART & AUTHENTICATION SECTION -->
+  <!-- QUICKSTART & CODE GENERATOR SECTION -->
   <section class="section" id="quickstart" style="padding: 0 0 48px;">
     <div class="section-heading">
       <div>
-        <h2 class="section-title" style="font-size: 28px;">Quickstart & Code Examples</h2>
-        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Make your first API request in seconds using cURL, JavaScript, or Python.</p>
+        <h2 class="section-title" style="font-size: 28px;">Quickstart & Dynamic Code Snippets</h2>
+        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Copy ready-to-run request examples configured automatically with the current origin URL.</p>
       </div>
     </div>
 
@@ -234,7 +208,7 @@
         <span class="code-lang">cURL</span>
         <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copy Code</button>
       </div>
-      <pre class="code-content"><code>curl -X GET "https://sanyuhub.com/api/movies?country=ug&limit=10" \
+      <pre class="code-content"><code id="curlSnippet">curl -X GET "/api/movies?country=ug&limit=10" \
   -H "Accept: application/json"</code></pre>
     </div>
 
@@ -244,7 +218,7 @@
         <span class="code-lang">JavaScript (Fetch)</span>
         <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copy Code</button>
       </div>
-      <pre class="code-content"><code>async function fetchMovies() {
+      <pre class="code-content"><code id="jsSnippet">async function fetchMovies() {
   const response = await fetch('/api/movies?country=ug&limit=10');
   const data = await response.json();
   console.log('Movies retrieved:', data.movies);
@@ -252,30 +226,14 @@
 
 fetchMovies();</code></pre>
     </div>
-
-    <!-- Python Example -->
-    <div class="code-box">
-      <div class="code-header">
-        <span class="code-lang">Python (requests)</span>
-        <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copy Code</button>
-      </div>
-      <pre class="code-content"><code>import requests
-
-url = "https://sanyuhub.com/api/movies"
-params = {"country": "ug", "limit": 10}
-
-response = requests.get(url, params=params)
-movies = response.json()
-print(f"Total Movies: {movies['total']}")</code></pre>
-    </div>
   </section>
 
-  <!-- INTERACTIVE ENDPOINT EXPLORER -->
-  <section class="section" id="explorer" style="padding: 0 0 48px;">
+  <!-- INTERACTIVE ENDPOINT EXPLORER / PLAYGROUND -->
+  <section class="section" id="playground" style="padding: 0 0 48px;">
     <div class="section-heading">
       <div>
-        <h2 class="section-title" style="font-size: 28px;">Interactive API Explorer</h2>
-        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Test live requests directly against the SanyuHub backend API endpoints.</p>
+        <h2 class="section-title" style="font-size: 28px;">Meddy API Playground</h2>
+        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Execute live requests directly using current website URL endpoints.</p>
       </div>
     </div>
 
@@ -302,54 +260,110 @@ print(f"Total Movies: {movies['total']}")</code></pre>
       </div>
 
       <div id="explorerResponseBody" class="explorer-response">
-Click "Send Request" to execute a live API fetch against the SanyuHub server.
+Click "Send Request" to execute a live API fetch against the Meddy API server.
+      </div>
+    </div>
+  </section>
+
+  <!-- EMBEDDABLE VIDEO PLAYER PLAYGROUND -->
+  <section class="section" id="player-embed" style="padding: 0 0 48px;">
+    <div class="section-heading">
+      <div>
+        <h2 class="section-title" style="font-size: 28px;">Video Player Embed Playground</h2>
+        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Test the custom video player functionality and copy embed code for external developers.</p>
+      </div>
+    </div>
+
+    <div class="api-explorer">
+      <div class="explorer-controls" style="flex-wrap: wrap;">
+        <select id="embedChannelSelect" class="explorer-input" style="max-width: 280px; cursor: pointer;">
+          <option value="tv:ntv-uganda">Live TV: NTV Uganda</option>
+          <option value="tv:spark-tv">Live TV: Spark TV</option>
+          <option value="tv:bukedde-1">Live TV: Bukedde 1</option>
+          <option value="radio:dembe-fm">Radio: Dembe FM 90.4</option>
+          <option value="radio:galaxy-fm">Radio: Galaxy FM 100.2</option>
+        </select>
+
+        <input type="text" id="embedIframeSrc" class="explorer-input" value="" readonly>
+
+        <button id="copyEmbedIframeBtn" class="btn-api-primary" style="padding: 10px 20px;">
+          Copy Embed Code
+        </button>
+      </div>
+
+      <div style="margin-top: 20px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); background: #000; aspect-ratio: 16/9; max-height: 480px;">
+        <iframe id="playgroundPlayerFrame" src="" style="width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
       </div>
     </div>
   </section>
 
 </main>
 
-<!-- PERSISTENT APP-STYLE BOTTOM NAVIGATION BAR -->
-<nav class="bottom-nav" id="bottomNav">
-  <a href="/" class="bottom-nav-item active" id="navHome">
-    <div class="bottom-nav-icon">
-      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-    </div>
-    <span>API Portal</span>
-  </a>
-  <a href="/movies" class="bottom-nav-item" id="navMovies">
-    <div class="bottom-nav-icon">
-      <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
-    </div>
-    <span>Movies API</span>
-  </a>
-  <a href="/live-tv" class="bottom-nav-item" id="navChannels">
-    <div class="bottom-nav-icon">
-      <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
-    </div>
-    <span>Live TV API</span>
-  </a>
-  <a href="/more" class="bottom-nav-item" id="navMore">
-    <div class="bottom-nav-icon">
-      <svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
-    </div>
-    <span>More Docs</span>
-  </a>
-</nav>
-
 <footer>
-  <div class="footer-logo">Sanyu<span>Hub</span> API</div>
-  <div class="footer-tagline">The Unified East African Media API Platform</div>
+  <div class="footer-logo">Meddy <span>API</span></div>
+  <div class="footer-tagline">The API Playground for Lord Voyage</div>
   <div class="footer-links">
     <a href="/movies">Movies API</a>
     <a href="/series">Series API</a>
     <a href="/live-tv">Live TV API</a>
     <a href="/about">Documentation</a>
   </div>
-  <div class="copyright">&copy; 2026 SanyuHub API Platform. All rights reserved.</div>
+  <div class="copyright">&copy; 2026 Meddy API Platform. All rights reserved.</div>
 </footer>
 
 <script src="js/app.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const origin = window.location.origin;
+
+    // Update Quickstart Code Snippets with actual origin URL
+    const curlEl = document.getElementById("curlSnippet");
+    if (curlEl) {
+      curlEl.textContent = `curl -X GET "${origin}/api/movies?country=ug&limit=10" \\\n  -H "Accept: application/json"`;
+    }
+
+    const jsEl = document.getElementById("jsSnippet");
+    if (jsEl) {
+      jsEl.textContent = `async function fetchMovies() {\n  const response = await fetch('${origin}/api/movies?country=ug&limit=10');\n  const data = await response.json();\n  console.log('Movies retrieved:', data.movies);\n}\n\nfetchMovies();`;
+    }
+
+    // Embed Player Tester
+    const selectEl = document.getElementById("embedChannelSelect");
+    const srcInput = document.getElementById("embedIframeSrc");
+    const iframeEl = document.getElementById("playgroundPlayerFrame");
+    const copyBtn = document.getElementById("copyEmbedIframeBtn");
+
+    function updateEmbedFrame() {
+      if (!selectEl || !srcInput || !iframeEl) return;
+      const val = selectEl.value;
+      const parts = val.split(":");
+      const type = parts[0];
+      const id = parts[1];
+
+      const embedPath = `/embed?type=${type}&id=${id}`;
+      const fullUrl = `${origin}${embedPath}`;
+      const iframeCode = `<iframe src="${fullUrl}" width="100%" height="450" frameborder="0" allowfullscreen></iframe>`;
+
+      srcInput.value = iframeCode;
+      iframeEl.src = embedPath;
+    }
+
+    if (selectEl) {
+      selectEl.addEventListener("change", updateEmbedFrame);
+      updateEmbedFrame();
+    }
+
+    if (copyBtn && srcInput) {
+      copyBtn.addEventListener("click", function() {
+        navigator.clipboard.writeText(srcInput.value).then(function() {
+          const oldText = copyBtn.textContent;
+          copyBtn.textContent = "Copied Embed Code!";
+          setTimeout(function() { copyBtn.textContent = oldText; }, 2000);
+        });
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
