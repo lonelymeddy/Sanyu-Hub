@@ -1,133 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#0b0f19">
-<meta name="description" content="Meddy API — The API Playground for Lord Voyage — Additional Endpoints & Developer Documentation.">
-<title>Additional Endpoints & Tools — Meddy API</title>
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search & Discovery API — Meddy API Developer Platform</title>
+  <meta name="description" content="Meddy API Search and Discovery Reference: Global search, resource filtering, and categorization.">
+  <link rel="stylesheet" href="/css/dev-portal.css">
 </head>
 <body>
 
-<div class="background"></div>
+  <header class="dev-header">
+    <div class="brand-container">
+      <a href="/" class="brand-logo">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+        <span>Meddy API</span>
+      </a>
+      <span class="brand-badge">v1.0 Public</span>
+    </div>
 
-<!-- NAVIGATION BAR -->
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="/" class="logo">
-      Meddy <span>API</span> <span class="api-navbar-badge"><span class="api-status-dot"></span> API v1.0</span>
-    </a>
-    <nav class="desktop-nav">
-      <a href="/">Overview</a>
-      <a href="/movies">Movies API</a>
-      <a href="/series">Series API</a>
-      <a href="/live-tv">Live TV API</a>
-      <a href="/more" class="active">More Endpoints</a>
+    <nav class="header-nav">
+      <a href="/" class="header-nav-link">Overview</a>
+      <a href="/#quickstart" class="header-nav-link">Quick Start</a>
+      <a href="/movies" class="header-nav-link">Movies API</a>
+      <a href="/more" class="header-nav-link active">Search API</a>
+      <a href="/#api-explorer" class="header-nav-link">API Explorer</a>
     </nav>
-    <div class="nav-controls">
-      <button class="search-button" id="topSearch" aria-label="Search">
-        <span class="search-icon"></span>
-      </button>
-      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-      </button>
-    </div>
-  </div>
-</header>
 
-<!-- SIDEBAR OVERLAY -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-<!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-content">
-    <div class="sidebar-section">
-      <div class="sidebar-section-title">Developer Navigation</div>
-      <a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span> API Portal Home</span></a>
-      <a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span> Movies API Documentation</span></a>
-      <a href="/series" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span> Series API Documentation</span></a>
-      <a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span> Live TV & Radio API</span></a>
-      <a href="/more" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span> Concerts & Additional Endpoints</span></a>
-    </div>
-  </div>
-</aside>
-
-<!-- PAGE HEADER -->
-<header class="page-header" style="background: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.12), transparent 70%);">
-  <div class="page-title-group" style="max-width: 1200px; margin: 0 auto;">
-    <div class="api-hero-badge" style="margin-bottom: 12px;">
-      <span class="method-badge method-get">GET /api/concerts</span> &nbsp; CONCERTS & UTILITIES RESOURCE
-    </div>
-    <h1 class="page-title">Additional API Endpoints</h1>
-    <p class="page-subtitle">
-      Explore concert event listings, stream proxy utilities, and specialized catalog query options.
-    </p>
-  </div>
-</header>
-
-<main style="max-width: 1200px; margin: 0 auto; padding: 40px 5%;">
-
-  <!-- CONCERTS API ENDPOINT CARD -->
-  <section class="api-card" style="margin-bottom: 32px;">
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <span class="method-badge method-get">GET</span>
-        <span class="endpoint-path">/api/concerts</span>
-        <span class="endpoint-path">/api/concerts/{id}</span>
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <div class="search-input-wrapper">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" id="globalSearchInput" class="search-input" placeholder="Search API docs...">
       </div>
-      <span style="color: #10b981; font-size: 12px; font-weight: 700;">Status: 200 OK</span>
+      <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle Navigation">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
-    <p class="api-card-desc">
-      Query upcoming East African music concerts, stage shows, venue locations, ticket tiers, and organizer links.
-    </p>
+  </header>
 
-    <div class="code-box">
-      <div class="code-header">
-        <span class="code-lang">cURL Example</span>
-        <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copy cURL</button>
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+  <div class="portal-layout">
+    <aside id="portalSidebar" class="portal-sidebar">
+      <div class="sidebar-group">
+        <div class="sidebar-title">Getting Started</div>
+        <a href="/" class="sidebar-link">Overview & Base URL</a>
+        <a href="/#quickstart" class="sidebar-link">Quick Start</a>
+        <a href="/#base-url" class="sidebar-link">Environments & Base URL</a>
+        <a href="/#auth" class="sidebar-link">Authentication</a>
+        <a href="/#errors" class="sidebar-link">Error Handling</a>
+        <a href="/#media-delivery" class="sidebar-link">Media Stream Proxy</a>
       </div>
-      <pre class="code-content"><code>curl -X GET "https://sanyuhub.com/api/concerts?country=ug&limit=10" \
-  -H "Accept: application/json"</code></pre>
-    </div>
-  </section>
 
-  <!-- NAVIGATION LINKS GRID -->
-  <section class="section" style="padding: 0;">
-    <div class="more-compact-grid">
-      <a href="/movies" class="more-compact-card">
-        <div class="more-compact-icon">API</div>
-        <span class="more-compact-label">Movies API Documentation</span>
-      </a>
-      <a href="/series" class="more-compact-card">
-        <div class="more-compact-icon">Series</div>
-        <span class="more-compact-label">Series API Documentation</span>
-      </a>
-      <a href="/live-tv" class="more-compact-card">
-        <div class="more-compact-icon">TV</div>
-        <span class="more-compact-label">Live TV & Radio API</span>
-      </a>
-      <a href="/about" class="more-compact-card">
-        <div class="more-compact-icon">📘</div>
-        <span class="more-compact-label">Platform Guidelines & Terms</span>
-      </a>
-    </div>
-  </section>
+      <div class="sidebar-group">
+        <div class="sidebar-title">API Reference</div>
+        <a href="/movies" class="sidebar-link">Movies API</a>
+        <a href="/series" class="sidebar-link">Series API</a>
+        <a href="/live-tv" class="sidebar-link">Live TV API</a>
+        <a href="/music" class="sidebar-link">Radio API</a>
+        <a href="/concerts" class="sidebar-link">Concerts & Events API</a>
+        <a href="/#api-countries" class="sidebar-link">Countries & Languages</a>
+        <a href="/more" class="sidebar-link active">Search & Discovery</a>
+      </div>
 
-</main>
+      <div class="sidebar-group">
+        <div class="sidebar-title">Developer Tools</div>
+        <a href="/#api-explorer" class="sidebar-link">Interactive API Explorer</a>
+      </div>
+    </aside>
 
-<!-- PERSISTENT APP-STYLE BOTTOM NAVIGATION BAR -->
+    <main class="portal-content">
+      <section class="page-section active">
+        <h1 class="doc-title">Search & Discovery API</h1>
+        <p class="doc-subtitle">Global and resource-specific search, multi-field filtering, sorting, and discovery operations.</p>
 
+        <p class="doc-p">Every Meddy API resource endpoint supports parameter-driven search using the <code>?search=</code> query parameter, enabling developers to query titles, VJ translators, overview content, and genres.</p>
+      </section>
+    </main>
+  </div>
 
-<footer>
-  <div class="footer-logo">Meddy <span>API</span> API</div>
-  <div class="footer-tagline">The Unified East African Media API Platform</div>
-  <div class="copyright">&copy; 2026 Meddy API Platform. All rights reserved.</div>
-</footer>
-
-<script src="/js/app.js"></script>
-
+  <script src="/js/dev-portal.js"></script>
 </body>
 </html>

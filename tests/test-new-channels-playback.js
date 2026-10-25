@@ -27,7 +27,7 @@ const channelsToTest = [
 
   await new Promise((resolve) => {
     serverProcess.stdout.on('data', (data) => {
-      if (data.toString().includes('SanyuHub web service running')) {
+      if (data.toString().includes('web service running') || data.toString().includes('running on port')) {
         resolve();
       }
     });

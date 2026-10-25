@@ -1,145 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#222222">
-<meta name="description" content="Meddy API — Music">
-<title>Music — Meddy API</title>
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio & Audio API — Meddy API</title>
+  <link rel="stylesheet" href="/css/dev-portal.css">
 </head>
 <body>
-
-<div class="background"></div>
-
-<header class="navbar" id="navbar">
-<div class="nav-inner">
-<a href="/" class="logo">
-Meddy <span>API</span>
-</a>
-<nav class="desktop-nav">
-<a href="/">Home</a>
-<a href="/movies">Library</a>
-<a href="/series">Series</a>
-<a href="/live-tv">Live TV</a>
-</nav>
-<div class="nav-controls">
-<button class="search-button" id="topSearch" aria-label="Search">
-<span class="search-icon"></span>
-</button>
-<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-</button>
-</div>
-</div>
-</header>
-
-<!-- SIDEBAR OVERLAY -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-<!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
-<div class="sidebar-content">
-<div class="sidebar-section">
-<div class="sidebar-section-title">Explore</div>
-<a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Home</span></a>
-<a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Library</span></a>
-<a href="/series" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Series</span></a>
-<a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Live TV</span></a>
-<a href="/more" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span>More</span></a>
-</div>
-</div>
-</aside>
-
-<main>
-
-<header class="page-header">
-<div class="page-title-group">
-<h1 class="page-title">Music</h1>
-</div>
-</header>
-
-<section class="section">
-  <div class="movie-search-bar" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
-    <input type="search" id="musicSearchInput" class="movie-search-input" style="flex: 1; min-width: 240px;" placeholder="Search music by title or artist..." aria-label="Search music">
-  </div>
-
-  <div class="card-grid" id="musicCardGrid">
-    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-  </div>
-</section>
-
-</main>
-
-
-
-<script src="/js/app.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const musicGrid = document.getElementById("musicCardGrid");
-  const musicSearchInput = document.getElementById("musicSearchInput");
-  if (!musicGrid) return;
-
-  const MUSIC_STREAMS = [
-    {
-      id: "trace-mziki-music",
-      title: "Trace Mziki Live Broadcast",
-      vj: "East African Music",
-      year: "2026",
-      quality: "HD",
-      posterUrl: "/images/tracemziki-logo.png",
-      streamUrl: "https://channels.trace.plus/Traceprod/MZIKI_hd/index.m3u8"
-    }
-  ];
-
-  function renderMusic(searchQuery = "") {
-    musicGrid.innerHTML = "";
-    const cleanSearch = searchQuery.trim().toLowerCase();
-    const filtered = MUSIC_STREAMS.filter(m => {
-      if (!cleanSearch) return true;
-      return m.title.toLowerCase().includes(cleanSearch) || m.vj.toLowerCase().includes(cleanSearch);
-    });
-
-    if (filtered.length === 0) {
-      musicGrid.innerHTML = `<div class="loading-state">No results found</div>`;
-      return;
-    }
-
-    filtered.forEach(m => {
-      const card = document.createElement("article");
-      card.className = "movie-card";
-      card.style.cursor = "pointer";
-
-      card.innerHTML = `
-        <div class="poster">
-          <img src="${m.posterUrl}" alt="${m.title}">
-          <span class="badge">${m.quality}</span>
+  <header class="dev-header">
+    <div class="brand-container">
+      <a href="/" class="brand-logo"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span>Meddy API</span></a>
+      <span class="brand-badge">v1.0 Public</span>
+    </div>
+    <nav class="header-nav"><a href="/" class="header-nav-link">Overview</a><a href="/music" class="header-nav-link active">Radio API</a></nav>
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <div class="search-input-wrapper"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" id="globalSearchInput" class="search-input" placeholder="Search API docs..."></div>
+      <button id="mobileMenuBtn" class="mobile-menu-btn"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </header>
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+  <div class="portal-layout">
+    <aside id="portalSidebar" class="portal-sidebar">
+      <div class="sidebar-group"><div class="sidebar-title">Getting Started</div><a href="/" class="sidebar-link">Overview & Base URL</a></div>
+      <div class="sidebar-group"><div class="sidebar-title">API Reference</div><a href="/movies" class="sidebar-link">Movies API</a><a href="/music" class="sidebar-link active">Radio API</a></div>
+    </aside>
+    <main class="portal-content">
+      <section class="page-section active">
+        <h1 class="doc-title">Radio & Audio API</h1>
+        <p class="doc-subtitle">Retrieve FM radio station lists and audio stream proxy links.</p>
+        <div class="endpoint-card">
+          <div class="endpoint-header"><span class="method-badge get">GET</span><span class="endpoint-path">/api/radio</span></div>
+          <div class="endpoint-desc">Retrieve radio stations catalogue.</div>
         </div>
-        <div class="card-title" title="${m.title}">${m.title}</div>
-        <div class="card-meta">${m.vj} • ${m.year}</div>
-      `;
-
-      card.addEventListener("click", () => {
-        window.location.href = `/live-tv/watch/trace-mziki/`;
-      });
-
-      musicGrid.appendChild(card);
-    });
-  }
-
-  if (musicSearchInput) {
-    musicSearchInput.addEventListener("input", (e) => {
-      renderMusic(e.target.value);
-    });
-  }
-
-  renderMusic();
-});
-</script>
+      </section>
+    </main>
+  </div>
+  <script src="/js/dev-portal.js"></script>
 </body>
 </html>

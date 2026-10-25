@@ -1,369 +1,705 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#0b0f19">
-<meta name="description" content="Meddy API — The API Playground for Lord Voyage — Professional REST API Platform for East African Movies, VJ Translations, Live TV & Radio Streams.">
-<title>Meddy API — The API Playground for Lord Voyage — Developer Platform Portal</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meddy API — Developer Documentation Platform</title>
+  <meta name="description" content="Official Meddy API developer platform documentation, API reference, interactive explorer, and media proxy integration guide.">
+  <link rel="stylesheet" href="/css/dev-portal.css">
 </head>
-
 <body>
 
-<div class="background"></div>
+  <!-- Header -->
+  <header class="dev-header">
+    <div class="brand-container">
+      <a href="#" class="brand-logo" data-section-target="overview">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+        <span>Meddy API</span>
+      </a>
+      <span class="brand-badge">v1.0 Public</span>
+    </div>
 
-<!-- NAVIGATION BAR -->
-<header class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="/" class="logo">
-      Meddy <span>API</span> <span class="api-navbar-badge"><span class="api-status-dot"></span> Lord Voyage Playground</span>
-    </a>
-
-    <nav class="desktop-nav">
-      <a href="#overview">Overview</a>
-      <a href="/movies">Movies API</a>
-      <a href="/series">Series API</a>
-      <a href="/live-tv">Live TV API</a>
-      <a href="#playground">API Playground</a>
-      <a href="#player-embed">Embed Player</a>
+    <nav class="header-nav">
+      <a href="#" class="header-nav-link active" data-section-target="overview">Overview</a>
+      <a href="#" class="header-nav-link" data-section-target="quickstart">Quick Start</a>
+      <a href="#" class="header-nav-link" data-section-target="api-movies">API Reference</a>
+      <a href="#" class="header-nav-link" data-section-target="api-explorer">API Explorer</a>
     </nav>
 
-    <div class="nav-controls">
-      <button class="search-button" id="topSearch" aria-label="Search API">
-        <span class="search-icon"></span>
-      </button>
-      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- SIDEBAR OVERLAY -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-<!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-content">
-    <div class="sidebar-section">
-      <div class="sidebar-section-title">Developer Navigation</div>
-      <a href="/" class="sidebar-link active">
-        <span class="sidebar-link-left"><span class="sidebar-dot"></span> API Portal Home</span>
-      </a>
-      <a href="/movies" class="sidebar-link">
-        <span class="sidebar-link-left"><span class="sidebar-dot"></span> Movies API Documentation</span>
-      </a>
-      <a href="/series" class="sidebar-link">
-        <span class="sidebar-link-left"><span class="sidebar-dot"></span> Series API Documentation</span>
-      </a>
-      <a href="/live-tv" class="sidebar-link">
-        <span class="sidebar-link-left"><span class="sidebar-dot"></span> Live TV & Radio API</span>
-      </a>
-      <a href="/more" class="sidebar-link">
-        <span class="sidebar-link-left"><span class="sidebar-dot"></span> Concerts & Additional Endpoints</span>
-      </a>
-      <a href="/about" class="sidebar-link">
-        <span class="sidebar-link-left"><span class="sidebar-dot"></span> Platform Guidelines</span>
-      </a>
-    </div>
-  </div>
-</aside>
-
-<!-- MAIN HERO SECTION -->
-<section class="api-hero" id="overview">
-  <div class="api-hero-container">
-    <div class="api-hero-text">
-      <div class="api-hero-badge">
-        <span class="api-status-dot"></span> OPERATIONAL • MEDDY API PLAYGROUND FOR LORD VOYAGE
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <div class="search-input-wrapper">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" id="globalSearchInput" class="search-input" placeholder="Search API docs...">
       </div>
-      <h1 class="api-hero-title">Meddy API — The API Playground for Lord Voyage</h1>
-      <p class="api-hero-subtitle">
-        Integrate localized movie catalogs, VJ-narrated Luganda and Swahili translations, HLS Live TV channels, radio streams, and embeddable player capabilities using clean endpoints that never expose direct stream links.
-      </p>
-      <div class="api-hero-actions">
-        <a href="#playground" class="btn-api-primary">
-          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-          API Playground
-        </a>
-        <a href="#player-embed" class="btn-api-secondary">
-          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
-          Embed Player Tester
-        </a>
-      </div>
-    </div>
 
-    <!-- VISUAL CLOUD / SERVER STACK CARD ARCHITECTURE -->
-    <div class="api-hero-graphic">
-      <div class="api-card" style="position: relative; overflow: hidden; border-color: rgba(56, 189, 248, 0.3); background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95), rgba(3, 7, 18, 0.98));">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 12px;">
-          <span style="font-size: 12px; font-weight: 700; color: #38bdf8; font-family: monospace;" id="heroServerHost">meddy-api-gateway</span>
-          <span class="method-badge method-get">GET 200 OK</span>
+      <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle Navigation">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Overlay -->
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+  <!-- Portal Layout -->
+  <div class="portal-layout">
+
+    <!-- Sidebar -->
+    <aside id="portalSidebar" class="portal-sidebar">
+      <!-- Group 1: Getting Started -->
+      <div class="sidebar-group">
+        <div class="sidebar-title">Getting Started</div>
+        <a href="#overview" class="sidebar-link active" data-section-target="overview">Overview & Base URL</a>
+        <a href="#quickstart" class="sidebar-link" data-section-target="quickstart">Quick Start</a>
+        <a href="#base-url" class="sidebar-link" data-section-target="base-url">Environments & Base URL</a>
+        <a href="#auth" class="sidebar-link" data-section-target="auth">Authentication</a>
+        <a href="#format" class="sidebar-link" data-section-target="format">Request & Response Format</a>
+        <a href="#pagination" class="sidebar-link" data-section-target="pagination">Pagination & Filtering</a>
+        <a href="#errors" class="sidebar-link" data-section-target="errors">Error Handling</a>
+        <a href="#media-delivery" class="sidebar-link" data-section-target="media-delivery">Media Proxy & Stream Delivery</a>
+      </div>
+
+      <!-- Group 2: API Reference -->
+      <div class="sidebar-group">
+        <div class="sidebar-title">API Reference</div>
+        <a href="#api-movies" class="sidebar-link" data-section-target="api-movies">Movies API</a>
+        <a href="#api-series" class="sidebar-link" data-section-target="api-series">Series API</a>
+        <a href="#api-live-tv" class="sidebar-link" data-section-target="api-live-tv">Live TV API</a>
+        <a href="#api-radio" class="sidebar-link" data-section-target="api-radio">Radio API</a>
+        <a href="#api-concerts" class="sidebar-link" data-section-target="api-concerts">Concerts & Events API</a>
+        <a href="#api-countries" class="sidebar-link" data-section-target="api-countries">Countries & Languages</a>
+        <a href="#api-search" class="sidebar-link" data-section-target="api-search">Search & Discovery</a>
+      </div>
+
+      <!-- Group 3: Tools -->
+      <div class="sidebar-group">
+        <div class="sidebar-title">Developer Tools</div>
+        <a href="#api-explorer" class="sidebar-link" data-section-target="api-explorer">Interactive API Explorer</a>
+      </div>
+    </aside>
+
+    <!-- Main Documentation Content -->
+    <main class="portal-content">
+
+      <!-- SECTION: Overview -->
+      <section id="overview" class="page-section active">
+        <h1 class="doc-title">Meddy API Developer Documentation</h1>
+        <p class="doc-subtitle">Integrate rich media catalogues, VJ translated movies, live TV streams, radio broadcasts, and upcoming concerts into your web and mobile applications.</p>
+
+        <!-- Base URL Box -->
+        <div class="base-url-box">
+          <div>
+            <div class="base-url-label">Canonical Production Base URL</div>
+            <div class="base-url-val">http://localhost:3000</div>
+          </div>
+          <button class="copy-btn">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+            Copy URL
+          </button>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 10px; font-family: monospace; font-size: 12px; color: #94a3b8;">
-          <div><span style="color: #3b82f6;">PLATFORM:</span> Meddy API (Lord Voyage)</div>
-          <div><span style="color: #3b82f6;">STREAM PROTECTION:</span> Active (Direct URLs Hidden)</div>
-          <div><span style="color: #3b82f6;">ENDPOINTS:</span> Movies, Series, Live TV, Radio, Concerts</div>
-          <div><span style="color: #3b82f6;">EMBED PLAYER:</span> Ready (/embed)</div>
+
+        <h2 class="doc-heading">Platform Features</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 4v16M17 4v16M3 8h18M3 16h18"/></svg>
+            </div>
+            <div class="feature-title">Movies & VJ Dubbed Content</div>
+            <div class="feature-desc">Access localized, VJ-translated movie catalogues (DJ Mark, VJ Junior, VJ Ice P, etc.) complete with Swahili and English audio tracks, metadata, and proxy playback.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </div>
+            <div class="feature-title">Live TV Channels</div>
+            <div class="feature-desc">Retrieve TV broadcast channels, category metadata, viewer count telemetry, and secure HLS stream proxy URLs for seamless player streaming.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+            </div>
+            <div class="feature-title">Radio & Audio Streams</div>
+            <div class="feature-desc">Stream live FM radio stations across supported regional markets with automated stream proxying and station artwork.</div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V11.414"/></svg>
+            </div>
+            <div class="feature-title">Country Isolation</div>
+            <div class="feature-desc">Strict regional isolation between markets (e.g., Uganda and Kenya), ensuring accurate content licensing and localized language support.</div>
+          </div>
         </div>
-        <div style="margin-top: 16px; padding: 12px; background: rgba(3, 7, 18, 0.9); border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.2);">
-          <pre style="margin: 0; color: #38bdf8; font-size: 11px; overflow-x: auto;"><code id="heroJsonSnippet">{
-  "status": "success",
-  "data": {
-    "platform": "Meddy API",
-    "direct_streams_exposed": false,
-    "proxy_stream_endpoint": "/api/stream/tv/ntv-uganda",
-    "embed_player_url": "/embed?type=tv&id=ntv-uganda"
-  }
+
+        <h2 class="doc-heading">Quick Start Example</h2>
+        <p class="doc-p">Fetch the latest verified movies using the <code>/api/movies</code> endpoint:</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-lang-tabs">
+              <button class="code-tab active" data-lang="curl">cURL</button>
+              <button class="code-tab" data-lang="fetch">JavaScript</button>
+              <button class="code-tab" data-lang="python">Python</button>
+            </div>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <pre class="code-content"><code data-code-snippet="curl" class="curl-example" data-template="curl -X GET &quot;BASE_URL/api/movies?country=ug&amp;limit=5&quot; \
+  -H &quot;Accept: application/json&quot;">curl -X GET "http://localhost:3000/api/movies?country=ug&limit=5" \
+  -H "Accept: application/json"</code><code data-code-snippet="fetch" style="display:none;">fetch('http://localhost:3000/api/movies?country=ug&limit=5')
+  .then(response => response.json())
+  .then(data => console.log(data));</code><code data-code-snippet="python" style="display:none;">import requests
+
+response = requests.get('http://localhost:3000/api/movies', params={'country': 'ug', 'limit': 5})
+data = response.json()
+print(data)</code></pre>
+        </div>
+      </section>
+
+      <!-- SECTION: Quickstart -->
+      <section id="quickstart" class="page-section">
+        <h1 class="doc-title">Quick Start Guide</h1>
+        <p class="doc-subtitle">Step-by-step instructions for integrating Meddy API into your application.</p>
+
+        <h2 class="doc-heading">1. Determine Base URL</h2>
+        <p class="doc-p">All requests are routed through the single canonical Meddy API base URL. Use the base URL matching your deployment environment:</p>
+        <div class="base-url-box">
+          <div>
+            <div class="base-url-label">Canonical Base URL</div>
+            <div class="base-url-val">http://localhost:3000</div>
+          </div>
+        </div>
+
+        <h2 class="doc-heading">2. Make your First Catalogue Request</h2>
+        <p class="doc-p">All public catalogue endpoints support RESTful <code>GET</code> requests with JSON responses.</p>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-lang-tabs">
+              <button class="code-tab active" data-lang="fetch">JavaScript</button>
+            </div>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <pre class="code-content"><code>async function loadCatalogue() {
+  const res = await fetch('http://localhost:3000/api/movies?country=ug&limit=10');
+  const data = await res.json();
+  console.log(`Loaded ${data.movies.length} movies out of ${data.total}`);
 }</code></pre>
         </div>
-      </div>
-    </div>
+
+        <h2 class="doc-heading">3. Stream Media via API-Managed Proxy Routes</h2>
+        <p class="doc-p">Direct raw media and storage URLs are sanitized and concealed for security and CORS compliance. Applications must use the provided <code>streamUrl</code> or <code>embedUrl</code> properties returned in resource items.</p>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-lang-tabs"><button class="code-tab active">HTML Player</button></div>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <pre class="code-content"><code>&lt;!-- Stream via HLS / HTML5 Video element --&gt;
+&lt;video controls src="http://localhost:3000/api/stream/movie/1"&gt;&lt;/video&gt;
+
+&lt;!-- Or embed Meddy API player --&gt;
+&lt;iframe src="http://localhost:3000/embed?type=movie&id=1" width="100%" height="450" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- SECTION: Base URL -->
+      <section id="base-url" class="page-section">
+        <h1 class="doc-title">Base URL & Environments</h1>
+        <p class="doc-subtitle">Overview of canonical API endpoints, domains, and environment parameters.</p>
+
+        <h2 class="doc-heading">Canonical Base URL</h2>
+        <p class="doc-p">To prevent cross-domain origin issues and ensure consistent media resolution, all API operations use the single entry-point base URL:</p>
+
+        <div class="base-url-box">
+          <div>
+            <div class="base-url-label">Production Canonical Base URL</div>
+            <div class="base-url-val">http://localhost:3000</div>
+          </div>
+        </div>
+
+        <h2 class="doc-heading">Environment Parameters</h2>
+        <div class="table-responsive">
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="param-name">country</span></td>
+                <td><span class="param-type">string</span></td>
+                <td>Country market code (e.g., <code>ug</code> for Uganda, <code>ke</code> for Kenya). Isolation is strictly enforced.</td>
+                <td><code>ug</code></td>
+              </tr>
+              <tr>
+                <td><span class="param-name">format</span></td>
+                <td><span class="param-type">string</span></td>
+                <td>Response encoding format. Currently <code>application/json</code>.</td>
+                <td><code>json</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION: Auth -->
+      <section id="auth" class="page-section">
+        <h1 class="doc-title">Authentication & Security</h1>
+        <p class="doc-subtitle">Understanding public API access controls and secure media delivery.</p>
+
+        <h2 class="doc-heading">Public API Access</h2>
+        <p class="doc-p">All public catalogue and stream proxy endpoints (movies, series, live TV, radio, concerts) are accessible without requiring API key headers for standard read operations.</p>
+
+        <h2 class="doc-heading">Data Sanitization & Secret Concealment</h2>
+        <p class="doc-p">In accordance with security standards:</p>
+        <ul style="color: var(--text-muted); margin-left: 1.5rem; line-height: 1.8;">
+          <li>Internal database IDs, storage bucket names, and provider credentials are stripped from public responses.</li>
+          <li>Direct media URLs hosted on upstream domains (such as <code>storage.swahix.com</code>) are protected and served exclusively via API-managed proxy endpoints (<code>/api/stream-proxy</code>, <code>/api/stream/:type/:id</code>).</li>
+          <li>CORS and Referer header spoofing required by third-party storage streams are handled server-side.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION: Format -->
+      <section id="format" class="page-section">
+        <h1 class="doc-title">Request & Response Format</h1>
+        <p class="doc-subtitle">Standard JSON response structures across all API endpoints.</p>
+
+        <h2 class="doc-heading">Standard Success Response</h2>
+        <p class="doc-p">All catalogue endpoints return structured JSON with top-level metadata and resource arrays:</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-lang-tabs"><button class="code-tab active">JSON</button></div>
+            <button class="copy-btn">Copy</button>
+          </div>
+          <pre class="code-content"><code>{
+  "movies": [
+    {
+      "id": "1",
+      "title": "Inception (DJ Mark Dubbed)",
+      "year": 2010,
+      "vj": "DJ Mark",
+      "genres": ["Action", "Sci-Fi"],
+      "rating": 8.8,
+      "overview": "A thief who steals corporate secrets through dream-sharing technology...",
+      "posterUrl": "/images/posters/inception.jpg",
+      "streamUrl": "http://localhost:3000/api/stream/movie/1",
+      "embedUrl": "http://localhost:3000/embed?type=movie&id=1"
+    }
+  ],
+  "page": 1,
+  "limit": 24,
+  "total": 66,
+  "totalPages": 3,
+  "vjs": ["DJ Mark", "VJ Junior", "VJ Ice P"],
+  "genres": ["Action", "Adventure", "Comedy", "Drama", "Sci-Fi"]
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- SECTION: Pagination -->
+      <section id="pagination" class="page-section">
+        <h1 class="doc-title">Pagination, Filtering & Sorting</h1>
+        <p class="doc-subtitle">Query parameters for parameterizing API catalogue responses.</p>
+
+        <h2 class="doc-heading">Query Parameters</h2>
+        <div class="table-responsive">
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="param-name">page</span></td>
+                <td><span class="param-type">integer</span></td>
+                <td><span class="param-opt">Optional</span></td>
+                <td>Page number to retrieve (Default: <code>1</code>).</td>
+              </tr>
+              <tr>
+                <td><span class="param-name">limit</span></td>
+                <td><span class="param-type">integer</span></td>
+                <td><span class="param-opt">Optional</span></td>
+                <td>Number of records per page (Default: <code>24</code>, Max: <code>100</code>).</td>
+              </tr>
+              <tr>
+                <td><span class="param-name">search</span></td>
+                <td><span class="param-type">string</span></td>
+                <td><span class="param-opt">Optional</span></td>
+                <td>Search keyword matching title, VJ name, or overview text.</td>
+              </tr>
+              <tr>
+                <td><span class="param-name">vj</span></td>
+                <td><span class="param-type">string</span></td>
+                <td><span class="param-opt">Optional</span></td>
+                <td>Filter catalogue by VJ translator (e.g. <code>DJ Mark</code>, <code>VJ Junior</code>).</td>
+              </tr>
+              <tr>
+                <td><span class="param-name">genre</span></td>
+                <td><span class="param-type">string</span></td>
+                <td><span class="param-opt">Optional</span></td>
+                <td>Filter catalogue by genre category.</td>
+              </tr>
+              <tr>
+                <td><span class="param-name">sort</span></td>
+                <td><span class="param-type">string</span></td>
+                <td><span class="param-opt">Optional</span></td>
+                <td>Sort order: <code>recently-added</code>, <code>title</code>, <code>year</code>, <code>rating</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION: Errors -->
+      <section id="errors" class="page-section">
+        <h1 class="doc-title">Error Handling</h1>
+        <p class="doc-subtitle">HTTP status codes and error response objects.</p>
+
+        <h2 class="doc-heading">Status Codes</h2>
+        <div class="table-responsive">
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Status</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>200 OK</code></td>
+                <td>Success</td>
+                <td>The request succeeded and data was returned.</td>
+              </tr>
+              <tr>
+                <td><code>400 Bad Request</code></td>
+                <td>Error</td>
+                <td>Invalid request formatting or missing required parameters.</td>
+              </tr>
+              <tr>
+                <td><code>404 Not Found</code></td>
+                <td>Error</td>
+                <td>The requested resource ID or endpoint path does not exist.</td>
+              </tr>
+              <tr>
+                <td><code>500 Internal Error</code></td>
+                <td>Error</td>
+                <td>Server encountered an unexpected condition.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="doc-heading">Standard Error Response</h2>
+        <div class="code-block">
+          <div class="code-header"><div class="code-lang-tabs"><button class="code-tab active">JSON</button></div><button class="copy-btn">Copy</button></div>
+          <pre class="code-content"><code>{
+  "error": "Movie stream not found."
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- SECTION: Media Delivery -->
+      <section id="media-delivery" class="page-section">
+        <h1 class="doc-title">Media Proxy & Stream Delivery</h1>
+        <p class="doc-subtitle">Architecture of API-managed stream proxying and player embedding.</p>
+
+        <h2 class="doc-heading">Stream Proxy Architecture</h2>
+        <p class="doc-p">Meddy API provides built-in proxy endpoints for all video streams and radio broadcasts. This guarantees:</p>
+        <ul style="color: var(--text-muted); margin-left: 1.5rem; line-height: 1.8;">
+          <li>Zero exposure of third-party bucket credentials or origin domain details.</li>
+          <li>Range-request support (HTTP 206 Partial Content) for video scrubbing and timeline navigation.</li>
+          <li>Domain restrictions (such as <code>Referer: https://swahix.com/</code> required for Swahix media) are satisfied automatically by Meddy API servers.</li>
+        </ul>
+
+        <h2 class="doc-heading">Available Proxy Endpoints</h2>
+        <div class="table-responsive">
+          <table class="param-table">
+            <thead>
+              <tr>
+                <th>Resource Type</th>
+                <th>Endpoint Route</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Movie Stream</td>
+                <td><code>GET /api/stream/movie/:id</code></td>
+                <td>Proxies movie stream by movie ID.</td>
+              </tr>
+              <tr>
+                <td>Series Stream</td>
+                <td><code>GET /api/stream/series/:id</code></td>
+                <td>Proxies series episode stream by episode ID.</td>
+              </tr>
+              <tr>
+                <td>Live TV Stream</td>
+                <td><code>GET /api/stream/tv/:id</code></td>
+                <td>Proxies Live TV broadcast channel HLS stream by channel ID.</td>
+              </tr>
+              <tr>
+                <td>Radio Stream</td>
+                <td><code>GET /api/stream/radio/:id</code></td>
+                <td>Proxies FM radio station audio stream by station ID.</td>
+              </tr>
+              <tr>
+                <td>Generic Stream Proxy</td>
+                <td><code>GET /api/stream-proxy?url=:targetUrl</code></td>
+                <td>Proxies protected media URL with referer injection.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION: API Movies -->
+      <section id="api-movies" class="page-section">
+        <h1 class="doc-title">Movies API</h1>
+        <p class="doc-subtitle">Retrieve translated movie catalogues, VJ metadata, versions, and playback streams.</p>
+
+        <!-- Endpoint: List Movies -->
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <span class="endpoint-path">/api/movies</span>
+          </div>
+          <div class="endpoint-desc">
+            Retrieve a paginated catalogue of movies filtered by country, VJ translator, genre, or search terms.
+          </div>
+          <div class="endpoint-body">
+            <h3 class="doc-subheading">Query Parameters</h3>
+            <div class="table-responsive">
+              <table class="param-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="param-name">country</span></td>
+                    <td><span class="param-type">string</span></td>
+                    <td><span class="param-opt">Optional</span></td>
+                    <td>Country market code (<code>ug</code>, <code>ke</code>). Default: <code>ug</code>.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="param-name">search</span></td>
+                    <td><span class="param-type">string</span></td>
+                    <td><span class="param-opt">Optional</span></td>
+                    <td>Text search keyword matching title or VJ name.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="param-name">vj</span></td>
+                    <td><span class="param-type">string</span></td>
+                    <td><span class="param-opt">Optional</span></td>
+                    <td>Filter by VJ translator (e.g. <code>DJ Mark</code>, <code>VJ Junior</code>).</td>
+                  </tr>
+                  <tr>
+                    <td><span class="param-name">page</span></td>
+                    <td><span class="param-type">integer</span></td>
+                    <td><span class="param-opt">Optional</span></td>
+                    <td>Page number (Default: <code>1</code>).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="doc-subheading">Example Request</h3>
+            <div class="code-block">
+              <div class="code-header"><div class="code-lang-tabs"><button class="code-tab active">cURL</button></div><button class="copy-btn">Copy</button></div>
+              <pre class="code-content"><code class="curl-example" data-template="curl -X GET &quot;BASE_URL/api/movies?country=ug&amp;vj=DJ%20Mark&quot;">curl -X GET "http://localhost:3000/api/movies?country=ug&vj=DJ%20Mark"</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Endpoint: Movie Detail -->
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <span class="endpoint-path">/api/movies/:id</span>
+          </div>
+          <div class="endpoint-desc">
+            Retrieve full detailed metadata for an individual movie by ID.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: API Series -->
+      <section id="api-series" class="page-section">
+        <h1 class="doc-title">Series & Episodes API</h1>
+        <p class="doc-subtitle">Discover television series, season structures, episode lists, and playback streams.</p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <span class="endpoint-path">/api/series</span>
+          </div>
+          <div class="endpoint-desc">
+            Retrieve paginated list of series with associated season and episode metadata.
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <span class="endpoint-path">/api/series/:id</span>
+          </div>
+          <div class="endpoint-desc">
+            Retrieve full details and episode catalogue for a specific series.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: API Live TV -->
+      <section id="api-live-tv" class="page-section">
+        <h1 class="doc-title">Live TV API</h1>
+        <p class="doc-subtitle">Retrieve television broadcast channels, viewer stats, and live stream proxy links.</p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <span class="endpoint-path">/api/live-tv/channels</span>
+          </div>
+          <div class="endpoint-desc">
+            Retrieve list of active Live TV broadcast channels available for a given market.
+          </div>
+        </div>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <span class="endpoint-path">/api/live-tv/viewers/:id</span>
+          </div>
+          <div class="endpoint-desc">
+            Retrieve real-time concurrent viewer telemetry for a channel.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: API Radio -->
+      <section id="api-radio" class="page-section">
+        <h1 class="doc-title">Radio API</h1>
+        <p class="doc-subtitle">Discover FM radio stations and audio stream proxy endpoints.</p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <span class="endpoint-path">/api/radio</span>
+          </div>
+          <div class="endpoint-desc">
+            Retrieve list of supported FM radio stations.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: API Concerts -->
+      <section id="api-concerts" class="page-section">
+        <h1 class="doc-title">Concerts & Events API</h1>
+        <p class="doc-subtitle">Retrieve upcoming live concerts, venue information, and schedules.</p>
+
+        <div class="endpoint-card">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <span class="endpoint-path">/api/concerts</span>
+          </div>
+          <div class="endpoint-desc">
+            Retrieve upcoming live concerts and event schedules.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Countries & Languages -->
+      <section id="api-countries" class="page-section">
+        <h1 class="doc-title">Countries & Languages API</h1>
+        <p class="doc-subtitle">Regional isolation, language dubbing, and VJ translation support.</p>
+
+        <h2 class="doc-heading">Supported Countries</h2>
+        <p class="doc-p">Meddy API strictly enforces regional data isolation between supported markets:</p>
+        <ul style="color: var(--text-muted); margin-left: 1.5rem; line-height: 1.8; margin-bottom: 2rem;">
+          <li><code>ug</code> — Uganda market (Luganda, Lusoga, English dubbing & VJ translated catalogues)</li>
+          <li><code>ke</code> — Kenya market (Swahix ecosystem, Swahili dubbed content)</li>
+        </ul>
+
+        <h2 class="doc-heading">Language & Dubbing Distinction</h2>
+        <p class="doc-p">Luganda and Lusoga are maintained as distinct language entries. Swahili dubbed movies from the Swahix folder incorporate specialized translator metadata flags (e.g. <code>hasSwahiliDubbing: true</code>, <code>audioTrack: "Swahili Dubbed"</code>).</p>
+      </section>
+
+      <!-- SECTION: Search -->
+      <section id="api-search" class="page-section">
+        <h1 class="doc-title">Search & Discovery API</h1>
+        <p class="doc-subtitle">Global and resource-specific search and filtering operations.</p>
+
+        <p class="doc-p">Search query parameters (<code>?search=</code>) can be appended to any resource endpoint (movies, series, concerts) to perform instant keyword filtering across titles, VJ names, genres, and overviews.</p>
+      </section>
+
+      <!-- SECTION: API Explorer -->
+      <section id="api-explorer" class="page-section">
+        <h1 class="doc-title">Interactive API Explorer</h1>
+        <p class="doc-subtitle">Test live Meddy API endpoints directly in your browser against the active backend server.</p>
+
+        <div class="explorer-container">
+          <form id="apiExplorerForm" class="explorer-form">
+            <div class="form-group">
+              <label for="explorerEndpoint" class="form-label">Select Target Endpoint</label>
+              <select id="explorerEndpoint" class="form-control">
+                <option value="get-movies">GET /api/movies — Movies Catalogue</option>
+                <option value="get-movie-detail">GET /api/movies/:id — Movie Details</option>
+                <option value="get-series">GET /api/series — Series Catalogue</option>
+                <option value="get-tv-channels">GET /api/live-tv/channels — Live TV Channels</option>
+                <option value="get-radio-stations">GET /api/radio — Radio Stations</option>
+                <option value="get-concerts">GET /api/concerts — Upcoming Concerts</option>
+              </select>
+            </div>
+
+            <!-- Dynamic Parameter Inputs -->
+            <div id="explorerParamInputs" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+
+            <button type="submit" class="btn-primary">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              Send Live Request
+            </button>
+          </form>
+
+          <!-- Response Inspector -->
+          <div id="explorerResponseBox" class="response-box" style="display:none;">
+            <div class="response-status-bar">
+              <div id="explorerResponseStatus">
+                <span class="status-tag success">200 OK</span>
+              </div>
+              <div id="explorerResponseLatency" style="color: var(--text-muted); font-size: 0.8rem;"></div>
+            </div>
+            <pre class="code-content"><code id="explorerResponseBody">Response JSON will appear here...</code></pre>
+          </div>
+        </div>
+      </section>
+
+    </main>
   </div>
-</section>
 
-<!-- MAIN CONTENT CONTAINER -->
-<main style="max-width: 1200px; margin: 0 auto; padding: 40px 5%;">
-
-  <!-- API CAPABILITIES SECTION -->
-  <section class="section" style="padding: 0 0 48px;">
-    <div class="section-heading">
-      <div>
-        <h2 class="section-title" style="font-size: 28px;">API Resources & Capabilities</h2>
-        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Comprehensive media endpoints built for effortless external integration without revealing direct stream links.</p>
-      </div>
-    </div>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-
-      <!-- Movies API Card -->
-      <div class="api-card">
-        <div class="api-card-title">
-          <span style="color: #38bdf8; font-size: 20px;">API</span> Movies & VJs API
-        </div>
-        <p class="api-card-desc">
-          Retrieve movie records with VJ narration attribution, posters, genres, and obfuscated stream endpoints.
-        </p>
-        <div style="margin-top: 16px;">
-          <a href="/movies" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Movies Reference &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Live TV & Radio Card -->
-      <div class="api-card">
-        <div class="api-card-title">
-          <span style="color: #38bdf8; font-size: 20px;">TV</span> Live TV & Radio API
-        </div>
-        <p class="api-card-desc">
-          Access verified HLS live broadcast stream proxies, EPG schedules, and concurrent viewer statistics for NTV Uganda, Bukedde TV, Spark TV, BBS, and FM Radio stations.
-        </p>
-        <div style="margin-top: 16px;">
-          <a href="/live-tv" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Live TV Reference &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Series API Card -->
-      <div class="api-card">
-        <div class="api-card-title">
-          <span style="color: #38bdf8; font-size: 20px;">Series</span> Series & Episodes API
-        </div>
-        <p class="api-card-desc">
-          Query multi-season translated series with full episode lists, season numbers, episode titles, and protected playback proxies.
-        </p>
-        <div style="margin-top: 16px;">
-          <a href="/series" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Series Reference &rarr;</a>
-        </div>
-      </div>
-
-      <!-- Embeddable Player Card -->
-      <div class="api-card">
-        <div class="api-card-title">
-          <span style="color: #38bdf8; font-size: 20px;">Player</span> Embeddable Custom Video Player
-        </div>
-        <p class="api-card-desc">
-          Embed the fully functional custom video player on external third-party websites with iframe support.
-        </p>
-        <div style="margin-top: 16px;">
-          <a href="#player-embed" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">Test Embed Player &rarr;</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- QUICKSTART & CODE GENERATOR SECTION -->
-  <section class="section" id="quickstart" style="padding: 0 0 48px;">
-    <div class="section-heading">
-      <div>
-        <h2 class="section-title" style="font-size: 28px;">Quickstart & Dynamic Code Snippets</h2>
-        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Copy ready-to-run request examples configured automatically with the current origin URL.</p>
-      </div>
-    </div>
-
-    <!-- cURL Example -->
-    <div class="code-box">
-      <div class="code-header">
-        <span class="code-lang">cURL</span>
-        <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copy Code</button>
-      </div>
-      <pre class="code-content"><code id="curlSnippet">curl -X GET "/api/movies?country=ug&limit=10" \
-  -H "Accept: application/json"</code></pre>
-    </div>
-
-    <!-- JavaScript Example -->
-    <div class="code-box">
-      <div class="code-header">
-        <span class="code-lang">JavaScript (Fetch)</span>
-        <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copy Code</button>
-      </div>
-      <pre class="code-content"><code id="jsSnippet">async function fetchMovies() {
-  const response = await fetch('/api/movies?country=ug&limit=10');
-  const data = await response.json();
-  console.log('Movies retrieved:', data.movies);
-}
-
-fetchMovies();</code></pre>
-    </div>
-  </section>
-
-  <!-- INTERACTIVE ENDPOINT EXPLORER / PLAYGROUND -->
-  <section class="section" id="playground" style="padding: 0 0 48px;">
-    <div class="section-heading">
-      <div>
-        <h2 class="section-title" style="font-size: 28px;">Meddy API Playground</h2>
-        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Execute live requests directly using current website URL endpoints.</p>
-      </div>
-    </div>
-
-    <div class="api-explorer">
-      <div class="explorer-controls">
-        <select id="explorerEndpointSelect" class="explorer-input" style="max-width: 280px; cursor: pointer;">
-          <option value="/api/movies?limit=5">GET /api/movies</option>
-          <option value="/api/live-tv/channels?country=ug">GET /api/live-tv/channels</option>
-          <option value="/api/series?limit=5">GET /api/series</option>
-          <option value="/api/concerts?limit=5">GET /api/concerts</option>
-          <option value="/api/radio?country=ug">GET /api/radio</option>
-        </select>
-
-        <input type="text" id="explorerPathInput" class="explorer-input" value="/api/movies?limit=5" readonly>
-
-        <button id="explorerSendBtn" class="btn-api-primary" style="padding: 10px 20px;">
-          Send Request
-        </button>
-      </div>
-
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 12px; color: #94a3b8;">
-        <span>Live Server Response:</span>
-        <span id="explorerStatusBadge" class="method-badge method-get">Ready</span>
-      </div>
-
-      <div id="explorerResponseBody" class="explorer-response">
-Click "Send Request" to execute a live API fetch against the Meddy API server.
-      </div>
-    </div>
-  </section>
-
-  <!-- EMBEDDABLE VIDEO PLAYER PLAYGROUND -->
-  <section class="section" id="player-embed" style="padding: 0 0 48px;">
-    <div class="section-heading">
-      <div>
-        <h2 class="section-title" style="font-size: 28px;">Video Player Embed Playground</h2>
-        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Test the custom video player functionality and copy embed code for external developers.</p>
-      </div>
-    </div>
-
-    <div class="api-explorer">
-      <div class="explorer-controls" style="flex-wrap: wrap;">
-        <select id="embedChannelSelect" class="explorer-input" style="max-width: 280px; cursor: pointer;">
-          <option value="tv:ntv-uganda">Live TV: NTV Uganda</option>
-          <option value="tv:spark-tv">Live TV: Spark TV</option>
-          <option value="tv:bukedde-1">Live TV: Bukedde 1</option>
-          <option value="radio:dembe-fm">Radio: Dembe FM 90.4</option>
-          <option value="radio:galaxy-fm">Radio: Galaxy FM 100.2</option>
-        </select>
-
-        <input type="text" id="embedIframeSrc" class="explorer-input" value="" readonly>
-
-        <button id="copyEmbedIframeBtn" class="btn-api-primary" style="padding: 10px 20px;">
-          Copy Embed Code
-        </button>
-      </div>
-
-      <div style="margin-top: 20px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); background: #000; aspect-ratio: 16/9; max-height: 480px;">
-        <iframe id="playgroundPlayerFrame" src="" style="width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="footer-logo">Meddy <span>API</span></div>
-  <div class="footer-tagline">The API Playground for Lord Voyage</div>
-  <div class="footer-links">
-    <a href="/movies">Movies API</a>
-    <a href="/series">Series API</a>
-    <a href="/live-tv">Live TV API</a>
-    <a href="/about">Documentation</a>
-  </div>
-  <div class="copyright">&copy; 2026 Meddy API Platform. All rights reserved.</div>
-</footer>
-
-<script src="js/app.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const origin = window.location.origin;
-
-    // Update Quickstart Code Snippets with actual origin URL
-    const curlEl = document.getElementById("curlSnippet");
-    if (curlEl) {
-      curlEl.textContent = `curl -X GET "${origin}/api/movies?country=ug&limit=10" \\\n  -H "Accept: application/json"`;
-    }
-
-    const jsEl = document.getElementById("jsSnippet");
-    if (jsEl) {
-      jsEl.textContent = `async function fetchMovies() {\n  const response = await fetch('${origin}/api/movies?country=ug&limit=10');\n  const data = await response.json();\n  console.log('Movies retrieved:', data.movies);\n}\n\nfetchMovies();`;
-    }
-
-    // Embed Player Tester
-    const selectEl = document.getElementById("embedChannelSelect");
-    const srcInput = document.getElementById("embedIframeSrc");
-    const iframeEl = document.getElementById("playgroundPlayerFrame");
-    const copyBtn = document.getElementById("copyEmbedIframeBtn");
-
-    function updateEmbedFrame() {
-      if (!selectEl || !srcInput || !iframeEl) return;
-      const val = selectEl.value;
-      const parts = val.split(":");
-      const type = parts[0];
-      const id = parts[1];
-
-      const embedPath = `/embed?type=${type}&id=${id}`;
-      const fullUrl = `${origin}${embedPath}`;
-      const iframeCode = `<iframe src="${fullUrl}" width="100%" height="450" frameborder="0" allowfullscreen></iframe>`;
-
-      srcInput.value = iframeCode;
-      iframeEl.src = embedPath;
-    }
-
-    if (selectEl) {
-      selectEl.addEventListener("change", updateEmbedFrame);
-      updateEmbedFrame();
-    }
-
-    if (copyBtn && srcInput) {
-      copyBtn.addEventListener("click", function() {
-        navigator.clipboard.writeText(srcInput.value).then(function() {
-          const oldText = copyBtn.textContent;
-          copyBtn.textContent = "Copied Embed Code!";
-          setTimeout(function() { copyBtn.textContent = oldText; }, 2000);
-        });
-      });
-    }
-  });
-</script>
-
+  <script src="/js/dev-portal.js"></script>
 </body>
 </html>

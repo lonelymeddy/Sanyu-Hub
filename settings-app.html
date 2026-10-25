@@ -1,194 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#222222">
-<meta name="description" content="Meddy API — App Preferences">
-<title>App Preferences — Meddy API</title>
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Preferences — Meddy API</title>
+  <link rel="stylesheet" href="/css/dev-portal.css">
 </head>
 <body>
-
-<div class="background"></div>
-
-<header class="navbar" id="navbar">
-<div class="nav-inner">
-<a href="/" class="logo">
-Meddy <span>API</span>
-</a>
-<nav class="desktop-nav">
-<a href="/">Home</a>
-<a href="/movies">Library</a>
-<a href="/series">Series</a>
-<a href="/live-tv">Live TV</a>
-</nav>
-<div class="nav-controls">
-<button class="search-button" id="topSearch" aria-label="Search">
-<span class="search-icon"></span>
-</button>
-<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-</button>
-</div>
-</div>
-</header>
-
-<!-- SIDEBAR OVERLAY -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-<!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
-<div class="sidebar-content">
-<div class="sidebar-section">
-<div class="sidebar-section-title">Explore</div>
-<a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Home</span></a>
-<a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Library</span></a>
-<a href="/series" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Series</span></a>
-<a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Live TV</span></a>
-<a href="/more" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span>More</span></a>
-</div>
-</div>
-</aside>
-
-<main>
-
-<header class="page-header">
-<div class="page-title-group">
-<h1 class="page-title">App Preferences</h1>
-</div>
-</header>
-
-<section class="section">
-  <div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
-
-    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between;">
-      <span style="font-weight: 600; font-size: 15px;">Autoplay Next Video</span>
-      <label class="switch" style="position: relative; display: inline-block; width: 46px; height: 26px;">
-        <input type="checkbox" id="prefAutoplay" style="opacity: 0; width: 0; height: 0;">
-        <span class="slider" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .3s; border-radius: 26px;"></span>
-      </label>
-    </div>
-
-    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between;">
-      <span style="font-weight: 600; font-size: 15px;">Default Streaming Quality</span>
-      <select id="prefQuality" style="background: #111; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 13px; outline: none; cursor: pointer;">
-        <option value="auto">Auto (Adaptive)</option>
-        <option value="1080p">HD 1080p</option>
-        <option value="720p">HD 720p</option>
-        <option value="480p">SD 480p</option>
-      </select>
-    </div>
-
-    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between;">
-      <div>
-        <div style="font-weight: 600; font-size: 15px; color: #fff;">Country / Region</div>
-        <div id="appPrefCountryName" style="font-size: 13px; color: #aaa; margin-top: 2px;">Uganda</div>
-      </div>
-      <a href="/settings/country" id="btnChangeCountrySettings" style="background: #06b6d4; color: #080808; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; text-decoration: none;">
-        Change
-      </a>
-    </div>
-
-    <div id="androidNotificationContainer" style="display: none;"></div>
-
+  <header class="dev-header">
+    <div class="brand-container"><a href="/" class="brand-logo"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span>Meddy API</span></a><span class="brand-badge">v1.0 Public</span></div>
+    <nav class="header-nav"><a href="/" class="header-nav-link">Overview</a></nav>
+    <div style="display: flex; align-items: center; gap: 0.75rem;"><div class="search-input-wrapper"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" id="globalSearchInput" class="search-input" placeholder="Search API docs..."></div><button id="mobileMenuBtn" class="mobile-menu-btn"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
+  </header>
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+  <div class="portal-layout">
+    <aside id="portalSidebar" class="portal-sidebar"><div class="sidebar-group"><div class="sidebar-title">Getting Started</div><a href="/" class="sidebar-link active">Overview & Base URL</a></div></aside>
+    <main class="portal-content"><section class="page-section active"><h1 class="doc-title">App Preferences</h1><p class="doc-subtitle">API response formatting and environment parameters.</p></section></main>
   </div>
-</section>
-
-</main>
-
-<style>
-.switch input:checked + .slider { background-color: #06b6d4; }
-.switch input:checked + .slider:before { transform: translateX(20px); background-color: #080808; }
-.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
-</style>
-
-
-
-<script src="/js/app.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const autoEl = document.getElementById("prefAutoplay");
-  const qualEl = document.getElementById("prefQuality");
-
-  if (autoEl) {
-    autoEl.checked = localStorage.getItem("sanyuhub_pref_autoplay") === "true";
-    autoEl.addEventListener("change", (e) => {
-      localStorage.setItem("sanyuhub_pref_autoplay", e.target.checked ? "true" : "false");
-    });
-  }
-
-  if (qualEl) {
-    qualEl.value = localStorage.getItem("sanyuhub_pref_quality") || "auto";
-    qualEl.addEventListener("change", (e) => {
-      localStorage.setItem("sanyuhub_pref_quality", e.target.value);
-    });
-  }
-
-  const countryNameEl = document.getElementById("appPrefCountryName");
-  if (countryNameEl && typeof getActiveCountryCode === "function" && typeof COUNTRIES_CONFIG !== "undefined") {
-    const code = getActiveCountryCode();
-    const config = COUNTRIES_CONFIG[code] || COUNTRIES_CONFIG.ug;
-    countryNameEl.textContent = config.name;
-  }
-
-
-  // Graceful Android Native Integration
-  if (window.SanyuHubNative && typeof window.SanyuHubNative.isAndroidApp === "function" && window.SanyuHubNative.isAndroidApp()) {
-    const container = document.getElementById("androidNotificationContainer");
-    if (container) {
-      const renderAndroidNotifSection = () => {
-        const isGranted = window.SanyuHubNative.isNotificationPermissionGranted();
-        container.style.display = "block";
-        container.innerHTML = `
-          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-              <div>
-                <div style="font-weight: 600; font-size: 15px; color: #fff;">Push Notifications</div>
-                <div style="font-size: 12px; color: #aaa; margin-top: 2px;">Receive announcements for new movies, series, and live events.</div>
-              </div>
-              <span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; background: ${isGranted ? 'rgba(76,175,80,0.15)' : 'rgba(255,152,0,0.15)'}; color: ${isGranted ? '#66bb6a' : '#ffa726'};">
-                ${isGranted ? 'Enabled' : 'Disabled'}
-              </span>
-            </div>
-            <div style="display: flex; gap: 10px; margin-top: 4px;">
-              ${!isGranted ? `
-                <button id="btnEnableNotif" style="background: #06b6d4; color: #000; border: none; padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;">
-                  Enable Notifications
-                </button>
-              ` : ''}
-              <button id="btnNotifSettings" style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer;">
-                Notification Settings
-              </button>
-            </div>
-          </div>
-        `;
-
-        const btnEnable = document.getElementById("btnEnableNotif");
-        if (btnEnable) {
-          btnEnable.addEventListener("click", () => {
-            window.SanyuHubNative.requestNotificationPermission();
-          });
-        }
-
-        const btnSettings = document.getElementById("btnNotifSettings");
-        if (btnSettings) {
-          btnSettings.addEventListener("click", () => {
-            window.SanyuHubNative.openNotificationSettings();
-          });
-        }
-      };
-
-      renderAndroidNotifSection();
-
-      window.onNotificationPermissionResult = (granted) => {
-        renderAndroidNotifSection();
-      };
-    }
-  }
-});
-</script>
+  <script src="/js/dev-portal.js"></script>
 </body>
 </html>
