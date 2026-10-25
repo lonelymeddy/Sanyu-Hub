@@ -1,0 +1,72 @@
+[
+  {
+    "id": "stream-swahix-38",
+    "movie_id": "swahix-38",
+    "title": "Free Guy",
+    "stream_url": "https://storage.swahix.com/free-guy-mark.mp4",
+    "format": "MP4",
+    "provider": "storage.swahix.com",
+    "verification_status": "verified",
+    "headers": {
+      "Referer": "https://swahix.com/",
+      "User-Agent": "Mozilla/5.0"
+    },
+    "quality": "HD"
+  },
+  {
+    "id": "stream-swahix-43",
+    "movie_id": "swahix-43",
+    "title": "Dominique",
+    "stream_url": "https://storage.swahix.com/dominique-mark-www-swahix-com.mp4",
+    "format": "MP4",
+    "provider": "storage.swahix.com",
+    "verification_status": "verified",
+    "headers": {
+      "Referer": "https://swahix.com/",
+      "User-Agent": "Mozilla/5.0"
+    },
+    "quality": "HD"
+  },
+  {
+    "id": "stream-swahix-51",
+    "movie_id": "swahix-51",
+    "title": "War Machine",
+    "stream_url": "https://storage.swahix.com/WarMachineDjBlaki.mp4",
+    "format": "MP4",
+    "provider": "storage.swahix.com",
+    "verification_status": "verified",
+    "headers": {
+      "Referer": "https://swahix.com/",
+      "User-Agent": "Mozilla/5.0"
+    },
+    "quality": "HD"
+  },
+  {
+    "id": "stream-swahix-56",
+    "movie_id": "swahix-56",
+    "title": "Lone Samurai",
+    "stream_url": "https://storage.swahix.com/lone-amurai-dj-mjukuu-swahix.mp4",
+    "format": "MP4",
+    "provider": "storage.swahix.com",
+    "verification_status": "verified",
+    "headers": {
+      "Referer": "https://swahix.com/",
+      "User-Agent": "Mozilla/5.0"
+    },
+    "quality": "HD"
+  },
+  {
+    "id": "stream-swahix-57",
+    "movie_id": "swahix-57",
+    "title": "Mutiny",
+    "stream_url": "https://storage.swahix.com/mutiny-djmark-swahix.mp4",
+    "format": "MP4",
+    "provider": "storage.swahix.com",
+    "verification_status": "verified",
+    "headers": {
+      "Referer": "https://swahix.com/",
+      "User-Agent": "Mozilla/5.0"
+    },
+    "quality": "HD"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "dj_mark",
+    "name": "DJ Mark",
+    "language": "Swahili",
+    "count": 3
+  },
+  {
+    "id": "dj_mack",
+    "name": "DJ Mack",
+    "language": "Swahili",
+    "count": 17
+  },
+  {
+    "id": "dj_black",
+    "name": "DJ Black",
+    "language": "Swahili",
+    "count": 8
+  },
+  {
+    "id": "dj_mjukuu",
+    "name": "DJ Mjukuu",
+    "language": "Swahili",
+    "count": 7
+  },
+  {
+    "id": "babu_dj",
+    "name": "Babu DJ",
+    "language": "Swahili",
+    "count": 7
+  },
+  {
+    "id": "dj_prabhas",
+    "name": "DJ Prabhas",
+    "language": "Swahili",
+    "count": 10
+  },
+  {
+    "id": "dj_murphy",
+    "name": "DJ Murphy",
+    "language": "Swahili",
+    "count": 7
+  }
+]

@@ -1,10 +1,62 @@
 const express = require('express');
 const path = require('path');
+const https = require('https');
+const http = require('http');
 const { loadCountryCatalogue } = require('./src/countries/shared/country-loader');
 const { getSupportedCountries } = require('./src/countries/registry');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// API Stream Proxy for Protected Media Streams (e.g. Swahix storage requiring Referer headers)
+app.get('/api/stream-proxy', (req, res) => {
+  const targetUrl = req.query.url;
+  if (!targetUrl || !targetUrl.startsWith('http')) {
+    return res.status(400).json({ error: 'Missing or invalid media URL parameter.' });
+  }
+
+  try {
+    const parsed = new URL(targetUrl);
+    const allowedHosts = ['storage.swahix.com', 'swahix.com', 'www.swahix.com'];
+    if (!allowedHosts.includes(parsed.hostname.toLowerCase())) {
+      return res.status(403).json({ error: 'Proxy access restricted to authorized media domains.' });
+    }
+
+    const clientHeaders = {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+      'Referer': 'https://swahix.com/',
+      'Accept': '*/*'
+    };
+
+    if (req.headers.range) {
+      clientHeaders['Range'] = req.headers.range;
+    }
+
+    const mod = parsed.protocol === 'https:' ? https : http;
+    const proxyReq = mod.get(targetUrl, { headers: clientHeaders }, (proxyRes) => {
+      res.status(proxyRes.statusCode);
+
+      const passHeaders = ['content-type', 'content-length', 'accept-ranges', 'content-range', 'cache-control'];
+      passHeaders.forEach(h => {
+        if (proxyRes.headers[h]) {
+          res.setHeader(h, proxyRes.headers[h]);
+        }
+      });
+
+      proxyRes.pipe(res);
+    });
+
+    proxyReq.on('error', (err) => {
+      if (!res.headersSent) {
+        res.status(500).json({ error: 'Failed to proxy media stream.' });
+      }
+    });
+  } catch (err) {
+    if (!res.headersSent) {
+      res.status(400).json({ error: 'Invalid URL formatting.' });
+    }
+  }
+});
 
 // API Route for Live TV Channels
 app.get('/api/live-tv/channels', async (req, res) => {

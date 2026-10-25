@@ -1,0 +1,22 @@
+{
+  "title": "Swahix Platform Content & Stream Discovery",
+  "platform_id": "swahix",
+  "target_website": "https://swahix.com/",
+  "last_updated": "2026-10-25T15:31:02.166Z",
+  "summary": {
+    "total_movies_discovered": 22,
+    "total_direct_video_urls_discovered": 5,
+    "confirmed_playback_count": 5,
+    "paywalled_or_login_restricted_count": 17,
+    "main_hosting_domain": "storage.swahix.com"
+  },
+  "translators": [
+    "DJ Mark",
+    "DJ Mack",
+    "DJ Black",
+    "DJ Mjukuu",
+    "Babu DJ",
+    "DJ Prabhas",
+    "DJ Murphy"
+  ]
+}
