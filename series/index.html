@@ -3,37 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#222222">
-<meta name="description" content="SanyuHub — Series Catalogue">
-<title>Series Catalogue — SanyuHub</title>
+<meta name="theme-color" content="#0b0f19">
+<meta name="description" content="SanyuHub Series API — REST Endpoints for Multi-Season Translated Series, Episodic Metadata & VJ Narration.">
+<title>Series API Reference & Explorer — SanyuHub API</title>
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
 <div class="background"></div>
 
+<!-- NAVIGATION BAR -->
 <header class="navbar" id="navbar">
-<div class="nav-inner">
-<a href="/" class="logo">
-Sanyu<span>Hub</span>
-</a>
-<nav class="desktop-nav">
-<a href="/" class="">Home</a>
-<a href="/movies" class="">Library</a>
-<a href="/series" class="active">Series</a>
-<a href="/live-tv" class="">Live TV</a>
-</nav>
-<div class="nav-controls">
-<button class="search-button" id="topSearch" aria-label="Search">
-<span class="search-icon"></span>
-</button>
-<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-</button>
-</div>
-</div>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      Sanyu<span>Hub</span> <span class="api-navbar-badge"><span class="api-status-dot"></span> API v1.0</span>
+    </a>
+    <nav class="desktop-nav">
+      <a href="/">Overview</a>
+      <a href="/movies">Movies API</a>
+      <a href="/series" class="active">Series API</a>
+      <a href="/live-tv">Live TV API</a>
+      <a href="/more">More Endpoints</a>
+    </nav>
+    <div class="nav-controls">
+      <button class="search-button" id="topSearch" aria-label="Search">
+        <span class="search-icon"></span>
+      </button>
+      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+    </div>
+  </div>
 </header>
 
 <!-- SIDEBAR OVERLAY -->
@@ -41,88 +43,94 @@ Sanyu<span>Hub</span>
 
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
-<div class="sidebar-content">
-<div class="sidebar-section">
-<div class="sidebar-section-title">Explore</div>
-
-<a href="/" class="sidebar-link ">
-<span class="sidebar-link-left">
-<span class="sidebar-dot"></span>
-Home
-</span>
-</a>
-
-<a href="/movies" class="sidebar-link has-submenu  ">
-<span class="sidebar-link-left">
-<span class="sidebar-dot"></span>
-Library
-</span>
-<span class="chevron"></span>
-</a>
-
-<div class="sidebar-submenu ">
-<a href="/trending" class="">Trending Now</a>
-<a href="/popular" class="">Popular Movies</a>
-<a href="/featured" class="">Featured</a>
-<a href="/recently-added" class="">Recently Added</a>
-</div>
-
-<a href="/series" class="sidebar-link has-submenu expanded active">
-<span class="sidebar-link-left">
-<span class="sidebar-dot"></span>
-Series
-</span>
-<span class="chevron"></span>
-</a>
-
-<div class="sidebar-submenu open">
-<a href="/popular-series" class="">Popular Series</a>
-<a href="/continue-watching" class="">Continue Watching</a>
-</div>
-
-<a href="/live-tv" class="sidebar-link ">
-<span class="sidebar-link-left">
-<span class="sidebar-dot"></span>
-Live TV
-</span>
-</a>
-
-</div>
-</div>
+  <div class="sidebar-content">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Developer Navigation</div>
+      <a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span> API Portal Home</span></a>
+      <a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span> Movies API Documentation</span></a>
+      <a href="/series" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span> Series API Documentation</span></a>
+      <a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span> Live TV & Radio API</span></a>
+      <a href="/more" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span> Concerts & Additional Endpoints</span></a>
+    </div>
+  </div>
 </aside>
 
-<main>
-
-<header class="page-header">
-<div class="page-title-group">
-<h1 class="page-title">Series Catalogue</h1>
-<p class="page-subtitle">Explore complete series and drama collections on SanyuHub.</p>
-</div>
+<!-- PAGE HEADER -->
+<header class="page-header" style="background: radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.12), transparent 70%);">
+  <div class="page-title-group" style="max-width: 1200px; margin: 0 auto;">
+    <div class="api-hero-badge" style="margin-bottom: 12px;">
+      <span class="method-badge method-get">GET /api/series</span> &nbsp; EPISODIC MEDIA API RESOURCE
+    </div>
+    <h1 class="page-title">Series API Reference</h1>
+    <p class="page-subtitle">
+      Query multi-season translated series, season breakdowns, episode titles, VJ narration credits, and streaming links.
+    </p>
+  </div>
 </header>
 
-<section class="section">
-<div class="categories" style="margin-bottom: 24px;">
-<button class="category active">All Series</button>
-<button class="category">Drama</button>
-<button class="category">Action</button>
-<button class="category">Romance</button>
-<button class="category">Thriller</button>
-</div>
+<main style="max-width: 1200px; margin: 0 auto; padding: 40px 5%;">
 
-<div class="card-grid" id="seriesGrid">
-  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-</div>
-</section>
+  <!-- ENDPOINT DOCUMENTATION CARD -->
+  <section class="api-card" style="margin-bottom: 32px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span class="method-badge method-get">GET</span>
+        <span class="endpoint-path">/api/series</span>
+        <span class="endpoint-path">/api/series/{id}</span>
+      </div>
+      <span style="color: #10b981; font-size: 12px; font-weight: 700;">Status: 200 OK</span>
+    </div>
+    <p class="api-card-desc">
+      Fetch series items or individual series details including total seasons, episode counts, and episode streaming references.
+    </p>
+
+    <div class="code-box">
+      <div class="code-header">
+        <span class="code-lang">cURL Request Example</span>
+        <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copy cURL</button>
+      </div>
+      <pre class="code-content"><code>curl -X GET "https://sanyuhub.com/api/series?country=ug&limit=10" \
+  -H "Accept: application/json"</code></pre>
+    </div>
+  </section>
+
+  <!-- LIVE SERIES CATALOGUE -->
+  <section class="section" style="padding: 0;">
+    <div class="section-heading">
+      <div>
+        <h3 class="section-title" style="font-size: 22px;">Live Series API Browser</h3>
+        <p style="color: #94a3b8; font-size: 13px; margin-top: 4px;">Browse series objects returned by the SanyuHub backend API.</p>
+      </div>
+    </div>
+
+    <div class="movie-search-bar" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+      <input type="search" id="seriesSearchInput" class="movie-search-input" style="flex: 1; min-width: 240px;" placeholder="Search series by title, VJ, overview..." aria-label="Search series">
+
+      <select id="seriesGenreSelect" class="movie-search-input" style="width: auto; cursor: pointer;">
+        <option value="all">All Genres</option>
+      </select>
+
+      <select id="seriesSortSelect" class="movie-search-input" style="width: auto; cursor: pointer;">
+        <option value="popular">Popularity</option>
+        <option value="rating">Top Rated</option>
+        <option value="title">Title (A-Z)</option>
+      </select>
+    </div>
+
+    <div class="card-grid" id="seriesCardGrid">
+      <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div></article>
+      <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div></article>
+      <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div></article>
+    </div>
+
+    <div class="pagination" id="seriesPaginationControls" style="display: none; margin-top: 30px;">
+      <button class="page-btn" id="seriesPrevBtn" disabled>&laquo; Previous</button>
+      <span class="page-info" id="seriesPageInfo">Page 1 of 1</span>
+      <button class="page-btn" id="seriesNextBtn">Next &raquo;</button>
+    </div>
+  </section>
 
 </main>
-
-
-<script src="/js/app.js"></script>
 
 <!-- PERSISTENT APP-STYLE BOTTOM NAVIGATION BAR -->
 <nav class="bottom-nav" id="bottomNav">
@@ -130,28 +138,35 @@ Live TV
     <div class="bottom-nav-icon">
       <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
     </div>
-    <span>Home</span>
-  </a>
-  <a href="/live-tv" class="bottom-nav-item" id="navChannels">
-    <div class="bottom-nav-icon">
-      <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
-    </div>
-    <span>Channels</span>
+    <span>API Portal</span>
   </a>
   <a href="/movies" class="bottom-nav-item" id="navMovies">
     <div class="bottom-nav-icon">
       <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
     </div>
-    <span>Library</span>
+    <span>Movies API</span>
+  </a>
+  <a href="/live-tv" class="bottom-nav-item" id="navChannels">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+    </div>
+    <span>Live TV API</span>
   </a>
   <a href="/more" class="bottom-nav-item" id="navMore">
     <div class="bottom-nav-icon">
       <svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
     </div>
-    <span>More</span>
+    <span>More Docs</span>
   </a>
 </nav>
 
+<footer>
+  <div class="footer-logo">Sanyu<span>Hub</span> API</div>
+  <div class="footer-tagline">The Unified East African Media API Platform</div>
+  <div class="copyright">&copy; 2026 SanyuHub API Platform. All rights reserved.</div>
+</footer>
+
+<script src="/js/app.js"></script>
 
 </body>
 </html>

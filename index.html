@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#222222">
-<meta name="description" content="SanyuHub — Movies, Series and Live TV.">
-<title>SanyuHub — Movies & Live TV</title>
-
+<meta name="theme-color" content="#0b0f19">
+<meta name="description" content="SanyuHub Media API — Professional REST API Platform for East African Movies, VJ Translations, Live TV & Radio Streams.">
+<title>SanyuHub Media API — Developer Platform Portal</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -14,45 +13,33 @@
 
 <div class="background"></div>
 
+<!-- NAVIGATION BAR -->
 <header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      Sanyu<span>Hub</span> <span class="api-navbar-badge"><span class="api-status-dot"></span> API v1.0</span>
+    </a>
 
-<div class="nav-inner">
+    <nav class="desktop-nav">
+      <a href="#overview">Overview</a>
+      <a href="/movies">Movies API</a>
+      <a href="/series">Series API</a>
+      <a href="/live-tv">Live TV API</a>
+      <a href="#quickstart">Quickstart</a>
+      <a href="#explorer">Explorer</a>
+    </nav>
 
-<a href="/" class="logo">
-Sanyu<span>Hub</span>
-</a>
-
-<nav class="desktop-nav">
-
-<a href="/">Home</a>
-<a href="/movies">Library</a>
-<a href="/series">Series</a>
-<a href="/live-tv">Live TV</a>
-
-</nav>
-
-<div class="nav-controls">
-
-<button class="search-button" id="topSearch" aria-label="Search">
-<span class="search-icon"></span>
-</button>
-
-<button
-class="menu-button"
-id="menuButton"
-aria-label="Open navigation"
-aria-expanded="false">
-
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-
-</button>
-
-</div>
-
-</div>
-
+    <div class="nav-controls">
+      <button class="search-button" id="topSearch" aria-label="Search API">
+        <span class="search-icon"></span>
+      </button>
+      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+    </div>
+  </div>
 </header>
 
 <!-- SIDEBAR OVERLAY -->
@@ -60,298 +47,265 @@ aria-expanded="false">
 
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
-
-<div class="sidebar-content">
-
-<div class="sidebar-section">
-
-<div class="sidebar-section-title">
-Explore
-</div>
-
-<a href="/" class="sidebar-link active">
-
-<span class="sidebar-link-left">
-
-<span class="sidebar-dot"></span>
-
-Home
-
-</span>
-
-</a>
-
-<a href="/movies" class="sidebar-link has-submenu">
-
-<span class="sidebar-link-left">
-
-<span class="sidebar-dot"></span>
-
-Library
-
-</span>
-
-<span class="chevron"></span>
-
-</a>
-
-<div class="sidebar-submenu">
-
-<a href="/trending">
-Trending Now
-</a>
-
-<a href="/popular">
-Popular Movies
-</a>
-
-<a href="/featured">
-Featured
-</a>
-
-<a href="/recently-added">
-Recently Added
-</a>
-
-</div>
-
-<a href="/series" class="sidebar-link has-submenu">
-
-<span class="sidebar-link-left">
-
-<span class="sidebar-dot"></span>
-
-Series
-
-</span>
-
-<span class="chevron"></span>
-
-</a>
-
-<div class="sidebar-submenu">
-
-<a href="/series">
-Popular Series
-</a>
-
-<a href="/continue-watching">
-Continue Watching
-</a>
-
-</div>
-
-<a href="/live-tv" class="sidebar-link">
-
-<span class="sidebar-link-left">
-
-<span class="sidebar-dot"></span>
-
-Live TV
-
-</span>
-
-</a>
-
-</div>
-
-</div>
-
+  <div class="sidebar-content">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Developer Navigation</div>
+      <a href="/" class="sidebar-link active">
+        <span class="sidebar-link-left"><span class="sidebar-dot"></span> API Portal Home</span>
+      </a>
+      <a href="/movies" class="sidebar-link">
+        <span class="sidebar-link-left"><span class="sidebar-dot"></span> Movies API Documentation</span>
+      </a>
+      <a href="/series" class="sidebar-link">
+        <span class="sidebar-link-left"><span class="sidebar-dot"></span> Series API Documentation</span>
+      </a>
+      <a href="/live-tv" class="sidebar-link">
+        <span class="sidebar-link-left"><span class="sidebar-dot"></span> Live TV & Radio API</span>
+      </a>
+      <a href="/more" class="sidebar-link">
+        <span class="sidebar-link-left"><span class="sidebar-dot"></span> Concerts & Additional Endpoints</span>
+      </a>
+      <a href="/about" class="sidebar-link">
+        <span class="sidebar-link-left"><span class="sidebar-dot"></span> Platform Guidelines</span>
+      </a>
+    </div>
+  </div>
 </aside>
 
-<!-- HERO CAROUSEL -->
-<section class="hero-carousel-container" id="home">
-  <div class="hero-carousel" id="heroCarousel">
-    <div class="carousel-track" id="carouselTrack">
-
-      <!-- Slide 1: Live TV -->
-      <div class="carousel-slide active" data-slide="0">
-        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('/images/ntv-logo.jpg');"></div>
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span class="ugandan-text">LIVE</span> &nbsp; BROADCAST
-          </div>
-          <h1>Experience Live Ugandan TV</h1>
-          <p class="hero-description">Watch breaking news, entertainment shows, and live regional broadcasts directly on SanyuHub.</p>
-          <div class="hero-buttons">
-            <a href="/live-tv" class="btn btn-primary">Watch Live TV</a>
-            <a href="/movies" class="btn btn-secondary">Explore Library</a>
-          </div>
-        </div>
+<!-- MAIN HERO SECTION -->
+<section class="api-hero" id="overview">
+  <div class="api-hero-container">
+    <div class="api-hero-text">
+      <div class="api-hero-badge">
+        <span class="api-status-dot"></span> OPERATIONAL • EAST AFRICA MEDIA API PLATFORM
       </div>
-
-      <!-- Slide 2: Trending Movies -->
-      <div class="carousel-slide" data-slide="1">
-        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('https://image.tmdb.org/t/p/w1280/i8V32GInnjIKSkE3YHKHJQLeXWn.jpg');"></div>
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span class="ugandan-text">UGANDAN</span> &nbsp; MOVIES
-          </div>
-          <h1>Top Translated Movies</h1>
-          <p class="hero-description">Enjoy blockbuster hits translated in Luganda by your favorite VJs including VJ Junior, VJ Emmy, and VJ Jingo.</p>
-          <div class="hero-buttons">
-            <a href="/movies" class="btn btn-primary">Browse Movies</a>
-            <a href="/trending" class="btn btn-secondary">Trending Now</a>
-          </div>
-        </div>
+      <h1 class="api-hero-title">Build Next-Gen Media Apps with SanyuHub API</h1>
+      <p class="api-hero-subtitle">
+        Integrate localized movie catalogs, VJ-narrated Luganda and Swahili translations, HLS Live TV channels, radio streams, and concert listings directly into your web, mobile, and streaming applications.
+      </p>
+      <div class="api-hero-actions">
+        <a href="/movies" class="btn-api-primary">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+          Explore Movies API
+        </a>
+        <a href="#explorer" class="btn-api-secondary">
+          <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+          Interactive Explorer
+        </a>
       </div>
-
-      <!-- Slide 3: Hot Music -->
-      <div class="carousel-slide" data-slide="2">
-        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('/images/tracemziki-logo.png');"></div>
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span class="ugandan-text">HOT</span> &nbsp; MUSIC
-          </div>
-          <h1>East African Music Streams</h1>
-          <p class="hero-description">Stream non-stop hit music countdowns, East African urban sounds, and live music channels.</p>
-          <div class="hero-buttons">
-            <a href="/music" class="btn btn-primary">Stream Music</a>
-            <a href="/live-tv/watch/trace-mziki/" class="btn btn-secondary">Trace Mziki</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 4: Concerts -->
-      <div class="carousel-slide" data-slide="3">
-        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1600&q=80');"></div>
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span class="ugandan-text">LIVE</span> &nbsp; CONCERTS
-          </div>
-          <h1>Concerts & Live Shows</h1>
-          <p class="hero-description">Watch live music concerts, stage performances, and cultural festivals from top artists.</p>
-          <div class="hero-buttons">
-            <a href="/movies?category=concerts" class="btn btn-primary">Watch Concerts</a>
-            <a href="/more" class="btn btn-secondary">Explore More</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 5: Doppest Radio Stations -->
-      <div class="carousel-slide" data-slide="4">
-        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('/images/galaxyfm-logo.png');"></div>
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span class="ugandan-text">DOPPEST</span> &nbsp; RADIO
-          </div>
-          <h1>Live Radio Stations</h1>
-          <p class="hero-description">Tune in to top FM radio stations including Galaxy FM 100.2 Zzina, Dembe FM 90.4, and Bukedde FM.</p>
-          <div class="hero-buttons">
-            <a href="/live-tv?category=radio" class="btn btn-primary">Listen Live Radio</a>
-            <a href="/live-tv" class="btn btn-secondary">All Channels</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 6: Collaboration & Partnerships -->
-      <div class="carousel-slide" data-slide="5">
-        <div class="slide-bg" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.3) 100%), linear-gradient(0deg, #181818 0%, transparent 50%), url('/images/hero-collaboration.png');"></div>
-        <div class="hero-content hero-content-collaboration">
-          <div class="hero-badge">
-            <span class="ugandan-text">LET'S BUILD TOGETHER</span>
-          </div>
-          <h1>Let's create something amazing together.</h1>
-          <p class="hero-description">Want to collaborate with sanyuhub, sponsor our platform, or become a partner? We're open to meaningful ideas and opportunities. Get in touch and let's explore what we can build together.</p>
-          <div class="hero-buttons">
-            <a href="https://sanyuhub.vercel.app/contact" class="btn btn-primary btn-get-started" target="_blank" rel="noopener noreferrer">Get Started</a>
-            <a href="https://sanyuhub.vercel.app/contact" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Contact Us</a>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <!-- Carousel Nav Buttons -->
-    <button class="carousel-arrow prev" id="carouselPrev" aria-label="Previous Slide">&lsaquo;</button>
-    <button class="carousel-arrow next" id="carouselNext" aria-label="Next Slide">&rsaquo;</button>
-
-    <!-- Carousel Indicators -->
-    <div class="carousel-indicators" id="carouselIndicators">
-      <span class="indicator active" data-slide="0"></span>
-      <span class="indicator" data-slide="1"></span>
-      <span class="indicator" data-slide="2"></span>
-      <span class="indicator" data-slide="3"></span>
-      <span class="indicator" data-slide="4"></span>
-      <span class="indicator" data-slide="5"></span>
+    <!-- VISUAL CLOUD / SERVER STACK CARD ARCHITECTURE MATCHING DESIGN REFERENCE -->
+    <div class="api-hero-graphic">
+      <div class="api-card" style="position: relative; overflow: hidden; border-color: rgba(56, 189, 248, 0.3); background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95), rgba(3, 7, 18, 0.98));">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 12px;">
+          <span style="font-size: 12px; font-weight: 700; color: #38bdf8; font-family: monospace;">sanyuhub-gateway-v1</span>
+          <span class="method-badge method-get">GET 200 OK</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-family: monospace; font-size: 12px; color: #94a3b8;">
+          <div><span style="color: #3b82f6;">HOST:</span> api.sanyuhub.com</div>
+          <div><span style="color: #3b82f6;">REGION:</span> East Africa (UG / KE)</div>
+          <div><span style="color: #3b82f6;">ENDPOINTS:</span> Movies, Series, Live TV, Radio, Concerts</div>
+          <div><span style="color: #3b82f6;">RESPONSE:</span> application/json (caching enabled)</div>
+        </div>
+        <div style="margin-top: 16px; padding: 12px; background: rgba(3, 7, 18, 0.9); border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.2);">
+          <pre style="margin: 0; color: #38bdf8; font-size: 11px; overflow-x: auto;"><code>{
+  "status": "success",
+  "data": {
+    "movies_total": 58,
+    "vjs_available": ["VJ Junior", "VJ Emmy", "DJ Mark"],
+    "live_tv_channels": 20,
+    "latency_ms": 24
+  }
+}</code></pre>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<main class="home-main">
+<!-- MAIN CONTENT CONTAINER -->
+<main style="max-width: 1200px; margin: 0 auto; padding: 40px 5%;">
 
-<!-- 1. Live TV -->
-<section class="section" id="section-live-tv">
-  <div class="section-heading">
-    <h2 class="section-title">Live TV</h2>
-    <a href="/live-tv" class="view-more">View More</a>
-  </div>
-  <div class="live-grid" id="homeLiveTvGrid">
-    <!-- Populated dynamically via JS -->
-  </div>
-</section>
+  <!-- API CAPABILITIES SECTION -->
+  <section class="section" style="padding: 0 0 48px;">
+    <div class="section-heading">
+      <div>
+        <h2 class="section-title" style="font-size: 28px;">API Resources & Capabilities</h2>
+        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Comprehensive media endpoints built for effortless external integration.</p>
+      </div>
+    </div>
 
-<!-- 2. Trending Movies -->
-<section class="section" id="section-trending-movies">
-  <div class="section-heading">
-    <h2 class="section-title">Trending Movies</h2>
-    <a href="/trending" class="view-more">View More</a>
-  </div>
-  <div class="trending-grid" id="homeTrendingGrid">
-    <article class="movie-card skeleton-card">
-      <div class="skeleton-poster skeleton"></div>
-      <div class="skeleton-line title skeleton"></div>
-      <div class="skeleton-line subtitle skeleton"></div>
-    </article>
-    <article class="movie-card skeleton-card">
-      <div class="skeleton-poster skeleton"></div>
-      <div class="skeleton-line title skeleton"></div>
-      <div class="skeleton-line subtitle skeleton"></div>
-    </article>
-  </div>
-</section>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
 
-<!-- 3. Hot Music -->
-<section class="section" id="section-hot-music">
-  <div class="section-heading">
-    <h2 class="section-title">Hot Music</h2>
-    <a href="/music" class="view-more">View More</a>
-  </div>
-  <div class="card-grid" id="homeMusicGrid">
-    <!-- Populated dynamically via JS -->
-  </div>
-</section>
+      <!-- Movies API Card -->
+      <div class="api-card">
+        <div class="api-card-title">
+          <span style="color: #38bdf8; font-size: 20px;">🎬</span> Movies & VJs API
+        </div>
+        <p class="api-card-desc">
+          Retrieve movie records with VJ narration attribution (VJ Junior, VJ Emmy, VJ Jingo, DJ Mark), original languages, poster assets, genres, release years, and country availability.
+        </p>
+        <div style="margin-top: 16px;">
+          <a href="/movies" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Movies Reference &rarr;</a>
+        </div>
+      </div>
 
-<!-- 4. Concerts -->
-<section class="section" id="section-concerts">
-  <div class="section-heading">
-    <h2 class="section-title">Concerts</h2>
-    <a href="/movies?category=concerts" class="view-more">View More</a>
-  </div>
-  <div class="card-grid" id="homeConcertsGrid">
-    <article class="movie-card skeleton-card">
-      <div class="skeleton-poster skeleton"></div>
-      <div class="skeleton-line title skeleton"></div>
-      <div class="skeleton-line subtitle skeleton"></div>
-    </article>
-    <article class="movie-card skeleton-card">
-      <div class="skeleton-poster skeleton"></div>
-      <div class="skeleton-line title skeleton"></div>
-      <div class="skeleton-line subtitle skeleton"></div>
-    </article>
-  </div>
-</section>
+      <!-- Live TV & Radio Card -->
+      <div class="api-card">
+        <div class="api-card-title">
+          <span style="color: #38bdf8; font-size: 20px;">📺</span> Live TV & Radio API
+        </div>
+        <p class="api-card-desc">
+          Access verified HLS live broadcast stream manifests (.m3u8), EPG schedules, and concurrent viewer statistics for NTV Uganda, Bukedde TV, Spark TV, BBS, and top FM Radio stations.
+        </p>
+        <div style="margin-top: 16px;">
+          <a href="/live-tv" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Live TV Reference &rarr;</a>
+        </div>
+      </div>
 
-<!-- 5. Doppest Radio Stations -->
-<section class="section" id="section-doppest-radio">
-  <div class="section-heading">
-    <h2 class="section-title">Doppest Radio Stations</h2>
-    <a href="/live-tv?category=radio" class="view-more">View More</a>
-  </div>
-  <div class="live-grid" id="homeRadioGrid">
-    <!-- Populated dynamically via JS -->
-  </div>
-</section>
+      <!-- Series API Card -->
+      <div class="api-card">
+        <div class="api-card-title">
+          <span style="color: #38bdf8; font-size: 20px;">🍿</span> Series & Episodes API
+        </div>
+        <p class="api-card-desc">
+          Query multi-season translated series with full episode lists, season numbers, episode titles, VJ narration metadata, and direct playback links.
+        </p>
+        <div style="margin-top: 16px;">
+          <a href="/series" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Series Reference &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Concerts & Events Card -->
+      <div class="api-card">
+        <div class="api-card-title">
+          <span style="color: #38bdf8; font-size: 20px;">🎤</span> Live Concerts API
+        </div>
+        <p class="api-card-desc">
+          Discover upcoming East African music concerts, stage performances, venue locations, ticket prices, organizers, and event URLs.
+        </p>
+        <div style="margin-top: 16px;">
+          <a href="/more" style="color: #38bdf8; font-size: 12px; font-weight: 700; text-decoration: none;">View Concerts Reference &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Media Stream Proxy Card -->
+      <div class="api-card">
+        <div class="api-card-title">
+          <span style="color: #38bdf8; font-size: 20px;">🛡️</span> Media Stream Proxy
+        </div>
+        <p class="api-card-desc">
+          Proxy protected stream requests (such as storage.swahix.com) through SanyuHub's domain-restricted streaming proxy endpoint with appropriate HTTP Referer headers.
+        </p>
+        <div style="margin-top: 16px;">
+          <span style="color: #f59e0b; font-size: 11px; font-weight: 700;">GET /api/stream-proxy?url={target_url}</span>
+        </div>
+      </div>
+
+      <!-- Country Isolation Card -->
+      <div class="api-card">
+        <div class="api-card-title">
+          <span style="color: #38bdf8; font-size: 20px;">🌐</span> Multi-Country Catalog
+        </div>
+        <p class="api-card-desc">
+          Query regional content using the <code>country</code> parameter (<code>ug</code> for Uganda, <code>ke</code> for Kenya) with zero cross-country catalog bleeding.
+        </p>
+        <div style="margin-top: 16px;">
+          <span style="color: #10b981; font-size: 11px; font-weight: 700;">country=ug | country=ke</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUICKSTART & AUTHENTICATION SECTION -->
+  <section class="section" id="quickstart" style="padding: 0 0 48px;">
+    <div class="section-heading">
+      <div>
+        <h2 class="section-title" style="font-size: 28px;">Quickstart & Code Examples</h2>
+        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Make your first API request in seconds using cURL, JavaScript, or Python.</p>
+      </div>
+    </div>
+
+    <!-- cURL Example -->
+    <div class="code-box">
+      <div class="code-header">
+        <span class="code-lang">cURL</span>
+        <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copy Code</button>
+      </div>
+      <pre class="code-content"><code>curl -X GET "https://sanyuhub.com/api/movies?country=ug&limit=10" \
+  -H "Accept: application/json"</code></pre>
+    </div>
+
+    <!-- JavaScript Example -->
+    <div class="code-box">
+      <div class="code-header">
+        <span class="code-lang">JavaScript (Fetch)</span>
+        <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copy Code</button>
+      </div>
+      <pre class="code-content"><code>async function fetchMovies() {
+  const response = await fetch('/api/movies?country=ug&limit=10');
+  const data = await response.json();
+  console.log('Movies retrieved:', data.movies);
+}
+
+fetchMovies();</code></pre>
+    </div>
+
+    <!-- Python Example -->
+    <div class="code-box">
+      <div class="code-header">
+        <span class="code-lang">Python (requests)</span>
+        <button class="code-copy-btn" onclick="copyCodeSnippet(this)">Copy Code</button>
+      </div>
+      <pre class="code-content"><code>import requests
+
+url = "https://sanyuhub.com/api/movies"
+params = {"country": "ug", "limit": 10}
+
+response = requests.get(url, params=params)
+movies = response.json()
+print(f"Total Movies: {movies['total']}")</code></pre>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE ENDPOINT EXPLORER -->
+  <section class="section" id="explorer" style="padding: 0 0 48px;">
+    <div class="section-heading">
+      <div>
+        <h2 class="section-title" style="font-size: 28px;">Interactive API Explorer</h2>
+        <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Test live requests directly against the SanyuHub backend API endpoints.</p>
+      </div>
+    </div>
+
+    <div class="api-explorer">
+      <div class="explorer-controls">
+        <select id="explorerEndpointSelect" class="explorer-input" style="max-width: 280px; cursor: pointer;">
+          <option value="/api/movies?limit=5">GET /api/movies</option>
+          <option value="/api/live-tv/channels?country=ug">GET /api/live-tv/channels</option>
+          <option value="/api/series?limit=5">GET /api/series</option>
+          <option value="/api/concerts?limit=5">GET /api/concerts</option>
+          <option value="/api/radio?country=ug">GET /api/radio</option>
+        </select>
+
+        <input type="text" id="explorerPathInput" class="explorer-input" value="/api/movies?limit=5" readonly>
+
+        <button id="explorerSendBtn" class="btn-api-primary" style="padding: 10px 20px;">
+          Send Request
+        </button>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 12px; color: #94a3b8;">
+        <span>Live Server Response:</span>
+        <span id="explorerStatusBadge" class="method-badge method-get">Ready</span>
+      </div>
+
+      <div id="explorerResponseBody" class="explorer-response">
+Click "Send Request" to execute a live API fetch against the SanyuHub server.
+      </div>
+    </div>
+  </section>
 
 </main>
 
@@ -361,27 +315,39 @@ Live TV
     <div class="bottom-nav-icon">
       <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
     </div>
-    <span>Home</span>
-  </a>
-  <a href="/live-tv" class="bottom-nav-item" id="navChannels">
-    <div class="bottom-nav-icon">
-      <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
-    </div>
-    <span>Channels</span>
+    <span>API Portal</span>
   </a>
   <a href="/movies" class="bottom-nav-item" id="navMovies">
     <div class="bottom-nav-icon">
       <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
     </div>
-    <span>Library</span>
+    <span>Movies API</span>
+  </a>
+  <a href="/live-tv" class="bottom-nav-item" id="navChannels">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+    </div>
+    <span>Live TV API</span>
   </a>
   <a href="/more" class="bottom-nav-item" id="navMore">
     <div class="bottom-nav-icon">
       <svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
     </div>
-    <span>More</span>
+    <span>More Docs</span>
   </a>
 </nav>
+
+<footer>
+  <div class="footer-logo">Sanyu<span>Hub</span> API</div>
+  <div class="footer-tagline">The Unified East African Media API Platform</div>
+  <div class="footer-links">
+    <a href="/movies">Movies API</a>
+    <a href="/series">Series API</a>
+    <a href="/live-tv">Live TV API</a>
+    <a href="/about">Documentation</a>
+  </div>
+  <div class="copyright">&copy; 2026 SanyuHub API Platform. All rights reserved.</div>
+</footer>
 
 <script src="js/app.js"></script>
 

@@ -4529,11 +4529,124 @@ async function initConcertDetailPage() {
     }
 }
 
+/* CODE SNIPPET COPY HELPER */
+function copyCodeSnippet(buttonElement) {
+    if (!buttonElement) return;
+    const codeBox = buttonElement.closest(".code-box");
+    if (!codeBox) return;
+    const codeContent = codeBox.querySelector(".code-content code");
+    if (!codeContent) return;
+
+    const textToCopy = codeContent.textContent;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalText = buttonElement.textContent;
+        buttonElement.textContent = "Copied!";
+        buttonElement.style.borderColor = "#10b981";
+        buttonElement.style.color = "#10b981";
+        setTimeout(() => {
+            buttonElement.textContent = originalText;
+            buttonElement.style.borderColor = "";
+            buttonElement.style.color = "";
+        }, 2000);
+    }).catch(err => {
+        console.warn("Failed copying to clipboard:", err);
+    });
+}
+
+/* INTERACTIVE API EXPLORERS INTEGRATION */
+function initApiExplorers() {
+    // 1. Main Landing Page Explorer
+    const explorerSelect = document.getElementById("explorerEndpointSelect");
+    const explorerPathInput = document.getElementById("explorerPathInput");
+    const explorerSendBtn = document.getElementById("explorerSendBtn");
+    const explorerResponseBody = document.getElementById("explorerResponseBody");
+    const explorerStatusBadge = document.getElementById("explorerStatusBadge");
+
+    if (explorerSelect && explorerPathInput) {
+        explorerSelect.addEventListener("change", (e) => {
+            explorerPathInput.value = e.target.value;
+        });
+    }
+
+    if (explorerSendBtn && explorerPathInput && explorerResponseBody) {
+        explorerSendBtn.addEventListener("click", async () => {
+            const path = explorerPathInput.value;
+            explorerResponseBody.textContent = `Fetching GET ${path}...`;
+            if (explorerStatusBadge) explorerStatusBadge.textContent = "Pending...";
+
+            try {
+                const startTime = Date.now();
+                const res = await fetch(path);
+                const duration = Date.now() - startTime;
+                const data = await res.json();
+
+                if (explorerStatusBadge) {
+                    explorerStatusBadge.textContent = `${res.status} OK (${duration}ms)`;
+                    explorerStatusBadge.className = "method-badge method-get";
+                }
+
+                explorerResponseBody.textContent = JSON.stringify(data, null, 2);
+            } catch (err) {
+                if (explorerStatusBadge) {
+                    explorerStatusBadge.textContent = "Error";
+                    explorerStatusBadge.className = "method-badge param-req required";
+                }
+                explorerResponseBody.textContent = JSON.stringify({ error: err.message }, null, 2);
+            }
+        });
+    }
+
+    // 2. Movies API Reference Page Explorer
+    const movieSearch = document.getElementById("movieApiSearchInput");
+    const movieGenre = document.getElementById("movieApiGenreSelect");
+    const movieSort = document.getElementById("movieApiSortSelect");
+    const movieRunBtn = document.getElementById("movieApiRunBtn");
+    const moviePathDisplay = document.getElementById("movieApiEndpointPath");
+    const movieResponseBox = document.getElementById("movieApiResponseBox");
+    const movieStatusBadge = document.getElementById("movieApiStatusBadge");
+
+    if (movieRunBtn && movieResponseBox) {
+        async function runMovieApiQuery() {
+            const country = getActiveCountryCode();
+            const searchVal = movieSearch ? movieSearch.value.trim() : "";
+            const genreVal = movieGenre ? movieGenre.value : "all";
+            const sortVal = movieSort ? movieSort.value : "recently-added";
+
+            const params = new URLSearchParams({ country: country, limit: 5 });
+            if (searchVal) params.append("search", searchVal);
+            if (genreVal && genreVal !== "all") params.append("genre", genreVal);
+            if (sortVal) params.append("sort", sortVal);
+
+            const path = `/api/movies?${params.toString()}`;
+            if (moviePathDisplay) moviePathDisplay.textContent = `GET ${path}`;
+            movieResponseBox.textContent = "Executing request...";
+
+            try {
+                const res = await fetch(path);
+                const data = await res.json();
+
+                if (movieStatusBadge) {
+                    movieStatusBadge.textContent = `${res.status} ${res.statusText || 'OK'}`;
+                }
+
+                movieResponseBox.textContent = JSON.stringify(data, null, 2);
+            } catch (err) {
+                if (movieStatusBadge) movieStatusBadge.textContent = "Error";
+                movieResponseBox.textContent = JSON.stringify({ error: err.message }, null, 2);
+            }
+        }
+
+        movieRunBtn.addEventListener("click", runMovieApiQuery);
+        runMovieApiQuery();
+    }
+}
+
 /* DOM INITIALIZATION */
 document.addEventListener("DOMContentLoaded", () => {
     ensureNavbarCountryButton();
     openCountryOnboardingModal(false);
     updateBottomNavActiveState();
+    initApiExplorers();
     initHomePage();
     initSubpage("trendingGrid", true, 20);
     initSubpage("popularGrid", false, 24);
