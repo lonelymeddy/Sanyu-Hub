@@ -4508,24 +4508,23 @@ function initApiExplorers() {
 
 /* DOM INITIALIZATION */
 document.addEventListener("DOMContentLoaded", () => {
-    ensureNavbarCountryButton();
-    openCountryOnboardingModal(false);
-    initApiExplorers();
-    initHomePage();
-    initSubpage("trendingGrid", true, 20);
-    initSubpage("popularGrid", false, 24);
-    initSubpage("featuredGrid", false, 24);
-    initSubpage("recentlyAddedGrid", false, 24);
-    initSubpage("seriesGrid", false, 24);
-    initSubpage("popularSeriesGrid", false, 24);
-    initContinueWatching();
-    initMovieDetailsPage();
-    initConcertDetailPage();
-    initWatchPage();
-    initSeriesDetailPage();
-    initSeriesWatchPage();
-    initLiveTvCatalogue();
-    initLiveTvWatchPage();
-    initSettingsMainPage();
-    initSettingsCountryPage();
+    try { ensureNavbarCountryButton(); } catch(e){}
+    try { openCountryOnboardingModal(false); } catch(e){}
+    try { initApiExplorers(); } catch(e){}
+    try { initHomePage(); } catch(e){}
+    try { initSubpage("trendingGrid", true, 20); } catch(e){}
+    try { initSubpage("popularGrid", false, 24); } catch(e){}
+    try { initSubpage("featuredGrid", false, 24); } catch(e){}
+    try { initSubpage("recentlyAddedGrid", false, 24); } catch(e){}
+    try { initSubpage("seriesGrid", false, 24); } catch(e){}
+    try { initSubpage("popularSeriesGrid", false, 24); } catch(e){}
+    try { initContinueWatching(); } catch(e){}
+    try { initMovieDetailsPage(); } catch(e){}
+    try { initWatchPage(); } catch(e){}
+    try { initSeriesDetailPage(); } catch(e){}
+    try { initSeriesWatchPage(); } catch(e){}
+    try { initLiveTvCatalogue(); } catch(e){}
+    try { initLiveTvWatchPage(); } catch(e){}
+    try { initSettingsMainPage(); } catch(e){}
+    try { initSettingsCountryPage(); } catch(e){}
 });

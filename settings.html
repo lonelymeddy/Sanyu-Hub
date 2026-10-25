@@ -1,128 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#222222">
-<meta name="description" content="Meddy API — Settings">
-<title>Settings — Meddy API</title>
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Environments & Settings — Meddy API</title>
+  <meta name="description" content="Meddy API environments and configuration parameters.">
+  <link rel="stylesheet" href="/css/dev-portal.css">
 </head>
 <body>
+  <header class="dev-header">
+    <div class="brand-container">
+      <a href="/" class="brand-logo">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <span>Meddy API</span>
+      </a>
+      <span class="brand-badge">v1.0 Public</span>
+    </div>
+    <nav class="header-nav">
+      <a href="/" class="header-nav-link">Overview</a>
+      <a href="/#quickstart" class="header-nav-link">Quick Start</a>
+      <a href="/movies" class="header-nav-link">Movies API</a>
+      <a href="/settings" class="header-nav-link active">Environments</a>
+    </nav>
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <div class="search-input-wrapper">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="globalSearchInput" class="search-input" placeholder="Search API docs...">
+      </div>
+      <button id="mobileMenuBtn" class="mobile-menu-btn"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </header>
 
-<div class="background"></div>
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-<header class="navbar" id="navbar">
-<div class="nav-inner">
-<a href="/" class="logo">
-Meddy <span>API</span>
-</a>
-<nav class="desktop-nav">
-<a href="/">Home</a>
-<a href="/movies">Library</a>
-<a href="/series">Series</a>
-<a href="/live-tv">Live TV</a>
-</nav>
-<div class="nav-controls">
-<button class="search-button" id="topSearch" aria-label="Search">
-<span class="search-icon"></span>
-</button>
-<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-</button>
-</div>
-</div>
-</header>
+  <div class="portal-layout">
+    <aside id="portalSidebar" class="portal-sidebar">
+      <div class="sidebar-group">
+        <div class="sidebar-title">Getting Started</div>
+        <a href="/" class="sidebar-link">Overview & Base URL</a>
+        <a href="/settings" class="sidebar-link active">Environments & Base URL</a>
+        <a href="/#auth" class="sidebar-link">Authentication</a>
+      </div>
+      <div class="sidebar-group">
+        <div class="sidebar-title">API Reference</div>
+        <a href="/movies" class="sidebar-link">Movies API</a>
+        <a href="/series" class="sidebar-link">Series API</a>
+        <a href="/live-tv" class="sidebar-link">Live TV API</a>
+      </div>
+    </aside>
 
-<!-- SIDEBAR OVERLAY -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <main class="portal-content">
+      <section class="page-section active">
+        <h1 class="doc-title">API Environments & Configuration</h1>
+        <p class="doc-subtitle">Base URL and configuration parameters for integrating Meddy API across regional markets.</p>
 
-<!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
-<div class="sidebar-content">
-<div class="sidebar-section">
-<div class="sidebar-section-title">Explore</div>
-<a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Home</span></a>
-<a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Library</span></a>
-<a href="/series" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Series</span></a>
-<a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Live TV</span></a>
-<a href="/more" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span>More</span></a>
-</div>
-</div>
-</aside>
-
-<main>
-
-<header class="page-header">
-<div class="page-title-group">
-<h1 class="page-title">Settings</h1>
-</div>
-</header>
-
-<section class="section">
-  <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
-
-    <a href="/settings/country" id="settingsCountryOption" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: #ffd43b;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-        <div>
-          <span style="font-weight: 600; font-size: 16px; display: block;">Country / Region</span>
-          <span id="currentCountryName" style="font-size: 13px; color: #aaa; margin-top: 2px; display: block;">Uganda</span>
+        <div class="base-url-box">
+          <div>
+            <div class="base-url-label">Production Canonical Base URL</div>
+            <div class="base-url-val">http://localhost:3000</div>
+          </div>
         </div>
-      </div>
-      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
-    </a>
-
-    <a href="/settings/app-preferences" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: #f4c400;"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
-        <span style="font-weight: 600; font-size: 16px;">App Preferences</span>
-      </div>
-      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
-    </a>
-
-    <a href="/settings/customization" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: #f4c400;"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-        <span style="font-weight: 600; font-size: 16px;">Customization</span>
-      </div>
-      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
-    </a>
-
-    <a href="/settings/other" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: #f4c400;"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-        <span style="font-weight: 600; font-size: 16px;">Other Settings</span>
-      </div>
-      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
-    </a>
-
+      </section>
+    </main>
   </div>
-</section>
-
-</main>
-
-
-
-<script src="/js/app.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const option = document.getElementById("settingsCountryOption");
-  const nameEl = document.getElementById("currentCountryName");
-
-  function updateSettingsCountryName() {
-    if (nameEl && typeof getActiveCountryCode === "function" && typeof COUNTRIES_CONFIG !== "undefined") {
-      const code = getActiveCountryCode();
-      const config = COUNTRIES_CONFIG[code] || COUNTRIES_CONFIG.ug;
-      nameEl.textContent = config.name;
-    }
-  }
-
-  updateSettingsCountryName();
-
-});
-</script>
+  <script src="/js/dev-portal.js"></script>
 </body>
 </html>

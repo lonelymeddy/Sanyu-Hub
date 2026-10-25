@@ -1,96 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#222222">
-<meta name="description" content="Meddy API — Saved Content">
-<title>Saved Content — Meddy API</title>
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved API Resources — Meddy API</title>
+  <link rel="stylesheet" href="/css/dev-portal.css">
 </head>
 <body>
-
-<div class="background"></div>
-
-<header class="navbar" id="navbar">
-<div class="nav-inner">
-<a href="/" class="logo">
-Meddy <span>API</span>
-</a>
-<nav class="desktop-nav">
-<a href="/">Home</a>
-<a href="/movies">Library</a>
-<a href="/series">Series</a>
-<a href="/live-tv">Live TV</a>
-</nav>
-<div class="nav-controls">
-<button class="search-button" id="topSearch" aria-label="Search">
-<span class="search-icon"></span>
-</button>
-<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-<span class="menu-line"></span>
-</button>
-</div>
-</div>
-</header>
-
-<!-- SIDEBAR OVERLAY -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-<!-- SIDEBAR -->
-<aside class="sidebar" id="sidebar">
-<div class="sidebar-content">
-<div class="sidebar-section">
-<div class="sidebar-section-title">Explore</div>
-<a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Home</span></a>
-<a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Library</span></a>
-<a href="/series" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Series</span></a>
-<a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Live TV</span></a>
-<a href="/more" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span>More</span></a>
-</div>
-</div>
-</aside>
-
-<main>
-
-<header class="page-header">
-<div class="page-title-group">
-<h1 class="page-title">Saved Content</h1>
-</div>
-</header>
-
-<section class="section">
-  <div class="card-grid" id="savedCardGrid">
-    <div class="loading-state">No saved content found.</div>
+  <header class="dev-header">
+    <div class="brand-container"><a href="/" class="brand-logo"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span>Meddy API</span></a><span class="brand-badge">v1.0 Public</span></div>
+    <nav class="header-nav"><a href="/" class="header-nav-link">Overview</a></nav>
+    <div style="display: flex; align-items: center; gap: 0.75rem;"><div class="search-input-wrapper"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" id="globalSearchInput" class="search-input" placeholder="Search API docs..."></div><button id="mobileMenuBtn" class="mobile-menu-btn"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
+  </header>
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+  <div class="portal-layout">
+    <aside id="portalSidebar" class="portal-sidebar"><div class="sidebar-group"><div class="sidebar-title">Getting Started</div><a href="/" class="sidebar-link active">Overview & Base URL</a></div></aside>
+    <main class="portal-content"><section class="page-section active"><h1 class="doc-title">Saved Resources & Endpoints</h1><p class="doc-subtitle">Reference saved query parameters and resource bookmarks.</p></section></main>
   </div>
-</section>
-
-</main>
-
-
-
-<script src="/js/app.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const grid = document.getElementById("savedCardGrid");
-  if (!grid) return;
-  try {
-    const saved = localStorage.getItem("sanyuhub_saved_content");
-    const list = saved ? JSON.parse(saved) : [];
-    if (!list || list.length === 0) {
-      grid.innerHTML = `<div class="loading-state">No saved content found.</div>`;
-      return;
-    }
-    grid.innerHTML = "";
-    list.forEach(item => {
-      grid.appendChild(createMovieCard(item));
-    });
-  } catch (e) {
-    grid.innerHTML = `<div class="loading-state">No saved content found.</div>`;
-  }
-});
-</script>
+  <script src="/js/dev-portal.js"></script>
 </body>
 </html>
