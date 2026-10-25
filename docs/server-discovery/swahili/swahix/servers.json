@@ -1,0 +1,15 @@
+[
+  {
+    "domain": "storage.swahix.com",
+    "role": "Direct MP4 Media Host",
+    "cdn_provider": "Cloudflare",
+    "storage_backend": "Backblaze B2",
+    "access_requirements": "Requires Referer: https://swahix.com/ header",
+    "status": "active"
+  },
+  {
+    "domain": "swahix.com",
+    "role": "Main Website & Catalog Metadata Host",
+    "status": "active"
+  }
+]
