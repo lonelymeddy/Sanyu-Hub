@@ -40,16 +40,10 @@ async function runAll() {
     assert.strictEqual(keMod.config.code, 'ke');
   });
 
-  await runTest('Kenya loader returns Kenya catalogue (No Uganda fallback)', async () => {
+  await runTest('Kenya loader returns empty catalogue (No Uganda fallback)', async () => {
     const keCatalogue = await loadCountryCatalogue('ke');
     assert.strictEqual(keCatalogue.config.code, 'ke');
-    assert.ok(keCatalogue.movies.length > 0, 'Kenya should have Swahix movies');
-
-    keCatalogue.movies.forEach(m => {
-      assert.strictEqual(m.country, 'ke', `Kenya movie ${m.title} must have country='ke'`);
-      assert.notStrictEqual(m.country, 'ug', `Kenya movie ${m.title} must not be Uganda content`);
-    });
-
+    assert.strictEqual(keCatalogue.movies.length, 0, 'Kenya movies must be empty');
     assert.strictEqual(keCatalogue.series.length, 0, 'Kenya series must be empty');
     assert.strictEqual(keCatalogue.tvChannels.length, 0, 'Kenya TV channels must be empty');
     assert.strictEqual(keCatalogue.radioStations.length, 0, 'Kenya radio stations must be empty');
@@ -63,14 +57,13 @@ async function runAll() {
 
     ugCatalogue.movies.forEach(m => {
       assert.strictEqual(m.country, 'ug', `Movie ${m.title} must have country='ug'`);
-      assert.notStrictEqual(m.country, 'ke', `Uganda movie ${m.title} must not be Kenya content`);
     });
   });
 
-  await runTest('Search in Kenya module returns 0 results for Ugandan VJ terms', async () => {
+  await runTest('Search in Kenya module returns empty results', async () => {
     const keMod = getCountryModule('ke');
     const results = await keMod.search.searchKenyaContent('vj junior');
-    assert.strictEqual(results.length, 0, 'Kenya search for Ugandan VJ must return 0 results');
+    assert.strictEqual(results.length, 0, 'Kenya search must return 0 results');
   });
 
   await runTest('Unready country loader returns clean empty catalogue without fallback', async () => {

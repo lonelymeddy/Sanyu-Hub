@@ -23,7 +23,7 @@ if (!fs.existsSync(BASELINES_DIR)) {
   // Wait for server ready
   await new Promise((resolve, reject) => {
     serverProcess.stdout.on('data', (data) => {
-      if (data.toString().includes('web service running') || data.toString().includes('running on port')) {
+      if (data.toString().includes('SanyuHub web service running')) {
         resolve();
       }
     });
