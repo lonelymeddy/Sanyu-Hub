@@ -1,68 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Meddy API Platform</title>
-  <meta name="description" content="Architecture, capabilities, and overview of Meddy API developer platform.">
-  <link rel="stylesheet" href="/css/dev-portal.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#222222">
+<meta name="description" content="SanyuHub — About">
+<title>About — SanyuHub</title>
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <header class="dev-header">
-    <div class="brand-container">
-      <a href="/" class="brand-logo">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        <span>Meddy API</span>
-      </a>
-      <span class="brand-badge">v1.0 Public</span>
-    </div>
-    <nav class="header-nav">
-      <a href="/" class="header-nav-link active">Overview</a>
-      <a href="/#quickstart" class="header-nav-link">Quick Start</a>
-      <a href="/movies" class="header-nav-link">Movies API</a>
-      <a href="/#api-explorer" class="header-nav-link">API Explorer</a>
-    </nav>
-    <div style="display: flex; align-items: center; gap: 0.75rem;">
-      <div class="search-input-wrapper">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        <input type="text" id="globalSearchInput" class="search-input" placeholder="Search API docs...">
-      </div>
-      <button id="mobileMenuBtn" class="mobile-menu-btn"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-    </div>
-  </header>
 
-  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+<div class="background"></div>
 
-  <div class="portal-layout">
-    <aside id="portalSidebar" class="portal-sidebar">
-      <div class="sidebar-group">
-        <div class="sidebar-title">Getting Started</div>
-        <a href="/" class="sidebar-link active">Overview & Base URL</a>
-        <a href="/#quickstart" class="sidebar-link">Quick Start</a>
-        <a href="/#base-url" class="sidebar-link">Environments & Base URL</a>
-        <a href="/#auth" class="sidebar-link">Authentication</a>
-      </div>
-      <div class="sidebar-group">
-        <div class="sidebar-title">API Reference</div>
-        <a href="/movies" class="sidebar-link">Movies API</a>
-        <a href="/series" class="sidebar-link">Series API</a>
-        <a href="/live-tv" class="sidebar-link">Live TV API</a>
-      </div>
-    </aside>
+<header class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="/" class="logo">
+Sanyu<span>Hub</span>
+</a>
+<nav class="desktop-nav">
+<a href="/">Home</a>
+<a href="/movies">Library</a>
+<a href="/series">Series</a>
+<a href="/live-tv">Live TV</a>
+</nav>
+<div class="nav-controls">
+<button class="search-button" id="topSearch" aria-label="Search">
+<span class="search-icon"></span>
+</button>
+<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+</button>
+</div>
+</div>
+</header>
 
-    <main class="portal-content">
-      <section class="page-section active">
-        <h1 class="doc-title">About Meddy API Platform</h1>
-        <p class="doc-subtitle">A professional media API developer portal delivering localized media catalogues, VJ translated films, TV broadcast streams, and radio proxy endpoints.</p>
-        <div class="base-url-box">
-          <div>
-            <div class="base-url-label">Canonical Production Base URL</div>
-            <div class="base-url-val">http://localhost:3000</div>
-          </div>
-        </div>
-      </section>
-    </main>
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-content">
+<div class="sidebar-section">
+<div class="sidebar-section-title">Explore</div>
+<a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Home</span></a>
+<a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Library</span></a>
+<a href="/series" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Series</span></a>
+<a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Live TV</span></a>
+<a href="/more" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span>More</span></a>
+</div>
+</div>
+</aside>
+
+<main>
+
+<header class="page-header">
+<div class="page-title-group">
+<h1 class="page-title">About</h1>
+</div>
+</header>
+
+<section class="section">
+  <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
+
+    <a href="/about/terms" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
+      <span style="font-weight: 600; font-size: 16px;">Terms of Service</span>
+      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
+    </a>
+
+    <a href="/about/help" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
+      <span style="font-weight: 600; font-size: 16px;">Help</span>
+      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
+    </a>
+
+    <a href="/about/privacy" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
+      <span style="font-weight: 600; font-size: 16px;">Privacy Policy</span>
+      <span style="color: #666; font-size: 20px;">&rsaquo;</span>
+    </a>
+
   </div>
-  <script src="/js/dev-portal.js"></script>
+</section>
+
+</main>
+
+<nav class="bottom-nav" id="bottomNav">
+  <a href="/" class="bottom-nav-item" id="navHome"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span>Home</span></a>
+  <a href="/live-tv" class="bottom-nav-item" id="navChannels"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></div><span>Channels</span></a>
+  <a href="/movies" class="bottom-nav-item" id="navMovies"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg></div><span>Library</span></a>
+  <a href="/more" class="bottom-nav-item active" id="navMore"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></div><span>More</span></a>
+</nav>
+
+<script src="/js/app.js"></script>
 </body>
 </html>

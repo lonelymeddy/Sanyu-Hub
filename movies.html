@@ -1,214 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movies API — Meddy API Developer Platform</title>
-  <meta name="description" content="Meddy API Movies Reference: Catalogue, VJ translations, versions, metadata, and stream proxy.">
-  <link rel="stylesheet" href="/css/dev-portal.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#222222">
+<meta name="description" content="SanyuHub — Library">
+<title>Library — SanyuHub</title>
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-  <header class="dev-header">
-    <div class="brand-container">
-      <a href="/" class="brand-logo">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-        </svg>
-        <span>Meddy API</span>
-      </a>
-      <span class="brand-badge">v1.0 Public</span>
+<div class="background"></div>
+
+<header class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="/" class="logo">
+Sanyu<span>Hub</span>
+</a>
+<nav class="desktop-nav">
+<a href="/" class="">Home</a>
+<a href="/movies" class="active">Library</a>
+<a href="/series" class="">Series</a>
+<a href="/live-tv" class="">Live TV</a>
+</nav>
+<div class="nav-controls">
+<button class="search-button" id="topSearch" aria-label="Search">
+<span class="search-icon"></span>
+</button>
+<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+</button>
+</div>
+</div>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-content">
+<div class="sidebar-section">
+<div class="sidebar-section-title">Explore</div>
+
+<a href="/" class="sidebar-link ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Home
+</span>
+</a>
+
+<a href="/movies" class="sidebar-link has-submenu expanded active">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Library
+</span>
+<span class="chevron"></span>
+</a>
+
+<div class="sidebar-submenu open">
+<a href="/trending" class="">Trending Now</a>
+<a href="/popular" class="">Popular Movies</a>
+<a href="/featured" class="">Featured</a>
+<a href="/recently-added" class="">Recently Added</a>
+</div>
+
+<a href="/series" class="sidebar-link has-submenu  ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Series
+</span>
+<span class="chevron"></span>
+</a>
+
+<div class="sidebar-submenu ">
+<a href="/popular-series" class="">Popular Series</a>
+<a href="/continue-watching" class="">Continue Watching</a>
+</div>
+
+<a href="/live-tv" class="sidebar-link ">
+<span class="sidebar-link-left">
+<span class="sidebar-dot"></span>
+Live TV
+</span>
+</a>
+
+</div>
+</div>
+</aside>
+
+<main>
+
+<header class="page-header">
+<div class="page-title-group">
+<h1 class="page-title">Library</h1>
+<p class="page-subtitle">Browse movies, series, and concerts available on SanyuHub.</p>
+</div>
+</header>
+
+<section class="section">
+<div class="categories" id="libraryCategorySelector" style="margin-bottom: 20px;">
+  <button class="category active" data-category="movies">Movies</button>
+  <button class="category" data-category="series">Series</button>
+  <button class="category" data-category="music">Music</button>
+  <button class="category" data-category="concerts">Concerts</button>
+</div>
+
+<div class="movie-search-bar" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+  <input type="search" id="movieSearchInput" class="movie-search-input" style="flex: 1; min-width: 240px;" placeholder="Search Luganda movies by title, VJ, synopsis..." aria-label="Search movies">
+
+  <select id="genreFilterSelect" class="movie-search-input" style="width: auto; cursor: pointer;">
+    <option value="all">All Genres</option>
+  </select>
+
+  <select id="sortFilterSelect" class="movie-search-input" style="width: auto; cursor: pointer;">
+    <option value="recently-added">Recently Added</option>
+    <option value="popularity">Popularity</option>
+    <option value="rating">Top Rated</option>
+    <option value="title">Title (A-Z)</option>
+    <option value="year">Release Year</option>
+  </select>
+</div>
+
+<div class="categories" id="vjCategories" style="margin-bottom: 24px;">
+  <button class="category active" data-vj="all">All</button>
+</div>
+
+<div class="card-grid" id="movieCardGrid">
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+  <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+</div>
+
+<div class="pagination" id="paginationControls" style="display: none;">
+  <button class="page-btn" id="prevPageBtn" disabled>&laquo; Previous</button>
+  <span class="page-info" id="pageInfoSpan">Page 1 of 1</span>
+  <button class="page-btn" id="nextPageBtn">Next &raquo;</button>
+</div>
+</section>
+
+</main>
+
+
+<script src="/js/app.js"></script>
+
+<!-- PERSISTENT APP-STYLE BOTTOM NAVIGATION BAR -->
+<nav class="bottom-nav" id="bottomNav">
+  <a href="/" class="bottom-nav-item" id="navHome">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
     </div>
-
-    <nav class="header-nav">
-      <a href="/" class="header-nav-link">Overview</a>
-      <a href="/#quickstart" class="header-nav-link">Quick Start</a>
-      <a href="/movies" class="header-nav-link active">Movies API</a>
-      <a href="/#api-explorer" class="header-nav-link">API Explorer</a>
-    </nav>
-
-    <div style="display: flex; align-items: center; gap: 0.75rem;">
-      <div class="search-input-wrapper">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-        </svg>
-        <input type="text" id="globalSearchInput" class="search-input" placeholder="Search API docs...">
-      </div>
-      <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle Navigation">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
+    <span>Home</span>
+  </a>
+  <a href="/live-tv" class="bottom-nav-item" id="navChannels">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
     </div>
-  </header>
+    <span>Channels</span>
+  </a>
+  <a href="/movies" class="bottom-nav-item" id="navMovies">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+    </div>
+    <span>Library</span>
+  </a>
+  <a href="/more" class="bottom-nav-item" id="navMore">
+    <div class="bottom-nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+    </div>
+    <span>More</span>
+  </a>
+</nav>
 
-  <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-  <div class="portal-layout">
-    <aside id="portalSidebar" class="portal-sidebar">
-      <div class="sidebar-group">
-        <div class="sidebar-title">Getting Started</div>
-        <a href="/" class="sidebar-link">Overview & Base URL</a>
-        <a href="/#quickstart" class="sidebar-link">Quick Start</a>
-        <a href="/#base-url" class="sidebar-link">Environments & Base URL</a>
-        <a href="/#auth" class="sidebar-link">Authentication</a>
-        <a href="/#errors" class="sidebar-link">Error Handling</a>
-        <a href="/#media-delivery" class="sidebar-link">Media Stream Proxy</a>
-      </div>
-
-      <div class="sidebar-group">
-        <div class="sidebar-title">API Reference</div>
-        <a href="/movies" class="sidebar-link active">Movies API</a>
-        <a href="/series" class="sidebar-link">Series API</a>
-        <a href="/live-tv" class="sidebar-link">Live TV API</a>
-        <a href="/music" class="sidebar-link">Radio API</a>
-        <a href="/concerts" class="sidebar-link">Concerts & Events API</a>
-        <a href="/#api-countries" class="sidebar-link">Countries & Languages</a>
-        <a href="/more" class="sidebar-link">Search & Discovery</a>
-      </div>
-
-      <div class="sidebar-group">
-        <div class="sidebar-title">Developer Tools</div>
-        <a href="/#api-explorer" class="sidebar-link">Interactive API Explorer</a>
-      </div>
-    </aside>
-
-    <main class="portal-content">
-      <section class="page-section active">
-        <h1 class="doc-title">Movies API Reference</h1>
-        <p class="doc-subtitle">Retrieve localized movie catalogues, VJ translations, dubbed content metadata, and API-managed stream proxy URLs.</p>
-
-        <div class="base-url-box">
-          <div>
-            <div class="base-url-label">Canonical Base URL</div>
-            <div class="base-url-val">http://localhost:3000</div>
-          </div>
-        </div>
-
-        <!-- Endpoint 1: List Movies -->
-        <div class="endpoint-card">
-          <div class="endpoint-header">
-            <span class="method-badge get">GET</span>
-            <span class="endpoint-path">/api/movies</span>
-          </div>
-          <div class="endpoint-desc">
-            Retrieve a paginated catalogue of movies filtered by country market, VJ translator name, genre, or keyword.
-          </div>
-          <div class="endpoint-body">
-            <h3 class="doc-subheading">Query Parameters</h3>
-            <div class="table-responsive">
-              <table class="param-table">
-                <thead>
-                  <tr>
-                    <th>Parameter</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="param-name">country</span></td>
-                    <td><span class="param-type">string</span></td>
-                    <td><span class="param-opt">Optional</span></td>
-                    <td>Country market code (<code>ug</code> for Uganda, <code>ke</code> for Kenya). Default: <code>ug</code>.</td>
-                  </tr>
-                  <tr>
-                    <td><span class="param-name">search</span></td>
-                    <td><span class="param-type">string</span></td>
-                    <td><span class="param-opt">Optional</span></td>
-                    <td>Text search keyword matching movie title, overview, or VJ translator name.</td>
-                  </tr>
-                  <tr>
-                    <td><span class="param-name">vj</span></td>
-                    <td><span class="param-type">string</span></td>
-                    <td><span class="param-opt">Optional</span></td>
-                    <td>Filter by VJ translator (e.g. <code>DJ Mark</code>, <code>VJ Junior</code>, <code>VJ Ice P</code>).</td>
-                  </tr>
-                  <tr>
-                    <td><span class="param-name">genre</span></td>
-                    <td><span class="param-type">string</span></td>
-                    <td><span class="param-opt">Optional</span></td>
-                    <td>Filter catalogue by genre category (e.g. <code>Action</code>, <code>Sci-Fi</code>).</td>
-                  </tr>
-                  <tr>
-                    <td><span class="param-name">page</span></td>
-                    <td><span class="param-type">integer</span></td>
-                    <td><span class="param-opt">Optional</span></td>
-                    <td>Page number for pagination. Default: <code>1</code>.</td>
-                  </tr>
-                  <tr>
-                    <td><span class="param-name">limit</span></td>
-                    <td><span class="param-type">integer</span></td>
-                    <td><span class="param-opt">Optional</span></td>
-                    <td>Number of records per page. Default: <code>24</code>, Max: <code>100</code>.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <h3 class="doc-subheading">Example Request</h3>
-            <div class="code-block">
-              <div class="code-header"><div class="code-lang-tabs"><button class="code-tab active">cURL</button></div><button class="copy-btn">Copy</button></div>
-              <pre class="code-content"><code class="curl-example" data-template="curl -X GET &quot;BASE_URL/api/movies?country=ug&amp;vj=DJ%20Mark&amp;limit=10&quot; \
-  -H &quot;Accept: application/json&quot;">curl -X GET "http://localhost:3000/api/movies?country=ug&vj=DJ%20Mark&limit=10" \
-  -H "Accept: application/json"</code></pre>
-            </div>
-
-            <h3 class="doc-subheading">Example Response</h3>
-            <div class="code-block">
-              <div class="code-header"><div class="code-lang-tabs"><button class="code-tab active">JSON</button></div><button class="copy-btn">Copy</button></div>
-              <pre class="code-content"><code>{
-  "movies": [
-    {
-      "id": "1",
-      "title": "Inception (DJ Mark Dubbed)",
-      "year": 2010,
-      "vj": "DJ Mark",
-      "genres": ["Action", "Sci-Fi"],
-      "rating": 8.8,
-      "overview": "A thief who steals corporate secrets through dream-sharing technology...",
-      "posterUrl": "/images/posters/inception.jpg",
-      "streamUrl": "http://localhost:3000/api/stream/movie/1",
-      "embedUrl": "http://localhost:3000/embed?type=movie&id=1"
-    }
-  ],
-  "page": 1,
-  "limit": 10,
-  "total": 66,
-  "totalPages": 7,
-  "vjs": ["DJ Mark", "VJ Junior", "VJ Ice P"],
-  "genres": ["Action", "Adventure", "Comedy", "Sci-Fi"]
-}</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <!-- Endpoint 2: Single Movie Detail -->
-        <div class="endpoint-card">
-          <div class="endpoint-header">
-            <span class="method-badge get">GET</span>
-            <span class="endpoint-path">/api/movies/:id</span>
-          </div>
-          <div class="endpoint-desc">
-            Retrieve detailed metadata, translated title, VJ information, and proxy stream links for an individual movie by ID.
-          </div>
-        </div>
-
-        <!-- Endpoint 3: Stream Proxy -->
-        <div class="endpoint-card">
-          <div class="endpoint-header">
-            <span class="method-badge get">GET</span>
-            <span class="endpoint-path">/api/stream/movie/:id</span>
-          </div>
-          <div class="endpoint-desc">
-            Streams movie audio/video through Meddy API managed proxy, enforcing proper CORS headers and partial content ranges.
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <script src="/js/dev-portal.js"></script>
 </body>
 </html>

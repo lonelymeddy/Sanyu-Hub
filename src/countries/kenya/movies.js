@@ -1,20 +1,15 @@
 /**
  * Kenya Movies Module
- * Integrates Swahix catalogue for Kenya / Swahili ecosystem.
+ * Cleared for country isolation.
  */
 
-const { getSwahiliMovieCatalogue } = require('../../../swahili-movies');
+const KENYA_MOVIES = [];
 
 async function getMovies() {
-  const catalogue = await getSwahiliMovieCatalogue();
-  return catalogue.map(m => ({
-    ...m,
-    country: 'ke',
-    originalLanguage: m.originalLanguage || 'English',
-    availableLanguages: m.availableLanguages || ['Swahili', 'English']
-  }));
+  return KENYA_MOVIES;
 }
 
 module.exports = {
-  getMovies
+  getMovies,
+  KENYA_MOVIES
 };
