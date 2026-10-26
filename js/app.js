@@ -92,15 +92,13 @@ function ensureCountryOnboardingOverlayExists() {
 
     overlay.innerHTML = `
         <div class="landing-page-wrapper">
-            <!-- TOP HALF: CINEMATIC COLLAGE -->
-            <div class="landing-top-collage">
-                <img src="/images/landing-collage.png" alt="SanyuHub Collage" class="landing-collage-img">
-            </div>
+            <!-- FULL-SECTION BACKGROUND IMAGE & OVERLAY -->
+            <div class="landing-hero-bg"></div>
+            <div class="landing-hero-overlay"></div>
 
-            <!-- BOTTOM HALF: WEBSITE INFORMATION & COUNTRY SELECTION -->
-            <div class="landing-bottom-content">
-                <div class="landing-bottom-inner">
-                    <div class="landing-top-flex-spacer"></div>
+            <!-- FOREGROUND CONTENT LAYER -->
+            <div class="landing-hero-content">
+                <div class="landing-hero-card">
                     <!-- 1. WEBSITE NAME -->
                     <h1 class="landing-brand-title">sanyu<span>hub</span></h1>
 
