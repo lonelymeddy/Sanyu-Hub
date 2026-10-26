@@ -2534,9 +2534,22 @@ function attachCustomPlayerController(config) {
             const hls = new Hls({
                 enableWorker: true,
                 lowLatencyMode: isLiveStream,
+                capLevelToPlayerSize: true,     // Cap bitrate/resolution to player dimensions on low networks
+                startLevel: -1,                 // Auto start level for instant start on low network
+                initialLiveManifestSize: 1,     // Start playing as soon as 1 manifest segment is parsed
                 maxBufferLength: 30,            // 30 seconds continuous forward buffer target
                 maxMaxBufferLength: 60,         // 60 seconds maximum buffer cap
                 maxBufferSize: 60 * 1024 * 1024, // 60MB max buffer size
+                maxBufferHole: 0.5,             // Jump small buffer gaps smoothly
+                highBufferWatchdogPeriod: 2,    // Frequently check buffer health for fast recovery
+                liveSyncDurationCount: 3,       // Rapid live edge sync on slow connections
+                liveMaxLatencyDurationCount: 10,
+                manifestLoadingTimeOut: 10000,
+                manifestLoadingMaxRetry: 4,
+                fragLoadingTimeOut: 15000,
+                fragLoadingMaxRetry: 6,
+                levelLoadingTimeOut: 10000,
+                levelLoadingMaxRetry: 4,
                 backBufferLength: 90
             });
 
