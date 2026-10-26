@@ -2967,6 +2967,50 @@ function initLiveTvWatchPage() {
 
 
 /* HERO CAROUSEL CONTROLLER */
+function updateHeroCarouselForCountry(countryCode) {
+    const slides = document.querySelectorAll(".carousel-slide");
+    if (!slides || slides.length === 0) return;
+
+    const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
+    const countryName = countryConfig.name || "Uganda";
+
+    slides.forEach((slide) => {
+        const slideIdx = slide.getAttribute("data-slide");
+        if (slideIdx === "0") {
+            const h1 = slide.querySelector("h1");
+            const desc = slide.querySelector(".hero-description");
+            const badge = slide.querySelector(".hero-badge");
+            if (h1) h1.textContent = countryCode === "ke" ? "Experience Live Kenyan TV" : (countryCode === "ug" ? "Experience Live Ugandan TV" : `Experience Live ${countryName} TV`);
+            if (desc) desc.textContent = countryCode === "ke" ? "Watch live Kenyan channels, breaking news, entertainment shows, and regional broadcasts." : (countryCode === "ug" ? "Watch breaking news, entertainment shows, and live regional broadcasts directly on SanyuHub." : `Watch live ${countryName} television, news, entertainment shows, and broadcasts directly on SanyuHub.`);
+            if (badge) badge.innerHTML = `<span class="ugandan-text">${countryCode === "ke" ? "KENYAN" : (countryCode === "ug" ? "LIVE" : countryName.toUpperCase())}</span> &nbsp; BROADCAST`;
+        } else if (slideIdx === "1") {
+            const h1 = slide.querySelector("h1");
+            const desc = slide.querySelector(".hero-description");
+            const badge = slide.querySelector(".hero-badge");
+            if (h1) h1.textContent = countryCode === "ke" ? "Top Swahili & Regional Movies" : (countryCode === "ug" ? "Top Translated Movies" : `Top ${countryName} Movies`);
+            if (desc) desc.textContent = countryCode === "ke" ? "Enjoy top blockbuster movies and series streaming in Swahili and English." : (countryCode === "ug" ? "Enjoy blockbuster hits translated in Luganda by your favorite VJs including VJ Junior, VJ Emmy, and VJ Jingo." : `Enjoy popular movies and entertainment curated for ${countryName}.`);
+            if (badge) badge.innerHTML = `<span class="ugandan-text">${countryCode === "ke" ? "KENYAN" : (countryCode === "ug" ? "UGANDAN" : countryName.toUpperCase())}</span> &nbsp; MOVIES`;
+        } else if (slideIdx === "2") {
+            const h1 = slide.querySelector("h1");
+            const desc = slide.querySelector(".hero-description");
+            if (h1) h1.textContent = (countryCode === "ug" || countryCode === "ke" || countryCode === "tz" || countryCode === "rw" || countryCode === "bi") ? "East African Music Streams" : `${countryName} Music Streams`;
+            if (desc) desc.textContent = (countryCode === "ug" || countryCode === "ke" || countryCode === "tz" || countryCode === "rw" || countryCode === "bi") ? "Stream non-stop hit music countdowns, East African urban sounds, and live music channels." : `Stream non-stop hit music countdowns and live music channels in ${countryName}.`;
+        } else if (slideIdx === "3") {
+            const h1 = slide.querySelector("h1");
+            const desc = slide.querySelector(".hero-description");
+            if (h1) h1.textContent = countryCode === "ke" ? "Kenyan Concerts & Live Shows" : (countryCode === "ug" ? "Concerts & Live Shows" : `${countryName} Concerts & Live Shows`);
+            if (desc) desc.textContent = countryCode === "ke" ? "Discover live concerts, music festivals, and performances across Kenya." : (countryCode === "ug" ? "Watch live music concerts, stage performances, and cultural festivals from top artists." : `Discover live concerts, music festivals, and stage performances in ${countryName}.`);
+        } else if (slideIdx === "4") {
+            const h1 = slide.querySelector("h1");
+            const desc = slide.querySelector(".hero-description");
+            const badge = slide.querySelector(".hero-badge");
+            if (h1) h1.textContent = countryCode === "ke" ? "Live Kenyan Radio" : (countryCode === "ug" ? "Live Radio Stations" : `Live ${countryName} Radio`);
+            if (desc) desc.textContent = countryCode === "ke" ? "Tune in to top Kenyan FM radio stations and live audio broadcasts." : (countryCode === "ug" ? "Tune in to top FM radio stations including Galaxy FM 100.2 Zzina, Dembe FM 90.4, and Bukedde FM." : `Tune in to top FM radio stations and live audio broadcasts in ${countryName}.`);
+            if (badge) badge.innerHTML = `<span class="ugandan-text">${countryCode === "ke" ? "KENYAN" : (countryCode === "ug" ? "DOPPEST" : countryName.toUpperCase())}</span> &nbsp; RADIO`;
+        }
+    });
+}
+
 function initHeroCarousel() {
     const carouselTrack = document.getElementById("carouselTrack");
     const slides = document.querySelectorAll(".carousel-slide");
@@ -3052,6 +3096,7 @@ async function initHomePage() {
     initHeroCarousel();
 
     const countryCode = getActiveCountryCode();
+    updateHeroCarouselForCountry(countryCode);
     activeHomePageCountry = countryCode;
     const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
 
