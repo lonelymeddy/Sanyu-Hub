@@ -1592,9 +1592,10 @@ font-size:38px
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-width: 0;
-  padding: 0 8px;
+  gap: 6px;
+  padding: 0 4px;
 }
 
 .live-stream-status {
@@ -1681,7 +1682,7 @@ font-size:38px
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   white-space: nowrap;
   letter-spacing: 0.5px;
-  margin-left: 8px;
+  flex-shrink: 0;
 }
 
 .volume-container {
@@ -1795,9 +1796,82 @@ font-size:38px
     display: none;
   }
   .live-controls-bar {
-    padding: 8px 10px;
-    gap: 6px;
+    padding: 6px 8px;
+    gap: 4px;
   }
+  .controls-left,
+  .controls-right {
+    gap: 2px;
+  }
+  .ctrl-btn {
+    width: 28px;
+    height: 28px;
+  }
+  .ctrl-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  .controls-middle {
+    padding: 0 2px;
+    gap: 4px;
+  }
+  .ctrl-time-display {
+    font-size: 9.5px;
+    letter-spacing: -0.2px;
+  }
+}
+
+/* FULLSCREEN OVERRIDES TO PRESERVE EXACT FULLSCREEN CONTROL LAYOUT & SPACING */
+:fullscreen .live-controls-bar,
+:-webkit-full-screen .live-controls-bar,
+:is(:fullscreen, :-webkit-full-screen) .live-controls-bar {
+  padding: 12px 16px !important;
+  gap: 12px !important;
+}
+
+:fullscreen .controls-left,
+:-webkit-full-screen .controls-left,
+:is(:fullscreen, :-webkit-full-screen) .controls-left,
+:fullscreen .controls-right,
+:-webkit-full-screen .controls-right,
+:is(:fullscreen, :-webkit-full-screen) .controls-right {
+  gap: 8px !important;
+}
+
+:fullscreen .ctrl-btn,
+:-webkit-full-screen .ctrl-btn,
+:is(:fullscreen, :-webkit-full-screen) .ctrl-btn {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+:fullscreen .ctrl-btn svg,
+:-webkit-full-screen .ctrl-btn svg,
+:is(:fullscreen, :-webkit-full-screen) .ctrl-btn svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+:fullscreen .controls-middle,
+:-webkit-full-screen .controls-middle,
+:is(:fullscreen, :-webkit-full-screen) .controls-middle {
+  justify-content: center !important;
+  padding: 0 8px !important;
+  gap: 8px !important;
+}
+
+:fullscreen .ctrl-time-display,
+:-webkit-full-screen .ctrl-time-display,
+:is(:fullscreen, :-webkit-full-screen) .ctrl-time-display {
+  font-size: 11px !important;
+  letter-spacing: 0.5px !important;
+}
+
+:fullscreen .volume-slider,
+:-webkit-full-screen .volume-slider,
+:is(:fullscreen, :-webkit-full-screen) .volume-slider {
+  display: block !important;
+  width: 64px !important;
 }
 
 /* SETTINGS POPOVER MENU PANEL */
