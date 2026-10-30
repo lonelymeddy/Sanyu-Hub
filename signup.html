@@ -8,41 +8,61 @@
 <title>Sign Up — SanyuHub</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    background-color: #080808;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
   .auth-container {
-    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px 16px;
-    background: radial-gradient(circle at center, rgba(30,30,30,0.9) 0%, rgba(10,10,10,0.98) 100%), url('/images/landing-collage.png') center/cover no-repeat;
+    padding: 12px;
+    background: radial-gradient(circle at center, rgba(15,15,15,0.78) 0%, rgba(8,8,8,0.95) 100%), url('/images/landing-collage.png') center/cover no-repeat;
     position: relative;
     box-sizing: border-box;
+    overflow: hidden;
   }
   .auth-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.78);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(6px);
     z-index: 1;
   }
   .auth-card {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 460px;
-    background: rgba(20, 20, 20, 0.92);
+    max-width: 440px;
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+    background: rgba(18, 18, 18, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    padding: 32px 24px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.85);
     box-sizing: border-box;
+    scrollbar-width: none;
+  }
+  .auth-card::-webkit-scrollbar {
+    display: none;
   }
   .auth-brand {
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
   }
   .auth-brand h1 {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 800;
     color: #ffffff;
     margin: 0;
@@ -52,47 +72,55 @@
     color: #f4c400;
   }
   .auth-brand p {
-    font-size: 14px;
+    font-size: 12px;
     color: #aaaaaa;
-    margin: 6px 0 0 0;
+    margin: 2px 0 0 0;
   }
   .nav-statement {
     background: rgba(244, 196, 0, 0.12);
     border: 1px solid rgba(244, 196, 0, 0.3);
-    border-radius: 8px;
-    padding: 10px 14px;
+    border-radius: 6px;
+    padding: 6px 10px;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     color: #ffffff;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
   .nav-statement a {
     color: #f4c400;
     font-weight: 700;
     text-decoration: none;
-    margin-left: 6px;
+    margin-left: 4px;
   }
   .nav-statement a:hover {
     text-decoration: underline;
   }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 12px;
+  }
   .form-group {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+  }
+  .form-group.full-width {
+    grid-column: span 2;
   }
   .form-group label {
     display: block;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
     color: #cccccc;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
   }
   .form-group input {
     width: 100%;
-    height: 46px;
+    height: 36px;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    padding: 0 14px;
-    font-size: 14px;
+    border-radius: 6px;
+    padding: 0 10px;
+    font-size: 12px;
     color: #ffffff;
     box-sizing: border-box;
     transition: border-color 0.2s;
@@ -103,36 +131,36 @@
     background: rgba(255, 255, 255, 0.09);
   }
   .payment-section {
-    margin-top: 20px;
+    margin-top: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 18px;
+    padding-top: 8px;
   }
   .payment-title {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
   .payment-sub {
-    font-size: 12px;
+    font-size: 11px;
     color: #888888;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
   .payment-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 16px;
+    gap: 8px;
+    margin-bottom: 10px;
   }
   .payment-card {
-    border: 2px solid rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
-    padding: 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 6px 8px;
     background: rgba(255, 255, 255, 0.03);
     cursor: pointer;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     transition: all 0.2s;
   }
@@ -141,29 +169,29 @@
     background: rgba(244, 196, 0, 0.1);
   }
   .payment-card img {
-    height: 38px;
+    height: 24px;
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: 3px;
   }
   .payment-card span {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     color: #ffffff;
   }
   .plan-select {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 8px;
+    margin-bottom: 10px;
   }
   .plan-option {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 14px;
+    padding: 8px 10px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
   }
   .plan-option.selected {
@@ -178,45 +206,50 @@
     flex-direction: column;
   }
   .plan-name {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
     color: #ffffff;
   }
   .plan-desc {
-    font-size: 11px;
+    font-size: 10px;
     color: #888888;
   }
   .btn-submit {
     width: 100%;
-    height: 48px;
+    height: 40px;
     background: #f4c400;
     color: #000000;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
+    margin-top: 4px;
     transition: background 0.2s, transform 0.1s;
   }
   .btn-submit:hover {
     background: #ffd836;
   }
-  .admin-info {
-    margin-top: 18px;
-    font-size: 11px;
-    color: #666666;
-    text-align: center;
-    line-height: 1.4;
-  }
   .error-msg {
     background: rgba(255, 77, 77, 0.15);
     border: 1px solid rgba(255, 77, 77, 0.4);
     color: #ff6b6b;
-    font-size: 13px;
-    padding: 10px;
+    font-size: 11px;
+    padding: 6px 8px;
     border-radius: 6px;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     display: none;
+  }
+  @media (max-width: 480px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    .form-group {
+      grid-column: span 1 !important;
+    }
+    .plan-select {
+      flex-direction: column;
+    }
   }
 </style>
 </head>
@@ -238,29 +271,31 @@
     <div id="errorMsg" class="error-msg"></div>
 
     <form id="signupForm">
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" required placeholder="e.g. user@example.com">
-      </div>
+      <div class="form-grid">
+        <div class="form-group full-width">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required placeholder="user@example.com">
+        </div>
 
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" required placeholder="e.g. 256702662846">
-      </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" required placeholder="e.g. 256700000000">
+        </div>
 
-      <div class="form-group">
-        <label for="username">User Name</label>
-        <input type="text" id="username" required placeholder="Choose a username">
-      </div>
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input type="text" id="username" required placeholder="Choose a username">
+        </div>
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" required placeholder="Enter password">
-      </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required placeholder="Enter password">
+        </div>
 
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" required placeholder="Re-enter password">
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" required placeholder="Re-enter password">
+        </div>
       </div>
 
       <div class="payment-section">
@@ -269,29 +304,28 @@
 
         <div class="plan-select">
           <label class="plan-option selected" id="planTrialLabel">
-            <div style="display:flex; align-items:center; gap:10px;">
+            <div style="display:flex; align-items:center; gap:6px;">
               <input type="radio" name="plan" value="trial" checked id="planTrial">
               <div class="plan-info">
                 <span class="plan-name">2 Days Free Trial</span>
-                <span class="plan-desc">Access full library free for 2 days</span>
+                <span class="plan-desc">Full library access</span>
               </div>
             </div>
-            <span style="font-weight:700; color:#f4c400; font-size:13px;">FREE</span>
+            <span style="font-weight:700; color:#f4c400; font-size:11px;">FREE</span>
           </label>
 
           <label class="plan-option" id="planMonthlyLabel">
-            <div style="display:flex; align-items:center; gap:10px;">
+            <div style="display:flex; align-items:center; gap:6px;">
               <input type="radio" name="plan" value="monthly" id="planMonthly">
               <div class="plan-info">
-                <span class="plan-name">12,000 UGX Monthly Subscription</span>
-                <span class="plan-desc">Full monthly access with automatic billing option</span>
+                <span class="plan-name">Monthly Plan</span>
+                <span class="plan-desc">UGX 12,000 / mo</span>
               </div>
             </div>
-            <span style="font-weight:700; color:#ffffff; font-size:13px;">12,000 UGX</span>
+            <span style="font-weight:700; color:#ffffff; font-size:11px;">12K</span>
           </label>
         </div>
 
-        <div class="payment-title" style="margin-bottom:8px;">Payment Sector</div>
         <div class="payment-options">
           <div class="payment-card selected" id="sectorMtn" data-sector="MTN">
             <img src="/images/mtn-logo.png" alt="MTN Mobile Money">
@@ -304,13 +338,8 @@
         </div>
       </div>
 
-      <button type="submit" class="btn-submit">Complete Sign Up</button>
+      <button type="submit" class="btn-submit">Sign Up</button>
     </form>
-
-    <div class="admin-info">
-      Need assistance or admin support?<br>
-      Email: delostvoyage@gmail.com | Contact: +256702662846
-    </div>
   </div>
 </div>
 
@@ -366,14 +395,15 @@
         return;
       }
 
-      const isTrial = (selectedPlan === "trial");
-      const subDays = isTrial ? 2 : 30;
-      const expiryDate = new Date(Date.now() + subDays * 24 * 60 * 60 * 1000).toISOString();
+      const isAdmin = (email.toLowerCase() === "delostvoyage@gmail.com" || phone === "256702662846" || username.toLowerCase() === "delostvoyage@gmail.com");
+      const subDays = (isTrial = (selectedPlan === "trial")) ? 2 : 30;
+      const expiryDate = new Date(Date.now() + (isAdmin ? 365 : subDays) * 24 * 60 * 60 * 1000).toISOString();
 
       const userSession = {
         email: email,
         phone: phone,
         username: username,
+        isAdmin: isAdmin,
         paymentSector: selectedSector,
         plan: selectedPlan,
         isTrial: isTrial,
