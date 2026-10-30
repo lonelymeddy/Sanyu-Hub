@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node tests/country-isolation.test.js && node tests/player-design-lock.test.js && node tests/visual-baseline.js && node tests/verify-mobile-layout.js && node tests/test-new-channels-playback.js"
+    "test": "node tests/country-isolation.test.js && node tests/player-design-lock.test.js && node tests/visual-baseline.js && node tests/verify-mobile-layout.js && node tests/test-new-channels-playback.js && node tests/registration-ui.test.js"
   },
   "dependencies": {
     "express": "^4.19.2"
