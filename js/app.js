@@ -89,7 +89,7 @@ function ensureLandingOverlayExists() {
                     <p class="landing-brand-desc">Movies, Series & Live TV — Stream Unlimited Entertainment</p>
 
                     <div class="landing-action-area">
-                        <p class="landing-trial-tag">✨ Start with 2 Days Free Trial or Subscribe at 12,000 UGX Monthly</p>
+                        <p class="landing-trial-tag">Start with 2 Days Free Trial or Subscribe at 12,000 UGX Monthly</p>
                         <a href="/signup" class="btn-landing-get-started" id="landingGetStartedBtn">Get Started</a>
                     </div>
                 </div>
