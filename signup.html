@@ -27,7 +27,7 @@
 
     <div id="errorMsg" class="sh-alert-msg"></div>
 
-    <form id="signupForm">
+    <form id="signupForm" novalidate>
       <div class="sh-form-grid">
         <div class="sh-form-group full-width">
           <label class="sh-form-label" for="email">Email Address</label>
@@ -77,44 +77,66 @@
       </div>
 
       <div class="sh-section-divider">
-        <div class="sh-section-title">Select Subscription Option</div>
-        <div class="sh-section-sub">Choose your preferred access tier to get started immediately.</div>
-
-        <div class="sh-plan-cards">
-          <div class="sh-plan-card selected" id="planTrialCard" data-plan="trial">
-            <div class="sh-plan-header">
-              <span class="sh-plan-name">2 Days Free Trial</span>
-              <span class="sh-plan-price">FREE</span>
+        <!-- SUBSCRIPTION SELECTOR -->
+        <div class="sh-dropdown-field-group">
+          <label class="sh-form-label" id="subPlanLabel">Select Subscription Plan</label>
+          <div class="sh-dropdown-wrapper" id="subDropdownWrapper">
+            <button type="button" class="sh-dropdown-trigger" id="subDropdownTrigger" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="subPlanLabel">
+              <div class="sh-dropdown-trigger-text">
+                <span class="sh-trigger-title" id="selectedPlanTitle">2 Days Free Trial — FREE</span>
+              </div>
+              <svg class="sh-dropdown-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="sh-dropdown-menu" id="subDropdownMenu" role="listbox" aria-labelledby="subPlanLabel">
+              <div class="sh-dropdown-item selected" data-plan="trial" role="option" aria-selected="true" tabindex="0">
+                <div class="sh-item-header">
+                  <span class="sh-item-title">2 Days Free Trial</span>
+                  <span class="sh-item-badge free">FREE</span>
+                </div>
+                <div class="sh-item-desc">Full library and live TV access for 2 days. No payment required today.</div>
+              </div>
+              <div class="sh-dropdown-item" data-plan="monthly" role="option" aria-selected="false" tabindex="0">
+                <div class="sh-item-header">
+                  <span class="sh-item-title">Monthly Plan</span>
+                  <span class="sh-item-badge">12,000 UGX</span>
+                </div>
+                <div class="sh-item-desc">30 days of unlimited access. Payment required before activation.</div>
+              </div>
             </div>
-            <div class="sh-plan-desc">Full library & live TV access</div>
           </div>
 
-          <div class="sh-plan-card" id="planMonthlyCard" data-plan="monthly">
-            <div class="sh-plan-header">
-              <span class="sh-plan-name">Monthly Plan</span>
-              <span class="sh-plan-price">12,000 UGX</span>
-            </div>
-            <div class="sh-plan-desc">30 days unlimited access</div>
+          <!-- Dynamic Subscription Summary -->
+          <div class="sh-sub-summary-card" id="subSummaryCard">
+            <div class="sh-summary-name-price" id="summaryNamePrice">2 Days Free Trial — FREE</div>
+            <div class="sh-summary-benefits" id="summaryBenefits">Full platform access for 2 days. No payment required today.</div>
           </div>
         </div>
 
-        <div id="paymentSectorSection">
-          <div class="sh-section-title">Select Payment Network</div>
-          <div class="sh-section-sub">Payment required only for monthly subscription.</div>
-
-          <div class="sh-payment-sector-container">
-            <div class="sh-payment-card selected" id="sectorMtn" data-sector="MTN">
-              <img src="/images/mtn-logo.png" alt="MTN Mobile Money">
-              <span>MTN MoMo</span>
+        <!-- PAYMENT NETWORK SELECTOR (CONDITIONAL) -->
+        <div class="sh-dropdown-field-group sh-payment-section" id="paymentSectorSection" style="display: none;">
+          <label class="sh-form-label" id="paymentNetworkLabel">Select Payment Network</label>
+          <div class="sh-dropdown-wrapper" id="paymentDropdownWrapper">
+            <button type="button" class="sh-dropdown-trigger" id="paymentDropdownTrigger" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="paymentNetworkLabel">
+              <div class="sh-dropdown-trigger-text">
+                <img src="/images/mtn-logo.png" alt="MTN MoMo" class="sh-network-logo" id="selectedNetworkLogo">
+                <span class="sh-trigger-title" id="selectedNetworkTitle">MTN MoMo</span>
+              </div>
+              <svg class="sh-dropdown-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="sh-dropdown-menu" id="paymentDropdownMenu" role="listbox" aria-labelledby="paymentNetworkLabel">
+              <div class="sh-dropdown-item selected" data-sector="MTN" role="option" aria-selected="true" tabindex="0">
+                <div class="sh-item-network">
+                  <img src="/images/mtn-logo.png" alt="MTN MoMo" class="sh-network-logo">
+                  <span class="sh-item-title">MTN MoMo</span>
+                </div>
+              </div>
+              <div class="sh-dropdown-item" data-sector="Airtel" role="option" aria-selected="false" tabindex="0">
+                <div class="sh-item-network">
+                  <img src="/images/airtel-logo.jpg" alt="Airtel Money" class="sh-network-logo">
+                  <span class="sh-item-title">Airtel Money</span>
+                </div>
+              </div>
             </div>
-            <div class="sh-payment-card" id="sectorAirtel" data-sector="Airtel">
-              <img src="/images/airtel-logo.jpg" alt="Airtel Money">
-              <span>Airtel Money</span>
-            </div>
-          </div>
-
-          <div class="sh-payment-info-box" id="paymentInfoBox">
-            <span id="paymentInfoText">Free Trial active — No instant mobile money charge required today.</span>
           </div>
         </div>
       </div>
@@ -132,12 +154,18 @@
     let selectedPlan = "trial";
     let selectedSector = "MTN";
 
-    const planTrialCard = document.getElementById("planTrialCard");
-    const planMonthlyCard = document.getElementById("planMonthlyCard");
-    const sectorMtnCard = document.getElementById("sectorMtn");
-    const sectorAirtelCard = document.getElementById("sectorAirtel");
-    const paymentInfoBox = document.getElementById("paymentInfoBox");
-    const paymentInfoText = document.getElementById("paymentInfoText");
+    const subDropdownTrigger = document.getElementById("subDropdownTrigger");
+    const subDropdownMenu = document.getElementById("subDropdownMenu");
+    const selectedPlanTitle = document.getElementById("selectedPlanTitle");
+    const subSummaryCard = document.getElementById("subSummaryCard");
+    const summaryNamePrice = document.getElementById("summaryNamePrice");
+    const summaryBenefits = document.getElementById("summaryBenefits");
+
+    const paymentSectorSection = document.getElementById("paymentSectorSection");
+    const paymentDropdownTrigger = document.getElementById("paymentDropdownTrigger");
+    const paymentDropdownMenu = document.getElementById("paymentDropdownMenu");
+    const selectedNetworkLogo = document.getElementById("selectedNetworkLogo");
+    const selectedNetworkTitle = document.getElementById("selectedNetworkTitle");
 
     const signupForm = document.getElementById("signupForm");
     const errorMsg = document.getElementById("errorMsg");
@@ -158,46 +186,127 @@
       confirmPwdInput.setAttribute("type", type);
     });
 
-    // Plan card selection
-    planTrialCard.addEventListener("click", () => {
-      selectedPlan = "trial";
-      planTrialCard.classList.add("selected");
-      planMonthlyCard.classList.remove("selected");
-      updatePaymentSectionState();
+    // Toggle Subscription Dropdown
+    subDropdownTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = subDropdownMenu.classList.contains("open");
+      closeAllDropdowns();
+      if (!isOpen) {
+        subDropdownMenu.classList.add("open");
+        subDropdownTrigger.setAttribute("aria-expanded", "true");
+      }
     });
 
-    planMonthlyCard.addEventListener("click", () => {
-      selectedPlan = "monthly";
-      planMonthlyCard.classList.add("selected");
-      planTrialCard.classList.remove("selected");
-      updatePaymentSectionState();
+    // Toggle Payment Network Dropdown
+    paymentDropdownTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = paymentDropdownMenu.classList.contains("open");
+      closeAllDropdowns();
+      if (!isOpen) {
+        paymentDropdownMenu.classList.add("open");
+        paymentDropdownTrigger.setAttribute("aria-expanded", "true");
+      }
     });
 
-    // Payment Sector selection
-    sectorMtnCard.addEventListener("click", () => {
-      selectedSector = "MTN";
-      sectorMtnCard.classList.add("selected");
-      sectorAirtelCard.classList.remove("selected");
-      updatePaymentSectionState();
+    function closeAllDropdowns() {
+      subDropdownMenu.classList.remove("open");
+      subDropdownTrigger.setAttribute("aria-expanded", "false");
+      paymentDropdownMenu.classList.remove("open");
+      paymentDropdownTrigger.setAttribute("aria-expanded", "false");
+    }
+
+    document.addEventListener("click", () => {
+      closeAllDropdowns();
     });
 
-    sectorAirtelCard.addEventListener("click", () => {
-      selectedSector = "Airtel";
-      sectorAirtelCard.classList.add("selected");
-      sectorMtnCard.classList.remove("selected");
-      updatePaymentSectionState();
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeAllDropdowns();
+      }
     });
 
-    function updatePaymentSectionState() {
+    // Select Subscription Option
+    const subItems = subDropdownMenu.querySelectorAll(".sh-dropdown-item");
+    subItems.forEach(item => {
+      const handleSelectPlan = () => {
+        subItems.forEach(i => {
+          i.classList.remove("selected");
+          i.setAttribute("aria-selected", "false");
+        });
+        item.classList.add("selected");
+        item.setAttribute("aria-selected", "true");
+
+        selectedPlan = item.getAttribute("data-plan");
+        updatePlanState();
+        closeAllDropdowns();
+      };
+
+      item.addEventListener("click", handleSelectPlan);
+      item.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleSelectPlan();
+        }
+      });
+    });
+
+    // Select Payment Network Option
+    const paymentItems = paymentDropdownMenu.querySelectorAll(".sh-dropdown-item");
+    paymentItems.forEach(item => {
+      const handleSelectSector = () => {
+        paymentItems.forEach(i => {
+          i.classList.remove("selected");
+          i.setAttribute("aria-selected", "false");
+        });
+        item.classList.add("selected");
+        item.setAttribute("aria-selected", "true");
+
+        selectedSector = item.getAttribute("data-sector");
+        updatePaymentState();
+        closeAllDropdowns();
+      };
+
+      item.addEventListener("click", handleSelectSector);
+      item.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleSelectSector();
+        }
+      });
+    });
+
+    function updatePlanState() {
       if (selectedPlan === "trial") {
-        paymentInfoBox.style.display = "block";
-        paymentInfoText.innerHTML = `<strong>2 Days Free Trial:</strong> Full platform access immediately. No charge today via ${selectedSector}.`;
+        selectedPlanTitle.textContent = "2 Days Free Trial — FREE";
+        summaryNamePrice.textContent = "2 Days Free Trial — FREE";
+        summaryBenefits.textContent = "Full platform access for 2 days. No payment required today.";
+
+        paymentSectorSection.style.display = "none";
+        errorMsg.style.display = "none";
       } else {
-        paymentInfoBox.style.display = "block";
-        paymentInfoText.innerHTML = `<strong>Monthly Subscription:</strong> UGX 12,000 / month billed via <strong>${selectedSector} Mobile Money</strong>.`;
+        selectedPlanTitle.textContent = "Monthly Plan — 12,000 UGX";
+        summaryNamePrice.textContent = "Monthly Subscription — 12,000 UGX";
+        summaryBenefits.textContent = "30 days of unlimited access.";
+
+        paymentSectorSection.style.display = "block";
       }
     }
-    updatePaymentSectionState();
+
+    function updatePaymentState() {
+      if (selectedSector === "Airtel") {
+        selectedNetworkLogo.src = "/images/airtel-logo.jpg";
+        selectedNetworkLogo.alt = "Airtel Money";
+        selectedNetworkTitle.textContent = "Airtel Money";
+      } else {
+        selectedSector = "MTN";
+        selectedNetworkLogo.src = "/images/mtn-logo.png";
+        selectedNetworkLogo.alt = "MTN MoMo";
+        selectedNetworkTitle.textContent = "MTN MoMo";
+      }
+    }
+
+    updatePlanState();
+    updatePaymentState();
 
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -215,6 +324,13 @@
         return;
       }
 
+      // Basic email check
+      if (!email.includes("@") || !email.includes(".")) {
+        errorMsg.textContent = "Please enter a valid email address.";
+        errorMsg.style.display = "block";
+        return;
+      }
+
       if (password.length < 6) {
         errorMsg.textContent = "Password must be at least 6 characters long.";
         errorMsg.style.display = "block";
@@ -223,6 +339,12 @@
 
       if (password !== confirmPassword) {
         errorMsg.textContent = "Passwords do not match. Please re-confirm your password.";
+        errorMsg.style.display = "block";
+        return;
+      }
+
+      if (selectedPlan === "monthly" && !selectedSector) {
+        errorMsg.textContent = "Please select a payment network for your monthly subscription.";
         errorMsg.style.display = "block";
         return;
       }
@@ -237,7 +359,7 @@
         phone: phone,
         username: username,
         isAdmin: isAdmin,
-        paymentSector: selectedSector,
+        paymentSector: isTrial ? "MTN" : selectedSector,
         plan: selectedPlan,
         isTrial: isTrial,
         subscriptionExpiry: expiryDate,
