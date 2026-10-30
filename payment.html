@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#222222">
+<meta name="description" content="SanyuHub — Payment & Account Verification Instructions">
+<title>Payment Verification — SanyuHub</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .payment-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .payment-badge {
+    display: inline-block;
+    background: #f4c400;
+    color: #000;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .payment-amount {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .payment-subtext {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.5;
+  }
+  .admin-box {
+    background: rgba(244, 196, 0, 0.08);
+    border: 1px solid rgba(244, 196, 0, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .admin-number-highlight {
+    font-size: 24px;
+    font-weight: 800;
+    color: #f4c400;
+    letter-spacing: 1px;
+    display: block;
+    margin: 8px 0;
+  }
+  .steps-list {
+    margin: 16px 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 16px;
+    border-radius: 10px;
+  }
+  .step-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f4c400;
+    color: #000;
+    font-weight: 800;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-content h3 {
+    margin: 0 0 4px 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .step-content p {
+    margin: 0;
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.4;
+  }
+  .action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  @media (max-width: 480px) {
+    .action-buttons {
+      grid-template-columns: 1fr;
+    }
+  }
+  .btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+  .btn-action:active {
+    transform: scale(0.98);
+  }
+  .btn-call {
+    background: #f4c400;
+    color: #000;
+  }
+  .btn-whatsapp {
+    background: #25D366;
+    color: #fff;
+  }
+  .network-badge-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .network-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ddd;
+  }
+</style>
+</head>
+<body>
+
+<div class="background"></div>
+
+<header class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="/" class="logo">
+Sanyu<span>Hub</span>
+</a>
+<nav class="desktop-nav">
+<a href="/">Home</a>
+<a href="/movies">Library</a>
+<a href="/series">Series</a>
+<a href="/live-tv">Live TV</a>
+</nav>
+<div class="nav-controls">
+<button class="search-button" id="topSearch" aria-label="Search">
+<span class="search-icon"></span>
+</button>
+<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+</button>
+</div>
+</div>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-content">
+<div class="sidebar-section">
+<div class="sidebar-section-title">Explore</div>
+<a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Home</span></a>
+<a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Library</span></a>
+<a href="/series" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Series</span></a>
+<a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Live TV</span></a>
+<a href="/more" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span>More</span></a>
+</div>
+</div>
+</aside>
+
+<main>
+
+<header class="page-header">
+<div class="page-title-group">
+<h1 class="page-title">Payment & Verification</h1>
+</div>
+</header>
+
+<section class="section">
+  <div style="max-width: 720px; margin: 0 auto; display: flex; flex-direction: column;">
+
+    <div class="payment-card">
+      <span class="payment-badge">Manual Account Verification</span>
+      <div class="payment-amount">12,000 UGX <span style="font-size: 16px; color: #aaa; font-weight: 500;">/ month</span></div>
+      <p class="payment-subtext">
+        To activate or renew your subscription, please send your payment directly to the administrator number and call or message for instant manual account verification.
+      </p>
+
+      <!-- Admin Contact Box -->
+      <div class="admin-box">
+        <div style="font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;">Admin Mobile Money Number</div>
+        <div class="admin-number-highlight" id="adminPhoneNumberDisplay">256702662846</div>
+        <div style="font-size: 13px; color: #ccc;">
+          Administrator: <strong>delostvoyage@gmail.com</strong> (+256 702 662 846)
+        </div>
+        <div class="network-badge-group">
+          <span class="network-badge">
+            <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:#f4c400;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            MTN Mobile Money
+          </span>
+          <span class="network-badge">
+            <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:#f4c400;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Airtel Money
+          </span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <a href="tel:256702662846" class="btn-action btn-call" id="btnCallAdmin">
+          <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:currentColor;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call Admin (256702662846)
+        </a>
+        <a href="https://wa.me/256702662846?text=Hello%20SanyuHub%20Admin%2C%20I%20have%20sent%20money%20for%20my%20subscription.%20Please%20verify%20my%20account." target="_blank" rel="noopener" class="btn-action btn-whatsapp" id="btnWhatsappAdmin">
+          <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:currentColor;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.56 0 8.25 3.69 8.25 8.24 0 2.2-.86 4.28-2.42 5.84l-.59.59-.35.19c-1.44.78-3.06 1.19-4.89 1.19-1.57 0-3.1-.4-4.44-1.16l-.32-.18-3.26.86.87-3.18-.2-.33a8.16 8.16 0 0 1-1.25-4.32c0-4.55 3.7-8.24 8.35-8.24zm4.84 11.64c-.2-.1-.1.1-1.18-.44-.33-.16-.57-.25-.81.12-.24.37-.93 1.18-1.14 1.42-.21.24-.42.27-.75.1-.33-.16-1.39-.51-2.64-1.63-.98-.87-1.64-1.95-1.83-2.28-.19-.33-.02-.51.15-.67.15-.15.33-.39.5-.59.16-.19.22-.33.33-.55.11-.22.05-.41-.03-.57-.08-.16-.81-1.95-1.11-2.67-.29-.7-.59-.6-.81-.61-.21-.01-.45-.01-.69-.01-.24 0-.63.09-.96.45-.33.37-1.26 1.23-1.26 3 0 1.77 1.29 3.48 1.47 3.72.18.24 2.54 3.88 6.16 5.44.86.37 1.53.59 2.06.76.87.28 1.66.24 2.28.15.7-.1 2.15-.88 2.45-1.73.3-.85.3-1.58.21-1.73-.09-.16-.33-.26-.66-.42z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Instructions Steps -->
+    <div class="payment-card">
+      <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin: 0 0 16px 0;">How to Complete Your Verification</h2>
+      <ul class="steps-list">
+        <li class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Send 12,000 UGX to the Admin Number</h3>
+            <p>Use MTN MoMo or Airtel Money to transfer <strong>12,000 UGX</strong> directly to <strong>256702662846</strong> (+256 702 662 846).</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Contact Administrator with Payment Confirmation</h3>
+            <p>Tap the <strong>Call Admin</strong> or <strong>Chat on WhatsApp</strong> button above to provide your mobile money transaction ID, registered email, or username.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Admin Verifies & Instantly Unlocks Your Account</h3>
+            <p>The administrator (<strong>delostvoyage@gmail.com</strong>) will verify your transaction in the Admin Overview panel and immediately activate or renew your subscription for 30 full days.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div style="margin-top: 24px; text-align: center;">
+        <a href="/profile" style="color: #f4c400; font-weight: 600; text-decoration: none; font-size: 14px;">&larr; Return to Profile</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<nav class="bottom-nav" id="bottomNav">
+  <a href="/" class="bottom-nav-item" id="navHome"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span>Home</span></a>
+  <a href="/live-tv" class="bottom-nav-item" id="navChannels"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></div><span>Channels</span></a>
+  <a href="/movies" class="bottom-nav-item" id="navMovies"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg></div><span>Library</span></a>
+  <a href="/more" class="bottom-nav-item active" id="navMore"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></div><span>More</span></a>
+</nav>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

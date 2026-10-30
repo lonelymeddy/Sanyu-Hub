@@ -418,6 +418,14 @@ app.get(['/profile', '/profile/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'profile.html'));
 });
 
+app.get(['/admin', '/admin/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin.html'));
+});
+
+app.get(['/payment', '/payment/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'payment.html'));
+});
+
 app.get(['/saved', '/saved/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'saved.html'));
 });

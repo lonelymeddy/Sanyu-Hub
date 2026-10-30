@@ -110,6 +110,10 @@
             <div class="sh-summary-name-price" id="summaryNamePrice">2 Days Free Trial — FREE</div>
             <div class="sh-summary-benefits" id="summaryBenefits">Full platform access for 2 days. No payment required today.</div>
           </div>
+
+          <div id="monthlyPaymentNotice" style="display:none; margin-top:12px; font-size:12px; color:#f4c400; background:rgba(244,196,0,0.1); border:1px solid rgba(244,196,0,0.3); border-radius:8px; padding:10px; line-height:1.4;">
+            Note: For monthly subscriptions, send money to Admin number <strong>256702662846</strong> (+256 702 662 846) for account verification. After registration you will be directed to payment instructions.
+          </div>
         </div>
 
         <!-- PAYMENT NETWORK SELECTOR (CONDITIONAL) -->
@@ -275,12 +279,15 @@
       });
     });
 
+    const monthlyNotice = document.getElementById("monthlyPaymentNotice");
+
     function updatePlanState() {
       if (selectedPlan === "trial") {
         selectedPlanTitle.textContent = "2 Days Free Trial — FREE";
         summaryNamePrice.textContent = "2 Days Free Trial — FREE";
         summaryBenefits.textContent = "Full platform access for 2 days. No payment required today.";
 
+        if (monthlyNotice) monthlyNotice.style.display = "none";
         paymentSectorSection.style.display = "none";
         errorMsg.style.display = "none";
       } else {
@@ -288,6 +295,7 @@
         summaryNamePrice.textContent = "Monthly Subscription — 12,000 UGX";
         summaryBenefits.textContent = "30 days of unlimited access.";
 
+        if (monthlyNotice) monthlyNotice.style.display = "block";
         paymentSectorSection.style.display = "block";
       }
     }
@@ -372,7 +380,11 @@
         localStorage.setItem("sanyuhub_auth_user", JSON.stringify(userSession));
       }
 
-      window.location.href = "/";
+      if (!isTrial && !isAdmin) {
+        window.location.href = "/payment";
+      } else {
+        window.location.href = "/";
+      }
     });
   });
 </script>

@@ -247,6 +247,31 @@ Sanyu<span>Hub</span>
       </div>
     </div>
 
+    <!-- Admin Overview Section (Conditional for Admin) -->
+    <div id="adminProfileSection" style="display: none;">
+      <h2 style="font-size: 16px; font-weight: 700; color: #ffd43b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Administration</h2>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a href="/admin" id="adminPanelLink" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: rgba(244, 196, 0, 0.1); border: 1px solid rgba(244, 196, 0, 0.35); border-radius: 8px; color: #fff; text-decoration: none;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #ffd43b;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            <span style="font-weight: 700; font-size: 15px; color: #ffd43b;">Admin Overview Panel</span>
+          </div>
+          <span style="color: #ffd43b; font-size: 18px;">&rsaquo;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Account Actions / Sign Out Section -->
+    <div style="margin-top: 8px; padding-bottom: 24px;">
+      <h2 style="font-size: 16px; font-weight: 700; color: #ff5252; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Account Actions</h2>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button type="button" id="btnSignOut" style="display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 14px; background: rgba(255, 82, 82, 0.12); border: 1px solid rgba(255, 82, 82, 0.35); border-radius: 8px; color: #ff5252; font-weight: 700; font-size: 15px; cursor: pointer; transition: background 0.2s;">
+          <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: currentColor;"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+          <span>Sign Out / Log Out</span>
+        </button>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -303,18 +328,42 @@ Sanyu<span>Hub</span>
     const expiryTextEl = document.getElementById("subExpiryText");
     const sectorTextEl = document.getElementById("subSectorText");
 
+    const isAdmin = Boolean(user.isAdmin || (user.email && user.email.toLowerCase() === "delostvoyage@gmail.com") || user.phone === "256702662846");
+
     usernameEl.textContent = user.username || "Subscriber";
     emailEl.textContent = user.email || "user@example.com";
     phoneEl.textContent = user.phone || "+256 702 662 846";
     avatarEl.textContent = (user.username || "S").charAt(0).toUpperCase();
 
-    if (user.isTrial) {
+    if (isAdmin) {
+      badgeEl.textContent = "ADMINISTRATOR";
+      badgeEl.style.background = "#ffd43b";
+      badgeEl.style.color = "#000";
+      const adminSection = document.getElementById("adminProfileSection");
+      if (adminSection) adminSection.style.display = "block";
+    } else if (user.isTrial) {
       badgeEl.textContent = "2 DAYS TRIAL";
       badgeEl.style.background = "#ffd43b";
+      badgeEl.style.color = "#000";
     } else {
       badgeEl.textContent = "MONTHLY PLAN";
       badgeEl.style.background = "#4caf50";
       badgeEl.style.color = "#fff";
+    }
+
+    // Sign Out / Log Out Logic
+    const signOutBtn = document.getElementById("btnSignOut");
+    if (signOutBtn) {
+      signOutBtn.addEventListener("click", () => {
+        if (confirm("Are you sure you want to sign out?")) {
+          if (typeof SanyuAuth !== "undefined" && SanyuAuth.logout) {
+            SanyuAuth.logout();
+          } else {
+            localStorage.removeItem("sanyuhub_auth_user");
+          }
+          window.location.href = "/login";
+        }
+      });
     }
 
     const expiryDate = new Date(user.subscriptionExpiry);
@@ -356,18 +405,7 @@ Sanyu<span>Hub</span>
     });
 
     confirmBtn.addEventListener("click", () => {
-      const currentExp = new Date(user.subscriptionExpiry).getTime();
-      const baseTime = currentExp > Date.now() ? currentExp : Date.now();
-      const newExp = new Date(baseTime + 30 * 24 * 60 * 60 * 1000).toISOString();
-
-      user.subscriptionExpiry = newExp;
-      user.isTrial = false;
-      user.paymentSector = renewSector;
-
-      SanyuAuth.registerUser(user);
-      alert(`Subscription renewed successfully via ${renewSector} Sector for 30 days!`);
-      modal.classList.remove("active");
-      window.location.reload();
+      window.location.href = "/payment";
     });
   });
 </script>

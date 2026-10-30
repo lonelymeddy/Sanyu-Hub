@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#141414">
+<meta name="description" content="SanyuHub — Admin Overview Dashboard">
+<title>Admin Overview — SanyuHub</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .admin-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .admin-header-card {
+    background: linear-gradient(135deg, rgba(244, 196, 0, 0.15) 0%, rgba(20, 20, 20, 0.8) 100%);
+    border: 1px solid rgba(244, 196, 0, 0.35);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .admin-title-group h1 {
+    margin: 0 0 6px 0;
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .admin-badge {
+    background: #f4c400;
+    color: #000;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .admin-sub {
+    font-size: 13px;
+    color: #bbb;
+    margin: 0;
+  }
+  .admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .stat-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f4c400;
+  }
+  .stat-desc {
+    font-size: 12px;
+    color: #777;
+  }
+  .admin-section {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .admin-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .verification-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 600px) {
+    .verification-form {
+      grid-template-columns: 1fr;
+    }
+  }
+  .form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-control label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ccc;
+  }
+  .form-control input, .form-control select {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  .form-control input:focus, .form-control select:focus {
+    border-color: #f4c400;
+    outline: none;
+  }
+  .btn-admin-action {
+    background: #f4c400;
+    color: #000;
+    font-weight: 800;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: opacity 0.2s;
+  }
+  .btn-admin-action:hover {
+    opacity: 0.9;
+  }
+  .table-responsive {
+    overflow-x: auto;
+  }
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: left;
+  }
+  .admin-table th {
+    background: rgba(255, 255, 255, 0.05);
+    color: #aaa;
+    font-weight: 700;
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .admin-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #ddd;
+  }
+  .admin-table tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .status-active {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.4);
+  }
+  .status-verified {
+    background: rgba(244, 196, 0, 0.2);
+    color: #f4c400;
+    border: 1px solid rgba(244, 196, 0, 0.4);
+  }
+  .access-denied {
+    background: rgba(255, 82, 82, 0.1);
+    border: 1px solid rgba(255, 82, 82, 0.3);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    color: #ff5252;
+    margin: 40px auto;
+    max-width: 500px;
+  }
+  .quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .quick-link-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .quick-link-btn:hover {
+    background: rgba(244, 196, 0, 0.15);
+    border-color: #f4c400;
+  }
+</style>
+</head>
+<body>
+
+<div class="background"></div>
+
+<header class="navbar" id="navbar">
+<div class="nav-inner">
+<a href="/" class="logo">
+Sanyu<span>Hub</span>
+</a>
+<nav class="desktop-nav">
+<a href="/">Home</a>
+<a href="/movies">Library</a>
+<a href="/series">Series</a>
+<a href="/live-tv">Live TV</a>
+<a href="/admin" style="color: #f4c400;">Admin</a>
+</nav>
+<div class="nav-controls">
+<button class="search-button" id="topSearch" aria-label="Search">
+<span class="search-icon"></span>
+</button>
+<button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+<span class="menu-line"></span>
+</button>
+</div>
+</div>
+</header>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-content">
+<div class="sidebar-section">
+<div class="sidebar-section-title">Explore</div>
+<a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Home</span></a>
+<a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Library</span></a>
+<a href="/series" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Series</span></a>
+<a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Live TV</span></a>
+<a href="/more" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>More</span></a>
+<a href="/admin" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Admin Panel</span></a>
+</div>
+</div>
+</aside>
+
+<main>
+
+<div id="adminContent" style="display: none; padding: 24px 16px;">
+  <div class="admin-container">
+
+    <!-- Header Card -->
+    <div class="admin-header-card">
+      <div class="admin-title-group">
+        <h1>
+          <span>Website Overview & Admin Control</span>
+          <span class="admin-badge">Super Admin</span>
+        </h1>
+        <p class="admin-sub">
+          Logged in as <strong>delostvoyage@gmail.com</strong> (Primary Phone: <strong>256702662846</strong>)
+        </p>
+      </div>
+      <div>
+        <a href="/profile" style="color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; background: rgba(255,255,255,0.1); padding: 8px 14px; border-radius: 6px;">Profile &larr;</a>
+      </div>
+    </div>
+
+    <!-- Website Metrics Overview -->
+    <div>
+      <h2 style="font-size: 16px; font-weight: 700; color: #f4c400; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Live Content & Catalogue Overview</h2>
+      <div class="admin-stats-grid">
+        <div class="stat-card">
+          <span class="stat-label">Movies Catalogue</span>
+          <span class="stat-value" id="statMoviesCount">Loading...</span>
+          <span class="stat-desc">Uganda & Swahili titles</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Series Catalogue</span>
+          <span class="stat-value" id="statSeriesCount">Loading...</span>
+          <span class="stat-desc">Episodes & seasons</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Live TV Channels</span>
+          <span class="stat-value" id="statTvCount">Loading...</span>
+          <span class="stat-desc">Active streaming feeds</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Radio Stations</span>
+          <span class="stat-value" id="statRadioCount">Loading...</span>
+          <span class="stat-desc">Broadcast audio streams</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Navigation / Website Overview Sections -->
+    <div class="admin-section">
+      <div class="admin-section-title">
+        <span>Website Sections Overview</span>
+      </div>
+      <div class="quick-links-grid">
+        <a href="/movies" class="quick-link-btn" target="_blank"><span>Movie Library</span> <span>&nearr;</span></a>
+        <a href="/series" class="quick-link-btn" target="_blank"><span>Series Collection</span> <span>&nearr;</span></a>
+        <a href="/live-tv" class="quick-link-btn" target="_blank"><span>Live TV Streams</span> <span>&nearr;</span></a>
+        <a href="/music" class="quick-link-btn" target="_blank"><span>Music & Audio</span> <span>&nearr;</span></a>
+        <a href="/settings" class="quick-link-btn" target="_blank"><span>Platform Settings</span> <span>&nearr;</span></a>
+        <a href="/payment" class="quick-link-btn" target="_blank"><span>Payment Info Page</span> <span>&nearr;</span></a>
+      </div>
+    </div>
+
+    <!-- Manual User Account Verification Tool -->
+    <div class="admin-section">
+      <div class="admin-section-title">
+        <span>Manual User Subscription Verification</span>
+      </div>
+      <p style="font-size: 13px; color: #aaa; margin: 0 0 16px 0;">
+        When a user calls or sends money to <strong>256702662846</strong>, enter their details below to immediately verify and activate their account.
+      </p>
+
+      <form id="verifyUserForm">
+        <div class="verification-form">
+          <div class="form-control">
+            <label for="verifyUserIdentifier">User Phone / Email / Username</label>
+            <input type="text" id="verifyUserIdentifier" required placeholder="e.g. 256700000000 or user@example.com">
+          </div>
+          <div class="form-control">
+            <label for="verifyDurationDays">Subscription Duration</label>
+            <select id="verifyDurationDays">
+              <option value="30">30 Days (Monthly Plan - 12,000 UGX)</option>
+              <option value="90">90 Days (Quarterly Plan)</option>
+              <option value="365">365 Days (Annual Plan)</option>
+            </select>
+          </div>
+          <div class="form-control">
+            <label for="verifyPaymentMethod">Payment Sector</label>
+            <select id="verifyPaymentMethod">
+              <option value="MTN">MTN Mobile Money (256702662846)</option>
+              <option value="Airtel">Airtel Money (256702662846)</option>
+            </select>
+          </div>
+          <div class="form-control">
+            <label for="verifyTxId">Transaction ID / Notes</label>
+            <input type="text" id="verifyTxId" placeholder="Optional transaction ID">
+          </div>
+        </div>
+        <button type="submit" class="btn-admin-action" id="btnVerifySubmit">Verify & Activate Account</button>
+      </form>
+    </div>
+
+    <!-- Verified Subscriptions Log -->
+    <div class="admin-section">
+      <div class="admin-section-title">
+        <span>Verified Accounts & Subscriptions Overview</span>
+        <button type="button" id="btnClearLogs" style="background:none; border:none; color:#ff5252; font-size:12px; cursor:pointer;">Reset List</button>
+      </div>
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>User Identifier</th>
+              <th>Sector</th>
+              <th>Status</th>
+              <th>Expiry Date</th>
+              <th>Verified Time</th>
+            </tr>
+          </thead>
+          <tbody id="verifiedTableBody">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Access Denied Message (Shown if not admin) -->
+<div id="accessDenied" class="access-denied" style="display: none;">
+  <h2 style="font-size: 20px; font-weight: 800; margin-top: 0;">Access Restricted</h2>
+  <p style="font-size: 14px; color: #ccc; line-height: 1.5;">
+    This dashboard is reserved for the website administrator (<strong>delostvoyage@gmail.com</strong> / <strong>256702662846</strong>).
+  </p>
+  <div style="margin-top: 20px;">
+    <a href="/login" style="background: #f4c400; color: #000; font-weight: 700; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-size: 14px;">Log In as Admin</a>
+  </div>
+</div>
+
+</main>
+
+<nav class="bottom-nav" id="bottomNav">
+  <a href="/" class="bottom-nav-item" id="navHome"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span>Home</span></a>
+  <a href="/live-tv" class="bottom-nav-item" id="navChannels"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></div><span>Channels</span></a>
+  <a href="/movies" class="bottom-nav-item" id="navMovies"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg></div><span>Library</span></a>
+  <a href="/more" class="bottom-nav-item active" id="navMore"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></div><span>More</span></a>
+</nav>
+
+<script src="/js/app.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const user = (typeof SanyuAuth !== "undefined") ? SanyuAuth.getUser() : null;
+    const isAdmin = Boolean(user && (user.isAdmin || (user.email && user.email.toLowerCase() === "delostvoyage@gmail.com") || user.phone === "256702662846"));
+
+    const adminContent = document.getElementById("adminContent");
+    const accessDenied = document.getElementById("accessDenied");
+
+    if (!isAdmin) {
+      if (accessDenied) accessDenied.style.display = "block";
+      return;
+    }
+
+    if (adminContent) adminContent.style.display = "block";
+
+    // Manage verified subscriptions list
+    const STORAGE_KEY = "sanyuhub_verified_users";
+    function getVerifiedList() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function renderVerifiedTable() {
+      const list = getVerifiedList();
+      const tbody = document.getElementById("verifiedTableBody");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#777; padding:20px;">No manual verifications recorded yet.</td></tr>`;
+        return;
+      }
+
+      list.forEach(item => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><strong>${item.identifier}</strong></td>
+          <td>${item.sector} MoMo</td>
+          <td><span class="status-badge status-verified">VERIFIED</span></td>
+          <td>${new Date(item.expiry).toLocaleDateString()}</td>
+          <td>${new Date(item.verifiedAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    renderVerifiedTable();
+
+    // Fetch and display platform overview metrics
+    (async function loadMetrics() {
+      try {
+        const [moviesRes, seriesRes, tvRes, radioRes] = await Promise.all([
+          fetch("/api/movies?limit=1").then(r => r.json()).catch(() => ({ total: 0 })),
+          fetch("/api/series?limit=1").then(r => r.json()).catch(() => ({ total: 0 })),
+          fetch("/api/live-tv/channels").then(r => r.json()).catch(() => ({ channels: [] })),
+          fetch("/api/radio").then(r => r.json()).catch(() => ({ stations: [] }))
+        ]);
+
+        const mEl = document.getElementById("statMoviesCount");
+        const sEl = document.getElementById("statSeriesCount");
+        const tEl = document.getElementById("statTvCount");
+        const rEl = document.getElementById("statRadioCount");
+
+        if (mEl) mEl.textContent = moviesRes.total || (moviesRes.movies ? moviesRes.movies.length : 0);
+        if (sEl) sEl.textContent = seriesRes.total || (seriesRes.series ? seriesRes.series.length : 0);
+        if (tEl) tEl.textContent = (tvRes.channels && tvRes.channels.length) || 0;
+        if (rEl) rEl.textContent = (radioRes.stations && radioRes.stations.length) || 0;
+      } catch (err) {
+        console.error("Failed to load admin metrics", err);
+      }
+    })();
+
+    // Verify User Account Form Handler
+    const verifyForm = document.getElementById("verifyUserForm");
+    if (verifyForm) {
+      verifyForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const identifier = document.getElementById("verifyUserIdentifier").value.trim();
+        const days = parseInt(document.getElementById("verifyDurationDays").value, 10) || 30;
+        const sector = document.getElementById("verifyPaymentMethod").value;
+        const txId = document.getElementById("verifyTxId").value.trim();
+
+        if (!identifier) return;
+
+        const expiryDate = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toISOString();
+        const newRecord = {
+          identifier: identifier,
+          sector: sector,
+          days: days,
+          txId: txId,
+          expiry: expiryDate,
+          verifiedAt: new Date().toISOString()
+        };
+
+        const list = getVerifiedList();
+        list.unshift(newRecord);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+
+        // Also if the currently logged in user matches this identifier, update current session
+        const currentUser = SanyuAuth.getUser();
+        if (currentUser && (currentUser.email === identifier || currentUser.phone === identifier || currentUser.username === identifier)) {
+          currentUser.subscriptionExpiry = expiryDate;
+          currentUser.isTrial = false;
+          currentUser.paymentSector = sector;
+          SanyuAuth.registerUser(currentUser);
+        }
+
+        verifyForm.reset();
+        renderVerifiedTable();
+      });
+    }
+
+    const btnClear = document.getElementById("btnClearLogs");
+    if (btnClear) {
+      btnClear.addEventListener("click", () => {
+        localStorage.removeItem(STORAGE_KEY);
+        renderVerifiedTable();
+      });
+    }
+
+  });
+</script>
+</body>
+</html>
