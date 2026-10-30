@@ -85,12 +85,18 @@ function ensureLandingOverlayExists() {
 
             <div class="landing-hero-content">
                 <div class="landing-hero-card">
-                    <h1 class="landing-brand-title">sanyu<span>hub</span></h1>
-                    <p class="landing-brand-desc">Movies, Series & Live TV — Stream Unlimited Entertainment</p>
+                    <h1 class="landing-brand-title">Sanyu<span>Hub</span></h1>
+                    <h2 class="landing-headline">Your Entertainment. Your World.</h2>
+                    <p class="landing-brand-desc">Discover movies, series and live TV, all in one place.</p>
+
+                    <div class="landing-promo-card">
+                        <span class="landing-promo-badge">Start with 2 Days Free Trial</span>
+                        <span class="landing-promo-sub">Then UGX 12,000/month</span>
+                    </div>
 
                     <div class="landing-action-area">
-                        <p class="landing-trial-tag">Start with 2 Days Free Trial or Subscribe at 12,000 UGX Monthly</p>
                         <a href="/signup" class="btn-landing-get-started" id="landingGetStartedBtn">Get Started</a>
+                        <a href="/login" class="landing-login-link">Already have an account? <span>Log In</span></a>
                     </div>
                 </div>
             </div>

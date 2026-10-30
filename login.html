@@ -3,182 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#222222">
-<meta name="description" content="SanyuHub — Log In">
-<title>Log In — SanyuHub</title>
+<meta name="theme-color" content="#080808">
+<meta name="description" content="SanyuHub — Log In & Continue Watching">
+<title>Welcome Back — SanyuHub</title>
 <link rel="stylesheet" href="css/style.css">
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
-    background-color: #080808;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  }
-  .auth-container {
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    background: radial-gradient(circle at center, rgba(15,15,15,0.78) 0%, rgba(8,8,8,0.95) 100%), url('/images/landing-collage.png') center/cover no-repeat;
-    position: relative;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-  .auth-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.72);
-    backdrop-filter: blur(6px);
-    z-index: 1;
-  }
-  .auth-card {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 420px;
-    max-height: calc(100vh - 32px);
-    max-height: calc(100dvh - 32px);
-    overflow-y: auto;
-    background: rgba(18, 18, 18, 0.94);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    padding: 24px 20px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.85);
-    box-sizing: border-box;
-    scrollbar-width: none;
-  }
-  .auth-card::-webkit-scrollbar {
-    display: none;
-  }
-  .auth-brand {
-    text-align: center;
-    margin-bottom: 18px;
-  }
-  .auth-brand h1 {
-    font-size: 26px;
-    font-weight: 800;
-    color: #ffffff;
-    margin: 0;
-    letter-spacing: -0.5px;
-  }
-  .auth-brand h1 span {
-    color: #f4c400;
-  }
-  .auth-brand p {
-    font-size: 13px;
-    color: #aaaaaa;
-    margin: 4px 0 0 0;
-  }
-  .nav-statement {
-    background: rgba(244, 196, 0, 0.12);
-    border: 1px solid rgba(244, 196, 0, 0.3);
-    border-radius: 8px;
-    padding: 8px 12px;
-    text-align: center;
-    font-size: 13px;
-    color: #ffffff;
-    margin-bottom: 18px;
-  }
-  .nav-statement a {
-    color: #f4c400;
-    font-weight: 700;
-    text-decoration: none;
-    margin-left: 6px;
-  }
-  .nav-statement a:hover {
-    text-decoration: underline;
-  }
-  .form-group {
-    margin-bottom: 14px;
-  }
-  .form-group label {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    color: #cccccc;
-    margin-bottom: 4px;
-  }
-  .form-group input {
-    width: 100%;
-    height: 42px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    padding: 0 12px;
-    font-size: 13px;
-    color: #ffffff;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus {
-    outline: none;
-    border-color: #f4c400;
-    background: rgba(255, 255, 255, 0.09);
-  }
-  .btn-submit {
-    width: 100%;
-    height: 44px;
-    background: #f4c400;
-    color: #000000;
-    font-size: 15px;
-    font-weight: 700;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 6px;
-    transition: background 0.2s, transform 0.1s;
-  }
-  .btn-submit:hover {
-    background: #ffd836;
-  }
-  .error-msg {
-    background: rgba(255, 77, 77, 0.15);
-    border: 1px solid rgba(255, 77, 77, 0.4);
-    color: #ff6b6b;
-    font-size: 12px;
-    padding: 8px 10px;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    display: none;
-  }
-</style>
+<link rel="stylesheet" href="css/redesign.css">
 </head>
-<body>
+<body class="sh-auth-page">
 
-<div class="auth-container">
-  <div class="auth-overlay"></div>
+<div class="sh-auth-wrapper">
+  <div class="sh-auth-bg-layer"></div>
+  <div class="sh-auth-overlay-layer"></div>
 
-  <div class="auth-card">
-    <div class="auth-brand">
-      <h1>Sanyu<span>Hub</span></h1>
-      <p>Welcome back! Sign in to continue watching</p>
+  <div class="sh-auth-card">
+    <div class="sh-brand-header">
+      <h1 class="sh-brand-logo">Sanyu<span>Hub</span></h1>
+      <p class="sh-brand-tagline">Welcome Back — Your next favourite movie is waiting.</p>
     </div>
 
-    <div class="nav-statement">
+    <div class="sh-nav-statement">
       Don't have an account yet? <a href="/signup">Sign Up</a>
     </div>
 
-    <div id="errorMsg" class="error-msg"></div>
+    <div id="errorMsg" class="sh-alert-msg"></div>
 
     <form id="loginForm">
-      <div class="form-group">
-        <label for="identifier">Email / Phone / Username</label>
-        <input type="text" id="identifier" required placeholder="Enter email, phone, or username">
+      <div class="sh-form-group full-width">
+        <label class="sh-form-label" for="identifier">Email / Phone / Username</label>
+        <div class="sh-input-wrapper">
+          <svg class="sh-input-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <input type="text" id="identifier" class="sh-form-input" required placeholder="Enter email, phone, or username" autocomplete="username">
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" required placeholder="Enter your password">
+      <div class="sh-form-group full-width">
+        <label class="sh-form-label" for="password">Password</label>
+        <div class="sh-input-wrapper">
+          <svg class="sh-input-icon" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+          <input type="password" id="password" class="sh-form-input" required placeholder="Enter your password" autocomplete="current-password">
+          <button type="button" class="sh-toggle-password" id="toggleLoginPwdBtn" aria-label="Toggle password visibility">
+            <svg id="pwdLoginIconEye" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </button>
+        </div>
       </div>
 
-      <button type="submit" class="btn-submit">Log In</button>
+      <a href="/about/help" class="sh-forgot-link">Forgot Password?</a>
+
+      <button type="submit" class="sh-btn-submit" id="btnLoginSubmit">
+        <span>Log In</span>
+      </button>
     </form>
   </div>
 </div>
@@ -189,12 +62,20 @@
     const loginForm = document.getElementById("loginForm");
     const errorMsg = document.getElementById("errorMsg");
 
+    const pwdInput = document.getElementById("password");
+    const togglePwdBtn = document.getElementById("toggleLoginPwdBtn");
+
+    togglePwdBtn.addEventListener("click", () => {
+      const type = pwdInput.getAttribute("type") === "password" ? "text" : "password";
+      pwdInput.setAttribute("type", type);
+    });
+
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
       errorMsg.style.display = "none";
 
       const identifier = document.getElementById("identifier").value.trim();
-      const password = document.getElementById("password").value;
+      const password = pwdInput.value;
 
       if (!identifier || !password) {
         errorMsg.textContent = "Please enter both identifier and password.";
