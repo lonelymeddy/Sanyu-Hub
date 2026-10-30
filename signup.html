@@ -3,342 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#222222">
-<meta name="description" content="SanyuHub — Sign Up">
-<title>Sign Up — SanyuHub</title>
+<meta name="theme-color" content="#080808">
+<meta name="description" content="SanyuHub — Sign Up & Join Unlimited Premium Streaming">
+<title>Join SanyuHub — Premium Streaming</title>
 <link rel="stylesheet" href="css/style.css">
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
-    background-color: #080808;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  }
-  .auth-container {
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-    background: radial-gradient(circle at center, rgba(15,15,15,0.78) 0%, rgba(8,8,8,0.95) 100%), url('/images/landing-collage.png') center/cover no-repeat;
-    position: relative;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-  .auth-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.72);
-    backdrop-filter: blur(6px);
-    z-index: 1;
-  }
-  .auth-card {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 440px;
-    max-height: calc(100vh - 24px);
-    max-height: calc(100dvh - 24px);
-    overflow-y: auto;
-    background: rgba(18, 18, 18, 0.94);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 14px;
-    padding: 16px 18px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.85);
-    box-sizing: border-box;
-    scrollbar-width: none;
-  }
-  .auth-card::-webkit-scrollbar {
-    display: none;
-  }
-  .auth-brand {
-    text-align: center;
-    margin-bottom: 12px;
-  }
-  .auth-brand h1 {
-    font-size: 22px;
-    font-weight: 800;
-    color: #ffffff;
-    margin: 0;
-    letter-spacing: -0.5px;
-  }
-  .auth-brand h1 span {
-    color: #f4c400;
-  }
-  .auth-brand p {
-    font-size: 12px;
-    color: #aaaaaa;
-    margin: 2px 0 0 0;
-  }
-  .nav-statement {
-    background: rgba(244, 196, 0, 0.12);
-    border: 1px solid rgba(244, 196, 0, 0.3);
-    border-radius: 6px;
-    padding: 6px 10px;
-    text-align: center;
-    font-size: 12px;
-    color: #ffffff;
-    margin-bottom: 12px;
-  }
-  .nav-statement a {
-    color: #f4c400;
-    font-weight: 700;
-    text-decoration: none;
-    margin-left: 4px;
-  }
-  .nav-statement a:hover {
-    text-decoration: underline;
-  }
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 12px;
-  }
-  .form-group {
-    margin-bottom: 8px;
-  }
-  .form-group.full-width {
-    grid-column: span 2;
-  }
-  .form-group label {
-    display: block;
-    font-size: 11px;
-    font-weight: 600;
-    color: #cccccc;
-    margin-bottom: 3px;
-  }
-  .form-group input {
-    width: 100%;
-    height: 36px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
-    padding: 0 10px;
-    font-size: 12px;
-    color: #ffffff;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus {
-    outline: none;
-    border-color: #f4c400;
-    background: rgba(255, 255, 255, 0.09);
-  }
-  .payment-section {
-    margin-top: 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 8px;
-  }
-  .payment-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 2px;
-  }
-  .payment-sub {
-    font-size: 11px;
-    color: #888888;
-    margin-bottom: 8px;
-  }
-  .payment-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
-  .payment-card {
-    border: 1.5px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    padding: 6px 8px;
-    background: rgba(255, 255, 255, 0.03);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.2s;
-  }
-  .payment-card.selected {
-    border-color: #f4c400;
-    background: rgba(244, 196, 0, 0.1);
-  }
-  .payment-card img {
-    height: 24px;
-    object-fit: contain;
-    border-radius: 3px;
-  }
-  .payment-card span {
-    font-size: 11px;
-    font-weight: 700;
-    color: #ffffff;
-  }
-  .plan-select {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
-  .plan-option {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 10px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  .plan-option.selected {
-    border-color: #f4c400;
-    background: rgba(244, 196, 0, 0.08);
-  }
-  .plan-option input {
-    accent-color: #f4c400;
-  }
-  .plan-info {
-    display: flex;
-    flex-direction: column;
-  }
-  .plan-name {
-    font-size: 11px;
-    font-weight: 700;
-    color: #ffffff;
-  }
-  .plan-desc {
-    font-size: 10px;
-    color: #888888;
-  }
-  .btn-submit {
-    width: 100%;
-    height: 40px;
-    background: #f4c400;
-    color: #000000;
-    font-size: 14px;
-    font-weight: 700;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 4px;
-    transition: background 0.2s, transform 0.1s;
-  }
-  .btn-submit:hover {
-    background: #ffd836;
-  }
-  .error-msg {
-    background: rgba(255, 77, 77, 0.15);
-    border: 1px solid rgba(255, 77, 77, 0.4);
-    color: #ff6b6b;
-    font-size: 11px;
-    padding: 6px 8px;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    display: none;
-  }
-  @media (max-width: 480px) {
-    .form-grid {
-      grid-template-columns: 1fr;
-    }
-    .form-group {
-      grid-column: span 1 !important;
-    }
-    .plan-select {
-      flex-direction: column;
-    }
-  }
-</style>
+<link rel="stylesheet" href="css/redesign.css">
 </head>
-<body>
+<body class="sh-auth-page">
 
-<div class="auth-container">
-  <div class="auth-overlay"></div>
+<div class="sh-auth-wrapper">
+  <div class="sh-auth-bg-layer"></div>
+  <div class="sh-auth-overlay-layer"></div>
 
-  <div class="auth-card">
-    <div class="auth-brand">
-      <h1>Sanyu<span>Hub</span></h1>
-      <p>Create your account & enjoy unlimited streaming</p>
+  <div class="sh-auth-card">
+    <div class="sh-brand-header">
+      <h1 class="sh-brand-logo">Sanyu<span>Hub</span></h1>
+      <p class="sh-brand-tagline">Join SanyuHub — Create your account and unlock unlimited entertainment.</p>
     </div>
 
-    <div class="nav-statement">
+    <div class="sh-nav-statement">
       Already have an account? <a href="/login">Log In</a>
     </div>
 
-    <div id="errorMsg" class="error-msg"></div>
+    <div id="errorMsg" class="sh-alert-msg"></div>
 
     <form id="signupForm">
-      <div class="form-grid">
-        <div class="form-group full-width">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" required placeholder="user@example.com">
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" required placeholder="e.g. 256700000000">
-        </div>
-
-        <div class="form-group">
-          <label for="username">User Name</label>
-          <input type="text" id="username" required placeholder="Choose a username">
-        </div>
-
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" required placeholder="Enter password">
-        </div>
-
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" required placeholder="Re-enter password">
-        </div>
-      </div>
-
-      <div class="payment-section">
-        <div class="payment-title">Select Plan & Payment Sector</div>
-        <div class="payment-sub">Monthly Subscription: UGX 12,000 / month</div>
-
-        <div class="plan-select">
-          <label class="plan-option selected" id="planTrialLabel">
-            <div style="display:flex; align-items:center; gap:6px;">
-              <input type="radio" name="plan" value="trial" checked id="planTrial">
-              <div class="plan-info">
-                <span class="plan-name">2 Days Free Trial</span>
-                <span class="plan-desc">Full library access</span>
-              </div>
-            </div>
-            <span style="font-weight:700; color:#f4c400; font-size:11px;">FREE</span>
-          </label>
-
-          <label class="plan-option" id="planMonthlyLabel">
-            <div style="display:flex; align-items:center; gap:6px;">
-              <input type="radio" name="plan" value="monthly" id="planMonthly">
-              <div class="plan-info">
-                <span class="plan-name">Monthly Plan</span>
-                <span class="plan-desc">UGX 12,000 / mo</span>
-              </div>
-            </div>
-            <span style="font-weight:700; color:#ffffff; font-size:11px;">12K</span>
-          </label>
-        </div>
-
-        <div class="payment-options">
-          <div class="payment-card selected" id="sectorMtn" data-sector="MTN">
-            <img src="/images/mtn-logo.png" alt="MTN Mobile Money">
-            <span>MTN Sector</span>
+      <div class="sh-form-grid">
+        <div class="sh-form-group full-width">
+          <label class="sh-form-label" for="email">Email Address</label>
+          <div class="sh-input-wrapper">
+            <svg class="sh-input-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <input type="email" id="email" class="sh-form-input" required placeholder="user@example.com" autocomplete="email">
           </div>
-          <div class="payment-card" id="sectorAirtel" data-sector="Airtel">
-            <img src="/images/airtel-logo.jpg" alt="Airtel Money">
-            <span>Airtel Sector</span>
+        </div>
+
+        <div class="sh-form-group">
+          <label class="sh-form-label" for="phone">Phone Number</label>
+          <div class="sh-input-wrapper">
+            <svg class="sh-input-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <input type="tel" id="phone" class="sh-form-input" required placeholder="e.g. 256700000000" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="sh-form-group">
+          <label class="sh-form-label" for="username">Username</label>
+          <div class="sh-input-wrapper">
+            <svg class="sh-input-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <input type="text" id="username" class="sh-form-input" required placeholder="Choose username" autocomplete="username">
+          </div>
+        </div>
+
+        <div class="sh-form-group">
+          <label class="sh-form-label" for="password">Password</label>
+          <div class="sh-input-wrapper">
+            <svg class="sh-input-icon" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            <input type="password" id="password" class="sh-form-input" required placeholder="Min. 6 chars" autocomplete="new-password">
+            <button type="button" class="sh-toggle-password" id="togglePasswordBtn" aria-label="Toggle password visibility">
+              <svg id="pwdIconEye" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="sh-form-group">
+          <label class="sh-form-label" for="confirmPassword">Confirm Password</label>
+          <div class="sh-input-wrapper">
+            <svg class="sh-input-icon" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            <input type="password" id="confirmPassword" class="sh-form-input" required placeholder="Re-enter password" autocomplete="new-password">
+            <button type="button" class="sh-toggle-password" id="toggleConfirmPasswordBtn" aria-label="Toggle confirm password visibility">
+              <svg id="pwdConfirmIconEye" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </button>
           </div>
         </div>
       </div>
 
-      <button type="submit" class="btn-submit">Sign Up</button>
+      <div class="sh-section-divider">
+        <div class="sh-section-title">Select Subscription Option</div>
+        <div class="sh-section-sub">Choose your preferred access tier to get started immediately.</div>
+
+        <div class="sh-plan-cards">
+          <div class="sh-plan-card selected" id="planTrialCard" data-plan="trial">
+            <div class="sh-plan-header">
+              <span class="sh-plan-name">2 Days Free Trial</span>
+              <span class="sh-plan-price">FREE</span>
+            </div>
+            <div class="sh-plan-desc">Full library & live TV access</div>
+          </div>
+
+          <div class="sh-plan-card" id="planMonthlyCard" data-plan="monthly">
+            <div class="sh-plan-header">
+              <span class="sh-plan-name">Monthly Plan</span>
+              <span class="sh-plan-price">12,000 UGX</span>
+            </div>
+            <div class="sh-plan-desc">30 days unlimited access</div>
+          </div>
+        </div>
+
+        <div id="paymentSectorSection">
+          <div class="sh-section-title">Select Payment Network</div>
+          <div class="sh-section-sub">Payment required only for monthly subscription.</div>
+
+          <div class="sh-payment-sector-container">
+            <div class="sh-payment-card selected" id="sectorMtn" data-sector="MTN">
+              <img src="/images/mtn-logo.png" alt="MTN Mobile Money">
+              <span>MTN MoMo</span>
+            </div>
+            <div class="sh-payment-card" id="sectorAirtel" data-sector="Airtel">
+              <img src="/images/airtel-logo.jpg" alt="Airtel Money">
+              <span>Airtel Money</span>
+            </div>
+          </div>
+
+          <div class="sh-payment-info-box" id="paymentInfoBox">
+            <span id="paymentInfoText">Free Trial active — No instant mobile money charge required today.</span>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="sh-btn-submit" id="btnSignUpSubmit">
+        <span>Create Account</span>
+      </button>
     </form>
   </div>
 </div>
@@ -346,37 +129,75 @@
 <script src="js/app.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    let selectedPlan = "trial";
     let selectedSector = "MTN";
-    const mtnCard = document.getElementById("sectorMtn");
-    const airtelCard = document.getElementById("sectorAirtel");
+
+    const planTrialCard = document.getElementById("planTrialCard");
+    const planMonthlyCard = document.getElementById("planMonthlyCard");
+    const sectorMtnCard = document.getElementById("sectorMtn");
+    const sectorAirtelCard = document.getElementById("sectorAirtel");
+    const paymentInfoBox = document.getElementById("paymentInfoBox");
+    const paymentInfoText = document.getElementById("paymentInfoText");
+
     const signupForm = document.getElementById("signupForm");
     const errorMsg = document.getElementById("errorMsg");
 
-    const planTrialLabel = document.getElementById("planTrialLabel");
-    const planMonthlyLabel = document.getElementById("planMonthlyLabel");
-    const planTrialRadio = document.getElementById("planTrial");
-    const planMonthlyRadio = document.getElementById("planMonthly");
+    const pwdInput = document.getElementById("password");
+    const confirmPwdInput = document.getElementById("confirmPassword");
+    const togglePwdBtn = document.getElementById("togglePasswordBtn");
+    const toggleConfirmPwdBtn = document.getElementById("toggleConfirmPasswordBtn");
 
-    planTrialRadio.addEventListener("change", () => {
-      planTrialLabel.classList.add("selected");
-      planMonthlyLabel.classList.remove("selected");
-    });
-    planMonthlyRadio.addEventListener("change", () => {
-      planMonthlyLabel.classList.add("selected");
-      planTrialLabel.classList.remove("selected");
+    // Password visibility toggles
+    togglePwdBtn.addEventListener("click", () => {
+      const type = pwdInput.getAttribute("type") === "password" ? "text" : "password";
+      pwdInput.setAttribute("type", type);
     });
 
-    mtnCard.addEventListener("click", () => {
+    toggleConfirmPwdBtn.addEventListener("click", () => {
+      const type = confirmPwdInput.getAttribute("type") === "password" ? "text" : "password";
+      confirmPwdInput.setAttribute("type", type);
+    });
+
+    // Plan card selection
+    planTrialCard.addEventListener("click", () => {
+      selectedPlan = "trial";
+      planTrialCard.classList.add("selected");
+      planMonthlyCard.classList.remove("selected");
+      updatePaymentSectionState();
+    });
+
+    planMonthlyCard.addEventListener("click", () => {
+      selectedPlan = "monthly";
+      planMonthlyCard.classList.add("selected");
+      planTrialCard.classList.remove("selected");
+      updatePaymentSectionState();
+    });
+
+    // Payment Sector selection
+    sectorMtnCard.addEventListener("click", () => {
       selectedSector = "MTN";
-      mtnCard.classList.add("selected");
-      airtelCard.classList.remove("selected");
+      sectorMtnCard.classList.add("selected");
+      sectorAirtelCard.classList.remove("selected");
+      updatePaymentSectionState();
     });
 
-    airtelCard.addEventListener("click", () => {
+    sectorAirtelCard.addEventListener("click", () => {
       selectedSector = "Airtel";
-      airtelCard.classList.add("selected");
-      mtnCard.classList.remove("selected");
+      sectorAirtelCard.classList.add("selected");
+      sectorMtnCard.classList.remove("selected");
+      updatePaymentSectionState();
     });
+
+    function updatePaymentSectionState() {
+      if (selectedPlan === "trial") {
+        paymentInfoBox.style.display = "block";
+        paymentInfoText.innerHTML = `<strong>2 Days Free Trial:</strong> Full platform access immediately. No charge today via ${selectedSector}.`;
+      } else {
+        paymentInfoBox.style.display = "block";
+        paymentInfoText.innerHTML = `<strong>Monthly Subscription:</strong> UGX 12,000 / month billed via <strong>${selectedSector} Mobile Money</strong>.`;
+      }
+    }
+    updatePaymentSectionState();
 
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -385,9 +206,20 @@
       const email = document.getElementById("email").value.trim();
       const phone = document.getElementById("phone").value.trim();
       const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value;
-      const confirmPassword = document.getElementById("confirmPassword").value;
-      const selectedPlan = document.querySelector('input[name="plan"]:checked').value;
+      const password = pwdInput.value;
+      const confirmPassword = confirmPwdInput.value;
+
+      if (!email || !phone || !username || !password) {
+        errorMsg.textContent = "Please fill in all required fields.";
+        errorMsg.style.display = "block";
+        return;
+      }
+
+      if (password.length < 6) {
+        errorMsg.textContent = "Password must be at least 6 characters long.";
+        errorMsg.style.display = "block";
+        return;
+      }
 
       if (password !== confirmPassword) {
         errorMsg.textContent = "Passwords do not match. Please re-confirm your password.";
@@ -396,7 +228,8 @@
       }
 
       const isAdmin = (email.toLowerCase() === "delostvoyage@gmail.com" || phone === "256702662846" || username.toLowerCase() === "delostvoyage@gmail.com");
-      const subDays = (isTrial = (selectedPlan === "trial")) ? 2 : 30;
+      const isTrial = (selectedPlan === "trial");
+      const subDays = isTrial ? 2 : 30;
       const expiryDate = new Date(Date.now() + (isAdmin ? 365 : subDays) * 24 * 60 * 60 * 1000).toISOString();
 
       const userSession = {
