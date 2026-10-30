@@ -7,6 +7,111 @@
 <meta name="description" content="SanyuHub — User Profile">
 <title>Profile — SanyuHub</title>
 <link rel="stylesheet" href="/css/style.css">
+<style>
+  .profile-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .profile-avatar {
+    width: 56px;
+    height: 56px;
+    background: #f4c400;
+    color: #000000;
+    font-size: 24px;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .profile-username {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .profile-subtext {
+    font-size: 13px;
+    color: #aaaaaa;
+  }
+  .subscription-status-box {
+    background: rgba(244, 196, 0, 0.08);
+    border: 1px solid rgba(244, 196, 0, 0.25);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sub-badge {
+    display: inline-block;
+    background: #f4c400;
+    color: #000;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    width: fit-content;
+  }
+  .sub-expiry {
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .btn-renew {
+    background: #f4c400;
+    color: #000000;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+  }
+  .btn-renew:hover {
+    background: #ffd836;
+  }
+  .renewal-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .renewal-modal.active {
+    display: flex;
+  }
+  .modal-card {
+    background: #181818;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 24px;
+    width: 100%;
+    max-width: 420px;
+    box-sizing: border-box;
+  }
+</style>
 </head>
 <body>
 
@@ -62,7 +167,27 @@ Sanyu<span>Hub</span>
 </header>
 
 <section class="section">
-  <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px;">
+  <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+
+    <!-- User Account & Subscription Status Card -->
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="profile-avatar" id="userAvatar">U</div>
+        <div class="profile-details">
+          <div class="profile-username" id="profileUsername">Loading user...</div>
+          <div class="profile-subtext" id="profileEmail">user@example.com</div>
+          <div class="profile-subtext" id="profilePhone">+256 702 662 846</div>
+        </div>
+      </div>
+
+      <div class="subscription-status-box">
+        <span class="sub-badge" id="subTypeBadge">MONTHLY PLAN</span>
+        <div class="sub-expiry" id="subExpiryText">Subscription Expires: In 30 days</div>
+        <div style="font-size: 12px; color: #aaaaaa;" id="subSectorText">Payment Sector: MTN Mobile Money</div>
+
+        <button type="button" class="btn-renew" id="openRenewModalBtn">Renew Subscription (12,000 UGX)</button>
+      </div>
+    </div>
 
     <!-- History Section -->
     <div>
@@ -100,7 +225,7 @@ Sanyu<span>Hub</span>
       <div style="display: flex; flex-direction: column; gap: 10px;">
         <a href="/settings" class="more-card" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; color: #fff; text-decoration: none;">
           <div style="display: flex; align-items: center; gap: 12px;">
-            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #f4c400;"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: #f4c400;"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5-3.5z"/></svg>
             <span style="font-weight: 600; font-size: 15px;">Settings</span>
           </div>
           <span style="color: #666; font-size: 18px;">&rsaquo;</span>
@@ -125,6 +250,33 @@ Sanyu<span>Hub</span>
   </div>
 </section>
 
+<!-- RENEWAL MODAL -->
+<div class="renewal-modal" id="renewalModal">
+  <div class="modal-card">
+    <h2 style="font-size:20px; font-weight:800; color:#fff; margin:0 0 8px 0;">Renew Subscription</h2>
+    <p style="font-size:13px; color:#aaa; margin:0 0 20px 0;">Extend your subscription by 30 days for 12,000 UGX.</p>
+
+    <div style="margin-bottom:16px;">
+      <label style="font-size:12px; font-weight:700; color:#ccc; display:block; margin-bottom:8px;">Select Mobile Money Payment Sector</label>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <button type="button" id="renewSectorMtn" class="renew-sector-btn" style="border:2px solid #f4c400; background:rgba(244,196,0,0.1); border-radius:8px; padding:10px; color:#fff; font-weight:700; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:6px;">
+          <img src="/images/mtn-logo.png" style="height:32px; object-fit:contain;">
+          <span>MTN Sector</span>
+        </button>
+        <button type="button" id="renewSectorAirtel" class="renew-sector-btn" style="border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); border-radius:8px; padding:10px; color:#fff; font-weight:700; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:6px;">
+          <img src="/images/airtel-logo.jpg" style="height:32px; object-fit:contain;">
+          <span>Airtel Sector</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:10px; margin-top:24px;">
+      <button type="button" id="closeRenewModalBtn" style="flex:1; background:rgba(255,255,255,0.1); border:none; color:#fff; font-weight:700; padding:12px; border-radius:8px; cursor:pointer;">Cancel</button>
+      <button type="button" id="confirmRenewBtn" style="flex:2; background:#f4c400; border:none; color:#000; font-weight:800; padding:12px; border-radius:8px; cursor:pointer;">Pay 12,000 UGX</button>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <nav class="bottom-nav" id="bottomNav">
@@ -135,5 +287,89 @@ Sanyu<span>Hub</span>
 </nav>
 
 <script src="/js/app.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let user = SanyuAuth.getUser();
+    if (!user) {
+      window.location.href = "/signup";
+      return;
+    }
+
+    const usernameEl = document.getElementById("profileUsername");
+    const emailEl = document.getElementById("profileEmail");
+    const phoneEl = document.getElementById("profilePhone");
+    const avatarEl = document.getElementById("userAvatar");
+    const badgeEl = document.getElementById("subTypeBadge");
+    const expiryTextEl = document.getElementById("subExpiryText");
+    const sectorTextEl = document.getElementById("subSectorText");
+
+    usernameEl.textContent = user.username || "Subscriber";
+    emailEl.textContent = user.email || "user@example.com";
+    phoneEl.textContent = user.phone || "+256 702 662 846";
+    avatarEl.textContent = (user.username || "S").charAt(0).toUpperCase();
+
+    if (user.isTrial) {
+      badgeEl.textContent = "2 DAYS TRIAL";
+      badgeEl.style.background = "#ffd43b";
+    } else {
+      badgeEl.textContent = "MONTHLY PLAN";
+      badgeEl.style.background = "#4caf50";
+      badgeEl.style.color = "#fff";
+    }
+
+    const expiryDate = new Date(user.subscriptionExpiry);
+    expiryTextEl.textContent = `Subscription Expiry: ${expiryDate.toLocaleDateString()}`;
+    sectorTextEl.textContent = `Payment Sector: ${user.paymentSector || "MTN"} Sector`;
+
+    // Renewal Modal Logic
+    const openBtn = document.getElementById("openRenewModalBtn");
+    const closeBtn = document.getElementById("closeRenewModalBtn");
+    const modal = document.getElementById("renewalModal");
+    const confirmBtn = document.getElementById("confirmRenewBtn");
+
+    let renewSector = "MTN";
+    const mtnBtn = document.getElementById("renewSectorMtn");
+    const airtelBtn = document.getElementById("renewSectorAirtel");
+
+    mtnBtn.addEventListener("click", () => {
+      renewSector = "MTN";
+      mtnBtn.style.border = "2px solid #f4c400";
+      mtnBtn.style.background = "rgba(244,196,0,0.1)";
+      airtelBtn.style.border = "1px solid rgba(255,255,255,0.2)";
+      airtelBtn.style.background = "rgba(255,255,255,0.05)";
+    });
+
+    airtelBtn.addEventListener("click", () => {
+      renewSector = "Airtel";
+      airtelBtn.style.border = "2px solid #f4c400";
+      airtelBtn.style.background = "rgba(244,196,0,0.1)";
+      mtnBtn.style.border = "1px solid rgba(255,255,255,0.2)";
+      mtnBtn.style.background = "rgba(255,255,255,0.05)";
+    });
+
+    openBtn.addEventListener("click", () => {
+      modal.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    confirmBtn.addEventListener("click", () => {
+      const currentExp = new Date(user.subscriptionExpiry).getTime();
+      const baseTime = currentExp > Date.now() ? currentExp : Date.now();
+      const newExp = new Date(baseTime + 30 * 24 * 60 * 60 * 1000).toISOString();
+
+      user.subscriptionExpiry = newExp;
+      user.isTrial = false;
+      user.paymentSector = renewSector;
+
+      SanyuAuth.registerUser(user);
+      alert(`Subscription renewed successfully via ${renewSector} Sector for 30 days!`);
+      modal.classList.remove("active");
+      window.location.reload();
+    });
+  });
+</script>
 </body>
 </html>

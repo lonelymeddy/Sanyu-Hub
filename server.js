@@ -402,6 +402,14 @@ app.get(['/music', '/music/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'music.html'));
 });
 
+app.get(['/signup', '/signup/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'signup.html'));
+});
+
+app.get(['/login', '/login/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'login.html'));
+});
+
 app.get(['/podcasts', '/podcasts/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'podcasts.html'));
 });
