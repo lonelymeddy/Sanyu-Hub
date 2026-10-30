@@ -1,4 +1,38 @@
-/* CENTRAL COUNTRY PERSONALIZATION & ONBOARDING SYSTEM */
+/* AUTHENTICATION & LANDING SYSTEM */
+const SanyuAuth = {
+    getUser: function() {
+        try {
+            const raw = localStorage.getItem("sanyuhub_auth_user");
+            if (!raw) return null;
+            const user = JSON.parse(raw);
+            if (!user || !user.subscriptionExpiry) return null;
+
+            // Check if subscription/trial has expired
+            const isExpired = new Date(user.subscriptionExpiry).getTime() < Date.now();
+            if (isExpired && !user.isAdmin) {
+                return { ...user, isExpired: true };
+            }
+            return user;
+        } catch (e) {
+            return null;
+        }
+    },
+    isAuthenticated: function() {
+        const u = this.getUser();
+        return Boolean(u && !u.isExpired);
+    },
+    registerUser: function(userObj) {
+        try {
+            localStorage.setItem("sanyuhub_auth_user", JSON.stringify(userObj));
+        } catch (e) {}
+    },
+    logout: function() {
+        try {
+            localStorage.removeItem("sanyuhub_auth_user");
+        } catch (e) {}
+    }
+};
+
 const COUNTRIES_CONFIG = {
     ug: {
         code: "ug",
@@ -13,116 +47,50 @@ const COUNTRIES_CONFIG = {
         flag: "🇰🇪",
         ready: true,
         categories: { movies: true, series: true, radio: true, tv: true, music: true, concerts: true }
-    },
-    tz: { code: "tz", name: "Tanzania", flag: "🇹🇿", ready: false, categories: {} },
-    rw: { code: "rw", name: "Rwanda", flag: "🇷🇼", ready: false, categories: {} },
-    bi: { code: "bi", name: "Burundi", flag: "🇧🇮", ready: false, categories: {} },
-    ss: { code: "ss", name: "South Sudan", flag: "🇸🇸", ready: false, categories: {} },
-    ng: { code: "ng", name: "Nigeria", flag: "🇳🇬", ready: false, categories: {} },
-    gh: { code: "gh", name: "Ghana", flag: "🇬🇭", ready: false, categories: {} },
-    za: { code: "za", name: "South Africa", flag: "🇿🇦", ready: false, categories: {} },
-    us: { code: "us", name: "United States", flag: "🇺🇸", ready: false, categories: {} },
-    gb: { code: "gb", name: "United Kingdom", flag: "🇬🇧", ready: false, categories: {} }
+    }
 };
 
 function getActiveCountryCode() {
-    try {
-        const saved = localStorage.getItem("sanyuhub_country");
-        if (saved && COUNTRIES_CONFIG[saved.toLowerCase()]) {
-            return saved.toLowerCase();
-        }
-    } catch (e) {}
-    return "ug"; // Default country
+    return "ug";
 }
 
 function hasUserSetCountry() {
-    try {
-        const saved = localStorage.getItem("sanyuhub_country");
-        return Boolean(saved && COUNTRIES_CONFIG[saved.toLowerCase()]);
-    } catch (e) {
-        return false;
-    }
+    return true;
 }
 
-function setActiveCountryCode(code) {
-    const cleanCode = (code || "ug").toLowerCase();
-    if (!COUNTRIES_CONFIG[cleanCode]) return;
-
-    try {
-        localStorage.setItem("sanyuhub_country", cleanCode);
-    } catch (e) {}
-
-    // Invalidate search cache
-    cachedSearchMovies = null;
-    cachedSearchSeries = null;
-    cachedSearchConcerts = null;
-
-    updateNavbarCountryUI();
-    refreshPageForCountryChange();
-}
+function setActiveCountryCode(code) {}
 
 function updateNavbarCountryUI() {
-    // Country selector removed from header navbar per specifications
     const btn = document.getElementById("navCountryBtn");
-    if (btn) {
-        btn.remove();
-    }
+    if (btn) btn.remove();
 }
 
 function ensureNavbarCountryButton() {
-    // Country selection icon/button removed from header navbar
     const btn = document.getElementById("navCountryBtn");
-    if (btn) {
-        btn.remove();
-    }
+    if (btn) btn.remove();
 }
 
-let tempSelectedCountry = null;
+function ensureLandingOverlayExists() {
+    if (document.getElementById("landingOnboardingOverlay")) return;
 
-function ensureCountryOnboardingOverlayExists() {
-    ensureCountrySheetOverlayExists();
-
-    if (document.getElementById("countryOnboardingOverlay")) return;
-
-    // Main onboarding overlay container
     const overlay = document.createElement("div");
-    overlay.id = "countryOnboardingOverlay";
-    overlay.className = "country-onboarding-overlay";
+    overlay.id = "landingOnboardingOverlay";
+    overlay.className = "landing-onboarding-overlay";
     overlay.setAttribute("aria-hidden", "true");
 
     overlay.innerHTML = `
         <div class="landing-page-wrapper">
-            <!-- FULL-SECTION BACKGROUND IMAGE & OVERLAY -->
             <div class="landing-hero-bg"></div>
             <div class="landing-hero-overlay"></div>
 
-            <!-- FOREGROUND CONTENT LAYER -->
             <div class="landing-hero-content">
                 <div class="landing-hero-card">
-                    <!-- 1. WEBSITE NAME -->
                     <h1 class="landing-brand-title">sanyu<span>hub</span></h1>
+                    <p class="landing-brand-desc">Movies, Series & Live TV — Stream Unlimited Entertainment</p>
 
-                    <!-- 2. WEBSITE DESCRIPTION -->
-                    <p class="landing-brand-desc">Your entertainment. Your country.</p>
-
-                    <!-- 3. COUNTRY SEARCH SECTION -->
-                    <div id="landingCountrySearchSection" class="landing-country-search-section">
-                        <div class="search-bar-wrapper landing-country-search-wrapper">
-                            <span class="search-input-icon">
-                                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                            </span>
-                            <input type="text" id="landingCountryInput" class="search-page-input" placeholder="Search your country" aria-label="Search your country" autocomplete="off" spellcheck="false">
-                        </div>
-                        <div id="landingCountryResults" class="landing-country-results" style="display: none;"></div>
-                    </div>
-
-                    <!-- 4. SELECTED COUNTRY & CONTINUE SECTION -->
-                    <div id="landingCountrySelectedSection" class="landing-country-selected-section" style="display: none;">
-                        <div class="landing-selected-country-card">
-                            <span id="landingSelectedCountryName" class="landing-selected-country-name"></span>
-                            <button type="button" id="landingChangeCountryBtn" class="landing-change-country-btn" aria-label="Change country selection">Change</button>
-                        </div>
-                        <button type="button" id="countryContinueBtn" class="country-continue-btn">Continue</button>
+                    <div class="landing-action-area">
+                        <p class="landing-trial-tag">✨ Start with 2 Days Free Trial or Subscribe at 12,000 UGX Monthly</p>
+                        <a href="/signup" class="btn-landing-get-started" id="landingGetStartedBtn">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -130,44 +98,6 @@ function ensureCountryOnboardingOverlayExists() {
     `;
 
     document.body.appendChild(overlay);
-
-    const countryInput = document.getElementById("landingCountryInput");
-    const continueBtn = document.getElementById("countryContinueBtn");
-    const changeBtn = document.getElementById("landingChangeCountryBtn");
-
-    if (countryInput) {
-        countryInput.addEventListener("focus", () => {
-            renderLandingCountryResults(countryInput.value);
-        });
-
-        countryInput.addEventListener("input", (e) => {
-            renderLandingCountryResults(e.target.value);
-        });
-    }
-
-    if (changeBtn) {
-        changeBtn.addEventListener("click", () => {
-            tempSelectedCountry = null;
-            updateLandingCountryStateUI();
-            if (countryInput) {
-                countryInput.value = "";
-                countryInput.focus();
-                renderLandingCountryResults("");
-            }
-        });
-    }
-
-    if (continueBtn) {
-        continueBtn.addEventListener("click", () => {
-            if (!tempSelectedCountry || !COUNTRIES_CONFIG[tempSelectedCountry]) {
-                return;
-            }
-
-            setActiveCountryCode(tempSelectedCountry);
-            closeCountryOnboardingModal();
-            refreshPageForCountryChange();
-        });
-    }
 }
 
 function ensureCountrySheetOverlayExists() {
@@ -439,35 +369,30 @@ function closeCountryBottomSheet() {
     sheetOverlay.setAttribute("aria-hidden", "true");
 }
 
-function openCountryOnboardingModal(forceOpen = false) {
-    ensureCountryOnboardingOverlayExists();
-    const overlay = document.getElementById("countryOnboardingOverlay");
+function checkAuthenticationAndLanding() {
+    ensureLandingOverlayExists();
+    const overlay = document.getElementById("landingOnboardingOverlay");
+    if (!overlay) return;
 
-    if (!hasUserSetCountry() || forceOpen) {
-        tempSelectedCountry = hasUserSetCountry() ? getActiveCountryCode() : null;
-        overlay.setAttribute("data-from-settings", forceOpen ? "true" : "false");
-        updateLandingCountryStateUI();
+    const currentPath = window.location.pathname.toLowerCase();
+    const isAuthPage = currentPath.includes("login") || currentPath.includes("signup");
+
+    if (isAuthPage) {
+        overlay.classList.remove("active");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        return;
+    }
+
+    if (!SanyuAuth.isAuthenticated()) {
         overlay.classList.add("active");
         overlay.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
+    } else {
+        overlay.classList.remove("active");
+        overlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
     }
-}
-
-function closeCountryOnboardingModal() {
-    const overlay = document.getElementById("countryOnboardingOverlay");
-    if (!overlay) return;
-
-    overlay.classList.remove("active");
-    overlay.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-
-    // Update setting options labels if on settings page
-    const settingsNameEl = document.getElementById("currentCountryName");
-    const appPrefNameEl = document.getElementById("appPrefCountryName");
-    const code = getActiveCountryCode();
-    const config = COUNTRIES_CONFIG[code] || COUNTRIES_CONFIG.ug;
-    if (settingsNameEl) settingsNameEl.textContent = config.name;
-    if (appPrefNameEl) appPrefNameEl.textContent = config.name;
 }
 
 function refreshPageForCountryChange() {
@@ -4588,7 +4513,7 @@ async function initConcertDetailPage() {
 /* DOM INITIALIZATION */
 document.addEventListener("DOMContentLoaded", () => {
     ensureNavbarCountryButton();
-    openCountryOnboardingModal(false);
+    checkAuthenticationAndLanding();
     updateBottomNavActiveState();
     initHomePage();
     initSubpage("trendingGrid", true, 20);
