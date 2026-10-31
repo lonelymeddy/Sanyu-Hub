@@ -4,6 +4,7 @@ const https = require('https');
 const http = require('http');
 const { loadCountryCatalogue } = require('./src/countries/shared/country-loader');
 const { getSupportedCountries } = require('./src/countries/registry');
+const { getChart, findSongById, searchMusic, resolveMedia } = require('./src/services/music-service');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -84,6 +85,87 @@ app.get('/api/radio', async (req, res) => {
     });
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve radio stations.' });
+  }
+});
+
+// API Routes for Music Discovery & Playback
+app.get('/api/music/charts', (req, res) => {
+  try {
+    const chartKey = req.query.chart || 'uganda';
+    const chartData = getChart(chartKey);
+    res.json(chartData);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve music charts.' });
+  }
+});
+
+app.get('/api/music/search', async (req, res) => {
+  try {
+    const query = req.query.q || req.query.query || '';
+    const limit = parseInt(req.query.limit, 10) || 12;
+    const results = await searchMusic(query, limit);
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to search worldwide music.' });
+  }
+});
+
+app.get('/api/music/resolve', async (req, res) => {
+  try {
+    const id = req.query.id || req.query.url;
+    if (!id) {
+      return res.status(400).json({ error: 'Missing music ID or media URL.' });
+    }
+    const resolved = await resolveMedia(id);
+    res.json(resolved);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to resolve media sources: ' + err.message });
+  }
+});
+
+app.get('/api/music/download', async (req, res) => {
+  try {
+    const mediaUrl = req.query.url;
+    const type = req.query.type || 'audio';
+    const filename = req.query.filename || `sanyuhub_track.${type === 'video' ? 'mp4' : 'mp3'}`;
+
+    if (!mediaUrl) {
+      return res.status(400).json({ error: 'Missing media URL.' });
+    }
+
+    const parsed = new URL(mediaUrl);
+    const mod = parsed.protocol === 'https:' ? https : http;
+
+    const proxyReq = mod.get(mediaUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) SanyuHub/1.0',
+        'Accept': '*/*'
+      }
+    }, (proxyRes) => {
+      if (proxyRes.statusCode >= 300 && proxyRes.statusCode < 400 && proxyRes.headers.location) {
+        return res.redirect(proxyRes.headers.location);
+      }
+
+      const contentType = type === 'video' ? 'video/mp4' : 'audio/mpeg';
+      res.setHeader('Content-Type', proxyRes.headers['content-type'] || contentType);
+      res.setHeader('Content-Disposition', `attachment; filename="${encodeURIComponent(filename)}"`);
+      if (proxyRes.headers['content-length']) {
+        res.setHeader('Content-Length', proxyRes.headers['content-length']);
+      }
+
+      proxyRes.pipe(res);
+    });
+
+    proxyReq.on('error', (err) => {
+      if (!res.headersSent) {
+        res.status(500).json({ error: 'Failed to stream download file.' });
+      }
+    });
+
+  } catch (err) {
+    if (!res.headersSent) {
+      res.status(400).json({ error: 'Invalid download request.' });
+    }
   }
 });
 
@@ -396,6 +478,10 @@ app.get('/series', (req, res) => {
 
 app.get(['/more', '/more/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'more.html'));
+});
+
+app.get(['/music/watch/:id', '/music/watch/:id/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'music-watch.html'));
 });
 
 app.get(['/music', '/music/'], (req, res) => {

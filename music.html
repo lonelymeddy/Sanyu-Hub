@@ -7,6 +7,111 @@
 <meta name="description" content="SanyuHub — Music">
 <title>Music — SanyuHub</title>
 <link rel="stylesheet" href="/css/style.css">
+<style>
+/* Music Library Minimal List & Selectors Styling */
+.music-chart-selectors {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 4px 0 16px 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.music-chart-selectors::-webkit-scrollbar {
+  display: none;
+}
+.music-chart-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  background: #181818;
+  color: #d1d1d1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  user-select: none;
+}
+.music-chart-pill:hover {
+  background: #222222;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.music-chart-pill.active {
+  background: #FFC800;
+  color: #080808;
+  border-color: #FFC800;
+  box-shadow: 0 2px 8px rgba(255, 200, 0, 0.35);
+}
+.music-song-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 900px;
+}
+.music-song-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.music-song-row:hover, .music-song-row:active {
+  background: #181818;
+  border-color: rgba(255, 200, 0, 0.35);
+  transform: translateY(-1px);
+}
+.music-song-artwork {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #1c1c1c;
+  display: block;
+}
+.music-song-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+.music-song-skeleton-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: #111111;
+  border-radius: 8px;
+}
+.music-skeleton-art {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 6px;
+}
+.music-skeleton-text {
+  flex: 1;
+  height: 16px;
+  border-radius: 4px;
+}
+</style>
 </head>
 <body>
 
@@ -19,7 +124,7 @@ Sanyu<span>Hub</span>
 </a>
 <nav class="desktop-nav">
 <a href="/">Home</a>
-<a href="/movies">Library</a>
+<a href="/movies" class="active">Library</a>
 <a href="/series">Series</a>
 <a href="/live-tv">Live TV</a>
 </nav>
@@ -45,10 +150,10 @@ Sanyu<span>Hub</span>
 <div class="sidebar-section">
 <div class="sidebar-section-title">Explore</div>
 <a href="/" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Home</span></a>
-<a href="/movies" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Library</span></a>
+<a href="/movies" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Library</span></a>
 <a href="/series" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Series</span></a>
 <a href="/live-tv" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>Live TV</span></a>
-<a href="/more" class="sidebar-link active"><span class="sidebar-link-left"><span class="sidebar-dot"></span>More</span></a>
+<a href="/more" class="sidebar-link"><span class="sidebar-link-left"><span class="sidebar-dot"></span>More</span></a>
 </div>
 </div>
 </aside>
@@ -57,20 +162,37 @@ Sanyu<span>Hub</span>
 
 <header class="page-header">
 <div class="page-title-group">
-<h1 class="page-title">Music</h1>
+<h1 class="page-title">Library</h1>
+<p class="page-subtitle">Discover and play trending music, verified charts, and global releases.</p>
 </div>
 </header>
 
 <section class="section">
-  <div class="movie-search-bar" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
-    <input type="search" id="musicSearchInput" class="movie-search-input" style="flex: 1; min-width: 240px;" placeholder="Search music by title or artist..." aria-label="Search music">
+  <!-- Exact layout order: Category navigation -> Search bar -> Top 10 selectors -> Results -->
+
+  <!-- 1. Library category navigation -->
+  <div class="categories" id="libraryCategorySelector" style="margin-bottom: 20px;">
+    <a href="/movies" class="category">Movies</a>
+    <a href="/movies?category=series" class="category">Series</a>
+    <a href="/music" class="category active">Music</a>
+    <a href="/movies?category=concerts" class="category">Concerts</a>
   </div>
 
-  <div class="card-grid" id="musicCardGrid">
-    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
-    <article class="movie-card skeleton-card"><div class="skeleton-poster skeleton"></div><div class="skeleton-line title skeleton"></div><div class="skeleton-line subtitle skeleton"></div></article>
+  <!-- FIRST: Music search bar -->
+  <div class="movie-search-bar" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px;">
+    <input type="search" id="musicSearchInput" class="movie-search-input" style="flex: 1; min-width: 240px;" placeholder="Search worldwide music by title, artist, album..." aria-label="Search worldwide music">
+  </div>
+
+  <!-- SECOND: Top 10 selectors -->
+  <div class="music-chart-selectors" id="musicChartSelectors" role="tablist" aria-label="Top 10 Music Charts">
+    <button class="music-chart-pill active" id="pillUganda" data-chart="uganda" role="tab" aria-selected="true">Top 10 Uganda</button>
+    <button class="music-chart-pill" id="pillAfrica" data-chart="africa" role="tab" aria-selected="false">Top 10 Africa</button>
+    <button class="music-chart-pill" id="pillGlobal" data-chart="global" role="tab" aria-selected="false">Top 10 Global</button>
+  </div>
+
+  <!-- THIRD: Music results list (compact vertical list: artwork + song title only) -->
+  <div class="music-song-list" id="musicResultsList">
+    <!-- Populated dynamically via JS -->
   </div>
 </section>
 
@@ -79,72 +201,10 @@ Sanyu<span>Hub</span>
 <nav class="bottom-nav" id="bottomNav">
   <a href="/" class="bottom-nav-item" id="navHome"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span>Home</span></a>
   <a href="/live-tv" class="bottom-nav-item" id="navChannels"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg></div><span>Channels</span></a>
-  <a href="/movies" class="bottom-nav-item" id="navMovies"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg></div><span>Library</span></a>
-  <a href="/more" class="bottom-nav-item active" id="navMore"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></div><span>More</span></a>
+  <a href="/movies" class="bottom-nav-item active" id="navMovies"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg></div><span>Library</span></a>
+  <a href="/more" class="bottom-nav-item" id="navMore"><div class="bottom-nav-icon"><svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></div><span>More</span></a>
 </nav>
 
 <script src="/js/app.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const musicGrid = document.getElementById("musicCardGrid");
-  const musicSearchInput = document.getElementById("musicSearchInput");
-  if (!musicGrid) return;
-
-  const MUSIC_STREAMS = [
-    {
-      id: "trace-mziki-music",
-      title: "Trace Mziki Live Broadcast",
-      vj: "East African Music",
-      year: "2026",
-      quality: "HD",
-      posterUrl: "/images/tracemziki-logo.png",
-      streamUrl: "https://channels.trace.plus/Traceprod/MZIKI_hd/index.m3u8"
-    }
-  ];
-
-  function renderMusic(searchQuery = "") {
-    musicGrid.innerHTML = "";
-    const cleanSearch = searchQuery.trim().toLowerCase();
-    const filtered = MUSIC_STREAMS.filter(m => {
-      if (!cleanSearch) return true;
-      return m.title.toLowerCase().includes(cleanSearch) || m.vj.toLowerCase().includes(cleanSearch);
-    });
-
-    if (filtered.length === 0) {
-      musicGrid.innerHTML = `<div class="loading-state">No results found</div>`;
-      return;
-    }
-
-    filtered.forEach(m => {
-      const card = document.createElement("article");
-      card.className = "movie-card";
-      card.style.cursor = "pointer";
-
-      card.innerHTML = `
-        <div class="poster">
-          <img src="${m.posterUrl}" alt="${m.title}">
-          <span class="badge">${m.quality}</span>
-        </div>
-        <div class="card-title" title="${m.title}">${m.title}</div>
-        <div class="card-meta">${m.vj} • ${m.year}</div>
-      `;
-
-      card.addEventListener("click", () => {
-        window.location.href = `/live-tv/watch/trace-mziki/`;
-      });
-
-      musicGrid.appendChild(card);
-    });
-  }
-
-  if (musicSearchInput) {
-    musicSearchInput.addEventListener("input", (e) => {
-      renderMusic(e.target.value);
-    });
-  }
-
-  renderMusic();
-});
-</script>
 </body>
 </html>
