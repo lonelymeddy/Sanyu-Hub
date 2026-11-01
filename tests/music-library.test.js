@@ -127,13 +127,17 @@ const BASE_URL = `http://localhost:${PORT}`;
       assert.ok(elementsOrder.isSearchBeforeSelectors, 'Search must precede selectors');
       assert.ok(elementsOrder.isSelectorsBeforeResults, 'Selectors must precede results');
 
-      // Check minimal song row design: only small artwork + song title
+      // Check two grid card style: movie-card cards inside card-grid
+      const isCardGrid = await page.locator('#musicResultsList.card-grid').count();
+      assert.strictEqual(isCardGrid, 1, 'musicResultsList must have card-grid class');
       const rowItemCount = await page.locator('.music-song-row').count();
       assert.strictEqual(rowItemCount, 10, 'Expected 10 song rows for default chart');
       const firstRowArt = await page.locator('.music-song-row img.music-song-artwork').first().count();
       const firstRowTitle = await page.locator('.music-song-row .music-song-title').first().count();
-      assert.strictEqual(firstRowArt, 1, 'Artwork must exist in row');
-      assert.strictEqual(firstRowTitle, 1, 'Title must exist in row');
+      const firstRowCard = await page.locator('.music-song-row.movie-card').first().count();
+      assert.strictEqual(firstRowArt, 1, 'Artwork must exist in card');
+      assert.strictEqual(firstRowTitle, 1, 'Title must exist in card');
+      assert.strictEqual(firstRowCard, 1, 'Item must be a movie-card');
 
       await page.close();
     });

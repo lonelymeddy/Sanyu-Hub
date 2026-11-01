@@ -4183,10 +4183,11 @@ function createMusicRowSkeleton(count = 6) {
     let html = "";
     for (let i = 0; i < count; i++) {
         html += `
-            <div class="music-song-skeleton-row">
-                <div class="music-skeleton-art skeleton"></div>
-                <div class="music-skeleton-text skeleton"></div>
-            </div>
+            <article class="movie-card skeleton-card music-song-row">
+                <div class="skeleton-poster skeleton music-song-artwork"></div>
+                <div class="skeleton-line title skeleton music-song-title" style="width: 85%;"></div>
+                <div class="skeleton-line subtitle skeleton" style="width: 60%;"></div>
+            </article>
         `;
     }
     return html;
@@ -4525,20 +4526,27 @@ async function initMusicLibraryPage() {
     function renderSongRows(items) {
         musicResultsList.innerHTML = "";
         items.forEach(song => {
-            const row = document.createElement("div");
-            row.className = "music-song-row";
-            row.setAttribute("role", "button");
-            row.setAttribute("tabindex", "0");
+            const card = document.createElement("article");
+            card.className = "movie-card music-song-row";
+            card.setAttribute("role", "button");
+            card.setAttribute("tabindex", "0");
+            card.style.cursor = "pointer";
 
             const artworkUrl = song.artwork || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Crect width='24' height='24'/%3E%3C/svg%3E";
             const displayTitle = song.title || "Unknown Song";
+            const displayArtist = song.artist || "Music Track";
+            const displayBadge = song.quality || (song.rank ? `#${song.rank}` : "HD");
 
-            row.innerHTML = `
-                <img src="${artworkUrl}" alt="${sanitizeMusicHtml(displayTitle)}" class="music-song-artwork" loading="lazy" onerror="this.src='/images/tracemziki-logo.png'">
-                <div class="music-song-title">${sanitizeMusicHtml(displayTitle)}</div>
+            card.innerHTML = `
+                <div class="poster" style="background:#0d0d0d; display:flex; align-items:center; justify-content:center;">
+                    <img src="${artworkUrl}" alt="${sanitizeMusicHtml(displayTitle)}" class="music-song-artwork" loading="lazy" onerror="this.src='/images/tracemziki-logo.png'">
+                    <span class="badge">${sanitizeMusicHtml(displayBadge)}</span>
+                </div>
+                <div class="card-title music-song-title" title="${sanitizeMusicHtml(displayTitle)}">${sanitizeMusicHtml(displayTitle)}</div>
+                <div class="card-meta">${sanitizeMusicHtml(displayArtist)}</div>
             `;
 
-            row.addEventListener("click", () => {
+            card.addEventListener("click", () => {
                 const targetId = song.id || (song.youtubeId ? `yt-${song.youtubeId}` : 'track');
                 const params = new URLSearchParams();
                 if (song.title) params.set("title", song.title);
@@ -4548,7 +4556,7 @@ async function initMusicLibraryPage() {
                 window.location.href = `/music/watch/${targetId}?${params.toString()}`;
             });
 
-            musicResultsList.appendChild(row);
+            musicResultsList.appendChild(card);
         });
     }
 
