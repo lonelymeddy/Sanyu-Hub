@@ -3123,48 +3123,49 @@ async function initHomePage() {
         }
     }
 
-    // 3. Hot Music Section (Up to 2 items)
+    // 3. Hot Music Section (Showing exactly 2 music items with View More button linking to /music)
     if (homeMusicGrid && secMusic) {
         const MUSIC_RECORDS = [
             {
-                id: "trace-mziki-home",
-                title: "Trace Mziki Live",
-                vj: "East African Music",
-                year: "2026",
+                id: "ug-1",
+                title: "Sitya Loss",
+                artist: "Eddy Kenzo",
                 quality: "HD",
-                posterUrl: "/images/tracemziki-logo.png",
-                targetUrl: "/live-tv/watch/trace-mziki/",
-                countries: ["ug"]
+                posterUrl: "https://i.ytimg.com/vi/ex0NwMcf8iE/hq720.jpg",
+                targetUrl: "/music/watch/ug-1?title=" + encodeURIComponent("Sitya Loss") + "&artist=" + encodeURIComponent("Eddy Kenzo")
+            },
+            {
+                id: "af-1",
+                title: "Last Last",
+                artist: "Burna Boy",
+                quality: "HD",
+                posterUrl: "https://i.ytimg.com/vi/421w1j87fEM/hq720.jpg",
+                targetUrl: "/music/watch/af-1?title=" + encodeURIComponent("Last Last") + "&artist=" + encodeURIComponent("Burna Boy")
             }
         ];
 
-        const musicItems = MUSIC_RECORDS.filter(m => m.countries.includes(countryCode)).slice(0, 2);
         if (activeHomePageCountry !== countryCode) return;
 
         homeMusicGrid.innerHTML = "";
-        if (musicItems.length > 0) {
-            secMusic.style.display = "block";
-            totalVisibleItems += musicItems.length;
-            musicItems.forEach(m => {
-                const card = document.createElement("article");
-                card.className = "movie-card";
-                card.style.cursor = "pointer";
-                card.innerHTML = `
-                    <div class="poster" style="background:#0d0d0d; display:flex; align-items:center; justify-content:center;">
-                        <img src="${m.posterUrl}" alt="${m.title}" style="object-fit:contain; padding:12px;">
-                        <span class="badge">${m.quality}</span>
-                    </div>
-                    <div class="card-title" title="${m.title}">${m.title}</div>
-                    <div class="card-meta">${m.vj} • ${m.year}</div>
-                `;
-                card.addEventListener("click", () => {
-                    window.location.href = m.targetUrl;
-                });
-                homeMusicGrid.appendChild(card);
+        secMusic.style.display = "block";
+        totalVisibleItems += 2;
+        MUSIC_RECORDS.forEach(m => {
+            const card = document.createElement("article");
+            card.className = "movie-card";
+            card.style.cursor = "pointer";
+            card.innerHTML = `
+                <div class="poster" style="background:#0d0d0d; display:flex; align-items:center; justify-content:center;">
+                    <img src="${m.posterUrl}" alt="${m.title}" style="object-fit:cover; width:100%; height:100%;">
+                    <span class="badge">${m.quality}</span>
+                </div>
+                <div class="card-title" title="${m.title}">${m.title}</div>
+                <div class="card-meta">${m.artist}</div>
+            `;
+            card.addEventListener("click", () => {
+                window.location.href = m.targetUrl;
             });
-        } else {
-            secMusic.style.display = "none";
-        }
+            homeMusicGrid.appendChild(card);
+        });
     }
 
     // 4. Concerts Section (Up to 2 items)
@@ -3510,71 +3511,8 @@ if (movieCardGrid) {
     }
 
     async function fetchAndRenderLibraryMusic() {
-        try {
-            const countryCode = getActiveCountryCode();
-            const countryConfig = COUNTRIES_CONFIG[countryCode] || COUNTRIES_CONFIG.ug;
-
-            const MUSIC_RECORDS = [
-                {
-                    id: "trace-mziki-music",
-                    title: "Trace Mziki Live Broadcast",
-                    vj: "East African Music",
-                    year: "2026",
-                    quality: "HD",
-                    posterUrl: "/images/tracemziki-logo.png",
-                    streamUrl: "https://channels.trace.plus/Traceprod/MZIKI_hd/index.m3u8",
-                    targetUrl: "/live-tv/watch/trace-mziki/",
-                    countries: ["ug"]
-                }
-            ];
-
-            let filtered = MUSIC_RECORDS.filter(m => m.countries.includes(countryCode));
-            if (currentSearch) {
-                const searchLower = currentSearch.toLowerCase();
-                filtered = filtered.filter(m =>
-                    (m.title && m.title.toLowerCase().includes(searchLower)) ||
-                    (m.vj && m.vj.toLowerCase().includes(searchLower))
-                );
-            }
-
-            if (filtered.length === 0) {
-                movieCardGrid.innerHTML = `
-                    <div class="country-empty-state" style="grid-column: 1 / -1;">
-                        <div class="country-empty-icon">🌐</div>
-                        <h3 class="country-empty-title">Nothing here</h3>
-                        <p class="country-empty-sub">No music available for ${countryConfig.name} right now.</p>
-                    </div>
-                `;
-                if (paginationControls) paginationControls.style.display = "none";
-                return;
-            }
-
-            movieCardGrid.innerHTML = "";
-            filtered.forEach(m => {
-                const card = document.createElement("article");
-                card.className = "movie-card";
-                card.style.cursor = "pointer";
-                card.innerHTML = `
-                    <div class="poster">
-                        <img src="${m.posterUrl}" alt="${m.title}">
-                        <span class="badge">${m.quality}</span>
-                    </div>
-                    <div class="card-title" title="${m.title}">${m.title}</div>
-                    <div class="card-meta">${m.vj} • ${m.year}</div>
-                `;
-                card.addEventListener("click", () => {
-                    window.location.href = m.targetUrl;
-                });
-                movieCardGrid.appendChild(card);
-            });
-
-            if (paginationControls) paginationControls.style.display = "none";
-
-        } catch (err) {
-            console.error("Failed to load music content:", err);
-            movieCardGrid.innerHTML = '<div class="error-state">Unable to load music content.</div>';
-            if (paginationControls) paginationControls.style.display = "none";
-        }
+        const searchVal = currentSearch ? `?search=${encodeURIComponent(currentSearch)}` : "";
+        window.location.href = `/music${searchVal}`;
     }
 
     async function fetchAndRenderLibraryConcerts() {
@@ -4231,6 +4169,409 @@ async function initMovieDetailsPage() {
     }
 }
 
+function sanitizeMusicHtml(str) {
+    if (!str) return "";
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function createMusicRowSkeleton(count = 6) {
+    let html = "";
+    for (let i = 0; i < count; i++) {
+        html += `
+            <div class="music-song-skeleton-row">
+                <div class="music-skeleton-art skeleton"></div>
+                <div class="music-skeleton-text skeleton"></div>
+            </div>
+        `;
+    }
+    return html;
+}
+
+/* MUSIC WATCH PAGE INTEGRATION */
+let musicPlayerController = null;
+
+async function initMusicWatchPage() {
+    const musicWatchMain = document.getElementById("musicWatchPage");
+    if (!musicWatchMain) return;
+
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const musicId = pathParts[pathParts.length - 1] || "";
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialTitle = urlParams.get("title") || "";
+    const initialArtist = urlParams.get("artist") || "";
+    const initialArtwork = urlParams.get("artwork") || "";
+    const initialUrl = urlParams.get("url") || "";
+
+    const musicWatchTitle = document.getElementById("musicWatchTitle");
+    const musicWatchArtist = document.getElementById("musicWatchArtist");
+    const musicVideoPlayer = document.getElementById("musicVideoPlayer");
+    const musicAudioCover = document.getElementById("musicAudioCover");
+    const musicAudioCoverImg = document.getElementById("musicAudioCoverImg");
+    const btnModeVideo = document.getElementById("btnModeVideo");
+    const btnModeAudio = document.getElementById("btnModeAudio");
+    const btnDownloadVideo = document.getElementById("btnDownloadVideo");
+    const btnDownloadAudio = document.getElementById("btnDownloadAudio");
+    const musicMetaTitleVal = document.getElementById("musicMetaTitleVal");
+    const musicMetaArtistVal = document.getElementById("musicMetaArtistVal");
+    const musicMetaMediaVal = document.getElementById("musicMetaMediaVal");
+    const musicMetaSourceVal = document.getElementById("musicMetaSourceVal");
+    const toast = document.getElementById("musicToast");
+
+    let currentMode = "video"; // 'video' | 'audio'
+    let resolvedMedia = null;
+
+    function showToast(msg) {
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.style.display = "block";
+        setTimeout(() => {
+            toast.style.display = "none";
+        }, 3200);
+    }
+
+    if (initialTitle && musicWatchTitle) {
+        musicWatchTitle.textContent = initialTitle;
+        document.title = `${initialTitle} — SanyuHub Music`;
+    }
+    if (initialArtist && musicWatchArtist) {
+        musicWatchArtist.textContent = initialArtist;
+    }
+    if (musicMetaTitleVal) musicMetaTitleVal.textContent = initialTitle || "-";
+    if (musicMetaArtistVal) musicMetaArtistVal.textContent = initialArtist || "-";
+
+    musicPlayerController = attachCustomPlayerController({
+        wrapper: document.getElementById("musicVideoWrapper"),
+        videoPlayer: musicVideoPlayer,
+        centralPlayBtn: document.getElementById("musicCentralPlayBtn"),
+        unmuteBanner: document.getElementById("musicUnmuteBanner"),
+        loadingOverlay: document.getElementById("musicLoadingOverlay"),
+        loadingText: document.getElementById("musicLoadingText"),
+        errorOverlay: document.getElementById("musicErrorOverlay"),
+        errorTitle: document.getElementById("musicErrorTitle"),
+        errorMsg: document.getElementById("musicErrorMsg"),
+        retryBtn: document.getElementById("musicRetryBtn"),
+        controlsBar: document.getElementById("musicControlsBar"),
+        rewindBtn: document.getElementById("musicCtrlRewindBtn"),
+        playPauseBtn: document.getElementById("musicCtrlPlayPauseBtn"),
+        forwardBtn: document.getElementById("musicCtrlForwardBtn"),
+        progressContainer: document.getElementById("musicCtrlProgressContainer"),
+        progressFill: document.getElementById("musicCtrlProgressFill"),
+        progressThumb: document.getElementById("musicCtrlProgressThumb"),
+        timeDisplay: document.getElementById("musicCtrlTimeDisplay"),
+        muteBtn: document.getElementById("musicCtrlMuteBtn"),
+        volumeSlider: document.getElementById("musicCtrlVolumeSlider"),
+        settingsBtn: document.getElementById("musicCtrlSettingsBtn"),
+        settingsMenu: document.getElementById("musicCtrlSettingsMenu"),
+        settingsCloseBtn: document.getElementById("musicSettingsCloseBtn"),
+        speedSettingsGroup: document.getElementById("musicSpeedSettingsGroup"),
+        speedOptions: document.getElementById("musicSpeedOptions"),
+        qualitySettingsGroup: document.getElementById("musicQualitySettingsGroup"),
+        qualitySelect: document.getElementById("musicCtrlQualitySelect"),
+        audioSettingsGroup: document.getElementById("musicAudioSettingsGroup"),
+        audioSelect: document.getElementById("musicCtrlAudioSelect"),
+        subtitleSettingsGroup: document.getElementById("musicSubtitleSettingsGroup"),
+        subtitleSelect: document.getElementById("musicCtrlSubtitleSelect"),
+        castBtn: document.getElementById("musicCtrlCastBtn"),
+        castBtnText: document.getElementById("musicCastBtnText"),
+        pipBtn: document.getElementById("musicCtrlPipBtn"),
+        fullscreenBtn: document.getElementById("musicCtrlFullscreenBtn"),
+        isLiveStream: false,
+        mediaTitle: initialTitle || "SanyuHub Music",
+        onRetry: () => {
+            loadAndPlayMedia();
+        }
+    });
+
+    async function loadAndPlayMedia() {
+        try {
+            const queryParam = initialUrl ? `url=${encodeURIComponent(initialUrl)}` : `id=${encodeURIComponent(musicId)}`;
+            const res = await fetch(`/api/music/resolve?${queryParam}`);
+            if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+
+            resolvedMedia = await res.json();
+
+            // Update UI titles & artwork
+            const songTitle = resolvedMedia.title || initialTitle || "Track";
+            const songArtist = resolvedMedia.artist || initialArtist || "Artist";
+            const songArtwork = resolvedMedia.artwork || initialArtwork || "";
+
+            if (musicWatchTitle) musicWatchTitle.textContent = songTitle;
+            if (musicWatchArtist) musicWatchArtist.textContent = songArtist;
+            if (musicMetaTitleVal) musicMetaTitleVal.textContent = songTitle;
+            if (musicMetaArtistVal) musicMetaArtistVal.textContent = songArtist;
+            document.title = `${songTitle} - ${songArtist} — SanyuHub Music`;
+
+            if (musicAudioCoverImg && songArtwork) {
+                musicAudioCoverImg.src = songArtwork;
+            }
+
+            // Determine available formats
+            const formats = [];
+            if (resolvedMedia.hasVideo) formats.push("Video (MP4)");
+            if (resolvedMedia.hasAudio) formats.push("Audio (MP3)");
+            if (musicMetaMediaVal) musicMetaMediaVal.textContent = formats.join(" & ") || "Stream";
+
+            // Configure Download buttons
+            if (btnDownloadVideo) {
+                if (resolvedMedia.hasVideo && resolvedMedia.videoUrl) {
+                    btnDownloadVideo.disabled = false;
+                    btnDownloadVideo.classList.remove("disabled");
+                    btnDownloadVideo.onclick = () => {
+                        const filename = `${songArtist} - ${songTitle}.mp4`.replace(/[\\/:*?"<>|]/g, '');
+                        showToast("Starting video download...");
+                        window.location.href = `/api/music/download?url=${encodeURIComponent(resolvedMedia.videoUrl)}&type=video&filename=${encodeURIComponent(filename)}`;
+                    };
+                } else {
+                    btnDownloadVideo.disabled = true;
+                    btnDownloadVideo.classList.add("disabled");
+                    btnDownloadVideo.title = "Video download not available for this track";
+                }
+            }
+
+            if (btnDownloadAudio) {
+                if (resolvedMedia.hasAudio && resolvedMedia.audioUrl) {
+                    btnDownloadAudio.disabled = false;
+                    btnDownloadAudio.classList.remove("disabled");
+                    btnDownloadAudio.onclick = () => {
+                        const filename = `${songArtist} - ${songTitle}.mp3`.replace(/[\\/:*?"<>|]/g, '');
+                        showToast("Starting audio download...");
+                        window.location.href = `/api/music/download?url=${encodeURIComponent(resolvedMedia.audioUrl)}&type=audio&filename=${encodeURIComponent(filename)}`;
+                    };
+                } else {
+                    btnDownloadAudio.disabled = true;
+                    btnDownloadAudio.classList.add("disabled");
+                    btnDownloadAudio.title = "Audio download not available for this track";
+                }
+            }
+
+            // If video is not available, switch automatically to audio mode
+            if (!resolvedMedia.hasVideo && resolvedMedia.hasAudio) {
+                setPlaybackMode("audio");
+            } else {
+                setPlaybackMode(currentMode);
+            }
+
+        } catch (err) {
+            console.error("Failed to resolve music:", err);
+            const errOverlay = document.getElementById("musicErrorOverlay");
+            const errTitle = document.getElementById("musicErrorTitle");
+            const errText = document.getElementById("musicErrorMsg");
+            const loadOverlay = document.getElementById("musicLoadingOverlay");
+            if (loadOverlay) loadOverlay.style.display = "none";
+            if (errOverlay) errOverlay.style.display = "flex";
+            if (errTitle) errTitle.textContent = "Media Resolution Error";
+            if (errText) errText.textContent = "Unable to resolve playable media stream from music source.";
+        }
+    }
+
+    function setPlaybackMode(mode) {
+        currentMode = mode;
+        if (!resolvedMedia) return;
+
+        if (mode === "audio") {
+            if (btnModeAudio) btnModeAudio.classList.add("active");
+            if (btnModeVideo) btnModeVideo.classList.remove("active");
+            if (musicAudioCover) musicAudioCover.classList.add("active");
+
+            const streamUrl = resolvedMedia.audioUrl || resolvedMedia.videoUrl;
+            if (streamUrl && musicPlayerController) {
+                const wasPlaying = !musicVideoPlayer.paused && musicVideoPlayer.currentTime > 0;
+                const currentTime = musicVideoPlayer.currentTime;
+                musicPlayerController.loadSource(streamUrl, { isHls: streamUrl.includes('.m3u8') });
+                if (wasPlaying && currentTime > 0) {
+                    musicVideoPlayer.currentTime = currentTime;
+                }
+            }
+        } else {
+            // Video mode
+            if (btnModeVideo) btnModeVideo.classList.add("active");
+            if (btnModeAudio) btnModeAudio.classList.remove("active");
+            if (musicAudioCover) musicAudioCover.classList.remove("active");
+
+            if (!resolvedMedia.hasVideo && resolvedMedia.hasAudio) {
+                showToast("Video stream unavailable for this track, playing in Audio Mode.");
+                setPlaybackMode("audio");
+                return;
+            }
+
+            const streamUrl = resolvedMedia.videoUrl || resolvedMedia.audioUrl;
+            if (streamUrl && musicPlayerController) {
+                const wasPlaying = !musicVideoPlayer.paused && musicVideoPlayer.currentTime > 0;
+                const currentTime = musicVideoPlayer.currentTime;
+                musicPlayerController.loadSource(streamUrl, { isHls: streamUrl.includes('.m3u8') });
+                if (wasPlaying && currentTime > 0) {
+                    musicVideoPlayer.currentTime = currentTime;
+                }
+            }
+        }
+    }
+
+    if (btnModeVideo) {
+        btnModeVideo.addEventListener("click", () => {
+            if (currentMode === "video") return;
+            setPlaybackMode("video");
+        });
+    }
+
+    if (btnModeAudio) {
+        btnModeAudio.addEventListener("click", () => {
+            if (currentMode === "audio") return;
+            setPlaybackMode("audio");
+        });
+    }
+
+    loadAndPlayMedia();
+}
+
+async function initMusicLibraryPage() {
+    const musicResultsList = document.getElementById("musicResultsList");
+    const musicSearchInput = document.getElementById("musicSearchInput");
+    const chartSelectors = document.getElementById("musicChartSelectors");
+    if (!musicResultsList) return;
+
+    let activeChart = "uganda";
+    let searchDebounceTimer = null;
+    let isSearching = false;
+
+    // Check URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialChart = urlParams.get("chart");
+    const initialSearch = urlParams.get("search");
+
+    if (initialChart && ["uganda", "africa", "global"].includes(initialChart.toLowerCase())) {
+        activeChart = initialChart.toLowerCase();
+    }
+
+    if (chartSelectors) {
+        chartSelectors.querySelectorAll(".music-chart-pill").forEach(pill => {
+            pill.addEventListener("click", () => {
+                const chart = pill.getAttribute("data-chart");
+                if (activeChart === chart && !isSearching) return;
+
+                activeChart = chart;
+                isSearching = false;
+                if (musicSearchInput) musicSearchInput.value = "";
+
+                chartSelectors.querySelectorAll(".music-chart-pill").forEach(p => {
+                    if (p.getAttribute("data-chart") === activeChart) {
+                        p.classList.add("active");
+                        p.setAttribute("aria-selected", "true");
+                    } else {
+                        p.classList.remove("active");
+                        p.setAttribute("aria-selected", "false");
+                    }
+                });
+
+                loadChart(activeChart);
+            });
+        });
+    }
+
+    async function loadChart(chartKey) {
+        musicResultsList.innerHTML = createMusicRowSkeleton(8);
+        try {
+            const res = await fetch(`/api/music/charts?chart=${chartKey}`);
+            if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+            const data = await res.json();
+            const songs = data.songs || [];
+
+            if (songs.length === 0) {
+                musicResultsList.innerHTML = `<div class="loading-state">Chart currently unavailable.</div>`;
+                return;
+            }
+
+            renderSongRows(songs);
+        } catch (err) {
+            console.error("Failed to load music chart:", err);
+            musicResultsList.innerHTML = `<div class="error-state">Unable to load music chart. Please try again.</div>`;
+        }
+    }
+
+    async function executeSearch(query) {
+        const cleanQuery = query.trim();
+        if (!cleanQuery) {
+            isSearching = false;
+            loadChart(activeChart);
+            return;
+        }
+
+        isSearching = true;
+        musicResultsList.innerHTML = createMusicRowSkeleton(6);
+
+        try {
+            const res = await fetch(`/api/music/search?q=${encodeURIComponent(cleanQuery)}&limit=15`);
+            if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+            const data = await res.json();
+            const results = data.results || [];
+
+            if (results.length === 0) {
+                musicResultsList.innerHTML = `<div class="loading-state">No matching songs found for "${sanitizeMusicHtml(cleanQuery)}".</div>`;
+                return;
+            }
+
+            renderSongRows(results);
+        } catch (err) {
+            console.error("Music search failed:", err);
+            musicResultsList.innerHTML = `<div class="error-state">Search currently unavailable. Please try again.</div>`;
+        }
+    }
+
+    function renderSongRows(items) {
+        musicResultsList.innerHTML = "";
+        items.forEach(song => {
+            const row = document.createElement("div");
+            row.className = "music-song-row";
+            row.setAttribute("role", "button");
+            row.setAttribute("tabindex", "0");
+
+            const artworkUrl = song.artwork || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Crect width='24' height='24'/%3E%3C/svg%3E";
+            const displayTitle = song.title || "Unknown Song";
+
+            row.innerHTML = `
+                <img src="${artworkUrl}" alt="${sanitizeMusicHtml(displayTitle)}" class="music-song-artwork" loading="lazy" onerror="this.src='/images/tracemziki-logo.png'">
+                <div class="music-song-title">${sanitizeMusicHtml(displayTitle)}</div>
+            `;
+
+            row.addEventListener("click", () => {
+                const targetId = song.id || (song.youtubeId ? `yt-${song.youtubeId}` : 'track');
+                const params = new URLSearchParams();
+                if (song.title) params.set("title", song.title);
+                if (song.artist) params.set("artist", song.artist);
+                if (song.artwork) params.set("artwork", song.artwork);
+                if (song.url) params.set("url", song.url);
+                window.location.href = `/music/watch/${targetId}?${params.toString()}`;
+            });
+
+            musicResultsList.appendChild(row);
+        });
+    }
+
+    if (musicSearchInput) {
+        if (initialSearch) {
+            musicSearchInput.value = initialSearch;
+            executeSearch(initialSearch);
+        } else {
+            loadChart(activeChart);
+        }
+
+        musicSearchInput.addEventListener("input", (e) => {
+            clearTimeout(searchDebounceTimer);
+            const val = e.target.value;
+            searchDebounceTimer = setTimeout(() => {
+                executeSearch(val);
+            }, 350);
+        });
+    } else {
+        loadChart(activeChart);
+    }
+}
+
 /* WATCH PAGE INTEGRATION */
 let moviePlayerController = null;
 
@@ -4534,6 +4875,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initWatchPage();
     initSeriesDetailPage();
     initSeriesWatchPage();
+    initMusicLibraryPage();
+    initMusicWatchPage();
     initLiveTvCatalogue();
     initLiveTvWatchPage();
     initSettingsMainPage();
