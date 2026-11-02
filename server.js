@@ -62,9 +62,50 @@ app.get('/api/stream-proxy', (req, res) => {
   proxyStream(req.query.url, req, res);
 });
 
+// In-memory indexing and fast lookup caches for fast playback & catalog retrieval
+const movieLookupCache = new Map();
+const seriesLookupCache = new Map();
+const concertLookupCache = new Map();
+
+async function refreshLookupIndex() {
+  const supported = getSupportedCountries();
+  for (const c of supported) {
+    const [cMovies, cSeries, cConcerts] = await Promise.all([
+      loadCountryCatalogue(c.code, 'movies').catch(() => ({ movies: [] })),
+      loadCountryCatalogue(c.code, 'series').catch(() => ({ series: [] })),
+      loadCountryCatalogue(c.code, 'concerts').catch(() => ({ concerts: [] }))
+    ]);
+
+    if (cMovies && cMovies.movies) {
+      cMovies.movies.forEach(m => {
+        if (m && m.id) movieLookupCache.set(m.id, m);
+      });
+    }
+    if (cSeries && cSeries.series) {
+      cSeries.series.forEach(s => {
+        if (s && s.id) seriesLookupCache.set(s.id, s);
+      });
+    }
+    if (cConcerts && cConcerts.concerts) {
+      cConcerts.concerts.forEach(cn => {
+        if (cn && cn.id) concertLookupCache.set(cn.id, cn);
+        if (cn && cn.slug) concertLookupCache.set(cn.slug, cn);
+      });
+    }
+  }
+}
+
+// Background warm-up at startup
+setImmediate(() => {
+  refreshLookupIndex().catch(err => {
+    console.warn("Background catalogue warm-up warning:", err.message);
+  });
+});
+
 // API Route for Live TV Channels
 app.get('/api/live-tv/channels', async (req, res) => {
   try {
+    res.setHeader('Cache-Control', 'public, max-age=60');
     const country = (req.query.country || 'ug').trim().toLowerCase();
     const catalogueData = await loadCountryCatalogue(country, 'tv');
     res.json({
@@ -78,6 +119,7 @@ app.get('/api/live-tv/channels', async (req, res) => {
 // API Route for Radio Stations
 app.get('/api/radio', async (req, res) => {
   try {
+    res.setHeader('Cache-Control', 'public, max-age=60');
     const country = (req.query.country || 'ug').trim().toLowerCase();
     const catalogueData = await loadCountryCatalogue(country, 'radio');
     res.json({
@@ -91,6 +133,7 @@ app.get('/api/radio', async (req, res) => {
 // API Routes for Music Discovery & Playback
 app.get('/api/music/charts', (req, res) => {
   try {
+    res.setHeader('Cache-Control', 'public, max-age=300');
     const chartKey = req.query.chart || 'uganda';
     const chartData = getChart(chartKey);
     res.json(chartData);
@@ -173,9 +216,11 @@ app.get('/api/music/download', async (req, res) => {
 app.get('/api/movies', async (req, res) => {
   try {
     const country = (req.query.country || 'ug').trim().toLowerCase();
+    res.setHeader('Cache-Control', 'public, max-age=60');
 
     const catalogueData = await loadCountryCatalogue(country, 'movies');
     const movies = catalogueData.movies || [];
+    movies.forEach(m => { if (m && m.id) movieLookupCache.set(m.id, m); });
 
     // Extract query parameters
     const search = (req.query.search || '').trim().toLowerCase();
@@ -266,20 +311,27 @@ app.get('/api/movies', async (req, res) => {
 // Single movie detail API
 app.get('/api/movies/:id', async (req, res) => {
   try {
+    res.setHeader('Cache-Control', 'public, max-age=120');
+    const movieId = req.params.id;
+
+    if (movieLookupCache.has(movieId)) {
+      return res.json(movieLookupCache.get(movieId));
+    }
+
     const supported = getSupportedCountries();
-    let allMovies = [];
     for (const c of supported) {
       const cData = await loadCountryCatalogue(c.code, 'movies');
       if (cData && cData.movies) {
-        allMovies.push(...cData.movies);
+        for (const m of cData.movies) {
+          movieLookupCache.set(m.id, m);
+          if (m.id === movieId) {
+            return res.json(m);
+          }
+        }
       }
     }
 
-    const movie = allMovies.find(m => m.id === req.params.id);
-    if (!movie) {
-      return res.status(404).json({ error: 'Movie not found' });
-    }
-    res.json(movie);
+    return res.status(404).json({ error: 'Movie not found' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve movie details.' });
   }
@@ -289,9 +341,11 @@ app.get('/api/movies/:id', async (req, res) => {
 app.get('/api/series', async (req, res) => {
   try {
     const country = (req.query.country || 'ug').trim().toLowerCase();
+    res.setHeader('Cache-Control', 'public, max-age=60');
 
     const catalogueData = await loadCountryCatalogue(country, 'series');
     const seriesList = catalogueData.series || [];
+    seriesList.forEach(s => { if (s && s.id) seriesLookupCache.set(s.id, s); });
 
     const search = (req.query.search || '').trim().toLowerCase();
     const vjFilter = (req.query.vj || '').trim().toLowerCase();
@@ -363,20 +417,27 @@ app.get('/api/series', async (req, res) => {
 // Single Series Detail API
 app.get('/api/series/:id', async (req, res) => {
   try {
+    res.setHeader('Cache-Control', 'public, max-age=120');
+    const seriesId = req.params.id;
+
+    if (seriesLookupCache.has(seriesId)) {
+      return res.json(seriesLookupCache.get(seriesId));
+    }
+
     const supported = getSupportedCountries();
-    let allSeries = [];
     for (const c of supported) {
       const cData = await loadCountryCatalogue(c.code, 'series');
       if (cData && cData.series) {
-        allSeries.push(...cData.series);
+        for (const s of cData.series) {
+          seriesLookupCache.set(s.id, s);
+          if (s.id === seriesId) {
+            return res.json(s);
+          }
+        }
       }
     }
 
-    const series = allSeries.find(s => s.id === req.params.id);
-    if (!series) {
-      return res.status(404).json({ error: 'Series not found' });
-    }
-    res.json(series);
+    return res.status(404).json({ error: 'Series not found' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve series details.' });
   }

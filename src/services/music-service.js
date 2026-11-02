@@ -588,30 +588,35 @@ async function resolveMedia(mediaInput) {
   let audioQuality = null;
   let metadata = null;
 
-  // Resolve video source
-  try {
-    const videoApiUrl = `${CYPHERX_BASE_URL}/download?url=${encodeURIComponent(youtubeUrl)}&type=video`;
-    const vResp = await httpFetchJson(videoApiUrl, 10000);
-    if (vResp && vResp.data && vResp.data.result) {
+  // Resolve video and audio sources concurrently to eliminate sequential delay
+  const videoApiUrl = `${CYPHERX_BASE_URL}/download?url=${encodeURIComponent(youtubeUrl)}&type=video`;
+  const audioApiUrl = `${CYPHERX_BASE_URL}/download?url=${encodeURIComponent(youtubeUrl)}&type=audio`;
+
+  const [vRespResult, aRespResult] = await Promise.allSettled([
+    httpFetchJson(videoApiUrl, 8000),
+    httpFetchJson(audioApiUrl, 8000)
+  ]);
+
+  if (vRespResult.status === 'fulfilled' && vRespResult.value) {
+    const vResp = vRespResult.value;
+    if (vResp.data && vResp.data.result) {
       videoUrl = vResp.data.result.download_url || null;
       videoQuality = vResp.data.result.quality || "HD";
       metadata = vResp.data.result;
     }
-  } catch (err) {
-    console.error("Failed to resolve video stream:", err.message);
+  } else if (vRespResult.status === 'rejected') {
+    console.error("Failed to resolve video stream:", vRespResult.reason && vRespResult.reason.message);
   }
 
-  // Resolve audio source
-  try {
-    const audioApiUrl = `${CYPHERX_BASE_URL}/download?url=${encodeURIComponent(youtubeUrl)}&type=audio`;
-    const aResp = await httpFetchJson(audioApiUrl, 10000);
-    if (aResp && aResp.data && aResp.data.result) {
+  if (aRespResult.status === 'fulfilled' && aRespResult.value) {
+    const aResp = aRespResult.value;
+    if (aResp.data && aResp.data.result) {
       audioUrl = aResp.data.result.download_url || null;
       audioQuality = aResp.data.result.quality || "128kbps";
       if (!metadata) metadata = aResp.data.result;
     }
-  } catch (err) {
-    console.error("Failed to resolve audio stream:", err.message);
+  } else if (aRespResult.status === 'rejected') {
+    console.error("Failed to resolve audio stream:", aRespResult.reason && aRespResult.reason.message);
   }
 
   const result = {

@@ -1178,6 +1178,232 @@ function createEpisodeSkeletonList(count = 4) {
     return html;
 }
 
+/* INTELLIGENT PRELOAD & PRECONNECTION ENGINE */
+const PreloadManager = (() => {
+    const memoryCache = new Map();
+    const activeTasks = new Map();
+    const preconnectedOrigins = new Set();
+    const MAX_CONCURRENT_PRELOADS = 2;
+    let currentPreloadCount = 0;
+    const preloadQueue = [];
+
+    // Common media & stream origins
+    const STREAM_ORIGINS = [
+        "https://media.cypherxbot.space",
+        "https://plugin.cypherxbot.space",
+        "https://storage.swahix.com",
+        "https://stream.zeno.fm",
+        "https://stream.hydeinnovations.com:2020",
+        "https://newvision-media.s3.amazonaws.com"
+    ];
+
+    function preconnect(origin) {
+        if (!origin || preconnectedOrigins.has(origin)) return;
+        try {
+            preconnectedOrigins.add(origin);
+            const linkDns = document.createElement("link");
+            linkDns.rel = "dns-prefetch";
+            linkDns.href = origin;
+            document.head.appendChild(linkDns);
+
+            const linkPre = document.createElement("link");
+            linkPre.rel = "preconnect";
+            linkPre.href = origin;
+            linkPre.crossOrigin = "anonymous";
+            document.head.appendChild(linkPre);
+        } catch (e) {
+            // Ignore preconnect DOM errors
+        }
+    }
+
+    function initPreconnects() {
+        if (typeof window === "undefined" || !document.head) return;
+        STREAM_ORIGINS.forEach(origin => preconnect(origin));
+    }
+
+    function isDataSaverActive() {
+        return !!(navigator.connection && (navigator.connection.saveData || navigator.connection.effectiveType === "slow-2g" || navigator.connection.effectiveType === "2g"));
+    }
+
+    function getPreload(key) {
+        if (!key) return null;
+        if (memoryCache.has(key)) {
+            const item = memoryCache.get(key);
+            if (Date.now() - item.time < 15 * 60 * 1000) {
+                return item.data;
+            }
+            memoryCache.delete(key);
+        }
+        try {
+            const raw = sessionStorage.getItem(`sanyu_preload_${key}`);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Date.now() - parsed.time < 15 * 60 * 1000) {
+                    memoryCache.set(key, parsed);
+                    return parsed.data;
+                }
+                sessionStorage.removeItem(`sanyu_preload_${key}`);
+            }
+        } catch (e) {}
+        return null;
+    }
+
+    function setPreload(key, data) {
+        if (!key || !data) return;
+        const entry = { time: Date.now(), data };
+        memoryCache.set(key, entry);
+        try {
+            sessionStorage.setItem(`sanyu_preload_${key}`, JSON.stringify(entry));
+        } catch (e) {}
+    }
+
+    function processQueue() {
+        if (currentPreloadCount >= MAX_CONCURRENT_PRELOADS || preloadQueue.length === 0) return;
+        const nextTask = preloadQueue.shift();
+        currentPreloadCount++;
+        nextTask()
+            .catch(() => {})
+            .finally(() => {
+                currentPreloadCount--;
+                processQueue();
+            });
+    }
+
+    function queuePreload(taskFn) {
+        if (isDataSaverActive()) return;
+        preloadQueue.push(taskFn);
+        processQueue();
+    }
+
+    // Preload movie stream & detail metadata
+    function preloadMovie(movieOrId) {
+        const id = typeof movieOrId === "object" ? movieOrId.id : movieOrId;
+        if (!id) return;
+        const cacheKey = `movie_${id}`;
+        if (getPreload(cacheKey) || activeTasks.has(cacheKey)) return;
+
+        if (typeof movieOrId === "object" && movieOrId.mediaUrl) {
+            setPreload(cacheKey, movieOrId);
+            if (movieOrId.mediaUrl.startsWith("http")) {
+                try {
+                    const u = new URL(movieOrId.mediaUrl);
+                    preconnect(`${u.protocol}//${u.host}`);
+                } catch (e) {}
+            }
+            return;
+        }
+
+        const controller = new AbortController();
+        activeTasks.set(cacheKey, controller);
+
+        queuePreload(async () => {
+            try {
+                const res = await fetch(`/api/movies/${id}`, { signal: controller.signal });
+                if (res.ok) {
+                    const data = await res.json();
+                    setPreload(cacheKey, data);
+                    if (data && data.mediaUrl && data.mediaUrl.startsWith("http")) {
+                        try {
+                            const u = new URL(data.mediaUrl);
+                            preconnect(`${u.protocol}//${u.host}`);
+                        } catch (e) {}
+                    }
+                }
+            } catch (e) {
+                // Ignore abort / network errors during speculative preload
+            } finally {
+                activeTasks.delete(cacheKey);
+            }
+        });
+    }
+
+    // Preload music stream resolution
+    function preloadMusic(song) {
+        if (!song) return;
+        const targetId = song.id || (song.youtubeId ? `yt-${song.youtubeId}` : null);
+        const queryParam = song.url ? `url=${encodeURIComponent(song.url)}` : (targetId ? `id=${encodeURIComponent(targetId)}` : null);
+        if (!queryParam) return;
+
+        const cacheKey = `music_${song.url || targetId}`;
+        if (getPreload(cacheKey) || activeTasks.has(cacheKey)) return;
+
+        const controller = new AbortController();
+        activeTasks.set(cacheKey, controller);
+
+        queuePreload(async () => {
+            try {
+                const res = await fetch(`/api/music/resolve?${queryParam}`, { signal: controller.signal });
+                if (res.ok) {
+                    const data = await res.json();
+                    setPreload(cacheKey, data);
+                    const stream = data.videoUrl || data.audioUrl;
+                    if (stream && stream.startsWith("http")) {
+                        try {
+                            const u = new URL(stream);
+                            preconnect(`${u.protocol}//${u.host}`);
+                        } catch (e) {}
+                    }
+                }
+            } catch (e) {
+            } finally {
+                activeTasks.delete(cacheKey);
+            }
+        });
+    }
+
+    // Preconnect live TV and Radio stream host
+    function preloadChannel(ch) {
+        if (!ch || !ch.streamUrl) return;
+        if (ch.streamUrl.startsWith("http")) {
+            try {
+                const u = new URL(ch.streamUrl);
+                preconnect(`${u.protocol}//${u.host}`);
+            } catch (e) {}
+        }
+    }
+
+    return {
+        initPreconnects,
+        preconnect,
+        preloadMovie,
+        preloadMusic,
+        preloadChannel,
+        getPreload,
+        setPreload
+    };
+})();
+
+// Attach intelligent preloading hooks to cards on hover, focus, touchstart & viewport intersection
+let cardIntersectionObserver = null;
+function observeCardForPreload(cardElement, preloadCallback) {
+    if (typeof window === "undefined" || !("IntersectionObserver" in window)) return;
+    if (!cardIntersectionObserver) {
+        cardIntersectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target._preloadAction) {
+                    entry.target._preloadAction();
+                    cardIntersectionObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: "150px" });
+    }
+    cardElement._preloadAction = preloadCallback;
+    cardIntersectionObserver.observe(cardElement);
+}
+
+function attachCardPreloadListeners(card, preloadFn) {
+    let preloaded = false;
+    function trigger() {
+        if (preloaded) return;
+        preloaded = true;
+        preloadFn();
+    }
+    card.addEventListener("mouseenter", trigger, { passive: true });
+    card.addEventListener("focusin", trigger, { passive: true });
+    card.addEventListener("touchstart", trigger, { passive: true });
+    observeCardForPreload(card, trigger);
+}
+
 function createMovieCard(movie) {
     const card = document.createElement("article");
     card.className = "movie-card";
@@ -1208,7 +1434,13 @@ function createMovieCard(movie) {
     card.appendChild(titleDiv);
     card.appendChild(metaDiv);
 
+    // Preload movie details and preconnect media origin early on user approach
+    attachCardPreloadListeners(card, () => {
+        PreloadManager.preloadMovie(movie);
+    });
+
     card.addEventListener("click", () => {
+        PreloadManager.setPreload(`movie_${movie.id}`, movie);
         window.location.href = `/movie/${movie.id}`;
     });
 
@@ -1797,7 +2029,12 @@ function createChannelCard(ch, isCurrent = false) {
         </div>
     `;
 
+    attachCardPreloadListeners(card, () => {
+        PreloadManager.preloadChannel(ch);
+    });
+
     card.addEventListener("click", () => {
+        PreloadManager.preloadChannel(ch);
         window.location.href = `/live-tv/watch/${ch.id}/`;
     });
 
@@ -2462,6 +2699,8 @@ function attachCustomPlayerController(config) {
         if (isHlsUrl && window.Hls && Hls.isSupported()) {
             const hls = new Hls({
                 enableWorker: true,
+                startFragPrefetch: true,        // Prefetch first media fragments immediately
+                progressive: true,              // Progressive parsing for instant playback startup
                 lowLatencyMode: isLiveStream,
                 capLevelToPlayerSize: true,     // Cap bitrate/resolution to player dimensions on low networks
                 startLevel: -1,                 // Auto start level for instant start on low network
@@ -2473,11 +2712,11 @@ function attachCustomPlayerController(config) {
                 highBufferWatchdogPeriod: 2,    // Frequently check buffer health for fast recovery
                 liveSyncDurationCount: 3,       // Rapid live edge sync on slow connections
                 liveMaxLatencyDurationCount: 10,
-                manifestLoadingTimeOut: 10000,
+                manifestLoadingTimeOut: 8000,
                 manifestLoadingMaxRetry: 4,
-                fragLoadingTimeOut: 15000,
+                fragLoadingTimeOut: 12000,
                 fragLoadingMaxRetry: 6,
-                levelLoadingTimeOut: 10000,
+                levelLoadingTimeOut: 8000,
                 levelLoadingMaxRetry: 4,
                 backBufferLength: 90
             });
@@ -3972,10 +4211,14 @@ async function initSeriesWatchPage() {
     }
 
     try {
-        const seriesListRes = await fetch("/api/series?limit=100");
-        if (!seriesListRes.ok) throw new Error("Failed to fetch series list");
-        const seriesData = await seriesListRes.json();
-        const allSeries = seriesData.series || [];
+        let allSeries = PreloadManager.getPreload("all_series_list");
+        if (!allSeries) {
+            const seriesListRes = await fetch("/api/series?limit=100");
+            if (!seriesListRes.ok) throw new Error("Failed to fetch series list");
+            const seriesData = await seriesListRes.json();
+            allSeries = seriesData.series || [];
+            PreloadManager.setPreload("all_series_list", allSeries);
+        }
 
         let parentSeries = null;
         let currentEpisode = null;
@@ -4108,9 +4351,13 @@ async function initMovieDetailsPage() {
     mainContainer.innerHTML = createMovieDetailSkeleton();
 
     try {
-        const res = await fetch(`/api/movies/${movieId}`);
-        if (!res.ok) throw new Error("Movie not found");
-        const movie = await res.json();
+        let movie = PreloadManager.getPreload(`movie_${movieId}`);
+        if (!movie) {
+            const res = await fetch(`/api/movies/${movieId}`);
+            if (!res.ok) throw new Error("Movie not found");
+            movie = await res.json();
+            PreloadManager.setPreload(`movie_${movieId}`, movie);
+        }
 
         document.title = `${movie.title} — SanyuHub`;
 
@@ -4292,10 +4539,15 @@ async function initMusicWatchPage() {
     async function loadAndPlayMedia() {
         try {
             const queryParam = initialUrl ? `url=${encodeURIComponent(initialUrl)}` : `id=${encodeURIComponent(musicId)}`;
-            const res = await fetch(`/api/music/resolve?${queryParam}`);
-            if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+            const cacheKey = `music_${initialUrl || musicId}`;
+            resolvedMedia = PreloadManager.getPreload(cacheKey);
 
-            resolvedMedia = await res.json();
+            if (!resolvedMedia) {
+                const res = await fetch(`/api/music/resolve?${queryParam}`);
+                if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+                resolvedMedia = await res.json();
+                PreloadManager.setPreload(cacheKey, resolvedMedia);
+            }
 
             // Update UI titles & artwork
             const songTitle = resolvedMedia.title || initialTitle || "Track";
@@ -4546,7 +4798,12 @@ async function initMusicLibraryPage() {
                 <div class="card-meta">${sanitizeMusicHtml(displayArtist)}</div>
             `;
 
+            attachCardPreloadListeners(card, () => {
+                PreloadManager.preloadMusic(song);
+            });
+
             card.addEventListener("click", () => {
+                PreloadManager.preloadMusic(song);
                 const targetId = song.id || (song.youtubeId ? `yt-${song.youtubeId}` : 'track');
                 const params = new URLSearchParams();
                 if (song.title) params.set("title", song.title);
@@ -4603,9 +4860,13 @@ async function initWatchPage() {
     }
 
     try {
-        const res = await fetch(`/api/movies/${movieId}`);
-        if (!res.ok) throw new Error("Movie not found");
-        const movie = await res.json();
+        let movie = PreloadManager.getPreload(`movie_${movieId}`);
+        if (!movie) {
+            const res = await fetch(`/api/movies/${movieId}`);
+            if (!res.ok) throw new Error("Movie not found");
+            movie = await res.json();
+            PreloadManager.setPreload(`movie_${movieId}`, movie);
+        }
 
         document.title = `Watching ${movie.title} — SanyuHub`;
 
@@ -4867,6 +5128,7 @@ async function initConcertDetailPage() {
 
 /* DOM INITIALIZATION */
 document.addEventListener("DOMContentLoaded", () => {
+    PreloadManager.initPreconnects();
     ensureNavbarCountryButton();
     checkAuthenticationAndLanding();
     updateBottomNavActiveState();
