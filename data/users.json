@@ -1,0 +1,42 @@
+[
+  {
+    "id": "usr-admin-01",
+    "name": "Super Admin",
+    "email": "admin@sanyuhub.com",
+    "role": "admin",
+    "validationStatus": "validated",
+    "isVerified": true,
+    "isSuspended": false,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "usr-test-02",
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "role": "user",
+    "validationStatus": "pending",
+    "isVerified": false,
+    "isSuspended": false,
+    "createdAt": "2025-02-15T12:00:00.000Z"
+  },
+  {
+    "id": "usr-test-03",
+    "name": "Grace Nakato",
+    "email": "grace@example.com",
+    "role": "subscriber",
+    "validationStatus": "validated",
+    "isVerified": true,
+    "isSuspended": false,
+    "createdAt": "2025-02-18T14:30:00.000Z"
+  },
+  {
+    "id": "usr-test-04",
+    "name": "Ivan Kato",
+    "email": "ivan@example.com",
+    "role": "user",
+    "validationStatus": "rejected",
+    "isVerified": false,
+    "isSuspended": false,
+    "createdAt": "2025-02-20T09:15:00.000Z"
+  }
+]
