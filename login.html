@@ -83,10 +83,11 @@
         return;
       }
 
-      const isAdmin = (identifier.toLowerCase() === "delostvoyage@gmail.com" || identifier === "256702662846");
+      const adminEmails = ["delostvoyage@gmail.com", "williambanksug256@gmail.com"];
+      const isAdmin = (adminEmails.includes(identifier.toLowerCase()) || identifier === "256702662846");
 
       const userSession = {
-        email: isAdmin ? "delostvoyage@gmail.com" : (identifier.includes("@") ? identifier : identifier + "@sanyuhub.com"),
+        email: isAdmin ? (adminEmails.includes(identifier.toLowerCase()) ? identifier.toLowerCase() : "delostvoyage@gmail.com") : (identifier.includes("@") ? identifier : identifier + "@sanyuhub.com"),
         phone: isAdmin ? "256702662846" : (identifier.match(/^\d+$/) ? identifier : "256702662846"),
         username: identifier,
         isAdmin: isAdmin,
