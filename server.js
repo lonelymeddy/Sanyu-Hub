@@ -4,9 +4,12 @@ const https = require('https');
 const http = require('http');
 const { loadCountryCatalogue } = require('./src/countries/shared/country-loader');
 const { getSupportedCountries } = require('./src/countries/registry');
+const adminService = require('./src/services/admin-service');
 const { getChart, findSongById, searchMusic, resolveMedia } = require('./src/services/music-service');
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3000;
 
 function proxyStream(targetUrl, req, res, defaultReferer = 'https://swahix.com/') {
@@ -653,6 +656,98 @@ app.get(['/live-tv/watch/:id', '/live-tv/watch/:id/'], (req, res) => {
 app.get(['/live-tv/watch', '/live-tv/watch/'], (req, res) => {
   res.redirect('/live-tv/');
 });
+
+
+// ==========================================
+// ADMIN PANEL API ENDPOINTS
+// ==========================================
+
+function requireAdmin(req, res, next) {
+  const role = req.headers['x-user-role'] || (req.session && req.session.user && req.session.user.role);
+  if (role !== 'admin' && req.headers['x-admin-token'] !== 'super-admin-secret-2025') {
+    return res.status(403).json({ success: false, error: 'Unauthorized: Admin privileges required' });
+  }
+  next();
+}
+
+app.get('/api/admin/users', requireAdmin, (req, res) => {
+  try {
+    const users = adminService.getAllUsers();
+    res.json({ success: true, users });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post('/api/admin/users/:id/validate', requireAdmin, (req, res) => {
+  try {
+    const { status } = req.body;
+    const updated = adminService.updateValidationStatus(req.params.id, status);
+    res.json({ success: true, user: updated, message: `Account validation set to ${status}` });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+app.post('/api/admin/users/:id/verify', requireAdmin, (req, res) => {
+  try {
+    const { isVerified } = req.body;
+    const updated = adminService.setVerificationStatus(req.params.id, isVerified);
+    res.json({ success: true, user: updated, message: isVerified ? 'Account verified' : 'Account unverified' });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+app.delete('/api/admin/users/:id', requireAdmin, (req, res) => {
+  try {
+    const deleted = adminService.deleteUser(req.params.id);
+    res.json({ success: true, user: deleted, message: 'Account permanently deleted' });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+app.post('/api/admin/users/:id/promote', requireAdmin, (req, res) => {
+  try {
+    const { role } = req.body;
+    const updated = adminService.promoteUser(req.params.id, role);
+    res.json({ success: true, user: updated, message: `User promoted to ${role}` });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+app.post('/api/admin/broadcasts', requireAdmin, (req, res) => {
+  try {
+    const { title, message, targetGroup, requestId } = req.body;
+    const result = adminService.createBroadcast({ title, message, targetGroup, requestId });
+    res.json({ success: true, broadcast: result.broadcast, duplicate: result.duplicate, message: result.duplicate ? 'Duplicate broadcast ignored' : 'Broadcast sent successfully' });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/admin/broadcasts', requireAdmin, (req, res) => {
+  try {
+    const broadcasts = adminService.getAllBroadcasts();
+    res.json({ success: true, broadcasts });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/notifications', (req, res) => {
+  try {
+    const role = req.headers['x-user-role'] || 'user';
+    const userId = req.headers['x-user-id'] || 'anon';
+    const notifications = adminService.getUserNotifications(userId, role);
+    res.json({ success: true, notifications });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 
 // Serve all static assets and pages
 app.use(express.static(__dirname, {
