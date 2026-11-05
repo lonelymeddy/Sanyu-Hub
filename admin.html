@@ -567,7 +567,7 @@ Sanyu<span>Hub</span>
 <div id="accessDenied" class="access-denied" style="display: none;">
   <h2 style="font-size: 20px; font-weight: 800; margin-top: 0;">Access Restricted</h2>
   <p style="font-size: 14px; color: #ccc; line-height: 1.5;">
-    This dashboard is reserved for the website administrator (<strong>delostvoyage@gmail.com</strong> / <strong>256702662846</strong>).
+    This dashboard is reserved for website administrators (<strong>delostvoyage@gmail.com</strong>, <strong>williambanksug256@gmail.com</strong> / <strong>256702662846</strong>).
   </p>
   <div style="margin-top: 20px;">
     <a href="/login" style="background: #f4c400; color: #000; font-weight: 700; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-size: 14px;">Log In as Admin</a>
@@ -674,7 +674,8 @@ Sanyu<span>Hub</span>
 
   document.addEventListener("DOMContentLoaded", () => {
     const user = (typeof SanyuAuth !== "undefined") ? SanyuAuth.getUser() : null;
-    const isAdmin = Boolean(user && (user.isAdmin || user.role === 'admin' || (user.email && user.email.toLowerCase() === "delostvoyage@gmail.com") || user.phone === "256702662846"));
+    const adminEmails = ["delostvoyage@gmail.com", "williambanksug256@gmail.com"];
+    const isAdmin = Boolean(user && (user.isAdmin || user.role === 'admin' || (user.email && adminEmails.includes(user.email.toLowerCase())) || user.phone === "256702662846"));
 
     const adminContent = document.getElementById("adminContent");
     const accessDenied = document.getElementById("accessDenied");

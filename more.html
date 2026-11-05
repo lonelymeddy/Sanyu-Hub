@@ -217,7 +217,8 @@ More
   document.addEventListener("DOMContentLoaded", () => {
     if (typeof SanyuAuth !== "undefined") {
       const user = SanyuAuth.getUser();
-      if (user && (user.isAdmin || (user.email && user.email.toLowerCase() === "delostvoyage@gmail.com") || user.phone === "256702662846")) {
+      const adminEmails = ["delostvoyage@gmail.com", "williambanksug256@gmail.com"];
+      if (user && (user.isAdmin || (user.email && adminEmails.includes(user.email.toLowerCase())) || user.phone === "256702662846")) {
         const adminCard = document.getElementById("moreAdminLink");
         if (adminCard) {
           adminCard.style.display = "flex";

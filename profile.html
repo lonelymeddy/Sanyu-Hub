@@ -328,7 +328,8 @@ Sanyu<span>Hub</span>
     const expiryTextEl = document.getElementById("subExpiryText");
     const sectorTextEl = document.getElementById("subSectorText");
 
-    const isAdmin = Boolean(user.isAdmin || (user.email && user.email.toLowerCase() === "delostvoyage@gmail.com") || user.phone === "256702662846");
+    const adminEmails = ["delostvoyage@gmail.com", "williambanksug256@gmail.com"];
+    const isAdmin = Boolean(user.isAdmin || (user.email && adminEmails.includes(user.email.toLowerCase())) || user.phone === "256702662846");
 
     usernameEl.textContent = user.username || "Subscriber";
     emailEl.textContent = user.email || "user@example.com";
