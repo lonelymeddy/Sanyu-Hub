@@ -29,9 +29,12 @@ function extractUserIdentifier(req) {
     const rawCookies = req.headers.cookie.split(';');
     for (const c of rawCookies) {
       const parts = c.trim().split('=');
-      if (parts[0] === 'sanyuhub_auth_user' && parts[1]) {
+      const cookieName = parts[0];
+      if (cookieName === 'sanyuhub_auth_user' && parts[1]) {
         try {
-          const parsed = JSON.parse(decodeURIComponent(parts.slice(1).join('=')));
+          const cookieVal = parts.slice(1).join('=');
+          const decoded = decodeURIComponent(cookieVal);
+          const parsed = JSON.parse(decoded);
           userIdentifier = parsed.email || parsed.phone || parsed.username || parsed.id;
           break;
         } catch (e) {}
@@ -350,12 +353,13 @@ app.get('/api/subscriptions/trial/eligibility', (req, res) => {
 // Get user's current subscription & download usage
 app.get('/api/subscriptions/current', (req, res) => {
   try {
-    const userIdentifier = req.headers['x-user-id'] || req.query.userId || req.query.identifier;
+    const userIdentifier = extractUserIdentifier(req) || req.headers['x-user-id'] || req.query.userId || req.query.identifier;
     if (!userIdentifier) {
       return res.status(400).json({ success: false, error: 'User identifier is required' });
     }
 
     const sub = subscriptionService.getUserSubscription(userIdentifier);
+    const access = subscriptionService.checkUserAccess(userIdentifier);
     let usage = null;
     if (sub && sub.packageId === 'pkg-royal') {
       usage = subscriptionService.getDownloadUsage(userIdentifier);
@@ -363,8 +367,41 @@ app.get('/api/subscriptions/current', (req, res) => {
 
     res.json({
       success: true,
+      userIdentifier: userIdentifier,
       subscription: sub,
+      access: access,
       downloadUsage: usage
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Synchronize session between client and authoritative backend database
+app.get('/api/auth/session', (req, res) => {
+  try {
+    const userIdentifier = extractUserIdentifier(req);
+    if (!userIdentifier) {
+      return res.json({
+        success: true,
+        authenticated: false,
+        hasAccess: false,
+        user: null,
+        subscription: null
+      });
+    }
+
+    const access = subscriptionService.checkUserAccess(userIdentifier);
+    const sub = subscriptionService.getUserSubscription(userIdentifier);
+
+    return res.json({
+      success: true,
+      authenticated: true,
+      userIdentifier: userIdentifier,
+      hasAccess: access.hasAccess,
+      access: access,
+      subscription: sub || null,
+      isAdmin: Boolean(access.isAdmin)
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });

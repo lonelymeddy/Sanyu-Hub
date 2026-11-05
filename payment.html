@@ -741,7 +741,13 @@ Sanyu<span>Hub</span>
                 currentUser.isTrial = false;
                 const durationDays = PACKAGES[selectedPackageId].days || 30;
                 currentUser.subscriptionExpiry = new Date(Date.now() + durationDays * 24 * 60 * 60 * 1000).toISOString();
-                SanyuAuth.registerUser(currentUser);
+                if (typeof SanyuAuth !== "undefined" && SanyuAuth.registerUser) {
+                  SanyuAuth.registerUser(currentUser);
+                } else {
+                  localStorage.setItem("sanyuhub_auth_user", JSON.stringify(currentUser));
+                  const expDate = new Date(currentUser.subscriptionExpiry);
+                  document.cookie = "sanyuhub_auth_user=" + encodeURIComponent(JSON.stringify(currentUser)) + "; path=/; expires=" + expDate.toUTCString() + "; SameSite=Lax";
+                }
               }
             } else if (data.status === "failed" || data.status === "cancelled") {
               clearInterval(pollInterval);
@@ -767,8 +773,12 @@ Sanyu<span>Hub</span>
           return;
         }
 
-        btnActivateTrial.disabled = true;
-        btnActivateTrial.textContent = "Activating trial...";
+        if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+          SanyuUI.setButtonLoading(btnActivateTrial, true, "Activating trial...");
+        } else {
+          btnActivateTrial.disabled = true;
+          btnActivateTrial.textContent = "Activating trial...";
+        }
 
         try {
           const res = await fetch("/api/subscriptions/trial/activate", {
@@ -793,17 +803,47 @@ Sanyu<span>Hub</span>
               currentUser.subscriptionExpiry = data.subscription.expiresAt;
               if (typeof SanyuAuth !== "undefined" && SanyuAuth.registerUser) {
                 SanyuAuth.registerUser(currentUser);
+              } else {
+                localStorage.setItem("sanyuhub_auth_user", JSON.stringify(currentUser));
+                const expDate = new Date(data.subscription.expiresAt);
+                document.cookie = "sanyuhub_auth_user=" + encodeURIComponent(JSON.stringify(currentUser)) + "; path=/; expires=" + expDate.toUTCString() + "; SameSite=Lax";
+              }
+            } else {
+              const newTrialUser = {
+                email: ident.includes("@") ? ident : ident + "@sanyuhub.com",
+                phone: !ident.includes("@") ? ident : "",
+                username: ident,
+                plan: "pkg-trial",
+                packageId: "pkg-trial",
+                isTrial: true,
+                isPaid: true,
+                subscriptionExpiry: data.subscription.expiresAt
+              };
+              if (typeof SanyuAuth !== "undefined" && SanyuAuth.registerUser) {
+                SanyuAuth.registerUser(newTrialUser);
+              } else {
+                localStorage.setItem("sanyuhub_auth_user", JSON.stringify(newTrialUser));
+                const expDate = new Date(data.subscription.expiresAt);
+                document.cookie = "sanyuhub_auth_user=" + encodeURIComponent(JSON.stringify(newTrialUser)) + "; path=/; expires=" + expDate.toUTCString() + "; SameSite=Lax";
               }
             }
           } else {
             showStatus("error", data.message || data.error || "Free trial has already been claimed for this account.");
-            btnActivateTrial.disabled = false;
-            btnActivateTrial.textContent = "Activate 2-Day Free Trial";
+            if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+              SanyuUI.setButtonLoading(btnActivateTrial, false);
+            } else {
+              btnActivateTrial.disabled = false;
+              btnActivateTrial.textContent = "Activate 2-Day Free Trial";
+            }
           }
         } catch (err) {
           showStatus("error", "Network connection failed. Please try again.");
-          btnActivateTrial.disabled = false;
-          btnActivateTrial.textContent = "Activate 2-Day Free Trial";
+          if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+            SanyuUI.setButtonLoading(btnActivateTrial, false);
+          } else {
+            btnActivateTrial.disabled = false;
+            btnActivateTrial.textContent = "Activate 2-Day Free Trial";
+          }
         }
       });
     }
@@ -817,8 +857,12 @@ Sanyu<span>Hub</span>
         return;
       }
 
-      btnInitiateMomo.disabled = true;
-      btnInitiateMomo.textContent = "Initiating prompt...";
+      if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+        SanyuUI.setButtonLoading(btnInitiateMomo, true, "Initiating prompt...");
+      } else {
+        btnInitiateMomo.disabled = true;
+        btnInitiateMomo.textContent = "Initiating prompt...";
+      }
 
       try {
         const userIdentifier = (currentUser && (currentUser.email || currentUser.phone || currentUser.username)) || phone;
@@ -838,13 +882,21 @@ Sanyu<span>Hub</span>
           startPolling(data.reference);
         } else {
           showStatus("error", data.error || "Failed to initiate payment prompt.");
-          btnInitiateMomo.disabled = false;
-          btnInitiateMomo.textContent = "Pay with Mobile Money";
+          if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+            SanyuUI.setButtonLoading(btnInitiateMomo, false);
+          } else {
+            btnInitiateMomo.disabled = false;
+            btnInitiateMomo.textContent = "Pay with Mobile Money";
+          }
         }
       } catch (err) {
         showStatus("error", "Network connection failed. Please check internet and try again.");
-        btnInitiateMomo.disabled = false;
-        btnInitiateMomo.textContent = "Pay with Mobile Money";
+        if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+          SanyuUI.setButtonLoading(btnInitiateMomo, false);
+        } else {
+          btnInitiateMomo.disabled = false;
+          btnInitiateMomo.textContent = "Pay with Mobile Money";
+        }
       }
     });
 
@@ -858,8 +910,12 @@ Sanyu<span>Hub</span>
         return;
       }
 
-      btnInitiateCard.disabled = true;
-      btnInitiateCard.textContent = "Opening secure gateway...";
+      if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+        SanyuUI.setButtonLoading(btnInitiateCard, true, "Opening secure gateway...");
+      } else {
+        btnInitiateCard.disabled = true;
+        btnInitiateCard.textContent = "Opening secure gateway...";
+      }
 
       try {
         const userIdentifier = (currentUser && (currentUser.email || currentUser.phone || currentUser.username)) || email;
@@ -880,26 +936,44 @@ Sanyu<span>Hub</span>
           window.location.href = data.checkoutUrl;
         } else if (!data.configured) {
           showStatus("error", "Card gateway is currently awaiting live merchant keys. Please use MTN MoMo or Airtel Money.");
-          btnInitiateCard.disabled = false;
-          btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+          if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+            SanyuUI.setButtonLoading(btnInitiateCard, false);
+          } else {
+            btnInitiateCard.disabled = false;
+            btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+          }
         } else {
           showStatus("error", data.error || "Card checkout failed to initialize.");
-          btnInitiateCard.disabled = false;
-          btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+          if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+            SanyuUI.setButtonLoading(btnInitiateCard, false);
+          } else {
+            btnInitiateCard.disabled = false;
+            btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+          }
         }
       } catch (err) {
         showStatus("error", "Network connection failed.");
-        btnInitiateCard.disabled = false;
-        btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+        if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+          SanyuUI.setButtonLoading(btnInitiateCard, false);
+        } else {
+          btnInitiateCard.disabled = false;
+          btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+        }
       }
     });
 
     btnRetryPayment.addEventListener("click", () => {
       statusError.style.display = "none";
-      btnInitiateMomo.disabled = false;
-      btnInitiateMomo.textContent = "Pay with Mobile Money";
-      btnInitiateCard.disabled = false;
-      btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+      if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+        SanyuUI.setButtonLoading(btnInitiateMomo, false);
+        SanyuUI.setButtonLoading(btnInitiateCard, false);
+        SanyuUI.setButtonLoading(btnActivateTrial, false);
+      } else {
+        btnInitiateMomo.disabled = false;
+        btnInitiateMomo.textContent = "Pay with Mobile Money";
+        btnInitiateCard.disabled = false;
+        btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+      }
     });
 
     // Check if redirected back with tx_ref

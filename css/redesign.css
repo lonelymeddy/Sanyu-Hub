@@ -819,3 +819,30 @@
     font-size: 19px;
   }
 }
+
+/* BUTTON LOADING SPINNERS & CLICK FEEDBACK */
+.sh-btn-loading,
+.sh-btn-submit.sh-btn-loading {
+  position: relative !important;
+  pointer-events: none !important;
+  opacity: 0.85 !important;
+  cursor: wait !important;
+}
+
+.sh-btn-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-top-color: #000000;
+  border-radius: 50%;
+  animation: shBtnSpin 0.7s linear infinite;
+  box-sizing: border-box;
+  margin-right: 8px;
+}
+
+@keyframes shBtnSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

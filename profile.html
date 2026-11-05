@@ -463,6 +463,7 @@ Sanyu<span>Hub</span>
             SanyuAuth.logout();
           } else {
             localStorage.removeItem("sanyuhub_auth_user");
+            document.cookie = "sanyuhub_auth_user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax";
           }
           window.location.href = "/login";
         }

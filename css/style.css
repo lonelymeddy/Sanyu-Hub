@@ -4186,3 +4186,71 @@ body.search-open .bottom-nav {
     padding: 14px 18px 16px;
   }
 }
+
+/* ==========================================================================
+   UNIFIED BUTTON LOADING SPINNERS & CLICK FEEDBACK
+   ========================================================================== */
+
+.sh-btn-loading,
+button.is-loading,
+a.is-loading,
+.is-loading {
+  position: relative !important;
+  pointer-events: none !important;
+  cursor: wait !important;
+  user-select: none !important;
+  transition: opacity 0.2s ease, filter 0.2s ease, background-color 0.2s ease !important;
+}
+
+/* Spinner indicator */
+.sh-btn-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  border: 2.2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: shBtnSpin 0.7s linear infinite;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+/* Light button or contrast override */
+.btn-primary .sh-btn-spinner,
+.btn-pay-action .sh-btn-spinner,
+.btn-landing-get-started .sh-btn-spinner,
+.sh-btn-submit .sh-btn-spinner {
+  border: 2.2px solid rgba(0, 0, 0, 0.2);
+  border-top-color: #000000;
+}
+
+/* Spinner overlay mode when replacing button text */
+.sh-btn-loading.spinner-only {
+  color: transparent !important;
+}
+
+.sh-btn-loading.spinner-only .sh-btn-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -8px;
+  margin-left: -8px;
+  margin-right: 0;
+}
+
+@keyframes shBtnSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Immediate click feedback effect */
+.btn-interactive-active {
+  transform: scale(0.97);
+  transition: transform 0.08s ease;
+}
