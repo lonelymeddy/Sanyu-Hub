@@ -4,28 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#222222">
-<meta name="description" content="SanyuHub — Payment & Account Verification Instructions">
-<title>Payment Verification — SanyuHub</title>
+<meta name="description" content="SanyuHub — Payment & Subscription Activation">
+<title>Complete Subscription Payment — SanyuHub</title>
 <link rel="stylesheet" href="/css/style.css">
 <style>
+  .payment-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 16px 5% 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
   .payment-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 14px;
     padding: 24px;
-    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
   }
   .payment-badge {
     display: inline-block;
     background: #f4c400;
     color: #000;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
     padding: 4px 10px;
     border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 12px;
+  }
+  .payment-badge.royal {
+    background: linear-gradient(135deg, #ffd700, #ff9900);
+    color: #000;
   }
   .payment-amount {
     font-size: 32px;
@@ -34,119 +47,197 @@
     margin-bottom: 6px;
   }
   .payment-subtext {
-    font-size: 14px;
+    font-size: 13px;
     color: #aaa;
     line-height: 1.5;
   }
-  .admin-box {
-    background: rgba(244, 196, 0, 0.08);
-    border: 1px solid rgba(244, 196, 0, 0.3);
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px 0;
-  }
-  .admin-number-highlight {
-    font-size: 24px;
-    font-weight: 800;
-    color: #f4c400;
-    letter-spacing: 1px;
-    display: block;
-    margin: 8px 0;
-  }
-  .steps-list {
+  .package-selector-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
     margin: 16px 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
   }
-  .step-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 16px;
+  .pkg-pill {
+    background: #1c1c1c;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+    padding: 12px 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+    user-select: none;
   }
-  .step-number {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #f4c400;
-    color: #000;
-    font-weight: 800;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+  .pkg-pill:hover {
+    border-color: rgba(244, 196, 0, 0.4);
+    background: #242424;
   }
-  .step-content h3 {
-    margin: 0 0 4px 0;
-    font-size: 15px;
+  .pkg-pill.selected {
+    border-color: #f4c400;
+    background: rgba(244, 196, 0, 0.12);
+  }
+  .pkg-pill.royal.selected {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.18);
+  }
+  .pkg-pill-title {
+    font-size: 13px;
     font-weight: 700;
     color: #fff;
+    margin-bottom: 4px;
   }
-  .step-content p {
-    margin: 0;
-    font-size: 13px;
-    color: #aaa;
-    line-height: 1.4;
+  .pkg-pill-price {
+    font-size: 12px;
+    font-weight: 800;
+    color: #f4c400;
   }
-  .action-buttons {
+  .method-tab-group {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 16px 0;
   }
-  @media (max-width: 480px) {
-    .action-buttons {
+  @media (max-width: 540px) {
+    .method-tab-group {
       grid-template-columns: 1fr;
     }
   }
-  .btn-action {
+  .method-tab {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 14px 20px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 15px;
-    text-decoration: none;
+    background: #1c1c1c;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px;
     cursor: pointer;
-    border: none;
-    transition: transform 0.15s, opacity 0.15s;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ddd;
+    transition: all 0.2s ease;
   }
-  .btn-action:active {
-    transform: scale(0.98);
+  .method-tab:hover {
+    background: #242424;
+    border-color: rgba(255, 255, 255, 0.2);
   }
-  .btn-call {
-    background: #f4c400;
-    color: #000;
-  }
-  .btn-whatsapp {
-    background: #25D366;
+  .method-tab.selected {
+    border-color: #f4c400;
+    background: rgba(244, 196, 0, 0.12);
     color: #fff;
   }
-  .network-badge-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-    flex-wrap: wrap;
+  .method-tab img {
+    height: 22px;
+    object-fit: contain;
   }
-  .network-badge {
+  .form-group-pay {
+    margin-bottom: 16px;
+  }
+  .form-group-pay label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #aaa;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .input-pay {
+    width: 100%;
+    padding: 12px 14px;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  .input-pay:focus {
+    outline: none;
+    border-color: #f4c400;
+  }
+  .btn-pay-action {
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 15px;
+    background: #f4c400;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-pay-action:hover:not(:disabled) {
+    background: #ffd733;
+  }
+  .btn-pay-action:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  /* Status displays */
+  .status-box {
+    display: none;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .status-pending {
+    background: rgba(255, 187, 0, 0.1);
+    border: 1px solid rgba(255, 187, 0, 0.35);
+    color: #ffbb00;
+  }
+  .status-success {
+    background: rgba(0, 230, 118, 0.1);
+    border: 1px solid rgba(0, 230, 118, 0.35);
+    color: #00e676;
+  }
+  .status-error {
+    background: rgba(255, 82, 82, 0.1);
+    border: 1px solid rgba(255, 82, 82, 0.35);
+    color: #ff5252;
+  }
+  .spinner-pay {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border-top-color: currentColor;
+    animation: spinPay 0.8s linear infinite;
+    margin-bottom: 8px;
+  }
+  @keyframes spinPay {
+    to { transform: rotate(360deg); }
+  }
+  .admin-box {
+    background: rgba(244, 196, 0, 0.05);
+    border: 1px solid rgba(244, 196, 0, 0.2);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.5;
+  }
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0 0;
+    display: flex;
+    flex-direction: column;
     gap: 6px;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 13px;
     color: #ddd;
+  }
+  .benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 </style>
 </head>
@@ -178,10 +269,7 @@ Sanyu<span>Hub</span>
 </div>
 </header>
 
-<!-- SIDEBAR OVERLAY -->
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-<!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
 <div class="sidebar-content">
 <div class="sidebar-section">
@@ -199,86 +287,142 @@ Sanyu<span>Hub</span>
 
 <header class="page-header">
 <div class="page-title-group">
-<h1 class="page-title">Payment & Verification</h1>
+<h1 class="page-title">Subscription Checkout</h1>
+<p class="page-subtitle">Choose your plan and pay securely via MTN MoMo, Airtel Money, or International Bank Cards.</p>
 </div>
 </header>
 
-<section class="section">
-  <div style="max-width: 720px; margin: 0 auto; display: flex; flex-direction: column;">
+<div class="payment-container">
 
-    <div class="payment-card">
-      <span class="payment-badge">Manual Account Verification</span>
-      <div class="payment-amount">12,000 UGX <span style="font-size: 16px; color: #aaa; font-weight: 500;">/ month</span></div>
-      <p class="payment-subtext">
-        To activate or renew your subscription, please send your payment directly to the administrator number and call or message for instant manual account verification.
-      </p>
+  <!-- 1. PACKAGE SELECTION & SUMMARY -->
+  <div class="payment-card">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <span class="payment-badge" id="pkgBadgeDisplay">PACKAGE</span>
+      <span style="font-size:12px; color:#888;" id="pkgDurationDisplay">3 Days</span>
+    </div>
 
-      <!-- Admin Contact Box -->
-      <div class="admin-box">
-        <div style="font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;">Admin Mobile Money Number</div>
-        <div class="admin-number-highlight" id="adminPhoneNumberDisplay">256702662846</div>
-        <div style="font-size: 13px; color: #ccc;">
-          Administrator: <strong>delostvoyage@gmail.com</strong> (+256 702 662 846)
-        </div>
-        <div class="network-badge-group">
-          <span class="network-badge">
-            <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:#f4c400;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            MTN Mobile Money
-          </span>
-          <span class="network-badge">
-            <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:#f4c400;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            Airtel Money
-          </span>
-        </div>
+    <div class="payment-amount" id="pkgPriceDisplay">UGX 2,000</div>
+    <div class="payment-subtext" id="pkgDescDisplay">Unlimited streaming access included.</div>
+
+    <!-- Package switcher pills -->
+    <div class="package-selector-grid">
+      <div class="pkg-pill selected" data-pkg="pkg-3day">
+        <div class="pkg-pill-title">3-Day</div>
+        <div class="pkg-pill-price">2,000 UGX</div>
+      </div>
+      <div class="pkg-pill" data-pkg="pkg-7day">
+        <div class="pkg-pill-title">7-Day</div>
+        <div class="pkg-pill-price">6,000 UGX</div>
+      </div>
+      <div class="pkg-pill" data-pkg="pkg-monthly">
+        <div class="pkg-pill-title">Monthly</div>
+        <div class="pkg-pill-price">12,000 UGX</div>
+      </div>
+      <div class="pkg-pill royal" data-pkg="pkg-royal">
+        <div class="pkg-pill-title" style="color:#ffd700;">👑 Royal</div>
+        <div class="pkg-pill-price">35,000 UGX</div>
+      </div>
+    </div>
+
+    <!-- Package Benefits List -->
+    <ul class="benefits-list" id="pkgBenefitsList">
+      <!-- Dynamic list -->
+    </ul>
+  </div>
+
+  <!-- 2. PAYMENT METHOD & CHECKOUT -->
+  <div class="payment-card">
+    <h2 style="font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 12px 0;">Select Payment Method</h2>
+
+    <div class="method-tab-group">
+      <div class="method-tab selected" data-method="MTN">
+        <img src="/images/mtn-logo.png" alt="MTN">
+        <span>MTN MoMo</span>
+      </div>
+      <div class="method-tab" data-method="Airtel">
+        <img src="/images/airtel-logo.jpg" alt="Airtel">
+        <span>Airtel Money</span>
+      </div>
+      <div class="method-tab" data-method="Card">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#f4c400;"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+        <span>Card (Visa/MC)</span>
+      </div>
+    </div>
+
+    <!-- Mobile Money Form -->
+    <div id="momoFormArea">
+      <div class="form-group-pay">
+        <label for="payPhone">Mobile Money Phone Number</label>
+        <input type="tel" id="payPhone" class="input-pay" placeholder="e.g. 0770000000 or 256700000000" autocomplete="tel">
+        <div style="font-size:11px; color:#888; margin-top:4px;">A payment prompt will be sent directly to this phone number.</div>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="action-buttons">
-        <a href="tel:256702662846" class="btn-action btn-call" id="btnCallAdmin">
-          <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:currentColor;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      <button type="button" class="btn-pay-action" id="btnInitiateMomo">
+        <span>Pay with Mobile Money</span>
+      </button>
+    </div>
+
+    <!-- Card Form -->
+    <div id="cardFormArea" style="display: none;">
+      <div class="form-group-pay">
+        <label for="cardEmail">Email Address (for Receipt)</label>
+        <input type="email" id="cardEmail" class="input-pay" placeholder="user@example.com" autocomplete="email">
+      </div>
+      <div class="form-group-pay">
+        <label for="cardName">Cardholder Name</label>
+        <input type="text" id="cardName" class="input-pay" placeholder="Full Name as on card" autocomplete="name">
+      </div>
+
+      <div id="cardStatusWarning" style="display:none; margin-bottom:12px; font-size:12px; color:#ffbb00; background:rgba(255,187,0,0.1); border:1px solid rgba(255,187,0,0.3); border-radius:8px; padding:10px;">
+        Card gateway is currently in testing mode or awaiting merchant keys.
+      </div>
+
+      <button type="button" class="btn-pay-action" id="btnInitiateCard">
+        <span>Proceed to Secure Card Checkout</span>
+      </button>
+    </div>
+
+    <!-- Real-time Status Containers -->
+    <div class="status-box status-pending" id="statusPending">
+      <div class="spinner-pay"></div>
+      <h3 style="font-size:15px; font-weight:800; margin:0 0 6px 0;" id="pendingTitle">Awaiting Mobile Money Approval...</h3>
+      <p style="font-size:13px; margin:0; line-height:1.4;" id="pendingMessage">
+        A prompt has been sent to your phone. Please approve with your mobile money PIN to complete activation.
+      </p>
+      <div style="margin-top:10px; font-size:11px; opacity:0.8;">Ref: <span id="pendingRefDisplay">-</span></div>
+    </div>
+
+    <div class="status-box status-success" id="statusSuccess">
+      <div style="font-size:28px; margin-bottom:6px;">✓</div>
+      <h3 style="font-size:16px; font-weight:800; margin:0 0 6px 0;">Payment Confirmed!</h3>
+      <p style="font-size:13px; margin:0 0 12px 0;" id="successMessage">Your subscription has been successfully activated.</p>
+      <a href="/" style="display:inline-block; background:#00e676; color:#000; font-weight:800; padding:10px 18px; border-radius:6px; text-decoration:none; font-size:13px;">Start Streaming Now &rarr;</a>
+    </div>
+
+    <div class="status-box status-error" id="statusError">
+      <div style="font-size:28px; margin-bottom:6px;">✕</div>
+      <h3 style="font-size:15px; font-weight:800; margin:0 0 6px 0;">Payment Incomplete</h3>
+      <p style="font-size:13px; margin:0 0 10px 0;" id="errorMessage">Unable to process payment.</p>
+      <button type="button" class="btn-pay-action" id="btnRetryPayment" style="background:#ff5252; color:#fff; width:auto; margin:0 auto; padding:8px 16px; font-size:12px;">Try Again</button>
+    </div>
+
+    <!-- Admin Support Box -->
+    <div class="admin-box">
+      <div style="font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;">Admin Support & Verification</div>
+      <div class="admin-number-highlight" id="adminPhoneNumberDisplay" style="font-size: 20px; font-weight: 800; color: #f4c400; margin: 6px 0;">256702662846</div>
+      <div style="margin-bottom: 12px;">Administrator: <strong>delostvoyage@gmail.com</strong> (+256 702 662 846)</div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="tel:256702662846" id="btnCallAdmin" class="btn-action btn-call" style="background:#f4c400; color:#000; font-weight:700; padding:8px 14px; border-radius:6px; text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
           Call Admin (256702662846)
         </a>
-        <a href="https://wa.me/256702662846?text=Hello%20SanyuHub%20Admin%2C%20I%20have%20sent%20money%20for%20my%20subscription.%20Please%20verify%20my%20account." target="_blank" rel="noopener" class="btn-action btn-whatsapp" id="btnWhatsappAdmin">
-          <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:currentColor;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c4.56 0 8.25 3.69 8.25 8.24 0 2.2-.86 4.28-2.42 5.84l-.59.59-.35.19c-1.44.78-3.06 1.19-4.89 1.19-1.57 0-3.1-.4-4.44-1.16l-.32-.18-3.26.86.87-3.18-.2-.33a8.16 8.16 0 0 1-1.25-4.32c0-4.55 3.7-8.24 8.35-8.24zm4.84 11.64c-.2-.1-.1.1-1.18-.44-.33-.16-.57-.25-.81.12-.24.37-.93 1.18-1.14 1.42-.21.24-.42.27-.75.1-.33-.16-1.39-.51-2.64-1.63-.98-.87-1.64-1.95-1.83-2.28-.19-.33-.02-.51.15-.67.15-.15.33-.39.5-.59.16-.19.22-.33.33-.55.11-.22.05-.41-.03-.57-.08-.16-.81-1.95-1.11-2.67-.29-.7-.59-.6-.81-.61-.21-.01-.45-.01-.69-.01-.24 0-.63.09-.96.45-.33.37-1.26 1.23-1.26 3 0 1.77 1.29 3.48 1.47 3.72.18.24 2.54 3.88 6.16 5.44.86.37 1.53.59 2.06.76.87.28 1.66.24 2.28.15.7-.1 2.15-.88 2.45-1.73.3-.85.3-1.58.21-1.73-.09-.16-.33-.26-.66-.42z"/></svg>
-          Chat on WhatsApp
+        <a href="https://wa.me/256702662846?text=Hello%20SanyuHub%20Admin%2C%20I%20have%20sent%20money%20for%20my%20subscription.%20Please%20verify%20my%20account." id="btnWhatsappAdmin" target="_blank" rel="noopener" class="btn-action btn-whatsapp" style="background:#25D366; color:#fff; font-weight:700; padding:8px 14px; border-radius:6px; text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+          WhatsApp Admin
         </a>
       </div>
     </div>
-
-    <!-- Instructions Steps -->
-    <div class="payment-card">
-      <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin: 0 0 16px 0;">How to Complete Your Verification</h2>
-      <ul class="steps-list">
-        <li class="step-item">
-          <div class="step-number">1</div>
-          <div class="step-content">
-            <h3>Send 12,000 UGX to the Admin Number</h3>
-            <p>Use MTN MoMo or Airtel Money to transfer <strong>12,000 UGX</strong> directly to <strong>256702662846</strong> (+256 702 662 846).</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-number">2</div>
-          <div class="step-content">
-            <h3>Contact Administrator with Payment Confirmation</h3>
-            <p>Tap the <strong>Call Admin</strong> or <strong>Chat on WhatsApp</strong> button above to provide your mobile money transaction ID, registered email, or username.</p>
-          </div>
-        </li>
-        <li class="step-item">
-          <div class="step-number">3</div>
-          <div class="step-content">
-            <h3>Admin Verifies & Instantly Unlocks Your Account</h3>
-            <p>The administrator (<strong>delostvoyage@gmail.com</strong>) will verify your transaction in the Admin Overview panel and immediately activate or renew your subscription for 30 full days.</p>
-          </div>
-        </li>
-      </ul>
-
-      <div style="margin-top: 24px; text-align: center;">
-        <a href="/profile" style="color: #f4c400; font-weight: 600; text-decoration: none; font-size: 14px;">&larr; Return to Profile</a>
-      </div>
-    </div>
-
   </div>
-</section>
+
+</div>
 
 </main>
 
@@ -290,5 +434,363 @@ Sanyu<span>Hub</span>
 </nav>
 
 <script src="/js/app.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    let currentUser = (typeof SanyuAuth !== "undefined") ? SanyuAuth.getUser() : null;
+
+    const PACKAGES = {
+      "pkg-3day": {
+        id: "pkg-3day",
+        name: "3-Day Package",
+        price: 2000,
+        days: 3,
+        priceDisplay: "UGX 2,000",
+        duration: "3 Days",
+        desc: "Unlimited streaming access for 3 days. No offline downloads.",
+        badge: "STARTER",
+        benefits: [
+          "Streaming access included",
+          "Full movie and series catalogue",
+          "Live TV & radio stations",
+          "Downloads: Not available (No offline downloads)"
+        ]
+      },
+      "pkg-7day": {
+        id: "pkg-7day",
+        name: "7-Day Package",
+        price: 6000,
+        days: 7,
+        priceDisplay: "UGX 6,000",
+        duration: "7 Days",
+        desc: "Unlimited streaming access for 7 days. No offline downloads.",
+        badge: "POPULAR",
+        benefits: [
+          "Streaming access included",
+          "Full movie and series catalogue",
+          "Live TV & radio stations",
+          "Downloads: Not available (No offline downloads)"
+        ]
+      },
+      "pkg-monthly": {
+        id: "pkg-monthly",
+        name: "Monthly Package",
+        price: 12000,
+        days: 30,
+        priceDisplay: "UGX 12,000",
+        duration: "30 Days",
+        desc: "30 days of unlimited streaming access. No offline downloads.",
+        badge: "BEST VALUE",
+        benefits: [
+          "Streaming access included",
+          "Full movie and series catalogue",
+          "Live TV & radio stations",
+          "Downloads: Not available (No offline downloads)"
+        ]
+      },
+      "pkg-royal": {
+        id: "pkg-royal",
+        name: "Royal Premium",
+        price: 35000,
+        days: 30,
+        priceDisplay: "UGX 35,000",
+        duration: "30 Days",
+        desc: "Premium streaming experience + 4K downloads up to 900 MB weekly.",
+        badge: "👑 ROYAL TIER",
+        royal: true,
+        benefits: [
+          "Royal Streaming access included",
+          "4K downloads enabled",
+          "Weekly download allowance: 900 MB",
+          "Premium streaming experience",
+          "Access to all Royal Premium-exclusive features"
+        ]
+      }
+    };
+
+    // Parse URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    let selectedPackageId = urlParams.get("plan") || (currentUser && currentUser.plan) || "pkg-3day";
+    if (!PACKAGES[selectedPackageId]) selectedPackageId = "pkg-3day";
+
+    let selectedMethod = urlParams.get("method") || (currentUser && currentUser.paymentSector) || "MTN";
+    if (!["MTN", "Airtel", "Card"].includes(selectedMethod)) selectedMethod = "MTN";
+
+    const payPhoneInput = document.getElementById("payPhone");
+    const cardEmailInput = document.getElementById("cardEmail");
+    const cardNameInput = document.getElementById("cardName");
+
+    if (currentUser) {
+      if (payPhoneInput && currentUser.phone) payPhoneInput.value = currentUser.phone;
+      if (cardEmailInput && currentUser.email) cardEmailInput.value = currentUser.email;
+      if (cardNameInput && currentUser.username) cardNameInput.value = currentUser.username;
+    }
+
+    // Check Gateway Status from Backend
+    try {
+      const gRes = await fetch("/api/payments/gateway-status");
+      const gData = await gRes.json();
+      if (gData.cards && !gData.cards.configured) {
+        const warn = document.getElementById("cardStatusWarning");
+        if (warn) {
+          warn.style.display = "block";
+          warn.textContent = "Notice: International Card payment requires live merchant API credentials. Mobile Money (MTN & Airtel) is available.";
+        }
+      }
+    } catch (e) {}
+
+    // UI Elements
+    const pkgBadgeDisplay = document.getElementById("pkgBadgeDisplay");
+    const pkgDurationDisplay = document.getElementById("pkgDurationDisplay");
+    const pkgPriceDisplay = document.getElementById("pkgPriceDisplay");
+    const pkgDescDisplay = document.getElementById("pkgDescDisplay");
+    const pkgBenefitsList = document.getElementById("pkgBenefitsList");
+
+    const momoFormArea = document.getElementById("momoFormArea");
+    const cardFormArea = document.getElementById("cardFormArea");
+
+    const btnInitiateMomo = document.getElementById("btnInitiateMomo");
+    const btnInitiateCard = document.getElementById("btnInitiateCard");
+
+    const statusPending = document.getElementById("statusPending");
+    const pendingTitle = document.getElementById("pendingTitle");
+    const pendingMessage = document.getElementById("pendingMessage");
+    const pendingRefDisplay = document.getElementById("pendingRefDisplay");
+
+    const statusSuccess = document.getElementById("statusSuccess");
+    const successMessage = document.getElementById("successMessage");
+    const statusError = document.getElementById("statusError");
+    const errorMessage = document.getElementById("errorMessage");
+    const btnRetryPayment = document.getElementById("btnRetryPayment");
+
+    let pollInterval = null;
+
+    function renderPackage() {
+      const pkg = PACKAGES[selectedPackageId];
+      pkgBadgeDisplay.textContent = pkg.badge;
+      if (pkg.royal) {
+        pkgBadgeDisplay.classList.add("royal");
+      } else {
+        pkgBadgeDisplay.classList.remove("royal");
+      }
+      pkgDurationDisplay.textContent = pkg.duration;
+      pkgPriceDisplay.textContent = pkg.priceDisplay;
+      pkgDescDisplay.textContent = pkg.desc;
+
+      pkgBenefitsList.innerHTML = "";
+      pkg.benefits.forEach(b => {
+        const li = document.createElement("li");
+        const icon = b.includes("Not available") ? "🚫" : (pkg.royal ? "👑" : "✓");
+        li.innerHTML = `<span>${icon}</span> <span>${b}</span>`;
+        pkgBenefitsList.appendChild(li);
+      });
+
+      document.querySelectorAll(".pkg-pill").forEach(pill => {
+        if (pill.getAttribute("data-pkg") === selectedPackageId) {
+          pill.classList.add("selected");
+        } else {
+          pill.classList.remove("selected");
+        }
+      });
+    }
+
+    function renderMethod() {
+      document.querySelectorAll(".method-tab").forEach(tab => {
+        if (tab.getAttribute("data-method") === selectedMethod) {
+          tab.classList.add("selected");
+        } else {
+          tab.classList.remove("selected");
+        }
+      });
+
+      if (selectedMethod === "Card") {
+        momoFormArea.style.display = "none";
+        cardFormArea.style.display = "block";
+      } else {
+        momoFormArea.style.display = "block";
+        cardFormArea.style.display = "none";
+      }
+    }
+
+    document.querySelectorAll(".pkg-pill").forEach(pill => {
+      pill.addEventListener("click", () => {
+        selectedPackageId = pill.getAttribute("data-pkg");
+        renderPackage();
+      });
+    });
+
+    document.querySelectorAll(".method-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        selectedMethod = tab.getAttribute("data-method");
+        renderMethod();
+      });
+    });
+
+    renderPackage();
+    renderMethod();
+
+    function showStatus(type, msg = "", ref = "") {
+      statusPending.style.display = "none";
+      statusSuccess.style.display = "none";
+      statusError.style.display = "none";
+
+      if (type === "pending") {
+        statusPending.style.display = "block";
+        if (msg) pendingMessage.textContent = msg;
+        if (ref) pendingRefDisplay.textContent = ref;
+      } else if (type === "success") {
+        statusSuccess.style.display = "block";
+        if (msg) successMessage.textContent = msg;
+      } else if (type === "error") {
+        statusError.style.display = "block";
+        if (msg) errorMessage.textContent = msg;
+      }
+    }
+
+    // Polling verification loop
+    function startPolling(reference) {
+      if (pollInterval) clearInterval(pollInterval);
+      let attempts = 0;
+      const maxAttempts = 40; // Poll for 2 minutes (every 3s)
+
+      pollInterval = setInterval(async () => {
+        attempts++;
+        if (attempts > maxAttempts) {
+          clearInterval(pollInterval);
+          showStatus("pending", "Payment verification is taking longer than expected. If approved, your subscription will activate automatically.");
+          return;
+        }
+
+        try {
+          const res = await fetch(`/api/payments/status/${reference}`);
+          if (res.ok) {
+            const data = await res.json();
+            if (data.status === "completed") {
+              clearInterval(pollInterval);
+              showStatus("success", `Payment verified! ${PACKAGES[selectedPackageId].name} is now active.`);
+
+              // Update client session
+              if (currentUser) {
+                currentUser.plan = selectedPackageId;
+                currentUser.packageId = selectedPackageId;
+                currentUser.isPaid = true;
+                currentUser.isTrial = false;
+                const durationDays = PACKAGES[selectedPackageId].days || 30;
+                currentUser.subscriptionExpiry = new Date(Date.now() + durationDays * 24 * 60 * 60 * 1000).toISOString();
+                SanyuAuth.registerUser(currentUser);
+              }
+            } else if (data.status === "failed" || data.status === "cancelled") {
+              clearInterval(pollInterval);
+              showStatus("error", "The payment request was cancelled or declined by the network.");
+              btnInitiateMomo.disabled = false;
+            }
+          }
+        } catch (e) {
+          console.warn("Polling error:", e);
+        }
+      }, 3000);
+    }
+
+    // Initiate Mobile Money
+    btnInitiateMomo.addEventListener("click", async () => {
+      const phone = payPhoneInput.value.trim();
+      if (!phone) {
+        alert("Please enter your Mobile Money phone number.");
+        payPhoneInput.focus();
+        return;
+      }
+
+      btnInitiateMomo.disabled = true;
+      btnInitiateMomo.textContent = "Initiating prompt...";
+
+      try {
+        const userIdentifier = (currentUser && (currentUser.email || currentUser.phone || currentUser.username)) || phone;
+        const res = await fetch("/api/payments/momo/initiate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            packageId: selectedPackageId,
+            phone: phone,
+            userIdentifier: userIdentifier
+          })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          showStatus("pending", data.instructions, data.reference);
+          startPolling(data.reference);
+        } else {
+          showStatus("error", data.error || "Failed to initiate payment prompt.");
+          btnInitiateMomo.disabled = false;
+          btnInitiateMomo.textContent = "Pay with Mobile Money";
+        }
+      } catch (err) {
+        showStatus("error", "Network connection failed. Please check internet and try again.");
+        btnInitiateMomo.disabled = false;
+        btnInitiateMomo.textContent = "Pay with Mobile Money";
+      }
+    });
+
+    // Initiate Card Checkout
+    btnInitiateCard.addEventListener("click", async () => {
+      const email = cardEmailInput.value.trim();
+      const name = cardNameInput.value.trim();
+      if (!email) {
+        alert("Please provide an email address for payment receipt.");
+        cardEmailInput.focus();
+        return;
+      }
+
+      btnInitiateCard.disabled = true;
+      btnInitiateCard.textContent = "Opening secure gateway...";
+
+      try {
+        const userIdentifier = (currentUser && (currentUser.email || currentUser.phone || currentUser.username)) || email;
+        const res = await fetch("/api/payments/card/initiate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            packageId: selectedPackageId,
+            userIdentifier: userIdentifier,
+            email: email,
+            name: name,
+            redirectUrl: window.location.href
+          })
+        });
+
+        const data = await res.json();
+        if (data.success && data.checkoutUrl) {
+          window.location.href = data.checkoutUrl;
+        } else if (!data.configured) {
+          showStatus("error", "Card gateway is currently awaiting live merchant keys. Please use MTN MoMo or Airtel Money.");
+          btnInitiateCard.disabled = false;
+          btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+        } else {
+          showStatus("error", data.error || "Card checkout failed to initialize.");
+          btnInitiateCard.disabled = false;
+          btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+        }
+      } catch (err) {
+        showStatus("error", "Network connection failed.");
+        btnInitiateCard.disabled = false;
+        btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+      }
+    });
+
+    btnRetryPayment.addEventListener("click", () => {
+      statusError.style.display = "none";
+      btnInitiateMomo.disabled = false;
+      btnInitiateMomo.textContent = "Pay with Mobile Money";
+      btnInitiateCard.disabled = false;
+      btnInitiateCard.textContent = "Proceed to Secure Card Checkout";
+    });
+
+    // Check if redirected back with tx_ref
+    const refFromUrl = urlParams.get("ref") || urlParams.get("tx_ref");
+    if (refFromUrl) {
+      showStatus("pending", "Checking transaction status from gateway...", refFromUrl);
+      startPolling(refFromUrl);
+    }
+  });
+</script>
 </body>
 </html>

@@ -83,42 +83,63 @@
           <div class="sh-dropdown-wrapper" id="subDropdownWrapper">
             <button type="button" class="sh-dropdown-trigger" id="subDropdownTrigger" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="subPlanLabel">
               <div class="sh-dropdown-trigger-text">
-                <span class="sh-trigger-title" id="selectedPlanTitle">2 Days Free Trial — FREE</span>
+                <span class="sh-trigger-title" id="selectedPlanTitle">3-Day Package — UGX 2,000</span>
               </div>
               <svg class="sh-dropdown-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
             </button>
             <div class="sh-dropdown-menu" id="subDropdownMenu" role="listbox" aria-labelledby="subPlanLabel">
-              <div class="sh-dropdown-item selected" data-plan="trial" role="option" aria-selected="true" tabindex="0">
+              <!-- Package 1: 3-Day Package -->
+              <div class="sh-dropdown-item selected" data-plan="pkg-3day" role="option" aria-selected="true" tabindex="0">
                 <div class="sh-item-header">
-                  <span class="sh-item-title">2 Days Free Trial</span>
-                  <span class="sh-item-badge free">FREE</span>
+                  <span class="sh-item-title">3-Day Package</span>
+                  <span class="sh-item-badge">UGX 2,000</span>
                 </div>
-                <div class="sh-item-desc">Full library and live TV access for 2 days. No payment required today.</div>
+                <div class="sh-item-desc">Duration: 3 days. Unlimited streaming access included.</div>
+                <span class="sh-badge-no-downloads">🚫 Downloads: Not available. No offline downloads.</span>
               </div>
-              <div class="sh-dropdown-item" data-plan="monthly" role="option" aria-selected="false" tabindex="0">
+
+              <!-- Package 2: 7-Day Package -->
+              <div class="sh-dropdown-item" data-plan="pkg-7day" role="option" aria-selected="false" tabindex="0">
                 <div class="sh-item-header">
-                  <span class="sh-item-title">Monthly Plan</span>
-                  <span class="sh-item-badge">12,000 UGX</span>
+                  <span class="sh-item-title">7-Day Package</span>
+                  <span class="sh-item-badge">UGX 6,000</span>
                 </div>
-                <div class="sh-item-desc">30 days of unlimited access. Payment required before activation.</div>
+                <div class="sh-item-desc">Duration: 7 days. Unlimited streaming access included.</div>
+                <span class="sh-badge-no-downloads">🚫 Downloads: Not available. No offline downloads.</span>
+              </div>
+
+              <!-- Package 3: Monthly Package -->
+              <div class="sh-dropdown-item" data-plan="pkg-monthly" role="option" aria-selected="false" tabindex="0">
+                <div class="sh-item-header">
+                  <span class="sh-item-title">Monthly Package</span>
+                  <span class="sh-item-badge">UGX 12,000</span>
+                </div>
+                <div class="sh-item-desc">Duration: 30 days. Full platform streaming access.</div>
+                <span class="sh-badge-no-downloads">🚫 Downloads: Not available. No offline downloads.</span>
+              </div>
+
+              <!-- Package 4: Royal Premium -->
+              <div class="sh-dropdown-item royal-tier" data-plan="pkg-royal" role="option" aria-selected="false" tabindex="0">
+                <div class="sh-item-header">
+                  <span class="sh-item-title" style="color: #ffd700;">👑 Royal Premium</span>
+                  <span class="sh-item-badge royal">UGX 35,000</span>
+                </div>
+                <div class="sh-item-desc">Duration: 30 days. Royal streaming + 4K downloads enabled.</div>
+                <span class="sh-badge-royal-allowance">⚡ Weekly download allowance: 900 MB.</span>
               </div>
             </div>
           </div>
 
           <!-- Dynamic Subscription Summary -->
           <div class="sh-sub-summary-card" id="subSummaryCard">
-            <div class="sh-summary-name-price" id="summaryNamePrice">2 Days Free Trial — FREE</div>
-            <div class="sh-summary-benefits" id="summaryBenefits">Full platform access for 2 days. No payment required today.</div>
-          </div>
-
-          <div id="monthlyPaymentNotice" style="display:none; margin-top:12px; font-size:12px; color:#f4c400; background:rgba(244,196,0,0.1); border:1px solid rgba(244,196,0,0.3); border-radius:8px; padding:10px; line-height:1.4;">
-            Note: For monthly subscriptions, send money to Admin number <strong>256702662846</strong> (+256 702 662 846) for account verification. After registration you will be directed to payment instructions.
+            <div class="sh-summary-name-price" id="summaryNamePrice">3-Day Package — UGX 2,000</div>
+            <div class="sh-summary-benefits" id="summaryBenefits">Duration: 3 days. Streaming access included. Downloads: Not available.</div>
           </div>
         </div>
 
-        <!-- PAYMENT NETWORK SELECTOR (CONDITIONAL) -->
-        <div class="sh-dropdown-field-group sh-payment-section" id="paymentSectorSection" style="display: none;">
-          <label class="sh-form-label" id="paymentNetworkLabel">Select Payment Network</label>
+        <!-- PAYMENT METHOD SELECTOR -->
+        <div class="sh-dropdown-field-group sh-payment-section" id="paymentSectorSection" style="display: block;">
+          <label class="sh-form-label" id="paymentNetworkLabel">Select Payment Method</label>
           <div class="sh-dropdown-wrapper" id="paymentDropdownWrapper">
             <button type="button" class="sh-dropdown-trigger" id="paymentDropdownTrigger" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="paymentNetworkLabel">
               <div class="sh-dropdown-trigger-text">
@@ -131,13 +152,19 @@
               <div class="sh-dropdown-item selected" data-sector="MTN" role="option" aria-selected="true" tabindex="0">
                 <div class="sh-item-network">
                   <img src="/images/mtn-logo.png" alt="MTN MoMo" class="sh-network-logo">
-                  <span class="sh-item-title">MTN MoMo</span>
+                  <span class="sh-item-title">MTN Mobile Money Uganda</span>
                 </div>
               </div>
               <div class="sh-dropdown-item" data-sector="Airtel" role="option" aria-selected="false" tabindex="0">
                 <div class="sh-item-network">
                   <img src="/images/airtel-logo.jpg" alt="Airtel Money" class="sh-network-logo">
-                  <span class="sh-item-title">Airtel Money</span>
+                  <span class="sh-item-title">Airtel Money Uganda</span>
+                </div>
+              </div>
+              <div class="sh-dropdown-item" data-sector="Card" role="option" aria-selected="false" tabindex="0">
+                <div class="sh-item-network">
+                  <svg viewBox="0 0 24 24" class="sh-network-logo" style="width:22px;height:22px;fill:#f4c400;"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                  <span class="sh-item-title">Bank Card (Mastercard / Visa)</span>
                 </div>
               </div>
             </div>
@@ -155,7 +182,7 @@
 <script src="js/app.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    let selectedPlan = "trial";
+    let selectedPlan = "pkg-3day";
     let selectedSector = "MTN";
 
     const subDropdownTrigger = document.getElementById("subDropdownTrigger");
@@ -178,6 +205,37 @@
     const confirmPwdInput = document.getElementById("confirmPassword");
     const togglePwdBtn = document.getElementById("togglePasswordBtn");
     const toggleConfirmPwdBtn = document.getElementById("toggleConfirmPasswordBtn");
+
+    const PACKAGES = {
+      "pkg-3day": {
+        title: "3-Day Package — UGX 2,000",
+        summaryName: "3-Day Package — UGX 2,000",
+        benefits: "Duration: 3 days. Unlimited streaming access included. Downloads: Not available (no offline downloads).",
+        price: 2000,
+        days: 3
+      },
+      "pkg-7day": {
+        title: "7-Day Package — UGX 6,000",
+        summaryName: "7-Day Package — UGX 6,000",
+        benefits: "Duration: 7 days. Unlimited streaming access included. Downloads: Not available (no offline downloads).",
+        price: 6000,
+        days: 7
+      },
+      "pkg-monthly": {
+        title: "Monthly Package — UGX 12,000",
+        summaryName: "Monthly Package — UGX 12,000",
+        benefits: "Duration: 30 days. Unlimited streaming access included. Downloads: Not available (no offline downloads).",
+        price: 12000,
+        days: 30
+      },
+      "pkg-royal": {
+        title: "Royal Premium — UGX 35,000",
+        summaryName: "👑 Royal Premium — UGX 35,000",
+        benefits: "Duration: 30 days. Royal streaming + 4K downloads enabled. Weekly download allowance: 900 MB.",
+        price: 35000,
+        days: 30
+      }
+    };
 
     // Password visibility toggles
     togglePwdBtn.addEventListener("click", () => {
@@ -240,7 +298,7 @@
         item.classList.add("selected");
         item.setAttribute("aria-selected", "true");
 
-        selectedPlan = item.getAttribute("data-plan");
+        selectedPlan = item.getAttribute("data-plan") || "pkg-3day";
         updatePlanState();
         closeAllDropdowns();
       };
@@ -279,37 +337,30 @@
       });
     });
 
-    const monthlyNotice = document.getElementById("monthlyPaymentNotice");
-
     function updatePlanState() {
-      if (selectedPlan === "trial") {
-        selectedPlanTitle.textContent = "2 Days Free Trial — FREE";
-        summaryNamePrice.textContent = "2 Days Free Trial — FREE";
-        summaryBenefits.textContent = "Full platform access for 2 days. No payment required today.";
-
-        if (monthlyNotice) monthlyNotice.style.display = "none";
-        paymentSectorSection.style.display = "none";
-        errorMsg.style.display = "none";
-      } else {
-        selectedPlanTitle.textContent = "Monthly Plan — 12,000 UGX";
-        summaryNamePrice.textContent = "Monthly Subscription — 12,000 UGX";
-        summaryBenefits.textContent = "30 days of unlimited access.";
-
-        if (monthlyNotice) monthlyNotice.style.display = "block";
-        paymentSectorSection.style.display = "block";
-      }
+      const pkg = PACKAGES[selectedPlan] || PACKAGES["pkg-3day"];
+      selectedPlanTitle.textContent = pkg.title;
+      summaryNamePrice.textContent = pkg.summaryName;
+      summaryBenefits.textContent = pkg.benefits;
+      errorMsg.style.display = "none";
     }
 
     function updatePaymentState() {
       if (selectedSector === "Airtel") {
         selectedNetworkLogo.src = "/images/airtel-logo.jpg";
         selectedNetworkLogo.alt = "Airtel Money";
-        selectedNetworkTitle.textContent = "Airtel Money";
+        selectedNetworkTitle.textContent = "Airtel Money Uganda";
+      } else if (selectedSector === "Card") {
+        selectedNetworkLogo.src = "";
+        selectedNetworkLogo.alt = "Card";
+        selectedNetworkLogo.style.display = "none";
+        selectedNetworkTitle.textContent = "Bank Card (Mastercard / Visa)";
       } else {
         selectedSector = "MTN";
+        selectedNetworkLogo.style.display = "inline-block";
         selectedNetworkLogo.src = "/images/mtn-logo.png";
         selectedNetworkLogo.alt = "MTN MoMo";
-        selectedNetworkTitle.textContent = "MTN MoMo";
+        selectedNetworkTitle.textContent = "MTN Mobile Money Uganda";
       }
     }
 
@@ -351,25 +402,23 @@
         return;
       }
 
-      if (selectedPlan === "monthly" && !selectedSector) {
-        errorMsg.textContent = "Please select a payment network for your monthly subscription.";
-        errorMsg.style.display = "block";
-        return;
-      }
+      const adminEmails = ["delostvoyage@gmail.com", "williambanksug256@gmail.com"];
+      const isAdmin = (adminEmails.includes(email.toLowerCase()) || phone === "256702662846" || adminEmails.includes(username.toLowerCase()));
 
-      const isAdmin = (email.toLowerCase() === "delostvoyage@gmail.com" || phone === "256702662846" || username.toLowerCase() === "delostvoyage@gmail.com");
-      const isTrial = (selectedPlan === "trial");
-      const subDays = isTrial ? 2 : 30;
-      const expiryDate = new Date(Date.now() + (isAdmin ? 365 : subDays) * 24 * 60 * 60 * 1000).toISOString();
+      const pkg = PACKAGES[selectedPlan] || PACKAGES["pkg-3day"];
+      const expiryDate = new Date(Date.now() + (isAdmin ? 365 : pkg.days) * 24 * 60 * 60 * 1000).toISOString();
 
       const userSession = {
         email: email,
         phone: phone,
         username: username,
         isAdmin: isAdmin,
-        paymentSector: isTrial ? "MTN" : selectedSector,
+        paymentSector: selectedSector,
+        paymentMethod: selectedSector.toLowerCase(),
         plan: selectedPlan,
-        isTrial: isTrial,
+        packageId: selectedPlan,
+        isTrial: false,
+        isPaid: isAdmin,
         subscriptionExpiry: expiryDate,
         registeredAt: new Date().toISOString()
       };
@@ -380,8 +429,15 @@
         localStorage.setItem("sanyuhub_auth_user", JSON.stringify(userSession));
       }
 
-      if (!isTrial && !isAdmin) {
-        window.location.href = "/payment";
+      if (!isAdmin) {
+        // Redirect directly to payment checkout with selected plan and method
+        const params = new URLSearchParams({
+          plan: selectedPlan,
+          method: selectedSector,
+          phone: phone,
+          email: email
+        });
+        window.location.href = `/payment?${params.toString()}`;
       } else {
         window.location.href = "/";
       }

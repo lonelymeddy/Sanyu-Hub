@@ -90,8 +90,8 @@ function ensureLandingOverlayExists() {
                     <p class="landing-brand-desc">Discover movies, series and live TV, all in one place.</p>
 
                     <div class="landing-promo-card">
-                        <span class="landing-promo-badge">Start with 2 Days Free Trial</span>
-                        <span class="landing-promo-sub">Then UGX 12,000/month</span>
+                        <span class="landing-promo-badge">Plans from UGX 2,000</span>
+                        <span class="landing-promo-sub">Flexible 3-day, 7-day, monthly & Royal Premium plans</span>
                     </div>
 
                     <div class="landing-action-area">

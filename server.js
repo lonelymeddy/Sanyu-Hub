@@ -6,9 +6,16 @@ const { loadCountryCatalogue } = require('./src/countries/shared/country-loader'
 const { getSupportedCountries } = require('./src/countries/registry');
 const adminService = require('./src/services/admin-service');
 const { getChart, findSongById, searchMusic, resolveMedia } = require('./src/services/music-service');
+const subscriptionService = require('./src/services/subscription-service');
 
 const app = express();
-app.use(express.json());
+
+// Capture raw body for webhook verification while parsing JSON for all other routes
+app.use(express.json({
+  verify: (req, res, buf) => {
+    req.rawBody = buf;
+  }
+}));
 app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3000;
 
@@ -211,6 +218,253 @@ app.get('/api/music/download', async (req, res) => {
   } catch (err) {
     if (!res.headersSent) {
       res.status(400).json({ error: 'Invalid download request.' });
+    }
+  }
+});
+
+// ==========================================
+// SUBSCRIPTION & PAYMENT REST API ENDPOINTS
+// ==========================================
+
+// Get all subscription packages
+app.get('/api/subscriptions/packages', (req, res) => {
+  try {
+    const packages = subscriptionService.getPackages();
+    const gatewayStatus = subscriptionService.getGatewayStatus();
+    res.json({ success: true, packages, gatewayStatus });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Get user's current subscription & download usage
+app.get('/api/subscriptions/current', (req, res) => {
+  try {
+    const userIdentifier = req.headers['x-user-id'] || req.query.userId || req.query.identifier;
+    if (!userIdentifier) {
+      return res.status(400).json({ success: false, error: 'User identifier is required' });
+    }
+
+    const sub = subscriptionService.getUserSubscription(userIdentifier);
+    let usage = null;
+    if (sub && sub.packageId === 'pkg-royal') {
+      usage = subscriptionService.getDownloadUsage(userIdentifier);
+    }
+
+    res.json({
+      success: true,
+      subscription: sub,
+      downloadUsage: usage
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Gateway status endpoint
+app.get('/api/payments/gateway-status', (req, res) => {
+  try {
+    const status = subscriptionService.getGatewayStatus();
+    res.json({ success: true, ...status });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Initiate Mobile Money payment via Lworx Pay
+app.post('/api/payments/momo/initiate', async (req, res) => {
+  try {
+    const { packageId, phone, userIdentifier, customEndpoint } = req.body;
+    if (!packageId || !phone || !userIdentifier) {
+      return res.status(400).json({ success: false, error: 'Missing required parameters: packageId, phone, userIdentifier' });
+    }
+
+    const result = await subscriptionService.initiateLworxPayment({
+      packageId,
+      phone,
+      userIdentifier,
+      customEndpoint
+    });
+
+    res.json(result);
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+// Check status of a payment reference (with Lworx polling fallback)
+app.get('/api/payments/status/:reference', async (req, res) => {
+  try {
+    const result = await subscriptionService.checkLworxStatus(req.params.reference);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+// Initiate Card Payment via Flutterwave
+app.post('/api/payments/card/initiate', async (req, res) => {
+  try {
+    const { packageId, userIdentifier, email, name, phone, redirectUrl } = req.body;
+    if (!packageId || !userIdentifier) {
+      return res.status(400).json({ success: false, error: 'Missing packageId or userIdentifier' });
+    }
+
+    const result = await subscriptionService.initiateCardPayment({
+      packageId,
+      userIdentifier,
+      email,
+      name,
+      phone,
+      redirectUrl
+    });
+
+    if (!result.success && !result.configured) {
+      return res.status(503).json(result);
+    }
+
+    res.json(result);
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+// Official Lworx Pay Webhook (HMAC-SHA256 signature verification on raw body)
+app.post('/api/payments/lworx/webhook', async (req, res) => {
+  try {
+    const signature = req.get('X-LworxPay-Signature') || req.get('x-lworxpay-signature');
+    const rawBody = req.rawBody || JSON.stringify(req.body);
+
+    const result = await subscriptionService.handleLworxWebhook(rawBody, signature);
+    res.status(200).json({ received: true, ...result });
+  } catch (err) {
+    if (err.message && err.message.startsWith('INVALID_WEBHOOK_SIGNATURE')) {
+      return res.status(401).json({ error: 'Signature verification failed' });
+    }
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Official Flutterwave Card Webhook (verif-hash signature verification)
+app.post('/api/payments/flutterwave/webhook', async (req, res) => {
+  try {
+    const signature = req.get('verif-hash');
+    const result = await subscriptionService.handleFlutterwaveWebhook(req.body, signature);
+    res.status(200).json({ received: true, ...result });
+  } catch (err) {
+    if (err.message === 'INVALID_FLUTTERWAVE_SIGNATURE') {
+      return res.status(401).json({ error: 'Signature verification failed' });
+    }
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Protected Media Download Endpoint (strictly enforcing Royal Premium and 900 MB weekly quota)
+app.get('/api/media/download', async (req, res) => {
+  try {
+    const userIdentifier = req.headers['x-user-id'] || req.query.userId || req.query.identifier;
+    const mediaId = req.query.id;
+    const filename = req.query.filename || `sanyuhub_download_${Date.now()}.mp4`;
+
+    if (!userIdentifier) {
+      return res.status(401).json({ error: 'Authentication required to download media.' });
+    }
+
+    if (!mediaId) {
+      return res.status(400).json({ error: 'Missing media ID parameter.' });
+    }
+
+    // Lookup movie/series
+    let mediaItem = movieLookupCache.get(mediaId) || seriesLookupCache.get(mediaId);
+    if (!mediaItem) {
+      const supported = getSupportedCountries();
+      for (const c of supported) {
+        const cMovies = await loadCountryCatalogue(c.code, 'movies').catch(() => ({ movies: [] }));
+        const found = (cMovies.movies || []).find(m => m.id === mediaId);
+        if (found) {
+          mediaItem = found;
+          break;
+        }
+      }
+    }
+
+    if (!mediaItem || (!mediaItem.mediaUrl && !mediaItem.downloadUrl)) {
+      return res.status(404).json({ error: 'Media file not found for download.' });
+    }
+
+    const downloadTargetUrl = mediaItem.downloadUrl || mediaItem.mediaUrl;
+
+    // Head request to estimate content length for quota check
+    let estimatedSize = 50 * 1024 * 1024; // Default 50MB estimate if header absent
+    try {
+      const parsedUrl = new URL(downloadTargetUrl);
+      const mod = parsedUrl.protocol === 'https:' ? https : http;
+      await new Promise((resolve) => {
+        const headReq = mod.request(downloadTargetUrl, { method: 'HEAD', headers: { 'User-Agent': 'SanyuHub/1.0' } }, (headRes) => {
+          if (headRes.headers['content-length']) {
+            estimatedSize = parseInt(headRes.headers['content-length'], 10);
+          }
+          resolve();
+        });
+        headReq.on('error', () => resolve());
+        headReq.setTimeout(4000, () => { headReq.destroy(); resolve(); });
+        headReq.end();
+      });
+    } catch (e) {}
+
+    // Enforce subscription tier and download quota
+    const check = subscriptionService.validateDownloadRequest(userIdentifier, estimatedSize);
+    if (!check.allowed) {
+      return res.status(403).json({
+        error: check.reason,
+        code: check.code,
+        usage: check.usage
+      });
+    }
+
+    // Stream download through proxy and track byte consumption
+    const parsed = new URL(downloadTargetUrl);
+    const mod = parsed.protocol === 'https:' ? https : http;
+
+    const proxyReq = mod.get(downloadTargetUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) SanyuHub/1.0',
+        'Accept': '*/*'
+      }
+    }, (proxyRes) => {
+      if (proxyRes.statusCode >= 300 && proxyRes.statusCode < 400 && proxyRes.headers.location) {
+        return res.redirect(proxyRes.headers.location);
+      }
+
+      res.setHeader('Content-Type', proxyRes.headers['content-type'] || 'video/mp4');
+      res.setHeader('Content-Disposition', `attachment; filename="${encodeURIComponent(filename)}"`);
+      if (proxyRes.headers['content-length']) {
+        res.setHeader('Content-Length', proxyRes.headers['content-length']);
+      }
+
+      let downloadedBytes = 0;
+      proxyRes.on('data', chunk => {
+        downloadedBytes += chunk.length;
+      });
+
+      proxyRes.pipe(res);
+
+      res.on('finish', () => {
+        if (downloadedBytes > 0) {
+          subscriptionService.recordDownloadCompletion(userIdentifier, mediaId, mediaItem.title || 'Movie', downloadedBytes);
+        }
+      });
+    });
+
+    proxyReq.on('error', () => {
+      if (!res.headersSent) {
+        res.status(500).json({ error: 'Failed to stream media download.' });
+      }
+    });
+
+  } catch (err) {
+    if (!res.headersSent) {
+      res.status(500).json({ error: 'Server error during media download: ' + err.message });
     }
   }
 });
@@ -673,9 +927,66 @@ function requireAdmin(req, res, next) {
 app.get('/api/admin/users', requireAdmin, (req, res) => {
   try {
     const users = adminService.getAllUsers();
-    res.json({ success: true, users });
+    const subs = subscriptionService.getAllSubscriptions();
+    const augmentedUsers = users.map(u => {
+      const sub = subs.find(s => s.userId === u.id || s.userId === u.email || s.userIdentifier === u.email);
+      let usage = null;
+      if (sub && sub.packageId === 'pkg-royal') {
+        usage = subscriptionService.getDownloadUsage(u.email || u.id);
+      }
+      return {
+        ...u,
+        subscription: sub || null,
+        downloadUsage: usage
+      };
+    });
+    res.json({ success: true, users: augmentedUsers });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get('/api/admin/subscriptions', requireAdmin, (req, res) => {
+  try {
+    const subscriptions = subscriptionService.getAllSubscriptions();
+    const transactions = subscriptionService.getAllTransactions();
+    const auditLogs = subscriptionService.getAuditLogs(100);
+    res.json({ success: true, subscriptions, transactions, auditLogs });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post('/api/admin/subscriptions/manual-verify', requireAdmin, (req, res) => {
+  try {
+    const { identifier, packageId, paymentMethod, reference, durationDays, notes } = req.body;
+    if (!identifier) {
+      return res.status(400).json({ success: false, error: 'User identifier is required' });
+    }
+
+    const pkgId = packageId || (durationDays === 3 ? 'pkg-3day' : (durationDays === 7 ? 'pkg-7day' : 'pkg-monthly'));
+    const ref = reference || `ADMIN-MANUAL-${Date.now()}`;
+    const method = paymentMethod || 'MTN';
+
+    const sub = subscriptionService.activateSubscription({
+      userId: identifier,
+      userIdentifier: identifier,
+      packageId: pkgId,
+      paymentMethod: method,
+      provider: 'admin-manual',
+      reference: ref
+    });
+
+    subscriptionService.addAuditLog('ADMIN_MANUAL_VERIFY', `Admin manually verified & activated ${pkgId} for ${identifier}`, {
+      identifier,
+      packageId: pkgId,
+      reference: ref,
+      notes
+    });
+
+    res.json({ success: true, subscription: sub, message: 'Account verified and subscription activated successfully' });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
   }
 });
 

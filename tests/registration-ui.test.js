@@ -36,7 +36,7 @@ function stopServer() {
 }
 
 async function runTests() {
-  console.log('\nRunning Registration Page UI & Functional Integration Tests...\n');
+  console.log('\nRunning Updated Registration Page UI & Functional Integration Tests...\n');
   await startServer();
 
   const browser = await chromium.launch({ headless: true });
@@ -47,109 +47,78 @@ async function runTests() {
     });
     const page = await context.newPage();
 
-    // 1. SCENARIO A: Default Free Trial Selection
-    console.log('Testing Scenario A: Default Free Trial Selection...');
+    // 1. SCENARIO A: Default 3-Day Package Selection
+    console.log('Testing Scenario A: Default 3-Day Package Selection...');
     await page.goto(`${baseUrl}/signup`);
-
-    const paymentSectionVisibleInitially = await page.isVisible('#paymentSectorSection');
-    if (paymentSectionVisibleInitially) {
-      throw new Error('FAILED: Payment network section should be hidden when Free Trial is selected!');
-    }
-    console.log('  ✓ Payment network selector is hidden on initial load (Free Trial active)');
 
     const summaryText = await page.textContent('#subSummaryCard');
-    if (!summaryText.includes('2 Days Free Trial — FREE') || !summaryText.includes('No payment required today')) {
+    if (!summaryText.includes('3-Day Package — UGX 2,000') || !summaryText.includes('Downloads: Not available')) {
       throw new Error(`FAILED: Incorrect summary text: ${summaryText}`);
     }
-    console.log('  ✓ Dynamic summary correctly displays 2 Days Free Trial information');
+    console.log('  ✓ Dynamic summary correctly displays 3-Day Package information (UGX 2,000, no downloads)');
 
-    // Fill form and register with Free Trial
-    await page.fill('#email', 'testtrial@example.com');
-    await page.fill('#phone', '256700112233');
-    await page.fill('#username', 'testtrialuser');
-    await page.fill('#password', 'password123');
-    await page.fill('#confirmPassword', 'password123');
-
-    await page.click('#btnSignUpSubmit');
-
-    const trialUserSession = await page.evaluate(() => {
-      return JSON.parse(localStorage.getItem('sanyuhub_auth_user'));
-    });
-
-    if (!trialUserSession || !trialUserSession.isTrial || trialUserSession.plan !== 'trial') {
-      throw new Error(`FAILED: Invalid session for free trial: ${JSON.stringify(trialUserSession)}`);
-    }
-    console.log('  ✓ Free trial user registration successful without payment required');
-
-    // 2. SCENARIO B: Monthly Plan Selection & Payment Network Selection
-    console.log('\nTesting Scenario B: Monthly Plan Selection...');
-    await page.goto(`${baseUrl}/signup`);
-
-    // Click subscription dropdown trigger
+    // 2. SCENARIO B: Royal Premium Selection & Card Payment Option
+    console.log('\nTesting Scenario B: Royal Premium Selection...');
     await page.click('#subDropdownTrigger');
-    const monthlyOption = page.locator('.sh-dropdown-item[data-plan="monthly"]');
-    await monthlyOption.click();
+    const royalOption = page.locator('.sh-dropdown-item[data-plan="pkg-royal"]');
+    await royalOption.click();
 
-    const paymentSectionVisibleMonthly = await page.isVisible('#paymentSectorSection');
-    if (!paymentSectionVisibleMonthly) {
-      throw new Error('FAILED: Payment network section should be visible when Monthly Plan is selected!');
+    const royalSummaryText = await page.textContent('#subSummaryCard');
+    if (!royalSummaryText.includes('Royal Premium — UGX 35,000') || !royalSummaryText.includes('900 MB')) {
+      throw new Error(`FAILED: Incorrect royal summary text: ${royalSummaryText}`);
     }
-    console.log('  ✓ Payment network selector appears dynamically when Monthly Plan is selected');
+    console.log('  ✓ Dynamic summary correctly updates for Royal Premium (UGX 35,000, 900 MB weekly allowance)');
 
-    const monthlySummaryText = await page.textContent('#subSummaryCard');
-    if (!monthlySummaryText.includes('Monthly Subscription — 12,000 UGX') || !monthlySummaryText.includes('30 days of unlimited access')) {
-      throw new Error(`FAILED: Incorrect monthly summary text: ${monthlySummaryText}`);
-    }
-    console.log('  ✓ Dynamic summary correctly updates for Monthly Subscription');
-
-    // Open payment network dropdown and select Airtel Money
+    // Select Card Payment Option
     await page.click('#paymentDropdownTrigger');
-    const airtelOption = page.locator('.sh-dropdown-item[data-sector="Airtel"]');
-    await airtelOption.click();
+    const cardOption = page.locator('.sh-dropdown-item[data-sector="Card"]');
+    await cardOption.click();
 
     const selectedNetworkTitleText = await page.textContent('#selectedNetworkTitle');
-    if (!selectedNetworkTitleText.includes('Airtel Money')) {
-      throw new Error(`FAILED: Airtel Money not selected: ${selectedNetworkTitleText}`);
+    if (!selectedNetworkTitleText.includes('Bank Card (Mastercard / Visa)')) {
+      throw new Error(`FAILED: Card not selected: ${selectedNetworkTitleText}`);
     }
-    console.log('  ✓ Airtel Money payment network selection updated trigger UI');
+    console.log('  ✓ Bank Card (Mastercard / Visa) payment option selectable in dropdown');
 
-    // Fill form and submit monthly registration
-    await page.fill('#email', 'testmonthly@example.com');
+    // Fill form and submit registration with Royal + Card
+    await page.fill('#email', 'royaluser@example.com');
     await page.fill('#phone', '256700998877');
-    await page.fill('#username', 'testmonthlyuser');
+    await page.fill('#username', 'royaluser');
     await page.fill('#password', 'secret123');
     await page.fill('#confirmPassword', 'secret123');
 
     await page.click('#btnSignUpSubmit');
 
-    const monthlyUserSession = await page.evaluate(() => {
+    const royalUserSession = await page.evaluate(() => {
       return JSON.parse(localStorage.getItem('sanyuhub_auth_user'));
     });
 
-    if (!monthlyUserSession || monthlyUserSession.isTrial !== false || monthlyUserSession.plan !== 'monthly' || monthlyUserSession.paymentSector !== 'Airtel') {
-      throw new Error(`FAILED: Invalid session for monthly plan: ${JSON.stringify(monthlyUserSession)}`);
+    if (!royalUserSession || royalUserSession.plan !== 'pkg-royal' || royalUserSession.paymentSector !== 'Card') {
+      throw new Error(`FAILED: Invalid session for royal plan: ${JSON.stringify(royalUserSession)}`);
     }
-    console.log('  ✓ Monthly subscription registration successful with Airtel Money selected');
+    console.log('  ✓ Royal Premium registration successful with Card payment selected');
 
-    // 3. SCENARIO C: Dynamic Switching between Monthly and Free Trial
-    console.log('\nTesting Scenario C: Switching Plans...');
+    // 3. SCENARIO C: 7-Day and Monthly Selection
+    console.log('\nTesting Scenario C: Switching to 7-Day & Monthly...');
     await page.goto(`${baseUrl}/signup`);
 
-    // Switch to Monthly Plan
+    // 7-Day
     await page.click('#subDropdownTrigger');
-    await page.locator('.sh-dropdown-item[data-plan="monthly"]').click();
-    if (!(await page.isVisible('#paymentSectorSection'))) {
-      throw new Error('FAILED: Payment section should be visible for Monthly Plan');
+    await page.locator('.sh-dropdown-item[data-plan="pkg-7day"]').click();
+    let sumText = await page.textContent('#subSummaryCard');
+    if (!sumText.includes('UGX 6,000') || !sumText.includes('7 days')) {
+      throw new Error('FAILED: 7-Day package details mismatch');
     }
+    console.log('  ✓ 7-Day package (UGX 6,000) selected and summary updated');
 
-    // Switch back to Free Trial
+    // Monthly
     await page.click('#subDropdownTrigger');
-    await page.locator('.sh-dropdown-item[data-plan="trial"]').click();
-
-    if (await page.isVisible('#paymentSectorSection')) {
-      throw new Error('FAILED: Payment section should be hidden after switching back to Free Trial!');
+    await page.locator('.sh-dropdown-item[data-plan="pkg-monthly"]').click();
+    sumText = await page.textContent('#subSummaryCard');
+    if (!sumText.includes('UGX 12,000') || !sumText.includes('30 days')) {
+      throw new Error('FAILED: Monthly package details mismatch');
     }
-    console.log('  ✓ Switching back to Free Trial correctly hides payment network selector');
+    console.log('  ✓ Monthly package (UGX 12,000) selected and summary updated');
 
     // 4. SCENARIO D: Validation Errors
     console.log('\nTesting Scenario D: Form Validation Errors...');
