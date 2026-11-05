@@ -181,11 +181,25 @@ Sanyu<span>Hub</span>
       </div>
 
       <div class="subscription-status-box">
-        <span class="sub-badge" id="subTypeBadge">MONTHLY PLAN</span>
-        <div class="sub-expiry" id="subExpiryText">Subscription Expires: In 30 days</div>
-        <div style="font-size: 12px; color: #aaaaaa;" id="subSectorText">Payment Sector: MTN Mobile Money</div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="sub-badge" id="subTypeBadge">3-DAY PACKAGE</span>
+          <span id="subStatusBadge" style="font-size: 11px; font-weight: 800; color: #00e676; text-transform: uppercase;">ACTIVE</span>
+        </div>
+        <div class="sub-expiry" id="subExpiryText">Subscription Expires: In 3 days</div>
+        <div style="font-size: 12px; color: #aaaaaa;" id="subSectorText">Payment Method: MTN Mobile Money</div>
 
-        <button type="button" class="btn-renew" id="openRenewModalBtn">Renew Subscription (12,000 UGX)</button>
+        <!-- Royal Download Allowance Display (conditional) -->
+        <div id="royalAllowanceBox" style="display:none; background:rgba(255,215,0,0.08); border:1px solid rgba(255,215,0,0.25); border-radius:8px; padding:10px; margin-top:6px;">
+          <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:700; color:#ffd700;">
+            <span>Weekly 4K Download Allowance</span>
+            <span id="allowanceMBText">900 MB / 900 MB remaining</span>
+          </div>
+          <div style="width:100%; height:6px; background:#222; border-radius:3px; margin-top:6px; overflow:hidden;">
+            <div id="allowanceBarFill" style="height:100%; width:100%; background:linear-gradient(90deg, #ffd700, #ff9900);"></div>
+          </div>
+        </div>
+
+        <button type="button" class="btn-renew" id="openRenewModalBtn">Renew or Change Subscription</button>
       </div>
     </div>
 
@@ -278,26 +292,50 @@ Sanyu<span>Hub</span>
 <!-- RENEWAL MODAL -->
 <div class="renewal-modal" id="renewalModal">
   <div class="modal-card">
-    <h2 style="font-size:20px; font-weight:800; color:#fff; margin:0 0 8px 0;">Renew Subscription</h2>
-    <p style="font-size:13px; color:#aaa; margin:0 0 20px 0;">Extend your subscription by 30 days for 12,000 UGX.</p>
+    <h2 style="font-size:20px; font-weight:800; color:#fff; margin:0 0 6px 0;">Renew or Upgrade Plan</h2>
+    <p style="font-size:13px; color:#aaa; margin:0 0 16px 0;">Select a package to continue with instant activation:</p>
 
-    <div style="margin-bottom:16px;">
-      <label style="font-size:12px; font-weight:700; color:#ccc; display:block; margin-bottom:8px;">Select Mobile Money Payment Sector</label>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-        <button type="button" id="renewSectorMtn" class="renew-sector-btn" style="border:2px solid #f4c400; background:rgba(244,196,0,0.1); border-radius:8px; padding:10px; color:#fff; font-weight:700; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:6px;">
-          <img src="/images/mtn-logo.png" style="height:32px; object-fit:contain;">
-          <span>MTN Sector</span>
-        </button>
-        <button type="button" id="renewSectorAirtel" class="renew-sector-btn" style="border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); border-radius:8px; padding:10px; color:#fff; font-weight:700; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:6px;">
-          <img src="/images/airtel-logo.jpg" style="height:32px; object-fit:contain;">
-          <span>Airtel Sector</span>
-        </button>
-      </div>
+    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
+      <label class="renew-pkg-option" style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#222; border:1px solid #f4c400; border-radius:8px; cursor:pointer;">
+        <div>
+          <input type="radio" name="renewPlan" value="pkg-3day" checked style="margin-right:8px;">
+          <strong style="color:#fff;">3-Day Package</strong>
+          <div style="font-size:11px; color:#aaa;">3 days • Streaming only</div>
+        </div>
+        <span style="font-weight:800; color:#f4c400;">2,000 UGX</span>
+      </label>
+
+      <label class="renew-pkg-option" style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#222; border:1px solid rgba(255,255,255,0.1); border-radius:8px; cursor:pointer;">
+        <div>
+          <input type="radio" name="renewPlan" value="pkg-7day" style="margin-right:8px;">
+          <strong style="color:#fff;">7-Day Package</strong>
+          <div style="font-size:11px; color:#aaa;">7 days • Streaming only</div>
+        </div>
+        <span style="font-weight:800; color:#f4c400;">6,000 UGX</span>
+      </label>
+
+      <label class="renew-pkg-option" style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#222; border:1px solid rgba(255,255,255,0.1); border-radius:8px; cursor:pointer;">
+        <div>
+          <input type="radio" name="renewPlan" value="pkg-monthly" style="margin-right:8px;">
+          <strong style="color:#fff;">Monthly Package</strong>
+          <div style="font-size:11px; color:#aaa;">30 days • Streaming only</div>
+        </div>
+        <span style="font-weight:800; color:#f4c400;">12,000 UGX</span>
+      </label>
+
+      <label class="renew-pkg-option" style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:rgba(255,215,0,0.08); border:1px solid #ffd700; border-radius:8px; cursor:pointer;">
+        <div>
+          <input type="radio" name="renewPlan" value="pkg-royal" style="margin-right:8px;">
+          <strong style="color:#ffd700;">👑 Royal Premium</strong>
+          <div style="font-size:11px; color:#ddd;">30 days • 4K Downloads + 900MB/wk</div>
+        </div>
+        <span style="font-weight:800; color:#ffd700;">35,000 UGX</span>
+      </label>
     </div>
 
-    <div style="display:flex; gap:10px; margin-top:24px;">
+    <div style="display:flex; gap:10px; margin-top:16px;">
       <button type="button" id="closeRenewModalBtn" style="flex:1; background:rgba(255,255,255,0.1); border:none; color:#fff; font-weight:700; padding:12px; border-radius:8px; cursor:pointer;">Cancel</button>
-      <button type="button" id="confirmRenewBtn" style="flex:2; background:#f4c400; border:none; color:#000; font-weight:800; padding:12px; border-radius:8px; cursor:pointer;">Pay 12,000 UGX</button>
+      <button type="button" id="confirmRenewBtn" style="flex:2; background:#f4c400; border:none; color:#000; font-weight:800; padding:12px; border-radius:8px; cursor:pointer;">Proceed to Checkout</button>
     </div>
   </div>
 </div>
@@ -336,21 +374,85 @@ Sanyu<span>Hub</span>
     phoneEl.textContent = user.phone || "+256 702 662 846";
     avatarEl.textContent = (user.username || "S").charAt(0).toUpperCase();
 
+    const planNames = {
+      "pkg-3day": "3-DAY PACKAGE",
+      "pkg-7day": "7-DAY PACKAGE",
+      "pkg-monthly": "MONTHLY PACKAGE",
+      "pkg-royal": "👑 ROYAL PREMIUM"
+    };
+
+    const isExpired = user.subscriptionExpiry && new Date(user.subscriptionExpiry).getTime() < Date.now();
+    const statusBadge = document.getElementById("subStatusBadge");
+    if (statusBadge) {
+      if (isExpired && !isAdmin) {
+        statusBadge.textContent = "EXPIRED";
+        statusBadge.style.color = "#ff5252";
+      } else {
+        statusBadge.textContent = "ACTIVE";
+        statusBadge.style.color = "#00e676";
+      }
+    }
+
     if (isAdmin) {
       badgeEl.textContent = "ADMINISTRATOR";
       badgeEl.style.background = "#ffd43b";
       badgeEl.style.color = "#000";
       const adminSection = document.getElementById("adminProfileSection");
       if (adminSection) adminSection.style.display = "block";
-    } else if (user.isTrial) {
-      badgeEl.textContent = "2 DAYS TRIAL";
-      badgeEl.style.background = "#ffd43b";
+    } else if (user.plan === "pkg-royal") {
+      badgeEl.textContent = "ROYAL PREMIUM";
+      badgeEl.style.background = "linear-gradient(135deg, #ffd700, #ff9900)";
       badgeEl.style.color = "#000";
     } else {
-      badgeEl.textContent = "MONTHLY PLAN";
+      badgeEl.textContent = planNames[user.plan] || "MONTHLY PACKAGE";
       badgeEl.style.background = "#4caf50";
       badgeEl.style.color = "#fff";
     }
+
+    const expiryDate = new Date(user.subscriptionExpiry);
+    expiryTextEl.textContent = isExpired && !isAdmin
+      ? `Subscription Expired on: ${expiryDate.toLocaleDateString()}`
+      : `Subscription Expiry: ${expiryDate.toLocaleDateString()}`;
+
+    sectorTextEl.textContent = `Payment Method: ${user.paymentSector || user.paymentMethod || "MTN Mobile Money"}`;
+
+    // Load server-side live subscription & Royal download quota
+    async function loadServerSubscription() {
+      try {
+        const idKey = user.email || user.phone || user.username;
+        const res = await fetch(`/api/subscriptions/current?identifier=${encodeURIComponent(idKey)}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.subscription) {
+            const sub = data.subscription;
+            if (badgeEl && !isAdmin) {
+              badgeEl.textContent = sub.packageName ? sub.packageName.toUpperCase() : badgeEl.textContent;
+              if (sub.packageId === "pkg-royal") {
+                badgeEl.style.background = "linear-gradient(135deg, #ffd700, #ff9900)";
+                badgeEl.style.color = "#000";
+              }
+            }
+          }
+
+          if (data.downloadUsage) {
+            const usage = data.downloadUsage;
+            const royalBox = document.getElementById("royalAllowanceBox");
+            const textEl = document.getElementById("allowanceMBText");
+            const fillEl = document.getElementById("allowanceBarFill");
+
+            if (royalBox) royalBox.style.display = "block";
+            if (textEl) textEl.textContent = `${usage.remainingMB} MB / 900 MB remaining`;
+            if (fillEl) {
+              const pct = Math.max(0, Math.min(100, (usage.remainingMB / 900) * 100));
+              fillEl.style.width = `${pct}%`;
+            }
+          }
+        }
+      } catch (e) {
+        console.warn("Could not fetch server subscription:", e);
+      }
+    }
+    loadServerSubscription();
 
     // Sign Out / Log Out Logic
     const signOutBtn = document.getElementById("btnSignOut");
@@ -367,35 +469,11 @@ Sanyu<span>Hub</span>
       });
     }
 
-    const expiryDate = new Date(user.subscriptionExpiry);
-    expiryTextEl.textContent = `Subscription Expiry: ${expiryDate.toLocaleDateString()}`;
-    sectorTextEl.textContent = `Payment Sector: ${user.paymentSector || "MTN"} Sector`;
-
     // Renewal Modal Logic
     const openBtn = document.getElementById("openRenewModalBtn");
     const closeBtn = document.getElementById("closeRenewModalBtn");
     const modal = document.getElementById("renewalModal");
     const confirmBtn = document.getElementById("confirmRenewBtn");
-
-    let renewSector = "MTN";
-    const mtnBtn = document.getElementById("renewSectorMtn");
-    const airtelBtn = document.getElementById("renewSectorAirtel");
-
-    mtnBtn.addEventListener("click", () => {
-      renewSector = "MTN";
-      mtnBtn.style.border = "2px solid #f4c400";
-      mtnBtn.style.background = "rgba(244,196,0,0.1)";
-      airtelBtn.style.border = "1px solid rgba(255,255,255,0.2)";
-      airtelBtn.style.background = "rgba(255,255,255,0.05)";
-    });
-
-    airtelBtn.addEventListener("click", () => {
-      renewSector = "Airtel";
-      airtelBtn.style.border = "2px solid #f4c400";
-      airtelBtn.style.background = "rgba(244,196,0,0.1)";
-      mtnBtn.style.border = "1px solid rgba(255,255,255,0.2)";
-      mtnBtn.style.background = "rgba(255,255,255,0.05)";
-    });
 
     openBtn.addEventListener("click", () => {
       modal.classList.add("active");
@@ -406,7 +484,9 @@ Sanyu<span>Hub</span>
     });
 
     confirmBtn.addEventListener("click", () => {
-      window.location.href = "/payment";
+      const selected = document.querySelector('input[name="renewPlan"]:checked');
+      const planVal = selected ? selected.value : "pkg-3day";
+      window.location.href = `/payment?plan=${planVal}`;
     });
   });
 </script>

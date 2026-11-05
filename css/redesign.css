@@ -456,6 +456,45 @@
   color: #4CAF50;
 }
 
+.sh-item-badge.royal {
+  background: linear-gradient(135deg, #ffd700, #ff9900);
+  color: #000;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.sh-dropdown-item.royal-tier {
+  border-left: 3px solid #ffd700;
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.sh-dropdown-item.royal-tier:hover {
+  background: rgba(255, 215, 0, 0.12);
+}
+
+.sh-dropdown-item.royal-tier.selected {
+  background: rgba(255, 215, 0, 0.18);
+  border-left: 3px solid #ffd700;
+}
+
+.sh-badge-no-downloads {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  color: #aaa;
+  margin-top: 2px;
+}
+
+.sh-badge-royal-allowance {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffd700;
+  margin-top: 2px;
+}
+
 .sh-item-desc {
   font-size: 10px;
   color: var(--sh-text-secondary);
