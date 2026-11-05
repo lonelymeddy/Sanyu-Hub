@@ -430,14 +430,15 @@
 
       const pkg = PACKAGES[selectedPlan] || PACKAGES["pkg-3day"];
 
+      const btnSubmit = document.getElementById("btnSignUpSubmit");
+      if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+        SanyuUI.setButtonLoading(btnSubmit, true, selectedPlan === "pkg-trial" ? "Activating Trial..." : "Creating Account...");
+      } else if (btnSubmit) {
+        btnSubmit.disabled = true;
+      }
+
       // If user selected Free Trial, activate on backend immediately
       if (selectedPlan === "pkg-trial" && !isAdmin) {
-        const btnSubmit = document.getElementById("btnSignUpSubmit");
-        if (btnSubmit) {
-          btnSubmit.disabled = true;
-          btnSubmit.textContent = "Activating Free Trial...";
-        }
-
         fetch("/api/subscriptions/trial/activate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -470,23 +471,27 @@
               SanyuAuth.registerUser(userSession);
             } else {
               localStorage.setItem("sanyuhub_auth_user", JSON.stringify(userSession));
+              const expDate = new Date(sub.expiresAt || Date.now() + 48 * 3600 * 1000);
+              document.cookie = "sanyuhub_auth_user=" + encodeURIComponent(JSON.stringify(userSession)) + "; path=/; expires=" + expDate.toUTCString() + "; SameSite=Lax";
             }
             window.location.href = "/";
           } else {
             errorMsg.textContent = data.message || data.error || "Unable to claim free trial. You may have already claimed a trial.";
             errorMsg.style.display = "block";
-            if (btnSubmit) {
+            if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+              SanyuUI.setButtonLoading(btnSubmit, false);
+            } else if (btnSubmit) {
               btnSubmit.disabled = false;
-              btnSubmit.textContent = "Create Account";
             }
           }
         })
         .catch(err => {
           errorMsg.textContent = "Network error activating trial. Please try again.";
           errorMsg.style.display = "block";
-          if (btnSubmit) {
+          if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+            SanyuUI.setButtonLoading(btnSubmit, false);
+          } else if (btnSubmit) {
             btnSubmit.disabled = false;
-            btnSubmit.textContent = "Create Account";
           }
         });
         return;
@@ -513,6 +518,8 @@
         SanyuAuth.registerUser(userSession);
       } else {
         localStorage.setItem("sanyuhub_auth_user", JSON.stringify(userSession));
+        const expDate = new Date(expiryDate);
+        document.cookie = "sanyuhub_auth_user=" + encodeURIComponent(JSON.stringify(userSession)) + "; path=/; expires=" + expDate.toUTCString() + "; SameSite=Lax";
       }
 
       if (!isAdmin) {

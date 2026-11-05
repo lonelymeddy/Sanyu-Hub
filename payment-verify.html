@@ -411,6 +411,8 @@
                   SanyuAuth.registerUser(updatedSession);
                 } else {
                   localStorage.setItem("sanyuhub_auth_user", JSON.stringify(updatedSession));
+                  const expDate = new Date(updatedSession.subscriptionExpiry);
+                  document.cookie = "sanyuhub_auth_user=" + encodeURIComponent(JSON.stringify(updatedSession)) + "; path=/; expires=" + expDate.toUTCString() + "; SameSite=Lax";
                 }
               }
             }

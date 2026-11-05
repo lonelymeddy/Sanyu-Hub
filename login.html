@@ -70,7 +70,7 @@
       pwdInput.setAttribute("type", type);
     });
 
-    loginForm.addEventListener("submit", (e) => {
+    loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       errorMsg.style.display = "none";
 
@@ -86,25 +86,62 @@
       const adminEmails = ["delostvoyage@gmail.com", "williambanksug256@gmail.com"];
       const isAdmin = (adminEmails.includes(identifier.toLowerCase()) || identifier === "256702662846");
 
-      const userSession = {
-        email: isAdmin ? (adminEmails.includes(identifier.toLowerCase()) ? identifier.toLowerCase() : "delostvoyage@gmail.com") : (identifier.includes("@") ? identifier : identifier + "@sanyuhub.com"),
-        phone: isAdmin ? "256702662846" : (identifier.match(/^\d+$/) ? identifier : "256702662846"),
-        username: identifier,
-        isAdmin: isAdmin,
-        paymentSector: "MTN",
-        plan: "monthly",
-        isTrial: false,
-        subscriptionExpiry: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
-        loginAt: new Date().toISOString()
-      };
-
-      if (typeof SanyuAuth !== "undefined" && SanyuAuth.registerUser) {
-        SanyuAuth.registerUser(userSession);
-      } else {
-        localStorage.setItem("sanyuhub_auth_user", JSON.stringify(userSession));
+      const submitBtn = document.getElementById("btnLoginSubmit");
+      if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+        SanyuUI.setButtonLoading(submitBtn, true, "Logging in...");
+      } else if (submitBtn) {
+        submitBtn.disabled = true;
       }
 
-      window.location.href = "/";
+      try {
+        let subscriptionData = null;
+        try {
+          const res = await fetch(`/api/subscriptions/current?identifier=${encodeURIComponent(identifier)}`);
+          if (res.ok) {
+            const data = await res.json();
+            if (data.success && data.subscription) {
+              subscriptionData = data.subscription;
+            }
+          }
+        } catch (e) {}
+
+        const userEmail = isAdmin ? (adminEmails.includes(identifier.toLowerCase()) ? identifier.toLowerCase() : "delostvoyage@gmail.com") : (identifier.includes("@") ? identifier : identifier + "@sanyuhub.com");
+        const userPhone = isAdmin ? "256702662846" : (identifier.match(/^\d+$/) ? identifier : "");
+
+        const userSession = {
+          email: userEmail,
+          phone: userPhone,
+          username: identifier,
+          isAdmin: isAdmin,
+          paymentSector: subscriptionData?.paymentMethod || "MTN",
+          plan: subscriptionData?.packageId || (isAdmin ? "pkg-royal" : "pkg-3day"),
+          packageId: subscriptionData?.packageId || (isAdmin ? "pkg-royal" : "pkg-3day"),
+          isTrial: Boolean(subscriptionData?.isTrial),
+          isPaid: Boolean(isAdmin || (subscriptionData && !subscriptionData.isExpired && !subscriptionData.isRevoked)),
+          subscriptionExpiry: subscriptionData?.expiresAt || new Date(Date.now() + (isAdmin ? 365 : 2) * 24 * 60 * 60 * 1000).toISOString(),
+          loginAt: new Date().toISOString()
+        };
+
+        if (typeof SanyuAuth !== "undefined" && SanyuAuth.registerUser) {
+          SanyuAuth.registerUser(userSession);
+        } else {
+          localStorage.setItem("sanyuhub_auth_user", JSON.stringify(userSession));
+          const expDate = new Date(userSession.subscriptionExpiry);
+          document.cookie = "sanyuhub_auth_user=" + encodeURIComponent(JSON.stringify(userSession)) + "; path=/; expires=" + expDate.toUTCString() + "; SameSite=Lax";
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const returnUrl = urlParams.get("returnUrl") || "/";
+        window.location.href = returnUrl;
+      } catch (err) {
+        if (typeof SanyuUI !== "undefined" && SanyuUI.setButtonLoading) {
+          SanyuUI.setButtonLoading(submitBtn, false);
+        } else if (submitBtn) {
+          submitBtn.disabled = false;
+        }
+        errorMsg.textContent = "Login failed. Please check your credentials and try again.";
+        errorMsg.style.display = "block";
+      }
     });
   });
 </script>

@@ -2,16 +2,41 @@
 const SanyuAuth = {
     getUser: function() {
         try {
+            let user = null;
             const raw = localStorage.getItem("sanyuhub_auth_user");
-            if (!raw) return null;
-            const user = JSON.parse(raw);
-            if (!user || !user.subscriptionExpiry) return null;
-
-            // Check if subscription/trial has expired
-            const isExpired = new Date(user.subscriptionExpiry).getTime() < Date.now();
-            if (isExpired && !user.isAdmin) {
-                return { ...user, isExpired: true };
+            if (raw) {
+                user = JSON.parse(raw);
+            } else if (document.cookie) {
+                const cookies = document.cookie.split(";");
+                for (const c of cookies) {
+                    const parts = c.trim().split("=");
+                    if (parts[0] === "sanyuhub_auth_user" && parts[1]) {
+                        try {
+                            user = JSON.parse(decodeURIComponent(parts.slice(1).join("=")));
+                            localStorage.setItem("sanyuhub_auth_user", JSON.stringify(user));
+                            break;
+                        } catch (e) {}
+                    }
+                }
             }
+
+            if (!user) return null;
+
+            // Admin check
+            const adminEmails = ["delostvoyage@gmail.com", "williambanksug256@gmail.com"];
+            const ident = (user.email || user.username || user.phone || "").toLowerCase();
+            if (adminEmails.includes(ident) || user.isAdmin || user.phone === "256702662846") {
+                return { ...user, isAdmin: true, isPaid: true, isExpired: false };
+            }
+
+            // Expiration check
+            if (user.subscriptionExpiry) {
+                const isExpired = new Date(user.subscriptionExpiry).getTime() < Date.now();
+                if (isExpired) {
+                    return { ...user, isExpired: true };
+                }
+            }
+
             return user;
         } catch (e) {
             return null;
@@ -21,17 +46,205 @@ const SanyuAuth = {
         const u = this.getUser();
         return Boolean(u && !u.isExpired);
     },
+    syncCookie: function(userObj) {
+        try {
+            if (!userObj) {
+                document.cookie = "sanyuhub_auth_user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax";
+                return;
+            }
+            const serialized = encodeURIComponent(JSON.stringify(userObj));
+            let expiresStr = "";
+            if (userObj.subscriptionExpiry) {
+                const expDate = new Date(userObj.subscriptionExpiry);
+                if (!isNaN(expDate.getTime())) {
+                    expiresStr = "; expires=" + expDate.toUTCString();
+                }
+            }
+            if (!expiresStr) {
+                // Default 30 days
+                const d = new Date();
+                d.setDate(d.getDate() + 30);
+                expiresStr = "; expires=" + d.toUTCString();
+            }
+            document.cookie = "sanyuhub_auth_user=" + serialized + "; path=/" + expiresStr + "; SameSite=Lax";
+        } catch (e) {}
+    },
     registerUser: function(userObj) {
         try {
+            if (!userObj) return;
             localStorage.setItem("sanyuhub_auth_user", JSON.stringify(userObj));
+            this.syncCookie(userObj);
         } catch (e) {}
     },
     logout: function() {
         try {
             localStorage.removeItem("sanyuhub_auth_user");
+            this.syncCookie(null);
+        } catch (e) {}
+    },
+    syncWithServer: async function() {
+        try {
+            const user = this.getUser();
+            const ident = user ? (user.email || user.phone || user.username || user.id) : null;
+            if (!ident) return;
+
+            const res = await fetch("/api/auth/session");
+            if (res.ok) {
+                const data = await res.json();
+                if (data && data.authenticated && data.subscription) {
+                    const sub = data.subscription;
+                    const updatedUser = {
+                        ...user,
+                        plan: sub.packageId,
+                        packageId: sub.packageId,
+                        isTrial: Boolean(sub.isTrial),
+                        isPaid: !sub.isExpired && !sub.isRevoked,
+                        subscriptionExpiry: sub.expiresAt,
+                        isAdmin: Boolean(data.isAdmin)
+                    };
+                    this.registerUser(updatedUser);
+                } else if (data && !data.hasAccess && !user.isAdmin) {
+                    if (data.access && data.access.reason === "SUBSCRIPTION_EXPIRED") {
+                        user.isExpired = true;
+                        localStorage.setItem("sanyuhub_auth_user", JSON.stringify(user));
+                        this.syncCookie(user);
+                    }
+                }
+            }
         } catch (e) {}
     }
 };
+
+// Auto-sync cookie on client load
+(() => {
+    try {
+        const u = SanyuAuth.getUser();
+        if (u) {
+            SanyuAuth.syncCookie(u);
+        }
+    } catch (e) {}
+})();
+
+// Intercept window.fetch to automatically include user identification headers
+if (typeof window !== "undefined" && window.fetch) {
+    const originalFetch = window.fetch;
+    window.fetch = function(url, options = {}) {
+        try {
+            const isApiUrl = typeof url === "string" && url.startsWith("/api/");
+            if (isApiUrl) {
+                const user = SanyuAuth.getUser();
+                const userIdent = user ? (user.email || user.phone || user.username || user.id) : null;
+                if (userIdent) {
+                    options.headers = options.headers || {};
+                    if (options.headers instanceof Headers) {
+                        if (!options.headers.has("x-user-id")) options.headers.set("x-user-id", userIdent);
+                        if (!options.headers.has("x-auth-user")) options.headers.set("x-auth-user", userIdent);
+                        if (user.isAdmin && !options.headers.has("x-user-role")) options.headers.set("x-user-role", "admin");
+                    } else if (Array.isArray(options.headers)) {
+                        options.headers.push(["x-user-id", userIdent]);
+                        options.headers.push(["x-auth-user", userIdent]);
+                        if (user.isAdmin) options.headers.push(["x-user-role", "admin"]);
+                    } else {
+                        if (!options.headers["x-user-id"]) options.headers["x-user-id"] = userIdent;
+                        if (!options.headers["x-auth-user"]) options.headers["x-auth-user"] = userIdent;
+                        if (user.isAdmin && !options.headers["x-user-role"]) options.headers["x-user-role"] = "admin";
+                    }
+                }
+            }
+        } catch (e) {}
+        return originalFetch.call(this, url, options);
+    };
+}
+
+/* UNIVERSAL BUTTON LOADING & CLICK RESPONSIVENESS SYSTEM */
+const SanyuUI = {
+    setButtonLoading: function(button, isLoading, loadingText = "") {
+        if (!button) return;
+
+        if (isLoading) {
+            // Already loading check to prevent double injection
+            if (button.classList.contains("sh-btn-loading") || button.hasAttribute("data-is-loading")) return;
+
+            button.setAttribute("data-is-loading", "true");
+            button.classList.add("sh-btn-loading");
+
+            // Remember original button attributes and HTML
+            if (!button.hasAttribute("data-original-html")) {
+                button.setAttribute("data-original-html", button.innerHTML);
+            }
+            if (!button.hasAttribute("data-original-width")) {
+                const rect = button.getBoundingClientRect();
+                if (rect.width > 0) {
+                    button.style.minWidth = rect.width + "px";
+                }
+            }
+
+            // Create spinner
+            const spinner = document.createElement("span");
+            spinner.className = "sh-btn-spinner";
+            spinner.setAttribute("aria-hidden", "true");
+
+            if (loadingText) {
+                button.innerHTML = "";
+                button.appendChild(spinner);
+                const textSpan = document.createElement("span");
+                textSpan.className = "sh-btn-loading-text";
+                textSpan.textContent = loadingText;
+                button.appendChild(textSpan);
+            } else {
+                button.prepend(spinner);
+            }
+
+            if (button.tagName === "BUTTON") {
+                button.disabled = true;
+            } else {
+                button.setAttribute("aria-disabled", "true");
+            }
+        } else {
+            // Restore original state
+            button.removeAttribute("data-is-loading");
+            button.classList.remove("sh-btn-loading");
+            button.classList.remove("spinner-only");
+
+            const originalHtml = button.getAttribute("data-original-html");
+            if (originalHtml !== null) {
+                button.innerHTML = originalHtml;
+                button.removeAttribute("data-original-html");
+            }
+
+            button.style.minWidth = "";
+
+            if (button.tagName === "BUTTON") {
+                button.disabled = false;
+            } else {
+                button.removeAttribute("aria-disabled");
+            }
+        }
+    },
+
+    attachClickFeedback: function() {
+        if (typeof document === "undefined") return;
+
+        // Delegate tap/click feedback for interactive buttons
+        document.addEventListener("pointerdown", (e) => {
+            const btn = e.target.closest("button, .btn, .btn-primary, .btn-pay-action, .sh-btn-submit, .btn-landing-get-started, .category, .page-btn, .btn-watch, .btn-watch-primary");
+            if (!btn || btn.hasAttribute("data-is-loading")) return;
+
+            btn.classList.add("btn-interactive-active");
+            const removeFeedback = () => {
+                btn.classList.remove("btn-interactive-active");
+                window.removeEventListener("pointerup", removeFeedback);
+                window.removeEventListener("pointercancel", removeFeedback);
+            };
+            window.addEventListener("pointerup", removeFeedback, { once: true });
+            window.addEventListener("pointercancel", removeFeedback, { once: true });
+        }, { passive: true });
+    }
+};
+
+if (typeof window !== "undefined") {
+    window.SanyuUI = SanyuUI;
+}
 
 const COUNTRIES_CONFIG = {
     ug: {
@@ -104,6 +317,13 @@ function ensureLandingOverlayExists() {
     `;
 
     document.body.appendChild(overlay);
+
+    const getStarted = document.getElementById("landingGetStartedBtn");
+    if (getStarted) {
+        getStarted.addEventListener("click", () => {
+            SanyuUI.setButtonLoading(getStarted, true, "Loading...");
+        });
+    }
 }
 
 function ensureCountrySheetOverlayExists() {
@@ -5215,6 +5435,9 @@ async function initConcertDetailPage() {
 /* DOM INITIALIZATION */
 document.addEventListener("DOMContentLoaded", () => {
     PreloadManager.initPreconnects();
+    if (typeof SanyuUI !== "undefined" && SanyuUI.attachClickFeedback) {
+        SanyuUI.attachClickFeedback();
+    }
     ensureNavbarCountryButton();
     checkAuthenticationAndLanding();
     updateBottomNavActiveState();
