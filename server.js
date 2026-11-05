@@ -10,6 +10,60 @@ const subscriptionService = require('./src/services/subscription-service');
 
 const app = express();
 
+// Helper to extract user identity from headers, cookies, or query
+function extractUserIdentifier(req) {
+  let userIdentifier = req.headers['x-user-id'] || req.headers['x-auth-user'] || req.query.userId || req.query.identifier;
+  if (!userIdentifier && req.headers.cookie) {
+    const rawCookies = req.headers.cookie.split(';');
+    for (const c of rawCookies) {
+      const parts = c.trim().split('=');
+      if (parts[0] === 'sanyuhub_auth_user' && parts[1]) {
+        try {
+          const parsed = JSON.parse(decodeURIComponent(parts.slice(1).join('=')));
+          userIdentifier = parsed.email || parsed.phone || parsed.username || parsed.id;
+          break;
+        } catch (e) {}
+      }
+    }
+  }
+  return userIdentifier ? String(userIdentifier).trim() : null;
+}
+
+// Strict backend subscription authorization middleware for protected content
+function requireSubscription(req, res, next) {
+  const userIdentifier = extractUserIdentifier(req);
+  const access = subscriptionService.checkUserAccess(userIdentifier);
+
+  if (access.hasAccess) {
+    req.userAccess = access;
+    return next();
+  }
+
+  // Not authorized: handle API vs Page requests
+  const isApi = req.path.startsWith('/api/');
+  if (isApi) {
+    return res.status(403).json({
+      success: false,
+      error: 'SUBSCRIPTION_REQUIRED',
+      reason: access.reason || 'Active subscription or free trial required.',
+      status: access.status || 'inactive',
+      trialEligible: access.trialEligible !== false
+    });
+  }
+
+  // Page request: redirect to /payment with clear parameters and returnUrl
+  const returnUrl = encodeURIComponent(req.originalUrl || req.path);
+  let reasonMsg = 'An active subscription or free trial is required to view this content.';
+  if (access.reason === 'SUBSCRIPTION_EXPIRED') {
+    reasonMsg = 'Your subscription or free trial has expired. Please choose a package to continue.';
+  } else if (access.reason === 'SUBSCRIPTION_REVOKED') {
+    reasonMsg = 'Your subscription access has been revoked. Please contact support or purchase a new package.';
+  }
+
+  return res.redirect(`/payment?returnUrl=${returnUrl}&message=${encodeURIComponent(reasonMsg)}&status=${access.status || 'required'}`);
+}
+
+
 // Capture raw body for webhook verification while parsing JSON for all other routes
 app.use(express.json({
   verify: (req, res, buf) => {
@@ -68,7 +122,7 @@ function proxyStream(targetUrl, req, res, defaultReferer = 'https://swahix.com/'
 }
 
 // Stream Proxy API Route for protected media URLs
-app.get('/api/stream-proxy', (req, res) => {
+app.get('/api/stream-proxy', requireSubscription, (req, res) => {
   proxyStream(req.query.url, req, res);
 });
 
@@ -113,7 +167,7 @@ setImmediate(() => {
 });
 
 // API Route for Live TV Channels
-app.get('/api/live-tv/channels', async (req, res) => {
+app.get('/api/live-tv/channels', requireSubscription, async (req, res) => {
   try {
     res.setHeader('Cache-Control', 'public, max-age=60');
     const country = (req.query.country || 'ug').trim().toLowerCase();
@@ -127,7 +181,7 @@ app.get('/api/live-tv/channels', async (req, res) => {
 });
 
 // API Route for Radio Stations
-app.get('/api/radio', async (req, res) => {
+app.get('/api/radio', requireSubscription, async (req, res) => {
   try {
     res.setHeader('Cache-Control', 'public, max-age=60');
     const country = (req.query.country || 'ug').trim().toLowerCase();
@@ -141,7 +195,7 @@ app.get('/api/radio', async (req, res) => {
 });
 
 // API Routes for Music Discovery & Playback
-app.get('/api/music/charts', (req, res) => {
+app.get('/api/music/charts', requireSubscription, (req, res) => {
   try {
     res.setHeader('Cache-Control', 'public, max-age=300');
     const chartKey = req.query.chart || 'uganda';
@@ -152,7 +206,7 @@ app.get('/api/music/charts', (req, res) => {
   }
 });
 
-app.get('/api/music/search', async (req, res) => {
+app.get('/api/music/search', requireSubscription, async (req, res) => {
   try {
     const query = req.query.q || req.query.query || '';
     const limit = parseInt(req.query.limit, 10) || 12;
@@ -163,7 +217,7 @@ app.get('/api/music/search', async (req, res) => {
   }
 });
 
-app.get('/api/music/resolve', async (req, res) => {
+app.get('/api/music/resolve', requireSubscription, async (req, res) => {
   try {
     const id = req.query.id || req.query.url;
     if (!id) {
@@ -176,7 +230,7 @@ app.get('/api/music/resolve', async (req, res) => {
   }
 });
 
-app.get('/api/music/download', async (req, res) => {
+app.get('/api/music/download', requireSubscription, async (req, res) => {
   try {
     const mediaUrl = req.query.url;
     const type = req.query.type || 'audio';
@@ -232,6 +286,50 @@ app.get('/api/subscriptions/packages', (req, res) => {
     const packages = subscriptionService.getPackages();
     const gatewayStatus = subscriptionService.getGatewayStatus();
     res.json({ success: true, packages, gatewayStatus });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Activate 2-Day Free Trial
+app.post('/api/subscriptions/trial/activate', (req, res) => {
+  try {
+    const { userIdentifier, email, phone, userId } = req.body;
+    const identifier = userIdentifier || email || userId || phone;
+    if (!identifier) {
+      return res.status(400).json({ success: false, error: 'User identifier is required to claim trial' });
+    }
+
+    if (!subscriptionService.isTrialEligible(identifier)) {
+      return res.status(400).json({
+        success: false,
+        error: 'TRIAL_ALREADY_USED',
+        message: 'Free trial has already been claimed for this account or device.'
+      });
+    }
+
+    const trial = subscriptionService.activateTrial({
+      userId: identifier,
+      userIdentifier: identifier,
+      phone,
+      email
+    });
+
+    res.json({ success: true, subscription: trial });
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+// Check Trial Eligibility
+app.get('/api/subscriptions/trial/eligibility', (req, res) => {
+  try {
+    const identifier = req.headers['x-user-id'] || req.query.userId || req.query.identifier || req.query.email;
+    if (!identifier) {
+      return res.json({ success: true, eligible: false, message: 'Missing user identifier' });
+    }
+    const eligible = subscriptionService.isTrialEligible(identifier);
+    res.json({ success: true, eligible });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -470,7 +568,7 @@ app.get('/api/media/download', async (req, res) => {
 });
 
 // API Route for Movies Catalogue
-app.get('/api/movies', async (req, res) => {
+app.get('/api/movies', requireSubscription, async (req, res) => {
   try {
     const country = (req.query.country || 'ug').trim().toLowerCase();
     res.setHeader('Cache-Control', 'public, max-age=60');
@@ -566,7 +664,7 @@ app.get('/api/movies', async (req, res) => {
 });
 
 // Single movie detail API
-app.get('/api/movies/:id', async (req, res) => {
+app.get('/api/movies/:id', requireSubscription, async (req, res) => {
   try {
     res.setHeader('Cache-Control', 'public, max-age=120');
     const movieId = req.params.id;
@@ -595,7 +693,7 @@ app.get('/api/movies/:id', async (req, res) => {
 });
 
 // API Route for Series Catalogue
-app.get('/api/series', async (req, res) => {
+app.get('/api/series', requireSubscription, async (req, res) => {
   try {
     const country = (req.query.country || 'ug').trim().toLowerCase();
     res.setHeader('Cache-Control', 'public, max-age=60');
@@ -672,7 +770,7 @@ app.get('/api/series', async (req, res) => {
 });
 
 // Single Series Detail API
-app.get('/api/series/:id', async (req, res) => {
+app.get('/api/series/:id', requireSubscription, async (req, res) => {
   try {
     res.setHeader('Cache-Control', 'public, max-age=120');
     const seriesId = req.params.id;
@@ -701,7 +799,7 @@ app.get('/api/series/:id', async (req, res) => {
 });
 
 // API Route for Concerts
-app.get('/api/concerts', async (req, res) => {
+app.get('/api/concerts', requireSubscription, async (req, res) => {
   try {
     const country = (req.query.country || 'ug').trim().toLowerCase();
 
@@ -748,7 +846,7 @@ app.get('/api/concerts', async (req, res) => {
 });
 
 // Single concert detail API
-app.get('/api/concerts/:id', async (req, res) => {
+app.get('/api/concerts/:id', requireSubscription, async (req, res) => {
   try {
     const supported = getSupportedCountries();
     let allConcerts = [];
@@ -770,27 +868,31 @@ app.get('/api/concerts/:id', async (req, res) => {
 });
 
 // Dynamic Page Routes
-app.get('/concert/:id', (req, res) => {
+app.get('/concert/:id', requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'concert.html'));
 });
 
-app.get('/movie/:id', (req, res) => {
+app.get('/movie/:id', requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'movie.html'));
 });
 
-app.get('/movie', (req, res) => {
+app.get('/movie', requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'movies.html'));
 });
 
-app.get('/series/watch/:id', (req, res) => {
+app.get(['/movies', '/movies/'], requireSubscription, (req, res) => {
+  res.sendFile(path.join(__dirname, 'movies.html'));
+});
+
+app.get('/series/watch/:id', requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'series-watch.html'));
 });
 
-app.get('/series/:id', (req, res) => {
+app.get('/series/:id', requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'series-detail.html'));
 });
 
-app.get('/series', (req, res) => {
+app.get(['/series', '/series/'], requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'series.html'));
 });
 
@@ -798,11 +900,11 @@ app.get(['/more', '/more/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'more.html'));
 });
 
-app.get(['/music/watch/:id', '/music/watch/:id/'], (req, res) => {
+app.get(['/music/watch/:id', '/music/watch/:id/'], requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'music-watch.html'));
 });
 
-app.get(['/music', '/music/'], (req, res) => {
+app.get(['/music', '/music/'], requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'music.html'));
 });
 
@@ -814,7 +916,7 @@ app.get(['/login', '/login/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'login.html'));
 });
 
-app.get(['/podcasts', '/podcasts/'], (req, res) => {
+app.get(['/podcasts', '/podcasts/'], requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'podcasts.html'));
 });
 
@@ -830,11 +932,44 @@ app.get(['/payment', '/payment/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'payment.html'));
 });
 
-app.get(['/saved', '/saved/'], (req, res) => {
+app.get(['/live-tv', '/live-tv/'], requireSubscription, (req, res) => {
+  res.sendFile(path.join(__dirname, 'live-tv.html'));
+});
+
+app.get(['/trending', '/trending/'], requireSubscription, (req, res) => {
+  res.sendFile(path.join(__dirname, 'trending.html'));
+});
+
+app.get(['/popular', '/popular/'], requireSubscription, (req, res) => {
+  res.sendFile(path.join(__dirname, 'popular.html'));
+});
+
+app.get(['/popular-series', '/popular-series/'], requireSubscription, (req, res) => {
+  res.sendFile(path.join(__dirname, 'popular-series.html'));
+});
+
+app.get(['/featured', '/featured/'], requireSubscription, (req, res) => {
+  res.sendFile(path.join(__dirname, 'featured.html'));
+});
+
+app.get(['/recently-added', '/recently-added/'], requireSubscription, (req, res) => {
+  res.sendFile(path.join(__dirname, 'recently-added.html'));
+});
+
+app.get(['/continue-watching', '/continue-watching/'], requireSubscription, (req, res) => {
+  res.sendFile(path.join(__dirname, 'continue-watching.html'));
+});
+
+app.get(['/payment/verify', '/payment/verify/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'payment-verify.html'));
+});
+
+
+app.get(['/saved', '/saved/'], requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'saved.html'));
 });
 
-app.get(['/downloaded', '/downloaded/'], (req, res) => {
+app.get(['/downloaded', '/downloaded/'], requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'downloaded.html'));
 });
 
@@ -874,16 +1009,16 @@ app.get(['/about/privacy', '/about/privacy/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'about-privacy.html'));
 });
 
-app.get('/watch/:id', (req, res) => {
+app.get('/watch/:id', requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'watch.html'));
 });
 
-app.get('/watch', (req, res) => {
+app.get('/watch', requireSubscription, (req, res) => {
   res.redirect('/movies');
 });
 
 // Live TV EPG Endpoint
-app.get('/api/live-tv/epg/:id', async (req, res) => {
+app.get('/api/live-tv/epg/:id', requireSubscription, async (req, res) => {
   const channelId = req.params.id;
   res.json({
     channelId: channelId,
@@ -893,7 +1028,7 @@ app.get('/api/live-tv/epg/:id', async (req, res) => {
 });
 
 // Live TV Concurrent Viewer Count Endpoint
-app.get('/api/live-tv/viewers/:id', async (req, res) => {
+app.get('/api/live-tv/viewers/:id', requireSubscription, async (req, res) => {
   const channelId = req.params.id;
   res.json({
     channelId: channelId,
@@ -903,11 +1038,11 @@ app.get('/api/live-tv/viewers/:id', async (req, res) => {
 });
 
 // Live TV Watch Routes
-app.get(['/live-tv/watch/:id', '/live-tv/watch/:id/'], (req, res) => {
+app.get(['/live-tv/watch/:id', '/live-tv/watch/:id/'], requireSubscription, (req, res) => {
   res.sendFile(path.join(__dirname, 'live-tv', 'watch.html'));
 });
 
-app.get(['/live-tv/watch', '/live-tv/watch/'], (req, res) => {
+app.get(['/live-tv/watch', '/live-tv/watch/'], requireSubscription, (req, res) => {
   res.redirect('/live-tv/');
 });
 

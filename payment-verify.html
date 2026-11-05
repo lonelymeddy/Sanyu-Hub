@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#222222">
+<meta name="description" content="SanyuHub — Payment Verification & Status">
+<title>Payment Verification — SanyuHub</title>
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .verify-container {
+    max-width: 580px;
+    margin: 40px auto;
+    padding: 24px 20px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .verify-card {
+    background: #141414;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+  .verify-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f4c400, #ffaa00);
+  }
+  .verify-icon-wrap {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .verify-icon-wrap.processing {
+    background: rgba(244, 196, 0, 0.12);
+    color: #f4c400;
+  }
+  .verify-icon-wrap.success {
+    background: rgba(0, 204, 136, 0.15);
+    color: #00cc88;
+  }
+  .verify-icon-wrap.failed {
+    background: rgba(255, 68, 68, 0.15);
+    color: #ff4444;
+  }
+  .verify-icon-wrap.cancelled {
+    background: rgba(255, 170, 0, 0.15);
+    color: #ffaa00;
+  }
+  .verify-icon-wrap svg {
+    width: 34px;
+    height: 34px;
+    fill: currentColor;
+  }
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(244, 196, 0, 0.2);
+    border-top-color: #f4c400;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .verify-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+  }
+  .verify-text {
+    font-size: 14px;
+    color: #aaaaaa;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+  }
+  .verify-meta-box {
+    background: #1c1c1c;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 16px;
+    margin: 0 0 24px 0;
+    text-align: left;
+    font-size: 13px;
+  }
+  .verify-meta-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .verify-meta-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .verify-meta-label {
+    color: #888888;
+  }
+  .verify-meta-value {
+    color: #ffffff;
+    font-weight: 600;
+    word-break: break-all;
+  }
+  .verify-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btn-verify-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px;
+    background: #f4c400;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 800;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background 0.2s;
+  }
+  .btn-verify-primary:hover {
+    background: #ffcc00;
+  }
+  .btn-verify-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    color: #cccccc;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all 0.2s;
+  }
+  .btn-verify-secondary:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+  .state-section {
+    display: none;
+  }
+  .state-section.active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar" id="navbar" style="position: relative; margin-bottom: 10px;">
+  <div class="nav-left">
+    <a href="/" class="brand-logo" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
+      <img src="/images/logo.png" alt="SanyuHub Logo" class="brand-img" style="height: 32px; width: auto;" onerror="this.src='/images/sanyuhub-logo.png'">
+      <span class="brand-text" style="font-weight: 800; font-size: 20px; color: #fff;">Sanyu<span style="color: #f4c400;">Hub</span></span>
+    </a>
+  </div>
+</header>
+
+<div class="verify-container">
+
+  <!-- 1. PROCESSING PAYMENT -->
+  <div class="verify-card state-section" id="stateProcessing">
+    <div class="verify-icon-wrap processing">
+      <div class="spinner"></div>
+    </div>
+    <h1 class="verify-title">Processing Payment</h1>
+    <p class="verify-text">
+      Please approve the mobile money prompt sent to your phone or complete your card verification with your bank.
+    </p>
+    <div class="verify-meta-box">
+      <div class="verify-meta-row">
+        <span class="verify-meta-label">Reference</span>
+        <span class="verify-meta-value" id="procRef">—</span>
+      </div>
+      <div class="verify-meta-row">
+        <span class="verify-meta-label">Status</span>
+        <span class="verify-meta-value" style="color: #f4c400;">Awaiting Approval...</span>
+      </div>
+    </div>
+    <p style="font-size: 12px; color: #888;">Checking payment status automatically. Please do not close this window.</p>
+  </div>
+
+  <!-- 2. PAYMENT PENDING -->
+  <div class="verify-card state-section" id="statePending">
+    <div class="verify-icon-wrap processing">
+      <div class="spinner"></div>
+    </div>
+    <h1 class="verify-title">Payment Pending Confirmation</h1>
+    <p class="verify-text">
+      Your transaction has been submitted and is currently being confirmed by the payment network. Subscription will activate immediately upon verification.
+    </p>
+    <div class="verify-meta-box">
+      <div class="verify-meta-row">
+        <span class="verify-meta-label">Reference</span>
+        <span class="verify-meta-value" id="pendRef">—</span>
+      </div>
+      <div class="verify-meta-row">
+        <span class="verify-meta-label">Status</span>
+        <span class="verify-meta-value" style="color: #f4c400;">Pending Network Approval</span>
+      </div>
+    </div>
+    <div class="verify-actions">
+      <button type="button" class="btn-verify-primary" id="btnManualCheck">Check Status Now</button>
+      <a href="/payment" class="btn-verify-secondary">Choose Different Payment Method</a>
+    </div>
+  </div>
+
+  <!-- 3. PAYMENT SUCCESSFUL -->
+  <div class="verify-card state-section" id="stateSuccess">
+    <div class="verify-icon-wrap success">
+      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    </div>
+    <h1 class="verify-title" style="color: #00cc88;">Payment Successful!</h1>
+    <p class="verify-text" id="successDesc">
+      Your payment has been verified with the server and your subscription is active.
+    </p>
+    <div class="verify-meta-box">
+      <div class="verify-meta-row">
+        <span class="verify-meta-label">Package Activated</span>
+        <span class="verify-meta-value" id="succPkg">—</span>
+      </div>
+      <div class="verify-meta-row">
+        <span class="verify-meta-label">Verified Amount</span>
+        <span class="verify-meta-value" id="succAmount">—</span>
+      </div>
+      <div class="verify-meta-row">
+        <span class="verify-meta-label">Transaction Reference</span>
+        <span class="verify-meta-value" id="succRef">—</span>
+      </div>
+      <div class="verify-meta-row">
+        <span class="verify-meta-label">Expires On</span>
+        <span class="verify-meta-value" id="succExpiry">—</span>
+      </div>
+    </div>
+    <div class="verify-actions">
+      <a href="/" class="btn-verify-primary" id="btnContinueDestination">Start Watching Now</a>
+      <a href="/profile" class="btn-verify-secondary">View Subscription Details</a>
+    </div>
+  </div>
+
+  <!-- 4. PAYMENT FAILED -->
+  <div class="verify-card state-section" id="stateFailed">
+    <div class="verify-icon-wrap failed">
+      <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </div>
+    <h1 class="verify-title" style="color: #ff4444;">Payment Failed</h1>
+    <p class="verify-text" id="failedDesc">
+      The payment processor reported that the transaction was not successful or timed out. Your card/wallet has not been charged.
+    </p>
+    <div class="verify-meta-box">
+      <div class="verify-meta-row">
+        <span class="verify-meta-label">Reference</span>
+        <span class="verify-meta-value" id="failRef">—</span>
+      </div>
+      <div class="verify-meta-row">
+        <span class="verify-meta-label">Reason</span>
+        <span class="verify-meta-value" id="failReason" style="color: #ff6666;">Declined by Network</span>
+      </div>
+    </div>
+    <div class="verify-actions">
+      <a href="/payment" class="btn-verify-primary" id="btnRetryPayment">Retry Payment</a>
+      <a href="/about/help" class="btn-verify-secondary">Contact Customer Support</a>
+    </div>
+  </div>
+
+  <!-- 5. PAYMENT CANCELLED -->
+  <div class="verify-card state-section" id="stateCancelled">
+    <div class="verify-icon-wrap cancelled">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+    </div>
+    <h1 class="verify-title">Payment Cancelled</h1>
+    <p class="verify-text">
+      The payment was cancelled before completion. No funds were debited and no subscription has been activated.
+    </p>
+    <div class="verify-actions">
+      <a href="/payment" class="btn-verify-primary">Return to Checkout</a>
+      <a href="/" class="btn-verify-secondary">Back to Home</a>
+    </div>
+  </div>
+
+</div>
+
+<script src="/js/app.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const ref = urlParams.get("ref") || urlParams.get("tx_ref") || urlParams.get("reference");
+    const rawStatus = (urlParams.get("status") || "").toLowerCase();
+    const returnUrl = urlParams.get("returnUrl") || "/";
+
+    // Destination button
+    const btnContinue = document.getElementById("btnContinueDestination");
+    if (btnContinue && returnUrl && returnUrl.startsWith("/")) {
+      btnContinue.href = returnUrl;
+    }
+
+    const sections = {
+      processing: document.getElementById("stateProcessing"),
+      pending: document.getElementById("statePending"),
+      success: document.getElementById("stateSuccess"),
+      failed: document.getElementById("stateFailed"),
+      cancelled: document.getElementById("stateCancelled")
+    };
+
+    function showState(name) {
+      Object.keys(sections).forEach(k => {
+        if (sections[k]) sections[k].classList.remove("active");
+      });
+      if (sections[name]) sections[name].classList.add("active");
+    }
+
+    // Set initial reference display
+    ['procRef', 'pendRef', 'failRef'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && ref) el.textContent = ref;
+    });
+
+    if (rawStatus === "cancelled") {
+      showState("cancelled");
+      return;
+    }
+
+    if (!ref) {
+      showState("failed");
+      const r = document.getElementById("failReason");
+      if (r) r.textContent = "Missing transaction reference in URL.";
+      return;
+    }
+
+    // Default to processing state
+    showState("processing");
+
+    let pollCount = 0;
+    const maxPolls = 40; // 2 minutes (every 3 seconds)
+    let pollTimer = null;
+
+    async function checkStatus() {
+      pollCount++;
+      try {
+        const res = await fetch(`/api/payments/status/${encodeURIComponent(ref)}`);
+        if (!res.ok) {
+          if (pollCount >= 5) {
+            showState("failed");
+            document.getElementById("failReason").textContent = "Unable to find transaction record on server.";
+          }
+          return;
+        }
+
+        const data = await res.json();
+        const tx = data.transaction || {};
+        const status = (data.status || tx.status || "").toLowerCase();
+
+        if (status === "completed") {
+          if (pollTimer) clearInterval(pollTimer);
+          showState("success");
+
+          document.getElementById("succPkg").textContent = tx.packageName || "Subscription Plan";
+          document.getElementById("succAmount").textContent = (tx.amountUGX ? "UGX " + tx.amountUGX.toLocaleString() : "Verified");
+          document.getElementById("succRef").textContent = tx.txRef || ref;
+
+          // Fetch verified subscription to confirm exact expiry and sync localStorage
+          try {
+            const userIdent = tx.userIdentifier || tx.userId;
+            const subRes = await fetch(`/api/subscriptions/current?identifier=${encodeURIComponent(userIdent)}`);
+            if (subRes.ok) {
+              const subData = await subRes.json();
+              if (subData.subscription) {
+                const sub = subData.subscription;
+                const expDate = new Date(sub.expiresAt).toLocaleDateString(undefined, {
+                  year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                });
+                document.getElementById("succExpiry").textContent = expDate;
+
+                // Update client session
+                const currentUser = (typeof SanyuAuth !== "undefined" && SanyuAuth.getUser && SanyuAuth.getUser()) || {};
+                const updatedSession = {
+                  ...currentUser,
+                  email: currentUser.email || userIdent,
+                  plan: sub.packageId,
+                  packageId: sub.packageId,
+                  isPaid: true,
+                  isTrial: false,
+                  subscriptionExpiry: sub.expiresAt
+                };
+                if (typeof SanyuAuth !== "undefined" && SanyuAuth.registerUser) {
+                  SanyuAuth.registerUser(updatedSession);
+                } else {
+                  localStorage.setItem("sanyuhub_auth_user", JSON.stringify(updatedSession));
+                }
+              }
+            }
+          } catch (e) {
+            console.warn("Error fetching current subscription:", e);
+          }
+          return;
+        }
+
+        if (status === "failed") {
+          if (pollTimer) clearInterval(pollTimer);
+          showState("failed");
+          document.getElementById("failReason").textContent = tx.providerMessage || "Transaction declined or failed.";
+          return;
+        }
+
+        if (status === "cancelled") {
+          if (pollTimer) clearInterval(pollTimer);
+          showState("cancelled");
+          return;
+        }
+
+        // Still pending
+        if (pollCount > 3) {
+          showState("pending");
+        }
+
+        if (pollCount >= maxPolls) {
+          if (pollTimer) clearInterval(pollTimer);
+          showState("pending");
+        }
+
+      } catch (err) {
+        console.warn("Polling error:", err);
+      }
+    }
+
+    // Run first check immediately, then poll
+    await checkStatus();
+    pollTimer = setInterval(checkStatus, 3000);
+
+    const btnManual = document.getElementById("btnManualCheck");
+    if (btnManual) {
+      btnManual.addEventListener("click", async () => {
+        btnManual.textContent = "Checking...";
+        btnManual.disabled = true;
+        await checkStatus();
+        btnManual.textContent = "Check Status Now";
+        btnManual.disabled = false;
+      });
+    }
+  });
+</script>
+</body>
+</html>

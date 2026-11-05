@@ -88,6 +88,16 @@
               <svg class="sh-dropdown-chevron" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
             </button>
             <div class="sh-dropdown-menu" id="subDropdownMenu" role="listbox" aria-labelledby="subPlanLabel">
+              <!-- Package 0: 2-Day Free Trial -->
+              <div class="sh-dropdown-item" data-plan="pkg-trial" role="option" aria-selected="false" tabindex="0">
+                <div class="sh-item-header">
+                  <span class="sh-item-title" style="color: #00cc88;">🎁 2-Day Free Trial</span>
+                  <span class="sh-item-badge" style="background:#00cc88; color:#000;">FREE</span>
+                </div>
+                <div class="sh-item-desc">Duration: 48 hours from activation. Streaming access included.</div>
+                <span class="sh-badge-no-downloads">🚫 Downloads: Not available. Royal Streaming: Not included.</span>
+              </div>
+
               <!-- Package 1: 3-Day Package -->
               <div class="sh-dropdown-item selected" data-plan="pkg-3day" role="option" aria-selected="true" tabindex="0">
                 <div class="sh-item-header">
@@ -163,7 +173,7 @@
               </div>
               <div class="sh-dropdown-item" data-sector="Card" role="option" aria-selected="false" tabindex="0">
                 <div class="sh-item-network">
-                  <svg viewBox="0 0 24 24" class="sh-network-logo" style="width:22px;height:22px;fill:#f4c400;"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                  <img src="/images/mastercard-logo.jpg" alt="Mastercard" class="sh-network-logo" style="width:22px;height:22px;object-fit:contain;border-radius:4px;">
                   <span class="sh-item-title">Bank Card (Mastercard / Visa)</span>
                 </div>
               </div>
@@ -207,6 +217,14 @@
     const toggleConfirmPwdBtn = document.getElementById("toggleConfirmPasswordBtn");
 
     const PACKAGES = {
+      "pkg-trial": {
+        title: "Free Trial — FREE (2 Days)",
+        summaryName: "🎁 2-Day Free Trial — FREE",
+        benefits: "Duration: 48 hours from activation. Streaming access included. Downloads: Not available. Royal Streaming: Not included. 4K downloads: Not included.",
+        price: 0,
+        days: 2,
+        isTrial: true
+      },
       "pkg-3day": {
         title: "3-Day Package — UGX 2,000",
         summaryName: "3-Day Package — UGX 2,000",
@@ -343,21 +361,26 @@
       summaryNamePrice.textContent = pkg.summaryName;
       summaryBenefits.textContent = pkg.benefits;
       errorMsg.style.display = "none";
+
+      if (pkg.isTrial) {
+        if (paymentSectorSection) paymentSectorSection.style.display = "none";
+      } else {
+        if (paymentSectorSection) paymentSectorSection.style.display = "block";
+      }
     }
 
     function updatePaymentState() {
+      selectedNetworkLogo.style.display = "inline-block";
       if (selectedSector === "Airtel") {
         selectedNetworkLogo.src = "/images/airtel-logo.jpg";
         selectedNetworkLogo.alt = "Airtel Money";
         selectedNetworkTitle.textContent = "Airtel Money Uganda";
       } else if (selectedSector === "Card") {
-        selectedNetworkLogo.src = "";
-        selectedNetworkLogo.alt = "Card";
-        selectedNetworkLogo.style.display = "none";
+        selectedNetworkLogo.src = "/images/mastercard-logo.jpg";
+        selectedNetworkLogo.alt = "Mastercard / Visa";
         selectedNetworkTitle.textContent = "Bank Card (Mastercard / Visa)";
       } else {
         selectedSector = "MTN";
-        selectedNetworkLogo.style.display = "inline-block";
         selectedNetworkLogo.src = "/images/mtn-logo.png";
         selectedNetworkLogo.alt = "MTN MoMo";
         selectedNetworkTitle.textContent = "MTN Mobile Money Uganda";
@@ -406,6 +429,69 @@
       const isAdmin = (adminEmails.includes(email.toLowerCase()) || phone === "256702662846" || adminEmails.includes(username.toLowerCase()));
 
       const pkg = PACKAGES[selectedPlan] || PACKAGES["pkg-3day"];
+
+      // If user selected Free Trial, activate on backend immediately
+      if (selectedPlan === "pkg-trial" && !isAdmin) {
+        const btnSubmit = document.getElementById("btnSignUpSubmit");
+        if (btnSubmit) {
+          btnSubmit.disabled = true;
+          btnSubmit.textContent = "Activating Free Trial...";
+        }
+
+        fetch("/api/subscriptions/trial/activate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userIdentifier: email,
+            email: email,
+            phone: phone,
+            username: username
+          })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.subscription) {
+            const sub = data.subscription;
+            const userSession = {
+              email: email,
+              phone: phone,
+              username: username,
+              isAdmin: false,
+              paymentSector: "trial",
+              paymentMethod: "trial",
+              plan: "pkg-trial",
+              packageId: "pkg-trial",
+              isTrial: true,
+              isPaid: true,
+              subscriptionExpiry: sub.expiresAt,
+              registeredAt: new Date().toISOString()
+            };
+            if (typeof SanyuAuth !== "undefined" && SanyuAuth.registerUser) {
+              SanyuAuth.registerUser(userSession);
+            } else {
+              localStorage.setItem("sanyuhub_auth_user", JSON.stringify(userSession));
+            }
+            window.location.href = "/";
+          } else {
+            errorMsg.textContent = data.message || data.error || "Unable to claim free trial. You may have already claimed a trial.";
+            errorMsg.style.display = "block";
+            if (btnSubmit) {
+              btnSubmit.disabled = false;
+              btnSubmit.textContent = "Create Account";
+            }
+          }
+        })
+        .catch(err => {
+          errorMsg.textContent = "Network error activating trial. Please try again.";
+          errorMsg.style.display = "block";
+          if (btnSubmit) {
+            btnSubmit.disabled = false;
+            btnSubmit.textContent = "Create Account";
+          }
+        });
+        return;
+      }
+
       const expiryDate = new Date(Date.now() + (isAdmin ? 365 : pkg.days) * 24 * 60 * 60 * 1000).toISOString();
 
       const userSession = {

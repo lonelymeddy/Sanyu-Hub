@@ -40,7 +40,10 @@ if (!fs.existsSync(BASELINES_DIR)) {
   });
   const context = await browser.newContext({
     viewport: { width: 1280, height: 720 },
-    deviceScaleFactor: 1
+    deviceScaleFactor: 1,
+    extraHTTPHeaders: {
+      'x-user-id': 'delostvoyage@gmail.com'
+    }
   });
 
   const page = await context.newPage();

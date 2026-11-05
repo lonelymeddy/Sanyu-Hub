@@ -54,7 +54,10 @@ const BASE_URL = `http://localhost:${PORT}`;
       viewport: { width: vp.width, height: vp.height },
       deviceScaleFactor: 2,
       isMobile: true,
-      hasTouch: true
+      hasTouch: true,
+      extraHTTPHeaders: {
+        'x-user-id': 'delostvoyage@gmail.com'
+      }
     });
 
     const page = await context.newPage();

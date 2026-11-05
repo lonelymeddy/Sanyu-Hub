@@ -306,6 +306,10 @@ Sanyu<span>Hub</span>
 
     <!-- Package switcher pills -->
     <div class="package-selector-grid">
+      <div class="pkg-pill" data-pkg="pkg-trial" style="border-color: rgba(0, 204, 136, 0.4);">
+        <div class="pkg-pill-title" style="color:#00cc88;">Free Trial</div>
+        <div class="pkg-pill-price" style="color:#00cc88;">FREE</div>
+      </div>
       <div class="pkg-pill selected" data-pkg="pkg-3day">
         <div class="pkg-pill-title">3-Day</div>
         <div class="pkg-pill-price">2,000 UGX</div>
@@ -344,9 +348,28 @@ Sanyu<span>Hub</span>
         <span>Airtel Money</span>
       </div>
       <div class="method-tab" data-method="Card">
-        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#f4c400;"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
-        <span>Card (Visa/MC)</span>
+        <img src="/images/mastercard-logo.jpg" alt="Mastercard" style="height:22px; width:auto; object-fit:contain; border-radius:3px;">
+        <span>Card (Mastercard / Visa)</span>
       </div>
+    </div>
+
+    <!-- Free Trial Activation Area -->
+    <div id="trialFormArea" style="display: none;">
+      <div style="padding: 16px; background: rgba(0, 204, 136, 0.1); border: 1px solid rgba(0, 204, 136, 0.25); border-radius: 10px; margin-bottom: 16px; text-align: center;">
+        <div style="font-size: 15px; font-weight: 800; color: #00cc88; margin-bottom: 6px;">🎁 Claim Your 48-Hour Free Trial</div>
+        <p style="font-size: 13px; color: #ccc; margin: 0; line-height: 1.5;">
+          No payment or credit card required. Enjoy 48 hours of full streaming access immediately. One trial per eligible account.
+        </p>
+      </div>
+
+      <div class="form-group-pay">
+        <label for="trialIdentifier">Account Email or Phone Number</label>
+        <input type="text" id="trialIdentifier" class="input-pay" placeholder="Enter your registered email or phone" autocomplete="username">
+      </div>
+
+      <button type="button" class="btn-pay-action" id="btnActivateTrial" style="background: #00cc88; color: #000;">
+        <span>Activate 2-Day Free Trial</span>
+      </button>
     </div>
 
     <!-- Mobile Money Form -->
@@ -439,6 +462,25 @@ Sanyu<span>Hub</span>
     let currentUser = (typeof SanyuAuth !== "undefined") ? SanyuAuth.getUser() : null;
 
     const PACKAGES = {
+      "pkg-trial": {
+        id: "pkg-trial",
+        name: "Free Trial",
+        price: 0,
+        days: 2,
+        priceDisplay: "FREE",
+        duration: "2 Days",
+        desc: "48 hours of free streaming access. One-time claim per user.",
+        badge: "FREE TRIAL",
+        isTrial: true,
+        benefits: [
+          "Price: FREE",
+          "Duration: 48 hours from activation",
+          "Streaming access included",
+          "Downloads: Not available",
+          "Royal Streaming: Not included",
+          "4K downloads: Not included"
+        ]
+      },
       "pkg-3day": {
         id: "pkg-3day",
         name: "3-Day Package",
@@ -545,9 +587,15 @@ Sanyu<span>Hub</span>
     const pkgDescDisplay = document.getElementById("pkgDescDisplay");
     const pkgBenefitsList = document.getElementById("pkgBenefitsList");
 
+    const trialFormArea = document.getElementById("trialFormArea");
     const momoFormArea = document.getElementById("momoFormArea");
     const cardFormArea = document.getElementById("cardFormArea");
+    const trialIdentifierInput = document.getElementById("trialIdentifier");
+    if (trialIdentifierInput && currentUser) {
+      trialIdentifierInput.value = currentUser.email || currentUser.phone || currentUser.username || "";
+    }
 
+    const btnActivateTrial = document.getElementById("btnActivateTrial");
     const btnInitiateMomo = document.getElementById("btnInitiateMomo");
     const btnInitiateCard = document.getElementById("btnInitiateCard");
 
@@ -579,7 +627,7 @@ Sanyu<span>Hub</span>
       pkgBenefitsList.innerHTML = "";
       pkg.benefits.forEach(b => {
         const li = document.createElement("li");
-        const icon = b.includes("Not available") ? "🚫" : (pkg.royal ? "👑" : "✓");
+        const icon = (b.includes("Not available") || b.includes("Not included")) ? "🚫" : (pkg.royal ? "👑" : "✓");
         li.innerHTML = `<span>${icon}</span> <span>${b}</span>`;
         pkgBenefitsList.appendChild(li);
       });
@@ -591,9 +639,26 @@ Sanyu<span>Hub</span>
           pill.classList.remove("selected");
         }
       });
+
+      renderMethod();
     }
 
     function renderMethod() {
+      const isTrial = selectedPackageId === "pkg-trial";
+      const methodTabGroup = document.querySelector(".method-tab-group");
+      if (methodTabGroup) {
+        methodTabGroup.style.display = isTrial ? "none" : "grid";
+      }
+
+      if (isTrial) {
+        trialFormArea.style.display = "block";
+        momoFormArea.style.display = "none";
+        cardFormArea.style.display = "none";
+        return;
+      }
+
+      trialFormArea.style.display = "none";
+
       document.querySelectorAll(".method-tab").forEach(tab => {
         if (tab.getAttribute("data-method") === selectedMethod) {
           tab.classList.add("selected");
@@ -688,6 +753,59 @@ Sanyu<span>Hub</span>
           console.warn("Polling error:", e);
         }
       }, 3000);
+    }
+
+    // Activate Free Trial Action
+    if (btnActivateTrial) {
+      btnActivateTrial.addEventListener("click", async () => {
+        const ident = (trialIdentifierInput ? trialIdentifierInput.value.trim() : "") ||
+                      (currentUser && (currentUser.email || currentUser.phone || currentUser.username));
+
+        if (!ident) {
+          alert("Please enter your account email or phone number to claim free trial.");
+          if (trialIdentifierInput) trialIdentifierInput.focus();
+          return;
+        }
+
+        btnActivateTrial.disabled = true;
+        btnActivateTrial.textContent = "Activating trial...";
+
+        try {
+          const res = await fetch("/api/subscriptions/trial/activate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              userIdentifier: ident,
+              email: ident.includes("@") ? ident : undefined,
+              phone: !ident.includes("@") ? ident : undefined
+            })
+          });
+
+          const data = await res.json();
+          if (data.success && data.subscription) {
+            showStatus("success", "2-Day Free Trial activated successfully! You now have 48 hours of streaming access.");
+
+            if (currentUser) {
+              currentUser.plan = "pkg-trial";
+              currentUser.packageId = "pkg-trial";
+              currentUser.isTrial = true;
+              currentUser.isPaid = true;
+              currentUser.subscriptionExpiry = data.subscription.expiresAt;
+              if (typeof SanyuAuth !== "undefined" && SanyuAuth.registerUser) {
+                SanyuAuth.registerUser(currentUser);
+              }
+            }
+          } else {
+            showStatus("error", data.message || data.error || "Free trial has already been claimed for this account.");
+            btnActivateTrial.disabled = false;
+            btnActivateTrial.textContent = "Activate 2-Day Free Trial";
+          }
+        } catch (err) {
+          showStatus("error", "Network connection failed. Please try again.");
+          btnActivateTrial.disabled = false;
+          btnActivateTrial.textContent = "Activate 2-Day Free Trial";
+        }
+      });
     }
 
     // Initiate Mobile Money
