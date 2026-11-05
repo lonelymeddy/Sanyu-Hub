@@ -44,7 +44,28 @@ const channelsToTest = [
 
   for (const ch of channelsToTest) {
     const context = await browser.newContext();
+    await context.addCookies([{
+      name: 'sanyuhub_auth_user',
+      value: encodeURIComponent(JSON.stringify({
+        email: 'delostvoyage@gmail.com',
+        phone: '256702662846',
+        username: 'Admin',
+        isAdmin: true,
+        subscriptionExpiry: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString()
+      })),
+      domain: 'localhost',
+      path: '/'
+    }]);
     const page = await context.newPage();
+    await page.addInitScript(() => {
+      localStorage.setItem('sanyuhub_auth_user', JSON.stringify({
+        email: 'delostvoyage@gmail.com',
+        phone: '256702662846',
+        username: 'Admin',
+        isAdmin: true,
+        subscriptionExpiry: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString()
+      }));
+    });
     const watchUrl = `${BASE_URL}/live-tv/watch/${ch.id}`;
 
     console.log(`\nTesting Channel: ${ch.name} (${ch.id}) at ${watchUrl}`);

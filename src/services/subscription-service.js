@@ -5,6 +5,27 @@ const https = require('https');
 
 // Define Subscription Packages
 const SUBSCRIPTION_PACKAGES = {
+  'pkg-trial': {
+    id: 'pkg-trial',
+    name: 'Free Trial',
+    priceUGX: 0,
+    durationDays: 2,
+    durationHours: 48,
+    isTrial: true,
+    streaming: true,
+    royalStreaming: false,
+    downloadsAllowed: false,
+    weeklyAllowanceMB: 0,
+    description: '2-Day Free Trial (48 hours). Streaming access included. Downloads not available.',
+    benefits: [
+      'Price: FREE',
+      'Duration: 48 hours from activation',
+      'Streaming access included',
+      'Downloads: Not available',
+      'Royal Streaming: Not included',
+      '4K downloads: Not included'
+    ]
+  },
   'pkg-3day': {
     id: 'pkg-3day',
     name: '3-Day Package',
@@ -131,9 +152,14 @@ class SubscriptionService {
     return SUBSCRIPTION_PACKAGES[packageId] || null;
   }
 
+  // Default Lworx API Key configured as fallback when environment variable is not explicitly overridden
+  getLworxApiKey() {
+    return process.env.LWORX_API_KEY || 'lwx_live_6a87d5bd66e80fdc8a99001a9e107512';
+  }
+
   // --- GATEWAY CONFIGURATION & OPERATIONAL STATUS ---
   getGatewayStatus() {
-    const lworxApiKey = process.env.LWORX_API_KEY;
+    const lworxApiKey = this.getLworxApiKey();
     const flwSecretKey = process.env.FLW_SECRET_KEY;
     const flwPublicKey = process.env.FLW_PUBLIC_KEY;
 
@@ -270,7 +296,7 @@ class SubscriptionService {
       txRef
     });
 
-    const apiKey = process.env.LWORX_API_KEY;
+    const apiKey = this.getLworxApiKey();
     const callbackUrl = process.env.LWORX_CALLBACK_URL || `${process.env.APP_BASE_URL || 'https://sanyuhub.com'}/api/payments/lworx/webhook`;
     const webhookSecret = process.env.LWORX_WEBHOOK_SECRET;
 
@@ -444,7 +470,7 @@ class SubscriptionService {
       return { status: 'completed', transaction: tx };
     }
 
-    const apiKey = process.env.LWORX_API_KEY;
+    const apiKey = this.getLworxApiKey();
     if (!apiKey) {
       return { status: tx.status, transaction: tx };
     }
@@ -669,24 +695,134 @@ class SubscriptionService {
     return null;
   }
 
+  // --- TRIAL ELIGIBILITY & ACTIVATION ---
+  isTrialEligible(userIdentifier) {
+    if (!userIdentifier) return false;
+    const cleanId = String(userIdentifier).toLowerCase().trim();
+    const subscriptions = readJson(SUBSCRIPTIONS_FILE);
+    const hasTrialed = subscriptions.some(s => {
+      const match = (s.userId && s.userId.toLowerCase().trim() === cleanId) ||
+                    (s.userIdentifier && s.userIdentifier.toLowerCase().trim() === cleanId);
+      return match && (s.isTrial || s.packageId === 'pkg-trial' || s.trialUsed);
+    });
+
+    if (hasTrialed) return false;
+
+    const users = readJson(path.join(DATA_DIR, 'users.json'), []);
+    const user = users.find(u => {
+      const uEmail = (u.email || '').toLowerCase().trim();
+      const uPhone = (u.phone || '').trim();
+      const uId = (u.id || '').toLowerCase().trim();
+      return uEmail === cleanId || uPhone === cleanId || uId === cleanId;
+    });
+
+    if (user && (user.trialUsed || user.trialActivatedAt)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  activateTrial({ userId, userIdentifier, phone, email }) {
+    const idKey = (userIdentifier || email || userId || phone || '').toLowerCase().trim();
+    if (!idKey) {
+      throw new Error('User identifier is required to activate free trial.');
+    }
+
+    if (!this.isTrialEligible(idKey)) {
+      throw new Error('TRIAL_ALREADY_USED: Free trial has already been claimed for this account.');
+    }
+
+    const now = new Date();
+    const expiresAt = new Date(now.getTime() + 48 * 60 * 60 * 1000).toISOString();
+    const subscriptions = readJson(SUBSCRIPTIONS_FILE);
+    const existingIndex = subscriptions.findIndex(s => {
+      const sId = (s.userIdentifier || s.userId || '').toLowerCase().trim();
+      return sId === idKey;
+    });
+
+    const newSubRecord = {
+      id: 'trial-' + Date.now() + '-' + crypto.randomBytes(4).toString('hex'),
+      userId: idKey,
+      userIdentifier: idKey,
+      packageId: 'pkg-trial',
+      packageName: '2-Day Free Trial',
+      amountUGX: 0,
+      paymentMethod: 'trial',
+      provider: 'sanyuhub-trial',
+      transactionReference: 'TRIAL-' + Date.now(),
+      status: 'active',
+      isTrial: true,
+      trialUsed: true,
+      streamingAllowed: true,
+      royalStreaming: false,
+      downloadsAllowed: false,
+      weeklyAllowanceMB: 0,
+      activatedAt: now.toISOString(),
+      startedAt: now.toISOString(),
+      expiresAt: expiresAt,
+      trialActivatedAt: now.toISOString(),
+      trialExpiresAt: expiresAt,
+      isRevoked: false,
+      updatedAt: now.toISOString()
+    };
+
+    if (existingIndex !== -1) {
+      subscriptions[existingIndex] = newSubRecord;
+    } else {
+      subscriptions.unshift(newSubRecord);
+    }
+    writeJson(SUBSCRIPTIONS_FILE, subscriptions);
+
+    const users = readJson(path.join(DATA_DIR, 'users.json'), []);
+    const userIndex = users.findIndex(u => {
+      const uEmail = (u.email || '').toLowerCase().trim();
+      const uPhone = (u.phone || '').trim();
+      const uId = (u.id || '').toLowerCase().trim();
+      return uEmail === idKey || uPhone === idKey || uId === idKey;
+    });
+
+    if (userIndex !== -1) {
+      users[userIndex].trialUsed = true;
+      users[userIndex].trialActivatedAt = now.toISOString();
+      users[userIndex].trialExpiresAt = expiresAt;
+      users[userIndex].trialEligible = false;
+      writeJson(path.join(DATA_DIR, 'users.json'), users);
+    }
+
+    this.addAuditLog('TRIAL_ACTIVATED', `2-Day Free Trial activated for ${idKey} (Expires: ${expiresAt})`, {
+      userId: idKey,
+      expiresAt
+    });
+
+    return newSubRecord;
+  }
+
   // --- SUBSCRIPTION ACTIVATION & EXPIRATION ---
   activateSubscription({ userId, userIdentifier, packageId, paymentMethod, provider, reference, amountUGX }) {
+    if (packageId === 'pkg-trial') {
+      return this.activateTrial({ userId, userIdentifier });
+    }
+
     const pkg = this.getPackageById(packageId);
     if (!pkg) {
       throw new Error(`Invalid package ID ${packageId}`);
     }
 
     const subscriptions = readJson(SUBSCRIPTIONS_FILE);
-    const idKey = userIdentifier || userId;
+    const idKey = (userIdentifier || userId || '').toLowerCase().trim();
 
     // Check existing subscription
-    const existingIndex = subscriptions.findIndex(s => s.userId === idKey || s.userIdentifier === idKey);
+    const existingIndex = subscriptions.findIndex(s => {
+      const sId = (s.userIdentifier || s.userId || '').toLowerCase().trim();
+      return sId === idKey;
+    });
 
     const now = new Date();
     let startTime = now;
     let expiresAt;
 
-    if (existingIndex !== -1 && new Date(subscriptions[existingIndex].expiresAt).getTime() > now.getTime()) {
+    if (existingIndex !== -1 && new Date(subscriptions[existingIndex].expiresAt).getTime() > now.getTime() && !subscriptions[existingIndex].isTrial) {
       // Existing active subscription: extend seamlessly from current expiration
       const currentExpiry = new Date(subscriptions[existingIndex].expiresAt);
       expiresAt = new Date(currentExpiry.getTime() + pkg.durationDays * 24 * 60 * 60 * 1000).toISOString();
@@ -701,11 +837,13 @@ class SubscriptionService {
       userIdentifier: idKey,
       packageId: pkg.id,
       packageName: pkg.name,
-      amountUGX: amountUGX || pkg.priceUGX,
+      amountUGX: amountUGX !== undefined ? amountUGX : pkg.priceUGX,
       paymentMethod,
       provider,
       transactionReference: reference,
       status: 'active',
+      isTrial: false,
+      trialUsed: existingIndex !== -1 ? subscriptions[existingIndex].trialUsed || false : false,
       streamingAllowed: true,
       royalStreaming: pkg.royalStreaming,
       downloadsAllowed: pkg.downloadsAllowed,
@@ -713,6 +851,8 @@ class SubscriptionService {
       activatedAt: now.toISOString(),
       startedAt: startTime.toISOString(),
       expiresAt: expiresAt,
+      isRevoked: false,
+      paymentVerifiedAt: now.toISOString(),
       updatedAt: now.toISOString()
     };
 
@@ -739,19 +879,27 @@ class SubscriptionService {
 
   getUserSubscription(userIdentifier) {
     if (!userIdentifier) return null;
+    const cleanId = String(userIdentifier).toLowerCase().trim();
     const subscriptions = readJson(SUBSCRIPTIONS_FILE);
-    const sub = subscriptions.find(s => s.userId === userIdentifier || s.userIdentifier === userIdentifier);
+    const sub = subscriptions.find(s => {
+      const sUser = (s.userId || '').toLowerCase().trim();
+      const sIdent = (s.userIdentifier || '').toLowerCase().trim();
+      return sUser === cleanId || sIdent === cleanId;
+    });
 
     if (!sub) return null;
 
     const isExpired = new Date(sub.expiresAt).getTime() < Date.now();
+    const isRevoked = Boolean(sub.isRevoked);
+
     const activeSub = {
       ...sub,
-      status: isExpired ? 'expired' : 'active',
-      isExpired
+      status: (isExpired || isRevoked) ? (isRevoked ? 'revoked' : 'expired') : 'active',
+      isExpired,
+      isRevoked
     };
 
-    if (isExpired) {
+    if (isExpired || isRevoked) {
       activeSub.streamingAllowed = false;
       activeSub.royalStreaming = false;
       activeSub.downloadsAllowed = false;
@@ -760,15 +908,93 @@ class SubscriptionService {
     return activeSub;
   }
 
+  checkUserAccess(userIdentifier) {
+    if (!userIdentifier) {
+      return { hasAccess: false, reason: 'NO_IDENTIFIER', status: 'unauthenticated' };
+    }
+
+    const cleanId = String(userIdentifier).toLowerCase().trim();
+
+    const adminEmails = ['delostvoyage@gmail.com', 'williambanksug256@gmail.com'];
+    if (adminEmails.includes(cleanId) || cleanId === '256702662846') {
+      return {
+        hasAccess: true,
+        isAdmin: true,
+        packageId: 'pkg-royal',
+        streamingAllowed: true,
+        royalStreaming: true,
+        downloadsAllowed: true
+      };
+    }
+
+    const sub = this.getUserSubscription(cleanId);
+    if (!sub) {
+      return { hasAccess: false, reason: 'NO_SUBSCRIPTION', status: 'none', trialEligible: this.isTrialEligible(cleanId) };
+    }
+
+    if (sub.isRevoked) {
+      return { hasAccess: false, reason: 'SUBSCRIPTION_REVOKED', status: 'revoked', subscription: sub };
+    }
+
+    if (sub.isExpired) {
+      return { hasAccess: false, reason: 'SUBSCRIPTION_EXPIRED', status: 'expired', subscription: sub, trialEligible: false };
+    }
+
+    if (sub.status !== 'active') {
+      return { hasAccess: false, reason: 'SUBSCRIPTION_INACTIVE', status: sub.status, subscription: sub };
+    }
+
+    return {
+      hasAccess: true,
+      subscription: sub,
+      packageId: sub.packageId,
+      isTrial: Boolean(sub.isTrial),
+      royalStreaming: Boolean(sub.royalStreaming),
+      downloadsAllowed: Boolean(sub.downloadsAllowed)
+    };
+  }
+
+  revokeSubscription(userIdentifier, reason = 'Administrative revocation') {
+    const subscriptions = readJson(SUBSCRIPTIONS_FILE);
+    const cleanId = String(userIdentifier).toLowerCase().trim();
+    const index = subscriptions.findIndex(s => {
+      const sId = (s.userIdentifier || s.userId || '').toLowerCase().trim();
+      return sId === cleanId;
+    });
+
+    if (index === -1) {
+      throw new Error(`Subscription not found for ${userIdentifier}`);
+    }
+
+    subscriptions[index].status = 'revoked';
+    subscriptions[index].isRevoked = true;
+    subscriptions[index].revocationReason = reason;
+    subscriptions[index].revokedAt = new Date().toISOString();
+    subscriptions[index].streamingAllowed = false;
+    subscriptions[index].royalStreaming = false;
+    subscriptions[index].downloadsAllowed = false;
+    subscriptions[index].updatedAt = new Date().toISOString();
+
+    writeJson(SUBSCRIPTIONS_FILE, subscriptions);
+    this.addAuditLog('SUBSCRIPTION_REVOKED', `Revoked subscription for ${userIdentifier}: ${reason}`, {
+      userIdentifier,
+      reason
+    });
+
+    return subscriptions[index];
+  }
+
   getAllSubscriptions() {
     const subscriptions = readJson(SUBSCRIPTIONS_FILE);
     const now = Date.now();
     return subscriptions.map(s => {
       const isExpired = new Date(s.expiresAt).getTime() < now;
+      const isRevoked = Boolean(s.isRevoked);
       return {
         ...s,
-        status: isExpired ? 'expired' : 'active',
-        isExpired
+        status: (isExpired || isRevoked) ? (isRevoked ? 'revoked' : 'expired') : 'active',
+        isExpired,
+        isRevoked
       };
     });
   }

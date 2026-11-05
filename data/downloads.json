@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "userIdentifier": "royal_1793876750816@test.com",
+    "weekWindowStart": "2026-11-05T11:05:50.816Z",
+    "totalAllowanceMB": 900,
+    "totalAllowanceBytes": 943718400,
+    "usedBytes": 0,
+    "completedDownloads": []
+  },
+  {
+    "userIdentifier": "royal_1793877104508@test.com",
+    "weekWindowStart": "2026-11-05T11:11:44.509Z",
+    "totalAllowanceMB": 900,
+    "totalAllowanceBytes": 943718400,
+    "usedBytes": 0,
+    "completedDownloads": []
+  }
+]

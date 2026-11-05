@@ -1,1 +1,190 @@
-[]
+[
+  {
+    "id": "log-1793877164174-0099a0",
+    "action": "ADMIN_MANUAL_VERIFY",
+    "description": "Admin manually verified & activated pkg-monthly for testcustomer@gmail.com",
+    "details": {
+      "identifier": "testcustomer@gmail.com",
+      "packageId": "pkg-monthly",
+      "reference": "TXN99887766"
+    },
+    "timestamp": "2026-11-05T11:12:44.174Z"
+  },
+  {
+    "id": "log-1793877164174-51d3e5",
+    "action": "SUBSCRIPTION_ACTIVATED",
+    "description": "Activated Monthly Package for testcustomer@gmail.com via admin-manual (TXN99887766)",
+    "details": {
+      "userId": "testcustomer@gmail.com",
+      "packageId": "pkg-monthly",
+      "expiresAt": "2026-12-05T11:12:44.173Z"
+    },
+    "timestamp": "2026-11-05T11:12:44.174Z"
+  },
+  {
+    "id": "log-1793877104509-8f8b0b",
+    "action": "SUBSCRIPTION_ACTIVATED",
+    "description": "Activated Royal Premium for royal_1793877104508@test.com via flutterwave (ROYAL-1793877104508)",
+    "details": {
+      "userId": "royal_1793877104508@test.com",
+      "packageId": "pkg-royal",
+      "expiresAt": "2026-12-05T11:11:44.508Z"
+    },
+    "timestamp": "2026-11-05T11:11:44.509Z"
+  },
+  {
+    "id": "log-1793877104507-cfed79",
+    "action": "SUBSCRIPTION_ACTIVATED",
+    "description": "Activated 3-Day Package for exppaid_1793877104507@test.com via lworx (EXP-1793877104507)",
+    "details": {
+      "userId": "exppaid_1793877104507@test.com",
+      "packageId": "pkg-3day",
+      "expiresAt": "2026-11-08T11:11:44.507Z"
+    },
+    "timestamp": "2026-11-05T11:11:44.507Z"
+  },
+  {
+    "id": "log-1793877104506-422530",
+    "action": "SUBSCRIPTION_ACTIVATED",
+    "description": "Activated 7-Day Package for paid_1793877104504@test.com via lworx (REF-PAID-1793877104504)",
+    "details": {
+      "userId": "paid_1793877104504@test.com",
+      "packageId": "pkg-7day",
+      "expiresAt": "2026-11-12T11:11:44.506Z"
+    },
+    "timestamp": "2026-11-05T11:11:44.506Z"
+  },
+  {
+    "id": "log-1793877104505-6749c5",
+    "action": "TRANSACTION_CREATED",
+    "description": "Created transaction REF-PAID-1793877104504 for 7-Day Package (6000 UGX)",
+    "details": {
+      "txRef": "REF-PAID-1793877104504",
+      "userId": "paid_1793877104504@test.com"
+    },
+    "timestamp": "2026-11-05T11:11:44.505Z"
+  },
+  {
+    "id": "log-1793877104503-0b29e9",
+    "action": "TRANSACTION_CREATED",
+    "description": "Created transaction REF-FAILED-1793877104503 for 3-Day Package (2000 UGX)",
+    "details": {
+      "txRef": "REF-FAILED-1793877104503",
+      "userId": "failed_1793877104503@test.com"
+    },
+    "timestamp": "2026-11-05T11:11:44.503Z"
+  },
+  {
+    "id": "log-1793877104502-84e9d0",
+    "action": "TRANSACTION_CREATED",
+    "description": "Created transaction REF-PENDING-1793877104501 for 3-Day Package (2000 UGX)",
+    "details": {
+      "txRef": "REF-PENDING-1793877104501",
+      "userId": "pending_1793877104501@test.com"
+    },
+    "timestamp": "2026-11-05T11:11:44.502Z"
+  },
+  {
+    "id": "log-1793877104469-e43944",
+    "action": "TRIAL_ACTIVATED",
+    "description": "2-Day Free Trial activated for expiredtrial_1793877104469@test.com (Expires: 2026-11-07T11:11:44.469Z)",
+    "details": {
+      "userId": "expiredtrial_1793877104469@test.com",
+      "expiresAt": "2026-11-07T11:11:44.469Z"
+    },
+    "timestamp": "2026-11-05T11:11:44.469Z"
+  },
+  {
+    "id": "log-1793877104468-b9fd53",
+    "action": "TRIAL_ACTIVATED",
+    "description": "2-Day Free Trial activated for newuser_1793877104465@test.com (Expires: 2026-11-07T11:11:44.466Z)",
+    "details": {
+      "userId": "newuser_1793877104465@test.com",
+      "expiresAt": "2026-11-07T11:11:44.466Z"
+    },
+    "timestamp": "2026-11-05T11:11:44.468Z"
+  },
+  {
+    "id": "log-1793876750817-8a7f2b",
+    "action": "SUBSCRIPTION_ACTIVATED",
+    "description": "Activated Royal Premium for royal_1793876750816@test.com via flutterwave (ROYAL-1793876750816)",
+    "details": {
+      "userId": "royal_1793876750816@test.com",
+      "packageId": "pkg-royal",
+      "expiresAt": "2026-12-05T11:05:50.816Z"
+    },
+    "timestamp": "2026-11-05T11:05:50.817Z"
+  },
+  {
+    "id": "log-1793876750815-2d52f4",
+    "action": "SUBSCRIPTION_ACTIVATED",
+    "description": "Activated 3-Day Package for exppaid_1793876750814@test.com via lworx (EXP-1793876750814)",
+    "details": {
+      "userId": "exppaid_1793876750814@test.com",
+      "packageId": "pkg-3day",
+      "expiresAt": "2026-11-08T11:05:50.814Z"
+    },
+    "timestamp": "2026-11-05T11:05:50.815Z"
+  },
+  {
+    "id": "log-1793876750814-37913f",
+    "action": "SUBSCRIPTION_ACTIVATED",
+    "description": "Activated 7-Day Package for paid_1793876750811@test.com via lworx (REF-PAID-1793876750811)",
+    "details": {
+      "userId": "paid_1793876750811@test.com",
+      "packageId": "pkg-7day",
+      "expiresAt": "2026-11-12T11:05:50.813Z"
+    },
+    "timestamp": "2026-11-05T11:05:50.814Z"
+  },
+  {
+    "id": "log-1793876750812-4f1d1a",
+    "action": "TRANSACTION_CREATED",
+    "description": "Created transaction REF-PAID-1793876750811 for 7-Day Package (6000 UGX)",
+    "details": {
+      "txRef": "REF-PAID-1793876750811",
+      "userId": "paid_1793876750811@test.com"
+    },
+    "timestamp": "2026-11-05T11:05:50.812Z"
+  },
+  {
+    "id": "log-1793876750810-561b2d",
+    "action": "TRANSACTION_CREATED",
+    "description": "Created transaction REF-FAILED-1793876750809 for 3-Day Package (2000 UGX)",
+    "details": {
+      "txRef": "REF-FAILED-1793876750809",
+      "userId": "failed_1793876750809@test.com"
+    },
+    "timestamp": "2026-11-05T11:05:50.810Z"
+  },
+  {
+    "id": "log-1793876750809-470ca4",
+    "action": "TRANSACTION_CREATED",
+    "description": "Created transaction REF-PENDING-1793876750808 for 3-Day Package (2000 UGX)",
+    "details": {
+      "txRef": "REF-PENDING-1793876750808",
+      "userId": "pending_1793876750808@test.com"
+    },
+    "timestamp": "2026-11-05T11:05:50.809Z"
+  },
+  {
+    "id": "log-1793876750703-f9b2d9",
+    "action": "TRIAL_ACTIVATED",
+    "description": "2-Day Free Trial activated for expiredtrial_1793876750702@test.com (Expires: 2026-11-07T11:05:50.703Z)",
+    "details": {
+      "userId": "expiredtrial_1793876750702@test.com",
+      "expiresAt": "2026-11-07T11:05:50.703Z"
+    },
+    "timestamp": "2026-11-05T11:05:50.703Z"
+  },
+  {
+    "id": "log-1793876750702-06b29d",
+    "action": "TRIAL_ACTIVATED",
+    "description": "2-Day Free Trial activated for newuser_1793876750699@test.com (Expires: 2026-11-07T11:05:50.700Z)",
+    "details": {
+      "userId": "newuser_1793876750699@test.com",
+      "expiresAt": "2026-11-07T11:05:50.700Z"
+    },
+    "timestamp": "2026-11-05T11:05:50.702Z"
+  }
+]
