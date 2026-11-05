@@ -1,3 +1,15 @@
+const fs = require('fs');
+try {
+  if (fs.existsSync('.env')) {
+    const lines = fs.readFileSync('.env', 'utf8').split('\n');
+    lines.forEach(line => {
+      const match = line.match(/^([^=]+)=(.*)$/);
+      if (match && !process.env[match[1].trim()]) {
+        process.env[match[1].trim()] = match[2].trim();
+      }
+    });
+  }
+} catch (e) {}
 const express = require('express');
 const path = require('path');
 const https = require('https');
@@ -1191,6 +1203,206 @@ app.get('/api/notifications', (req, res) => {
     res.json({ success: true, notifications });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+
+// Mount TMDB & Discovery Endpoints
+const tmdbService = require('./src/services/tmdb-service');
+const streamRegistry = require('./src/services/stream-registry');
+const matchingService = require('./src/services/matching-service');
+
+app.get('/api/discover/reconciliation', requireSubscription, (req, res) => {
+  res.json(streamRegistry.getReconciliation());
+});
+
+app.get('/api/discover/trending', requireSubscription, async (req, res) => {
+  try {
+    const timeWindow = req.query.timeWindow === 'week' ? 'week' : 'day';
+    const type = req.query.type === 'tv' ? 'tv' : 'movie';
+    const page = parseInt(req.query.page, 10) || 1;
+
+    let data;
+    if (type === 'tv') {
+      data = await tmdbService.getTrendingSeries(timeWindow, page);
+    } else {
+      data = await tmdbService.getTrendingMovies(timeWindow, page);
+    }
+
+    const enriched = matchingService.enrichTMDBList(data.results || [], type);
+    res.json({
+      page: data.page,
+      total_pages: data.total_pages,
+      total_results: data.total_results,
+      results: enriched
+    });
+  } catch (err) {
+    console.error('Error fetching trending:', err.message);
+    res.status(500).json({ error: 'Failed to fetch trending data.' });
+  }
+});
+
+app.get('/api/discover/popular', requireSubscription, async (req, res) => {
+  try {
+    const type = req.query.type === 'tv' ? 'tv' : 'movie';
+    const page = parseInt(req.query.page, 10) || 1;
+
+    let data;
+    if (type === 'tv') {
+      data = await tmdbService.getPopularSeries(page);
+    } else {
+      data = await tmdbService.getPopularMovies(page);
+    }
+
+    const enriched = matchingService.enrichTMDBList(data.results || [], type);
+    res.json({
+      page: data.page,
+      total_pages: data.total_pages,
+      total_results: data.total_results,
+      results: enriched
+    });
+  } catch (err) {
+    console.error('Error fetching popular:', err.message);
+    res.status(500).json({ error: 'Failed to fetch popular data.' });
+  }
+});
+
+app.get('/api/discover/top-rated', requireSubscription, async (req, res) => {
+  try {
+    const type = req.query.type === 'tv' ? 'tv' : 'movie';
+    const page = parseInt(req.query.page, 10) || 1;
+
+    let data;
+    if (type === 'tv') {
+      data = await tmdbService.getTopRatedSeries(page);
+    } else {
+      data = await tmdbService.getTopRatedMovies(page);
+    }
+
+    const enriched = matchingService.enrichTMDBList(data.results || [], type);
+    res.json({
+      page: data.page,
+      total_pages: data.total_pages,
+      total_results: data.total_results,
+      results: enriched
+    });
+  } catch (err) {
+    console.error('Error fetching top-rated:', err.message);
+    res.status(500).json({ error: 'Failed to fetch top-rated data.' });
+  }
+});
+
+app.get('/api/discover/now-playing', requireSubscription, async (req, res) => {
+  try {
+    const page = parseInt(req.query.page, 10) || 1;
+    const data = await tmdbService.getNowPlayingMovies(page);
+    const enriched = matchingService.enrichTMDBList(data.results || [], 'movie');
+    res.json({ ...data, results: enriched });
+  } catch (err) {
+    console.error('Error fetching now playing:', err.message);
+    res.status(500).json({ error: 'Failed to fetch now playing data.' });
+  }
+});
+
+app.get('/api/discover/upcoming', requireSubscription, async (req, res) => {
+  try {
+    const page = parseInt(req.query.page, 10) || 1;
+    const data = await tmdbService.getUpcomingMovies(page);
+    const enriched = matchingService.enrichTMDBList(data.results || [], 'movie');
+    res.json({ ...data, results: enriched });
+  } catch (err) {
+    console.error('Error fetching upcoming:', err.message);
+    res.status(500).json({ error: 'Failed to fetch upcoming data.' });
+  }
+});
+
+app.get('/api/discover/on-the-air', requireSubscription, async (req, res) => {
+  try {
+    const page = parseInt(req.query.page, 10) || 1;
+    const data = await tmdbService.getOnTheAirSeries(page);
+    const enriched = matchingService.enrichTMDBList(data.results || [], 'tv');
+    res.json({ ...data, results: enriched });
+  } catch (err) {
+    console.error('Error fetching on the air series:', err.message);
+    res.status(500).json({ error: 'Failed to fetch on the air series.' });
+  }
+});
+
+app.get('/api/discover/airing-today', requireSubscription, async (req, res) => {
+  try {
+    const page = parseInt(req.query.page, 10) || 1;
+    const data = await tmdbService.getAiringTodaySeries(page);
+    const enriched = matchingService.enrichTMDBList(data.results || [], 'tv');
+    res.json({ ...data, results: enriched });
+  } catch (err) {
+    console.error('Error fetching airing today series:', err.message);
+    res.status(500).json({ error: 'Failed to fetch airing today series.' });
+  }
+});
+
+app.get('/api/discover/search', requireSubscription, async (req, res) => {
+  try {
+    const query = req.query.query || '';
+    const type = req.query.type === 'tv' ? 'tv' : 'movie';
+    const year = req.query.year || null;
+    let data;
+    if (type === 'tv') {
+      data = await tmdbService.searchSeries(query, year);
+    } else {
+      data = await tmdbService.searchMovies(query, year);
+    }
+    const enriched = matchingService.enrichTMDBList(data.results || [], type);
+    res.json({ ...data, results: enriched });
+  } catch (err) {
+    console.error('Error in discover search:', err.message);
+    res.status(500).json({ error: 'Failed to search discover.' });
+  }
+});
+
+app.get('/api/discover/tv/:id/season/:season/episode/:episode', requireSubscription, async (req, res) => {
+  try {
+    const { id, season, episode } = req.params;
+    const data = await tmdbService.getEpisodeDetails(id, season, episode);
+    res.json(data);
+  } catch (err) {
+    console.error('Error fetching episode details:', err.message);
+    res.status(500).json({ error: 'Failed to fetch episode details.' });
+  }
+});
+
+app.get('/api/discover/tv/:id/season/:season', requireSubscription, async (req, res) => {
+  try {
+    const { id, season } = req.params;
+    const data = await tmdbService.getSeasonDetails(id, season);
+    res.json(data);
+  } catch (err) {
+    console.error('Error fetching season details:', err.message);
+    res.status(500).json({ error: 'Failed to fetch season details.' });
+  }
+});
+
+app.get('/api/discover/details', requireSubscription, async (req, res) => {
+  try {
+    const id = req.query.id;
+    const type = req.query.type === 'tv' ? 'tv' : 'movie';
+    if (!id) return res.status(400).json({ error: 'Missing id parameter' });
+
+    let details;
+    if (type === 'tv') {
+      details = await tmdbService.getSeriesDetails(id);
+    } else {
+      details = await tmdbService.getMovieDetails(id);
+    }
+    const matchResult = matchingService.matchTitleToStreams(details, type);
+    res.json({
+      ...details,
+      has_playable_stream: matchResult.matched,
+      matched_stream: matchResult.matched ? matchResult.best_match : null,
+      match_confidence: matchResult.confidence_level
+    });
+  } catch (err) {
+    console.error('Error fetching details:', err.message);
+    res.status(500).json({ error: 'Failed to fetch details.' });
   }
 });
 

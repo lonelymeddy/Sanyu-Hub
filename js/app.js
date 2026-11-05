@@ -1534,34 +1534,68 @@ function createSeriesCard(series) {
 function createTrendingCard(movie, rank) {
     const card = document.createElement("article");
     card.className = "movie-card trending-card";
-    card.setAttribute("data-id", movie.id);
+    const itemId = movie.id || movie.tmdb_id;
+    card.setAttribute("data-id", itemId);
     card.style.cursor = "pointer";
 
     const posterDiv = document.createElement("div");
     posterDiv.className = "poster";
 
-    renderPosterContent(posterDiv, movie);
+    const posterUrl = movie.poster_path
+        ? ("https://image.tmdb.org/t/p/w500" + movie.poster_path)
+        : (movie.posterUrl || movie.poster || "");
+
+    if (posterUrl) {
+        const img = document.createElement("img");
+        img.src = posterUrl;
+        img.alt = movie.title || movie.name || "Movie";
+        img.loading = "lazy";
+        img.onerror = () => {
+            posterDiv.innerHTML = '<div class="poster-unavailable-fallback"><div class="poster-unavailable-icon">&#127916;</div><div class="poster-unavailable-text">' + (movie.title || movie.name || "Movie") + '</div></div>';
+        };
+        posterDiv.appendChild(img);
+    } else {
+        renderPosterContent(posterDiv, movie);
+    }
 
     const rankSpan = document.createElement("span");
     rankSpan.className = "trending-number";
     rankSpan.textContent = rank;
     posterDiv.appendChild(rankSpan);
 
+    if (movie.has_playable_stream) {
+        const playBadge = document.createElement("span");
+        playBadge.className = "series-badge";
+        playBadge.style.cssText = "position:absolute;top:8px;right:8px;background:#e50914;color:#fff;font-size:0.65rem;padding:2px 6px;border-radius:4px;font-weight:700;";
+        playBadge.textContent = "PLAY NOW";
+        posterDiv.appendChild(playBadge);
+    }
+
     const titleDiv = document.createElement("div");
     titleDiv.className = "card-title";
-    titleDiv.title = movie.title || "Untitled";
-    titleDiv.textContent = movie.title || "Untitled";
+    const titleText = movie.title || movie.name || "Untitled";
+    titleDiv.title = titleText;
+    titleDiv.textContent = titleText;
 
     const metaDiv = document.createElement("div");
     metaDiv.className = "card-meta";
-    metaDiv.textContent = `${movie.vj || 'Luganda'}${movie.year ? ' • ' + movie.year : ''}`;
+    const dateStr = movie.release_date || movie.first_air_date || (movie.year ? String(movie.year) : "");
+    const yearStr = dateStr ? dateStr.substring(0, 4) : "";
+    const ratingStr = movie.vote_average ? ("★ " + Number(movie.vote_average).toFixed(1)) : (movie.vj || "Luganda");
+    metaDiv.textContent = ratingStr + (yearStr ? " • " + yearStr : "");
 
     card.appendChild(posterDiv);
     card.appendChild(titleDiv);
     card.appendChild(metaDiv);
 
     card.addEventListener("click", () => {
-        window.location.href = `/movie/${movie.id}`;
+        if (movie.matched_stream && movie.matched_stream.url) {
+            window.location.href = "/watch/" + encodeURIComponent(movie.matched_stream.id || movie.id);
+        } else if (movie.id && typeof movie.id === "string" && movie.id.length > 20) {
+            window.location.href = "/movie/" + movie.id;
+        } else {
+            window.location.href = "/movie/" + movie.id + "?tmdb=1";
+        }
     });
 
     return card;
@@ -3337,11 +3371,17 @@ async function initHomePage() {
     // 2. Trending Movies Section (Up to 2 items)
     if (homeTrendingGrid && secTrending) {
         try {
-            const res = await fetch(`/api/movies?country=${countryCode}&limit=10`);
+            let res = await fetch("/api/discover/trending?timeWindow=day&type=movie");
+            let isTmdbTrending = false;
+            if (res.ok) {
+                isTmdbTrending = true;
+            } else {
+                res = await fetch(`/api/movies?country=${countryCode}&limit=10`);
+            }
             if (activeHomePageCountry !== countryCode) return;
             if (res.ok) {
                 const data = await res.json();
-                const movies = (data.movies || []).slice(0, 2);
+                const movies = (data.results || data.movies || []).slice(0, 2);
                 homeTrendingGrid.innerHTML = "";
                 if (movies.length > 0) {
                     secTrending.style.display = "block";
@@ -3499,10 +3539,33 @@ async function initSubpage(containerId, isTrending = false, limit = 24) {
     container.innerHTML = createMovieSkeletonGrid(12);
 
     try {
-        const res = await fetch(`/api/movies?country=${countryCode}&limit=${limit}`);
-        if (!res.ok) throw new Error("HTTP error " + res.status);
-        const data = await res.json();
-        const movies = data.movies || [];
+        let res, data, movies;
+        if (containerId === "trendingGrid") {
+            res = await fetch("/api/discover/trending?timeWindow=day&type=movie");
+            if (res.ok) {
+                data = await res.json();
+                movies = data.results || [];
+            }
+        } else if (containerId === "popularGrid") {
+            res = await fetch("/api/discover/popular?type=movie");
+            if (res.ok) {
+                data = await res.json();
+                movies = data.results || [];
+            }
+        } else if (containerId === "popularSeriesGrid") {
+            res = await fetch("/api/discover/popular?type=tv");
+            if (res.ok) {
+                data = await res.json();
+                movies = data.results || [];
+            }
+        }
+
+        if (!movies) {
+            res = await fetch(`/api/movies?country=${countryCode}&limit=${limit}`);
+            if (!res.ok) throw new Error("HTTP error " + res.status);
+            data = await res.json();
+            movies = data.movies || [];
+        }
 
         if (movies.length === 0) {
             container.innerHTML = `
@@ -4352,10 +4415,33 @@ async function initMovieDetailsPage() {
 
     try {
         let movie = PreloadManager.getPreload(`movie_${movieId}`);
+        const urlParams = new URLSearchParams(window.location.search);
+        const isTmdb = urlParams.get('tmdb') === '1' || /^[0-9]+$/.test(movieId);
+
         if (!movie) {
-            const res = await fetch(`/api/movies/${movieId}`);
-            if (!res.ok) throw new Error("Movie not found");
-            movie = await res.json();
+            if (isTmdb) {
+                const res = await fetch(`/api/discover/details?id=${movieId}&type=movie`);
+                if (!res.ok) throw new Error("TMDB title not found");
+                const tmdbData = await res.json();
+                movie = {
+                    id: tmdbData.id,
+                    title: tmdbData.title || tmdbData.original_title,
+                    overview: tmdbData.overview,
+                    posterUrl: tmdbData.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : null,
+                    backdropUrl: tmdbData.backdrop_path ? `https://image.tmdb.org/t/p/original${tmdbData.backdrop_path}` : null,
+                    year: tmdbData.release_date ? tmdbData.release_date.substring(0, 4) : '',
+                    genres: (tmdbData.genres || []).map(g => g.name),
+                    quality: '4K/HD',
+                    vj: tmdbData.has_playable_stream ? (tmdbData.matched_stream?.vj || 'Luganda VJ') : 'Global Release',
+                    format: 'stream',
+                    hasStream: tmdbData.has_playable_stream,
+                    matchedStream: tmdbData.matched_stream
+                };
+            } else {
+                const res = await fetch(`/api/movies/${movieId}`);
+                if (!res.ok) throw new Error("Movie not found");
+                movie = await res.json();
+            }
             PreloadManager.setPreload(`movie_${movieId}`, movie);
         }
 

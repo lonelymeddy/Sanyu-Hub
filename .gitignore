@@ -14,3 +14,4 @@ android/*.iml
 android/app/*.iml
 android/local.properties
 android/.cxx
+.env
