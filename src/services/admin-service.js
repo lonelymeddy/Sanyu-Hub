@@ -15,7 +15,7 @@ function ensureDataFiles() {
       {
         id: 'usr-admin-01',
         name: 'Super Admin',
-        email: 'admin@sanyuhub.com',
+        email: 'himselfcalvin3@gmail.com',
         role: 'admin',
         validationStatus: 'validated',
         isVerified: true,
